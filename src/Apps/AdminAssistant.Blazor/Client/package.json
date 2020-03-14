@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "clean-css-cli": "^4.3.0",
-    "node-sass": "^4.9.3"
+    "node-sass": "^4.13.1"
   },
   "optionalDependencies": {}
 }
