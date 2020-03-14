@@ -37,6 +37,57 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
-        }
+        },
+        {
+            "label": "test (Accounts Module)",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}\\src\\Modules\\Accounts\\AdminAssistant.Accounts.Test\\AdminAssistant.Accounts.Test.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "test with coverage (Accounts Module)",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "/p:CollectCoverage=true",
+                "/p:CoverletOutputFormat=lcov",
+                "/p:CoverletOutput=${workspaceFolder}\\src\\Modules\\Accounts\\AdminAssistant.Accounts.Test\\lcov.info",
+                "${workspaceFolder}\\src\\Modules\\Accounts\\AdminAssistant.Accounts.Test\\AdminAssistant.Accounts.Test.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "watch test with coverage (Accounts Module)",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "--project",
+                "${workspaceFolder}\\src\\Modules\\Accounts\\AdminAssistant.Accounts.Test",
+                "test",
+                "/p:CollectCoverage=true",
+                "/p:CoverletOutputFormat=lcov",
+                "/p:CoverletOutput=${workspaceFolder}\\src\\Modules\\Accounts\\AdminAssistant.Accounts.Test\\lcov.info",
+                "${workspaceFolder}\\src\\Modules\\Accounts\\AdminAssistant.Accounts.Test\\AdminAssistant.Accounts.Test.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        },
     ]
 }
