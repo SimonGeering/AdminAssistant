@@ -14,5 +14,23 @@
       "**/*.csproj.user": true,
       "**/*.docs.xml": true,
     }
+  },
+  "extensions": {
+    "recommendations": [
+      "streetsidesoftware.code-spell-checker",
+      "mrmlnc.vscode-scss",
+      "shardulm94.trailing-spaces",
+      "ryanluker.vscode-coverage-gutters",
+      "eamodio.gitlens",
+      "formulahendry.dotnet-test-explorer",
+      "eg2.vscode-npm-script",
+      "christian-kohler.path-intellisense",
+      "pflannery.vscode-versionlens",
+      "hbenl.vscode-test-explorer",
+      "wayou.vscode-todo-highlight",
+      "gruntfuggly.todo-tree",
+      "editorconfig.editorconfig",
+      "donjayamanne.githistory"
+    ]
   }
 }
