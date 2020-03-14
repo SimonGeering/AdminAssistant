@@ -1,0 +1,17 @@
+@inherits LayoutComponentBase
+@using AdminAssistant.Blazor.Client.Shared.Header
+@using AdminAssistant.Blazor.Client.Shared.Sidebar
+@using AdminAssistant.Blazor.Client.Shared.Breadcrumb
+@using AdminAssistant.Blazor.Client.Shared.Footer
+
+<div class="cl-app">
+  <HeaderComponent />
+  <div class="cl-main">
+    <SidebarComponent />
+    <div class="cl-outlet">
+      <BreadcrumbComponent />
+      @Body
+    </div>
+  </div>
+  <FooterComponent />
+</div>
