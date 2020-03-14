@@ -5,11 +5,20 @@
     <Product>Admin Assistant</Product>
     <nullable>enable</nullable>
     <LangVersion>latest</LangVersion>
+    <Platforms>x64</Platforms>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Core\AdminAssistant.Core.UI\AdminAssistant.Core.UI.xml</DocumentationFile>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Core\AdminAssistant.Core.UI\AdminAssistant.Core.UI.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AdminAssistant.Core.UI.xml" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
