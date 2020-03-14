@@ -357,3 +357,6 @@ MigrationBackup/
 
 # Visual Studio XML Doc Comments
 **/*.docs.xml
+src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.css.map
+src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.min.css
+src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.min.css.map
