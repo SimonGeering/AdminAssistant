@@ -1,8 +1,18 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": "../"
 		}
 	],
-	"settings": {}
+	"settings": {
+    "files.exclude": {
+			"**/bin/": true,
+      "**/obj/": true,
+      "**/.cr/": true,
+      "**/.vs/": true,
+      "**/node_modules/": true,
+      "**/*.csproj.user": true,
+      "**/*.docs.xml": true,
+    }
+  }
 }
