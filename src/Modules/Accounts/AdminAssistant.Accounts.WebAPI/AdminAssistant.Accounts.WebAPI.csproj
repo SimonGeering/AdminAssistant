@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Modules\Accounts\AdminAssistant.Accounts.WebAPI\AdminAssistant.Accounts.WebAPI.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Accounts.WebAPI.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Modules\Accounts\AdminAssistant.Accounts.WebAPI\AdminAssistant.Accounts.WebAPI.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Accounts.WebAPI.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,5 +28,5 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\AdminAssistant\AdminAssistant.csproj" />
   </ItemGroup>
-  
+
 </Project>

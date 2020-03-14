@@ -9,15 +9,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Modules\Accounts\AdminAssistant.Accounts.DAL\AdminAssistant.Accounts.DAL.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Accounts.DAL.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Modules\Accounts\AdminAssistant.Accounts.DAL\AdminAssistant.Accounts.DAL.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Accounts.DAL.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.Accounts.DAL.xml" />
+    <None Remove="AdminAssistant.Accounts.DAL.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>

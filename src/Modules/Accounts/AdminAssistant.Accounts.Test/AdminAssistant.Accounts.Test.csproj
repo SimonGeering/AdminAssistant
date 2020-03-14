@@ -12,11 +12,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Modules\Accounts\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Accounts.Test.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Modules\Accounts\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Accounts.Test.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

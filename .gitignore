@@ -356,15 +356,4 @@ MigrationBackup/
 /src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.css
 
 # Visual Studio XML Doc Comments
-/src/Modules/Accounts/AdminAssistant.Accounts.WebAPI/AdminAssistant.Accounts.WebAPI.xml
-/src/Modules/Accounts/AdminAssistant.Accounts.UI/AdminAssistant.Accounts.UI.xml
-/src/Modules/Accounts/AdminAssistant.Accounts.DomainModel/AdminAssistant.Accounts.DomainModel.xml
-/src/Modules/Accounts/AdminAssistant.Accounts.DAL/AdminAssistant.Accounts.DAL.xml
-/src/Framework/AdminAssistant.Framework/AdminAssistant.Framework.xml
-/src/Core/AdminAssistant.Core.UI/AdminAssistant.Core.UI.xml
-/src/Core/AdminAssistant/AdminAssistant.xml
-/src/Apps/AdminAssistant.Blazor/Server/AdminAssistant.Blazor.Server.xml
-/src/Apps/AdminAssistant.Blazor/Client/AdminAssistant.Blazor.Client.xml
-/src/Modules/Accounts/AdminAssistant.Accounts.Test/AdminAssistant.Accounts.Test.xml
-/src/Framework/AdminAssistant.Framework.Test/AdminAssistant.Framework.Test.xml
-/src/Core/AdminAssistant.Core.Infrastructure/AdminAssistant.Core.Infrastructure.xml
+**/*.docs.xml

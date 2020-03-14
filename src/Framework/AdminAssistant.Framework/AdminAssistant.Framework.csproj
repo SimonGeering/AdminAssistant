@@ -8,15 +8,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Framework\AdminAssistant.Framework\AdminAssistant.Framework.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Framework.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Framework\AdminAssistant.Framework\AdminAssistant.Framework.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Framework.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.Framework.xml" />
+    <None Remove="AdminAssistant.Framework.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>

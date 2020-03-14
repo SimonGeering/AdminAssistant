@@ -8,15 +8,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Apps\AdminAssistant.Blazor\Server\AdminAssistant.Blazor.Server.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Blazor.Server.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Apps\AdminAssistant.Blazor\Server\AdminAssistant.Blazor.Server.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Blazor.Server.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.Blazor.Server.xml" />
+    <None Remove="AdminAssistant.Blazor.Server.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>

@@ -9,15 +9,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Core\AdminAssistant\AdminAssistant.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant\AdminAssistant.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Core\AdminAssistant\AdminAssistant.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant\AdminAssistant.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.xml" />
+    <None Remove="AdminAssistant.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>

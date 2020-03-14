@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Modules\Accounts\AdminAssistant.Accounts.UI\AdminAssistant.Accounts.UI.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Accounts.UI.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>C:\Source\GitHub\SimonGeering\AdminAssistant\src\Modules\Accounts\AdminAssistant.Accounts.UI\AdminAssistant.Accounts.UI.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Accounts.UI.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,5 +27,5 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
   </ItemGroup>
-  
+
 </Project>
