@@ -10,4 +10,4 @@ See
 ## Useful Links
 
 Editor Config  
-https://docs.microsoft.com/en-us/visualstudio/intellicode/code-style-inference
+<https://docs.microsoft.com/en-us/visualstudio/intellicode/code-style-inference>

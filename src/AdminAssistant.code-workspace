@@ -15,9 +15,41 @@
       "**/*.docs.xml": true,
       "**/lcov.info": true
     },
+    "cSpell.language": "en-GB",
+    "cSpell.ignorePaths": [
+      "**/package.json",
+      "**/package-lock.json",
+      "**/launchSettings.json",
+      "**/node_modules/**",
+      "**/vscode-extension/**",
+      "**/.git/objects/**",
+      ".vscode",
+      "**/AdminAssistant.code-workspace"
+    ],
+    "cSpell.words": [
+      "Admin",
+      "blazor",
+      "Bootswatch",
+      "Emoji",
+      "geering",
+      "titlebar",
+      "webassembly"
+    ],
+    "terminal.integrated.shell.linux": "/opt/microsoft/powershell/6/pwsh",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
+    "editor.fontFamily": "'Fira Code','Consolas','monospace'",
+    "editor.fontWeight": "400",
+    "editor.fontSize": 12,
+    "terminal.integrated.fontFamily": "'Fira Code','Consolas','monospace'",
+    "terminal.integrated.fontWeight": "400",
+    "terminal.integrated.fontSize": 12,
+    "editor.fontLigatures": true,
+    "workbench.colorCustomizations": { "gitlens.trailingLineForegroundColor": "#bbbaba" },
     "dotnet-test-explorer.testProjectPath": "**/*Test.csproj",
     "coverage-gutters.showGutterCoverage": true,
-    "coverage-gutters.showLineCoverage": false
+    "coverage-gutters.showLineCoverage": false,
+    "trailing-spaces.syntaxIgnore": ["markdown"],
+    "npm.enableScriptExplorer": true
   },
   "extensions": {
     "recommendations": [
@@ -34,12 +66,14 @@
       "yzhang.markdown-all-in-one",
       "bierner.markdown-preview-github-styles",
       "davidanson.vscode-markdownlint",
-      "christian-kohler.path-intellisense"
+      "christian-kohler.path-intellisense",
       "mrmlnc.vscode-scss",
       "wayou.vscode-todo-highlight",
       "gruntfuggly.todo-tree",
       "shardulm94.trailing-spaces",
-      "pflannery.vscode-versionlens"
+      "pflannery.vscode-versionlens",
+      "visualstudioexptteam.vscodeintellicode",
+      "vscode-icons-team.vscode-icons"
     ]
   }
 }
