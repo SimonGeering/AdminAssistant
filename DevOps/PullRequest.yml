@@ -1,6 +1,6 @@
 name: $(BuildID)
 
-trigger:
+pr:
   batch: true
   branches:
     include:
