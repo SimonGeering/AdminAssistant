@@ -348,3 +348,18 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# CodeRush bits
+/src/.cr/personal/Unit Testing/Test Runner UI.xml
+
+# NPM Transpiled / Generated web assets
+src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.css
+src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.css.map
+src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.min.css
+src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.min.css.map
+
+# Visual Studio XML Doc Comments
+**/*.docs.xml
+
+# Code Coverage
+**/lcov.info

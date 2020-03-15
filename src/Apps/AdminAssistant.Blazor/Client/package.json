@@ -1,0 +1,22 @@
+{
+  "name": "adminassistant.blazor.client",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node-sass ./site.scss ./wwwroot/assets/css/site.css --watch",
+    "build": "node-sass ./site.scss ./wwwroot/assets/css/site.css",
+    "release": "npm run compile-styles && npm run css-minify",
+    "compile-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 ./site.scss ./wwwroot/assets/css/site.css",
+    "css-minify": "cleancss --level 1 --format breaksWith=lf --source-map --source-map-inline-sources --output ./wwwroot/assets/css/site.min.css ./wwwroot/assets/css/site.css"
+  },
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "bootswatch": "^4.4.1",
+    "font-awesome": "^4.7.0"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^4.3.0",
+    "node-sass": "^4.13.1"
+  },
+  "optionalDependencies": {}
+}

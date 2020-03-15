@@ -1,0 +1,43 @@
+@inject AdminAssistant.Core.UI.Shared.Sidebar.ISidebarViewModel vm
+
+<div class="cl-navbar @this.vm.Sidebar.StyleClass">
+  <div class="card">
+    <div class="card-header">
+      <div class="cl-sidebar-control">
+        <button type="button" class="btn btn-primary" @onclick=this.vm.OnSideBarControlButtonClick>
+          <span class="fa @this.vm.Sidebar.Icon"></span>
+        </button>
+      </div>
+      <div class="cl-mode-selection">
+        <ul class="nav nav-pills">
+          <li class="nav-item dropdown @this.vm.ModeSelectionDropDown.StyleClass">
+            <a class="nav-link dropdown-toggle" @onclick="this.vm.OnModeSelectionDropDownClick">&nbsp;<i class="fa @this.vm.ActiveMode.Icon"></i>&nbsp;@this.vm.ActiveMode.Label</a>
+            <div class="dropdown-menu @this.vm.ModeSelectionDropDown.StyleClass" style="position: absolute; transform: translate3d(0px, 30px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
+              @foreach (var mode in this.vm.Modes)
+              {
+                <a class="dropdown-item" @onclick="() => this.vm.OnSelectedModeChanged(mode)">&nbsp;<i class="fa @mode.Icon"></i>&nbsp;@mode.Label</a>
+              }
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="list-group">
+        @foreach (var module in this.vm.Modules)
+        {
+          <a href="/@module.Module.ToString().ToLower()" class="list-group-item list-group-item-action @module.StyleClass" @onclick="() => this.vm.OnSelectedModuleChanged(module)">&nbsp;<i style="min-width: 15px;" class="fa @module.Icon"></i>&nbsp;@module.Label</a>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+@code
+{
+    protected override void OnInitialized()
+    {
+      this.vm.PropertyChanged += (o, e) => this.StateHasChanged();
+      base.OnInitialized();
+    }
+}

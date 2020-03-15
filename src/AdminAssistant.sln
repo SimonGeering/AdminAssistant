@@ -1,0 +1,130 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{426B1C7D-A969-4DEC-91C2-DB3A65AB585A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AdminAssistant.Blazor", "AdminAssistant.Blazor", "{50C8B430-F2F2-4ED1-91A4-8BFB44B9D333}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{0395D66D-D0ED-4C44-99C0-1CC034CF83D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{6E81FF60-9234-4CBA-B632-640F401017A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{04730254-9375-4D49-ADD4-96A9751708F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{5B790840-9D97-45F2-894F-F5722C56F31F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{28BB931B-576E-4E7F-A2C6-06D86A042511}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Accounts", "Accounts", "{5486D9A6-C289-4286-A17E-97178BBF2C50}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Client", "Apps\AdminAssistant.Blazor\Client\AdminAssistant.Blazor.Client.csproj", "{A1B1A4FA-E807-4CAA-A5F1-7380B14042D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Server", "Apps\AdminAssistant.Blazor\Server\AdminAssistant.Blazor.Server.csproj", "{32D85134-80F4-49D2-929E-8204E772360C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Accounts.DAL", "Modules\Accounts\AdminAssistant.Accounts.DAL\AdminAssistant.Accounts.DAL.csproj", "{2A29E83F-8B0A-4194-8A43-372A6CB89265}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Accounts.DomainModel", "Modules\Accounts\AdminAssistant.Accounts.DomainModel\AdminAssistant.Accounts.DomainModel.csproj", "{5F40E2ED-3192-4313-983D-5842DBA5AA9E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Accounts.Test", "Modules\Accounts\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.csproj", "{0ADEA26B-F913-4BC2-9860-3E9523C844ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Accounts.UI", "Modules\Accounts\AdminAssistant.Accounts.UI\AdminAssistant.Accounts.UI.csproj", "{9E39B9F2-0A2E-4423-A4D8-19D6422AC859}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Framework", "Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj", "{344CC4D0-FCD8-484B-A0BC-BDA73A58775A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Framework.Test", "Framework\AdminAssistant.Framework.Test\AdminAssistant.Framework.Test.csproj", "{1ECAFB83-DB49-459F-BED6-07C9D7F9F252}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Accounts.WebAPI", "Modules\Accounts\AdminAssistant.Accounts.WebAPI\AdminAssistant.Accounts.WebAPI.csproj", "{A493173F-117C-4EA0-810F-10964C7B0AB9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Core.Infrastructure", "Core\AdminAssistant.Core.Infrastructure\AdminAssistant.Core.Infrastructure.csproj", "{0819E4E4-AF9A-47EE-9543-B5696683A3BC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant", "Core\AdminAssistant\AdminAssistant.csproj", "{9B91A24B-F890-43C7-BB09-F0EA02874480}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Core.UI", "Core\AdminAssistant.Core.UI\AdminAssistant.Core.UI.csproj", "{E08F6D77-7C1A-4661-B462-6891492B2CA8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7E27F45C-02D4-47C4-9D0E-B64AB9AE3DA6}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1B1A4FA-E807-4CAA-A5F1-7380B14042D4}.Debug|x64.ActiveCfg = Debug|x64
+		{A1B1A4FA-E807-4CAA-A5F1-7380B14042D4}.Debug|x64.Build.0 = Debug|x64
+		{A1B1A4FA-E807-4CAA-A5F1-7380B14042D4}.Release|x64.ActiveCfg = Release|x64
+		{A1B1A4FA-E807-4CAA-A5F1-7380B14042D4}.Release|x64.Build.0 = Release|x64
+		{32D85134-80F4-49D2-929E-8204E772360C}.Debug|x64.ActiveCfg = Debug|x64
+		{32D85134-80F4-49D2-929E-8204E772360C}.Debug|x64.Build.0 = Debug|x64
+		{32D85134-80F4-49D2-929E-8204E772360C}.Release|x64.ActiveCfg = Release|x64
+		{32D85134-80F4-49D2-929E-8204E772360C}.Release|x64.Build.0 = Release|x64
+		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Debug|x64.ActiveCfg = Debug|x64
+		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Debug|x64.Build.0 = Debug|x64
+		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Release|x64.ActiveCfg = Release|x64
+		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Release|x64.Build.0 = Release|x64
+		{5F40E2ED-3192-4313-983D-5842DBA5AA9E}.Debug|x64.ActiveCfg = Debug|x64
+		{5F40E2ED-3192-4313-983D-5842DBA5AA9E}.Debug|x64.Build.0 = Debug|x64
+		{5F40E2ED-3192-4313-983D-5842DBA5AA9E}.Release|x64.ActiveCfg = Release|x64
+		{5F40E2ED-3192-4313-983D-5842DBA5AA9E}.Release|x64.Build.0 = Release|x64
+		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Debug|x64.ActiveCfg = Debug|x64
+		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Debug|x64.Build.0 = Debug|x64
+		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Release|x64.ActiveCfg = Release|x64
+		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Release|x64.Build.0 = Release|x64
+		{9E39B9F2-0A2E-4423-A4D8-19D6422AC859}.Debug|x64.ActiveCfg = Debug|x64
+		{9E39B9F2-0A2E-4423-A4D8-19D6422AC859}.Debug|x64.Build.0 = Debug|x64
+		{9E39B9F2-0A2E-4423-A4D8-19D6422AC859}.Release|x64.ActiveCfg = Release|x64
+		{9E39B9F2-0A2E-4423-A4D8-19D6422AC859}.Release|x64.Build.0 = Release|x64
+		{344CC4D0-FCD8-484B-A0BC-BDA73A58775A}.Debug|x64.ActiveCfg = Debug|x64
+		{344CC4D0-FCD8-484B-A0BC-BDA73A58775A}.Debug|x64.Build.0 = Debug|x64
+		{344CC4D0-FCD8-484B-A0BC-BDA73A58775A}.Release|x64.ActiveCfg = Release|x64
+		{344CC4D0-FCD8-484B-A0BC-BDA73A58775A}.Release|x64.Build.0 = Release|x64
+		{1ECAFB83-DB49-459F-BED6-07C9D7F9F252}.Debug|x64.ActiveCfg = Debug|x64
+		{1ECAFB83-DB49-459F-BED6-07C9D7F9F252}.Debug|x64.Build.0 = Debug|x64
+		{1ECAFB83-DB49-459F-BED6-07C9D7F9F252}.Release|x64.ActiveCfg = Release|x64
+		{1ECAFB83-DB49-459F-BED6-07C9D7F9F252}.Release|x64.Build.0 = Release|x64
+		{A493173F-117C-4EA0-810F-10964C7B0AB9}.Debug|x64.ActiveCfg = Debug|x64
+		{A493173F-117C-4EA0-810F-10964C7B0AB9}.Debug|x64.Build.0 = Debug|x64
+		{A493173F-117C-4EA0-810F-10964C7B0AB9}.Release|x64.ActiveCfg = Release|x64
+		{A493173F-117C-4EA0-810F-10964C7B0AB9}.Release|x64.Build.0 = Release|x64
+		{0819E4E4-AF9A-47EE-9543-B5696683A3BC}.Debug|x64.ActiveCfg = Debug|x64
+		{0819E4E4-AF9A-47EE-9543-B5696683A3BC}.Debug|x64.Build.0 = Debug|x64
+		{0819E4E4-AF9A-47EE-9543-B5696683A3BC}.Release|x64.ActiveCfg = Release|x64
+		{0819E4E4-AF9A-47EE-9543-B5696683A3BC}.Release|x64.Build.0 = Release|x64
+		{9B91A24B-F890-43C7-BB09-F0EA02874480}.Debug|x64.ActiveCfg = Debug|x64
+		{9B91A24B-F890-43C7-BB09-F0EA02874480}.Debug|x64.Build.0 = Debug|x64
+		{9B91A24B-F890-43C7-BB09-F0EA02874480}.Release|x64.ActiveCfg = Release|x64
+		{9B91A24B-F890-43C7-BB09-F0EA02874480}.Release|x64.Build.0 = Release|x64
+		{E08F6D77-7C1A-4661-B462-6891492B2CA8}.Debug|x64.ActiveCfg = Debug|x64
+		{E08F6D77-7C1A-4661-B462-6891492B2CA8}.Debug|x64.Build.0 = Debug|x64
+		{E08F6D77-7C1A-4661-B462-6891492B2CA8}.Release|x64.ActiveCfg = Release|x64
+		{E08F6D77-7C1A-4661-B462-6891492B2CA8}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{50C8B430-F2F2-4ED1-91A4-8BFB44B9D333} = {426B1C7D-A969-4DEC-91C2-DB3A65AB585A}
+		{0395D66D-D0ED-4C44-99C0-1CC034CF83D4} = {50C8B430-F2F2-4ED1-91A4-8BFB44B9D333}
+		{6E81FF60-9234-4CBA-B632-640F401017A8} = {50C8B430-F2F2-4ED1-91A4-8BFB44B9D333}
+		{5486D9A6-C289-4286-A17E-97178BBF2C50} = {28BB931B-576E-4E7F-A2C6-06D86A042511}
+		{A1B1A4FA-E807-4CAA-A5F1-7380B14042D4} = {0395D66D-D0ED-4C44-99C0-1CC034CF83D4}
+		{32D85134-80F4-49D2-929E-8204E772360C} = {6E81FF60-9234-4CBA-B632-640F401017A8}
+		{2A29E83F-8B0A-4194-8A43-372A6CB89265} = {5486D9A6-C289-4286-A17E-97178BBF2C50}
+		{5F40E2ED-3192-4313-983D-5842DBA5AA9E} = {5486D9A6-C289-4286-A17E-97178BBF2C50}
+		{0ADEA26B-F913-4BC2-9860-3E9523C844ED} = {5486D9A6-C289-4286-A17E-97178BBF2C50}
+		{9E39B9F2-0A2E-4423-A4D8-19D6422AC859} = {5486D9A6-C289-4286-A17E-97178BBF2C50}
+		{344CC4D0-FCD8-484B-A0BC-BDA73A58775A} = {5B790840-9D97-45F2-894F-F5722C56F31F}
+		{1ECAFB83-DB49-459F-BED6-07C9D7F9F252} = {5B790840-9D97-45F2-894F-F5722C56F31F}
+		{A493173F-117C-4EA0-810F-10964C7B0AB9} = {5486D9A6-C289-4286-A17E-97178BBF2C50}
+		{0819E4E4-AF9A-47EE-9543-B5696683A3BC} = {04730254-9375-4D49-ADD4-96A9751708F5}
+		{9B91A24B-F890-43C7-BB09-F0EA02874480} = {04730254-9375-4D49-ADD4-96A9751708F5}
+		{E08F6D77-7C1A-4661-B462-6891492B2CA8} = {04730254-9375-4D49-ADD4-96A9751708F5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D4CA941-C519-4A62-B324-1BB83E377289}
+	EndGlobalSection
+EndGlobal
