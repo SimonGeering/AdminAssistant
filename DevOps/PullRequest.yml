@@ -1,8 +1,17 @@
 name: $(BuildID)
 
-pr: dev
+trigger:
+  batch: true
+  branches:
+    include:
+    - dev
+    - master
+  paths:
+    exclude:
+    - /DevOps
+    - /docs
 
-trigger: none
+trigger: none # Disable CI Builds
 
 resources:
 - repo: self
