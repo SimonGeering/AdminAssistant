@@ -1,7 +1,7 @@
 name: $(BuildID)
 
 pr:
-  batch: true
+  autoCancel: true
   branches:
     include:
     - dev
