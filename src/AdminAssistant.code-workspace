@@ -6,6 +6,8 @@
 	],
 	"settings": {
     "files.exclude": {
+      "**/docs/_site/": true,
+      "**/docs/.jekyll-cache/": true,
 			"**/bin/": true,
       "**/obj/": true,
       "**/.cr/": true,
