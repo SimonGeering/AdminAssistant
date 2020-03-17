@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AdminAssistant.Accounts.UI.docs.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Core\AdminAssistant.Core.UI\AdminAssistant.Core.UI.csproj" />
   </ItemGroup>
 
