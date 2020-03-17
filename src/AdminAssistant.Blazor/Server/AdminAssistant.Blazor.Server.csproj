@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
@@ -36,9 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Modules\Accounts\AdminAssistant.Accounts.DAL\AdminAssistant.Accounts.DAL.csproj" />
-    <ProjectReference Include="..\..\..\Modules\Accounts\AdminAssistant.Accounts.DomainModel\AdminAssistant.Accounts.DomainModel.csproj" />
-    <ProjectReference Include="..\..\..\Modules\Accounts\AdminAssistant.Accounts.WebAPI\AdminAssistant.Accounts.WebAPI.csproj" />
+    <ProjectReference Include="..\..\AdminAssistant.DAL\AdminAssistant.DAL.csproj" />
+    <ProjectReference Include="..\..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\Client\AdminAssistant.Blazor.Client.csproj" />
   </ItemGroup>
 

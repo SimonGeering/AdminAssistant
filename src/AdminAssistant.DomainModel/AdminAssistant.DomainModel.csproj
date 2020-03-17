@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\AdminAssistant\AdminAssistant.csproj" />
+    <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
   </ItemGroup>
 
 </Project>

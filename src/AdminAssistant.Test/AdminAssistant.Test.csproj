@@ -43,7 +43,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant.Accounts.DomainModel\AdminAssistant.Accounts.DomainModel.csproj" />
+    <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
   </ItemGroup>
 
 </Project>
