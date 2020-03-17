@@ -9,15 +9,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>AdminAssistant.Accounts.UI.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.UI.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>AdminAssistant.Accounts.UI.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.UI.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.Accounts.UI.docs.xml" />
+    <None Remove="AdminAssistant.UI.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>

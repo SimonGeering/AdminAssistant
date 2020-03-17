@@ -12,15 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>AdminAssistant.Accounts.Test.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>AdminAssistant.Accounts.Test.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.Accounts.Test.docs.xml" />
+    <None Remove="AdminAssistant.Test.docs.xml" />
     <None Remove="lcov.info" />
   </ItemGroup>
 
