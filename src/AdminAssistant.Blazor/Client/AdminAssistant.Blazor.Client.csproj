@@ -40,8 +40,4 @@
     <Folder Include="wwwroot\assets\css\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <EditorConfigFiles Include="..\..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-
 </Project>
