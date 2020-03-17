@@ -353,10 +353,10 @@ MigrationBackup/
 /src/.cr/personal/Unit Testing/Test Runner UI.xml
 
 # NPM Transpiled / Generated web assets
-src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.css
-src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.css.map
-src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.min.css
-src/Apps/AdminAssistant.Blazor/Client/wwwroot/assets/css/site.min.css.map
+**/wwwroot/assets/css/site.css
+**/wwwroot/assets/css/site.css.map
+**/wwwroot/assets/css/site.min.css
+**/wwwroot/assets/css/site.min.css.map
 
 # Visual Studio XML Doc Comments
 **/*.docs.xml
