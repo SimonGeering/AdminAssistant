@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace AdminAssistant.Accounts.DomainModel.CQRS
+namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
     public class GetBankAccountByIDQuery : IRequest<BankAccount>
     {

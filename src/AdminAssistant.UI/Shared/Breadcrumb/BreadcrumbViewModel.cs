@@ -1,6 +1,6 @@
-using AdminAssistant.Core.UI.Services;
+using AdminAssistant.UI.Services;
 
-namespace AdminAssistant.Core.UI.Shared.Breadcrumb
+namespace AdminAssistant.UI.Shared.Breadcrumb
 {
     public class BreadcrumbViewModel : ViewModelBase, IBreadcrumbViewModel
     {

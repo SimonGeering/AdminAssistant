@@ -5,6 +5,7 @@
     <nullable>enable</nullable>
     <LangVersion>latest</LangVersion>
     <Platforms>x64</Platforms>
+    <AssemblyName>AdminAssistant.Blazor.Server</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

@@ -1,4 +1,4 @@
-namespace AdminAssistant.Core.UI.Shared
+namespace AdminAssistant.UI.Shared
 {
     public class ModeSelectionItem
     {

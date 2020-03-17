@@ -1,7 +1,7 @@
 using System;
-using AdminAssistant.Core.UI.Shared;
+using AdminAssistant.UI.Shared;
 
-namespace AdminAssistant.Core.UI.Services
+namespace AdminAssistant.UI.Services
 {
     public class AppStateStore : PropertyChangedNotificationBase, IAppStateStore
     {

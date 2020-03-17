@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using AdminAssistant.Core.UI.Shared;
+using AdminAssistant.UI.Shared;
 
-namespace AdminAssistant.Core.UI.Services
+namespace AdminAssistant.UI.Services
 {
     public class AppService : IAppService
     {

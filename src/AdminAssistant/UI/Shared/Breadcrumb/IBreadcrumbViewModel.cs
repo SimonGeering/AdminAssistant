@@ -1,4 +1,4 @@
-namespace AdminAssistant.Core.UI.Shared.Breadcrumb
+namespace AdminAssistant.UI.Shared.Breadcrumb
 {
     public interface IBreadcrumbViewModel : IViewModelBase
     {

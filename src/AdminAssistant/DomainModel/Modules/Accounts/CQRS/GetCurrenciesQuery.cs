@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using MediatR;
 
-namespace AdminAssistant.Accounts.DomainModel.CQRS
+namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
     public class GetCurrenciesQuery : IRequest<IEnumerable<Currency>>
     {

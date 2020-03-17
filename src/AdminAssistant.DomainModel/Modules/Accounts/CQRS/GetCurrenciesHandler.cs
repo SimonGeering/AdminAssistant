@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.Accounts.DAL;
+using AdminAssistant.DAL.Modules.Accounts;
 using MediatR;
 
-namespace AdminAssistant.Accounts.DomainModel.CQRS
+namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
     public class GetCurrenciesHandler : IRequestHandler<GetCurrenciesQuery, IEnumerable<Currency>>
     {

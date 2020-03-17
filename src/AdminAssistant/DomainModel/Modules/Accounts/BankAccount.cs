@@ -1,6 +1,6 @@
 using System;
 
-namespace AdminAssistant.Accounts.DomainModel
+namespace AdminAssistant.DomainModel.Modules.Accounts
 {
     public class BankAccount
     {

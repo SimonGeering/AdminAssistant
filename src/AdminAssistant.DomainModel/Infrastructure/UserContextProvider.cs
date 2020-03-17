@@ -1,4 +1,4 @@
-﻿namespace AdminAssistant.Core.Infrastructure.DomainModel
+namespace AdminAssistant.DomainModel.Infrastructure
 {
     public class UserContextProvider : IUserContextProvider
     {

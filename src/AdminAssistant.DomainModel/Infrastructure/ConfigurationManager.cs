@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using Microsoft.Extensions.Configuration;
 
-namespace AdminAssistant.Core.Infrastructure.DomainModel
+namespace AdminAssistant.DomainModel.Infrastructure
 {
     public class ConfigurationManager : IConfigurationManager
     {

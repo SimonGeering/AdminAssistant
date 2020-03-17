@@ -1,4 +1,4 @@
-﻿namespace AdminAssistant.Core.UI.Shared.Footer
+namespace AdminAssistant.UI.Shared.Footer
 {
     public interface IFooterViewModel : IViewModelBase
     {

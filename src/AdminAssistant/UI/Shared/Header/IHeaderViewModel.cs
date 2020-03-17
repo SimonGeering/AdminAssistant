@@ -1,4 +1,4 @@
-namespace AdminAssistant.Core.UI.Shared.Header
+namespace AdminAssistant.UI.Shared.Header
 {
     public interface IHeaderViewModel : IViewModelBase
     {

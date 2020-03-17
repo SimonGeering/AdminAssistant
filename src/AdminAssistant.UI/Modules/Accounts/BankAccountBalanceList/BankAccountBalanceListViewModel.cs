@@ -1,10 +1,5 @@
-using AdminAssistant.Core.UI;
-
-namespace AdminAssistant.Accounts.UI.BankAccountBalanceList
+namespace AdminAssistant.UI.Modules.Accounts.BankAccountBalanceList
 {
-    public interface IBankAccountBalanceListViewModel : IViewModelBase
-    {
-    }
     public class BankAccountBalanceListViewModel : ViewModelBase, IBankAccountBalanceListViewModel
     {
     }

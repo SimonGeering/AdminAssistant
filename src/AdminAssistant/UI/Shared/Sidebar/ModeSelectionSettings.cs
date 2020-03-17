@@ -1,4 +1,4 @@
-namespace AdminAssistant.Core.UI.Shared.Sidebar
+namespace AdminAssistant.UI.Shared.Sidebar
 {
     public class ModeSelectionStateSettings
     {

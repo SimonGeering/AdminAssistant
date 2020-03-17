@@ -1,17 +1,13 @@
-using AdminAssistant.Accounts.DomainModel.Validation;
+using AdminAssistant.DomainModel.Modules.Accounts.Validation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdminAssistant.Accounts.DomainModel
+namespace AdminAssistant.DomainModel
 {
     public static class ServicesModule
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            //services.AddTransient<IBankAccountService, BankAccountService>();
-            //services.AddTransient<IBankAccountTypeService, BankAccountTypeService>();
-            //services.AddTransient<ICurrencyService, CurrencyService>();
-            //
             services.AddTransient<IBankAccountValidator, BankAccountValidator>();
             services.AddTransient<ICurrencyValidator, CurrencyValidator>();
 

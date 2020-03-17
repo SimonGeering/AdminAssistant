@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AdminAssistant.Accounts.DomainModel;
-using AdminAssistant.Accounts.DomainModel.CQRS;
+using AdminAssistant.DomainModel.Modules.Accounts;
+using AdminAssistant.DomainModel.Modules.Accounts.CQRS;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.Accounts.WebAPI.v1
+namespace AdminAssistant.Blazor.Server.WebAPI.v1
 {
     public class CurrencyController : WebAPIControllerBase
     {

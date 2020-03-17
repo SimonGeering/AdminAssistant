@@ -1,10 +1,10 @@
-using AdminAssistant.Accounts.UI.BankAccountBalanceList;
-using AdminAssistant.Accounts.UI.BankAccountEditDialog;
-using AdminAssistant.Accounts.UI.BankAccountRightSidebar;
-using AdminAssistant.Accounts.UI.BankAccountTransactionList;
+using AdminAssistant.UI.Modules.Accounts.BankAccountBalanceList;
+using AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog;
+using AdminAssistant.UI.Modules.Accounts.BankAccountRightSidebar;
+using AdminAssistant.UI.Modules.Accounts.BankAccountTransactionList;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdminAssistant.Accounts.UI
+namespace AdminAssistant.UI.Modules.Accounts
 {
     public static class AccountsUIModule
     {

@@ -1,11 +1,11 @@
 using System;
 using System.Linq;
-using AdminAssistant.Accounts.DAL.EntityFramework.Model;
-using AdminAssistant.Accounts.DomainModel;
-using AdminAssistant.Core.Infrastructure.DomainModel;
+using AdminAssistant.DAL.EntityFramework.Model;
+using AdminAssistant.DomainModel.Infrastructure;
+using AdminAssistant.DomainModel.Modules.Accounts;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Accounts.DAL.EntityFramework
+namespace AdminAssistant.DAL.EntityFramework
 {
     public interface IApplicationDbContext : IDisposable
     {

@@ -1,6 +1,6 @@
-using AdminAssistant.Core.UI.Services;
+using AdminAssistant.UI.Services;
 
-namespace AdminAssistant.Core.UI.Shared.Header
+namespace AdminAssistant.UI.Shared.Header
 {
     public class HeaderViewModel : ViewModelBase, IHeaderViewModel
     {

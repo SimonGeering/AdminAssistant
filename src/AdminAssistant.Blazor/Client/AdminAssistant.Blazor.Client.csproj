@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
     <Platforms>x64</Platforms>
+    <AssemblyName>AdminAssistant.Blazor.Client</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

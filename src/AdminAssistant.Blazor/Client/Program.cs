@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using AdminAssistant.Accounts.UI;
+using AdminAssistant.UI.Modules.Accounts;
 using Microsoft.AspNetCore.Blazor.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 

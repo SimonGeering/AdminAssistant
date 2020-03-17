@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using AdminAssistant.Accounts.DAL.EntityFramework;
-using AdminAssistant.Accounts.DomainModel;
+using AdminAssistant.DAL.EntityFramework;
+using AdminAssistant.DomainModel.Modules.Accounts;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Accounts.DAL
+namespace AdminAssistant.DAL.Modules.Accounts
 {
     public class CurrencyRepository : ICurrencyRepository
     {

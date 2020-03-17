@@ -1,6 +1,6 @@
-using AdminAssistant.Accounts.DomainModel.TestDataBuilders;
+using AdminAssistant.DomainModel.Modules.Accounts.TestDataBuilders;
 
-namespace AdminAssistant.Accounts.DomainModel
+namespace AdminAssistant.DomainModel.Modules.Accounts
 {
     public static class TestData
     {

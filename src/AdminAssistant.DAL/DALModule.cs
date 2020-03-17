@@ -1,12 +1,13 @@
 using System;
 using System.Data.Common;
-using AdminAssistant.Core.Infrastructure.DomainModel;
-using AdminAssistant.Accounts.DAL.EntityFramework;
+using AdminAssistant.DAL.EntityFramework;
+using AdminAssistant.DAL.Modules.Accounts;
+using AdminAssistant.DomainModel.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdminAssistant.Accounts.DAL
+namespace AdminAssistant.DAL
 {
     public static class DALModule
     {

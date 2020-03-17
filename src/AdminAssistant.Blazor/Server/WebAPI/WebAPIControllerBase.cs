@@ -2,7 +2,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.Accounts.WebAPI
+namespace AdminAssistant.Blazor.Server.WebAPI.v1
 {
     // TODO: replace this manual method with Microsoft.AspNetCore.Mvc.Versioning - See: https://stackoverflow.com/questions/51710388/nswag-net-core-api-versioning-configuration
     [Route("api/v1/[controller]")]

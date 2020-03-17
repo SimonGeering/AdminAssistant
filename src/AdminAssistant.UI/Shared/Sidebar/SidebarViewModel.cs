@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using AdminAssistant.Core.UI.Services;
+using AdminAssistant.UI.Services;
 
-namespace AdminAssistant.Core.UI.Shared.Sidebar
+namespace AdminAssistant.UI.Shared.Sidebar
 {
     public class SidebarViewModel : ViewModelBase, ISidebarViewModel
     {

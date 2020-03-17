@@ -1,10 +1,5 @@
-using AdminAssistant.Core.UI;
-
-namespace AdminAssistant.Accounts.UI.BankAccountRightSidebar
+namespace AdminAssistant.UI.Modules.Accounts.BankAccountRightSidebar
 {
-    public interface IBankAccountRightSidebarViewModel : IViewModelBase
-    {
-    }
     public class BankAccountRightSidebarViewModel : ViewModelBase, IBankAccountRightSidebarViewModel
     {
     }

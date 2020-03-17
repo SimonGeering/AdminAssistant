@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AdminAssistant.Accounts.DAL.EntityFramework.Migrations
+namespace AdminAssistant.DAL.EntityFramework.Migrations
 {
     public partial class Initial : Migration
     {

@@ -1,15 +1,7 @@
-using AdminAssistant.Accounts.DomainModel;
-using AdminAssistant.Core.UI;
+using AdminAssistant.DomainModel.Modules.Accounts;
 
-namespace AdminAssistant.Accounts.UI
+namespace AdminAssistant.UI.Modules.Accounts
 {
-    public interface IAccountsViewModel : IViewModelBase
-    {
-        string HeaderText { get; }
-        string SubHeaderText { get; }
-
-        BankAccount? SelectedBankAccount { get; }
-    }
     public class AccountsViewModel : ViewModelBase, IAccountsViewModel
     {
         public string HeaderText { get; } = "Accounts";

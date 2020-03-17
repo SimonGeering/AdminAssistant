@@ -5,7 +5,7 @@ using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace AdminAssistant.Accounts.DomainModel.Validation
+namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
 {
     public class CurrencyValidator_Should
     {

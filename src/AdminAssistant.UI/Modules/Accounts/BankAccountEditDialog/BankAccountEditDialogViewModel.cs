@@ -1,13 +1,7 @@
-using AdminAssistant.Accounts.DomainModel;
-using AdminAssistant.Core.UI;
+using AdminAssistant.DomainModel.Modules.Accounts;
 
-namespace AdminAssistant.Accounts.UI.BankAccountEditDialog
+namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 {
-    public interface IBankAccountEditDialogViewModel : IViewModelBase
-    {
-        bool ShowAccountEditDialog { get; }
-        void NewAccount();
-    }
     public class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel
     {
         public BankAccountEditDialogViewModel(BankAccount bankAccount)

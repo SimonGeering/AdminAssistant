@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace AdminAssistant.Core.UI
+namespace AdminAssistant.UI
 {
     public interface IViewModelBase : INotifyPropertyChanged
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AdminAssistant.Accounts.DAL.EntityFramework.Model
+namespace AdminAssistant.DAL.EntityFramework.Model
 {
     public class OwnerEntity
     {

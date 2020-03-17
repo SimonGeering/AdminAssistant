@@ -1,4 +1,4 @@
-﻿using AdminAssistant.Core.Infrastructure.DomainModel;
+using AdminAssistant.DomainModel.Infrastructure;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

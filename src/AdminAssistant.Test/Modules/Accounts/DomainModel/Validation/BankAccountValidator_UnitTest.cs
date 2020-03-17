@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AdminAssistant.Accounts.DomainModel.Validation
+namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
 {
     public class BankAccountValidator_Should
     {

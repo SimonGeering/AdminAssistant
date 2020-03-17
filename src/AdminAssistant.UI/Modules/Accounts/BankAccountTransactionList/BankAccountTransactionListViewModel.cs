@@ -1,13 +1,8 @@
 using System.Collections.Generic;
-using AdminAssistant.Accounts.DomainModel;
-using AdminAssistant.Core.UI;
+using AdminAssistant.DomainModel.Modules.Accounts;
 
-namespace AdminAssistant.Accounts.UI.BankAccountTransactionList
+namespace AdminAssistant.UI.Modules.Accounts.BankAccountTransactionList
 {
-    public interface IBankAccountTransactionListViewModel : IViewModelBase
-    {
-        IEnumerable<BankAccountTransaction> Transactions { get; }
-    }
     public class BankAccountTransactionListViewModel : ViewModelBase, IBankAccountTransactionListViewModel
     {
         public bool ShowAccountEditDialog { get; } = false;

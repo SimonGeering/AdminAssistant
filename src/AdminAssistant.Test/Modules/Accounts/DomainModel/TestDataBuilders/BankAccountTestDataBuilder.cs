@@ -1,6 +1,6 @@
 using System;
 
-namespace AdminAssistant.Accounts.DomainModel.TestDataBuilders
+namespace AdminAssistant.DomainModel.Modules.Accounts.TestDataBuilders
 {
     public interface IBankAccountTestDataBuilder
     {

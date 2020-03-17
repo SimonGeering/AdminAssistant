@@ -1,8 +1,8 @@
-﻿using AdminAssistant.Core.UI.Services;
-using AdminAssistant.Core.UI.Shared.Breadcrumb;
-using AdminAssistant.Core.UI.Shared.Header;
-using AdminAssistant.Core.UI.Shared.Footer;
-using AdminAssistant.Core.UI.Shared.Sidebar;
+using AdminAssistant.UI.Services;
+using AdminAssistant.UI.Shared.Breadcrumb;
+using AdminAssistant.UI.Shared.Header;
+using AdminAssistant.UI.Shared.Footer;
+using AdminAssistant.UI.Shared.Sidebar;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

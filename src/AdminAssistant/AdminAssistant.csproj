@@ -35,7 +35,6 @@
     <Folder Include="DAL\Modules\Accounts\" />
     <Folder Include="DomainModel\Modules\Accounts\" />
     <Folder Include="DomainModel\Infrastructure\" />
-    <Folder Include="UI\Modules\Accounts\" />
     <Folder Include="UI\Shared\Services\" />
   </ItemGroup>
 

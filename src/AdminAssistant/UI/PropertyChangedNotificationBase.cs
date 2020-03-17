@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace AdminAssistant.Core.UI
+namespace AdminAssistant.UI
 {
     public abstract class PropertyChangedNotificationBase : INotifyPropertyChanged
     {
