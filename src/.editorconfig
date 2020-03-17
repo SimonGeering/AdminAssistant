@@ -1,4 +1,4 @@
-# Rules in this file were initially inferred by Visual Studio IntelliCode from the C:\Source\GitHub\SimonGeering\AdminAssistant\src codebase based on best match to current usage at 14/03/2020
+﻿# Rules in this file were initially inferred by Visual Studio IntelliCode from the C:\Source\GitHub\SimonGeering\AdminAssistant\src codebase based on best match to current usage at 14/03/2020
 # You can modify the rules from these initially generated values to suit your own policies
 # You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
 
@@ -110,3 +110,15 @@ dotnet_diagnostic.CA1062.severity = silent
 dotnet_diagnostic.CA1822.severity = none
 # CA1303: Do not pass literals as localized parameters
 dotnet_diagnostic.CA1303.severity = none
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
