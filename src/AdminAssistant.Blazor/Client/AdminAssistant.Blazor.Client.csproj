@@ -33,12 +33,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
     <Folder Include="wwwroot\assets\css\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
 </Project>

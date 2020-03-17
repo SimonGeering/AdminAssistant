@@ -15,8 +15,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
-            services.AddTransient<IBankAccountValidator, BankAccountValidator>();
+            services.AddAdminAssistantClientSideDomainModel();
 
             var bankAccount = TestData.BankAccountBuilder.WithTestData().Build();
 
@@ -33,8 +32,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
-            services.AddTransient<IBankAccountValidator, BankAccountValidator>();
+            services.AddAdminAssistantClientSideDomainModel();
 
             var bankAccount = TestData.BankAccountBuilder.WithTestData().WithAccountName(string.Empty);
 

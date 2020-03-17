@@ -5,26 +5,25 @@ using AdminAssistant.DAL.Modules.Accounts;
 using AdminAssistant.DomainModel.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace AdminAssistant.DAL
+namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class DALModule
+    public static class DependencyInjectionExtensions
     {
 #if DEBUG
-        public static void ConfigureServices(IServiceCollection services, DbConnection connection)
+        public static void AddAdminAssistantServerSideDAL(this IServiceCollection services, DbConnection connection)
         {
             services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder =>
             {
                 optionsBuilder.UseSqlite(connection);
             });
-            ConfigureServices(services);
+            AddAccountsDAL(services);
         }
 #endif
-        public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+        public static void AddAdminAssistantServerSideDAL(this IServiceCollection services, IConfiguration configuration)
         {
             // EF Core ...
-            services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder => 
+            services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder =>
             {
                 if (Enum.TryParse(configuration["DATABASE_PROVIDER"], out DatabaseProvider databaseProvider) == false)
                     throw new Exception("Unable to load 'DATABASE_PROVIDER' application setting.");
@@ -51,10 +50,10 @@ namespace AdminAssistant.DAL
                         break;
                 }
             });
-            ConfigureServices(services);
+            AddAccountsDAL(services);
         }
-        
-        private static void ConfigureServices(IServiceCollection services)
+
+        private static void AddAccountsDAL(this IServiceCollection services)
         {
             // Repositories ...
             services.AddTransient<IBankAccountTypeRepository, BankAccountTypeRepository>();
@@ -63,3 +62,4 @@ namespace AdminAssistant.DAL
         }
     }
 }
+

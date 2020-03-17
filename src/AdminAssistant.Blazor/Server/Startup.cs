@@ -47,6 +47,8 @@ namespace AdminAssistant.Blazor.Server
                     c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.docs.xml"));
                 });
             }
+            services.AddAdminAssistantServerSideDomainModel();
+            services.AddAdminAssistantServerSideDAL(this.configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

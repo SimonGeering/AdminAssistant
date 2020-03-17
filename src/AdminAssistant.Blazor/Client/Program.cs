@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using AdminAssistant.UI.Modules.Accounts;
 using Microsoft.AspNetCore.Blazor.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,9 +13,8 @@ namespace AdminAssistant.Blazor.Client
 
             builder.Services.AddDevExpressBlazor();
 
-            builder.Services.AddCoreUI();
-
-            AccountsUIModule.ConfigureServices(builder.Services);
+            builder.Services.AddAdminAssistantUI();
+            builder.Services.AddAdminAssistantClientSideDomainModel();
 
             await builder.Build().RunAsync().ConfigureAwait(true);
         }

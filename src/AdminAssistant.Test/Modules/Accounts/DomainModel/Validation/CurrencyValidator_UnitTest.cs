@@ -15,7 +15,8 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
+            services.AddAdminAssistantClientSideDomainModel();
+
             var currency = TestData.CurrencyBuilder.WithTestData();
 
             // Act
@@ -31,7 +32,8 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
+            services.AddAdminAssistantClientSideDomainModel();
+
             var currency = TestData.CurrencyBuilder.WithTestData().WithoutADecimalFormat();
 
             // Act
@@ -48,7 +50,8 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
+            services.AddAdminAssistantClientSideDomainModel();
+
             var currency = TestData.CurrencyBuilder.WithTestData().WithDecimalFormat(new string('x', Currency.DecimalFormatMaxLength + 1));
 
             // Act
@@ -65,7 +68,8 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
+            services.AddAdminAssistantClientSideDomainModel();
+
             var currency = TestData.CurrencyBuilder.WithTestData().WithoutASymbol();
 
             // Act
@@ -82,7 +86,8 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
+            services.AddAdminAssistantClientSideDomainModel();
+
             var currency = TestData.CurrencyBuilder.WithTestData().WithSymbol(new string('x', Currency.SymbolMaxLength + 1));
 
             // Act
