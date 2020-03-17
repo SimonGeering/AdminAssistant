@@ -20,6 +20,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AdminAssistant.Accounts.Test.docs.xml" />
     <None Remove="AdminAssistant.Test.docs.xml" />
     <None Remove="lcov.info" />
   </ItemGroup>

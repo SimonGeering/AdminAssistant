@@ -17,11 +17,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.DomainModel.docs.xml" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Services\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <None Remove="AdminAssistant.Accounts.DomainModel.docs.xml" />
+    <None Remove="AdminAssistant.DomainModel.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>

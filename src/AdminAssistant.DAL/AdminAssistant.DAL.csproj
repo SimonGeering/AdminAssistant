@@ -17,6 +17,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AdminAssistant.Accounts.DAL.docs.xml" />
     <None Remove="AdminAssistant.DAL.docs.xml" />
   </ItemGroup>
 
