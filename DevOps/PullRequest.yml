@@ -1,0 +1,60 @@
+name: $(BuildID)
+
+pr:
+  autoCancel: true
+  branches:
+    include:
+    - dev
+    - master
+  paths:
+    exclude:
+    - /DevOps
+    - /docs
+
+trigger: none # Disable CI Builds
+
+resources:
+- repo: self
+  clean: true
+
+stages:
+- stage: PRBuild
+  jobs:
+  - job: PRBuild
+    pool:
+      name: Self-Hosted
+    steps:
+    # Restore dependencies ...
+    - task: Npm@1
+      displayName: 'Blazor npm install'
+      inputs:
+        command: 'install'
+        workingDir: 'src/Apps/AdminAssistant.Blazor/Client'
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet restore'
+      inputs:
+        command: 'restore'
+        workingDir: 'src'
+        feedsToUse: 'config'
+        nugetConfigPath: './NuGet.config'
+    # Build ...
+    - task: Npm@1
+      displayName: 'Blazor npm build'
+      inputs:
+        command: 'custom'
+        workingDir: 'src/Apps/AdminAssistant.Blazor/Client'
+        customCommand: 'run build'
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet build'
+      inputs:
+        command: 'build'
+        workingDir: 'src'
+        arguments: '--no-restore'
+    # Run Unit Tests ...
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet test'
+      inputs:
+        command: 'test'
+        workingDir: 'src'
+        testRunTitle: 'Unit Tests'
+        arguments: '--no-build'
