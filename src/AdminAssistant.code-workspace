@@ -15,7 +15,10 @@
       "**/node_modules/": true,
       "**/*.csproj.user": true,
       "**/*.docs.xml": true,
-      "**/lcov.info": true
+      "**/lcov.info": true,
+      "**/AdminAssistant.db": true,
+      "**/AdminAssistant.mdf": true,
+      "**/AdminAssistant.ldf": true
     },
     "cSpell.language": "en-GB",
     "cSpell.ignorePaths": [
@@ -69,6 +72,7 @@
       "bierner.github-markdown-preview",
       "davidanson.vscode-markdownlint",
       "christian-kohler.path-intellisense",
+      "ms-mssql.mssql",
       "mrmlnc.vscode-scss",
       "wayou.vscode-todo-highlight",
       "gruntfuggly.todo-tree",

@@ -6,6 +6,7 @@
     <LangVersion>latest</LangVersion>
     <Platforms>x64</Platforms>
     <AssemblyName>AdminAssistant.Blazor.Server</AssemblyName>
+    <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -33,6 +34,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
   </ItemGroup>
 
