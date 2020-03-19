@@ -55,7 +55,8 @@
     "coverage-gutters.showGutterCoverage": true,
     "coverage-gutters.showLineCoverage": false,
     "trailing-spaces.syntaxIgnore": ["markdown"],
-    "npm.enableScriptExplorer": true
+    "npm.enableScriptExplorer": true,
+    "browser-preview.startUrl": "http://127.0.0.1:4000/AdminAssistant/"
   },
   "extensions": {
     "recommendations": [
@@ -70,7 +71,7 @@
       "donjayamanne.githistory",
       "eamodio.gitlens",
       "yzhang.markdown-all-in-one",
-      "bierner.github-markdown-preview",
+      "auchenberg.vscode-browser-preview",
       "davidanson.vscode-markdownlint",
       "christian-kohler.path-intellisense",
       "ms-mssql.mssql",
