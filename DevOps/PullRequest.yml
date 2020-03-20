@@ -8,8 +8,8 @@ pr:
     - master
   paths:
     exclude:
-    - /DevOps
-    - /docs
+    - ./DevOps
+    - ./docs
 
 trigger: none # Disable CI Builds
 
@@ -21,40 +21,45 @@ stages:
 - stage: PRBuild
   jobs:
   - job: PRBuild
-    pool:
-      name: Self-Hosted
+    pool: # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops
+      vmImage: 'ubuntu-latest' # https://github.com/actions/virtual-environments/tree/master/images/linux
+      #name: Self-Hosted
     steps:
+    # Write out secret for NuGet.config to access DevExpress secured NuGet feed ...
+    # See https://supportcenter.devexpress.com/ticket/details/T818634/devexpress-nuget-how-to-hide-unique-nuget-feed-in-azure-devops-build-pipeline
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: 'Write-Host "##vso[task.setvariable variable=DX_NUGET_PUB;]$(DX_NUGET)"'
+        pwsh: true
     # Restore dependencies ...
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet restore'
+      inputs:
+        command: 'restore'
+        feedsToUse: 'config'
+        nugetConfigPath: 'DevOps/NuGet.config'
     - task: Npm@1
       displayName: 'Blazor npm install'
       inputs:
         command: 'install'
         workingDir: 'src/Apps/AdminAssistant.Blazor/Client'
-    - task: DotNetCoreCLI@2
-      displayName: 'dotnet restore'
-      inputs:
-        command: 'restore'
-        workingDir: 'src'
-        feedsToUse: 'config'
-        nugetConfigPath: './NuGet.config'
     # Build ...
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet build'
+      inputs:
+        command: 'build'
+        arguments: '--no-restore'
     - task: Npm@1
       displayName: 'Blazor npm build'
       inputs:
         command: 'custom'
         workingDir: 'src/Apps/AdminAssistant.Blazor/Client'
         customCommand: 'run build'
-    - task: DotNetCoreCLI@2
-      displayName: 'dotnet build'
-      inputs:
-        command: 'build'
-        workingDir: 'src'
-        arguments: '--no-restore'
     # Run Unit Tests ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet test'
       inputs:
         command: 'test'
-        workingDir: 'src'
         testRunTitle: 'Unit Tests'
         arguments: '--no-build'
