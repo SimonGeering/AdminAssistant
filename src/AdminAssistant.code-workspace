@@ -5,6 +5,9 @@
 		}
 	],
 	"settings": {
+    "files.associations": {
+      "*/DevOps/.yml": "azure-pipelines"
+    },
     "files.exclude": {
       "**/docs/_site/": true,
       "**/docs/.jekyll-cache/": true,
@@ -21,6 +24,7 @@
       "**/AdminAssistant.ldf": true
     },
     "cSpell.language": "en-GB",
+    "cSpell.enableCompoundWords": true,
     "cSpell.ignorePaths": [
       "**/package.json",
       "**/package-lock.json",
@@ -33,13 +37,31 @@
     ],
     "cSpell.words": [
       "Admin",
+      "Apps",
       "blazor",
       "Bootswatch",
       "Emoji",
       "geering",
       "markdownlint",
+      "nuget",
+      "pwsh",
+      "setvariable",
       "titlebar",
+      "vsts",
       "webassembly"
+    ],
+    "todo-tree.filtering.excludeGlobs": [
+      "**/vendor/**",
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/bower_components/**",
+      "**/build/**",
+      "**/.vscode/**",
+      "**/.github/**",
+      "**/_output/**",
+      "**/*.min.*",
+      "**/*.map",
+      "**/docs/js/*mermaid*"
     ],
     "terminal.integrated.shell.linux": "/opt/microsoft/powershell/6/pwsh",
     "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
@@ -74,7 +96,9 @@
       "auchenberg.vscode-browser-preview",
       "davidanson.vscode-markdownlint",
       "christian-kohler.path-intellisense",
+      "ms-azure-devops.azure-pipelines",
       "ms-mssql.mssql",
+      "ms-vscode.azure-account",
       "mrmlnc.vscode-scss",
       "wayou.vscode-todo-highlight",
       "gruntfuggly.todo-tree",
