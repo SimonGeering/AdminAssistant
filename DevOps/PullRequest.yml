@@ -44,7 +44,7 @@ stages:
       displayName: 'Blazor npm install'
       inputs:
         command: 'install'
-        workingDir: 'src/Apps/AdminAssistant.Blazor/Client'
+        workingDir: 'src/AdminAssistant.Blazor/Client'
     # Build ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet build'
@@ -55,7 +55,7 @@ stages:
       displayName: 'Blazor npm build'
       inputs:
         command: 'custom'
-        workingDir: 'src/Apps/AdminAssistant.Blazor/Client'
+        workingDir: 'src/AdminAssistant.Blazor/Client'
         customCommand: 'run build'
     # Run Unit Tests ...
     - task: DotNetCoreCLI@2
