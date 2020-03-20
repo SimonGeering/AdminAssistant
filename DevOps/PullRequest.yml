@@ -52,7 +52,7 @@ stages:
       inputs:
         command: 'build'
         projects: 'src/AdminAssistant.sln'
-        arguments: '--configuration Debug --platform x64 --no-restore'
+        arguments: '--configuration Release --no-restore'
     - task: Npm@1
       displayName: 'Blazor npm build'
       inputs:
@@ -64,6 +64,6 @@ stages:
       displayName: 'dotnet test'
       inputs:
         command: 'test'
-        projects: 'src/AdminAssistant.Test/AdminAssistant.Test.csproj'
+        projects: 'src/AdminAssistant.sln'
         testRunTitle: 'Unit Tests'
-        arguments: '--configuration Debug --platform x64 --no-build'
+        arguments: '--configuration Release --no-build'
