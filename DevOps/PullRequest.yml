@@ -50,6 +50,7 @@ stages:
       displayName: 'dotnet build'
       inputs:
         command: 'build'
+        projects: 'src/AdminAssistant.sln'
         arguments: '--no-restore'
     - task: Npm@1
       displayName: 'Blazor npm build'
@@ -62,5 +63,6 @@ stages:
       displayName: 'dotnet test'
       inputs:
         command: 'test'
+        projects: 'src/AdminAssistant.Test/AdminAssistant.Test.csproj'
         testRunTitle: 'Unit Tests'
         arguments: '--no-build'
