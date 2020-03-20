@@ -65,4 +65,4 @@ stages:
         command: 'test'
         projects: 'src/AdminAssistant.Test/AdminAssistant.Test.csproj'
         testRunTitle: 'Unit Tests'
-        arguments: '--no-build'
+        arguments: '--no-restore' #'--no-build'
