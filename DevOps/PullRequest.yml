@@ -37,6 +37,7 @@ stages:
       displayName: 'dotnet restore'
       inputs:
         command: 'restore'
+        projects: 'src/AdminAssistant.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
     - task: Npm@1
