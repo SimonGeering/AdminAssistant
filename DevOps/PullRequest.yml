@@ -22,7 +22,7 @@ stages:
   jobs:
   - job: PRBuild
     pool: # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops
-      vmImage: 'ubuntu-latest' # https://github.com/actions/virtual-environments/tree/master/images/linux
+      vmImage: 'windows-latest' # Need windows to get code coverage report - https://github.com/actions/virtual-environments/tree/master/images/win
       #name: Self-Hosted
     steps:
     # Write out secret for NuGet.config to access DevExpress secured NuGet feed ...
@@ -51,7 +51,7 @@ stages:
       inputs:
         command: 'build'
         projects: 'src/AdminAssistant.sln'
-        arguments: '--no-restore'
+        arguments: '--configuration x64 --no-restore'
     - task: Npm@1
       displayName: 'Blazor npm build'
       inputs:
@@ -65,4 +65,4 @@ stages:
         command: 'test'
         projects: 'src/AdminAssistant.Test/AdminAssistant.Test.csproj'
         testRunTitle: 'Unit Tests'
-        arguments: '--no-restore' #'--no-build'
+        arguments: '--configuration x64 --no-build'
