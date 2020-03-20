@@ -28,6 +28,7 @@ stages:
     # Write out secret for NuGet.config to access DevExpress secured NuGet feed ...
     # See https://supportcenter.devexpress.com/ticket/details/T818634/devexpress-nuget-how-to-hide-unique-nuget-feed-in-azure-devops-build-pipeline
     - task: PowerShell@2
+      displayName: 'Load DevExpress secured NuGet feed'
       inputs:
         targetType: 'inline'
         script: 'Write-Host "##vso[task.setvariable variable=DX_NUGET_PUB;]$(DX_NUGET)"'
@@ -51,7 +52,7 @@ stages:
       inputs:
         command: 'build'
         projects: 'src/AdminAssistant.sln'
-        arguments: '--configuration x64 --no-restore'
+        arguments: '--configuration Debug --platform x64 --no-restore'
     - task: Npm@1
       displayName: 'Blazor npm build'
       inputs:
@@ -65,4 +66,4 @@ stages:
         command: 'test'
         projects: 'src/AdminAssistant.Test/AdminAssistant.Test.csproj'
         testRunTitle: 'Unit Tests'
-        arguments: '--configuration x64 --no-build'
+        arguments: '--configuration Debug --platform x64 --no-build'
