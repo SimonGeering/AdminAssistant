@@ -43,11 +43,13 @@
       "Emoji",
       "geering",
       "markdownlint",
+      "MediatR",
       "nuget",
       "pwsh",
       "setvariable",
       "titlebar",
       "vsts",
+      "Xunit",
       "webassembly"
     ],
     "todo-tree.filtering.excludeGlobs": [
