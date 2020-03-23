@@ -1,0 +1,69 @@
+name: $(BuildID)
+
+pr:
+  autoCancel: true
+  branches:
+    include:
+    - dev
+    - master
+  paths:
+    exclude:
+    - ./DevOps
+    - ./docs
+
+trigger: none # Disable CI Builds
+
+resources:
+- repo: self
+  clean: true
+
+stages:
+- stage: PRBuild
+  jobs:
+  - job: PRBuild
+    pool: # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops
+      vmImage: 'windows-latest' # Need windows to get code coverage report - https://github.com/actions/virtual-environments/tree/master/images/win
+      #name: Self-Hosted
+    steps:
+    # Write out secret for NuGet.config to access DevExpress secured NuGet feed ...
+    # See https://supportcenter.devexpress.com/ticket/details/T818634/devexpress-nuget-how-to-hide-unique-nuget-feed-in-azure-devops-build-pipeline
+    - task: PowerShell@2
+      displayName: 'Load DevExpress secured NuGet feed'
+      inputs:
+        targetType: 'inline'
+        script: 'Write-Host "##vso[task.setvariable variable=DX_NUGET_PUB;]$(DX_NUGET)"'
+        pwsh: true
+    # Restore dependencies ...
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet restore'
+      inputs:
+        command: 'restore'
+        projects: 'src/AdminAssistant.sln'
+        feedsToUse: 'config'
+        nugetConfigPath: 'DevOps/NuGet.config'
+    - task: Npm@1
+      displayName: 'Blazor npm install'
+      inputs:
+        command: 'install'
+        workingDir: 'src/AdminAssistant.Blazor/Client'
+    # Build ...
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet build'
+      inputs:
+        command: 'build'
+        projects: 'src/AdminAssistant.sln'
+        arguments: '--configuration Release --no-restore'
+    - task: Npm@1
+      displayName: 'Blazor npm build'
+      inputs:
+        command: 'custom'
+        workingDir: 'src/AdminAssistant.Blazor/Client'
+        customCommand: 'run build'
+    # Run Unit Tests ...
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet test'
+      inputs:
+        command: 'test'
+        projects: 'src/AdminAssistant.sln'
+        testRunTitle: 'Unit Tests'
+        arguments: '--configuration Release --no-build'
