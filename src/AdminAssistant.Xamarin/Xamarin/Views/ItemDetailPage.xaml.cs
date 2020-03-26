@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -34,6 +34,11 @@ namespace AdminAssistant.Views
 
             viewModel = new ItemDetailViewModel(item);
             BindingContext = viewModel;
+        }
+
+        private void Scan_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }
