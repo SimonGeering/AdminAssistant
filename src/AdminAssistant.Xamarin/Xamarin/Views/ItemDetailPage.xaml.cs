@@ -1,44 +1,39 @@
 using System;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
 using AdminAssistant.Models;
 using AdminAssistant.ViewModels;
 
 namespace AdminAssistant.Views
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
-    [DesignTimeVisible(false)]
-    public partial class ItemDetailPage : ContentPage
-    {
-        ItemDetailViewModel viewModel;
+	// Learn more about making custom code visible in the Xamarin.Forms previewer
+	// by visiting https://aka.ms/xamarinforms-previewer
+	[DesignTimeVisible(false)]
+	public partial class ItemDetailPage : ContentPage
+	{
+		private readonly ItemDetailViewModel viewModel;
 
-        public ItemDetailPage(ItemDetailViewModel viewModel)
-        {
-            InitializeComponent();
+		public ItemDetailPage(ItemDetailViewModel viewModel)
+		{
+			this.InitializeComponent();
 
-            BindingContext = this.viewModel = viewModel;
-        }
+			this.BindingContext = this.viewModel = viewModel;
+		}
 
-        public ItemDetailPage()
-        {
-            InitializeComponent();
+		public ItemDetailPage()
+		{
+			this.InitializeComponent();
 
-            var item = new Item
-            {
-                Text = "Item 1",
-                Description = "This is an item description."
-            };
+			var item = new Item
+			{
+				Text = "Item 1",
+				Description = "This is an item description."
+			};
 
-            viewModel = new ItemDetailViewModel(item);
-            BindingContext = viewModel;
-        }
+			viewModel = new ItemDetailViewModel(item);
+			this.BindingContext = viewModel;
+		}
 
-        private void Scan_Clicked(object sender, EventArgs e)
-        {
-
-        }
-    }
+		public async void Scan_Clicked(object sender, EventArgs e) => await this.Navigation.PushModalAsync(new BarcodeScanPage());
+	}
 }
