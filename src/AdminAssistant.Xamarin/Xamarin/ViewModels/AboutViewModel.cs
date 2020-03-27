@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -9,11 +8,11 @@ namespace AdminAssistant.ViewModels
     {
         public AboutViewModel()
         {
-            Title = "About";
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
+            this.Title = "About";
+            this.OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
 
-            AppName = "Admin Assistant";
-            AppVersion = SupportFunctions.Version;
+            this.AppName = "Admin Assistant";
+            this.AppVersion = SupportFunctions.Version;
         }
 
         public ICommand OpenWebCommand { get; }

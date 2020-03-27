@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AdminAssistant.Services;
@@ -11,10 +11,10 @@ namespace AdminAssistant
 
         public App()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            this.MainPage = new MainPage();
         }
 
         protected override void OnStart()

@@ -1,7 +1,5 @@
-﻿using System;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace AdminAssistant.Views
 {
@@ -12,7 +10,7 @@ namespace AdminAssistant.Views
     {
         public AboutPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
     }
 }

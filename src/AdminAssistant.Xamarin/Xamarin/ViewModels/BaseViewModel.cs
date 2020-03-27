@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -18,14 +18,14 @@ namespace AdminAssistant.ViewModels
         public bool IsBusy
         {
             get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            set { this.SetProperty(ref isBusy, value); }
         }
 
         string title = string.Empty;
         public string Title
         {
             get { return title; }
-            set { SetProperty(ref title, value); }
+            set { this.SetProperty(ref title, value); }
         }
 
         protected bool SetProperty<T>(ref T backingStore, T value,
@@ -37,7 +37,7 @@ namespace AdminAssistant.ViewModels
 
             backingStore = value;
             onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
+            this.OnPropertyChanged(propertyName);
             return true;
         }
 

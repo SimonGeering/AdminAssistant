@@ -1,5 +1,3 @@
-﻿using System;
-
 using AdminAssistant.Models;
 
 namespace AdminAssistant.ViewModels
@@ -9,8 +7,8 @@ namespace AdminAssistant.ViewModels
         public Item Item { get; set; }
         public ItemDetailViewModel(Item item = null)
         {
-            Title = item?.Text;
-            Item = item;
+            this.Title = item?.Text;
+            this.Item = item;
         }
     }
 }

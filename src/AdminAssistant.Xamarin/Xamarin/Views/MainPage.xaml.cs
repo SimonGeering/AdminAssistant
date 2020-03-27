@@ -1,11 +1,8 @@
-﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
 using AdminAssistant.Models;
+using Xamarin.Forms;
 
 namespace AdminAssistant.Views
 {
@@ -14,14 +11,15 @@ namespace AdminAssistant.Views
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
-        Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        private readonly Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+
         public MainPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            MasterBehavior = MasterBehavior.Popover;
+            this.MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)this.Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -41,14 +39,14 @@ namespace AdminAssistant.Views
 
             var newPage = MenuPages[id];
 
-            if (newPage != null && Detail != newPage)
+            if (newPage != null && this.Detail != newPage)
             {
-                Detail = newPage;
+                this.Detail = newPage;
 
                 if (Device.RuntimePlatform == Device.Android)
                     await Task.Delay(100);
 
-                IsPresented = false;
+                this.IsPresented = false;
             }
         }
     }

@@ -1,9 +1,7 @@
-﻿using AdminAssistant.Models;
-using System;
+using AdminAssistant.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace AdminAssistant.Views
 {
@@ -12,11 +10,12 @@ namespace AdminAssistant.Views
     [DesignTimeVisible(false)]
     public partial class MenuPage : ContentPage
     {
-        MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        List<HomeMenuItem> menuItems;
+        private MainPage RootPage { get => Application.Current.MainPage as MainPage; }
+        private readonly List<HomeMenuItem> menuItems;
+
         public MenuPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
             menuItems = new List<HomeMenuItem>
             {
@@ -32,8 +31,7 @@ namespace AdminAssistant.Views
                 if (e.SelectedItem == null)
                     return;
 
-                var id = (int)((HomeMenuItem)e.SelectedItem).Id;
-                await RootPage.NavigateFromMenu(id);
+                await this.RootPage.NavigateFromMenu((int)((HomeMenuItem)e.SelectedItem).Id);
             };
         }
     }

@@ -1,5 +1,3 @@
-﻿using System;
-
 namespace AdminAssistant.Models
 {
     public class Item

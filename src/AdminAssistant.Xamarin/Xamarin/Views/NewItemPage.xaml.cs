@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
 using AdminAssistant.Models;
 
 namespace AdminAssistant.Views
@@ -17,26 +14,23 @@ namespace AdminAssistant.Views
 
         public NewItemPage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            Item = new Item
+            this.Item = new Item
             {
                 Text = "Item name",
                 Description = "This is an item description."
             };
 
-            BindingContext = this;
+            this.BindingContext = this;
         }
 
-        async void Save_Clicked(object sender, EventArgs e)
+        private async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "AddItem", Item);
-            await Navigation.PopModalAsync();
+            MessagingCenter.Send(this, "AddItem", this.Item);
+            await this.Navigation.PopModalAsync();
         }
 
-        async void Cancel_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopModalAsync();
-        }
+        private async void Cancel_Clicked(object sender, EventArgs e) => await this.Navigation.PopModalAsync();
     }
 }
