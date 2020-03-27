@@ -13,7 +13,7 @@ namespace AdminAssistant.Blazor.Client
 
             builder.Services.AddDevExpressBlazor(); // Do this before ConfigureServices to prevent complications in DI unit testing.
 
-            builder.ConfigureServices();
+            builder.Services.AddAdminAssistantClientServices();
 
             await builder.Build().RunAsync().ConfigureAwait(true);
         }
