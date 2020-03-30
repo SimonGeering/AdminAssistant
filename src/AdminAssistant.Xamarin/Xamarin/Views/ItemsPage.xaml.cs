@@ -27,7 +27,11 @@ namespace AdminAssistant.Views
             await this.Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
         }
 
-        public async void AddItem_Clicked(object sender, EventArgs e) => await this.Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+        public async void AddItem_Clicked(object sender, EventArgs e)
+        {
+            //await this.Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            await Shell.Current.GoToAsync("food/item-detail-add");
+        }
 
         protected override void OnAppearing()
         {

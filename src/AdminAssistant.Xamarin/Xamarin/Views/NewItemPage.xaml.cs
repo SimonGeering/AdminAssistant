@@ -31,6 +31,14 @@ namespace AdminAssistant.Views
             await this.Navigation.PopModalAsync();
         }
 
-        private async void Cancel_Clicked(object sender, EventArgs e) => await this.Navigation.PopModalAsync();
+        private async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await this.Navigation.PopModalAsync();
+        }
+        public async void Scan_Clicked(object sender, EventArgs e)
+        {
+            MessagingCenter.Send(this, "ScanBarcode", this.Item);
+            await Shell.Current.GoToAsync("food/scan-barcode");
+        }
     }
 }

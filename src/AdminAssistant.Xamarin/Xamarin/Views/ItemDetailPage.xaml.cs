@@ -33,7 +33,5 @@ namespace AdminAssistant.Views
 			viewModel = new ItemDetailViewModel(item);
 			this.BindingContext = viewModel;
 		}
-
-		public async void Scan_Clicked(object sender, EventArgs e) => await this.Navigation.PushModalAsync(new BarcodeScanPage());
 	}
 }

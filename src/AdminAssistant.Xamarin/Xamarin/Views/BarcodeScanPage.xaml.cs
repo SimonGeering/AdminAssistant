@@ -31,9 +31,8 @@ namespace AdminAssistant.Views
 
                 // Show an alert
                 await this.DisplayAlert("Scanned Barcode", result.Text, "OK");
-
-                // Navigate away
-                await this.Navigation.PopAsync();
+                //await Shell.Current.GoToAsync("food/item-detail-add");
+                await this.Navigation.PopModalAsync();
             });
 
             overlay = new ZXingDefaultOverlay

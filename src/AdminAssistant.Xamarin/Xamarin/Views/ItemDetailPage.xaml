@@ -12,7 +12,6 @@
     <Label Text="{Binding Item.Text}" d:Text="Item name" FontSize="Small"/>
     <Label Text="Description:" FontSize="Medium" />
     <Label Text="{Binding Item.Description}" d:Text="Item description" FontSize="Small"/>
-    <Button Text="Scan" Clicked="Scan_Clicked" />
   </StackLayout>
 
 </ContentPage>

@@ -1,8 +1,5 @@
-using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 using AdminAssistant.Services;
-using AdminAssistant.Views;
 
 namespace AdminAssistant
 {
@@ -14,7 +11,7 @@ namespace AdminAssistant
             this.InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            this.MainPage = new MainPage();
+            this.MainPage = new AppShell();
         }
 
         protected override void OnStart()
