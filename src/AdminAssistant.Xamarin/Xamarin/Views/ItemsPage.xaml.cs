@@ -24,7 +24,8 @@ namespace AdminAssistant.Views
         {
             var layout = (BindableObject)sender;
             var item = (Item)layout.BindingContext;
-            await this.Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            //await this.Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+            await Shell.Current.GoToAsync("food/item-detail-view");
         }
 
         public async void AddItem_Clicked(object sender, EventArgs e)

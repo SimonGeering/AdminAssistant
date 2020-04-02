@@ -9,7 +9,7 @@ namespace AdminAssistant
             this.InitializeComponent();
 
             Routing.RegisterRoute("food/scan-barcode", typeof(Views.BarcodeScanPage));
-            Routing.RegisterRoute("food/item-detail-edit", typeof(Views.ItemDetailPage));
+            Routing.RegisterRoute("food/item-detail-view", typeof(Views.ItemDetailPage));
             Routing.RegisterRoute("food/item-detail-add", typeof(Views.NewItemPage));
 
             Routing.RegisterRoute("about", typeof(Views.AboutPage));

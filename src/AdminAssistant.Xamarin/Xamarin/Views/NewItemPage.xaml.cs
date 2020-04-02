@@ -28,12 +28,14 @@ namespace AdminAssistant.Views
         private async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddItem", this.Item);
-            await this.Navigation.PopModalAsync();
+            await Shell.Current.GoToAsync("//food");
+            //await this.Navigation.PopModalAsync();
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await this.Navigation.PopModalAsync();
+            await Shell.Current.GoToAsync("//food");
+            //await this.Navigation.PopModalAsync();
         }
         public async void Scan_Clicked(object sender, EventArgs e)
         {
