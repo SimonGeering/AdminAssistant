@@ -25,6 +25,14 @@ stages:
       vmImage: 'windows-latest' # Need windows to get code coverage report - https://github.com/actions/virtual-environments/tree/master/images/win
       #name: Self-Hosted
     steps:
+    # Set-up build environment ...
+    - task: UseDotNet@2
+      displayName: 'Ensure CI uses correct sdk Version'
+      inputs:
+        packageType: 'sdk'
+        useGlobalJson: true
+        workingDirectory: 'src/global.json'
+
     # Write out secret for NuGet.config to access DevExpress secured NuGet feed ...
     # See https://supportcenter.devexpress.com/ticket/details/T818634/devexpress-nuget-how-to-hide-unique-nuget-feed-in-azure-devops-build-pipeline
     - task: PowerShell@2
@@ -48,11 +56,19 @@ stages:
         workingDir: 'src/AdminAssistant.Blazor/Client'
     # Build ...
     - task: DotNetCoreCLI@2
-      displayName: 'dotnet build'
+      displayName: 'Blazor dotnet build'
       inputs:
         command: 'build'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.Blazor.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.ExXamarin.sln
         arguments: '--configuration Release --no-restore'
+    - task: XamarinAndroid@1
+      displayName: 'Xamarin Android dotnet build'
+      inputs:
+        projectFile: 'src/AdminAssistant.Xamarin/Android/AdminAssistant.Android.csproj'
+        configuration: 'Release'
+        msbuildVersionOption: 'latest'
+        msbuildArchitectureOption: 'x64'
+        jdkOption: 'JDKVersion'
     - task: Npm@1
       displayName: 'Blazor npm build'
       inputs:
