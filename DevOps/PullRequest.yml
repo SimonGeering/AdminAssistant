@@ -32,7 +32,6 @@ stages:
         packageType: 'sdk'
         useGlobalJson: true
         workingDirectory: 'src'
-
     # Write out secret for NuGet.config to access DevExpress secured NuGet feed ...
     # See https://supportcenter.devexpress.com/ticket/details/T818634/devexpress-nuget-how-to-hide-unique-nuget-feed-in-azure-devops-build-pipeline
     - task: PowerShell@2
@@ -56,19 +55,11 @@ stages:
         workingDir: 'src/AdminAssistant.Blazor/Client'
     # Build ...
     - task: DotNetCoreCLI@2
-      displayName: 'Blazor dotnet build'
+      displayName: 'dotnet build'
       inputs:
         command: 'build'
-        projects: 'src/AdminAssistant.Blazor.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.ExXamarin.sln
+        projects: 'src/AdminAssistant.sln'
         arguments: '--configuration Release --no-restore'
-    - task: XamarinAndroid@1
-      displayName: 'Xamarin Android dotnet build'
-      inputs:
-        projectFile: 'src/AdminAssistant.Xamarin/Android/AdminAssistant.Android.csproj'
-        configuration: 'Release'
-        msbuildVersionOption: 'latest'
-        msbuildArchitectureOption: 'x64'
-        jdkOption: 'JDKVersion'
     - task: Npm@1
       displayName: 'Blazor npm build'
       inputs:
