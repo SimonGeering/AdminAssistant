@@ -31,7 +31,7 @@ stages:
       inputs:
         packageType: 'sdk'
         useGlobalJson: true
-        workingDirectory: 'src/global.json'
+        workingDirectory: 'src'
 
     # Write out secret for NuGet.config to access DevExpress secured NuGet feed ...
     # See https://supportcenter.devexpress.com/ticket/details/T818634/devexpress-nuget-how-to-hide-unique-nuget-feed-in-azure-devops-build-pipeline
