@@ -42,10 +42,17 @@ stages:
         pwsh: true
     # Restore dependencies ...
     - task: DotNetCoreCLI@2
-      displayName: 'dotnet restore'
+      displayName: 'dotnet restore xamarin'
       inputs:
         command: 'restore'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.Xamarin.sln'
+        feedsToUse: 'config'
+        nugetConfigPath: 'DevOps/NuGet.config'
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet restore Non-Xamarin'
+      inputs:
+        command: 'restore'
+        projects: 'src/AdminAssistant.Blazor.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
     - task: Npm@1
@@ -55,11 +62,19 @@ stages:
         workingDir: 'src/AdminAssistant.Blazor/Client'
     # Build ...
     - task: DotNetCoreCLI@2
-      displayName: 'dotnet build'
+      displayName: 'Blazor dotnet build'
       inputs:
         command: 'build'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.Blazor.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.NonXamarin.sln
         arguments: '--configuration Release --no-restore'
+    - task: XamarinAndroid@1
+      displayName: 'Xamarin Android dotnet build'
+      inputs:
+        projectFile: 'src/AdminAssistant.Xamarin/Android/AdminAssistant.Android.csproj'
+        configuration: 'Release'
+        msbuildVersionOption: 'latest'
+        msbuildArchitectureOption: 'x64'
+        jdkOption: 'JDKVersion'
     - task: Npm@1
       displayName: 'Blazor npm build'
       inputs:
