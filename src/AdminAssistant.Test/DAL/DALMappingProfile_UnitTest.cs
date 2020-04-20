@@ -39,6 +39,7 @@ namespace AdminAssistant.DAL
         [InlineData(typeof(BankAccountTypeEntity), typeof(BankAccountType))]
         [InlineData(typeof(CurrencyEntity), typeof(Currency))]
         [InlineData(typeof(BankAccountTransactionEntity), typeof(BankAccountTransaction))]
+        [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionEntity))]
         public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange
