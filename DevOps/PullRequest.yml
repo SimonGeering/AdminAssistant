@@ -67,14 +67,15 @@ stages:
         command: 'build'
         projects: 'src/AdminAssistant.Blazor.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.NonXamarin.sln
         arguments: '--configuration Release --no-restore'
-    - task: XamarinAndroid@1
-      displayName: 'Xamarin Android dotnet build'
-      inputs:
-        projectFile: 'src/AdminAssistant.Xamarin/Android/AdminAssistant.Android.csproj'
-        configuration: 'Release'
-        msbuildVersionOption: 'latest'
-        msbuildArchitectureOption: 'x64'
-        jdkOption: 'JDKVersion'
+    # SG 20-Apr-2020: Comment the following for now as it does not work with x64 build config.
+    # - task: XamarinAndroid@1
+    #   displayName: 'Xamarin Android dotnet build'
+    #   inputs:
+    #     projectFile: 'src/AdminAssistant.Xamarin/Android/AdminAssistant.Android.csproj'
+    #     configuration: 'Release'
+    #     msbuildVersionOption: 'latest'
+    #     msbuildArchitectureOption: 'x64'
+    #     jdkOption: 'JDKVersion'
     - task: Npm@1
       displayName: 'Blazor npm build'
       inputs:
