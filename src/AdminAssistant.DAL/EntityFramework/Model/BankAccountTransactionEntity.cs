@@ -18,5 +18,15 @@ namespace AdminAssistant.DAL.EntityFramework.Model
         public DateTime TransactionDate { get; set; }
 
         public AuditEntity Audit { get; internal set; } = null!;
+
+        public void Map(AutoMapper.Profile profile)
+        {
+            // TODO: Resolve mapping of properties from BankAccountTransactionEntity to BankAccountTransaction
+            profile.CreateMap<BankAccountTransactionEntity, BankAccountTransaction>()
+                .ForMember(x => x.PayeeName, opt => opt.Ignore())
+                .ForMember(x => x.Symbol, opt => opt.Ignore())
+                .ForMember(x => x.DecimalFormat, opt => opt.Ignore())
+                .ForMember(x => x.Balance, opt => opt.Ignore());
+        }
     }
 }
