@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -47,6 +48,9 @@ namespace AdminAssistant.Blazor.Server
                     c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.docs.xml"));
                 });
             }
+            services.AddAutoMapper(typeof(DAL.MappingProfile));
+            services.AddAdminAssistantServerSideDomainModel();
+            services.AddAdminAssistantServerSideDAL(this.configuration);
             services.AddAdminAssistantServerServices(this.configuration);
         }
 

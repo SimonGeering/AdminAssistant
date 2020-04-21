@@ -2,8 +2,8 @@ namespace AdminAssistant.DomainModel.Modules.Accounts
 {
     public class BankAccountTransaction
     {
-        public int BankAccountID { get; set; }
         public int BankAccountTransactionID { get; set; }
+        public int BankAccountID { get; set; }
 
         public int PayeeID { get; set; }
         public string PayeeName { get; set; } = string.Empty;

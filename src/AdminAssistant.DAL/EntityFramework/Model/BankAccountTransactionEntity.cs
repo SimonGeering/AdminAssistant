@@ -4,7 +4,9 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.DAL.EntityFramework.Model
 {
-    public class BankAccountTransactionEntity : IMapping<BankAccountTransactionEntity, BankAccountTransaction>
+    public class BankAccountTransactionEntity :
+        IMapping<BankAccountTransactionEntity, BankAccountTransaction>,
+        IMapping<BankAccountTransaction, BankAccountTransactionEntity>
     {
         public int BankAccountTransactionID { get; set; }
         public int BankAccountID { get; set; }
@@ -18,5 +20,20 @@ namespace AdminAssistant.DAL.EntityFramework.Model
         public DateTime TransactionDate { get; set; }
 
         public AuditEntity Audit { get; internal set; } = null!;
+
+        public void Map(AutoMapper.Profile profile)
+        {
+            // TODO: Resolve mapping of properties from BankAccountTransactionEntity to BankAccountTransaction
+            profile.CreateMap<BankAccountTransactionEntity, BankAccountTransaction>()
+                .ForMember(x => x.PayeeName, opt => opt.Ignore())
+                .ForMember(x => x.Symbol, opt => opt.Ignore())
+                .ForMember(x => x.DecimalFormat, opt => opt.Ignore())
+                .ForMember(x => x.Balance, opt => opt.Ignore());
+
+            // TODO: Resolve mapping of properties from BankAccountTransaction to BankAccountTransactionEntity
+            profile.CreateMap<BankAccountTransaction, BankAccountTransactionEntity>()
+                .ForMember(x => x.AuditID, opt => opt.Ignore())
+                .ForMember(x => x.Audit, opt => opt.Ignore());
+        }
     }
 }
