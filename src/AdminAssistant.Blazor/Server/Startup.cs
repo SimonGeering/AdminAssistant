@@ -49,8 +49,6 @@ namespace AdminAssistant.Blazor.Server
                 });
             }
             services.AddAutoMapper(typeof(DAL.MappingProfile));
-            services.AddAdminAssistantServerSideDomainModel();
-            services.AddAdminAssistantServerSideDAL(this.configuration);
             services.AddAdminAssistantServerServices(this.configuration);
         }
 
