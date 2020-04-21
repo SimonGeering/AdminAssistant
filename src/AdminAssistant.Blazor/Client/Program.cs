@@ -11,10 +11,9 @@ namespace AdminAssistant.Blazor.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddDevExpressBlazor();
+            builder.Services.AddDevExpressBlazor(); // Do this before ConfigureServices to prevent complications in DI unit testing.
 
-            builder.Services.AddAdminAssistantUI();
-            builder.Services.AddAdminAssistantClientSideDomainModel();
+            builder.Services.AddAdminAssistantClientServices();
 
             await builder.Build().RunAsync().ConfigureAwait(true);
         }

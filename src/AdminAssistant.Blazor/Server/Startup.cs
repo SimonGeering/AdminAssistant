@@ -49,8 +49,7 @@ namespace AdminAssistant.Blazor.Server
                 });
             }
             services.AddAutoMapper(typeof(DAL.MappingProfile));
-            services.AddAdminAssistantServerSideDomainModel();
-            services.AddAdminAssistantServerSideDAL(this.configuration);
+            services.AddAdminAssistantServerServices(this.configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

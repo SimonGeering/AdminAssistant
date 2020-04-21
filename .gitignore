@@ -363,3 +363,4 @@ MigrationBackup/
 
 # Code Coverage
 **/lcov.info
+/src/.cr/personal
