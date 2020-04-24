@@ -13,6 +13,10 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         {
         }
 
+        /// <summary>
+        /// Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.
+        /// </summary>
+        /// <returns>A list of BankAccountType</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BankAccountType>>> Get()
         {

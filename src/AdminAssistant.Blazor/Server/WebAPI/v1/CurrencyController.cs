@@ -13,6 +13,10 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         {
         }
 
+        /// <summary>
+        /// Lists all currencies supported by the API wherever a CurrencyID can be provided.
+        /// </summary>
+        /// <returns>A list of Currency</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Currency>>> Get()
         {
