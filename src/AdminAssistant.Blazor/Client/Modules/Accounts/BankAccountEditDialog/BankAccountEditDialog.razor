@@ -2,11 +2,36 @@
 
 <h3>BankAccountEditDialog</h3>
 @*<DxPopup HeaderText="Header" Visible="this.vm.ShowAccountEditDialog">
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet metus vel nisi blandit tincidunt vel efficitur purus.
-    Nunc nec turpis tempus, accumsan orci auctor, imperdiet mauris. Fusce id purus magna.
-  </p>
-</DxPopup>*@
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet metus vel nisi blandit tincidunt vel efficitur purus.
+      Nunc nec turpis tempus, accumsan orci auctor, imperdiet mauris. Fusce id purus magna.
+    </p>
+  </DxPopup>*@
 @code {
 
+}
+
+<SfDialog @bind-Visible="@IsVisible" Width="500px" ShowCloseIcon="true">
+  <DialogTemplates>
+    <Header> Dialog </Header>
+    <Content> Dialog enabled with Zoom effect</Content>
+  </DialogTemplates>
+  <DialogAnimationSettings Effect="@Effects" Duration=400></DialogAnimationSettings>
+  <DialogButtons>
+      <DialogButton OnClick="@OnClick">
+        <DialogButtonModel Content="Hide" IsPrimary="true"></DialogButtonModel>
+      </DialogButton>
+    </DialogButtons>
+</SfDialog>
+
+@code
+{
+  private bool IsVisible { get; set; } = true;
+
+  public DialogEffect Effects = DialogEffect.Zoom;
+
+  private void OnClick()
+  {
+    this.IsVisible = false;
+  }
 }
