@@ -1,6 +1,10 @@
 @page "/accounts"
 @inject AdminAssistant.UI.Modules.Accounts.IAccountsViewModel vm
 
+@using AdminAssistant.Blazor.Client.Modules.Accounts.BankAccountTransactionList
+@using AdminAssistant.Blazor.Client.Modules.Accounts.BankAccountRightSidebar
+@using AdminAssistant.Blazor.Client.Modules.Accounts.BankAccountEditDialog
+
 <div class="cl-accounts">
   <div class="cl-moduleBody">
     <div class="e-main-content">
@@ -15,19 +19,19 @@
 
         <SplitterPane>
           <ContentTemplate>
-            @*<BankAccountTransactionList></BankAccountTransactionList>*@
+            <BankAccountTransactionListComponent></BankAccountTransactionListComponent>
           </ContentTemplate>
         </SplitterPane>
 
         <SplitterPane>
           <ContentTemplate>
-              @*<BankAccountRightSidebar></BankAccountRightSidebar>*@
+            <BankAccountRightSidebarComponent></BankAccountRightSidebarComponent>
           </ContentTemplate>
         </SplitterPane>
 
       </SplitterPanes>
     </SfSplitter>
 
-    @*<BankAccountEditDialog></BankAccountEditDialog>*@
+    <BankAccountEditDialogComponent></BankAccountEditDialogComponent>
   </div>
 </div>
