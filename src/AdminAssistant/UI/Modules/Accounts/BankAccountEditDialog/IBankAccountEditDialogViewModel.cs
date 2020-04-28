@@ -4,7 +4,11 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 {
     public interface IBankAccountEditDialogViewModel : IViewModelBase
     {
-        bool ShowAccountEditDialog { get; }
-        void NewAccount();
+        bool ShowAccountEditDialog { get; set; }
+
+        void OnSaveButtonClick();
+        void OnCancelButtonClick();
+
+        void OnTestDialog();
     }
 }

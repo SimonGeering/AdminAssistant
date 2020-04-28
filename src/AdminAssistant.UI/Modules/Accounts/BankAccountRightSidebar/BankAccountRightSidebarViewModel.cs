@@ -2,9 +2,16 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountRightSidebar
 {
     public class BankAccountRightSidebarViewModel : ViewModelBase, IBankAccountRightSidebarViewModel
     {
+        private readonly IAccountsStateStore accountsStateStore;
+
+        public BankAccountRightSidebarViewModel(IAccountsStateStore accountsStateStore)
+        {
+            this.accountsStateStore = accountsStateStore;
+        }
+
         public void OnAddAccountButtonClick()
         {
-            throw new System.NotImplementedException();
+            this.accountsStateStore.OnCreateAccount();
         }
     }
 }

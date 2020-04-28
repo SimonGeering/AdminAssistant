@@ -21,6 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IBankAccountEditDialogViewModel, BankAccountEditDialogViewModel>();
             services.AddTransient<IBankAccountRightSidebarViewModel, BankAccountRightSidebarViewModel>();
             services.AddTransient<IBankAccountTransactionListViewModel, BankAccountTransactionListViewModel>();
+            services.AddScoped<IAccountsStateStore, AccountsStateStore>();
 
             // Add Shared UI ...
             services.AddTransient<IBreadcrumbViewModel, BreadcrumbViewModel>();

@@ -1,37 +1,40 @@
 @inject AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog.IBankAccountEditDialogViewModel vm
 
 <h3>BankAccountEditDialog</h3>
-@*<DxPopup HeaderText="Header" Visible="this.vm.ShowAccountEditDialog">
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet metus vel nisi blandit tincidunt vel efficitur purus.
-      Nunc nec turpis tempus, accumsan orci auctor, imperdiet mauris. Fusce id purus magna.
-    </p>
-  </DxPopup>*@
-@code {
 
-}
+@*<SfDialog @bind-Visible="@this.vm.ShowAccountEditDialog" Width="500px" IsModal="true" ShowCloseIcon="true">*@
 
-<SfDialog @bind-Visible="@IsVisible" Width="500px" ShowCloseIcon="true">
-  <DialogTemplates>
-    <Header> Dialog </Header>
-    <Content> Dialog enabled with Zoom effect</Content>
-  </DialogTemplates>
-  <DialogAnimationSettings Effect="@Effects" Duration=400></DialogAnimationSettings>
-  <DialogButtons>
-      <DialogButton OnClick="@OnClick">
-        <DialogButtonModel Content="Hide" IsPrimary="true"></DialogButtonModel>
+  <SfDialog @bind-Visible="@IsVisible" Width="500px" IsModal="true" ShowCloseIcon="true">
+    <DialogTemplates>
+      <Header> Dialog </Header>
+      <Content> Modal Dialog enabled with Zoom effect</Content>
+    </DialogTemplates>
+    <DialogAnimationSettings Effect="@Effects" Duration=400 />
+    <DialogButtons>
+      <DialogButton OnClick="@OnClose">
+        <DialogButtonModel Content="Close" IsPrimary="true"></DialogButtonModel>
       </DialogButton>
+      @*<DialogButton OnClick="@this.vm.OnSaveButtonClick">
+        <DialogButtonModel Content="Save" IsPrimary="true"></DialogButtonModel>
+      </DialogButton>
+      <DialogButton OnClick="@this.vm.OnCancelButtonClick">
+        <DialogButtonModel Content="Cancel"></DialogButtonModel>
+      </DialogButton>*@
     </DialogButtons>
-</SfDialog>
+  </SfDialog>
+  <SfButton @onclick="@OnTestDialog">TestDialog</SfButton>
 
-@code
-{
-  private bool IsVisible { get; set; } = true;
+  @code {
 
-  public DialogEffect Effects = DialogEffect.Zoom;
+    private bool IsVisible { get; set; } = false;
 
-  private void OnClick()
-  {
-    this.IsVisible = false;
+    public DialogEffect Effects = DialogEffect.Zoom;
+    private void OnClose()
+    {
+      this.IsVisible = false;
+    }
+    private void OnTestDialog()
+    {
+      this.IsVisible = true;
+    }
   }
-}
