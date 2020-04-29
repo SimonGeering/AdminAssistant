@@ -4,29 +4,27 @@
   <DialogTemplates>
     <Header><div>@this.vm.HeaderText</div></Header>
     <Content>
-
       <div class="cl-account-edit-dialog">
-
         <div class="cl-row1">
-          <div class="cl-label">Account name</div>
-          <input pInputText autofocus type="text" class="cl-account-name" [(ngModel)]="NewAccount.AccountName" />
-          <p-checkbox [(ngModel)]="NewAccount.IsBudgeted" binary="true" label=" On budget"></p-checkbox>
+          <SfTextBox @bind-Value="@this.vm.BankAccount.AccountName" Placeholder="Account name" FloatLabelType="@FloatLabelType.Auto"></SfTextBox>
+          <SfCheckBox @bind-Checked="@this.vm.BankAccount.IsBudgeted" Label="On budget"></SfCheckBox>
         </div>
 
         <div class="cl-row2">
           <div class="cl-label">Account type</div>
           <div class="cl-account-type"><p-dropdown autoWidth="false" [options]="AccountTypes" [(ngModel)]="NewAccount.AccountType" optionLabel="Description" placeholder="{{ DropdownPlaceholder }}" appendTo="body"></p-dropdown></div>
           <div class="cl-label">Opened on</div>
-          <div class="cl-opened-on"><p-calendar [inputStyle]="{width:'100%'}" [(ngModel)]="NewAccount.OpenedOn" dateFormat="dd-M-yy" showButtonBar="true" [showIcon]="true" appendTo="body"></p-calendar></div>
+          <div class="cl-opened-on">
+            <SfDatePicker @bind-Value="@this.vm.BankAccount.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" />
+          </div>
         </div>
 
-        <div class="cl-row3">
+        @*<div class="cl-row3">
           <div class="cl-label">Currency</div>
           <div class="cl-currency"><p-dropdown autoWidth="false" [options]="Currencies" [(ngModel)]="NewAccount.Currency" optionLabel="Symbol" appendTo="body"></p-dropdown></div>
           <div class="cl-label">Opening balance</div>
           <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>
-        </div>
-
+        </div>*@
       </div>
     </Content>
   </DialogTemplates>

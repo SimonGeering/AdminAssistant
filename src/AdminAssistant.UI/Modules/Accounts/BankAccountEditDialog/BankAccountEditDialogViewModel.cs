@@ -30,6 +30,8 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             };
         }
 
+        public BankAccount BankAccount { get; private set; } = new BankAccount();
+
         public string HeaderText { get; private set; } = string.Empty;
 
         private bool showDialog = false;
@@ -45,7 +47,6 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
                 this.OnPropertyChanged();
             }
         }
-        public BankAccount BankAccount { get; set; } = new BankAccount();
 
         public void OnCancelButtonClick()
         {

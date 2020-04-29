@@ -4,8 +4,9 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 {
     public interface IBankAccountEditDialogViewModel : IViewModelBase
     {
-        bool ShowDialog { get; set; }
+        BankAccount BankAccount { get; }
         string HeaderText { get; }
+        bool ShowDialog { get; set; }
 
         void OnSaveButtonClick();
         void OnCancelButtonClick();
