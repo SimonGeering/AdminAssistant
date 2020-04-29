@@ -1,3 +1,5 @@
+using AdminAssistant.DomainModel.Modules.Accounts;
+
 namespace AdminAssistant.UI.Modules.Accounts.BankAccountRightSidebar
 {
     public class BankAccountRightSidebarViewModel : ViewModelBase, IBankAccountRightSidebarViewModel
@@ -11,10 +13,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountRightSidebar
 
         public void OnAddAccountButtonClick()
         {
-#if DEBUG
-            System.Console.WriteLine("BankAccountRightSidebarViewModel => OnAddAccountButtonClick");
-#endif
-            this.accountsStateStore.OnCreateAccount();
+            this.accountsStateStore.OnEditAccount(new BankAccount());
         }
     }
 }

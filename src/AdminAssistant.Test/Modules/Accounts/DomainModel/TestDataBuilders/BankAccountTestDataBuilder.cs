@@ -20,6 +20,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.TestDataBuilders
 
         public IBankAccountTestDataBuilder WithTestData(int bankAccountID = Constants.UnknownRecordID)
         {
+            this.BankAccountID = bankAccountID;
             this.AccountName = "A valid account name";
             this.Currency = TestData.CurrencyBuilder.WithTestData().Build();
             this.OpenedOn = DateTime.Now;

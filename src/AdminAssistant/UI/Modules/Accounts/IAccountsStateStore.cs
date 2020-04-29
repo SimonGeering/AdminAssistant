@@ -6,10 +6,7 @@ namespace AdminAssistant.UI.Modules.Accounts
 {
     public interface IAccountsStateStore : INotifyPropertyChanged
     {
-        event Action<BankAccount>? CreateAccount;
         event Action<BankAccount>? EditAccount;
-
-        void OnCreateAccount();
         void OnEditAccount(BankAccount bankAccount);
     }
 }

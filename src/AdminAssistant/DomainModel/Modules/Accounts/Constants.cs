@@ -3,6 +3,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts
     public static class Constants
     {
         public const int UnknownRecordID = default;
+        public const int NewRecordID = default;
 
         public const int KeyMaxLength = 20;
         public const int NameMaxLength = 50;
