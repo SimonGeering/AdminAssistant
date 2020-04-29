@@ -10,6 +10,9 @@ namespace AdminAssistant.UI.Modules.Accounts
 
         public void OnCreateAccount()
         {
+#if DEBUG
+            System.Console.WriteLine("AccountsStateStore => OnCreateAccount");
+#endif
             this.CreateAccount?.Invoke(new BankAccount());
         }
 

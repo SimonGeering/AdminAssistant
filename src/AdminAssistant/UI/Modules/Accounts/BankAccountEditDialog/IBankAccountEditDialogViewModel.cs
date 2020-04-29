@@ -8,7 +8,5 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 
         void OnSaveButtonClick();
         void OnCancelButtonClick();
-
-        void OnTestDialog();
     }
 }

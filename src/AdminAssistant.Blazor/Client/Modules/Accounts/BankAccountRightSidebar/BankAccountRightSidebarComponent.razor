@@ -1,5 +1,8 @@
 @inject AdminAssistant.UI.Modules.Accounts.BankAccountRightSidebar.IBankAccountRightSidebarViewModel vm
+
+@using AdminAssistant.Blazor.Client.Modules.Accounts.BankAccountEditDialog
+
 <h3>BankAccountRightSidebar</h3>
 
 <SfButton @onclick="@this.vm.OnAddAccountButtonClick">Add Account</SfButton>
-<button @onclick="@this.vm.OnAddAccountButtonClick">Moo</button>
+<BankAccountEditDialogComponent></BankAccountEditDialogComponent>

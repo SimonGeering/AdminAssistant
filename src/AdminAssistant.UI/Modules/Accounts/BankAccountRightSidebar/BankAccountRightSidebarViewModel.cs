@@ -11,6 +11,9 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountRightSidebar
 
         public void OnAddAccountButtonClick()
         {
+#if DEBUG
+            System.Console.WriteLine("BankAccountRightSidebarViewModel => OnAddAccountButtonClick");
+#endif
             this.accountsStateStore.OnCreateAccount();
         }
     }
