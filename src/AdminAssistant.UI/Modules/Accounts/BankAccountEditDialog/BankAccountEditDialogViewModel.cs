@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.DomainModel.Modules.Accounts.Validation;
 using Ardalis.GuardClauses;
@@ -9,13 +14,16 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         public const string NewBankAccountHeader = "New bank account";
         public const string EditBankAccountHeader = "Edit bank account";
 
+        private readonly HttpClient httpClient;
         private readonly IAccountsStateStore accountsStateStore;
         private readonly IBankAccountValidator bankAccountValidator;
 
         public BankAccountEditDialogViewModel(
+            HttpClient httpClient,
             IAccountsStateStore accountsStateStore,
             IBankAccountValidator bankAccountValidator)
         {
+            this.httpClient = httpClient;
             this.accountsStateStore = accountsStateStore;
             this.bankAccountValidator = bankAccountValidator;
 
@@ -31,6 +39,9 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         }
 
         public BankAccount BankAccount { get; private set; } = new BankAccount();
+
+        public IEnumerable<BankAccountType> BankAccountTypes { get; private set; } = new List<BankAccountType>();
+        public IEnumerable<Currency> Currencies { get; private set; } = new List<Currency>();
 
         public string HeaderText { get; private set; } = string.Empty;
 
@@ -56,6 +67,35 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         public void OnSaveButtonClick()
         {
             this.ShowDialog = false;
+        }
+
+        public async Task InitializeAsync()
+        {
+            await this.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
+            await this.LoadCurrencyLookupDataAsync().ConfigureAwait(false);
+        }
+
+        private async Task LoadBankAccountTypesLookupDataAsync()
+        {
+            var response = await httpClient.GetFromJsonAsync<BankAccountType[]>("api/v1/BankAccountType").ConfigureAwait(false);
+            this.BankAccountTypes = new List<BankAccountType>(response);
+#if DEBUG
+            foreach (var item in this.BankAccountTypes)
+            {
+                Console.WriteLine($"[BankAccountType - BankAccountTypeID: {item.BankAccountTypeID} Description: {item.Description}]");
+            }
+#endif
+        }
+        private async Task LoadCurrencyLookupDataAsync()
+        {
+            var response = await httpClient.GetFromJsonAsync<Currency[]>("api/v1/Currency").ConfigureAwait(false);
+            this.Currencies = new List<Currency>(response);
+#if DEBUG
+            foreach (var item in this.Currencies)
+            {
+                Console.WriteLine($"[Currency - CurrencyID: {item.CurrencyID} Symbol: {item.Symbol} DecimalFormat: {item.DecimalFormat}]");
+            }
+#endif
         }
     }
 }

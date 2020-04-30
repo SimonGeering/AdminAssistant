@@ -20,11 +20,11 @@
         </div>
 
         @*<div class="cl-row3">
-          <div class="cl-label">Currency</div>
-          <div class="cl-currency"><p-dropdown autoWidth="false" [options]="Currencies" [(ngModel)]="NewAccount.Currency" optionLabel="Symbol" appendTo="body"></p-dropdown></div>
-          <div class="cl-label">Opening balance</div>
-          <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>
-        </div>*@
+            <div class="cl-label">Currency</div>
+            <div class="cl-currency"><p-dropdown autoWidth="false" [options]="Currencies" [(ngModel)]="NewAccount.Currency" optionLabel="Symbol" appendTo="body"></p-dropdown></div>
+            <div class="cl-label">Opening balance</div>
+            <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>
+          </div>*@
       </div>
     </Content>
   </DialogTemplates>
@@ -38,3 +38,8 @@
     </DialogButton>
   </DialogButtons>
 </SfDialog>
+
+@code
+{
+    protected override async Task OnInitializedAsync() => await this.vm.InitializeAsync();
+}
