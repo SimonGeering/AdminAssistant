@@ -63,23 +63,24 @@ namespace AdminAssistant.Blazor.Server
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseBlazorDebugging();
+                app.UseWebAssemblyDebugging();
 
                 // Add OpenAPI/Swagger middleware ...
                 app.UseSwagger(); // Serves the registered OpenAPI/Swagger documents on `/swagger/v1/swagger.json`
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", this.WebAPITitle)); // Serves the Swagger UI 3 web ui to view the OpenAPI/Swagger documents by default on `/swagger`
             }
 
+            app.UseHttpsRedirection();
+            app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
-
-            app.UseClientSideBlazorFiles<Client.Program>();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapDefaultControllerRoute();
-                endpoints.MapFallbackToClientSideBlazor<Client.Program>("index.html");
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+                endpoints.MapFallbackToFile("index.html");
             });
         }
     }
