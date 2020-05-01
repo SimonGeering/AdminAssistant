@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.DomainModel.Modules.Accounts.Validation;
 using AdminAssistant.Framework.Providers;
+using AdminAssistant.UI.Shared;
 using Ardalis.GuardClauses;
 
 namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
@@ -20,10 +22,12 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         private readonly IBankAccountValidator bankAccountValidator;
 
         public BankAccountEditDialogViewModel(
+            ILoadingSpinner loadingSpinner,
             IHttpClientJsonProvider httpClient,
             IAccountsStateStore accountsStateStore,
             IBankAccountValidator bankAccountValidator)
         {
+            this.LoadingSpinner = loadingSpinner;
             this.httpClient = httpClient;
             this.accountsStateStore = accountsStateStore;
             this.bankAccountValidator = bankAccountValidator;
@@ -33,16 +37,45 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
                 Guard.Against.Null(bankAccount, nameof(bankAccount));
 
                 this.BankAccount = bankAccount;
-
+                this.BankAccount.BankAccountTypeID = this.bankAccountTypes.First().BankAccountTypeID;
                 this.HeaderText = this.BankAccount.BankAccountID == Constants.NewRecordID ? NewBankAccountHeader : EditBankAccountHeader;
                 this.ShowDialog = true;
             };
         }
 
+        public ILoadingSpinner LoadingSpinner { get; }
+
         public BankAccount BankAccount { get; private set; } = new BankAccount();
 
-        public IEnumerable<BankAccountType> BankAccountTypes { get; private set; } = new List<BankAccountType>();
-        public IEnumerable<Currency> Currencies { get; private set; } = new List<Currency>();
+        private IEnumerable<BankAccountType> bankAccountTypes = new List<BankAccountType>();
+        public IEnumerable<BankAccountType> BankAccountTypes
+        {
+            get {
+                return this.bankAccountTypes;
+            }
+            private set
+            {
+                if (this.bankAccountTypes == value)
+                    return;
+
+                this.bankAccountTypes = value;
+                this.OnPropertyChanged();
+            }
+        }
+
+        private IEnumerable<Currency> currencies = new List<Currency>();
+        public IEnumerable<Currency> Currencies
+        {
+            get { return this.currencies; }
+            private set
+            {
+                if (this.currencies == value)
+                    return;
+
+                this.currencies = value;
+                this.OnPropertyChanged();
+            }
+        }
 
         public string HeaderText { get; private set; } = string.Empty;
 
@@ -60,27 +93,27 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             }
         }
 
-        public void OnCancelButtonClick()
-        {
-            this.ShowDialog = false;
-        }
-
-        public void OnSaveButtonClick()
-        {
-            this.ShowDialog = false;
-        }
+        public void OnCancelButtonClick() => this.ShowDialog = false;
+        public void OnSaveButtonClick() => this.ShowDialog = false;
 
         public async Task InitializeAsync()
         {
-            // TODO: Add unit test for BankAccountEditDialogViewModel.InitializeAsync.
+            this.LoadingSpinner.OnShowLoadingSpinner();
+
             await this.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
             await this.LoadCurrencyLookupDataAsync().ConfigureAwait(false);
+
+            this.LoadingSpinner.OnHideLoadingSpinner();
         }
 
         private async Task LoadBankAccountTypesLookupDataAsync()
         {
             var response = await httpClient.GetFromJsonAsync<BankAccountType[]>("api/v1/BankAccountType").ConfigureAwait(false);
-            this.BankAccountTypes = new List<BankAccountType>(response);
+
+            var values = new List<BankAccountType>(response);
+            values.Insert(0, new BankAccountType() { BankAccountTypeID = 0, Description = string.Empty });
+
+            this.BankAccountTypes = values;
 #if DEBUG
             foreach (var item in this.BankAccountTypes)
             {
@@ -91,7 +124,11 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         private async Task LoadCurrencyLookupDataAsync()
         {
             var response = await httpClient.GetFromJsonAsync<Currency[]>("api/v1/Currency").ConfigureAwait(false);
-            this.Currencies = new List<Currency>(response);
+
+            var values = new List<Currency>(response);
+            values.Insert(0, new Currency() { CurrencyID = 0, Symbol = string.Empty, DecimalFormat = string.Empty });
+
+            this.Currencies = values;
 #if DEBUG
             foreach (var item in this.Currencies)
             {

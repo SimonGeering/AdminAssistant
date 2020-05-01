@@ -8,17 +8,7 @@ namespace AdminAssistant.UI.Modules.Accounts
         public event Action<BankAccount>? CreateAccount;
         public event Action<BankAccount>? EditAccount;
 
-        public void OnCreateAccount()
-        {
-#if DEBUG
-            System.Console.WriteLine("AccountsStateStore => OnCreateAccount");
-#endif
-            this.CreateAccount?.Invoke(new BankAccount());
-        }
-
-        public void OnEditAccount(BankAccount bankAccount)
-        {
-            this.EditAccount?.Invoke(bankAccount);
-        }
+        public void OnCreateAccount() => this.CreateAccount?.Invoke(new BankAccount());
+        public void OnEditAccount(BankAccount bankAccount) => this.EditAccount?.Invoke(bankAccount);
     }
 }

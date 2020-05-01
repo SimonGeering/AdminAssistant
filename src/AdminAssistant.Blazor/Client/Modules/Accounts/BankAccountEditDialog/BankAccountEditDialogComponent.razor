@@ -1,45 +1,64 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog.IBankAccountEditDialogViewModel>
+@using AdminAssistant.DomainModel.Modules.Accounts
 
-<SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true" ShowCloseIcon="true">
-  <DialogTemplates>
-    <Header><div>@this.vm.HeaderText</div></Header>
-    <Content>
-      <div class="cl-account-edit-dialog">
-        <div class="cl-row1">
-          <SfTextBox @bind-Value="@this.vm.BankAccount.AccountName" Placeholder="Account name" FloatLabelType="@FloatLabelType.Auto"></SfTextBox>
-          <SfCheckBox @bind-Checked="@this.vm.BankAccount.IsBudgeted" Label="On budget"></SfCheckBox>
-        </div>
+  <SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true">
+    <DialogTemplates>
+      <Header><div>@this.vm.HeaderText</div></Header>
+      <Content>
+        <SfSpinner @ref="this.SfSpinner" Target="#loadingTarget" Label="Loading...." Type="SpinnerType.Fabric" />
+        <div id="loadingTarget" class="cl-account-edit-dialog">
+          <div class="cl-row1">
+            <SfTextBox @bind-Value="@this.vm.BankAccount.AccountName" Placeholder="Account name" FloatLabelType="@FloatLabelType.Always"></SfTextBox>
+            <SfCheckBox @bind-Checked="@this.vm.BankAccount.IsBudgeted" Label="On budget"></SfCheckBox>
+          </div>
 
-        <div class="cl-row2">
-          <div class="cl-label">Account type</div>
-          <div class="cl-account-type"><p-dropdown autoWidth="false" [options]="AccountTypes" [(ngModel)]="NewAccount.AccountType" optionLabel="Description" placeholder="{{ DropdownPlaceholder }}" appendTo="body"></p-dropdown></div>
-          <div class="cl-label">Opened on</div>
-          <div class="cl-opened-on">
-            <SfDatePicker @bind-Value="@this.vm.BankAccount.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" />
+          <div class="cl-row2">
+            <div class="cl-account-type">
+              <SfDropDownList TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" FloatLabelType="FloatLabelType.Always" @bind-Value="@this.vm.BankAccount.BankAccountTypeID" DataSource="@this.vm.BankAccountTypes">
+                <DropDownListFieldSettings Text="Description" Value="BankAccountTypeID" />
+              </SfDropDownList>
+            </div>
+            <div class="cl-opened-on">
+              <SfDatePicker @bind-Value="@this.vm.BankAccount.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" Placeholder="Opened on" FloatLabelType="FloatLabelType.Always" />
+            </div>
+          </div>
+
+          <div class="cl-row3">
+            <SfDropDownList TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" FloatLabelType="FloatLabelType.Always" @bind-Value="@this.vm.BankAccount.CurrencyID" DataSource="@this.vm.Currencies">
+              <DropDownListFieldSettings Text="Symbol" Value="CurrencyID" />
+            </SfDropDownList>
+            @*<div class="cl-label">Opening balance</div>
+            <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>*@
           </div>
         </div>
-
-        @*<div class="cl-row3">
-            <div class="cl-label">Currency</div>
-            <div class="cl-currency"><p-dropdown autoWidth="false" [options]="Currencies" [(ngModel)]="NewAccount.Currency" optionLabel="Symbol" appendTo="body"></p-dropdown></div>
-            <div class="cl-label">Opening balance</div>
-            <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>
-          </div>*@
-      </div>
-    </Content>
-  </DialogTemplates>
-  <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
-  <DialogButtons>
-    <DialogButton OnClick="@this.vm.OnSaveButtonClick">
-      <DialogButtonModel Content="Save" IsPrimary="true"></DialogButtonModel>
-    </DialogButton>
-    <DialogButton OnClick="@this.vm.OnCancelButtonClick">
-      <DialogButtonModel Content="Cancel"></DialogButtonModel>
-    </DialogButton>
-  </DialogButtons>
-</SfDialog>
+      </Content>
+    </DialogTemplates>
+    <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
+    <DialogButtons>
+      <DialogButton OnClick="@this.vm.OnSaveButtonClick">
+        <DialogButtonModel Content="Save" IsPrimary="true"></DialogButtonModel>
+      </DialogButton>
+      <DialogButton OnClick="@this.vm.OnCancelButtonClick">
+        <DialogButtonModel Content="Cancel"></DialogButtonModel>
+      </DialogButton>
+    </DialogButtons>
+  </SfDialog>
 
 @code
 {
-    protected override async Task OnInitializedAsync() => await this.vm.InitializeAsync();
+    protected override void OnInitialized()
+    {
+      this.vm.LoadingSpinner.ShowLoadingSpinner += () => this.SfSpinner.ShowSpinner("#loadingTarget");
+      this.vm.LoadingSpinner.HideLoadingSpinner += () => this.SfSpinner.HideSpinner("#loadingTarget");
+
+      base.OnInitialized();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+      if (firstRender == false)
+        return;
+
+      await this.vm.InitializeAsync();
+    }
 }
