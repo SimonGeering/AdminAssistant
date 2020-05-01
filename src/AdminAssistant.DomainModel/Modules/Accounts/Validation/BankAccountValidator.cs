@@ -11,9 +11,10 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
                 .NotEmpty()
                 .MaximumLength(BankAccount.AccountNameMaxLength);
 
-            this.RuleFor(x => x.Currency)
-                .NotNull()
-                .SetValidator(currencyValidator);
+            this.RuleFor(x => x.CurrencyID)
+                .NotEqual(Constants.UnknownRecordID);
+
+            // TODO: Validate BankAccountTypeID selection
 
             this.RuleFor(x => x.OpenedOn)
                 .NotNull();
