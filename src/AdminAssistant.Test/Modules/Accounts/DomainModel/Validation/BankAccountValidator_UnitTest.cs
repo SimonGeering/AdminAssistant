@@ -17,7 +17,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = TestData.BankAccountBuilder.WithTestData().Build();
+            var bankAccount = TestData.BankAccountBuilder.WithTestData().WithBankAccountTypeID(20).WithCurrencyID(10).Build();
 
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
