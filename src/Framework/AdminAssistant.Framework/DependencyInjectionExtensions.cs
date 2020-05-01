@@ -7,6 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddFrameworkServices(this IServiceCollection services)
         {
             services.AddTransient<IDateTimeProvider, DateTimeProvider>();
+            services.AddTransient<IHttpClientJsonProvider, HttpClientJsonProvider>();
         }
     }
 }

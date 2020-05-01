@@ -5,6 +5,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.DomainModel.Modules.Accounts.Validation;
+using AdminAssistant.Framework.Providers;
 using Ardalis.GuardClauses;
 
 namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
@@ -14,16 +15,15 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         public const string NewBankAccountHeader = "New bank account";
         public const string EditBankAccountHeader = "Edit bank account";
 
-        private readonly HttpClient httpClient;
+        private readonly IHttpClientJsonProvider httpClient;
         private readonly IAccountsStateStore accountsStateStore;
         private readonly IBankAccountValidator bankAccountValidator;
 
         public BankAccountEditDialogViewModel(
-            HttpClient httpClient,
+            IHttpClientJsonProvider httpClient,
             IAccountsStateStore accountsStateStore,
             IBankAccountValidator bankAccountValidator)
         {
-            // TODO: Wrap HttpClient and HttpClientJsonExtensions with an interface we own so it can be safely mocked.
             this.httpClient = httpClient;
             this.accountsStateStore = accountsStateStore;
             this.bankAccountValidator = bankAccountValidator;
