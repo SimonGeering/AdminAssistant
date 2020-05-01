@@ -1,5 +1,6 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +16,7 @@ namespace AdminAssistant.Framework
         {
             // Arrange
             var services = new ServiceCollection();
+            services.AddMocksOfExternalDependencies();
             services.AddFrameworkServices();
 
             var serviceProvider = services.BuildServiceProvider();
