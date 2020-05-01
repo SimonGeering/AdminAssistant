@@ -23,6 +23,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             IAccountsStateStore accountsStateStore,
             IBankAccountValidator bankAccountValidator)
         {
+            // TODO: Wrap HttpClient and HttpClientJsonExtensions with an interface we own so it can be safely mocked.
             this.httpClient = httpClient;
             this.accountsStateStore = accountsStateStore;
             this.bankAccountValidator = bankAccountValidator;
@@ -71,6 +72,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 
         public async Task InitializeAsync()
         {
+            // TODO: Add unit test for BankAccountEditDialogViewModel.InitializeAsync.
             await this.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
             await this.LoadCurrencyLookupDataAsync().ConfigureAwait(false);
         }
