@@ -19,7 +19,7 @@ dotnet ef migrations remove --context applicationdbcontext --project "./AdminAss
 ## Install Global tools
 
 ``` dos
-dotnet tool install dotnet-ef --global --version 3.1.0 --interactive
+dotnet tool install dotnet-ef --global --version 3.1.3 --interactive
 dotnet tool uninstall --global dotnet-ef
 dotnet tool list --global
 ```
