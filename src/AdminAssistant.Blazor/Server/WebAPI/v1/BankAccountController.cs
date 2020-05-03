@@ -2,14 +2,17 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.DomainModel.Modules.Accounts.CQRS;
+using AdminAssistant.Framework.Providers;
+using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Blazor.Server.WebAPI.v1
 {
     public class BankAccountController : WebAPIControllerBase
     {
-        public BankAccountController(AutoMapper.IMapper mapper, MediatR.IMediator mediator)
-            : base(mapper, mediator)
+        public BankAccountController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
+            : base(mapper, mediator, loggingProvider)
         {
         }
 
@@ -21,6 +24,8 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         [HttpPut("")]
         public async Task<ActionResult<BankAccount>> Put([FromBody]BankAccount bankAccount)
         {
+            this.Log.Start();
+
             throw new System.NotImplementedException();
             // TODO: Validate bankAccount and return BadRequest status code if invalid.
 
@@ -34,15 +39,17 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
 
             // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
             //if (result == Constants.UnknownRecordID)
-            //    return this.UnprocessableEntity();
+            //    return this.Log.Finish(this.UnprocessableEntity());
             //else
-            //    return this.Ok(result);
+            //    return this.Log.Finish(this.Ok(result));
         }
 
 
         [HttpPost("")]
         public async Task<ActionResult<BankAccount>> Post([FromBody]BankAccount bankAccount)
         {
+            this.Log.Start();
+
             throw new System.NotImplementedException();
             // TODO: Validate bankAccount and return BadRequest status code if invalid.
 
@@ -56,9 +63,9 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
 
             // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
             //if (result == Constants.UnknownRecordID)
-            //    return this.UnprocessableEntity();
+            //    return this.Log.Finish(this.UnprocessableEntity());
             //else
-            //    return this.Ok(result);
+            //    return this.Log.Finish(this.Ok(result));
         }
 
         /// <summary>
@@ -69,12 +76,14 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         [HttpGet("{bankAccountID}")]
         public async Task<ActionResult<BankAccount>> Get(int bankAccountID)
         {
+            this.Log.Start();
+
             var result = await this.Mediator.Send(new GetBankAccountByIDQuery(bankAccountID)).ConfigureAwait(false);
 
             if (result == null)
-                return this.NotFound();
+                return this.Log.Finish(this.NotFound());
             else
-                return this.Ok(result);
+                return this.Log.Finish(this.Ok(result));
         }
 
         /// <summary>
@@ -85,12 +94,14 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         [HttpGet("{bankAccountID}/transactions")]
         public async Task<ActionResult<IEnumerable<BankAccountTransaction>>> GetBankAccountTransactionListAsync(int bankAccountID)
         {
+            this.Log.Start();
+
             var result = await this.Mediator.Send(new GetBankAccountTransactionsByIDQuery(bankAccountID)).ConfigureAwait(false);
 
             if (result == null)
-                return this.NotFound();
+                return this.Log.Finish(this.NotFound());
             else
-                return this.Ok(result);
+                return this.Log.Finish(this.Ok(result));
         }
     }
 }
