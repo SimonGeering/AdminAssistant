@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Blazor.Extensions.Logging;
 
 namespace AdminAssistant.Blazor.Client
 {
@@ -21,7 +22,26 @@ namespace AdminAssistant.Blazor.Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddLogging(logging =>
+            {
+                // NB Configuration must be done in code as no other option is currently supported client side.
+                // See: https://github.com/BlazorExtensions/Logging
+                logging.ClearProviders();
+                logging.AddBrowserConsole();
+#if DEBUG
+                logging.AddFilter("Default", LogLevel.Information)
+                    .AddFilter(Framework.Providers.LoggingProvider.LogCategoryName, LogLevel.Debug)
+                    .AddFilter("Microsoft", LogLevel.Warning)
+                    .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
+#else
+                logging.AddFilter("Default", LogLevel.Warning)
+                    .AddFilter(Framework.Providers.LoggingProvider.LogCategoryName, LogLevel.Warning)
+                    .AddFilter("Microsoft", LogLevel.Warning)
+                    .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
 
+                // TODO: Configure other production logging options.
+#endif
+            });
             builder.Services.AddSyncfusionBlazor();
             builder.Services.AddAdminAssistantClientServices();
 
