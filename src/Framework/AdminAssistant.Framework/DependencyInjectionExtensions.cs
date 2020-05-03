@@ -8,6 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddTransient<IDateTimeProvider, DateTimeProvider>();
             services.AddTransient<IHttpClientJsonProvider, HttpClientJsonProvider>();
+            services.AddTransient<ILoggingProvider, LoggingProvider>();
         }
     }
 }
