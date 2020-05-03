@@ -25,7 +25,9 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             ILoadingSpinner loadingSpinner,
             IHttpClientJsonProvider httpClient,
             IAccountsStateStore accountsStateStore,
-            IBankAccountValidator bankAccountValidator)
+            IBankAccountValidator bankAccountValidator,
+            ILoggingProvider log)
+            : base(log)
         {
             this.LoadingSpinner = loadingSpinner;
             this.httpClient = httpClient;
@@ -49,9 +51,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         private IEnumerable<BankAccountType> bankAccountTypes = new List<BankAccountType>();
         public IEnumerable<BankAccountType> BankAccountTypes
         {
-            get {
-                return this.bankAccountTypes;
-            }
+            get { return this.bankAccountTypes; }
             private set
             {
                 if (this.bankAccountTypes == value)

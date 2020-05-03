@@ -1,3 +1,4 @@
+using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Services;
 
 namespace AdminAssistant.UI.Shared.Breadcrumb
@@ -6,7 +7,8 @@ namespace AdminAssistant.UI.Shared.Breadcrumb
     {
         private readonly IAppStateStore appStateStore;
 
-        public BreadcrumbViewModel(IAppStateStore appStateStore)
+        public BreadcrumbViewModel(IAppStateStore appStateStore, ILoggingProvider log)
+            : base(log)
         {
             this.appStateStore = appStateStore;
 
