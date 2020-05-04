@@ -27,6 +27,10 @@ $h3-font-size: 1.5rem !default; // template uses 2rem
 @import "./node_modules/bootstrap/scss/bootstrap";
 @import "./node_modules/bootswatch/dist/flatly/bootswatch";*/
 
+// Syncfusion - MS Office fabric theme - https://ej2.syncfusion.com/themestudio/?theme=fabric
+/*@import './Shared/Syncfusion/Themes/fabric/fabric.scss';*/
+@import './Shared/Syncfusion/Themes/fabric-dark/fabric-dark.scss';
+
 @import './Shared/spinner.scss';
 @import './Shared/variables.scss';
 

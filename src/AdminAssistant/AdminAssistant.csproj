@@ -33,13 +33,16 @@
 
   <ItemGroup>
     <Folder Include="DAL\Modules\Accounts\" />
-    <Folder Include="DomainModel\Modules\Accounts\" />
     <Folder Include="DomainModel\Infrastructure\" />
     <Folder Include="UI\Shared\Services\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,7 +6,8 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.TestDataBuilders
     {
         BankAccount Build();
         IBankAccountTestDataBuilder WithTestData(int bankAccountID = Constants.UnknownRecordID);
-        IBankAccountTestDataBuilder WithCurrency(Currency currency);
+        IBankAccountTestDataBuilder WithBankAccountTypeID(int bankAccountTypeID);
+        IBankAccountTestDataBuilder WithCurrencyID(int currency);
         IBankAccountTestDataBuilder WithAccountName(string accountName);
     }
     public class BankAccountTestDataBuilder : BankAccount, IBankAccountTestDataBuilder
@@ -20,15 +21,21 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.TestDataBuilders
 
         public IBankAccountTestDataBuilder WithTestData(int bankAccountID = Constants.UnknownRecordID)
         {
+            this.BankAccountID = bankAccountID;
             this.AccountName = "A valid account name";
-            this.Currency = TestData.CurrencyBuilder.WithTestData().Build();
+            this.CurrencyID = TestData.CurrencyBuilder.WithTestData().Build().CurrencyID;
             this.OpenedOn = DateTime.Now;
             return this;
         }
 
-        public IBankAccountTestDataBuilder WithCurrency(Currency currency)
+        public IBankAccountTestDataBuilder WithBankAccountTypeID(int bankAccountTypeID)
         {
-            this.Currency = currency;
+            this.BankAccountTypeID = bankAccountTypeID;
+            return this;
+        }
+        public IBankAccountTestDataBuilder WithCurrencyID(int currencyID)
+        {
+            this.CurrencyID = currencyID;
             return this;
         }
 

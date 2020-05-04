@@ -64,6 +64,7 @@ namespace AdminAssistant
         {
             // Arrange
             var services = new ServiceCollection();
+            services.AddMocksOfExternalDependencies();
             services.AddAdminAssistantClientServices();
 
             var serviceProvider = services.BuildServiceProvider();

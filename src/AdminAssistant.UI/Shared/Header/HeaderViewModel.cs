@@ -1,3 +1,4 @@
+using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Services;
 
 namespace AdminAssistant.UI.Shared.Header
@@ -6,7 +7,8 @@ namespace AdminAssistant.UI.Shared.Header
     {
         private readonly IAppStateStore appStateStore;
 
-        public HeaderViewModel(IAppStateStore appStateStore)
+        public HeaderViewModel(IAppStateStore appStateStore, ILoggingProvider log)
+            : base(log)
         {
             this.appStateStore = appStateStore;
             

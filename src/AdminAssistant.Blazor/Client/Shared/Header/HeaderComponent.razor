@@ -1,5 +1,5 @@
-@inject AdminAssistant.UI.Shared.Header.IHeaderViewModel vm
- 
+@inherits AdminAssistantComponentBase<AdminAssistant.UI.Shared.Header.IHeaderViewModel>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2" aria-controls="navbar2" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,12 +21,3 @@
     </div>
   </div>
 </nav>
-
-@code
-{
-    protected override void OnInitialized()
-    {
-      this.vm.PropertyChanged += (sender, e) => this.StateHasChanged();
-      base.OnInitialized();
-    }
-}

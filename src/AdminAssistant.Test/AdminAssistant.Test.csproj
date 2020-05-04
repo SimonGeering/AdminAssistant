@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" Version="1.4.2" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="1.5.0" />
     <PackageReference Include="coverlet.msbuild" Version="2.8.1">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -58,6 +58,7 @@
     <ProjectReference Include="..\AdminAssistant.DAL\AdminAssistant.DAL.csproj" />
     <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    <ProjectReference Include="..\Framework\AdminAssistant.Framework.Test\AdminAssistant.Framework.Test.csproj" />
     <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>
 
