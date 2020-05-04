@@ -1,3 +1,5 @@
+using System.Net.Http;
+using Microsoft.Extensions.Logging;
 using Moq;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -6,7 +8,8 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddMocksOfExternalDependencies(this IServiceCollection services)
         {
-            services.AddTransient(sp => new Mock<System.Net.Http.HttpClient>().Object);
+            services.AddTransient(sp => new Mock<ILoggerFactory>().Object);
+            services.AddTransient(sp => new Mock<HttpClient>().Object);
         }
     }
 }
