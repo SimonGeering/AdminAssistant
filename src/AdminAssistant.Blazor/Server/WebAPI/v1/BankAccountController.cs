@@ -5,6 +5,7 @@ using AdminAssistant.DomainModel.Modules.Accounts.CQRS;
 using AdminAssistant.Framework.Providers;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Blazor.Server.WebAPI.v1
@@ -21,7 +22,7 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         /// </summary>
         /// <param name="bankAccount"></param>
         /// <returns></returns>
-        [HttpPut("")]
+        [HttpPut()]
         public async Task<ActionResult<BankAccount>> Put([FromBody]BankAccount bankAccount)
         {
             this.Log.Start();
@@ -73,7 +74,12 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         /// </summary>
         /// <param name="bankAccountID">The ID of the BankAccount to be returned.</param>
         /// <returns>A BankAccount</returns>
+        /// <response code="200">Ok</response>
+        /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
         [HttpGet("{bankAccountID}")]
+        [Produces("application / json")]// Define MediaType limits
+        [ProducesResponseType(typeof(BankAccount), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(int), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<BankAccount>> Get(int bankAccountID)
         {
             this.Log.Start();
