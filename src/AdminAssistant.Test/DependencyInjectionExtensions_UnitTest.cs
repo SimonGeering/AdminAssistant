@@ -13,13 +13,13 @@ namespace AdminAssistant
 {
     public class ServiceCollection_Should
     {
-        [Fact(Skip="WIP")]
         [Trait("Category", "Unit")]
         public async Task BeAbleToInstantiateAllRegisteredServerSideTypes()
         {
             // Arrange
             var mockConfiguration = new Mock<IConfiguration>();
             var services = new ServiceCollection();
+            services.AddMocksOfExternalDependencies();
             services.AddAdminAssistantServerServices(mockConfiguration.Object);
 
             // Mock any dependent services provided by the IWebHostBuilder ...
