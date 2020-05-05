@@ -1,4 +1,6 @@
 using AutoMapper;
+using FluentValidation.AspNetCore;
+using MicroElements.Swashbuckle.FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -42,15 +44,20 @@ namespace AdminAssistant.Blazor.Server
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
             });
 
-            if (this.env.IsDevelopment())
+            services.AddHttpContextAccessor();
+            services.AddControllers().AddFluentValidation(c =>
             {
-                services.AddSwaggerGen(c =>
-                {
-                    c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
-                    c.AddFluentValidationRules(); // Adds fluent validation rules to swagger See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
-                    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.docs.xml"));
-                });
-            }
+                c.RegisterValidatorsFromAssemblyContaining<DomainModel.Modules.Accounts.Validation.BankAccountValidator>();
+
+            });
+            services.AddSwaggerGen(c =>
+            {
+                // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
+                // https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters - examples for getting swagger to do what you want
+                c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
+                c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
+            });
+
             services.AddAutoMapper(typeof(DAL.MappingProfile));
             services.AddAdminAssistantServerServices(this.configuration);
         }
@@ -64,11 +71,16 @@ namespace AdminAssistant.Blazor.Server
             {
                 app.UseDeveloperExceptionPage();
                 app.UseWebAssemblyDebugging();
-
-                // Add OpenAPI/Swagger middleware ...
-                app.UseSwagger(); // Serves the registered OpenAPI/Swagger documents on `/swagger/v1/swagger.json`
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", this.WebAPITitle)); // Serves the Swagger UI 3 web ui to view the OpenAPI/Swagger documents by default on `/swagger`
             }
+
+            // Add OpenAPI/Swagger middleware ...
+            app.UseSwagger(); // Serves the registered OpenAPI/Swagger documents on `/swagger/v1/swagger.json`
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", this.WebAPITitle);
+                c.RoutePrefix = "api-docs";
+
+            }); // Serves the Swagger UI 3 web ui to view the OpenAPI/Swagger documents by default on `/swagger`
 
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
