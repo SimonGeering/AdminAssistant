@@ -22,7 +22,7 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         /// </summary>
         /// <param name="bankAccount"></param>
         /// <returns></returns>
-        [HttpPut()]
+        [HttpPut]
         public async Task<ActionResult<BankAccount>> Put([FromBody]BankAccount bankAccount)
         {
             this.Log.Start();
@@ -45,8 +45,10 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
             //    return this.Log.Finish(this.Ok(result));
         }
 
-
-        [HttpPost("")]
+        /// <summary></summary>
+        /// <param name="bankAccount"></param>
+        /// <returns></returns>
+        [HttpPost]
         public async Task<ActionResult<BankAccount>> Post([FromBody]BankAccount bankAccount)
         {
             this.Log.Start();
@@ -69,9 +71,7 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
             //    return this.Log.Finish(this.Ok(result));
         }
 
-        /// <summary>
-        /// Returns a BankAccount with the given ID.
-        /// </summary>
+        /// <summary>Returns a BankAccount with the given ID.</summary>
         /// <param name="bankAccountID">The ID of the BankAccount to be returned.</param>
         /// <returns>A BankAccount</returns>
         /// <response code="200">Ok</response>
@@ -79,7 +79,7 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         [HttpGet("{bankAccountID}")]
         [Produces("application / json")]// Define MediaType limits
         [ProducesResponseType(typeof(BankAccount), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(int), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<BankAccount>> Get(int bankAccountID)
         {
             this.Log.Start();
@@ -92,12 +92,14 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
                 return this.Log.Finish(this.Ok(result));
         }
 
-        /// <summary>
-        /// Returns the transactions since the last bank account statement for the BankAccount with the given ID.
-        /// </summary>
+        /// <summary>Returns the transactions since the last bank account statement for the BankAccount with the given ID.</summary>
         /// <param name="bankAccountID">The ID of the BankAccount.</param>
         /// <returns>A list of BankAccountTransaction</returns>
+        /// <response code="200">Ok</response>
+        /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
         [HttpGet("{bankAccountID}/transactions")]
+        [ProducesResponseType(typeof(IEnumerable<BankAccount>), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<BankAccountTransaction>>> GetBankAccountTransactionListAsync(int bankAccountID)
         {
             this.Log.Start();

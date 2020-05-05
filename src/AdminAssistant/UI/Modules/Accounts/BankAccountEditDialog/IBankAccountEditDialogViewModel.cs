@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.Accounts;
@@ -20,5 +21,8 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         void OnCancelButtonClick();
 
         Task InitializeAsync();
+
+        void OnValidate();
+        event Action? Validate;
     }
 }

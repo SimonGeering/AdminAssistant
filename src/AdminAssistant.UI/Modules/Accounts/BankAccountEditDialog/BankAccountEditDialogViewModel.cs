@@ -44,6 +44,9 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             };
         }
 
+        public event Action? Validate;
+        public void OnValidate() => this.Validate?.Invoke();
+        
         public ILoadingSpinner LoadingSpinner { get; }
 
         public BankAccount BankAccount { get; private set; } = new BankAccount();
@@ -92,8 +95,23 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             }
         }
 
-        public void OnCancelButtonClick() => this.ShowDialog = false;
-        public void OnSaveButtonClick() => this.ShowDialog = false;
+        public void OnCancelButtonClick()
+        {
+            this.Log.Start();
+
+            this.ShowDialog = false;
+
+            this.Log.Finish();
+        }
+        public void OnSaveButtonClick()
+        {
+            this.Log.Start();
+
+            this.OnValidate();
+            //this.ShowDialog = false;
+
+            this.Log.Finish();
+        }
 
         public async Task InitializeAsync()
         {
