@@ -1,16 +1,11 @@
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.Accounts;
-using AdminAssistant.UI.Shared;
 
 namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 {
     public interface IBankAccountEditDialogViewModel : IViewModelBase
     {
-        ILoadingSpinner LoadingSpinner { get; }
-
-        BankAccount BankAccount { get; }
+        BankAccount Model { get; }
         string HeaderText { get; }
         bool ShowDialog { get; set; }
 
@@ -20,9 +15,11 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         void OnSaveButtonClick();
         void OnCancelButtonClick();
 
-        Task InitializeAsync();
+        void OnAccountNameChanged(string accountName);
+        string AccountNameValidationMessage { get; }
+        string AccountNameValidationClass { get; }
 
-        void OnValidate();
-        event Action? Validate;
+        void OnBankAccountTypeChanged();
+        void OnCurrencyChanged();
     }
 }

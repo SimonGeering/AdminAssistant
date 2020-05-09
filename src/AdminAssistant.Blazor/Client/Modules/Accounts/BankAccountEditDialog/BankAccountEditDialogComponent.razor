@@ -1,49 +1,42 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog.IBankAccountEditDialogViewModel>
 @using AdminAssistant.DomainModel.Modules.Accounts
 
-@using Microsoft.Extensions.Logging;
-@inject AdminAssistant.Framework.Providers.ILoggingProvider log
-
 <SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="false">
   <DialogTemplates>
     <Header><div>@this.vm.HeaderText</div></Header>
     <Content>
       <SfSpinner @ref="this.SfSpinner" Target="#loadingTarget" Label="Loading...." Type="SpinnerType.Fabric" />
-      <EditForm EditContext="@this.EditContext">
-        <div id="loadingTarget" class="cl-account-edit-dialog">
-          <ValidationSummary />
-
-          <div class="cl-row1">
-            <div class="form-group">
-              <SfTextBox @bind-Value="@this.vm.BankAccount.AccountName" Placeholder="Account name" FloatLabelType="@FloatLabelType.Always"></SfTextBox>
-              <ValidationMessage For="() => this.vm.BankAccount.AccountName"></ValidationMessage>
-            </div>
-            <SfCheckBox @bind-Checked="@this.vm.BankAccount.IsBudgeted" Label="On budget"></SfCheckBox>
+      <div id="loadingTarget" class="cl-account-edit-dialog">
+        <div class="cl-row1">
+          <label>Account name</label>
+          <div class="form-group">
+            <SfTextBox Value="@this.vm.Model.AccountName" ValueChanged="@((value) => this.vm.OnAccountNameChanged(value))" Placeholder="@this.vm.AccountNameValidationMessage" CssClass="@this.vm.AccountNameValidationClass"></SfTextBox>
           </div>
+          <SfCheckBox @bind-Checked="@this.vm.Model.IsBudgeted" Label="On budget"></SfCheckBox>
+        </div>
 
-          <div class="cl-row2">
-            <div class="cl-account-type">
-              <SfDropDownList TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" FloatLabelType="FloatLabelType.Always" @bind-Value="@this.vm.BankAccount.BankAccountTypeID" DataSource="@this.vm.BankAccountTypes">
-                <DropDownListFieldSettings Text="Description" Value="BankAccountTypeID" />
-              </SfDropDownList>
-            </div>
-            <div class="cl-opened-on">
-              <SfDatePicker @bind-Value="@this.vm.BankAccount.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" Placeholder="Opened on" FloatLabelType="FloatLabelType.Always" />
-            </div>
-          </div>
-
-          <div class="cl-row3">
-            <SfDropDownList TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" FloatLabelType="FloatLabelType.Always" @bind-Value="@this.vm.BankAccount.CurrencyID" DataSource="@this.vm.Currencies">
-              <DropDownListFieldSettings Text="Symbol" Value="CurrencyID" />
+        <div class="cl-row2">
+          <label>Account Type</label>
+          <div class="cl-account-type">
+            <SfDropDownList @bind-Value="@this.vm.Model.BankAccountTypeID" OnChange="@(() => this.vm.OnBankAccountTypeChanged())" TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" DataSource="@this.vm.BankAccountTypes">
+              <DropDownListFieldSettings Text="Description" Value="BankAccountTypeID" />
             </SfDropDownList>
-            @*<div class="cl-label">Opening balance</div>
-      <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>*@
+          </div>
+          <label>Opened On</label>
+          <div class="cl-opened-on">
+            <SfDatePicker @bind-Value="@this.vm.Model.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" Placeholder="Opened on" />
           </div>
         </div>
-      </EditForm>
+        <div class="cl-row3">
+          <label>Currency</label>
+          <SfDropDownList @bind-Value="@this.vm.Model.CurrencyID" OnChange="@(() => this.vm.OnCurrencyChanged())" TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" DataSource="@this.vm.Currencies">
+            <DropDownListFieldSettings Text="Symbol" Value="CurrencyID" />
+          </SfDropDownList>
+          @*<div class="cl-label">Opening balance</div>
+            <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>*@
+        </div>
+      </div>
     </Content>
-    <FooterTemplate>
-    </FooterTemplate>
   </DialogTemplates>
   <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
   <DialogButtons>
@@ -55,41 +48,3 @@
     </DialogButton>
   </DialogButtons>
 </SfDialog>
-
-@code
-{
-    // https://github.com/mrpmorris/blazor-validation
-
-    private EditContext EditContext { get; set; }
-
-    protected override void OnInitialized()
-    {
-      this.EditContext = new EditContext(this.vm.BankAccount);
-
-      this.EditContext.OnValidationRequested += (sender, e) =>
-      {
-      };
-
-      this.EditContext.OnValidationStateChanged += (sender, e) =>
-      {
-        this.log.LogDebug("EditContext.OnValidationStateChanged");
-
-        this.StateHasChanged();
-      };
-
-
-      this.vm.LoadingSpinner.ShowLoadingSpinner += () => this.SfSpinner.ShowSpinner("#loadingTarget");
-      this.vm.LoadingSpinner.HideLoadingSpinner += () => this.SfSpinner.HideSpinner("#loadingTarget");
-      this.vm.Validate += () => this.EditContext.Validate();
-
-      base.OnInitialized();
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-      if (firstRender == false)
-        return;
-
-      await this.vm.InitializeAsync();
-    }
-}
