@@ -1,4 +1,5 @@
 using AdminAssistant.DomainModel.Infrastructure;
+using AdminAssistant.DomainModel.Modules.Accounts.CQRS;
 using AdminAssistant.DomainModel.Modules.Accounts.Validation;
 using MediatR;
 
@@ -19,7 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IUserContextProvider, UserContextProvider>();
 
             // Set-up Add MediatR ...
-            services.AddMediatR(typeof(DependencyInjectionExtensions));
+            services.AddMediatR(typeof(GetBankAccountByIDHandler));
         }
 
         private static void AddSharedDomainModel(IServiceCollection services)
