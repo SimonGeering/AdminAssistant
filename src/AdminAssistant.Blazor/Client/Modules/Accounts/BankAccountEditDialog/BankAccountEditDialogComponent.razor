@@ -1,7 +1,7 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog.IBankAccountEditDialogViewModel>
 @using AdminAssistant.DomainModel.Modules.Accounts
 
-<SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="false">
+<SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true" ShowCloseIcon="true">
   <DialogTemplates>
     <Header><div>@this.vm.HeaderText</div></Header>
     <Content>
@@ -41,10 +41,10 @@
   <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
   <DialogButtons>
     <DialogButton OnClick="@this.vm.OnCancelButtonClick">
-      <DialogButtonModel Content="Cancel"></DialogButtonModel>
+      <DialogButtonModel Content="Discard" IconCss="fa fa-lg fa-trash-o"></DialogButtonModel>
     </DialogButton>
     <DialogButton OnClick="@this.vm.OnSaveButtonClick">
-      <DialogButtonModel Content="Save" IsPrimary="true"></DialogButtonModel>
+      <DialogButtonModel Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true"></DialogButtonModel>
     </DialogButton>
   </DialogButtons>
 </SfDialog>
