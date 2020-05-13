@@ -7,21 +7,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.DAL.Modules.Accounts
 {
-    public class BankAccountTypeRepository : IBankAccountTypeRepository
+    public class BankAccountTypeRepository : RepositoryBase, IBankAccountTypeRepository
     {
-        private readonly IApplicationDbContext db;
-        private readonly IMapper mapper;
-
-        public BankAccountTypeRepository(IApplicationDbContext db, IMapper mapper)
+        public BankAccountTypeRepository(IApplicationDbContext dbContext, IMapper mapper)
+            : base(dbContext, mapper)
         {
-            this.db = db;
-            this.mapper = mapper;
         }
 
         public async Task<IList<BankAccountType>> GetBankAccountTypeListAsync()
         {
-            var data = await db.BankAccountTypes.ToListAsync().ConfigureAwait(false);
-            return this.mapper.Map<List<BankAccountType>>(data);
+            var data = await this.DbContext.BankAccountTypes.ToListAsync().ConfigureAwait(false);
+            return this.Mapper.Map<List<BankAccountType>>(data);
         }
     }
 }
