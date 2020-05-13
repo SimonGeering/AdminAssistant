@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.DomainModel.Modules.Accounts.CQRS;
 using AdminAssistant.Framework.Providers;
+using Ardalis.Result;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -17,12 +18,13 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         {
         }
 
-        /// <summary>
-        /// Updates and existing BankAccount.
-        /// </summary>
-        /// <param name="bankAccount"></param>
-        /// <returns></returns>
+        /// <summary>Updates and existing BankAccount.</summary>
+        /// <param name="bankAccount">The BankAccount for which updates are to be persisted</param>
+        /// <returns>The updated BankAccount</returns>
+        /// <response code="200">Ok</response>
         [HttpPut]
+        [Produces("application / json")] // Define MediaType limits
+        [ProducesResponseType(typeof(BankAccount), StatusCodes.Status202Accepted)]
         public async Task<ActionResult<BankAccount>> Put([FromBody]BankAccount bankAccount)
         {
             this.Log.Start();
@@ -47,8 +49,9 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
 
         /// <summary></summary>
         /// <param name="bankAccount"></param>
-        /// <returns></returns>
+        /// <returns>The newly created BankAccount</returns>
         [HttpPost]
+        [Produces("application / json")] // Define MediaType limits
         public async Task<ActionResult<BankAccount>> Post([FromBody]BankAccount bankAccount)
         {
             this.Log.Start();
@@ -77,7 +80,7 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         /// <response code="200">Ok</response>
         /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
         [HttpGet("{bankAccountID}")]
-        [Produces("application / json")]// Define MediaType limits
+        [Produces("application / json")] // Define MediaType limits
         [ProducesResponseType(typeof(BankAccount), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<BankAccount>> Get(int bankAccountID)
@@ -86,10 +89,10 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
 
             var result = await this.Mediator.Send(new GetBankAccountByIDQuery(bankAccountID)).ConfigureAwait(false);
 
-            if (result == null)
+            if (result.Status == ResultStatus.NotFound)
                 return this.Log.Finish(this.NotFound());
             else
-                return this.Log.Finish(this.Ok(result));
+                return this.Log.Finish(this.Ok(result.Value));
         }
 
         /// <summary>Returns the transactions since the last bank account statement for the BankAccount with the given ID.</summary>
@@ -97,7 +100,8 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
         /// <returns>A list of BankAccountTransaction</returns>
         /// <response code="200">Ok</response>
         /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
-        [HttpGet("{bankAccountID}/transactions")]
+        [HttpGet("{bankAccountID}/transactions")] // Define MediaType limits
+        [Produces("application / json")] // Define MediaType limits
         [ProducesResponseType(typeof(IEnumerable<BankAccount>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<BankAccountTransaction>>> GetBankAccountTransactionListAsync(int bankAccountID)
@@ -106,7 +110,7 @@ namespace AdminAssistant.Blazor.Server.WebAPI.v1
 
             var result = await this.Mediator.Send(new GetBankAccountTransactionsByIDQuery(bankAccountID)).ConfigureAwait(false);
 
-            if (result == null)
+            if (result.Status == ResultStatus.NotFound)
                 return this.Log.Finish(this.NotFound());
             else
                 return this.Log.Finish(this.Ok(result));
