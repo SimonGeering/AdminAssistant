@@ -1,3 +1,9 @@
+#pragma warning disable CA1721 // Property names should not match get methods
+#pragma warning disable CA1000 // Do not declare static members on generic types
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+#pragma warning disable CS8603 // Possible null reference return.
+#pragma warning disable CA1724 // Type names should not match namespaces.
 //----------------------------------------------------------------------------------------------------------------------
 //     Author:  Steve Smith (https://github.com/ardalis)
 //     GitHub:  https://github.com/ardalis/Result/blob/master/src/Ardalis.Result/Result.cs
@@ -62,3 +68,9 @@ namespace Ardalis.Result
         }
     }
 }
+#pragma warning restore CA1724 // Type names should not match namespaces.
+#pragma warning restore CS8603 // Possible null reference return.
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
+#pragma warning restore CA1000 // Do not declare static members on generic types
+#pragma warning restore CA1721 // Property names should not match get methods

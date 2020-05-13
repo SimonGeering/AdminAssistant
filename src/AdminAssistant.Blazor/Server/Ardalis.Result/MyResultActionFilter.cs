@@ -1,3 +1,5 @@
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+#pragma warning disable CA1710 // Identifiers should have correct suffix
 //----------------------------------------------------------------------------------------------------------------------
 //     Author:  Steve Smith (https://github.com/ardalis)
 //     GitHub:  https://github.com/ardalis/Result/blob/master/sample/Ardalis.Result.SampleWeb/MyResultActionFilter.cs
@@ -37,3 +39,5 @@ namespace Ardalis.Result.SampleWeb
         }
     }
 }
+#pragma warning restore CA1710 // Identifiers should have correct suffix
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
