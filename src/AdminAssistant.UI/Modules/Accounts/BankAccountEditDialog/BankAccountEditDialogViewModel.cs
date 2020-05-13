@@ -36,8 +36,8 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             {
                 Guard.Against.Null(bankAccount, nameof(bankAccount));
 
-                this.HeaderText = this.Model.BankAccountID == Constants.NewRecordID ? NewBankAccountHeader : EditBankAccountHeader;
                 this.Model = bankAccount;
+                this.HeaderText = this.Model.BankAccountID == Constants.NewRecordID ? NewBankAccountHeader : EditBankAccountHeader;
                 this.RefreshValidation();
                 this.ShowDialog = true;
             };
