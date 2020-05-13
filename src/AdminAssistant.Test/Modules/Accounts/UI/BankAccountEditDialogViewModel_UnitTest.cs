@@ -44,7 +44,7 @@ namespace AdminAssistant.Accounts.Modules.Accounts.UI
 
             // Act
             var vm = services.BuildServiceProvider().GetRequiredService<IBankAccountEditDialogViewModel>();
-            await vm.InitializeAsync().ConfigureAwait(false);
+            await vm.OnInitializedAsync().ConfigureAwait(false);
 
             // Assert
             vm.BankAccountTypes.Should().NotBeNullOrEmpty();

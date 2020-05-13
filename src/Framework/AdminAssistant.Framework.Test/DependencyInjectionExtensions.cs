@@ -8,7 +8,13 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddMocksOfExternalDependencies(this IServiceCollection services)
         {
-            services.AddTransient(sp => new Mock<ILoggerFactory>().Object);
+            var mockLoggerFactory = new Mock<ILoggerFactory>();
+
+            mockLoggerFactory
+                .Setup(x => x.CreateLogger(It.IsAny<string>()))
+                .Returns(new Mock<ILogger>().Object);
+
+            services.AddTransient((sp) => mockLoggerFactory.Object);
             services.AddTransient(sp => new Mock<HttpClient>().Object);
         }
     }
