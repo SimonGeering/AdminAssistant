@@ -1,23 +1,32 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.Modules.Accounts;
-using MediatR;
+using AdminAssistant.Framework.Providers;
+using Ardalis.Result;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetBankAccountTypesHandler : IRequestHandler<GetBankAccountTypesQuery, IEnumerable<BankAccountType>>
+    public class GetBankAccountTypesHandler : RequestHandlerBase<GetBankAccountTypesQuery, Result<IEnumerable<BankAccountType>>>
     {
         private readonly IBankAccountTypeRepository bankAccountTypeRepository;
 
-        public GetBankAccountTypesHandler(IBankAccountTypeRepository bankAccountTypeRepository)
+        public GetBankAccountTypesHandler(IBankAccountTypeRepository bankAccountTypeRepository, ILoggingProvider loggingProvider)
+            : base(loggingProvider)
         {
             this.bankAccountTypeRepository = bankAccountTypeRepository;
         }
 
-        public async Task<IEnumerable<BankAccountType>> Handle(GetBankAccountTypesQuery request, CancellationToken cancellationToken)
+        public override async Task<Result<IEnumerable<BankAccountType>>> Handle(GetBankAccountTypesQuery request, CancellationToken cancellationToken)
         {
-            return await bankAccountTypeRepository.GetBankAccountTypeListAsync().ConfigureAwait(false);
+            this.Log.Start();
+
+            var result = await bankAccountTypeRepository.GetBankAccountTypeListAsync().ConfigureAwait(false);
+
+            Trace.Assert(result.Count > 0, "BankAccountType list was not populated.");
+
+            return this.Log.Finish(Result<IEnumerable<BankAccountType>>.Success(result));
         }
     }
 }
