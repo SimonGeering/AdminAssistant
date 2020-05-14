@@ -3,7 +3,7 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.DAL.EntityFramework.Model
 {
-    public class BankAccountTypeEntity : IMapping<BankAccountTypeEntity, BankAccountType>
+    public class BankAccountTypeEntity : IMapTo<BankAccountType>
     {
         public int BankAccountTypeID { get; set; }
         public string Description { get; set; } = string.Empty;
