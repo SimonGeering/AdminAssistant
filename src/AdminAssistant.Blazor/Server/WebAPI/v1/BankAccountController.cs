@@ -72,15 +72,15 @@ namespace AdminAssistant.WebAPI.v1
             //    return this.Log.Finish(this.Ok(result));
         }
 
-        /// <summary>Returns a BankAccount with the given ID.</summary>
+        /// <summary>Returns a BankAccountResponseDto with the given ID.</summary>
         /// <param name="bankAccountID">The ID of the BankAccount to be returned.</param>
-        /// <returns>A BankAccount</returns>
+        /// <returns>A BankAccountResponseDto</returns>
         /// <response code="200">Ok</response>
         /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
         [HttpGet("{bankAccountID}")]
-        [ProducesResponseType(typeof(BankAccount), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<BankAccount>> Get(int bankAccountID)
+        public async Task<ActionResult<BankAccountResponseDto>> Get(int bankAccountID)
         {
             this.Log.Start();
 
@@ -88,8 +88,9 @@ namespace AdminAssistant.WebAPI.v1
 
             if (result.Status == ResultStatus.NotFound)
                 return this.Log.Finish(this.NotFound());
-            else
-                return this.Log.Finish(this.Ok(result.Value));
+
+            var response = this.Mapper.Map<BankAccountResponseDto>(result.Value);
+            return this.Log.Finish(this.Ok(response));
         }
 
         /// <summary>Returns the transactions since the last bank account statement for the BankAccount with the given ID.</summary>
