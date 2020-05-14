@@ -23,7 +23,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <returns>The updated BankAccount</returns>
         /// <response code="200">Ok</response>
         [HttpPut]
-        [Produces("application / json")] // Define MediaType limits
+        [Produces("application/json")] // Define MediaType limits
         [ProducesResponseType(typeof(BankAccount), StatusCodes.Status202Accepted)]
         public async Task<ActionResult<BankAccount>> Put([FromBody]BankAccount bankAccount)
         {
@@ -51,7 +51,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <param name="bankAccount"></param>
         /// <returns>The newly created BankAccount</returns>
         [HttpPost]
-        [Produces("application / json")] // Define MediaType limits
+        [Produces("application/json")] // Define MediaType limits
         public async Task<ActionResult<BankAccount>> Post([FromBody]BankAccount bankAccount)
         {
             this.Log.Start();
@@ -80,7 +80,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <response code="200">Ok</response>
         /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
         [HttpGet("{bankAccountID}")]
-        [Produces("application / json")] // Define MediaType limits
+        [Produces("application/json")] // Define MediaType limits
         [ProducesResponseType(typeof(BankAccount), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<BankAccount>> Get(int bankAccountID)
@@ -101,7 +101,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <response code="200">Ok</response>
         /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
         [HttpGet("{bankAccountID}/transactions")] // Define MediaType limits
-        [Produces("application / json")] // Define MediaType limits
+        [Produces("application/json")] // Define MediaType limits
         [ProducesResponseType(typeof(IEnumerable<BankAccount>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<BankAccountTransaction>>> GetBankAccountTransactionListAsync(int bankAccountID)

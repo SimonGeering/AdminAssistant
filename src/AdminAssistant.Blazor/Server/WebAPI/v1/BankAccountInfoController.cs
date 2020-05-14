@@ -21,7 +21,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <returns>A collection of BankAccountInfo</returns>
         /// <response code="200">Ok - When one or more BankAccountInfo items are returned</response>
         [HttpGet]
-        [Produces("application / json")] // Define MediaType limits
+        [Produces("application/json")] // Define MediaType limits
         [ProducesResponseType(typeof(IEnumerable<BankAccountInfo>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<BankAccountInfo>>> Get()
         {

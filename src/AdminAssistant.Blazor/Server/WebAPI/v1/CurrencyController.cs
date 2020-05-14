@@ -20,7 +20,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <returns>A list of CurrencyResponseDto</returns>
         /// <response code="200">Ok</response>
         [HttpGet]
-        [Produces("application / json")] // Define MediaType limits
+        [Produces("application/json")] // Define MediaType limits
         [ProducesResponseType(typeof(IEnumerable<CurrencyResponseDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<CurrencyResponseDto>>> Get()
         {
