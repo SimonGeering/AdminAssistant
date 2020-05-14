@@ -5,7 +5,8 @@ namespace AdminAssistant.DomainModel.Infrastructure
         public User GetCurrentUser()
         {
             // TODO: Implement IUserContextProvider.GetCurrentUser;
-            return new User() { SignOn = "simongeering" };
+            // TODO: Hard coded user ID.
+            return new User() { UserID = 10, SignOn = "simongeering" };
         }
     }
 }
