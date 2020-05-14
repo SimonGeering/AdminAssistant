@@ -58,7 +58,7 @@ namespace AdminAssistant.Blazor.Server
                 c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
             });
 
-            services.AddAutoMapper(typeof(DAL.MappingProfile));
+            services.AddAutoMapper(typeof(DAL.MappingProfile), typeof(WebAPI.MappingProfile));
             services.AddAdminAssistantServerServices(this.configuration);
         }
 
