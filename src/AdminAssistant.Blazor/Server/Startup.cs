@@ -1,3 +1,4 @@
+using AdminAssistant.DomainModel.Infrastructure;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using MicroElements.Swashbuckle.FluentValidation;
@@ -63,7 +64,7 @@ namespace AdminAssistant.Blazor.Server
             });
 
             services.AddAutoMapper(typeof(DAL.MappingProfile), typeof(WebAPI.MappingProfile));
-            services.AddAdminAssistantServerServices(this.configuration);
+            services.AddAdminAssistantServerServices(this.configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

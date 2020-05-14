@@ -16,7 +16,6 @@ namespace Microsoft.Extensions.DependencyInjection
             AddSharedDomainModel(services);
 
             // AddInfrastructureDomainModel ...
-            services.AddTransient<IConfigurationManager, ConfigurationManager>();
             services.AddTransient<IUserContextProvider, UserContextProvider>();
 
             // Set-up Add MediatR ...

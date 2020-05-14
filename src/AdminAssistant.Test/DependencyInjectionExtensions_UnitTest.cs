@@ -1,10 +1,11 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using AdminAssistant.DomainModel.Infrastructure;
 using Ardalis.GuardClauses;
 using FluentAssertions;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Xunit;
@@ -13,19 +14,14 @@ namespace AdminAssistant
 {
     public class ServiceCollection_Should
     {
+        [Fact]
         [Trait("Category", "Unit")]
         public async Task BeAbleToInstantiateAllRegisteredServerSideTypes()
         {
             // Arrange
-            var mockConfiguration = new Mock<IConfiguration>();
             var services = new ServiceCollection();
             services.AddMocksOfExternalDependencies();
-            services.AddAdminAssistantServerServices(mockConfiguration.Object);
-
-            // Mock any dependent services provided by the IWebHostBuilder ...
-            // While this limits the scope of the test to AdminAssistant dependencies,
-            // it is a compromise vs Spinning up TestHosts etc.
-            services.AddTransient(x => mockConfiguration.Object);
+            services.AddAdminAssistantServerServices(new ConfigurationSettings() { ConnectionString= "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
 
             var serviceProvider = services.BuildServiceProvider();
 
@@ -54,7 +50,8 @@ namespace AdminAssistant
             }
 
             // Assert
-            result.Should().HaveCount(services.Count);
+            var expectedInstanceCountExcludingMediatR = services.Count(x => x.ServiceType.FullName?.StartsWith("MediatR", StringComparison.InvariantCulture) == false);
+            result.Should().HaveCount(expectedInstanceCountExcludingMediatR);
             await Task.CompletedTask.ConfigureAwait(false);
         }
 

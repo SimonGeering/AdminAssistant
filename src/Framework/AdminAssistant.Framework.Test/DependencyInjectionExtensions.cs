@@ -1,4 +1,5 @@
 using System.Net.Http;
+using AutoMapper;
 using Microsoft.Extensions.Logging;
 using Moq;
 
@@ -16,6 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddTransient((sp) => mockLoggerFactory.Object);
             services.AddTransient(sp => new Mock<HttpClient>().Object);
+            services.AddTransient((sp) => new Mock<IMapper>().Object);
         }
     }
 }
