@@ -16,21 +16,21 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         public const string NewBankAccountHeader = "New bank account";
         public const string EditBankAccountHeader = "Edit bank account";
 
-        private readonly IHttpClientJsonProvider httpClient;
         private readonly IAccountsStateStore accountsStateStore;
         private readonly IBankAccountValidator bankAccountValidator;
+        private readonly IAccountsService accountsService;
 
         public BankAccountEditDialogViewModel(
+            ILoggingProvider log,
             ILoadingSpinner loadingSpinner,
-            IHttpClientJsonProvider httpClient,
             IAccountsStateStore accountsStateStore,
-            IBankAccountValidator bankAccountValidator,
-            ILoggingProvider log)
+            IBankAccountValidator bankAccountValidator,            
+            IAccountsService accountsService)
             : base(log, loadingSpinner)
         {
-            this.httpClient = httpClient;
             this.accountsStateStore = accountsStateStore;
             this.bankAccountValidator = bankAccountValidator;
+            this.accountsService = accountsService;
 
             this.accountsStateStore.EditAccount += (BankAccount bankAccount) =>
             {
@@ -142,50 +142,23 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             this.Log.Start();
             this.LoadingSpinner.OnShowLoadingSpinner();
 
-            await this.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
-            await this.LoadCurrencyLookupDataAsync().ConfigureAwait(false);
-
-            this.LoadingSpinner.OnHideLoadingSpinner();
-
-            await base.OnInitializedAsync().ConfigureAwait(false);
-            this.Log.Finish();
-        }
-
-        private async Task LoadBankAccountTypesLookupDataAsync()
-        {
-            this.Log.Start();
-
-            var response = await httpClient.GetFromJsonAsync<BankAccountType[]>("api/v1/BankAccountType").ConfigureAwait(false);
-
-            var values = new List<BankAccountType>(response);
-            values.Insert(0, new BankAccountType() { BankAccountTypeID = 0, Description = string.Empty });
-
-            this.BankAccountTypes = values;
+            this.BankAccountTypes = await this.accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
 #if DEBUG
             foreach (var item in this.BankAccountTypes)
             {
                 this.Log.LogDebug($"[BankAccountType - BankAccountTypeID: {item.BankAccountTypeID} Description: {item.Description}]");
             }
 #endif
-            this.Log.Finish();
-        }
-
-        private async Task LoadCurrencyLookupDataAsync()
-        {
-            this.Log.Start();
-
-            var response = await httpClient.GetFromJsonAsync<Currency[]>("api/v1/Currency").ConfigureAwait(false);
-
-            var values = new List<Currency>(response);
-            values.Insert(0, new Currency() { CurrencyID = 0, Symbol = string.Empty, DecimalFormat = string.Empty });
-
-            this.Currencies = values;
+            this.Currencies = await this.accountsService.LoadCurrencyLookupDataAsync().ConfigureAwait(false);
 #if DEBUG
             foreach (var item in this.Currencies)
             {
                 this.Log.LogDebug($"[Currency - CurrencyID: {item.CurrencyID} Symbol: {item.Symbol} DecimalFormat: {item.DecimalFormat}]");
             }
 #endif
+            this.LoadingSpinner.OnHideLoadingSpinner();
+
+            await base.OnInitializedAsync().ConfigureAwait(false);
             this.Log.Finish();
         }
 
