@@ -9,7 +9,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.Blazor.Server.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1
 {
     public class BankAccountController : WebAPIControllerBase
     {
