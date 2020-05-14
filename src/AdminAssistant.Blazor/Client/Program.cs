@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Blazor.Extensions.Logging;
 using FluentValidation;
+using AutoMapper;
 
 namespace AdminAssistant.Blazor.Client
 {
@@ -40,6 +41,7 @@ namespace AdminAssistant.Blazor.Client
                 // TODO: Configure other production logging options.
 #endif
             });
+            builder.Services.AddAutoMapper(typeof(WebAPI.MappingProfile));
 
             // See https://github.com/ryanelian/FluentValidation.Blazor
             builder.Services.AddValidatorsFromAssemblyContaining<DomainModel.Modules.Accounts.Validation.BankAccountValidator>();
