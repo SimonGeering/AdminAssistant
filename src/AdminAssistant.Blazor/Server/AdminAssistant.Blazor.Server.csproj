@@ -44,6 +44,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\AdminAssistant.DAL\AdminAssistant.DAL.csproj" />
     <ProjectReference Include="..\..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+    <ProjectReference Include="..\..\AdminAssistant.WebAPI\AdminAssistant.WebAPI.csproj" />
     <ProjectReference Include="..\..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
     <ProjectReference Include="..\Client\AdminAssistant.Blazor.Client.csproj" />
   </ItemGroup>
