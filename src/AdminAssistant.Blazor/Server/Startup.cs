@@ -3,6 +3,7 @@ using FluentValidation.AspNetCore;
 using MicroElements.Swashbuckle.FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +38,10 @@ namespace AdminAssistant.Blazor.Server
         {
             services.AddMvc(opts =>
             {
-                opts.ReturnHttpNotAcceptable = true;
+                // Define MediaType limits ...
+                opts.Filters.Add(new ProducesAttribute("application/json")); // Response limit
+                opts.Filters.Add(new ConsumesAttribute("application/json")); // Request limit
+                opts.ReturnHttpNotAcceptable = true; // Force client to only request media types based on the above limits.
             });
             services.AddResponseCompression(opts =>
             {
