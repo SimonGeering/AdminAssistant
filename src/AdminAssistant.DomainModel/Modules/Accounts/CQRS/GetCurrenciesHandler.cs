@@ -8,7 +8,7 @@ using Ardalis.Result;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetCurrenciesHandler : RequestHandlerBase<GetCurrenciesQuery, Result<IEnumerable<Currency>>>
+    public class GetCurrenciesHandler : RequestHandlerBase<CurrenciesQuery, Result<IEnumerable<Currency>>>
     {
         private readonly ICurrencyRepository currencyRepository;
 
@@ -18,7 +18,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
             this.currencyRepository = currencyRepository;
         }
 
-        public override async Task<Result<IEnumerable<Currency>>> Handle(GetCurrenciesQuery request, CancellationToken cancellationToken)
+        public override async Task<Result<IEnumerable<Currency>>> Handle(CurrenciesQuery request, CancellationToken cancellationToken)
         {
             this.Log.Start();
 

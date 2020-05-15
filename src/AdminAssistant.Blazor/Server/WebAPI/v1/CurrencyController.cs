@@ -25,7 +25,7 @@ namespace AdminAssistant.WebAPI.v1
         {
             this.Log.Start();
 
-            var result = await Mediator.Send(new GetCurrenciesQuery()).ConfigureAwait(false);
+            var result = await Mediator.Send(new CurrenciesQuery()).ConfigureAwait(false);
             var response = this.Mapper.Map<IEnumerable<CurrencyResponseDto>>(result.Value);
 
             return this.Log.Finish(this.Ok(response));

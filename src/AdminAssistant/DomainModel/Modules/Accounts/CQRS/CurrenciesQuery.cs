@@ -4,7 +4,7 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetCurrenciesQuery : IRequest<Result<IEnumerable<Currency>>>
+    public class CurrenciesQuery : IRequest<Result<IEnumerable<Currency>>>
     {
     }
 }
