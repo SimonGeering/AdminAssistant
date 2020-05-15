@@ -6,11 +6,11 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetBankAccountByIDHandler : IRequestHandler<GetBankAccountByIDQuery, Result<BankAccount>>
+    public class BankAccountGetByIDHandler : IRequestHandler<GetBankAccountByIDQuery, Result<BankAccount>>
     {
         private readonly IBankAccountRepository bankAccountRepository;
 
-        public GetBankAccountByIDHandler(IBankAccountRepository bankAccountRepository)
+        public BankAccountGetByIDHandler(IBankAccountRepository bankAccountRepository)
         {
             this.bankAccountRepository = bankAccountRepository;
         }
