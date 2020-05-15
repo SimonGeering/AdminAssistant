@@ -21,7 +21,7 @@ namespace AdminAssistant.WebAPI.v1
 
         /// <summary>Updates and existing BankAccount.</summary>
         /// <param name="bankAccountUpdateRequest">The BankAccount for which updates are to be persisted</param>
-        /// <returns>The updated BankAccount</returns>
+        /// <returns>The updated BankAccountResponseDto</returns>
         /// <response code="200">Ok</response>
         /// <response code="404">NotFound - When the BankAccountID of the given <paramref name="bankAccountUpdateRequest"/> does not exist.</response>
         /// <response code="422">UnprocessableEntity - When the given <paramref name="bankAccountUpdateRequest"/> is invalid.</response>
@@ -29,7 +29,7 @@ namespace AdminAssistant.WebAPI.v1
         [ProducesResponseType(typeof(BankAccount), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
-        public async Task<ActionResult<BankAccount>> Put([FromBody]BankAccountUpdateRequestDto bankAccountUpdateRequest)
+        public async Task<ActionResult<BankAccountResponseDto>> Put([FromBody]BankAccountUpdateRequestDto bankAccountUpdateRequest)
         {
             this.Log.Start();
 
