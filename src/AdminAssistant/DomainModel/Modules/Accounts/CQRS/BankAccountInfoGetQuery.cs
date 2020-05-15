@@ -4,9 +4,9 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetBankAccountInfoQuery : IRequest<Result<IEnumerable<BankAccountInfo>>>
+    public class BankAccountInfoGetQuery : IRequest<Result<IEnumerable<BankAccountInfo>>>
     {
-        public GetBankAccountInfoQuery(int ownerID)
+        public BankAccountInfoGetQuery(int ownerID)
         {
             this.OwnerID = ownerID;
         }

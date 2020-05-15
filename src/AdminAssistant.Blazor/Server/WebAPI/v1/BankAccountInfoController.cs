@@ -29,7 +29,7 @@ namespace AdminAssistant.WebAPI.v1
         {
             this.Log.Start();
             
-            var result = await Mediator.Send(new GetBankAccountInfoQuery(this.userContextProvider.GetCurrentUser().UserID)).ConfigureAwait(false);
+            var result = await Mediator.Send(new BankAccountInfoGetQuery(this.userContextProvider.GetCurrentUser().UserID)).ConfigureAwait(false);
             var response = Mapper.Map<IEnumerable<BankAccountInfoResponseDto>>(result.Value);
 
             return this.Log.Finish(this.Ok(response));
