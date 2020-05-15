@@ -4,7 +4,7 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetBankAccountTypesQuery : IRequest<Result<IEnumerable<BankAccountType>>>
+    public class BankAccountTypesQuery : IRequest<Result<IEnumerable<BankAccountType>>>
     {
     }
 }

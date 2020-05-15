@@ -25,7 +25,7 @@ namespace AdminAssistant.WebAPI.v1
         {
             this.Log.Start();
 
-            var result = await Mediator.Send(new GetBankAccountTypesQuery()).ConfigureAwait(false);
+            var result = await Mediator.Send(new BankAccountTypesQuery()).ConfigureAwait(false);
             var response = Mapper.Map<IEnumerable<BankAccountTypeResponseDto>>(result.Value);
 
             return this.Log.Finish(this.Ok(response));
