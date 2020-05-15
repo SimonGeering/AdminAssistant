@@ -8,11 +8,11 @@ using Ardalis.Result;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetBankAccountTypesHandler : RequestHandlerBase<BankAccountTypesQuery, Result<IEnumerable<BankAccountType>>>
+    public class BankAccountTypesHandler : RequestHandlerBase<BankAccountTypesQuery, Result<IEnumerable<BankAccountType>>>
     {
         private readonly IBankAccountTypeRepository bankAccountTypeRepository;
 
-        public GetBankAccountTypesHandler(IBankAccountTypeRepository bankAccountTypeRepository, ILoggingProvider loggingProvider)
+        public BankAccountTypesHandler(IBankAccountTypeRepository bankAccountTypeRepository, ILoggingProvider loggingProvider)
             : base(loggingProvider)
         {
             this.bankAccountTypeRepository = bankAccountTypeRepository;
