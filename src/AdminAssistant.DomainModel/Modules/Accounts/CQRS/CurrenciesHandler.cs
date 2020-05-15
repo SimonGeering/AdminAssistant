@@ -8,11 +8,11 @@ using Ardalis.Result;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetCurrenciesHandler : RequestHandlerBase<CurrenciesQuery, Result<IEnumerable<Currency>>>
+    public class CurrenciesHandler : RequestHandlerBase<CurrenciesQuery, Result<IEnumerable<Currency>>>
     {
         private readonly ICurrencyRepository currencyRepository;
 
-        public GetCurrenciesHandler(ICurrencyRepository currencyRepository, ILoggingProvider loggingProvider)
+        public CurrenciesHandler(ICurrencyRepository currencyRepository, ILoggingProvider loggingProvider)
             : base(loggingProvider)
         {
             this.currencyRepository = currencyRepository;
