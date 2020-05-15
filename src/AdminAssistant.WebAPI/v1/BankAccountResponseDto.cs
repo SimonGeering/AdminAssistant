@@ -4,7 +4,7 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.WebAPI.v1
 {
-    public class BankAccountResponseDto : IMapFrom<BankAccount>, IMapTo<BankAccount>
+    public class BankAccountResponseDto : IMapFrom<BankAccount>
     {
         public int BankAccountID { get; set; }
         public int BankAccountTypeID { get; set; }

@@ -26,7 +26,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <response code="404">NotFound - When the BankAccountID of the given <paramref name="bankAccountUpdateRequest"/> does not exist.</response>
         /// <response code="422">UnprocessableEntity - When the given <paramref name="bankAccountUpdateRequest"/> is invalid.</response>
         [HttpPut]
-        [ProducesResponseType(typeof(BankAccount), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
         public async Task<ActionResult<BankAccountResponseDto>> Put([FromBody]BankAccountUpdateRequestDto bankAccountUpdateRequest)
@@ -100,13 +100,13 @@ namespace AdminAssistant.WebAPI.v1
 
         /// <summary>Returns the transactions since the last bank account statement for the BankAccount with the given ID.</summary>
         /// <param name="bankAccountID">The ID of the BankAccount.</param>
-        /// <returns>A list of BankAccountTransaction</returns>
+        /// <returns>A list of BankAccountTransactionResponseDto</returns>
         /// <response code="200">Ok</response>
         /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
         [HttpGet("{bankAccountID}/transactions")] // Define MediaType limits
-        [ProducesResponseType(typeof(IEnumerable<BankAccount>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(IEnumerable<BankAccountTransactionResponseDto>), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<BankAccountTransaction>>> GetBankAccountTransactionListAsync(int bankAccountID)
+        public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> GetBankAccountTransactionListAsync(int bankAccountID)
         {
             this.Log.Start();
 
@@ -114,8 +114,9 @@ namespace AdminAssistant.WebAPI.v1
 
             if (result.Status == ResultStatus.NotFound)
                 return this.Log.Finish(this.NotFound());
-            else
-                return this.Log.Finish(this.Ok(result));
+
+            var response = this.Mapper.Map<BankAccountTransactionResponseDto>(result.Value);
+            return this.Log.Finish(this.Ok(result));
         }
     }
 }
