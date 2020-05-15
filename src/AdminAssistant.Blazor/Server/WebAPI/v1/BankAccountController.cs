@@ -110,7 +110,7 @@ namespace AdminAssistant.WebAPI.v1
         {
             this.Log.Start();
 
-            var result = await this.Mediator.Send(new BankAccountTransactionsByIDQuery(bankAccountID)).ConfigureAwait(false);
+            var result = await this.Mediator.Send(new BankAccountTransactionsByBankAccountIDQuery(bankAccountID)).ConfigureAwait(false);
 
             if (result.Status == ResultStatus.NotFound)
                 return this.Log.Finish(this.NotFound());
