@@ -3,9 +3,9 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class BankAccountGetByIDQuery : IRequest<Result<BankAccount>>
+    public class BankAccountByIDQuery : IRequest<Result<BankAccount>>
     {
-        public BankAccountGetByIDQuery(int bankAccountID)
+        public BankAccountByIDQuery(int bankAccountID)
         {
             this.BankAccountID = bankAccountID;
         }

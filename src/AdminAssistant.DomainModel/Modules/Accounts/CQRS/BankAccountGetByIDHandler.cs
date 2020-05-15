@@ -6,7 +6,7 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class BankAccountGetByIDHandler : IRequestHandler<BankAccountGetByIDQuery, Result<BankAccount>>
+    public class BankAccountGetByIDHandler : IRequestHandler<BankAccountByIDQuery, Result<BankAccount>>
     {
         private readonly IBankAccountRepository bankAccountRepository;
 
@@ -15,7 +15,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
             this.bankAccountRepository = bankAccountRepository;
         }
 
-        public async Task<Result<BankAccount>> Handle(BankAccountGetByIDQuery request, CancellationToken cancellationToken)
+        public async Task<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
         {
             var bankAccount = await bankAccountRepository.GetBankAccountAsync(request.BankAccountID).ConfigureAwait(false);
 
