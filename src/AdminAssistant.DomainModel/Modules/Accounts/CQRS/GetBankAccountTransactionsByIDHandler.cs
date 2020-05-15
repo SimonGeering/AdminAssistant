@@ -8,7 +8,7 @@ using Ardalis.Result;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetBankAccountTransactionsByIDHandler : RequestHandlerBase<GetBankAccountTransactionsByIDQuery, Result<IEnumerable<BankAccountTransaction>>>
+    public class GetBankAccountTransactionsByIDHandler : RequestHandlerBase<BankAccountTransactionsByIDQuery, Result<IEnumerable<BankAccountTransaction>>>
     {
         private readonly IBankAccountRepository bankAccountRepository;
 
@@ -18,7 +18,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
             this.bankAccountRepository = bankAccountRepository;
         }
 
-        public override async Task<Result<IEnumerable<BankAccountTransaction>>> Handle(GetBankAccountTransactionsByIDQuery request, CancellationToken cancellationToken)
+        public override async Task<Result<IEnumerable<BankAccountTransaction>>> Handle(BankAccountTransactionsByIDQuery request, CancellationToken cancellationToken)
         {
             this.Log.Start();
 
