@@ -89,7 +89,7 @@ namespace AdminAssistant.WebAPI.v1
         {
             this.Log.Start();
 
-            var result = await this.Mediator.Send(new GetBankAccountByIDQuery(bankAccountID)).ConfigureAwait(false);
+            var result = await this.Mediator.Send(new BankAccountGetByIDQuery(bankAccountID)).ConfigureAwait(false);
 
             if (result.Status == ResultStatus.NotFound)
                 return this.Log.Finish(this.NotFound());
