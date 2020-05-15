@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.DomainModel.Modules.Accounts.CQRS;
@@ -24,7 +25,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <response code="200">Ok</response>
         [HttpPut]
         [ProducesResponseType(typeof(BankAccount), StatusCodes.Status202Accepted)]
-        public async Task<ActionResult<BankAccount>> Put([FromBody]BankAccount bankAccount)
+        public async Task<ActionResult<BankAccount>> Put([FromBody]BankAccountCreateRequestDto bankAccountRequest)
         {
             this.Log.Start();
 
@@ -32,8 +33,6 @@ namespace AdminAssistant.WebAPI.v1
             // TODO: Validate bankAccount and return BadRequest status code if invalid.
 
             // TODO: If bankAccount.BankAccountID != Constants.UnknownRecordID then check if exists in the DB and if not return NotFound status code
-
-            // TODO: do we want to split save into update and create before delegating to Mediator and if not do we wrap all Mediator responses so it determines the HTTP response code rather than the WebAPI controller?
 
             //var result = await Mediator.Send(new SaveBankAccountCommand(bankAccount)).ConfigureAwait(false);
 
@@ -46,30 +45,29 @@ namespace AdminAssistant.WebAPI.v1
             //    return this.Log.Finish(this.Ok(result));
         }
 
-        /// <summary></summary>
-        /// <param name="bankAccount"></param>
-        /// <returns>The newly created BankAccount</returns>
+        /// <summary>Creates a new BankAccount</summary>
+        /// <param name="bankAccountCreateRequest">The details of the BankAccount to be created</param>
+        /// <returns>A BankAccountResponseDto for the newly created BankAccount</returns>
+        /// <response code="201">Created - When the bank account was created ok.</response>
+        /// <response code="422">UnprocessableEntity - When the given <paramref name="bankAccountCreateRequest"/> is invalid.</response>
         [HttpPost]
-        public async Task<ActionResult<BankAccount>> Post([FromBody]BankAccount bankAccount)
+        [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+        public async Task<ActionResult<BankAccountResponseDto>> Post([FromBody]BankAccountCreateRequestDto bankAccountCreateRequest)
         {
             this.Log.Start();
 
-            throw new System.NotImplementedException();
-            // TODO: Validate bankAccount and return BadRequest status code if invalid.
+            var bankAccount = Mapper.Map<BankAccount>(bankAccountCreateRequest);
+            var result = await this.Mediator.Send(new BankAccountCreateCommand(bankAccount)).ConfigureAwait(false);
 
-            // TODO: If bankAccount.BankAccountID != Constants.UnknownRecordID then check if exists in the DB and if not return NotFound status code
+            if (result.Status == ResultStatus.Invalid)
+            {
+                result.ValidationErrors.ToList().ForEach((err) => this.ModelState.AddModelError(err.Key, err.Value));
+                return this.Log.Finish(this.UnprocessableEntity(this.ModelState)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
+            }
 
-            // TODO: do we want to split save into update and create before delegating to Mediator and if not do we wrap all Mediator responses so it determines the HTTP response code rather than the WebAPI controller?
-
-            //var result = await Mediator.Send(new SaveBankAccountCommand(bankAccount)).ConfigureAwait(false);
-
-            // TODO: Handle validation and Update vs Insert - missing item to update.
-
-            // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
-            //if (result == Constants.UnknownRecordID)
-            //    return this.Log.Finish(this.UnprocessableEntity());
-            //else
-            //    return this.Log.Finish(this.Ok(result));
+            var response = this.Mapper.Map<BankAccountResponseDto>(result.Value);
+            return this.Log.Finish(this.CreatedAtRoute(nameof(GetBankAccountById), new {bankAccountID = response.BankAccountID}, response));
         }
 
         /// <summary>Returns a BankAccountResponseDto with the given ID.</summary>
@@ -77,10 +75,10 @@ namespace AdminAssistant.WebAPI.v1
         /// <returns>A BankAccountResponseDto</returns>
         /// <response code="200">Ok</response>
         /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
-        [HttpGet("{bankAccountID}")]
+        [HttpGet("{bankAccountID}", Name = "GetBankAccountById")]
         [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<BankAccountResponseDto>> Get(int bankAccountID)
+        public async Task<ActionResult<BankAccountResponseDto>> GetBankAccountById(int bankAccountID)
         {
             this.Log.Start();
 

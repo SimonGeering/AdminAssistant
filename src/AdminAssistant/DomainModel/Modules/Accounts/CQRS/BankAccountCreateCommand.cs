@@ -1,10 +1,11 @@
+using Ardalis.Result;
 using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class SaveBankAccountCommand : IRequest<int>
+    public class BankAccountCreateCommand : IRequest<Result<BankAccount>>
     {
-        public SaveBankAccountCommand(BankAccount bankAccount)
+        public BankAccountCreateCommand(BankAccount bankAccount)
         {
             this.BankAccount = bankAccount;
         }
