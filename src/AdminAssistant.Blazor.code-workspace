@@ -22,10 +22,11 @@
       "**/AdminAssistant.db": true,
       "**/AdminAssistant.mdf": true,
       "**/AdminAssistant.ldf": true,
-      "**/AdminAssistant.Blazor.code-workspace": true,
-      "**/AdminAssistant.Blazor.sln": true,
+      "**/AdminAssistant.Xamarin/": true,
       "**/AdminAssistant.Xamarin.code-workspace": true,
-      "**/AdminAssistant.Xamarin.sln": true
+      "**/AdminAssistant.Xamarin.sln": true,
+      "**/AdminAssistant.code-workspace": true,
+      "**/AdminAssistant.sln": true,
     },
     "cSpell.language": "en-GB",
     "cSpell.enableCompoundWords": true,
@@ -37,7 +38,7 @@
       "**/vscode-extension/**",
       "**/.git/objects/**",
       ".vscode",
-      "**/AdminAssistant.code-workspace"
+      "**/AdminAssistant.Blazor.code-workspace"
     ],
     "cSpell.words": [
       "Admin",
