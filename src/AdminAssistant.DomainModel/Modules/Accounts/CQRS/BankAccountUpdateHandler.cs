@@ -20,6 +20,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 
         public async Task<Result<BankAccount>> Handle(BankAccountUpdateCommand command, CancellationToken cancellationToken)
         {
+            var validationResult = await bankAccountValidator.ValidateAsync(command.BankAccount).ConfigureAwait(false);
             throw new System.NotImplementedException();
             //var result = this.bankAccountValidator.Validate(command.BankAccount);
 
