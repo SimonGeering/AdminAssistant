@@ -42,8 +42,8 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
                 return log.Finish(Result<BankAccount>.Invalid(validationErrors));
             }
 
-            return log.Finish(Result<BankAccount>.Success(new BankAccount()));
-            //return await bankAccountRepository.Save().ConfigureAwait(false);
+            var result = await bankAccountRepository.CreateBankAccountAsync(command.BankAccount).ConfigureAwait(false);
+            return log.Finish(Result<BankAccount>.Success(result));
         }
     }
 }

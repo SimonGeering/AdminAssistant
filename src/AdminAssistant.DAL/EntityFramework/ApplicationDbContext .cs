@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using AdminAssistant.DAL.EntityFramework.Model;
 using AdminAssistant.DomainModel.Infrastructure;
 using AdminAssistant.DomainModel.Modules.Accounts;
@@ -32,6 +34,9 @@ namespace AdminAssistant.DAL.EntityFramework
         // this.UserProfilePermission_OnModelCreating(modelBuilder);
         // this.UserProfileSetting_OnModelCreating(modelBuilder);
         //
+        // TODO: Soft Delete https://medium.com/@unhandlederror/deleting-it-softly-with-ef-core-5f191db5cf72
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+
         void EnsureDatabaseIsCreated();
         void Migrate();
     }
@@ -55,27 +60,8 @@ namespace AdminAssistant.DAL.EntityFramework
         public DbSet<SettingEntity> Settings { get; set; } = null!;
         public DbSet<UserProfileEntity> UserProfiles { get; set; } = null!;
 
-        public void EnsureDatabaseIsCreated()
-        {
-            this.Database.EnsureCreated();
-        }
-        public void Migrate()
-        {
-            this.Database.Migrate();
-        }
-
-        public override int SaveChanges()
-        {
-            // https://medium.com/@unhandlederror/deleting-it-softly-with-ef-core-5f191db5cf72
-            // ChangeTracker.DetectChanges();
-
-            // foreach (var item in ChangeTracker.Entries().Where(e => e.State == EntityState.Deleted))
-            // {
-            //     item.State = EntityState.Modified;
-            //     item.CurrentValues["IsDeleted"] = true;
-            // }
-            return base.SaveChanges();
-        }
+        public void EnsureDatabaseIsCreated() => this.Database.EnsureCreated();
+        public void Migrate() => this.Database.Migrate();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

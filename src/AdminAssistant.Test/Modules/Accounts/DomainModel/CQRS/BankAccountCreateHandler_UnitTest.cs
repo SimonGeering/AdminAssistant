@@ -1,39 +1,39 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using System.Threading.Tasks;
 using AdminAssistant.DAL.Modules.Accounts;
 using Ardalis.Result;
 using FluentAssertions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using System.Threading.Tasks;
 using Xunit;
-using Xunit.Abstractions;
-using Microsoft.Extensions.Logging;
-using System;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using ObjectCloner.Extensions; // https://github.com/marcelltoth/ObjectCloner
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
     public class BankAccountCreateHandler_Should
     {
-        private readonly ITestOutputHelper _testOutputHelper;
-
-        public BankAccountCreateHandler_Should(ITestOutputHelper testOutputHelper)
-        {
-            _testOutputHelper = testOutputHelper;
-        }
-
         [Fact]
         [Trait("Category", "Unit")]
         public async Task Return_ABankAccount_GivenAValidBankAccountCreateCommand()
         {
             // Arrange
+            var bankAccount = TestData.BankAccountBuilder.WithTestData().Build();
+
             var services = new ServiceCollection();
             services.AddMockLogging();
             services.AddAdminAssistantServerSideDomainModel();
-            services.AddTransient((sp) => new Mock<IBankAccountRepository>().Object);
 
-            var bankAccount = TestData.BankAccountBuilder.WithTestData().Build();
+            var mockBankAccountRepository = new Mock<IBankAccountRepository>();
+            mockBankAccountRepository.Setup(x => x.CreateBankAccountAsync(bankAccount))
+                .Returns(() =>
+                {
+                    var result = bankAccount.DeepClone();
+                    result.BankAccountID = 30;
+                    return Task.FromResult(result);
+                });
+
+            services.AddTransient((sp) => mockBankAccountRepository.Object);
 
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountCreateCommand(bankAccount)).ConfigureAwait(false);
@@ -41,15 +41,15 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
             // Assert
             result.Should().NotBeNull();
             result.Status.Should().Be(ResultStatus.Ok);
-            //result.ValidationErrors.Should().NotBeEmpty();
+            result.ValidationErrors.Should().BeEmpty();
+            result.Value.Should().NotBeNull();
+            result.Value.BankAccountID.Should().BeGreaterThan(Constants.NewRecordID);
         }
 
         [Fact]
         [Trait("Category", "Unit")]
         public async Task Return_ValidationError_GivenAnInvalidBankAccountCreateCommand()
         {
-            Console.WriteLine("Moo");
-
             // Arrange
             var services = new ServiceCollection();
             services.AddMockLogging();

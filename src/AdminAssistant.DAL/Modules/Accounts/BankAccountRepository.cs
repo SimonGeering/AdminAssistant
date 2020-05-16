@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.EntityFramework;
+using AdminAssistant.DAL.EntityFramework.Model;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -38,6 +39,16 @@ namespace AdminAssistant.DAL.Modules.Accounts
         {
             var source = await this.DbContext.BankAccountTransactions.Where(x => x.BankAccountID == bankAccountID).ToListAsync().ConfigureAwait(false);
             return this.Mapper.Map<List<BankAccountTransaction>>(source);
+        }
+
+        public async Task<BankAccount> CreateBankAccountAsync(BankAccount bankAccount)
+        {
+            var bankAccountToAdd = Mapper.Map<BankAccountEntity>(bankAccount);
+            this.DbContext.BankAccounts.Add(bankAccountToAdd);
+
+            await this.DbContext.SaveChangesAsync().ConfigureAwait(false);
+
+            return this.Mapper.Map<BankAccount>(bankAccountToAdd);
         }
     }
 }
