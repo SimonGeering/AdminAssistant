@@ -8,5 +8,7 @@ namespace AdminAssistant.UI.Modules.Accounts
     {
         Task<IList<BankAccountType>> LoadBankAccountTypesLookupDataAsync();
         Task<IList<Currency>> LoadCurrencyLookupDataAsync();
+        Task<BankAccount> CreateBankAccountAsync(BankAccount model);
+        Task<BankAccount> UpdateBankAccountAsync(BankAccount model);
     }
 }

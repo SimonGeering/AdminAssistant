@@ -2,7 +2,7 @@ using System;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts
 {
-    public class BankAccount
+    public class BankAccount : IDatabasePersistable
     {
         public const int AccountNameMaxLength = Constants.NameMaxLength;
 
@@ -15,5 +15,7 @@ namespace AdminAssistant.DomainModel.Modules.Accounts
         public int OpeningBalance { get; set; }
         public int CurrentBalance { get; set; }
         public DateTime OpenedOn { get; set; }
+
+        public int PrimaryKey => this.BankAccountID;
     }
 }
