@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.Accounts;
 
 namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
@@ -12,7 +13,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         IEnumerable<BankAccountType> BankAccountTypes { get; }
         IEnumerable<Currency> Currencies { get; }
 
-        void OnSaveButtonClick();
+        Task OnSaveButtonClick();
         void OnCancelButtonClick();
 
         void OnAccountNameChanged(string accountName);

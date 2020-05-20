@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.DomainModel.Modules.Accounts.Validation;
 using AdminAssistant.Framework.Providers;
@@ -37,7 +38,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
                 Guard.Against.Null(bankAccount, nameof(bankAccount));
 
                 this.Model = bankAccount;
-                this.HeaderText = this.Model.BankAccountID == Constants.NewRecordID ? NewBankAccountHeader : EditBankAccountHeader;
+                this.HeaderText = (this.Model as IDatabasePersistable).IsNew ? NewBankAccountHeader : EditBankAccountHeader;
                 this.RefreshValidation();
                 this.ShowDialog = true;
             };
@@ -113,13 +114,13 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         {
             this.Log.Start();
 
-            // TODO: Reset State.
+            this.Model = new BankAccount();
             this.ShowDialog = false;
 
             this.Log.Finish();
         }
 
-        public void OnSaveButtonClick()
+        public async Task OnSaveButtonClick()
         {
             this.Log.Start();
 
@@ -129,8 +130,18 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 
             if (canSave)
             {
-                // TODO: Save
-                // TODO: Notify caller
+                if ((this.Model as IDatabasePersistable).IsNew)
+                {
+                    var savedBankAccount = await this.accountsService.CreateBankAccountAsync(this.Model).ConfigureAwait(false);
+                    // TODO: Notify OnBankAccountCreated
+                    // this.accountsStateStore.OnBankAccountCreated(savedBankAccount);
+                }
+                else
+                {
+                    var savedBankAccount = await this.accountsService.UpdateBankAccountAsync(this.Model).ConfigureAwait(false);
+                    // TODO: Notify OnBankAccountUpdated
+                    // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
+                }
                 this.ShowDialog = false;
             }
             this.LoadingSpinner.OnHideLoadingSpinner();

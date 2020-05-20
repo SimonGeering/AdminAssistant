@@ -4,6 +4,7 @@ using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.Framework.Providers;
 using AdminAssistant.WebAPI.v1;
 using AutoMapper;
+using System;
 
 namespace AdminAssistant.UI.Modules.Accounts
 {
@@ -35,6 +36,36 @@ namespace AdminAssistant.UI.Modules.Accounts
             result.Insert(0, new Currency() { CurrencyID = 0, Symbol = string.Empty, DecimalFormat = string.Empty });
 
             return this.Log.Finish(result);
+        }
+
+        public async Task<BankAccount> CreateBankAccountAsync(BankAccount model)
+        {
+            this.Log.Start();
+
+            var request = this.Mapper.Map<BankAccountCreateRequestDto>(model);
+
+            var response = await this.HttpClient.PostAsJsonAsync("api/v1/BankAccount", request).ConfigureAwait(false);
+
+            //var result = this.Mapper.Map<BankAccount>(response.);
+
+            return null!; //this.Log.Finish(result);
+        }
+
+        public async Task<BankAccount> UpdateBankAccountAsync(BankAccount model)
+        {
+            this.Log.Start();
+
+            var request = this.Mapper.Map<BankAccountUpdateRequestDto>(model);
+
+            var response = await this.HttpClient.PutAsJsonAsync("api/v1/BankAccount", request).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode == false)
+            {
+            }
+
+            //var result = this.Mapper.Map<BankAccount>(response.Content.)
+
+            throw new NotImplementedException();
         }
     }
 }
