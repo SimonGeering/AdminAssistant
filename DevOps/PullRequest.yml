@@ -30,16 +30,7 @@ stages:
       displayName: 'Ensure CI uses correct sdk Version'
       inputs:
         packageType: 'sdk'
-        useGlobalJson: true
-        workingDirectory: 'src'
-    # Write out secret for NuGet.config to access DevExpress secured NuGet feed ...
-    # See https://supportcenter.devexpress.com/ticket/details/T818634/devexpress-nuget-how-to-hide-unique-nuget-feed-in-azure-devops-build-pipeline
-    - task: PowerShell@2
-      displayName: 'Load DevExpress secured NuGet feed'
-      inputs:
-        targetType: 'inline'
-        script: 'Write-Host "##vso[task.setvariable variable=DX_NUGET_PUB;]$(DX_NUGET)"'
-        pwsh: true
+        version: '3.1.300'
     # Restore dependencies ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet restore xamarin'

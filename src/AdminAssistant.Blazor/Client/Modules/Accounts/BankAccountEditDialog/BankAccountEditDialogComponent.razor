@@ -1,64 +1,50 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog.IBankAccountEditDialogViewModel>
 @using AdminAssistant.DomainModel.Modules.Accounts
 
-  <SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true">
-    <DialogTemplates>
-      <Header><div>@this.vm.HeaderText</div></Header>
-      <Content>
-        <SfSpinner @ref="this.SfSpinner" Target="#loadingTarget" Label="Loading...." Type="SpinnerType.Fabric" />
-        <div id="loadingTarget" class="cl-account-edit-dialog">
-          <div class="cl-row1">
-            <SfTextBox @bind-Value="@this.vm.BankAccount.AccountName" Placeholder="Account name" FloatLabelType="@FloatLabelType.Always"></SfTextBox>
-            <SfCheckBox @bind-Checked="@this.vm.BankAccount.IsBudgeted" Label="On budget"></SfCheckBox>
+<SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true" ShowCloseIcon="true">
+  <DialogTemplates>
+    <Header><div>@this.vm.HeaderText</div></Header>
+    <Content>
+      <SfSpinner @ref="this.SfSpinner" Target="#loadingTarget" Label="Loading...." Type="SpinnerType.Fabric" />
+      <div id="loadingTarget" class="cl-account-edit-dialog">
+        <div class="cl-row1">
+          <label>Account name</label>
+          <div class="form-group">
+            <SfTextBox Value="@this.vm.Model.AccountName" ValueChanged="@((value) => this.vm.OnAccountNameChanged(value))" Placeholder="@this.vm.AccountNameValidationMessage" CssClass="@this.vm.AccountNameValidationClass"></SfTextBox>
           </div>
+          <SfCheckBox @bind-Checked="@this.vm.Model.IsBudgeted" Label="On budget"></SfCheckBox>
+        </div>
 
-          <div class="cl-row2">
-            <div class="cl-account-type">
-              <SfDropDownList TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" FloatLabelType="FloatLabelType.Always" @bind-Value="@this.vm.BankAccount.BankAccountTypeID" DataSource="@this.vm.BankAccountTypes">
-                <DropDownListFieldSettings Text="Description" Value="BankAccountTypeID" />
-              </SfDropDownList>
-            </div>
-            <div class="cl-opened-on">
-              <SfDatePicker @bind-Value="@this.vm.BankAccount.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" Placeholder="Opened on" FloatLabelType="FloatLabelType.Always" />
-            </div>
-          </div>
-
-          <div class="cl-row3">
-            <SfDropDownList TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" FloatLabelType="FloatLabelType.Always" @bind-Value="@this.vm.BankAccount.CurrencyID" DataSource="@this.vm.Currencies">
-              <DropDownListFieldSettings Text="Symbol" Value="CurrencyID" />
+        <div class="cl-row2">
+          <label>Account Type</label>
+          <div class="cl-account-type">
+            <SfDropDownList @bind-Value="@this.vm.Model.BankAccountTypeID" OnChange="@(() => this.vm.OnBankAccountTypeChanged())" TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" DataSource="@this.vm.BankAccountTypes">
+              <DropDownListFieldSettings Text="Description" Value="BankAccountTypeID" />
             </SfDropDownList>
-            @*<div class="cl-label">Opening balance</div>
-            <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>*@
+          </div>
+          <label>Opened On</label>
+          <div class="cl-opened-on">
+            <SfDatePicker @bind-Value="@this.vm.Model.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" Placeholder="Opened on" />
           </div>
         </div>
-      </Content>
-    </DialogTemplates>
-    <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
-    <DialogButtons>
-      <DialogButton OnClick="@this.vm.OnSaveButtonClick">
-        <DialogButtonModel Content="Save" IsPrimary="true"></DialogButtonModel>
-      </DialogButton>
-      <DialogButton OnClick="@this.vm.OnCancelButtonClick">
-        <DialogButtonModel Content="Cancel"></DialogButtonModel>
-      </DialogButton>
-    </DialogButtons>
-  </SfDialog>
-
-@code
-{
-    protected override void OnInitialized()
-    {
-      this.vm.LoadingSpinner.ShowLoadingSpinner += () => this.SfSpinner.ShowSpinner("#loadingTarget");
-      this.vm.LoadingSpinner.HideLoadingSpinner += () => this.SfSpinner.HideSpinner("#loadingTarget");
-
-      base.OnInitialized();
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-      if (firstRender == false)
-        return;
-
-      await this.vm.InitializeAsync();
-    }
-}
+        <div class="cl-row3">
+          <label>Currency</label>
+          <SfDropDownList @bind-Value="@this.vm.Model.CurrencyID" OnChange="@(() => this.vm.OnCurrencyChanged())" TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" DataSource="@this.vm.Currencies">
+            <DropDownListFieldSettings Text="Symbol" Value="CurrencyID" />
+          </SfDropDownList>
+          @*<div class="cl-label">Opening balance</div>
+            <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>*@
+        </div>
+      </div>
+    </Content>
+  </DialogTemplates>
+  <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
+  <DialogButtons>
+    <DialogButton OnClick="@this.vm.OnCancelButtonClick">
+      <DialogButtonModel Content="Discard" IconCss="fa fa-lg fa-trash-o"></DialogButtonModel>
+    </DialogButton>
+    <DialogButton OnClick="@this.vm.OnSaveButtonClick">
+      <DialogButtonModel Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true"></DialogButtonModel>
+    </DialogButton>
+  </DialogButtons>
+</SfDialog>

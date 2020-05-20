@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using Ardalis.Result;
 using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.Accounts.CQRS
 {
-    public class GetBankAccountTransactionsByIDQuery : IRequest<IEnumerable<BankAccountTransaction>>
+    public class BankAccountTransactionsByBankAccountIDQuery : IRequest<Result<IEnumerable<BankAccountTransaction>>>
     {
-        public GetBankAccountTransactionsByIDQuery(int bankAccountID)
+        public BankAccountTransactionsByBankAccountIDQuery(int bankAccountID)
         {
             this.BankAccountID = bankAccountID;
         }

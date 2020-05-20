@@ -7,21 +7,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.DAL.Modules.Accounts
 {
-    public class CurrencyRepository : ICurrencyRepository
+    public class CurrencyRepository : RepositoryBase, ICurrencyRepository
     {
-        private readonly IApplicationDbContext db;
-        private readonly IMapper mapper;
-
-        public CurrencyRepository(IApplicationDbContext db, IMapper mapper)
+        public CurrencyRepository(IApplicationDbContext dbContext, IMapper mapper)
+            : base(dbContext, mapper)
         {
-            this.db = db;
-            this.mapper = mapper;
         }
 
         public async Task<IList<Currency>> GetCurrencyListAsync()
         {
-            var data = await db.Currencies.ToListAsync().ConfigureAwait(false);
-            return this.mapper.Map<List<Currency>>(data);
+            var data = await this.DbContext.Currencies.ToListAsync().ConfigureAwait(false);
+            return this.Mapper.Map<List<Currency>>(data);
         }
     }
 }

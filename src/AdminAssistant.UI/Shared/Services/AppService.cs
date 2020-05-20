@@ -1,11 +1,18 @@
 using System;
 using System.Collections.Generic;
+using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Shared;
+using AutoMapper;
 
 namespace AdminAssistant.UI.Services
 {
-    public class AppService : IAppService
+    public class AppService : ServiceBase, IAppService
     {
+        public AppService(IHttpClientJsonProvider httpClient, IMapper mapper, ILoggingProvider log)
+            : base(httpClient, mapper, log)
+        {
+        }
+
         private const ModeEnum DefaultMode = ModeEnum.Company;
         private const ModuleEnum DefaultModule = ModuleEnum.Dashboard;
 

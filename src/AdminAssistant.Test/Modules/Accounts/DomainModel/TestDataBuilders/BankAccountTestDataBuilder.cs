@@ -23,7 +23,8 @@ namespace AdminAssistant.DomainModel.Modules.Accounts.TestDataBuilders
         {
             this.BankAccountID = bankAccountID;
             this.AccountName = "A valid account name";
-            this.CurrencyID = TestData.CurrencyBuilder.WithTestData().Build().CurrencyID;
+            this.CurrencyID = 10;
+            this.BankAccountTypeID = 10;
             this.OpenedOn = DateTime.Now;
             return this;
         }

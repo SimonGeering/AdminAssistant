@@ -5,7 +5,7 @@
     <Product>Admin Assistant</Product>
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>AdminAssistant.Accounts</RootNamespace>
+    <RootNamespace>AdminAssistant</RootNamespace>
     <nullable>enable</nullable>
     <LangVersion>latest</LangVersion>
     <Platforms>x64</Platforms>
@@ -44,6 +44,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.3" />
     <PackageReference Include="Moq" Version="4.14.0" />
+    <PackageReference Include="ObjectCloner.Extensions" Version="2.0.1" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
@@ -58,6 +59,7 @@
     <ProjectReference Include="..\AdminAssistant.DAL\AdminAssistant.DAL.csproj" />
     <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    <ProjectReference Include="..\AdminAssistant.WebAPI\AdminAssistant.WebAPI.csproj" />
     <ProjectReference Include="..\Framework\AdminAssistant.Framework.Test\AdminAssistant.Framework.Test.csproj" />
     <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>

@@ -24,6 +24,8 @@
 
     <PackageReference Include="Blazor.Extensions.Logging" Version="3.1.0-rc1-020501" />
 
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="8.6.2" />
+
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.0-rc1.20223.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.0-rc1.20223.4" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.0-rc1.20223.4" PrivateAssets="all" />
@@ -38,6 +40,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    <ProjectReference Include="..\..\AdminAssistant.WebAPI\AdminAssistant.WebAPI.csproj" />
   </ItemGroup>
 
   <ItemGroup>

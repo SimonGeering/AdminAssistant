@@ -1,14 +1,14 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
+using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.DomainModel.Modules.Accounts.Validation;
 using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Shared;
 using Ardalis.GuardClauses;
+using FluentValidation.Results;
+using Microsoft.Extensions.Logging;
 
 namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 {
@@ -17,36 +17,34 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         public const string NewBankAccountHeader = "New bank account";
         public const string EditBankAccountHeader = "Edit bank account";
 
-        private readonly IHttpClientJsonProvider httpClient;
         private readonly IAccountsStateStore accountsStateStore;
         private readonly IBankAccountValidator bankAccountValidator;
+        private readonly IAccountsService accountsService;
 
         public BankAccountEditDialogViewModel(
+            ILoggingProvider log,
             ILoadingSpinner loadingSpinner,
-            IHttpClientJsonProvider httpClient,
             IAccountsStateStore accountsStateStore,
-            IBankAccountValidator bankAccountValidator,
-            ILoggingProvider log)
-            : base(log)
+            IBankAccountValidator bankAccountValidator,            
+            IAccountsService accountsService)
+            : base(log, loadingSpinner)
         {
-            this.LoadingSpinner = loadingSpinner;
-            this.httpClient = httpClient;
             this.accountsStateStore = accountsStateStore;
             this.bankAccountValidator = bankAccountValidator;
+            this.accountsService = accountsService;
 
             this.accountsStateStore.EditAccount += (BankAccount bankAccount) =>
             {
                 Guard.Against.Null(bankAccount, nameof(bankAccount));
 
-                this.BankAccount = bankAccount;
-                this.HeaderText = this.BankAccount.BankAccountID == Constants.NewRecordID ? NewBankAccountHeader : EditBankAccountHeader;
+                this.Model = bankAccount;
+                this.HeaderText = (this.Model as IDatabasePersistable).IsNew ? NewBankAccountHeader : EditBankAccountHeader;
+                this.RefreshValidation();
                 this.ShowDialog = true;
             };
         }
 
-        public ILoadingSpinner LoadingSpinner { get; }
-
-        public BankAccount BankAccount { get; private set; } = new BankAccount();
+        public BankAccount Model { get; private set; } = new BankAccount();
 
         private IEnumerable<BankAccountType> bankAccountTypes = new List<BankAccountType>();
         public IEnumerable<BankAccountType> BankAccountTypes
@@ -79,6 +77,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         public string HeaderText { get; private set; } = string.Empty;
 
         private bool showDialog = false;
+
         public bool ShowDialog
         {
             get { return this.showDialog; }
@@ -92,48 +91,138 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             }
         }
 
-        public void OnCancelButtonClick() => this.ShowDialog = false;
-        public void OnSaveButtonClick() => this.ShowDialog = false;
-
-        public async Task InitializeAsync()
+        public void OnAccountNameChanged(string accountName)
         {
-            this.LoadingSpinner.OnShowLoadingSpinner();
+            this.Log.Start();
 
-            await this.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
-            await this.LoadCurrencyLookupDataAsync().ConfigureAwait(false);
+            this.Model.AccountName = accountName;
+            this.RefreshValidation();
+            this.OnPropertyChanged();
 
-            this.LoadingSpinner.OnHideLoadingSpinner();
+            this.Log.Finish();
         }
 
-        private async Task LoadBankAccountTypesLookupDataAsync()
+        public string AccountNameValidationMessage { get; private set; } = string.Empty;
+        public string AccountNameValidationClass { get; private set; } = string.Empty;
+
+        public void OnBankAccountTypeChanged() => this.RefreshValidation();
+
+        public void OnCurrencyChanged() => this.RefreshValidation();
+
+
+        public void OnCancelButtonClick()
         {
-            var response = await httpClient.GetFromJsonAsync<BankAccountType[]>("api/v1/BankAccountType").ConfigureAwait(false);
+            this.Log.Start();
 
-            var values = new List<BankAccountType>(response);
-            values.Insert(0, new BankAccountType() { BankAccountTypeID = 0, Description = string.Empty });
+            this.Model = new BankAccount();
+            this.ShowDialog = false;
 
-            this.BankAccountTypes = values;
+            this.Log.Finish();
+        }
+
+        public async Task OnSaveButtonClick()
+        {
+            this.Log.Start();
+
+            this.LoadingSpinner.OnShowLoadingSpinner();
+
+            var canSave = this.RefreshValidation();
+
+            if (canSave)
+            {
+                if ((this.Model as IDatabasePersistable).IsNew)
+                {
+                    var savedBankAccount = await this.accountsService.CreateBankAccountAsync(this.Model).ConfigureAwait(false);
+                    // TODO: Notify OnBankAccountCreated
+                    // this.accountsStateStore.OnBankAccountCreated(savedBankAccount);
+                }
+                else
+                {
+                    var savedBankAccount = await this.accountsService.UpdateBankAccountAsync(this.Model).ConfigureAwait(false);
+                    // TODO: Notify OnBankAccountUpdated
+                    // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
+                }
+                this.ShowDialog = false;
+            }
+            this.LoadingSpinner.OnHideLoadingSpinner();
+            this.Log.Finish();
+        }
+
+        public override async Task OnInitializedAsync()
+        {
+            this.Log.Start();
+            this.LoadingSpinner.OnShowLoadingSpinner();
+
+            this.BankAccountTypes = await this.accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
 #if DEBUG
             foreach (var item in this.BankAccountTypes)
             {
-                Console.WriteLine($"[BankAccountType - BankAccountTypeID: {item.BankAccountTypeID} Description: {item.Description}]");
+                this.Log.LogDebug($"[BankAccountType - BankAccountTypeID: {item.BankAccountTypeID} Description: {item.Description}]");
             }
 #endif
-        }
-        private async Task LoadCurrencyLookupDataAsync()
-        {
-            var response = await httpClient.GetFromJsonAsync<Currency[]>("api/v1/Currency").ConfigureAwait(false);
-
-            var values = new List<Currency>(response);
-            values.Insert(0, new Currency() { CurrencyID = 0, Symbol = string.Empty, DecimalFormat = string.Empty });
-
-            this.Currencies = values;
+            this.Currencies = await this.accountsService.LoadCurrencyLookupDataAsync().ConfigureAwait(false);
 #if DEBUG
             foreach (var item in this.Currencies)
             {
-                Console.WriteLine($"[Currency - CurrencyID: {item.CurrencyID} Symbol: {item.Symbol} DecimalFormat: {item.DecimalFormat}]");
+                this.Log.LogDebug($"[Currency - CurrencyID: {item.CurrencyID} Symbol: {item.Symbol} DecimalFormat: {item.DecimalFormat}]");
             }
 #endif
+            this.LoadingSpinner.OnHideLoadingSpinner();
+
+            await base.OnInitializedAsync().ConfigureAwait(false);
+            this.Log.Finish();
+        }
+
+        private bool RefreshValidation()
+        {
+            var result = this.bankAccountValidator.Validate(this.Model);
+
+            this.AccountNameValidationMessage = this.GetValidationMessageForField(nameof(BankAccount.AccountName), result);
+            this.AccountNameValidationClass = this.GetValidationClassForField(nameof(BankAccount.AccountName), result);
+
+            return result.IsValid;
+        }
+
+        private string GetValidationMessageForField(string fieldName, ValidationResult result)
+        {
+            if (result.IsValid)
+                return ValidationMessage.None;
+
+            if (result.Errors.Any(x => x.PropertyName == fieldName) == false)
+                return ValidationMessage.None;
+
+            return result.Errors.Single(x => x.PropertyName == fieldName).ErrorMessage;
+        }
+
+        private string GetValidationClassForField(string fieldName, ValidationResult result)
+        {
+            if (result.IsValid)
+                return ValidationCssClass.None;
+
+            if (result.Errors.Any(x => x.PropertyName == fieldName) == false)
+                return ValidationMessage.None;
+
+            return this.GetValidationClassForSeverity(result.Errors.Single(x => x.PropertyName == fieldName).Severity);
+        }
+
+        private string GetValidationClassForSeverity(FluentValidation.Severity severity) => severity switch
+        {
+            FluentValidation.Severity.Error => ValidationCssClass.Error,
+            FluentValidation.Severity.Warning => ValidationCssClass.Warning,
+            FluentValidation.Severity.Info => ValidationCssClass.Info,
+            _ => ValidationCssClass.None
+        };
+
+        private static class ValidationMessage
+        {
+            public const string None = "";
+        }
+        private static class ValidationCssClass
+        {
+            public const string Error = "e-error";
+            public const string Warning = "e-error";
+            public const string Info = "e-error";
+            public const string None = "e-error";
         }
     }
 }

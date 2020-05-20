@@ -7,8 +7,8 @@ namespace AdminAssistant.UI.Shared.Breadcrumb
     {
         private readonly IAppStateStore appStateStore;
 
-        public BreadcrumbViewModel(IAppStateStore appStateStore, ILoggingProvider log)
-            : base(log)
+        public BreadcrumbViewModel(IAppStateStore appStateStore, ILoggingProvider log, ILoadingSpinner loadingSpinner)
+            : base(log, loadingSpinner)
         {
             this.appStateStore = appStateStore;
 

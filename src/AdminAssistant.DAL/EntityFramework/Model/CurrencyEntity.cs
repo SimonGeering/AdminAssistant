@@ -3,7 +3,7 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.DAL.EntityFramework.Model
 {
-    public class CurrencyEntity : IMapping<CurrencyEntity, Currency>
+    public class CurrencyEntity : IMapTo<Currency>
     {
         public int CurrencyID { get; set; }
         public string Symbol { get; set; } = string.Empty;

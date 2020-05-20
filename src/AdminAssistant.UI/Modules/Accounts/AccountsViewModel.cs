@@ -1,12 +1,13 @@
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.Framework.Providers;
+using AdminAssistant.UI.Shared;
 
 namespace AdminAssistant.UI.Modules.Accounts
 {
     public class AccountsViewModel : ViewModelBase, IAccountsViewModel
     {
-        public AccountsViewModel(ILoggingProvider log)
-            : base(log)
+        public AccountsViewModel(ILoggingProvider log, ILoadingSpinner loadingSpinner)
+            : base(log, loadingSpinner)
         {
         }
 

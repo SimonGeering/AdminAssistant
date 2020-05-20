@@ -4,9 +4,7 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.DAL.EntityFramework.Model
 {
-    public class BankAccountTransactionEntity :
-        IMapping<BankAccountTransactionEntity, BankAccountTransaction>,
-        IMapping<BankAccountTransaction, BankAccountTransactionEntity>
+    public class BankAccountTransactionEntity : IMapFrom<BankAccountTransaction>, IMapTo<BankAccountTransaction>
     {
         public int BankAccountTransactionID { get; set; }
         public int BankAccountID { get; set; }
@@ -21,7 +19,15 @@ namespace AdminAssistant.DAL.EntityFramework.Model
 
         public AuditEntity Audit { get; internal set; } = null!;
 
-        public void Map(AutoMapper.Profile profile)
+        public void MapFrom(AutoMapper.Profile profile)
+        {
+            // TODO: Resolve mapping of properties from BankAccountTransaction to BankAccountTransactionEntity
+            profile.CreateMap<BankAccountTransaction, BankAccountTransactionEntity>()
+                .ForMember(x => x.AuditID, opt => opt.Ignore())
+                .ForMember(x => x.Audit, opt => opt.Ignore());
+        }
+
+        public void MapTo(AutoMapper.Profile profile)
         {
             // TODO: Resolve mapping of properties from BankAccountTransactionEntity to BankAccountTransaction
             profile.CreateMap<BankAccountTransactionEntity, BankAccountTransaction>()
@@ -29,11 +35,6 @@ namespace AdminAssistant.DAL.EntityFramework.Model
                 .ForMember(x => x.Symbol, opt => opt.Ignore())
                 .ForMember(x => x.DecimalFormat, opt => opt.Ignore())
                 .ForMember(x => x.Balance, opt => opt.Ignore());
-
-            // TODO: Resolve mapping of properties from BankAccountTransaction to BankAccountTransactionEntity
-            profile.CreateMap<BankAccountTransaction, BankAccountTransactionEntity>()
-                .ForMember(x => x.AuditID, opt => opt.Ignore())
-                .ForMember(x => x.Audit, opt => opt.Ignore());
         }
     }
 }
