@@ -70,8 +70,8 @@ namespace AdminAssistant.UI.Services
 
         private string GetIconForMode(ModeEnum mode) => mode switch
         {
-            ModeEnum.Company => "fa-building-o",
-            ModeEnum.Personal => "fa-male",
+            ModeEnum.Company => "fa fa-building-o",
+            ModeEnum.Personal => "fa fa-male",
             _ => throw new ArgumentOutOfRangeException(nameof(mode))
         };
 
@@ -93,17 +93,17 @@ namespace AdminAssistant.UI.Services
 
         private string GetIconForModule(ModuleEnum module) => module switch
         {
-            ModuleEnum.Mail => "fa-envelope",
-            ModuleEnum.Calendar => "fa-calendar",
-            ModuleEnum.Contacts => "fa-user",
-            ModuleEnum.Tasks => "fa-flag-o",
-            ModuleEnum.Accounts => "fa-gbp",
-            ModuleEnum.AssetRegister => "fa-diamond",
-            ModuleEnum.Billing => "fa-bullseye",
-            ModuleEnum.Budget => "fa-line-chart",
-            ModuleEnum.Documents => "fa-book",
-            ModuleEnum.Reports => "fa-bar-chart-o",
-            ModuleEnum.Dashboard => "fa-dashboard",
+            ModuleEnum.Mail => "fa fa-envelope",
+            ModuleEnum.Calendar => "fa fa-calendar",
+            ModuleEnum.Contacts => "fa fa-user",
+            ModuleEnum.Tasks => "fa fa-flag-o",
+            ModuleEnum.Accounts => "fa fa-gbp",
+            ModuleEnum.AssetRegister => "fa fa-diamond",
+            ModuleEnum.Billing => "fa fa-bullseye",
+            ModuleEnum.Budget => "fa fa-line-chart",
+            ModuleEnum.Documents => "fa fa-book",
+            ModuleEnum.Reports => "fa fa-bar-chart-o",
+            ModuleEnum.Dashboard => "fa fa-dashboard",
             _ => throw new ArgumentOutOfRangeException(nameof(module))
         };
     }
