@@ -5,6 +5,7 @@ using AdminAssistant.Framework.Providers;
 using AdminAssistant.WebAPI.v1;
 using AutoMapper;
 using System;
+using System.Net.Http.Json;
 
 namespace AdminAssistant.UI.Modules.Accounts
 {
@@ -61,11 +62,12 @@ namespace AdminAssistant.UI.Modules.Accounts
 
             if (response.IsSuccessStatusCode == false)
             {
+                throw new System.NotImplementedException();
             }
 
-            //var result = this.Mapper.Map<BankAccount>(response.Content.)
-
-            throw new NotImplementedException();
+            var responseDto = await response.Content.ReadFromJsonAsync<BankAccountResponseDto>().ConfigureAwait(false);
+            var result = this.Mapper.Map<BankAccount>(responseDto);
+            return this.Log.Finish(result);
         }
     }
 }
