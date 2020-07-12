@@ -132,13 +132,13 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             {
                 if ((this.Model as IDatabasePersistable).IsNew)
                 {
-                    var savedBankAccount = await this.accountsService.CreateBankAccountAsync(this.Model).ConfigureAwait(false);
+                    var savedBankAccountResult = await this.accountsService.CreateBankAccountAsync(this.Model).ConfigureAwait(false);
                     // TODO: Notify OnBankAccountCreated
                     // this.accountsStateStore.OnBankAccountCreated(savedBankAccount);
                 }
                 else
                 {
-                    var savedBankAccount = await this.accountsService.UpdateBankAccountAsync(this.Model).ConfigureAwait(false);
+                    var savedBankAccountResult = await this.accountsService.UpdateBankAccountAsync(this.Model).ConfigureAwait(false);
                     // TODO: Notify OnBankAccountUpdated
                     // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
                 }
