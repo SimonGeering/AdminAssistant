@@ -3,7 +3,7 @@
 
 <SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true" ShowCloseIcon="true">
   <DialogTemplates>
-    <Header><div>@this.vm.HeaderText</div></Header>
+    <Header><div id="Accounts_BankAccountEditDialog_Title">@this.vm.HeaderText</div></Header>
     <Content>
       <SfSpinner @ref="this.SfSpinner" Target="#loadingTarget" Label="Loading...." Type="SpinnerType.Fabric" />
       <div id="loadingTarget" class="cl-account-edit-dialog">
