@@ -64,4 +64,17 @@
     <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Modules\AssetRegister\" />
+    <Folder Include="Modules\Billing\" />
+    <Folder Include="Modules\Budget\" />
+    <Folder Include="Modules\Calendar\" />
+    <Folder Include="Modules\Contacts\" />
+    <Folder Include="Modules\Dashboard\" />
+    <Folder Include="Modules\Documents\" />
+    <Folder Include="Modules\Mail\" />
+    <Folder Include="Modules\Tasks\" />
+    <Folder Include="Modules\Reports\" />
+  </ItemGroup>
+
 </Project>
