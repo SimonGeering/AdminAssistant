@@ -49,46 +49,29 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         private IEnumerable<BankAccountType> bankAccountTypes = new List<BankAccountType>();
         public IEnumerable<BankAccountType> BankAccountTypes
         {
-            get { return this.bankAccountTypes; }
-            private set
-            {
-                if (this.bankAccountTypes == value)
-                    return;
-
-                this.bankAccountTypes = value;
-                this.OnPropertyChanged();
-            }
+            get => this.bankAccountTypes;
+            private set => this.SetValue(ref this.bankAccountTypes, value);
         }
 
         private IEnumerable<Currency> currencies = new List<Currency>();
         public IEnumerable<Currency> Currencies
         {
-            get { return this.currencies; }
-            private set
-            {
-                if (this.currencies == value)
-                    return;
-
-                this.currencies = value;
-                this.OnPropertyChanged();
-            }
+            get => this.currencies;
+            private set => this.SetValue(ref this.currencies, value);
         }
 
-        public string HeaderText { get; private set; } = string.Empty;
+        private string headerText = string.Empty;
+        public string HeaderText
+        {
+            get => this.headerText;
+            private set => this.SetValue(ref this.headerText, value);
+        }
 
         private bool showDialog = false;
-
         public bool ShowDialog
         {
-            get { return this.showDialog; }
-            set
-            {
-                if (this.showDialog == value)
-                    return;
-
-                this.showDialog = value;
-                this.OnPropertyChanged();
-            }
+            get => this.showDialog;
+            set => this.SetValue(ref this.showDialog, value);
         }
 
         public void OnAccountNameChanged(string accountName)
