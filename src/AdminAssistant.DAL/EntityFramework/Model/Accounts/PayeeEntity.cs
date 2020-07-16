@@ -1,4 +1,4 @@
-namespace AdminAssistant.DAL.EntityFramework.Model
+namespace AdminAssistant.DAL.EntityFramework.Model.Accounts
 {
     public class PayeeEntity
     {

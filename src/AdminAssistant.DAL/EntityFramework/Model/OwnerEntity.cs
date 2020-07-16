@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using AdminAssistant.DAL.EntityFramework.Model.Accounts;
 
 namespace AdminAssistant.DAL.EntityFramework.Model
 {

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.EntityFramework;
 using AdminAssistant.DAL.EntityFramework.Model;
+using AdminAssistant.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;

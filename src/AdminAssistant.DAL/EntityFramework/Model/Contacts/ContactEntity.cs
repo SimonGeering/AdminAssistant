@@ -1,6 +1,6 @@
 using System;
 
-namespace AdminAssistant.DAL.EntityFramework.Model
+namespace AdminAssistant.DAL.EntityFramework.Model.Contacts
 {
     public class ContactEntity
     {

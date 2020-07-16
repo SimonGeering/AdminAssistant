@@ -129,6 +129,9 @@ this.FeatureBackground();
 #line 12
   testRunner.And("I click \'Add Account\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
+#line 13
+  testRunner.And("The Bank Account dialog Title reads \'New bank account\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
             }
             this.ScenarioCleanup();
         }
