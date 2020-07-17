@@ -1,12 +1,11 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AutoMapper;
 using System;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
-using Xunit.Sdk;
 using AdminAssistant.DomainModel.Modules.Accounts;
 using AdminAssistant.DAL.EntityFramework.Model;
+using AdminAssistant.DAL.EntityFramework.Model.Accounts;
 
 namespace AdminAssistant.DAL
 {
