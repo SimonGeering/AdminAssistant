@@ -2,21 +2,18 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using FluentValidation;
+//using FluentValidation;
 using AutoMapper;
 
 namespace AdminAssistant.WPF
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private readonly IHost host;
 
         public App()
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjczNDkwQDMxMzgyZTMxMmUzMEFoQys4dEsraHhVR1NsUDkreFpySS8weHNEZlZNdGdMNUllSnkwVGtCckk9;MjczNDkxQDMxMzgyZTMxMmUzMGpBYzByQXJ1Zzc5Y1FjU3E5WGFTOHdOaUdKdXlSYXdFQzU0cGk5UVpNNTA9;MjczNDkyQDMxMzgyZTMxMmUzME9hZStqN1oxakhtSVU0WStKM1NqWVg1RFgzVFIramhmMXJwM1JrSUtaamc9;MjczNDkzQDMxMzgyZTMxMmUzMGNDczZQZkN5YWt2RWs2TktjVU1OQVg4R3V0bkx3VFl1UC96UGo4SEdIMTQ9;MjczNDk0QDMxMzgyZTMxMmUzMGd1M0hoWnBuUm9yQXJTdzU5T1pDSjVRTUNENHFocE50Zml4ZVM4QkVoM2M9;MjczNDk1QDMxMzgyZTMxMmUzMG93NklEa2hKSm1TL3BDSUpMT01uTHIrTS9jUUxRWDZ0ZC9ZZzgxYzc1Y2s9;MjczNDk2QDMxMzgyZTMxMmUzMFZheE10ZVc4VjZ5NGNyV3g0WEpsOEdKYVQ5VlRmd1hOS2M2cys3bUJLbk09;MjczNDk3QDMxMzgyZTMxMmUzMEVzR2ZmRlRudlhUNGRMMDhqSVV3RFovQVJ2OGRiWTlqcHcveURyOGo5cUU9;MjczNDk4QDMxMzgyZTMxMmUzMEdoRnJCbVNOenR0ZHhoczI0WVNybUFDUDZWWGZ1dDJ3S3lwNU1rVWxGNk09;NT8mJyc2IWhia31ifWN9ZmFoYmF8YGJ8ampqanNiYmlmamlmanMDHmggOj48PRMwPD4jPCY9Nz88NDowfTA8fSY4;MjczNDk5QDMxMzgyZTMxMmUzMGg0dm40MFpuWlpCSHVlWHR1R2IvcWlNR3J2R1F3ZFZKa1lWMytzb2pKQjA9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mjg5MjM3QDMxMzgyZTMyMmUzMGRjVW1wckY3MHc5eFB2Qkc4VWRCZnNOYVBrZGZxVGZQOXZ5WFV0LzA2OVk9;Mjg5MjM4QDMxMzgyZTMyMmUzMFF0Vi8vb0ZFcW5KdmdsS2lpMlkxK3I4OE9RVVRBZi9tSlVLc0JrZTFiRlE9;Mjg5MjM5QDMxMzgyZTMyMmUzMFBCQlV4Q2Nwa0RKY0p5dUQwVHRZWkswUEk0ZTNGd3o2RXBrRm1TUGc3TFU9;Mjg5MjQwQDMxMzgyZTMyMmUzMFpoTXc5QmcwZlQySWwzSDJxRVVjcFdHSjBOV05QcE1pMUZCck9XSDM3MWM9;Mjg5MjQxQDMxMzgyZTMyMmUzMFU0QlFtSU5ZMTZrTTNweS9hZEdOcmNmVkFweC9wcUl6cjYxNVhRMWRVVlU9;Mjg5MjQyQDMxMzgyZTMyMmUzMEJvbTNxQ1ZweUtxSXQ3STNnNzZ2cDRDRTlSWTk0S04vaGtKZ00vM0J5cnM9;Mjg5MjQzQDMxMzgyZTMyMmUzMFRZc2hXeU9Ld1FmQXgveXZ2NEl2bzhpcVY1cjFFK1JRUzZDM3Z0Njh2RG89;Mjg5MjQ0QDMxMzgyZTMyMmUzMGllRFdtWHJ2QjIya3liYXUwbGIra2ZTSmdlNG0yZFNEQWtaQXZwT2YrQ3c9;Mjg5MjQ1QDMxMzgyZTMyMmUzMFpXSEdtV1huOXJvLzBUUWpRSWYzcWhFZUcvcVFJdFhHVml3QytqbWkvOHM9;NT8mJyc2IWhia31hfWN9Z2ZoYmF8YGJ8ampqanNiYmlmamlmanMDHmggOj48PRMwPD4jPCY9Nz88NDowfTA8fSY4;Mjg5MjQ2QDMxMzgyZTMyMmUzMEJrOUxhODlxR2Fva3hkWnkweElUYjVld1lTUDlMTEFWaUNiaWxIYVdNdGc9");
 
             host = new HostBuilder()
                 .ConfigureServices((hostContext, services) =>
