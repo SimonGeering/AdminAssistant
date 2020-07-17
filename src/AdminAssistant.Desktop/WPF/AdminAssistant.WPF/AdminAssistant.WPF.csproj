@@ -17,16 +17,30 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.6" />
-    <PackageReference Include="Prism.Microsoft.DependencyInjection.Extensions" Version="7.2.0.1054" />
-    <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
     <PackageReference Include="Syncfusion.SfInput.WPF" Version="18.2.0.45" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="18.2.0.45" />
+    <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="4.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\..\..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
     <ProjectReference Include="..\..\..\AdminAssistant.WebAPI\AdminAssistant.WebAPI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Modules\Accounts\" />
+    <Folder Include="Modules\AssetRegister\" />
+    <Folder Include="Modules\Billing\" />
+    <Folder Include="Modules\Budget\" />
+    <Folder Include="Modules\Calendar\" />
+    <Folder Include="Modules\Contacts\" />
+    <Folder Include="Modules\Dashboard\" />
+    <Folder Include="Modules\Documents\" />
+    <Folder Include="Modules\Mail\" />
+    <Folder Include="Modules\Tasks\" />
+    <Folder Include="Modules\Reports\" />
+    <Folder Include="Shared\" />
   </ItemGroup>
 
 </Project>
