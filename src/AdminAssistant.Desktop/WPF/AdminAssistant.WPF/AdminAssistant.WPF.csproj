@@ -40,7 +40,11 @@
     <Folder Include="Modules\Mail\" />
     <Folder Include="Modules\Tasks\" />
     <Folder Include="Modules\Reports\" />
-    <Folder Include="Shared\" />
+    <Folder Include="Shared\Breadcrumb\" />
+    <Folder Include="Shared\Footer\" />
+    <Folder Include="Shared\Header\" />
+    <Folder Include="Shared\Syncfusion\" />
+    <Folder Include="Shared\Sidebar\" />
   </ItemGroup>
 
 </Project>
