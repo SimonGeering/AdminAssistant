@@ -21,6 +21,11 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         private readonly IBankAccountValidator bankAccountValidator;
         private readonly IAccountsService accountsService;
 
+        private BankAccount bankAccount = new BankAccount();
+
+        [System.Obsolete("Replace with delegate properties that implement INotifyPropertyChanged")]
+        public BankAccount Model { get => this.bankAccount; }
+
         public BankAccountEditDialogViewModel(
             ILoggingProvider log,
             ILoadingSpinner loadingSpinner,
@@ -37,14 +42,13 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
             {
                 Guard.Against.Null(bankAccount, nameof(bankAccount));
 
-                this.Model = bankAccount;
-                this.HeaderText = (this.Model as IDatabasePersistable).IsNew ? NewBankAccountHeader : EditBankAccountHeader;
+                this.bankAccount = bankAccount;
+
+                this.HeaderText = (this.bankAccount as IDatabasePersistable).IsNew ? NewBankAccountHeader : EditBankAccountHeader;
                 this.RefreshValidation();
                 this.ShowDialog = true;
             };
         }
-
-        public BankAccount Model { get; private set; } = new BankAccount();
 
         private IEnumerable<BankAccountType> bankAccountTypes = new List<BankAccountType>();
         public IEnumerable<BankAccountType> BankAccountTypes
@@ -78,7 +82,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         {
             this.Log.Start();
 
-            this.Model.AccountName = accountName;
+            this.bankAccount.AccountName = accountName;
             this.RefreshValidation();
             this.OnPropertyChanged();
 
@@ -97,7 +101,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
         {
             this.Log.Start();
 
-            this.Model = new BankAccount();
+            this.bankAccount = new BankAccount();
             this.ShowDialog = false;
 
             this.Log.Finish();
@@ -113,15 +117,15 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 
             if (canSave)
             {
-                if ((this.Model as IDatabasePersistable).IsNew)
+                if ((this.bankAccount as IDatabasePersistable).IsNew)
                 {
-                    var savedBankAccountResult = await this.accountsService.CreateBankAccountAsync(this.Model).ConfigureAwait(false);
+                    var savedBankAccountResult = await this.accountsService.CreateBankAccountAsync(this.bankAccount).ConfigureAwait(false);
                     // TODO: Notify OnBankAccountCreated
                     // this.accountsStateStore.OnBankAccountCreated(savedBankAccount);
                 }
                 else
                 {
-                    var savedBankAccountResult = await this.accountsService.UpdateBankAccountAsync(this.Model).ConfigureAwait(false);
+                    var savedBankAccountResult = await this.accountsService.UpdateBankAccountAsync(this.bankAccount).ConfigureAwait(false);
                     // TODO: Notify OnBankAccountUpdated
                     // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
                 }
@@ -158,7 +162,7 @@ namespace AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog
 
         private bool RefreshValidation()
         {
-            var result = this.bankAccountValidator.Validate(this.Model);
+            var result = this.bankAccountValidator.Validate(this.bankAccount);
 
             this.AccountNameValidationMessage = this.GetValidationMessageForField(nameof(BankAccount.AccountName), result);
             this.AccountNameValidationClass = this.GetValidationClassForField(nameof(BankAccount.AccountName), result);
