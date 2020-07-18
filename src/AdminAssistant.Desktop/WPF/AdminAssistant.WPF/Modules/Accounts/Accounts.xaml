@@ -9,53 +9,10 @@
              d:DesignHeight="450" d:DesignWidth="800">
   <Grid>
     <Grid.RowDefinitions>
-      <RowDefinition Height="16"/>
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="8"/>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="8"/>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="8"/>
-      <RowDefinition Height="auto"/>
-      <RowDefinition Height="16"/>
-      <RowDefinition Height="*"/>
+      <RowDefinition />
     </Grid.RowDefinitions>
-
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="16"/>
-      <ColumnDefinition Width="auto"/>
-      <ColumnDefinition Width="8"/>
-      <ColumnDefinition Width="auto"/>
-      <ColumnDefinition Width="8"/>
-      <ColumnDefinition Width="auto"/>
-      <ColumnDefinition Width="8"/>
-      <ColumnDefinition Width="auto"/>
-      <ColumnDefinition Width="*"/>
-      <ColumnDefinition Width="16"/>
+      <ColumnDefinition />
     </Grid.ColumnDefinitions>
-
-    <Label Grid.Row="1" Grid.Column="1" Content="Account name" />
-    <StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6" Orientation="Horizontal">
-      <sf:SfTextBoxExt Text="Barclays Current Account" VerticalContentAlignment="Center" />
-      <CheckBox Content="On budget" Margin="8,0,0,0" />
-    </StackPanel>
-
-    <Label Grid.Row="3" Grid.Column="1" Content="Account type" />
-    <ComboBox Grid.Row="3" Grid.Column="3" />
-    <Label Grid.Row="3" Grid.Column="5" Content="Opened on" />
-    <DatePicker Grid.Row="3" Grid.Column="7" />
-
-    <Label Grid.Row="5" Grid.Column="1" Content="Currency" />
-    <ComboBox Grid.Row="5" Grid.Column="3" MinWidth="120" />
-    <Label Grid.Row="5" Grid.Column="5" Content="Opening balance" />
-    <sf:DoubleTextBox Grid.Row="5" Grid.Column="7" />
-
-    <Line Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="5" />
-
-    <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="8" Orientation="Horizontal" HorizontalAlignment="Right">
-      <Button Content="Cancel" Margin="0,0,8,0" Padding="8" />
-      <Button Content="Save" Padding="8" />
-    </StackPanel>
-
   </Grid>
 </UserControl>

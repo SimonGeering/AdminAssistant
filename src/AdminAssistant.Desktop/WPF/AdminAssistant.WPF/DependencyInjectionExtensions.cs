@@ -1,4 +1,5 @@
 using AdminAssistant.WPF;
+using AdminAssistant.WPF.Modules.Accounts;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -11,6 +12,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddAdminAssistantUI();
 
             services.AddSingleton<MainWindow>();
+            services.AddTransient<BankAccountEditDialog>();
         }
     }
 }
