@@ -33,7 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\Accounts\" />
     <Folder Include="Modules\AssetRegister\" />
     <Folder Include="Modules\Billing\" />
     <Folder Include="Modules\Budget\" />

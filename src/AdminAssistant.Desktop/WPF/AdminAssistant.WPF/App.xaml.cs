@@ -4,6 +4,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 //using FluentValidation;
 using AutoMapper;
+using Syncfusion.SfSkinManager;
+using AdminAssistant.WPF.Modules.Accounts;
 
 namespace AdminAssistant.WPF
 {
@@ -39,9 +41,15 @@ namespace AdminAssistant.WPF
 
             using (var scope = host.Services.CreateScope())
             {
-                App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
+                //App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
+                App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<BankAccountEditDialog>();
                 App.Current.MainWindow.Show();
             }
+        }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            SfSkinManager.ApplyStylesOnApplication = true;
         }
     }
 }
