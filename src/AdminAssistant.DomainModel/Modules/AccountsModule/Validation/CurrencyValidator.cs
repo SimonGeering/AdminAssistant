@@ -7,9 +7,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
     {
         public CurrencyValidator()
         {
-            this.RuleFor(x => x.CurrencyID)
-                .GreaterThanOrEqualTo(Constants.UnknownRecordID);
-
             this.RuleFor(x => x.DecimalFormat)
                 .NotEmpty()
                 .MaximumLength(Currency.DecimalFormatMaxLength);
