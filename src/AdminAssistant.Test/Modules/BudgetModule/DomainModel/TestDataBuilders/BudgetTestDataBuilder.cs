@@ -1,9 +1,12 @@
+using System;
+
 namespace AdminAssistant.DomainModel.Modules.BudgetModule.TestDataBuilders
 {
     public interface IBudgetTestDataBuilder
     {
         Budget Build();
         IBudgetTestDataBuilder WithTestData(int budgetID = Constants.UnknownRecordID);
+        IBudgetTestDataBuilder WithBudgetName(string empty);
     }
     public class BudgetTestDataBuilder : Budget, IBudgetTestDataBuilder
     {
@@ -16,9 +19,13 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.TestDataBuilders
 
         public IBudgetTestDataBuilder WithTestData(int budgetID = Constants.UnknownRecordID)
         {
-            //this.I
-            //this.Symbol = "GBP";
+            this.BudgetName = "Test Budget";
+            return this;
+        }
 
+        public IBudgetTestDataBuilder WithBudgetName(string budgetName)
+        {
+            this.BudgetName = budgetName;
             return this;
         }
     }
