@@ -17,6 +17,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DAL\Modules\Accounts\**" />
+    <EmbeddedResource Remove="DAL\Modules\Accounts\**" />
+    <None Remove="DAL\Modules\Accounts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="AdminAssistant.docs.xml" />
   </ItemGroup>
 
@@ -32,37 +38,36 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DAL\Modules\Accounts\" />
-    <Folder Include="DAL\Modules\Billing\" />
-    <Folder Include="DAL\Modules\AssetRegister\" />
-    <Folder Include="DAL\Modules\Budget\" />
-    <Folder Include="DAL\Modules\Calendar\" />
-    <Folder Include="DAL\Modules\Contacts\" />
-    <Folder Include="DAL\Modules\Dashboard\" />
-    <Folder Include="DAL\Modules\Documents\" />
-    <Folder Include="DAL\Modules\Mail\" />
-    <Folder Include="DAL\Modules\Tasks\" />
-    <Folder Include="DAL\Modules\Reports\" />
-    <Folder Include="DomainModel\Modules\AssetRegister\" />
-    <Folder Include="DomainModel\Modules\Billing\" />
-    <Folder Include="DomainModel\Modules\Budget\" />
-    <Folder Include="DomainModel\Modules\Calendar\" />
-    <Folder Include="DomainModel\Modules\Contacts\" />
-    <Folder Include="DomainModel\Modules\Dashboard\" />
-    <Folder Include="DomainModel\Modules\Documents\" />
-    <Folder Include="DomainModel\Modules\Mail\" />
-    <Folder Include="DomainModel\Modules\Tasks\" />
-    <Folder Include="DomainModel\Modules\Reports\" />
-    <Folder Include="UI\Modules\AssetRegister\" />
-    <Folder Include="UI\Modules\Billing\" />
-    <Folder Include="UI\Modules\Budget\" />
-    <Folder Include="UI\Modules\Calendar\" />
-    <Folder Include="UI\Modules\Contacts\" />
-    <Folder Include="UI\Modules\Dashboard\" />
-    <Folder Include="UI\Modules\Documents\" />
-    <Folder Include="UI\Modules\Mail\" />
-    <Folder Include="UI\Modules\Tasks\" />
-    <Folder Include="UI\Modules\Reports\" />
+    <Folder Include="DAL\Modules\BillingModule\" />
+    <Folder Include="DAL\Modules\AssetRegisterModule\" />
+    <Folder Include="DAL\Modules\BudgetModule\" />
+    <Folder Include="DAL\Modules\CalendarModule\" />
+    <Folder Include="DAL\Modules\ContactsModule\" />
+    <Folder Include="DAL\Modules\DashboardModule\" />
+    <Folder Include="DAL\Modules\DocumentsModule\" />
+    <Folder Include="DAL\Modules\MailModule\" />
+    <Folder Include="DAL\Modules\TasksModule\" />
+    <Folder Include="DAL\Modules\ReportsModule\" />
+    <Folder Include="DomainModel\Modules\AssetRegisterModule\" />
+    <Folder Include="DomainModel\Modules\BillingModule\" />
+    <Folder Include="DomainModel\Modules\BudgetModule\" />
+    <Folder Include="DomainModel\Modules\CalendarModule\" />
+    <Folder Include="DomainModel\Modules\ContactsModule\" />
+    <Folder Include="DomainModel\Modules\DashboardModule\" />
+    <Folder Include="DomainModel\Modules\DocumentsModule\" />
+    <Folder Include="DomainModel\Modules\MailModule\" />
+    <Folder Include="DomainModel\Modules\TasksModule\" />
+    <Folder Include="DomainModel\Modules\ReportsModule\" />
+    <Folder Include="UI\Modules\AssetRegisterModule\" />
+    <Folder Include="UI\Modules\BillingModule\" />
+    <Folder Include="UI\Modules\BudgetModule\" />
+    <Folder Include="UI\Modules\CalendarModule\" />
+    <Folder Include="UI\Modules\ContactsModule\" />
+    <Folder Include="UI\Modules\DashboardModule\" />
+    <Folder Include="UI\Modules\DocumentsModule\" />
+    <Folder Include="UI\Modules\MailModule\" />
+    <Folder Include="UI\Modules\TasksModule\" />
+    <Folder Include="UI\Modules\ReportsModule\" />
     <Folder Include="UI\Shared\Services\" />
   </ItemGroup>
 

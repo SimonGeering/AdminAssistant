@@ -52,7 +52,7 @@ namespace AdminAssistant.Blazor.Server
             services.AddHttpContextAccessor();
             services.AddControllers().AddFluentValidation(c =>
             {
-                c.RegisterValidatorsFromAssemblyContaining<DomainModel.Modules.Accounts.Validation.BankAccountValidator>();
+                c.RegisterValidatorsFromAssemblyContaining<DomainModel.Modules.AccountsModule.Validation.BankAccountValidator>();
 
             });
             services.AddSwaggerGen(c =>

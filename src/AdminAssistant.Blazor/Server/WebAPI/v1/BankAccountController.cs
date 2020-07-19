@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdminAssistant.DomainModel.Modules.Accounts;
-using AdminAssistant.DomainModel.Modules.Accounts.CQRS;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using AdminAssistant.Framework.Providers;
 using Ardalis.Result;
 using AutoMapper;

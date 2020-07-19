@@ -54,16 +54,16 @@
     <Folder Include="EntityFramework\Model\Mail\" />
     <Folder Include="EntityFramework\Model\Tasks\" />
     <Folder Include="EntityFramework\Model\Reports\" />
-    <Folder Include="Modules\AssetRegister\" />
-    <Folder Include="Modules\Billing\" />
-    <Folder Include="Modules\Budget\" />
-    <Folder Include="Modules\Calendar\" />
-    <Folder Include="Modules\Contacts\" />
-    <Folder Include="Modules\Dashboard\" />
-    <Folder Include="Modules\Documents\" />
-    <Folder Include="Modules\Mail\" />
-    <Folder Include="Modules\Tasks\" />
-    <Folder Include="Modules\Reports\" />
+    <Folder Include="Modules\AssetRegisterModule\" />
+    <Folder Include="Modules\BillingModule\" />
+    <Folder Include="Modules\BudgetingModule\" />
+    <Folder Include="Modules\CalendarModule\" />
+    <Folder Include="Modules\ContactsModule\" />
+    <Folder Include="Modules\DashboardModule\" />
+    <Folder Include="Modules\DocumentsModule\" />
+    <Folder Include="Modules\MailModule\" />
+    <Folder Include="Modules\TasksModule\" />
+    <Folder Include="Modules\ReportsModule\" />
   </ItemGroup>
 
 </Project>

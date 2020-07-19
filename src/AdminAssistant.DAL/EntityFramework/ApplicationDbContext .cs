@@ -9,7 +9,8 @@ using AdminAssistant.DAL.EntityFramework.Model.Budget;
 using AdminAssistant.DAL.EntityFramework.Model.Contacts;
 using AdminAssistant.DAL.EntityFramework.Model.Documents;
 using AdminAssistant.DomainModel.Infrastructure;
-using AdminAssistant.DomainModel.Modules.Accounts;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.BudgetModule;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.DAL.EntityFramework

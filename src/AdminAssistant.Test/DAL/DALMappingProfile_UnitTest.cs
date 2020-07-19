@@ -3,7 +3,7 @@ using AutoMapper;
 using System;
 using FluentAssertions;
 using Xunit;
-using AdminAssistant.DomainModel.Modules.Accounts;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DAL.EntityFramework.Model;
 using AdminAssistant.DAL.EntityFramework.Model.Accounts;
 

@@ -1,5 +1,5 @@
 using System;
-using AdminAssistant.DomainModel.Modules.Accounts;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.DAL.EntityFramework.Model.Accounts

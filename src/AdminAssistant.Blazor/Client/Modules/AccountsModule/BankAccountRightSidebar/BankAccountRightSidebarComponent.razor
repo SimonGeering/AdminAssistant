@@ -1,0 +1,8 @@
+@inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.BankAccountRightSidebar.IBankAccountRightSidebarViewModel>
+
+@using AdminAssistant.Blazor.Client.Modules.AccountsModule.BankAccountEditDialog
+
+<h3>BankAccountRightSidebar</h3>
+
+<SfButton ID="Accounts_AddAccount" @onclick="@this.vm.OnAddAccountButtonClick">Add Account</SfButton>
+<BankAccountEditDialogComponent></BankAccountEditDialogComponent>

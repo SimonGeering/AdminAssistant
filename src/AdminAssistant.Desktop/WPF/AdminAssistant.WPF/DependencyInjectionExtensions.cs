@@ -1,5 +1,5 @@
 using AdminAssistant.WPF;
-using AdminAssistant.WPF.Modules.Accounts;
+using AdminAssistant.WPF.Modules.AccountsModule;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

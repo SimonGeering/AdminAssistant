@@ -1,0 +1,50 @@
+@inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog.IBankAccountEditDialogViewModel>
+@using AdminAssistant.DomainModel.Modules.AccountsModule
+
+<SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true" ShowCloseIcon="true">
+  <DialogTemplates>
+    <Header><div id="Accounts_BankAccountEditDialog_Title">@this.vm.HeaderText</div></Header>
+    <Content>
+      <SfSpinner @ref="this.SfSpinner" Target="#loadingTarget" Label="Loading...." Type="SpinnerType.Fabric" />
+      <div id="loadingTarget" class="cl-account-edit-dialog">
+        <div class="cl-row1">
+          <label>Account name</label>
+          <div class="form-group">
+            <SfTextBox Value="@this.vm.Model.AccountName" ValueChanged="@((value) => this.vm.OnAccountNameChanged(value))" Placeholder="@this.vm.AccountNameValidationMessage" CssClass="@this.vm.AccountNameValidationClass"></SfTextBox>
+          </div>
+          <SfCheckBox @bind-Checked="@this.vm.Model.IsBudgeted" Label="On budget"></SfCheckBox>
+        </div>
+
+        <div class="cl-row2">
+          <label>Account Type</label>
+          <div class="cl-account-type">
+            <SfDropDownList @bind-Value="@this.vm.Model.BankAccountTypeID" OnChange="@(() => this.vm.OnBankAccountTypeChanged())" TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" DataSource="@this.vm.BankAccountTypes">
+              <DropDownListFieldSettings Text="Description" Value="BankAccountTypeID" />
+            </SfDropDownList>
+          </div>
+          <label>Opened On</label>
+          <div class="cl-opened-on">
+            <SfDatePicker @bind-Value="@this.vm.Model.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" Placeholder="Opened on" />
+          </div>
+        </div>
+        <div class="cl-row3">
+          <label>Currency</label>
+          <SfDropDownList @bind-Value="@this.vm.Model.CurrencyID" OnChange="@(() => this.vm.OnCurrencyChanged())" TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" DataSource="@this.vm.Currencies">
+            <DropDownListFieldSettings Text="Symbol" Value="CurrencyID" />
+          </SfDropDownList>
+          @*<div class="cl-label">Opening balance</div>
+            <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>*@
+        </div>
+      </div>
+    </Content>
+  </DialogTemplates>
+  <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
+  <DialogButtons>
+    <DialogButton OnClick="@this.vm.OnCancelButtonClick">
+      <DialogButtonModel Content="Discard" IconCss="fa fa-lg fa-trash-o"></DialogButtonModel>
+    </DialogButton>
+    <DialogButton OnClick="@this.vm.OnSaveButtonClick">
+      <DialogButtonModel Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true"></DialogButtonModel>
+    </DialogButton>
+  </DialogButtons>
+</SfDialog>

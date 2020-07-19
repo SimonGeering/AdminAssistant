@@ -33,16 +33,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\AssetRegister\" />
-    <Folder Include="Modules\Billing\" />
-    <Folder Include="Modules\Budget\" />
-    <Folder Include="Modules\Calendar\" />
-    <Folder Include="Modules\Contacts\" />
-    <Folder Include="Modules\Dashboard\" />
-    <Folder Include="Modules\Documents\" />
-    <Folder Include="Modules\Mail\" />
-    <Folder Include="Modules\Tasks\" />
-    <Folder Include="Modules\Reports\" />
+    <Folder Include="Modules\AssetRegisterModule\" />
+    <Folder Include="Modules\BillingModule\" />
+    <Folder Include="Modules\BudgetModule\" />
+    <Folder Include="Modules\CalendarModule\" />
+    <Folder Include="Modules\ContactsModule\" />
+    <Folder Include="Modules\DashboardModule\" />
+    <Folder Include="Modules\DocumentsModule\" />
+    <Folder Include="Modules\MailModule\" />
+    <Folder Include="Modules\TasksModule\" />
+    <Folder Include="Modules\ReportsModule\" />
     <Folder Include="Shared\Breadcrumb\" />
     <Folder Include="Shared\Footer\" />
     <Folder Include="Shared\Header\" />

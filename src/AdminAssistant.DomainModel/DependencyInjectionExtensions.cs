@@ -1,6 +1,6 @@
 using AdminAssistant.DomainModel.Infrastructure;
-using AdminAssistant.DomainModel.Modules.Accounts.CQRS;
-using AdminAssistant.DomainModel.Modules.Accounts.Validation;
+using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using MediatR;
 
 namespace Microsoft.Extensions.DependencyInjection

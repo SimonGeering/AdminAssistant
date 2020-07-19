@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 //using FluentValidation;
 using AutoMapper;
 using Syncfusion.SfSkinManager;
-using AdminAssistant.WPF.Modules.Accounts;
+using AdminAssistant.WPF.Modules.AccountsModule;
 
 namespace AdminAssistant.WPF
 {
