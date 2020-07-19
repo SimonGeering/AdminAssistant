@@ -7,7 +7,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
         public const int AccountNameMaxLength = Constants.NameMaxLength;
 
         public int BankAccountID { get; set; }
-        public int BankAccountTypeID { get; set; }
+        public int BankAccountTypeID { get; set; } = Constants.UnknownRecordID;
         public int CurrencyID { get; set; }
         public string AccountName { get; set; } = string.Empty;
         public int Balance { get; set; }
