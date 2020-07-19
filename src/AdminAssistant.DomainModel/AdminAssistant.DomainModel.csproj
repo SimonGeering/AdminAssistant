@@ -50,7 +50,6 @@
   <ItemGroup>
     <Folder Include="Modules\AssetRegisterModule\" />
     <Folder Include="Modules\BillingModule\" />
-    <Folder Include="Modules\BudgetModule\" />
     <Folder Include="Modules\CalendarModule\" />
     <Folder Include="Modules\ContactsModule\" />
     <Folder Include="Modules\DashboardModule\" />

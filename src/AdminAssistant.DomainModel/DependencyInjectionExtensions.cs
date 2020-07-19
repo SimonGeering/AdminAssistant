@@ -1,6 +1,7 @@
-using AdminAssistant.DomainModel.Infrastructure;
+ using AdminAssistant.DomainModel.Infrastructure;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
 using MediatR;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -24,9 +25,12 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private static void AddSharedDomainModel(IServiceCollection services)
         {
-            // AddAccountsDomainModel ...
+            // Add AccountsModule DomainModel ...
             services.AddTransient<IBankAccountValidator, BankAccountValidator>();
             services.AddTransient<ICurrencyValidator, CurrencyValidator>();
+
+            // Add BudgetModule DomainModel ...
+            services.AddTransient<IBudgetValidator, BudgetValidator>();
         }
     }
 }

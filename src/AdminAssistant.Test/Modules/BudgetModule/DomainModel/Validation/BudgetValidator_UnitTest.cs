@@ -11,22 +11,19 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_IsValid_GivenAValidCurrency()
+        public async Task Return_IsValid_GivenAValidBudget()
         {
             // Arrange
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            //var currency = TestData.CurrencyBuilder.WithTestData();
+            var budget = TestData.BudgetTestDataBuilder.WithTestData().Build();
 
             // Act
-            int value = 42;
-            //var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
+            var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
 
             // Assert
-            value.Should().Be(42);
-            //result.IsValid.Should().BeTrue();
-
+            result.IsValid.Should().BeTrue();
         }
     }
 }
