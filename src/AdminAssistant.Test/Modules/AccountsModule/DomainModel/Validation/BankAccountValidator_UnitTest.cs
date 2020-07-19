@@ -44,6 +44,26 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(BankAccount.AccountName));
         }
 
+
+        [Fact]
+        [Trait("Category", "Unit")]
+        public async Task Return_ValidationError_GivenABankAccount_WithAnAccountName_LongerThanMaxLength()
+        {
+            // Arrange
+            var services = new ServiceCollection();
+            services.AddAdminAssistantClientSideDomainModel();
+
+            var bankAccount = TestData.BankAccountBuilder.WithTestData()
+                                                         .WithAccountName(new string('x', BankAccount.AccountNameMaxLength + 1))
+                                                         .Build();
+            // Act
+            var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(BankAccount.AccountName));
+        }
+
         [Fact]
         [Trait("Category", "Unit")]
         public async Task Return_ValidationError_GivenABankAccountWithAMissingBankAccountTypeID()
