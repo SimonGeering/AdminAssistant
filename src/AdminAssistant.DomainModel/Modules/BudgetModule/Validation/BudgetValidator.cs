@@ -8,7 +8,8 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation
         public BudgetValidator()
         {
             this.RuleFor(x => x.BudgetName)
-                .NotEmpty();
+                .NotEmpty()
+                .MaximumLength(Budget.BudgetNameMaxLength);
         }
     }
 }

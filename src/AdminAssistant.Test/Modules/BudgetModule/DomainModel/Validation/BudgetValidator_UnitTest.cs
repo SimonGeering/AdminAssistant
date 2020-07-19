@@ -17,7 +17,7 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var budget = TestData.BudgetTestDataBuilder.WithTestData().Build();
+            var budget = TestData.BudgetBuilder.WithTestData().Build();
 
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
@@ -34,14 +34,34 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = TestData.BudgetTestDataBuilder.WithTestData().WithBudgetName(string.Empty).Build();
-
+            var budget = TestData.BudgetBuilder.WithTestData()
+                                               .WithBudgetName(string.Empty)
+                                               .Build();
             // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+            var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
 
             // Assert
             result.IsValid.Should().BeFalse();
             result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Budget.BudgetName));
+        }
+
+        [Fact]
+        [Trait("Category", "Unit")]
+        public async Task Return_ValidationError_GivenACurrency_WithADecimalFormat_LongerThanMaxLength()
+        {
+            // Arrange
+            var services = new ServiceCollection();
+            services.AddAdminAssistantClientSideDomainModel();
+
+            var budget = TestData.BudgetBuilder.WithTestData()
+                                               .WithBudgetName(new string('x', Budget.BudgetNameMaxLength + 1))
+                                               .Build();
+            // Act
+            var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
+
+            // Assert
+            result.IsValid.Should().BeFalse();
+            result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Budget.BudgetName));
         }
     }
 }

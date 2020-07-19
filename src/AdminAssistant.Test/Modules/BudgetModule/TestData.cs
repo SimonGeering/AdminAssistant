@@ -4,6 +4,6 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule
 {
     public static class TestData
     {
-        public static IBudgetTestDataBuilder BudgetTestDataBuilder => new BudgetTestDataBuilder();
+        public static IBudgetTestDataBuilder BudgetBuilder => new BudgetTestDataBuilder();
     }
 }
