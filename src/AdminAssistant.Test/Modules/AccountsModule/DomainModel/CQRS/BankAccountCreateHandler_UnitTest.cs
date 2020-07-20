@@ -18,7 +18,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
         public async Task Return_ABankAccount_GivenAValidBankAccountCreateCommand()
         {
             // Arrange
-            var bankAccount = TestData.BankAccountBuilder.WithTestData().Build();
+            var bankAccount = Factory.BankAccount.WithTestData().Build();
 
             var services = new ServiceCollection();
             services.AddMockLogging();
@@ -56,8 +56,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             services.AddAdminAssistantServerSideDomainModel();
             services.AddTransient((sp) => new Mock<IBankAccountRepository>().Object);
 
-            var bankAccount = TestData.BankAccountBuilder.WithTestData().WithAccountName(string.Empty).Build();
-
+            var bankAccount = Factory.BankAccount.WithTestData()
+                                                 .WithAccountName(string.Empty)
+                                                 .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountCreateCommand(bankAccount)).ConfigureAwait(false);
 

@@ -27,14 +27,14 @@ namespace AdminAssistant.Accounts.Modules.AccountsModule.UI
                 .Setup(x => x.GetFromJsonAsync<BankAccountType[]>("api/v1/BankAccountType", It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(new BankAccountType[]
                 {
-                    TestData.BankAccountTypeBuilder.WithTestData().Build()
+                    Factory.BankAccountType.WithTestData().Build()
                 }));
 
             mockHttpClientJsonProvider
                 .Setup(x => x.GetFromJsonAsync<Currency[]>("api/v1/Currency", It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(new Currency[]
                 {
-                    TestData.CurrencyBuilder.WithTestData().Build()
+                    Factory.Currency.WithTestData().Build()
                 }));
 
             var services = new ServiceCollection();
@@ -64,7 +64,7 @@ namespace AdminAssistant.Accounts.Modules.AccountsModule.UI
 
             // Act
             var vm = container.GetRequiredService<IBankAccountEditDialogViewModel>();
-            container.GetRequiredService<IAccountsStateStore>().OnEditAccount(TestData.BankAccountBuilder.WithTestData(bankAccountID: 20).Build());
+            container.GetRequiredService<IAccountsStateStore>().OnEditAccount(Factory.BankAccount.WithTestData(bankAccountID: 20).Build());
 
             // Assert
             vm.HeaderText.Should().Be(BankAccountEditDialogViewModel.EditBankAccountHeader);
@@ -83,7 +83,7 @@ namespace AdminAssistant.Accounts.Modules.AccountsModule.UI
 
             // Act
             var vm = container.GetRequiredService<IBankAccountEditDialogViewModel>();
-            container.GetRequiredService<IAccountsStateStore>().OnEditAccount(TestData.BankAccountBuilder.WithTestData(bankAccountID: Constants.NewRecordID).Build());
+            container.GetRequiredService<IAccountsStateStore>().OnEditAccount(Factory.BankAccount.WithTestData(bankAccountID: Constants.NewRecordID).Build());
 
             // Assert
             vm.HeaderText.Should().Be(BankAccountEditDialogViewModel.NewBankAccountHeader);

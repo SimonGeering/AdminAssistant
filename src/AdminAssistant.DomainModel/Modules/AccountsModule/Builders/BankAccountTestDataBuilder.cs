@@ -1,25 +1,25 @@
 using System;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.TestDataBuilders
+namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
 {
-    public interface IBankAccountTestDataBuilder
+    public interface IBankAccountBuilder
     {
         BankAccount Build();
-        IBankAccountTestDataBuilder WithTestData(int bankAccountID = Constants.UnknownRecordID);
-        IBankAccountTestDataBuilder WithBankAccountTypeID(int bankAccountTypeID);
-        IBankAccountTestDataBuilder WithCurrencyID(int currency);
-        IBankAccountTestDataBuilder WithAccountName(string accountName);
+        IBankAccountBuilder WithTestData(int bankAccountID = Constants.UnknownRecordID);
+        IBankAccountBuilder WithBankAccountTypeID(int bankAccountTypeID);
+        IBankAccountBuilder WithCurrencyID(int currency);
+        IBankAccountBuilder WithAccountName(string accountName);
     }
-    public class BankAccountTestDataBuilder : BankAccount, IBankAccountTestDataBuilder
+    public class BankAccountBuilder : BankAccount, IBankAccountBuilder
     {
-        public static BankAccount Default(IBankAccountTestDataBuilder builder) => builder.Build();
+        public static BankAccount Default(IBankAccountBuilder builder) => builder.Build();
 
         public BankAccount Build()
         {
             return this;
         }
 
-        public IBankAccountTestDataBuilder WithTestData(int bankAccountID = Constants.UnknownRecordID)
+        public IBankAccountBuilder WithTestData(int bankAccountID = Constants.UnknownRecordID)
         {
             this.BankAccountID = bankAccountID;
             this.AccountName = "A valid account name";
@@ -29,18 +29,18 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.TestDataBuilders
             return this;
         }
 
-        public IBankAccountTestDataBuilder WithBankAccountTypeID(int bankAccountTypeID)
+        public IBankAccountBuilder WithBankAccountTypeID(int bankAccountTypeID)
         {
             this.BankAccountTypeID = bankAccountTypeID;
             return this;
         }
-        public IBankAccountTestDataBuilder WithCurrencyID(int currencyID)
+        public IBankAccountBuilder WithCurrencyID(int currencyID)
         {
             this.CurrencyID = currencyID;
             return this;
         }
 
-        public IBankAccountTestDataBuilder WithAccountName(string accountName)
+        public IBankAccountBuilder WithAccountName(string accountName)
         {
             this.AccountName = accountName;
             return this;

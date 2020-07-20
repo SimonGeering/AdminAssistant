@@ -1,38 +1,38 @@
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.TestDataBuilders
+namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
 {
-    public interface ICurrencyTestDataBuilder
+    public interface ICurrencyBuilder
     {
         Currency Build();
-        ICurrencyTestDataBuilder WithoutADecimalFormat();
-        ICurrencyTestDataBuilder WithDecimalFormat(string decimalFormat);
-        ICurrencyTestDataBuilder WithoutASymbol();
-        ICurrencyTestDataBuilder WithSymbol(string symbol);
-        ICurrencyTestDataBuilder WithTestData(int currencyID = Constants.UnknownRecordID);
+        ICurrencyBuilder WithoutADecimalFormat();
+        ICurrencyBuilder WithDecimalFormat(string decimalFormat);
+        ICurrencyBuilder WithoutASymbol();
+        ICurrencyBuilder WithSymbol(string symbol);
+        ICurrencyBuilder WithTestData(int currencyID = Constants.UnknownRecordID);
     }
-    public class CurrencyTestDataBuilder : Currency, ICurrencyTestDataBuilder
+    public class CurrencyBuilder : Currency, ICurrencyBuilder
     {
-        public static Currency Default(ICurrencyTestDataBuilder builder) => builder.Build();
+        public static Currency Default(ICurrencyBuilder builder) => builder.Build();
 
         public Currency Build()
         {
             return this;
         }
 
-        public ICurrencyTestDataBuilder WithoutADecimalFormat() => this.WithDecimalFormat(string.Empty);
-        public ICurrencyTestDataBuilder WithDecimalFormat(string decimalFormat)
+        public ICurrencyBuilder WithoutADecimalFormat() => this.WithDecimalFormat(string.Empty);
+        public ICurrencyBuilder WithDecimalFormat(string decimalFormat)
         {
             this.DecimalFormat = decimalFormat;
             return this;
         }
 
-        public ICurrencyTestDataBuilder WithoutASymbol() => this.WithSymbol(string.Empty);
-        public ICurrencyTestDataBuilder WithSymbol(string symbol)
+        public ICurrencyBuilder WithoutASymbol() => this.WithSymbol(string.Empty);
+        public ICurrencyBuilder WithSymbol(string symbol)
         {
             this.Symbol = symbol;
             return this;
         }
 
-        public ICurrencyTestDataBuilder WithTestData(int currencyID = Constants.UnknownRecordID)
+        public ICurrencyBuilder WithTestData(int currencyID = Constants.UnknownRecordID)
         {
             this.CurrencyID = currencyID;
             this.Symbol = "GBP";

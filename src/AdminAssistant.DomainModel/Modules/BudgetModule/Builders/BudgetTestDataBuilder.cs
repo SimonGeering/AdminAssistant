@@ -1,29 +1,27 @@
-using System;
-
-namespace AdminAssistant.DomainModel.Modules.BudgetModule.TestDataBuilders
+namespace AdminAssistant.DomainModel.Modules.BudgetModule.Builders
 {
-    public interface IBudgetTestDataBuilder
+    public interface IBudgetBuilder
     {
         Budget Build();
-        IBudgetTestDataBuilder WithTestData(int budgetID = Constants.UnknownRecordID);
-        IBudgetTestDataBuilder WithBudgetName(string empty);
+        IBudgetBuilder WithTestData(int budgetID = Constants.UnknownRecordID);
+        IBudgetBuilder WithBudgetName(string empty);
     }
-    public class BudgetTestDataBuilder : Budget, IBudgetTestDataBuilder
+    public class BudgetBuilder : Budget, IBudgetBuilder
     {
-        public static Budget Default(IBudgetTestDataBuilder builder) => builder.Build();
+        public static Budget Default(IBudgetBuilder builder) => builder.Build();
 
         public Budget Build()
         {
             return this;
         }
 
-        public IBudgetTestDataBuilder WithTestData(int budgetID = Constants.UnknownRecordID)
+        public IBudgetBuilder WithTestData(int budgetID = Constants.UnknownRecordID)
         {
             this.BudgetName = "Test Budget";
             return this;
         }
 
-        public IBudgetTestDataBuilder WithBudgetName(string budgetName)
+        public IBudgetBuilder WithBudgetName(string budgetName)
         {
             this.BudgetName = budgetName;
             return this;

@@ -17,7 +17,7 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var budget = TestData.BudgetBuilder.WithTestData().Build();
+            var budget = Factory.Budget.WithTestData().Build();
 
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
@@ -34,9 +34,9 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var budget = TestData.BudgetBuilder.WithTestData()
-                                               .WithBudgetName(string.Empty)
-                                               .Build();
+            var budget = Factory.Budget.WithTestData()
+                                       .WithBudgetName(string.Empty)
+                                       .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
 
@@ -53,9 +53,9 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var budget = TestData.BudgetBuilder.WithTestData()
-                                               .WithBudgetName(new string('x', Budget.BudgetNameMaxLength + 1))
-                                               .Build();
+            var budget = Factory.Budget.WithTestData()
+                                       .WithBudgetName(new string('x', Budget.BudgetNameMaxLength + 1))
+                                       .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
 

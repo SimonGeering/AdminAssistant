@@ -1,32 +1,28 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.TestDataBuilders
+namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
 {
-    public interface IBankAccountTypeTestDataBuilder
+    public interface IBankAccountTypeBuilder
     {
         BankAccountType Build();
-        IBankAccountTypeTestDataBuilder WithTestData(int bankAccountTypeID = Constants.NewRecordID);
-        IBankAccountTypeTestDataBuilder WithDescription(string description);
+        IBankAccountTypeBuilder WithTestData(int bankAccountTypeID = Constants.NewRecordID);
+        IBankAccountTypeBuilder WithDescription(string description);
     }
-    public class BankAccountTypeTestDataBuilder : BankAccountType, IBankAccountTypeTestDataBuilder
+    public class BankAccountTypeBuilder : BankAccountType, IBankAccountTypeBuilder
     {
-        public static BankAccountType Default(IBankAccountTypeTestDataBuilder builder) => builder.Build();
+        public static BankAccountType Default(IBankAccountTypeBuilder builder) => builder.Build();
 
         public BankAccountType Build()
         {
             return this;
         }
 
-        public IBankAccountTypeTestDataBuilder WithTestData(int bankAccountTypeID = Constants.NewRecordID)
+        public IBankAccountTypeBuilder WithTestData(int bankAccountTypeID = Constants.NewRecordID)
         {
             this.BankAccountTypeID = bankAccountTypeID;
             this.Description = "A valid BankAccountType description";
             return this;
         }
 
-        public IBankAccountTypeTestDataBuilder WithDescription(string description)
+        public IBankAccountTypeBuilder WithDescription(string description)
         {
             this.Description = description;
             return this;

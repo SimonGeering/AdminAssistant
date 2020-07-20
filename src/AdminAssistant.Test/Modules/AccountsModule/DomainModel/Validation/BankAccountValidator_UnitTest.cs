@@ -17,8 +17,10 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = TestData.BankAccountBuilder.WithTestData().WithBankAccountTypeID(20).WithCurrencyID(10).Build();
-
+            var bankAccount = Factory.BankAccount.WithTestData()
+                                     .WithBankAccountTypeID(20)
+                                     .WithCurrencyID(10)
+                                     .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 
@@ -34,8 +36,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = TestData.BankAccountBuilder.WithTestData().WithAccountName(string.Empty).Build();
-
+            var bankAccount = Factory.BankAccount.WithTestData()
+                                                 .WithAccountName(string.Empty)
+                                                 .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 
@@ -53,9 +56,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = TestData.BankAccountBuilder.WithTestData()
-                                                         .WithAccountName(new string('x', BankAccount.AccountNameMaxLength + 1))
-                                                         .Build();
+            var bankAccount = Factory.BankAccount.WithTestData()
+                                                 .WithAccountName(new string('x', BankAccount.AccountNameMaxLength + 1))
+                                                 .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 
@@ -72,8 +75,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = TestData.BankAccountBuilder.WithTestData().WithBankAccountTypeID(Constants.UnknownRecordID).Build();
-            
+            var bankAccount = Factory.BankAccount.WithTestData()
+                                                 .WithBankAccountTypeID(Constants.UnknownRecordID)
+                                                 .Build();            
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 
@@ -90,8 +94,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = TestData.BankAccountBuilder.WithTestData().WithCurrencyID(Constants.UnknownRecordID).Build();
-
+            var bankAccount = Factory.BankAccount.WithTestData()
+                                                 .WithCurrencyID(Constants.UnknownRecordID)
+                                                 .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 

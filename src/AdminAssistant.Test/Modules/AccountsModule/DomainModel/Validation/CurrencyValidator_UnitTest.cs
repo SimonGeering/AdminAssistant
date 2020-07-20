@@ -17,7 +17,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var currency = TestData.CurrencyBuilder.WithTestData().Build();
+            var currency = Factory.Currency.WithTestData().Build();
 
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
@@ -34,9 +34,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var currency = TestData.CurrencyBuilder.WithTestData()
-                                                   .WithoutADecimalFormat()
-                                                   .Build();
+            var currency = Factory.Currency.WithTestData()
+                                           .WithoutADecimalFormat()
+                                           .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
 
@@ -53,9 +53,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var currency = TestData.CurrencyBuilder.WithTestData()
-                                                   .WithDecimalFormat(new string('x', Currency.DecimalFormatMaxLength + 1))
-                                                   .Build();
+            var currency = Factory.Currency.WithTestData()
+                                           .WithDecimalFormat(new string('x', Currency.DecimalFormatMaxLength + 1))
+                                           .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
 
@@ -72,8 +72,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var currency = TestData.CurrencyBuilder.WithTestData().WithoutASymbol().Build();
-
+            var currency = Factory.Currency.WithTestData()
+                                           .WithoutASymbol()
+                                           .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
 
@@ -90,9 +91,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             var services = new ServiceCollection();
             services.AddAdminAssistantClientSideDomainModel();
 
-            var currency = TestData.CurrencyBuilder.WithTestData()
-                                                   .WithSymbol(new string('x', Currency.SymbolMaxLength + 1))
-                                                   .Build();
+            var currency = Factory.Currency.WithTestData()
+                                           .WithSymbol(new string('x', Currency.SymbolMaxLength + 1))
+                                           .Build();
             // Act
             var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
 
