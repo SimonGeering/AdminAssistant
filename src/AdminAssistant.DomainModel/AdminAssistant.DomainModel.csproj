@@ -48,8 +48,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Infrastructure\" />
+    <Folder Include="Modules\AccountsModule\CQRS\" />
+    <Folder Include="Modules\AccountsModule\Validation\" />
     <Folder Include="Modules\AssetRegisterModule\" />
     <Folder Include="Modules\BillingModule\" />
+    <Folder Include="Modules\BudgetModule\Validation\" />
     <Folder Include="Modules\CalendarModule\" />
     <Folder Include="Modules\ContactsModule\" />
     <Folder Include="Modules\DashboardModule\" />
