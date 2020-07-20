@@ -1,6 +1,12 @@
 namespace AdminAssistant.DomainModel.Infrastructure
 {
-    public class UserContextProvider : IUserContextProvider
+    public interface IUserContextProvider
+    {
+        User GetCurrentUser();
+    }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class UserContextProvider : IUserContextProvider
     {
         public User GetCurrentUser()
         {

@@ -1,22 +1,15 @@
-using System.ComponentModel;
 using System.Threading.Tasks;
 using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Shared;
 
 namespace AdminAssistant.UI
 {
-    public interface IViewModelBase : INotifyPropertyChanged
-    {
-        Task OnInitializedAsync();
-        ILoadingSpinner LoadingSpinner { get; }
-    }
     public abstract class ViewModelBase : PropertyChangedNotificationBase, IViewModelBase
     {
         protected ILoggingProvider Log { get; }
 
         private bool isBusy;
-        public bool IsBusy
-        {
+        public bool IsBusy {
             get => isBusy;
             private set => this.SetValue(ref isBusy, value);
         }
@@ -30,5 +23,11 @@ namespace AdminAssistant.UI
             this.Log = log;
             this.LoadingSpinner = loadingSpinner;
         }
+    }
+
+    public abstract class DesignTimeViewModelBase : PropertyChangedNotificationBase, IViewModelBase
+    {
+        public ILoadingSpinner LoadingSpinner => new DesignTimeLoadingSpinner();
+        public Task OnInitializedAsync() => throw new System.NotImplementedException();
     }
 }

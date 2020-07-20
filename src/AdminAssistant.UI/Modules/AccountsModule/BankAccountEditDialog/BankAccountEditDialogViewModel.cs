@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
@@ -12,6 +13,29 @@ using Microsoft.Extensions.Logging;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
+    public class BankAccountEditDialogDesignTimeViewModel : DesignTimeViewModelBase, IBankAccountEditDialogViewModel
+    {
+        public BankAccount Model => null!;
+
+        public string HeaderText => string.Empty;
+
+        public bool ShowDialog { get; set; } = false;
+
+        public IEnumerable<BankAccountType> BankAccountTypes => new List<BankAccountType>();
+
+        public IEnumerable<Currency> Currencies => new List<Currency>();
+
+        public string AccountNameValidationMessage => string.Empty;
+
+        public string AccountNameValidationClass => string.Empty;
+
+        public void OnAccountNameChanged(string accountName) => throw new System.NotImplementedException();
+        public void OnBankAccountTypeChanged() => throw new System.NotImplementedException();
+        public void OnCancelButtonClick() => throw new System.NotImplementedException();
+        public void OnCurrencyChanged() => throw new System.NotImplementedException();
+        public Task OnSaveButtonClick() => throw new System.NotImplementedException();
+    }
+
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel
     {
