@@ -57,7 +57,6 @@
     <ProjectReference Include="..\AdminAssistant.Blazor\Client\AdminAssistant.Blazor.Client.csproj" />
     <ProjectReference Include="..\AdminAssistant.Blazor\Server\AdminAssistant.Blazor.Server.csproj" />
     <ProjectReference Include="..\AdminAssistant.DAL\AdminAssistant.DAL.csproj" />
-    <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
     <ProjectReference Include="..\AdminAssistant.WebAPI\AdminAssistant.WebAPI.csproj" />
     <ProjectReference Include="..\Framework\AdminAssistant.Framework.Test\AdminAssistant.Framework.Test.csproj" />

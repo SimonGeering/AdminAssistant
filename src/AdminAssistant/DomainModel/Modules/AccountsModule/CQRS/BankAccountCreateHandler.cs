@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using AdminAssistant.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Framework.Providers;
-using Ardalis.GuardClauses;
 using Ardalis.Result;
 using MediatR;
 
@@ -27,9 +26,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
         public async Task<Result<BankAccount>> Handle(BankAccountCreateCommand command, CancellationToken cancellationToken)
         {
             log.Start();
-
-            Guard.Against.Null(command.BankAccount, $"{nameof(command)}.{nameof(command.BankAccount)}");
-            Guard.Against.OutOfRange(command.BankAccount.BankAccountID, $"{nameof(command)}.{nameof(command.BankAccount)}.{nameof(command.BankAccount.BankAccountID)}", Constants.NewRecordID, Constants.NewRecordID);
 
             // Don't need this for now as the calidator no longer needs extra context.
             // Keep it here for reference of how to do this.

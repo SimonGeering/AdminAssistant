@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Serve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.DAL", "AdminAssistant.DAL\AdminAssistant.DAL.csproj", "{2A29E83F-8B0A-4194-8A43-372A6CB89265}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.DomainModel", "AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj", "{5F40E2ED-3192-4313-983D-5842DBA5AA9E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Test", "AdminAssistant.Test\AdminAssistant.Test.csproj", "{0ADEA26B-F913-4BC2-9860-3E9523C844ED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.UI", "AdminAssistant.UI\AdminAssistant.UI.csproj", "{9E39B9F2-0A2E-4423-A4D8-19D6422AC859}"
@@ -76,10 +74,6 @@ Global
 		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Debug|x64.Build.0 = Debug|x64
 		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Release|x64.ActiveCfg = Release|x64
 		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Release|x64.Build.0 = Release|x64
-		{5F40E2ED-3192-4313-983D-5842DBA5AA9E}.Debug|x64.ActiveCfg = Debug|x64
-		{5F40E2ED-3192-4313-983D-5842DBA5AA9E}.Debug|x64.Build.0 = Debug|x64
-		{5F40E2ED-3192-4313-983D-5842DBA5AA9E}.Release|x64.ActiveCfg = Release|x64
-		{5F40E2ED-3192-4313-983D-5842DBA5AA9E}.Release|x64.Build.0 = Release|x64
 		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Debug|x64.ActiveCfg = Debug|x64
 		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Debug|x64.Build.0 = Debug|x64
 		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Release|x64.ActiveCfg = Release|x64
