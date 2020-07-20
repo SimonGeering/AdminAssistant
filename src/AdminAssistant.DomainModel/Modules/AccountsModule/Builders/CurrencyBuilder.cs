@@ -9,7 +9,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
         ICurrencyBuilder WithSymbol(string symbol);
         ICurrencyBuilder WithTestData(int currencyID = Constants.UnknownRecordID);
     }
-    public class CurrencyBuilder : Currency, ICurrencyBuilder
+    internal class CurrencyBuilder : Currency, ICurrencyBuilder
     {
         public static Currency Default(ICurrencyBuilder builder) => builder.Build();
 

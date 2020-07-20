@@ -1,15 +1,15 @@
 using System.Collections.Generic;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.Providers;
 using AdminAssistant.WebAPI.v1;
 using AutoMapper;
-using System;
-using System.Net.Http.Json;
 
 namespace AdminAssistant.UI.Modules.AccountsModule
 {
-    public class AccountsService : ServiceBase, IAccountsService
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class AccountsService : ServiceBase, IAccountsService
     {
         public AccountsService(IHttpClientJsonProvider httpClient, IMapper mapper, ILoggingProvider log)
             : base(httpClient, mapper, log)

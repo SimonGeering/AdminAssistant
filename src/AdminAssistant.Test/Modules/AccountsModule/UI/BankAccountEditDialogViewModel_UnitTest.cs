@@ -67,7 +67,7 @@ namespace AdminAssistant.Accounts.Modules.AccountsModule.UI
             container.GetRequiredService<IAccountsStateStore>().OnEditAccount(Factory.BankAccount.WithTestData(bankAccountID: 20).Build());
 
             // Assert
-            vm.HeaderText.Should().Be(BankAccountEditDialogViewModel.EditBankAccountHeader);
+            vm.HeaderText.Should().Be(IBankAccountEditDialogViewModel.EditBankAccountHeader);
         }
 
         [Fact]
@@ -86,7 +86,7 @@ namespace AdminAssistant.Accounts.Modules.AccountsModule.UI
             container.GetRequiredService<IAccountsStateStore>().OnEditAccount(Factory.BankAccount.WithTestData(bankAccountID: Constants.NewRecordID).Build());
 
             // Assert
-            vm.HeaderText.Should().Be(BankAccountEditDialogViewModel.NewBankAccountHeader);
+            vm.HeaderText.Should().Be(IBankAccountEditDialogViewModel.NewBankAccountHeader);
         }
     }
 }

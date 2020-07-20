@@ -12,11 +12,9 @@ using Microsoft.Extensions.Logging;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
-    public class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel
     {
-        public const string NewBankAccountHeader = "New bank account";
-        public const string EditBankAccountHeader = "Edit bank account";
-
         private readonly IAccountsStateStore accountsStateStore;
         private readonly IBankAccountValidator bankAccountValidator;
         private readonly IAccountsService accountsService;
@@ -44,7 +42,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 
                 this.bankAccount = bankAccount;
 
-                this.HeaderText = (this.bankAccount as IDatabasePersistable).IsNew ? NewBankAccountHeader : EditBankAccountHeader;
+                this.HeaderText = (this.bankAccount as IDatabasePersistable).IsNew ? IBankAccountEditDialogViewModel.NewBankAccountHeader : IBankAccountEditDialogViewModel.EditBankAccountHeader;
                 this.RefreshValidation();
                 this.ShowDialog = true;
             };

@@ -10,7 +10,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
         IBankAccountBuilder WithCurrencyID(int currency);
         IBankAccountBuilder WithAccountName(string accountName);
     }
-    public class BankAccountBuilder : BankAccount, IBankAccountBuilder
+    internal class BankAccountBuilder : BankAccount, IBankAccountBuilder
     {
         public static BankAccount Default(IBankAccountBuilder builder) => builder.Build();
 

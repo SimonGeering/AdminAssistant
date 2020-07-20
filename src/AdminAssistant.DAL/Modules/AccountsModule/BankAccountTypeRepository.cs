@@ -7,7 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.DAL.Modules.AccountsModule
 {
-    public class BankAccountTypeRepository : RepositoryBase, IBankAccountTypeRepository
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class BankAccountTypeRepository : RepositoryBase, IBankAccountTypeRepository
     {
         public BankAccountTypeRepository(IApplicationDbContext dbContext, IMapper mapper)
             : base(dbContext, mapper)

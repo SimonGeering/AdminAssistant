@@ -6,7 +6,8 @@ using AutoMapper;
 
 namespace AdminAssistant.UI.Services
 {
-    public class AppService : ServiceBase, IAppService
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class AppService : ServiceBase, IAppService
     {
         public AppService(IHttpClientJsonProvider httpClient, IMapper mapper, ILoggingProvider log)
             : base(httpClient, mapper, log)

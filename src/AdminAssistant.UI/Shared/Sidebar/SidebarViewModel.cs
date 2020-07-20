@@ -4,7 +4,8 @@ using AdminAssistant.UI.Services;
 
 namespace AdminAssistant.UI.Shared.Sidebar
 {
-    public class SidebarViewModel : ViewModelBase, ISidebarViewModel
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class SidebarViewModel : ViewModelBase, ISidebarViewModel
     {
         private const string SelectedModuleStyle = "active";
 

@@ -44,7 +44,7 @@ namespace AdminAssistant.Blazor.Client
             builder.Services.AddAutoMapper(typeof(WebAPI.MappingProfile));
 
             // See https://github.com/ryanelian/FluentValidation.Blazor
-            builder.Services.AddValidatorsFromAssemblyContaining<DomainModel.Modules.AccountsModule.Validation.BankAccountValidator>();
+            builder.Services.AddValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
 
             // See https://blazor.syncfusion.com/documentation/introduction/
             builder.Services.AddSyncfusionBlazor();

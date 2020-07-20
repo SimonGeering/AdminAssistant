@@ -6,7 +6,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
         IBankAccountTypeBuilder WithTestData(int bankAccountTypeID = Constants.NewRecordID);
         IBankAccountTypeBuilder WithDescription(string description);
     }
-    public class BankAccountTypeBuilder : BankAccountType, IBankAccountTypeBuilder
+    internal class BankAccountTypeBuilder : BankAccountType, IBankAccountTypeBuilder
     {
         public static BankAccountType Default(IBankAccountTypeBuilder builder) => builder.Build();
 

@@ -7,7 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.DAL.Modules.AccountsModule
 {
-    public class CurrencyRepository : RepositoryBase, ICurrencyRepository
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class CurrencyRepository : RepositoryBase, ICurrencyRepository
     {
         public CurrencyRepository(IApplicationDbContext dbContext, IMapper mapper)
             : base(dbContext, mapper)

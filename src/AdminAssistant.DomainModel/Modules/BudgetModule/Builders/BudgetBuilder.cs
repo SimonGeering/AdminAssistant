@@ -6,7 +6,7 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Builders
         IBudgetBuilder WithTestData(int budgetID = Constants.UnknownRecordID);
         IBudgetBuilder WithBudgetName(string empty);
     }
-    public class BudgetBuilder : Budget, IBudgetBuilder
+    internal class BudgetBuilder : Budget, IBudgetBuilder
     {
         public static Budget Default(IBudgetBuilder builder) => builder.Build();
 
