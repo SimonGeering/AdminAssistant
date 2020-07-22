@@ -10,26 +10,26 @@
         <div class="cl-row1">
           <label>Account name</label>
           <div class="form-group">
-            <SfTextBox Value="@this.vm.Model.AccountName" ValueChanged="@((value) => this.vm.OnAccountNameChanged(value))" Placeholder="@this.vm.AccountNameValidationMessage" CssClass="@this.vm.AccountNameValidationClass"></SfTextBox>
+            <SfTextBox Value="@this.vm.AccountName" ValueChanged="@((value) => this.vm.OnAccountNameChanged(value))" Placeholder="@this.vm.AccountNameValidationMessage" CssClass="@this.vm.AccountNameValidationClass"></SfTextBox>
           </div>
-          <SfCheckBox @bind-Checked="@this.vm.Model.IsBudgeted" Label="On budget"></SfCheckBox>
+          <SfCheckBox @bind-Checked="@this.vm.IsBudgeted" Label="On budget"></SfCheckBox>
         </div>
 
         <div class="cl-row2">
           <label>Account Type</label>
           <div class="cl-account-type">
-            <SfDropDownList @bind-Value="@this.vm.Model.BankAccountTypeID" OnChange="@(() => this.vm.OnBankAccountTypeChanged())" TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" DataSource="@this.vm.BankAccountTypes">
+            <SfDropDownList @bind-Value="@this.vm.BankAccountTypeID" OnChange="@(() => this.vm.OnBankAccountTypeChanged())" TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" DataSource="@this.vm.BankAccountTypes">
               <DropDownListFieldSettings Text="Description" Value="BankAccountTypeID" />
             </SfDropDownList>
           </div>
           <label>Opened On</label>
           <div class="cl-opened-on">
-            <SfDatePicker @bind-Value="@this.vm.Model.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" Placeholder="Opened on" />
+            <SfDatePicker @bind-Value="@this.vm.OpenedOn" TValue="DateTime" Format="dd-MMM-yyyy" Placeholder="Opened on" />
           </div>
         </div>
         <div class="cl-row3">
           <label>Currency</label>
-          <SfDropDownList @bind-Value="@this.vm.Model.CurrencyID" OnChange="@(() => this.vm.OnCurrencyChanged())" TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" DataSource="@this.vm.Currencies">
+          <SfDropDownList @bind-Value="@this.vm.CurrencyID" OnChange="@(() => this.vm.OnCurrencyChanged())" TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" DataSource="@this.vm.Currencies">
             <DropDownListFieldSettings Text="Symbol" Value="CurrencyID" />
           </SfDropDownList>
           @*<div class="cl-label">Opening balance</div>

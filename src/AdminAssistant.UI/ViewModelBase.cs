@@ -8,12 +8,6 @@ namespace AdminAssistant.UI
     {
         protected ILoggingProvider Log { get; }
 
-        private bool isBusy;
-        public bool IsBusy {
-            get => isBusy;
-            private set => this.SetValue(ref isBusy, value);
-        }
-
         public ILoadingSpinner LoadingSpinner { get; }
 
         public virtual async Task OnInitializedAsync() => await Task.CompletedTask.ConfigureAwait(false);

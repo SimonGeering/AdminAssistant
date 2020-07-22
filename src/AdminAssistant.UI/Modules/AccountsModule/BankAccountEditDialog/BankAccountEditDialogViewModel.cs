@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
@@ -15,9 +15,22 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
     public class BankAccountEditDialogDesignTimeViewModel : DesignTimeViewModelBase, IBankAccountEditDialogViewModel
     {
-        public BankAccount Model => null!;
+        public string AccountName { get; set; } = "Acme Bank Current Account";
 
-        public string HeaderText => string.Empty;
+        public int BankAccountID { get; set; } = Constants.UnknownRecordID;
+        public int BankAccountTypeID { get; set; } = Constants.UnknownRecordID;
+        public int CurrencyID { get; set; } = Constants.UnknownRecordID;
+        public bool IsBudgeted { get; set; } = false;
+        public int OpeningBalance { get; set; } = 0;
+        public int CurrentBalance { get; private set; } = 0;
+        public DateTime OpenedOn { get; set; }
+
+        public BankAccountEditDialogDesignTimeViewModel()
+        {
+            this.OpenedOn = DateTime.Today;
+        }
+
+        public string HeaderText { get; private set; } = "Create Bank Account";
 
         public bool ShowDialog { get; set; } = false;
 
@@ -45,9 +58,6 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 
         private BankAccount bankAccount = new BankAccount();
 
-        [System.Obsolete("Replace with delegate properties that implement INotifyPropertyChanged")]
-        public BankAccount Model { get => this.bankAccount; }
-
         public BankAccountEditDialogViewModel(
             ILoggingProvider log,
             ILoadingSpinner loadingSpinner,
@@ -72,32 +82,154 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             };
         }
 
+        public string AccountName
+        {
+            get => this.bankAccount.AccountName;
+            set
+            {
+                if (this.bankAccount.AccountName.Equals(value, StringComparison.InvariantCulture))
+                    return;
+
+                this.bankAccount.AccountName = value;
+                this.RefreshValidation();
+                this.OnPropertyChanged();
+            }
+        }
+
+        public int BankAccountID
+        {
+            get => this.bankAccount.BankAccountID;
+            set
+            {
+                if (this.bankAccount.BankAccountID.Equals(value))
+                    return;
+
+                this.bankAccount.BankAccountID = value;
+                this.RefreshValidation();
+                this.OnPropertyChanged();
+            }
+        }
+
+        public int BankAccountTypeID
+        {
+            get => this.bankAccount.BankAccountTypeID;
+            set
+            {
+                if (this.bankAccount.BankAccountTypeID.Equals(value))
+                    return;
+
+                this.bankAccount.BankAccountTypeID = value;
+                this.RefreshValidation();
+                this.OnPropertyChanged();
+            }
+        }
+
+        public int CurrencyID
+        {
+            get => this.bankAccount.CurrencyID;
+            set
+            {
+                if (this.bankAccount.CurrencyID.Equals(value))
+                    return;
+
+                this.bankAccount.CurrencyID = value;
+                this.RefreshValidation();
+                this.OnPropertyChanged();
+            }
+        }
+
+        public bool IsBudgeted
+        {
+            get => this.bankAccount.IsBudgeted;
+            set
+            {
+                if (this.bankAccount.IsBudgeted.Equals(value))
+                    return;
+
+                this.bankAccount.IsBudgeted = value;
+                this.RefreshValidation();
+                this.OnPropertyChanged();
+            }
+        }
+
+        public int OpeningBalance 
+        {
+            get => this.bankAccount.OpeningBalance;
+            set
+            {
+                if (this.bankAccount.OpeningBalance.Equals(value))
+                    return;
+
+                this.bankAccount.OpeningBalance = value;
+                this.RefreshValidation();
+                this.OnPropertyChanged();
+            }
+        }
+
+        public int CurrentBalance => this.bankAccount.CurrentBalance;
+
+        public DateTime OpenedOn
+        {
+            get => this.bankAccount.OpenedOn;
+            set
+            {
+                if (this.bankAccount.OpenedOn.Equals(value))
+                    return;
+
+                this.bankAccount.OpenedOn = value;
+                this.RefreshValidation();
+                this.OnPropertyChanged();
+            }
+        }
+
         private IEnumerable<BankAccountType> bankAccountTypes = new List<BankAccountType>();
         public IEnumerable<BankAccountType> BankAccountTypes
         {
             get => this.bankAccountTypes;
-            private set => this.SetValue(ref this.bankAccountTypes, value);
+            private set
+            {
+                this.bankAccountTypes = value;
+                this.OnPropertyChanged();
+            }
         }
 
         private IEnumerable<Currency> currencies = new List<Currency>();
         public IEnumerable<Currency> Currencies
         {
             get => this.currencies;
-            private set => this.SetValue(ref this.currencies, value);
+            private set
+            {
+                this.currencies = value;
+                this.OnPropertyChanged();
+            }
         }
 
         private string headerText = string.Empty;
         public string HeaderText
         {
             get => this.headerText;
-            private set => this.SetValue(ref this.headerText, value);
+            private set
+            {
+                if (this.headerText.Equals(value, StringComparison.InvariantCulture))
+                    return;
+
+                this.headerText = value;
+                this.OnPropertyChanged();
+            }
         }
 
         private bool showDialog = false;
         public bool ShowDialog
         {
             get => this.showDialog;
-            set => this.SetValue(ref this.showDialog, value);
+            set
+            {
+                if (this.showDialog.Equals(value))
+                    return;
+
+                this.showDialog = value;
+                this.OnPropertyChanged();
+            }
         }
 
         public void OnAccountNameChanged(string accountName)
@@ -163,19 +295,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             this.LoadingSpinner.OnShowLoadingSpinner();
 
             this.BankAccountTypes = await this.accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
-#if DEBUG
-            foreach (var item in this.BankAccountTypes)
-            {
-                this.Log.LogDebug($"[BankAccountType - BankAccountTypeID: {item.BankAccountTypeID} Description: {item.Description}]");
-            }
-#endif
             this.Currencies = await this.accountsService.LoadCurrencyLookupDataAsync().ConfigureAwait(false);
-#if DEBUG
-            foreach (var item in this.Currencies)
-            {
-                this.Log.LogDebug($"[Currency - CurrencyID: {item.CurrencyID} Symbol: {item.Symbol} DecimalFormat: {item.DecimalFormat}]");
-            }
-#endif
+
             this.LoadingSpinner.OnHideLoadingSpinner();
 
             await base.OnInitializedAsync().ConfigureAwait(false);
