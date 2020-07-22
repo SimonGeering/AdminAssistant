@@ -26,6 +26,7 @@ namespace Microsoft.Extensions.DependencyInjection
         private static void AddSharedDomainModel(IServiceCollection services)
         {
             // Add AccountsModule DomainModel ...
+            services.AddTransient<IBankAccountTransactionValidator, BankAccountTransactionValidator>();
             services.AddTransient<IBankAccountValidator, BankAccountValidator>();
             services.AddTransient<ICurrencyValidator, CurrencyValidator>();
 

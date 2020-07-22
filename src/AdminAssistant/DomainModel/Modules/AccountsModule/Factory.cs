@@ -7,5 +7,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
         public static IBankAccountBuilder BankAccount => new BankAccountBuilder();
         public static IBankAccountTypeBuilder BankAccountType => new BankAccountTypeBuilder();
         public static ICurrencyBuilder Currency => new CurrencyBuilder();
+        public static IBankAccountTransactionBuilder BankAccountTransaction => new BankAccountTransactionBuilder();
     }
 }
