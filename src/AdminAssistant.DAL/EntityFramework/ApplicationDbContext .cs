@@ -71,22 +71,11 @@ namespace AdminAssistant.DAL.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            this.Address_OnModelCreating(modelBuilder);
-            this.Asset_OnModelCreating(modelBuilder);
+            // Core ...
             this.Audit_OnModelCreating(modelBuilder);
-            this.BankAccount_OnModelCreating(modelBuilder);
-            this.BankAccountTransaction_OnModelCreating(modelBuilder);
-            this.BankAccountTransaction_OnModelCreating(modelBuilder);
-            this.BankAccountType_OnModelCreating(modelBuilder);
-            this.Budget_OnModelCreating(modelBuilder);
-            this.BudgetEntry_OnModelCreating(modelBuilder);
             this.Company_OnModelCreating(modelBuilder);
-            this.ContactAddress_OnModelCreating(modelBuilder);
-            this.Contact_OnModelCreating(modelBuilder);
             this.Currency_OnModelCreating(modelBuilder);
-            this.Document_OnModelCreating(modelBuilder);
             this.Owner_OnModelCreating(modelBuilder);
-            this.Payee_OnModelCreating(modelBuilder);
             this.Permission_OnModelCreating(modelBuilder);
             this.PersonalDetails_OnModelCreating(modelBuilder);
             this.Setting_OnModelCreating(modelBuilder);
@@ -94,6 +83,40 @@ namespace AdminAssistant.DAL.EntityFramework
             this.UserProfilePermission_OnModelCreating(modelBuilder);
             this.UserProfileSetting_OnModelCreating(modelBuilder);
 
+            // Accounts ...
+            this.BankAccount_OnModelCreating(modelBuilder);
+            this.BankAccountTransaction_OnModelCreating(modelBuilder);
+            this.BankAccountType_OnModelCreating(modelBuilder);
+            this.Payee_OnModelCreating(modelBuilder);
+
+            // AssetRegister ...
+            this.Asset_OnModelCreating(modelBuilder);
+
+            // Billing ...
+
+            // Budget ...
+            this.Budget_OnModelCreating(modelBuilder);
+            this.BudgetEntry_OnModelCreating(modelBuilder);
+
+            // Calendar ...
+
+            // Contacts ...
+            this.Address_OnModelCreating(modelBuilder);
+            this.ContactAddress_OnModelCreating(modelBuilder);
+            this.Contact_OnModelCreating(modelBuilder);
+
+            // Dashboard ...
+
+            // Documents ...
+            this.Document_OnModelCreating(modelBuilder);
+
+            // Mail ...
+
+            // Reports ...
+
+            // Tasks ...
+
+            // Do this last ...
             this.RemoveCascadingDeletes(modelBuilder);
         }
         private void Address_OnModelCreating(ModelBuilder modelBuilder)
@@ -160,7 +183,7 @@ namespace AdminAssistant.DAL.EntityFramework
         {
             modelBuilder.Entity<BankAccountTransactionEntity>().ToTable("BankAccountTransaction");
             modelBuilder.Entity<BankAccountTransactionEntity>().HasKey(x => x.BankAccountTransactionID);
-            modelBuilder.Entity<BankAccountTransactionEntity>().Property(x => x.Description).IsRequired().IsUnicode().HasMaxLength(Constants.DescriptionMaxLength);
+            modelBuilder.Entity<BankAccountTransactionEntity>().Property(x => x.Description).IsRequired().IsUnicode().HasMaxLength(BankAccountTransaction.DescriptionMaxLength);
             modelBuilder.Entity<BankAccountTransactionEntity>().Property(x => x.Notes).IsRequired().IsUnicode().HasMaxLength(Constants.NotesMaxLength);
             // TODO: BankAccountTransaction_OnModelCreating
         }
