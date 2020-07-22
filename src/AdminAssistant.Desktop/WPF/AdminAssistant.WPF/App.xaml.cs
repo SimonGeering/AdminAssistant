@@ -2,10 +2,12 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-//using FluentValidation;
+using FluentValidation;
 using AutoMapper;
 using Syncfusion.SfSkinManager;
 using AdminAssistant.WPF.Modules.AccountsModule;
+using System.Net.Http;
+using System;
 
 namespace AdminAssistant.WPF
 {
@@ -20,10 +22,10 @@ namespace AdminAssistant.WPF
             host = new HostBuilder()
                 .ConfigureServices((hostContext, services) =>
                 {
-                    //services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+                    services.AddTransient(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5001") });
                     services.AddAutoMapper(typeof(WebAPI.MappingProfile));
 
-                    //services.AddValidatorsFromAssemblyContaining<DomainModel.Modules.Accounts.Validation.BankAccountValidator>();
+                    services.AddValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
 
                     services.AddAdminAssistantDesktopServices();
                 })
@@ -41,6 +43,7 @@ namespace AdminAssistant.WPF
 
             using (var scope = host.Services.CreateScope())
             {
+                // TODO: Switch back to main window.
                 //App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
                 App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<BankAccountEditDialog>();
                 App.Current.MainWindow.Show();
