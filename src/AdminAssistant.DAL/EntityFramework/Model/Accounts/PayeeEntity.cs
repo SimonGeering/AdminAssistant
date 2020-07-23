@@ -6,6 +6,6 @@ namespace AdminAssistant.DAL.EntityFramework.Model.Accounts
         public int AuditID { get; internal set; }
         public string Name { get; set; } = string.Empty;
 
-        public AuditEntity Audit { get; internal set; } = null!;
+        public Core.AuditEntity Audit { get; internal set; } = null!;
     }
 }

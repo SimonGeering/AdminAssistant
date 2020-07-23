@@ -14,8 +14,8 @@ namespace AdminAssistant.DAL.EntityFramework.Model.Accounts
         public int CurrentBalance { get; set; }
         public DateTime OpenedOn { get; set; }
         public bool IsBudgeted { get; set; }
-        public AuditEntity Audit { get; internal set; } = null!;
-        public OwnerEntity Owner { get; internal set; } = null!;
-        public CurrencyEntity Currency { get; internal set; } = null!;
+        public Core.AuditEntity Audit { get; internal set; } = null!;
+        public Core.OwnerEntity Owner { get; internal set; } = null!;
+        public Core.CurrencyEntity Currency { get; internal set; } = null!;
     }
 }

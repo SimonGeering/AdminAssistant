@@ -17,7 +17,7 @@ namespace AdminAssistant.DAL.EntityFramework.Model.Accounts
         public string Notes { get; set; } = string.Empty;
         public DateTime TransactionDate { get; set; }
 
-        public AuditEntity Audit { get; internal set; } = null!;
+        public Core.AuditEntity Audit { get; internal set; } = null!;
 
         public void MapFrom(AutoMapper.Profile profile)
         {

@@ -6,6 +6,7 @@ using Xunit;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DAL.EntityFramework.Model;
 using AdminAssistant.DAL.EntityFramework.Model.Accounts;
+using AdminAssistant.DAL.EntityFramework.Model.Core;
 
 namespace AdminAssistant.DAL
 {

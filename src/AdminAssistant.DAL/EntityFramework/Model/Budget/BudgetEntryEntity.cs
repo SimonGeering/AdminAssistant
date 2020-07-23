@@ -6,6 +6,6 @@ namespace AdminAssistant.DAL.EntityFramework.Model.Budget
         public int BudgetID { get; internal set; }
         public int AuditID { get; internal set; }
 
-        public AuditEntity Audit { get; internal set; } = null!;
+        public Core.AuditEntity Audit { get; internal set; } = null!;
     }
 }

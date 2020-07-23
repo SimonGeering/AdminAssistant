@@ -1,4 +1,4 @@
-namespace AdminAssistant.DAL.EntityFramework.Model
+namespace AdminAssistant.DAL.EntityFramework.Model.Core
 {
     public class UserProfileSettingEntity
     {

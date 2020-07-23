@@ -9,6 +9,6 @@ namespace AdminAssistant.DAL.EntityFramework.Model.AssetRegister
         public int DepreciatedValue { get; set; }
         public int ReplacementCost { get; set; }
 
-        public AuditEntity Audit { get; internal set; } = null!;
+        public Core.AuditEntity Audit { get; internal set; } = null!;
     }
 }

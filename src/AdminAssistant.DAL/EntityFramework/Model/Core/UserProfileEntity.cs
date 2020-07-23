@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AdminAssistant.DAL.EntityFramework.Model
+namespace AdminAssistant.DAL.EntityFramework.Model.Core
 {
     public class UserProfileEntity
     {
