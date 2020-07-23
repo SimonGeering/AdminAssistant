@@ -15,7 +15,7 @@ $h3-font-size: 1.5rem !default; // template uses 2rem
 @import './Shared/spinner.scss';
 @import './Shared/variables.scss';
 
-@import './Modules/Accounts/accounts.scss';
+@import './Modules/AccountsModule/accounts.scss';
 
 #blazor-error-ui {
   background: lightyellow;
