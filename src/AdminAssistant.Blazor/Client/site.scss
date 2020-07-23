@@ -1,5 +1,3 @@
-// Add Bootswatch and other variable overrides here:
-
 // Fonts
 //$font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-size-base: 0.875rem !default; // template uses 0.9375
@@ -9,23 +7,6 @@ $h3-font-size: 1.5rem !default; // template uses 2rem
 
 // Font Awesome - see: https://glyphsearch.com/
 @import "./node_modules/font-awesome/scss/font-awesome.scss";
-
-// Bootswatch - https://bootswatch.com/ ...
-
-// sketchy - https://bootswatch.com/sketchy/
-/*@import "./node_modules/bootswatch/dist/sketchy/variables";
-@import "./node_modules/bootstrap/scss/bootstrap";
-@import "./node_modules/bootswatch/dist/sketchy/bootswatch";*/
-
-// darkly - https://bootswatch.com/darkly/
-/*@import "./node_modules/bootswatch/dist/darkly/variables";
-@import "./node_modules/bootstrap/scss/bootstrap";
-@import "./node_modules/bootswatch/dist/darkly/bootswatch";*/
-
-// flatly - https://bootswatch.com/flatly/
-/*@import "./node_modules/bootswatch/dist/flatly/variables";
-@import "./node_modules/bootstrap/scss/bootstrap";
-@import "./node_modules/bootswatch/dist/flatly/bootswatch";*/
 
 // Syncfusion - MS Office fabric theme - https://ej2.syncfusion.com/themestudio/?theme=fabric
 /*@import './Shared/Syncfusion/Themes/fabric/fabric.scss';*/
@@ -158,7 +139,6 @@ $h3-font-size: 1.5rem !default; // template uses 2rem
       }
     }
   }
-
   .cl-footer {
     display: flex;
     align-items: center;
@@ -167,4 +147,3 @@ $h3-font-size: 1.5rem !default; // template uses 2rem
     width: 100%;
   }
 }
-
