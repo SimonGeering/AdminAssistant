@@ -19,7 +19,7 @@ namespace AdminAssistant.DAL.Modules.AccountsModule
 
         public async Task<IList<BankAccountInfo>> GetBankAccountInfoListAsync(int ownerID)
         {
-            return await this.DbContext.BankAccounts.Select(x => new BankAccountInfo
+            return await this.DbContext.Accounts.BankAccounts.Select(x => new BankAccountInfo
             {
                 BankAccountID = x.BankAccountID,
                 AccountName = x.AccountName,
@@ -32,20 +32,20 @@ namespace AdminAssistant.DAL.Modules.AccountsModule
 
         public async Task<BankAccount> GetBankAccountAsync(int bankAccountID)
         {
-            var data = await this.DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == bankAccountID).ConfigureAwait(false);
+            var data = await this.DbContext.Accounts.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == bankAccountID).ConfigureAwait(false);
             return this.Mapper.Map<BankAccount>(data);
         }
 
         public async Task<IList<BankAccountTransaction>> GetBankAccountTransactionListAsync(int bankAccountID)
         {
-            var source = await this.DbContext.BankAccountTransactions.Where(x => x.BankAccountID == bankAccountID).ToListAsync().ConfigureAwait(false);
+            var source = await this.DbContext.Accounts.BankAccountTransactions.Where(x => x.BankAccountID == bankAccountID).ToListAsync().ConfigureAwait(false);
             return this.Mapper.Map<List<BankAccountTransaction>>(source);
         }
 
         public async Task<BankAccount> CreateBankAccountAsync(BankAccount bankAccount)
         {
             var bankAccountToAdd = Mapper.Map<BankAccountEntity>(bankAccount);
-            this.DbContext.BankAccounts.Add(bankAccountToAdd);
+            this.DbContext.Accounts.BankAccounts.Add(bankAccountToAdd);
 
             await this.DbContext.SaveChangesAsync().ConfigureAwait(false);
 

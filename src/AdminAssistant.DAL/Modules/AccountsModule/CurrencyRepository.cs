@@ -17,7 +17,7 @@ namespace AdminAssistant.DAL.Modules.AccountsModule
 
         public async Task<IList<Currency>> GetCurrencyListAsync()
         {
-            var data = await this.DbContext.Currencies.ToListAsync().ConfigureAwait(false);
+            var data = await this.DbContext.Core.Currencies.ToListAsync().ConfigureAwait(false);
             return this.Mapper.Map<List<Currency>>(data);
         }
     }

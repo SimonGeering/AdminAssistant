@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="EntityFramework\Model\AssetRegister\IAssetRegisterSchema.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="AdminAssistant.Accounts.DAL.docs.xml" />
     <None Remove="AdminAssistant.DAL.docs.xml" />
   </ItemGroup>
@@ -42,12 +46,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EntityFramework\Model\Accounts\" />
-    <Folder Include="EntityFramework\Model\AssetRegister\" />
     <Folder Include="EntityFramework\Model\Billing\" />
-    <Folder Include="EntityFramework\Model\Budget\" />
     <Folder Include="EntityFramework\Model\Calendar\" />
     <Folder Include="EntityFramework\Model\Contacts\" />
+    <Folder Include="EntityFramework\Model\Core\" />
     <Folder Include="EntityFramework\Model\Dashboard\" />
     <Folder Include="EntityFramework\Model\Documents\" />
     <Folder Include="EntityFramework\Model\Mail\" />
