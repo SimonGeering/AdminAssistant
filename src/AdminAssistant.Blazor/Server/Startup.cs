@@ -11,10 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
-using System;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 
 namespace AdminAssistant.Blazor.Server
 {
@@ -22,7 +19,7 @@ namespace AdminAssistant.Blazor.Server
     {
         // TODO: Make version a constant shared with WebAPI Assemblies
         private const string WebAPIVersion = "v1";
-        private string WebAPITitle => $"Admin Assistant API {WebAPIVersion}";
+        private string WebAPITitle => $"Admin Assistant WebAPI {WebAPIVersion}.";
 
         private readonly IWebHostEnvironment env;
         private readonly IConfiguration configuration;
@@ -59,6 +56,9 @@ namespace AdminAssistant.Blazor.Server
             {
                 // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
                 // https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters - examples for getting swagger to do what you want
+                c.DocInclusionPredicate((_, api) => string.IsNullOrWhiteSpace(api.GroupName) == false);// Skip documenting any controller without a Group name from the ApiExplorerSettings attribute
+                c.TagActionsBy(api => new string[] { api.GroupName }); // Group by Group name from the ApiExplorerSettings attribute
+
                 c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
                 c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
             });
@@ -79,14 +79,21 @@ namespace AdminAssistant.Blazor.Server
             }
 
             // Add OpenAPI/Swagger middleware ...
-            app.UseSwagger(); // Serves the registered OpenAPI/Swagger documents on `/swagger/v1/swagger.json`
+
+            // Serves the registered OpenAPI/Swagger documents on `/swagger/v1/swagger.json`
+            app.UseSwagger(c =>
+            {
+                c.SerializeAsV2 = true; // Needed for the VS2019 to be able to generate a REST Client.
+            });
+
+            // Serves the Swagger UI 3 web ui to view the OpenAPI/Swagger documents by default on `/swagger`
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", this.WebAPITitle);
                 c.RoutePrefix = "api-docs";
-
-            }); // Serves the Swagger UI 3 web ui to view the OpenAPI/Swagger documents by default on `/swagger`
-
+                c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+            });
+            
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();

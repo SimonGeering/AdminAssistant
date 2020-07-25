@@ -9,6 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.WebAPI.v1
 {
+    [ApiController]
+    [Route("api/v1/core/[controller]")]
+    [ApiExplorerSettings(GroupName = "Core - Currency")]
     public class CurrencyController : WebAPIControllerBase
     {
         public CurrencyController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
@@ -19,7 +22,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <summary>Lists all currencies supported by the API wherever a CurrencyID can be provided.</summary>
         /// <returns>A list of CurrencyResponseDto</returns>
         /// <response code="200">Ok</response>
-        [HttpGet]
+        [HttpGet(Name = "GetCurrency")]
         [ProducesResponseType(typeof(IEnumerable<CurrencyResponseDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<CurrencyResponseDto>>> Get()
         {

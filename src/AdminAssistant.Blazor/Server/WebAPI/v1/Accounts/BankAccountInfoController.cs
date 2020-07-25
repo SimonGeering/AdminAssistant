@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.WebAPI.v1
 {
+    [ApiController]
+    [Route("api/v1/accounts/[controller]")]
+    [ApiExplorerSettings(GroupName = "Accounts - BankAccountInfo")]
     public class BankAccountInfoController : WebAPIControllerBase
     {
         private readonly IUserContextProvider userContextProvider;
@@ -23,7 +26,7 @@ namespace AdminAssistant.WebAPI.v1
         /// <summary>Returns the summary info for all the available BankAccounts owned by the logged in user.</summary>
         /// <returns>A collection of BankAccountInfoResponseDto</returns>
         /// <response code="200">Ok - When one or more BankAccountInfo items are returned</response>
-        [HttpGet]
+        [HttpGet(Name = "GetBankAccountInfo")]
         [ProducesResponseType(typeof(IEnumerable<BankAccountInfoResponseDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<BankAccountInfoResponseDto>>> Get()
         {
