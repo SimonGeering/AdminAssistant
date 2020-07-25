@@ -4,20 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.DAL.EntityFramework.Model.Core
 {
-    public interface ICoreSchema
-    {
-        DbSet<UserProfileEntity> UserProfiles { get; set; }
-        DbSet<CurrencyEntity> Currencies { get; set; }
-    }
-    internal class CoreSchema : ICoreSchema
+    internal class CoreSchema
     {
         private const string Name = "Core";
-
-        public DbSet<UserProfileEntity> UserProfiles { get; set; } = null!;
-        public DbSet<CurrencyEntity> Currencies { get; set; } = null!;
-
-        public DbSet<PermissionEntity> Permissions { get; set; } = null!;
-        public DbSet<SettingEntity> Settings { get; set; } = null!;
 
         internal static void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -4,20 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.DAL.EntityFramework.Model
 {
-    public interface IAccountsSchema
-    {
-        DbSet<BankAccountEntity> BankAccounts { get; set; }
-        DbSet<BankAccountTransactionEntity> BankAccountTransactions { get; set; }
-        DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; }
-    }
-    internal class AccountsSchema : IAccountsSchema
+    internal class AccountsSchema
     {
         private const string Name = "Accounts";
-
-        public DbSet<BankAccountEntity> BankAccounts { get; set; } = null!;
-        public DbSet<BankAccountTransactionEntity> BankAccountTransactions { get; set; } = null!;
-
-        public DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; } = null!;
 
         internal static void OnModelCreating(ModelBuilder modelBuilder)
         {
