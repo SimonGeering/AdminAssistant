@@ -28,10 +28,10 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private static void AddAccountsDomainModel(IServiceCollection services)
         {
-            services.AddTransient<IBankValidator, BankValidator>();
-            services.AddTransient<IBankAccountTransactionValidator, BankAccountTransactionValidator>();
             services.AddTransient<IBankAccountValidator, BankAccountValidator>();
-            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
+            services.AddTransient<IBankAccountTransactionValidator, BankAccountTransactionValidator>();
+            services.AddTransient<IBankAccountTypeValidator, BankAccountTypeValidator>();            
+            services.AddTransient<IBankValidator, BankValidator>();
         }
 
         private static void AddBudgetDomainModel(IServiceCollection services)
