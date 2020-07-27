@@ -13,42 +13,6 @@ using Microsoft.Extensions.Logging;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
-    public class BankAccountEditDialogDesignTimeViewModel : DesignTimeViewModelBase, IBankAccountEditDialogViewModel
-    {
-        public string AccountName { get; set; } = "Acme Bank Current Account";
-
-        public int BankAccountID { get; set; } = Constants.UnknownRecordID;
-        public int BankAccountTypeID { get; set; } = Constants.UnknownRecordID;
-        public int CurrencyID { get; set; } = Constants.UnknownRecordID;
-        public bool IsBudgeted { get; set; } = false;
-        public int OpeningBalance { get; set; } = 0;
-        public int CurrentBalance { get; private set; } = 0;
-        public DateTime OpenedOn { get; set; }
-
-        public BankAccountEditDialogDesignTimeViewModel()
-        {
-            this.OpenedOn = DateTime.Today;
-        }
-
-        public string HeaderText { get; private set; } = "Create Bank Account";
-
-        public bool ShowDialog { get; set; } = false;
-
-        public IEnumerable<BankAccountType> BankAccountTypes => new List<BankAccountType>();
-
-        public IEnumerable<Currency> Currencies => new List<Currency>();
-
-        public string AccountNameValidationMessage => string.Empty;
-
-        public string AccountNameValidationClass => string.Empty;
-
-        public void OnAccountNameChanged(string accountName) => throw new System.NotImplementedException();
-        public void OnBankAccountTypeChanged() => throw new System.NotImplementedException();
-        public void OnCancelButtonClick() => throw new System.NotImplementedException();
-        public void OnCurrencyChanged() => throw new System.NotImplementedException();
-        public Task OnSaveButtonClick() => throw new System.NotImplementedException();
-    }
-
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel
     {
@@ -355,4 +319,41 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             public const string None = "e-error";
         }
     }
+#if DEBUG
+    public class BankAccountEditDialogDesignTimeViewModel : DesignTimeViewModelBase, IBankAccountEditDialogViewModel
+    {
+        public string AccountName { get; set; } = "Acme Bank Current Account";
+
+        public int BankAccountID { get; set; } = Constants.UnknownRecordID;
+        public int BankAccountTypeID { get; set; } = Constants.UnknownRecordID;
+        public int CurrencyID { get; set; } = Constants.UnknownRecordID;
+        public bool IsBudgeted { get; set; } = false;
+        public int OpeningBalance { get; set; } = 0;
+        public int CurrentBalance { get; private set; } = 0;
+        public DateTime OpenedOn { get; set; }
+
+        public BankAccountEditDialogDesignTimeViewModel()
+        {
+            this.OpenedOn = DateTime.Today;
+        }
+
+        public string HeaderText { get; private set; } = "Create Bank Account";
+
+        public bool ShowDialog { get; set; } = false;
+
+        public IEnumerable<BankAccountType> BankAccountTypes => new List<BankAccountType>();
+
+        public IEnumerable<Currency> Currencies => new List<Currency>();
+
+        public string AccountNameValidationMessage => string.Empty;
+
+        public string AccountNameValidationClass => string.Empty;
+
+        public void OnAccountNameChanged(string accountName) => throw new System.NotImplementedException();
+        public void OnBankAccountTypeChanged() => throw new System.NotImplementedException();
+        public void OnCancelButtonClick() => throw new System.NotImplementedException();
+        public void OnCurrencyChanged() => throw new System.NotImplementedException();
+        public Task OnSaveButtonClick() => throw new System.NotImplementedException();
+    }
+#endif // DEBUG
 }

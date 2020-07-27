@@ -18,10 +18,11 @@ namespace AdminAssistant.UI
             this.LoadingSpinner = loadingSpinner;
         }
     }
-
+#if DEBUG
     public abstract class DesignTimeViewModelBase : PropertyChangedNotificationBase, IViewModelBase
     {
         public ILoadingSpinner LoadingSpinner => new DesignTimeLoadingSpinner();
         public Task OnInitializedAsync() => throw new System.NotImplementedException();
     }
+#endif // DEBUG
 }

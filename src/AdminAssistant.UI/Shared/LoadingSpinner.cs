@@ -12,13 +12,14 @@ namespace AdminAssistant.UI.Shared
         public void OnShowLoadingSpinner() => this.ShowLoadingSpinner?.Invoke();
         public void OnHideLoadingSpinner() => this.HideLoadingSpinner?.Invoke();
     }
-
+#if DEBUG
     public class DesignTimeLoadingSpinner : ILoadingSpinner
     {
-        public event Action? HideLoadingSpinner;
         public event Action? ShowLoadingSpinner;
+        public event Action? HideLoadingSpinner;
 
-        public void OnHideLoadingSpinner() => throw new NotImplementedException();
-        public void OnShowLoadingSpinner() => throw new NotImplementedException();
+        public void OnShowLoadingSpinner() => this.ShowLoadingSpinner?.Invoke();
+        public void OnHideLoadingSpinner() => this.HideLoadingSpinner?.Invoke();
     }
+#endif // DEBUG
 }
