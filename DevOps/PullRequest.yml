@@ -50,7 +50,7 @@ stages:
       inputs:
         command: 'build'
         projects: 'src/AdminAssistant.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.NonXamarin.sln
-        arguments: '--configuration Release --no-restore'
+        arguments: '--configuration Release --filter Category=Unit --no-restore'
     # SG 20-Apr-2020: Comment the following for now as it does not work with x64 build config.
     # - task: XamarinAndroid@1
     #   displayName: 'Xamarin Android dotnet build'
