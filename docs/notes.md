@@ -53,3 +53,10 @@ bundle exec jekyll serve --livereload
 ```
 
 ### NPM
+
+### Terminal - testing
+
+``` dos
+cd .\src\AdminAssistant.Test\
+dotnet watch test --filter Category=Unit
+```

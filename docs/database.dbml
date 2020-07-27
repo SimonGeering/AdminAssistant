@@ -1,89 +1,211 @@
+project Admin_Assistant
+{
+  database_type: "SQL Server"
+}
+
 //
 // ==============================
-// Shared 
+// Core Module 
 // ==============================
 //
-Table "Audit" 
+Table "Core.Audit" 
 {
-  "AuditID" int [pk]
-  "IsArchived" bit
-  "IsDeleted" bit
-  "CreatedOn" datetime2
-  "CreatedBy" nvarchar(50)
-  "ReplacementCost" int
-  "UpdatedOn" datetime2
-  "UpdatedBy" nvarchar(50)
-  "ArchivedOn" datetime2
-  "ArchivedBy" nvarchar(50)
-  "DeletedOn" datetime2
-  "DeletedBy" nvarchar(50)
+  "AuditID" INT [pk, increment]
+  "IsArchived" BIT [not null]
+  "IsDeleted" BIT [not null]
+  "CreatedOn" DATETIME2 [not null]
+  "CreatedBy" NVARCHAR(50) [not null]
+  "ReplacementCost" INT
+  "UpdatedOn" DATETIME2
+  "UpdatedBy" NVARCHAR(50) [not null]
+  "ArchivedOn" DATETIME2
+  "ArchivedBy" NVARCHAR(50) [not null]
+  "DeletedOn" DATETIME2
+  "DeletedBy" NVARCHAR(50) [not null]
 }
 
-Table "Owner" 
+Table "Core.Owner" 
 {
-  "OwnerID" int [pk]
-  "CompanyID" int
-  "PersonalDetailsID" int
+  "OwnerID" INT [pk, increment]
+  "CompanyID" INT
+  "PersonalDetailsID" INT
 }
 
-Table "Company" 
+Table "Core.Company" 
 {
-  "CompanyID" int [pk]
-  "AuditID" int
-  "UserProfileID" int
-  "Name" nvarchar(50)
-  "CompanyNumber" nvarchar(50)
-  "VATNumber" nvarchar(50)
-  "DateOfIncorporation" datetime2
+  "CompanyID" INT [pk, increment]
+  "AuditID" INT
+  "UserProfileID" INT
+  "Name" NVARCHAR(50)
+  "CompanyNumber" NVARCHAR(50)
+  "VATNumber" NVARCHAR(50)
+  "DateOfIncorporation" DATETIME2
 }
-Ref: "Company"."CompanyID" < "Owner"."CompanyID"
+Ref: "Core.Company"."CompanyID" < "Core.Owner"."CompanyID"
 
-Table "UserProfile" 
+Table "Core.UserProfile" 
 {
-  "UserProfileID" int [pk]
-  "AuditID" int
-  "SignOn" nvarchar(50)
-  "MSGraphID" nvarchar(50)
+  "UserProfileID" INT [pk, increment]
+  "AuditID" INT
+  "SignOn" NVARCHAR(50)
+  "MSGraphID" NVARCHAR(50)
 }
-Ref: "UserProfile"."UserProfileID" < "PersonalDetails"."UserProfileID"
-Ref: "UserProfile"."UserProfileID" < "UserProfilePermission"."UserProfileID"
-Ref: "UserProfile"."UserProfileID" < "Company"."UserProfileID"
-Ref: "UserProfile"."UserProfileID" < "UserProfileSetting"."UserProfileID"
+Ref: "Core.UserProfile"."UserProfileID" < "Core.PersonalDetails"."UserProfileID"
+Ref: "Core.UserProfile"."UserProfileID" < "Core.UserProfilePermission"."UserProfileID"
+Ref: "Core.UserProfile"."UserProfileID" < "Core.Company"."UserProfileID"
+Ref: "Core.UserProfile"."UserProfileID" < "Core.UserProfileSetting"."UserProfileID"
 
-Table "Permission" 
+Table "Core.Permission" 
 {
-  "PermissionID" int [pk]
-  "PermissionKey" nvarchar(20)
+  "PermissionID" INT [pk]
+  "PermissionKey" NVARCHAR(20)
 }
-Ref: "Permission"."PermissionID" < "UserProfilePermission"."PermissionID"
+Ref: "Core.Permission"."PermissionID" < "Core.UserProfilePermission"."PermissionID"
 
-Table "PersonalDetails" 
+Table "Core.PersonalDetails" 
 {
-  "PersonalDetailsID" int [pk]
-  "AuditID" int
-  "UserProfileID" nvarchar(255)
+  "PersonalDetailsID" INT [pk]
+  "AuditID" INT
+  "UserProfileID" NVARCHAR(255)
 }
-Ref: "PersonalDetails"."PersonalDetailsID" < "Owner"."PersonalDetailsID"
+Ref: "Core.PersonalDetails"."PersonalDetailsID" < "Core.Owner"."PersonalDetailsID"
 
-Table "UserProfileSetting" 
+Table "Core.UserProfileSetting" 
 {
-  "UserProfileSettingID" int [pk]
-  "UserProfileID" int
-  "SettingID" int
+  "UserProfileSettingID" INT [pk]
+  "UserProfileID" INT
+  "SettingID" INT
 }
-Table "UserProfilePermission" 
+Table "Core.UserProfilePermission" 
 {
-  "UserProfilePermissionID" int [pk]
-  "UserProfileID" int
-  "PermissionID" int
+  "UserProfilePermissionID" INT [pk]
+  "UserProfileID" INT
+  "PermissionID" INT
 }
 
-Table "Setting" 
+Table "Core.Setting" 
 {
-  "SettingID" int [pk]
-  "SettingKey" nvarchar(20)
+  "SettingID" INT [pk]
+  "SettingKey" NVARCHAR(20)
 }
-Ref: "Setting"."SettingID" < "UserProfileSetting"."SettingID"
+Ref: "Core.Setting"."SettingID" < "Core.UserProfileSetting"."SettingID"
+
+Table "Core.Currency" 
+{
+  "CurrencyID" INT [pk]
+  "IsDeprecated" BIT
+  "Symbol" CHAR(3)
+  "DecimalFormat" CHAR(5)
+}
+Ref: "Core.Currency"."CurrencyID" < "Accounts.BankAccount"."CurrencyID"
+Ref: "Core.Currency"."CurrencyID" < "Accounts.BankAccountTransaction"."CurrencyID"
+
+//
+// ==============================
+// Accounts Module
+// ==============================
+//
+Table "Accounts.Bank" 
+{
+  "BankID" INT [pk]
+  "AuditID" INT
+  "Name" NVRCHAR(50)
+}
+Ref: "Accounts.Bank"."BankID" < "Accounts.BankAccount"."BankID"
+
+Table "Accounts.BankAccountType" 
+{
+  "BankAccountTypeID" INT [pk]
+  "IsDeprecated" BIT
+  "Description" NVARCHAR(255)
+  "AllowPersonal" BIT
+  "AllowCompany" BIT
+}
+Ref: "Accounts.BankAccountType"."BankAccountTypeID" < "Accounts.BankAccount"."BankAccountTypeID"
+
+Table "Accounts.BankAccount" 
+{
+  "BankAccountID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "BankID" INT
+  "BankAccountTypeID" INT
+  "CurrencyID" INT
+  "AccountName" NVARCHAR(50)
+  "OpeningBalance" INT
+  "CurrentBalance" INT
+  "OpenedOn" DATETIME2
+  "IsBudgeted" BIT
+}
+Ref: "Accounts.BankAccount"."BankAccountID" < "Accounts.BankAccountTransaction"."BankAccountID"
+
+Table "Accounts.BankAccountTransaction" 
+{
+  "BankAccountTransactionID" INT [pk]
+  "AuditID" INT
+  "BankAccountID" INT
+  "PayeeID" INT
+  "CurrencyID" INT
+  "BankAccountTransactionTypeID" INT
+  "BankAccountStatementID" INT
+  "BankAccountStatementNumber" INT
+  "IsReconciled" BIT
+  "TransactionDate" DATETIME2
+  "Credit" INT
+  "Debit" INT
+  "Description" NVARCHAR(255)
+  "Notes" NVARCHAR(4000)
+}
+
+Table "Accounts.Payee" 
+{
+  "PayeeID" INT [pk]
+  "AuditID" INT
+  "Name" NVARCHAR(255)
+}
+Ref: "Accounts.Payee"."PayeeID" < "Accounts.BankAccountTransaction"."PayeeID"
+Ref: "Accounts.Payee"."PayeeID" < "Accounts.PayeeContact"."PayeeID"
+
+Table "Accounts.PayeeContact" 
+{
+  "PayeeContactID" INT [pk]
+  "AuditID" INT
+  "PayeeID" INT
+  "ContactID" INT
+  "IsPrimaryContact" BIT
+}
+
+Table "Accounts.BankAccountTransactionType" 
+{
+  "BankAccountTransactionTypeID" INT [pk]
+  "IsDeprecated" BIT
+  "Description" NVARCHAR(255)
+}
+Ref: "Accounts.BankAccountTransactionType"."BankAccountTransactionTypeID" < "Accounts.BankAccountTransaction"."BankAccountTransactionTypeID"
+
+Table "Accounts.BankAccountTransactionDocument" 
+{
+  "BankAccountTransactionDocumentID" INT [pk]
+  "AuditID" INT
+  "BankAccountTransactionID" INT
+  "DocumentID" INT
+}
+Ref: "Accounts.BankAccountTransaction"."BankAccountTransactionID" < "Accounts.BankAccountTransactionDocument"."BankAccountTransactionDocumentID"
+
+Table "Accounts.BankAccountStatement" 
+{
+  "BankAccountStatementID" INT [pk]
+  "DocumentID" INT
+  "AuditID" INT
+  "StatementDate" DATETIME2
+  "IsReconciled" BIT
+  "StartDate" DATETIME2
+  "EndDate" DATETIME2
+  "OpeningBalance" INT
+  "ClosingBalance" INT
+  "TotalPaymentsIn" INT
+  "TotalPaymentsOut" INT
+}
 
 //
 // ==============================
@@ -102,170 +224,55 @@ Ref: "Setting"."SettingID" < "UserProfileSetting"."SettingID"
 // Calendar (Appointment) Module
 // ==============================
 //
-Table "Appointment" 
+Table "Calendar.Appointment" 
 {
-  "AppointmentD" int [pk]
-  "AuditID" int
-  "OwnerID" int
+  "AppointmentD" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
 }
 //
 // ==============================
 // Contacts Module
 // ==============================
 //
-Table "Contact" 
+Table "Contacts.Contact" 
 {
-  "ContactID" int [pk]
-  "AuditID" int
-  "OwnerID" int
-  "TitleID" int
-  "FirstName" nvarchar(50)
-  "LastName" nvarchar(50)
-  "DateOfBirth" datetime2
+  "ContactID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "TitleID" INT
+  "FirstName" NVARCHAR(50)
+  "LastName" NVARCHAR(50)
+  "DateOfBirth" DATETIME2
 }
-Ref: "Contact"."ContactID" < "ContactAddress"."ContactID"
-Ref: "Contact"."ContactID" < "PayeeContact"."ContactID"
+Ref: "Contacts.Contact"."ContactID" < "Contacts.ContactAddress"."ContactID"
+Ref: "Contacts.Contact"."ContactID" < "Accounts.PayeeContact"."ContactID"
 
-Table "ContactAddress" 
+Table "Contacts.ContactAddress" 
 {
-  "ContactAddressID" int [pk]
-  "AuditID" int
-  "AddressID" int
-  "ContactID" int
+  "ContactAddressID" INT [pk]
+  "AuditID" INT
+  "AddressID" INT
+  "ContactID" INT
 }
 
-Table "Address" 
+Table "Contacts.Address" 
 {
-  "AddressID" int [pk]
-  "AuditID" int
+  "AddressID" INT [pk]
+  "AuditID" INT
 }
-Ref: "Address"."AddressID" < "ContactAddress"."AddressID"
+Ref: "Contacts.Address"."AddressID" < "Contacts.ContactAddress"."AddressID"
 
 //
 // ==============================
 // Tasks Module
 // ==============================
 //
-Table "Task" 
+Table "Tasks.Task" 
 {
-  "TaskID" int [pk]
-  "AuditID" int
-  "OwnerID" int
-}
-//
-// ==============================
-// Accounts Module
-// ==============================
-//
-Table "Bank" 
-{
-  "BankID" int [pk]
-  "AuditID" int
-  "Name" NVRCHAR(50)
-}
-Ref: "Bank"."BankID" < "BankAccount"."BankID"
-
-Table "BankAccountType" 
-{
-  "BankAccountTypeID" int [pk]
-  "IsDeprecated" BIT
-  "Description" NVRCHAR(255)
-  "AllowPersonal" BIT
-  "AllowCompany" BIT
-}
-Ref: "BankAccountType"."BankAccountTypeID" < "BankAccount"."BankAccountTypeID"
-
-Table "BankAccount" 
-{
-  "BankAccountID" int [pk]
-  "AuditID" int
-  "OwnerID" int
-  "BankID" int
-  "BankAccountTypeID" int
-  "CurrencyID" int
-  "AccountName" nvarchar(50)
-  "OpeningBalance" int
-  "CurrentBalance" int
-  "OpenedOn" datetime2
-  "IsBudgeted" bit
-}
-Ref: "BankAccount"."BankAccountID" < "BankAccountTransaction"."BankAccountID"
-
-Table "BankAccountTransaction" 
-{
-  "BankAccountTransactionID" int [pk]
-  "AuditID" int
-  "BankAccountID" int
-  "PayeeID" int
-  "CurrencyID" int
-  "BankAccountTransactionTypeID" int
-  "BankAccountStatementID" int
-  "BankAccountStatementNumber" int
-  "IsReconciled" bit
-  "TransactionDate" datetime2
-  "Credit" int
-  "Debit" int
-  "Description" nvarchar(255)
-  "Notes" nvarchar(4000)
-}
-
-Table "Payee" 
-{
-  "PayeeID" int [pk]
-  "AuditID" int
-  "Name" nvarchar(255)
-}
-Ref: "Payee"."PayeeID" < "BankAccountTransaction"."PayeeID"
-Ref: "Payee"."PayeeID" < "PayeeContact"."PayeeID"
-
-Table "PayeeContact" 
-{
-  "PayeeContactID" int [pk]
-  "AuditID" int
-  "PayeeID" int
-  "ContactID" int
-  "IsPrimaryContact" bit
-}
-
-Table "Currency" 
-{
-  "CurrencyID" int [pk]
-  "IsDeprecated" bit
-  "Symbol" char(3)
-  "DecimalFormat" char(5)
-}
-Ref: "Currency"."CurrencyID" < "BankAccountTransaction"."CurrencyID"
-
-Table "BankAccountTransactionType" 
-{
-  "BankAccountTransactionTypeID" int [pk]
-  "IsDeprecated" bit
-  "Description" nvarchar(255)
-}
-Ref: "BankAccountTransactionType"."BankAccountTransactionTypeID" < "BankAccountTransaction"."BankAccountTransactionTypeID"
-
-Table "BankAccountTransactionDocument" 
-{
-  "BankAccountTransactionDocumentID" int [pk]
-  "AuditID" int
-  "BankAccountTransactionID" int
-  "DocumentID" int
-}
-Ref: "BankAccountTransaction"."BankAccountTransactionID" < "BankAccountTransactionDocument"."BankAccountTransactionDocumentID"
-
-Table "BankAccountStatement" 
-{
-  "BankAccountStatementID" int [pk]
-  "DocumentID" int
-  "AuditID" int
-  "StatementDate" datetime2
-  "IsReconciled" bit
-  "StartDate" datetime2
-  "EndDate" datetime2
-  "OpeningBalance" int
-  "ClosingBalance" int
-  "TotalPaymentsIn" int
-  "TotalPaymentsOut" int
+  "TaskID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
 }
 
 //
@@ -273,47 +280,49 @@ Table "BankAccountStatement"
 // Assets Module
 // ==============================
 //
-Table "Asset" 
+Table "Assets.Asset" 
 {
-  "AssetID" int [pk]
-  "AuditID" int
-  "OwnerID" int
-  "PurchasePrice" int
-  "DepreciatedValue" int
-  "ReplacementCost" int
+  "AssetID" INT [pk]
+  "ManufacturerID" INT [null]
+  "AuditID" INT [not null]
+  "OwnerID" INT [not null]
+  "PurchasePrice" INT
+  "DepreciatedValue" INT
+  "ReplacementCost" INT
 }
 
-Table "Manufacturer" 
+Table "Assets.Manufacturer" 
 {
-  "ManufacturerID" int [pk]
-  "AuditID" int
-  "ManufacturerName" nvarchar(50)  
+  "ManufacturerID" INT [pk]
+  "AuditID" INT
+  "ManufacturerName" NVARCHAR(50)  
 }
+Ref: "Assets.Manufacturer"."ManufacturerID" < "Assets.Asset"."ManufacturerID"
 
 //
 // ==============================
 // Billing Module
 // ==============================
 //
-Table "Invoice" 
+Table "Billing.Invoice" 
 {
-  "InvoiceID" int [pk]
-  "AuditID" int
-  "OwnerID" int
+  "InvoiceID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
 }
 
-Table "Supplier" 
+Table "Billing.Supplier" 
 {
-  "SupplierID" int [pk]
-  "AuditID" int
-  "SupplierName" nvarchar(50)  
+  "SupplierID" INT [pk]
+  "AuditID" INT
+  "SupplierName" NVARCHAR(50)  
 }
 
-Table "Client" 
+Table "Billing.Client" 
 {
-  "ClientID" int [pk]
-  "AuditID" int
-  "ClientName" nvarchar(50)
+  "ClientID" INT [pk]
+  "AuditID" INT
+  "ClientName" NVARCHAR(50)
 }
 //
 // ==============================
@@ -321,55 +330,55 @@ Table "Client"
 // ==============================
 //
 
-Table "BudgetEntry" 
+Table "Budget.BudgetEntry" 
 {
-  "BudgetEntryID" int [pk]
-  "BudgetID" int
-  "AuditID" int
+  "BudgetEntryID" INT [pk]
+  "BudgetID" INT
+  "AuditID" INT
 }
 
-Table "Budget" 
+Table "Budget.Budget" 
 {
-  "BudgetID" int [pk]
-  "AuditID" int
-  "OwnerID" int
-  "BudgetName" nvarchar(50)
+  "BudgetID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "BudgetName" NVARCHAR(50)
 }
-Ref: "Budget"."BudgetID" < "BudgetEntry"."BudgetID"
+Ref: "Budget.Budget"."BudgetID" < "Budget.BudgetEntry"."BudgetID"
 
 //
 // ==============================
 // Documents Module
 // ==============================
 //
-Table "Document" 
+Table "Documents.Document" 
 {
-  "DocumentID" int [pk]
-  "AuditID" int
-  "OwnerID" int
-  "URI" nvarchar(255)
+  "DocumentID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "URI" NVARCHAR(255)
 }
-Ref: "Document"."DocumentID" < "BankAccountStatement"."DocumentID"
-Ref: "Document"."DocumentID" < "BankAccountTransactionDocument"."DocumentID"
+Ref: "Documents.Document"."DocumentID" < "Accounts.BankAccountStatement"."DocumentID"
+Ref: "Documents.Document"."DocumentID" < "Accounts.BankAccountTransactionDocument"."DocumentID"
 
 //
 // ==============================
 // Food Module
 // ==============================
 //
-Table "Produce" 
+Table "Food.Produce" 
 {
-  "ProduceID" int [pk]
-  "AuditID" int
-  "OwnerID" int
-  "URI" nvarchar(255)
+  "ProduceID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "URI" NVARCHAR(255)
 }
 
-Table "MealPlan" 
+Table "Food.MealPlan" 
 {
-  "MealPlanID" int [pk]
-  "AuditID" int
-  "OwnerID" int
+  "MealPlanID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
 }
 
 //

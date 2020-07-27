@@ -1,8 +1,8 @@
-using AdminAssistant.UI.Modules.Accounts;
-using AdminAssistant.UI.Modules.Accounts.BankAccountBalanceList;
-using AdminAssistant.UI.Modules.Accounts.BankAccountEditDialog;
-using AdminAssistant.UI.Modules.Accounts.BankAccountRightSidebar;
-using AdminAssistant.UI.Modules.Accounts.BankAccountTransactionList;
+using AdminAssistant.UI.Modules.AccountsModule;
+using AdminAssistant.UI.Modules.AccountsModule.BankAccountBalanceList;
+using AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog;
+using AdminAssistant.UI.Modules.AccountsModule.BankAccountRightSidebar;
+using AdminAssistant.UI.Modules.AccountsModule.BankAccountTransactionList;
 using AdminAssistant.UI.Services;
 using AdminAssistant.UI.Shared.Breadcrumb;
 using AdminAssistant.UI.Shared.Header;

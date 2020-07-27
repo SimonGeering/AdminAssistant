@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.6" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="18.2.0.45" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="18.2.0.45" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="18.2.0.45" />
+    <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="4.2.0" />
+    <PackageReference Include="Syncfusion.Themes.Office2019Black.WPF" Version="18.2.0.45" />
+    <PackageReference Include="Syncfusion.Themes.Office2019Colorful.WPF" Version="18.2.0.45" />
+    <PackageReference Include="Syncfusion.Themes.Office365.WPF" Version="18.2.0.45" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    <ProjectReference Include="..\..\..\AdminAssistant.WebAPI\AdminAssistant.WebAPI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Modules\AssetRegisterModule\" />
+    <Folder Include="Modules\BillingModule\" />
+    <Folder Include="Modules\BudgetModule\" />
+    <Folder Include="Modules\CalendarModule\" />
+    <Folder Include="Modules\ContactsModule\" />
+    <Folder Include="Modules\DashboardModule\" />
+    <Folder Include="Modules\DocumentsModule\" />
+    <Folder Include="Modules\MailModule\" />
+    <Folder Include="Modules\TasksModule\" />
+    <Folder Include="Modules\ReportsModule\" />
+    <Folder Include="Shared\Breadcrumb\" />
+    <Folder Include="Shared\Footer\" />
+    <Folder Include="Shared\Header\" />
+    <Folder Include="Shared\Syncfusion\" />
+    <Folder Include="Shared\Sidebar\" />
+  </ItemGroup>
+
+</Project>

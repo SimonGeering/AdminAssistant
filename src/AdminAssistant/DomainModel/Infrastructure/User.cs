@@ -1,5 +1,3 @@
-using AdminAssistant.DomainModel.Modules.Accounts;
-
 namespace AdminAssistant.DomainModel.Infrastructure
 {
     public class User

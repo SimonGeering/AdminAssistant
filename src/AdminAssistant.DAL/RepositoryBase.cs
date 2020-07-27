@@ -3,7 +3,7 @@ using AutoMapper;
 
 namespace AdminAssistant.DAL
 {
-    public abstract class RepositoryBase
+    internal abstract class RepositoryBase
     {
         protected IApplicationDbContext DbContext { get; }
         protected IMapper Mapper { get; }

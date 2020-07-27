@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
 using Xunit.Sdk;
-using AdminAssistant.DomainModel.Modules.Accounts;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
 
 namespace AdminAssistant.WebAPI
 {

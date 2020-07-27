@@ -2,7 +2,9 @@ using System;
 
 namespace AdminAssistant.UI.Shared
 {
-    public class LoadingSpinner : ILoadingSpinner
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class LoadingSpinner : ILoadingSpinner
     {
         public event Action? ShowLoadingSpinner;
         public event Action? HideLoadingSpinner;
@@ -10,4 +12,14 @@ namespace AdminAssistant.UI.Shared
         public void OnShowLoadingSpinner() => this.ShowLoadingSpinner?.Invoke();
         public void OnHideLoadingSpinner() => this.HideLoadingSpinner?.Invoke();
     }
+#if DEBUG
+    public class DesignTimeLoadingSpinner : ILoadingSpinner
+    {
+        public event Action? ShowLoadingSpinner;
+        public event Action? HideLoadingSpinner;
+
+        public void OnShowLoadingSpinner() => this.ShowLoadingSpinner?.Invoke();
+        public void OnHideLoadingSpinner() => this.HideLoadingSpinner?.Invoke();
+    }
+#endif // DEBUG
 }

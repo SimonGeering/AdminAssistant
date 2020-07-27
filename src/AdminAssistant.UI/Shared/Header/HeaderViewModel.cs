@@ -3,7 +3,8 @@ using AdminAssistant.UI.Services;
 
 namespace AdminAssistant.UI.Shared.Header
 {
-    public class HeaderViewModel : ViewModelBase, IHeaderViewModel
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class HeaderViewModel : ViewModelBase, IHeaderViewModel
     {
         private readonly IAppStateStore appStateStore;
 

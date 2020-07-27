@@ -3,7 +3,8 @@ using AdminAssistant.UI.Services;
 
 namespace AdminAssistant.UI.Shared.Breadcrumb
 {
-    public class BreadcrumbViewModel : ViewModelBase, IBreadcrumbViewModel
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class BreadcrumbViewModel : ViewModelBase, IBreadcrumbViewModel
     {
         private readonly IAppStateStore appStateStore;
 

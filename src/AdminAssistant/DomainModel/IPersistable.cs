@@ -1,5 +1,3 @@
-using AdminAssistant.DomainModel.Modules.Accounts;
-
 namespace AdminAssistant.DomainModel
 {
     public interface IDatabasePersistable
