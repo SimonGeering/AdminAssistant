@@ -4,6 +4,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
 {
     public static class Factory
     {
+        public static IBankBuilder Bank => new BankBuilder();
         public static IBankAccountBuilder BankAccount => new BankAccountBuilder();
         public static IBankAccountTypeBuilder BankAccountType => new BankAccountTypeBuilder();
         public static ICurrencyBuilder Currency => new CurrencyBuilder();

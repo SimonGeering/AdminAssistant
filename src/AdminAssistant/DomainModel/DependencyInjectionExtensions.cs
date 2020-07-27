@@ -10,11 +10,14 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddAdminAssistantClientSideDomainModel(this IServiceCollection services)
         {
-            AddSharedDomainModel(services);
+            AddAccountsDomainModel(services);
+            AddBudgetDomainModel(services);
+            AddCoreDomainModel(services);
         }
+
         public static void AddAdminAssistantServerSideDomainModel(this IServiceCollection services)
         {
-            AddSharedDomainModel(services);
+            AddAdminAssistantClientSideDomainModel(services);
 
             // AddInfrastructureDomainModel ...
             services.AddTransient<IUserContextProvider, UserContextProvider>();
@@ -23,15 +26,22 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddMediatR(typeof(BankAccountByIDHandler));
         }
 
-        private static void AddSharedDomainModel(IServiceCollection services)
+        private static void AddAccountsDomainModel(IServiceCollection services)
         {
-            // Add AccountsModule DomainModel ...
+            services.AddTransient<IBankValidator, BankValidator>();
             services.AddTransient<IBankAccountTransactionValidator, BankAccountTransactionValidator>();
             services.AddTransient<IBankAccountValidator, BankAccountValidator>();
             services.AddTransient<ICurrencyValidator, CurrencyValidator>();
+        }
 
-            // Add BudgetModule DomainModel ...
+        private static void AddBudgetDomainModel(IServiceCollection services)
+        {
             services.AddTransient<IBudgetValidator, BudgetValidator>();
+        }
+
+        private static void AddCoreDomainModel(IServiceCollection services)
+        {
+            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
         }
     }
 }
