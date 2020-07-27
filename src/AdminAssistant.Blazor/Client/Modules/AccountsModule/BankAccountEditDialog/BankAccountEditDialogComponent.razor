@@ -40,11 +40,7 @@
   </DialogTemplates>
   <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
   <DialogButtons>
-    <DialogButton OnClick="@this.vm.OnCancelButtonClick">
-      <DialogButtonModel Content="Discard" IconCss="fa fa-lg fa-trash-o"></DialogButtonModel>
-    </DialogButton>
-    <DialogButton OnClick="@this.vm.OnSaveButtonClick">
-      <DialogButtonModel Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true"></DialogButtonModel>
-    </DialogButton>
+    <DialogButton OnClick="@this.vm.OnCancelButtonClick" Content="Discard" IconCss="fa fa-lg fa-trash-o" />
+    <DialogButton OnClick="@this.vm.OnSaveButtonClick" Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true" />
   </DialogButtons>
 </SfDialog>
