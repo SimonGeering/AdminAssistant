@@ -30,6 +30,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7E27F45C-02D4-47C4-9D0E-B64AB9AE3DA6}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		..\docs\database.dbml = ..\docs\database.dbml
 		global.json = global.json
 		..\tools.ps1 = ..\tools.ps1
 	EndProjectSection
