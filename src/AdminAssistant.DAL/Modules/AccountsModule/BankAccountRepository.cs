@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using AdminAssistant.DAL.EntityFramework;
 using AdminAssistant.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
@@ -17,39 +18,49 @@ namespace AdminAssistant.DAL.Modules.AccountsModule
         {
         }
 
-        public async Task<IList<BankAccountInfo>> GetBankAccountInfoListAsync(int ownerID)
-        {
-            return await this.DbContext.BankAccounts.Select(x => new BankAccountInfo
-            {
-                BankAccountID = x.BankAccountID,
-                AccountName = x.AccountName,
-                CurrentBalance = x.CurrentBalance,
-                IsBudgeted = x.IsBudgeted,
-                Symbol = x.Currency.Symbol,
-                DecimalFormat = x.Currency.DecimalFormat,
-            }).ToListAsync().ConfigureAwait(false);
-        }
-
-        public async Task<BankAccount> GetBankAccountAsync(int bankAccountID)
-        {
-            var data = await this.DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == bankAccountID).ConfigureAwait(false);
-            return this.Mapper.Map<BankAccount>(data);
-        }
-
         public async Task<IList<BankAccountTransaction>> GetBankAccountTransactionListAsync(int bankAccountID)
         {
             var source = await this.DbContext.BankAccountTransactions.Where(x => x.BankAccountID == bankAccountID).ToListAsync().ConfigureAwait(false);
             return this.Mapper.Map<List<BankAccountTransaction>>(source);
         }
 
-        public async Task<BankAccount> CreateBankAccountAsync(BankAccount bankAccount)
+        public async Task<BankAccount> SaveAsync(BankAccount domainObjectToSave)
         {
-            var bankAccountToAdd = Mapper.Map<BankAccountEntity>(bankAccount);
-            this.DbContext.BankAccounts.Add(bankAccountToAdd);
+            var entity = Mapper.Map<BankAccountEntity>(domainObjectToSave);
+
+            if (base.IsNew(domainObjectToSave))
+                this.DbContext.BankAccounts.Add(entity);
+            else
+                this.DbContext.BankAccounts.Update(entity);
 
             await this.DbContext.SaveChangesAsync().ConfigureAwait(false);
 
-            return this.Mapper.Map<BankAccount>(bankAccountToAdd);
+            return this.Mapper.Map<BankAccount>(entity);
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            var entity = await this.DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == id).ConfigureAwait(false);
+
+            // TODO: make this a custom domain exception and handle in controller.
+            if (entity.BankAccountID != id)
+                throw new System.ArgumentException($"Record with ID {id} not found", nameof(id));
+
+            this.DbContext.BankAccounts.Remove(entity);
+            await this.DbContext.SaveChangesAsync().ConfigureAwait(false);
+            return;
+        }
+
+        public async Task<BankAccount> GetAsync(int id)
+        {
+            var data = await this.DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == id).ConfigureAwait(false);
+            return this.Mapper.Map<BankAccount>(data);
+        }
+
+        public async Task<IList<BankAccount>> GetListAsync()
+        {
+            var data = await this.DbContext.BankAccounts.ToListAsync().ConfigureAwait(false);
+            return this.Mapper.Map<List<BankAccount>>(data);
         }
     }
 }

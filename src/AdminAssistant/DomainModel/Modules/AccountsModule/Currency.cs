@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule
 {
-    public class Currency
+    public class Currency : IDatabasePersistable
     {
         public const int SymbolMaxLength = 3;
         public const int DecimalFormatMaxLength = 5;
@@ -8,5 +8,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
         public int CurrencyID { get; set; }
         public string Symbol { get; set; } = string.Empty;
         public string DecimalFormat { get; set; } = string.Empty;
+
+        public int PrimaryKey => this.CurrencyID;
     }
 }
