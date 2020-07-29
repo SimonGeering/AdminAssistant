@@ -1,3 +1,18 @@
+/*
+Table "Contacts.Contact" 
+{
+  "ContactID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "TitleID" INT
+  "FirstName" NVARCHAR(50)
+  "LastName" NVARCHAR(50)
+  "DateOfBirth" DATETIME2
+}
+Ref: "Contacts.Contact"."ContactID" < "Contacts.ContactAddress"."ContactID"
+Ref: "Contacts.Contact"."ContactID" < "Accounts.PayeeContact"."ContactID"
+
+*/
 using System;
 
 namespace AdminAssistant.DAL.EntityFramework.Model.Contacts
