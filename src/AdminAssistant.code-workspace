@@ -22,10 +22,6 @@
       "**/AdminAssistant.db": true,
       "**/AdminAssistant.mdf": true,
       "**/AdminAssistant.ldf": true,
-      "**/AdminAssistant.Blazor.code-workspace": true,
-      "**/AdminAssistant.Blazor.sln": true,
-      "**/AdminAssistant.Xamarin.code-workspace": true,
-      "**/AdminAssistant.Xamarin.sln": true
     },
     "cSpell.language": "en-GB",
     "cSpell.enableCompoundWords": true,
@@ -52,6 +48,7 @@
       "nuget",
       "pwsh",
       "setvariable",
+      "Setup",
       "titlebar",
       "vsts",
       "Xunit",
