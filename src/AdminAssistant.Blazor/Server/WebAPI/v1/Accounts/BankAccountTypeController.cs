@@ -28,8 +28,8 @@ namespace AdminAssistant.WebAPI.v1
         {
             this.Log.Start();
 
-            var result = await Mediator.Send(new BankAccountTypesQuery()).ConfigureAwait(false);
-            var response = Mapper.Map<IEnumerable<BankAccountTypeResponseDto>>(result.Value);
+            var result = await this.Mediator.Send(new BankAccountTypesQuery()).ConfigureAwait(false);
+            var response = this.Mapper.Map<IEnumerable<BankAccountTypeResponseDto>>(result.Value);
 
             return this.Log.Finish(this.Ok(response));
         }
