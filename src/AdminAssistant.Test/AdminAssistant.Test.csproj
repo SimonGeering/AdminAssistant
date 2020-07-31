@@ -70,4 +70,7 @@
     <Folder Include="Modules\TasksModule\" />
     <Folder Include="Modules\ReportsModule\" />
   </ItemGroup>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="copy ..\AdminAssistant.Blazor\Server\AdminAssistant.Blazor.Server.docs.xml $(TargetDir)AdminAssistant.Blazor.Server.docs.xml&#xD;&#xA;" />
+  </Target>
 </Project>

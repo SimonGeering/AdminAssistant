@@ -63,8 +63,7 @@ namespace AdminAssistant.Blazor.Server
                 c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 
                 // Include documentation from XML Doc Comments ...
-                // TODO: Switch to using Swagger Attributes as this dosen't work with Integration test server.
-                //c.IncludeXmlComments(System.IO.Path.Combine(System.AppContext.BaseDirectory, "AdminAssistant.Blazor.Server.docs.xml"));
+                c.IncludeXmlComments(System.IO.Path.Combine(System.AppContext.BaseDirectory, "AdminAssistant.Blazor.Server.docs.xml"));
             });
 
             services.AddAutoMapper(typeof(DAL.MappingProfile), typeof(WebAPI.MappingProfile));
