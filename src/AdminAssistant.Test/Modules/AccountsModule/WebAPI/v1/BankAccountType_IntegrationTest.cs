@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using Xunit;
 using System;
 
-namespace AdminAssistant.Modules.AccountsModule
+namespace AdminAssistant.Modules.AccountsModule.WebAPI.v1
 {
  
     public class BankAccountType_Should : IntegrationTestBase

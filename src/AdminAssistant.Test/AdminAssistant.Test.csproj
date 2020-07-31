@@ -67,6 +67,7 @@
     <Folder Include="Modules\DashboardModule\" />
     <Folder Include="Modules\DocumentsModule\" />
     <Folder Include="Modules\MailModule\" />
+    <Folder Include="Modules\Core\" />
     <Folder Include="Modules\TasksModule\" />
     <Folder Include="Modules\ReportsModule\" />
   </ItemGroup>
