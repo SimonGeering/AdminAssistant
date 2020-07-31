@@ -33,7 +33,7 @@ namespace AdminAssistant.DAL.Modules.AccountsModule
             }).FirstOrDefaultAsync(x => x.BankAccountID == id).ConfigureAwait(false);
         }
 
-        public async Task<IList<BankAccountInfo>> GetListAsync()
+        public async Task<List<BankAccountInfo>> GetListAsync()
         {
             // TODO: Check this transform is being done in TSQL server side.
             return await this.DbContext.BankAccounts.Select(x => new BankAccountInfo

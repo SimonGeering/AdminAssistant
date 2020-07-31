@@ -18,7 +18,7 @@ namespace AdminAssistant.DAL.Modules.AccountsModule
         {
         }
 
-        public async Task<IList<BankAccountTransaction>> GetBankAccountTransactionListAsync(int bankAccountID)
+        public async Task<List<BankAccountTransaction>> GetBankAccountTransactionListAsync(int bankAccountID)
         {
             var source = await this.DbContext.BankAccountTransactions.Where(x => x.BankAccountID == bankAccountID).ToListAsync().ConfigureAwait(false);
             return this.Mapper.Map<List<BankAccountTransaction>>(source);
@@ -57,7 +57,7 @@ namespace AdminAssistant.DAL.Modules.AccountsModule
             return this.Mapper.Map<BankAccount>(data);
         }
 
-        public async Task<IList<BankAccount>> GetListAsync()
+        public async Task<List<BankAccount>> GetListAsync()
         {
             var data = await this.DbContext.BankAccounts.ToListAsync().ConfigureAwait(false);
             return this.Mapper.Map<List<BankAccount>>(data);

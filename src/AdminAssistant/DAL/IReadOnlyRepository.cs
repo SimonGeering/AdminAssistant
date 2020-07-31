@@ -9,6 +9,6 @@ namespace AdminAssistant.DAL
         where TDomainModel : IDatabasePersistable
     {
         Task<TDomainModel> GetAsync(int id);
-        Task<IList<TDomainModel>> GetListAsync();
+        Task<List<TDomainModel>> GetListAsync();
     }
 }

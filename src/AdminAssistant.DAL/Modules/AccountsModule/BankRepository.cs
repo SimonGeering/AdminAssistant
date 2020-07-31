@@ -22,7 +22,7 @@ namespace AdminAssistant.DAL.Modules.AccountsModule
             return this.Mapper.Map<Bank>(data);
         }
 
-        public async Task<IList<Bank>> GetListAsync()
+        public async Task<List<Bank>> GetListAsync()
         {
             var data = await this.DbContext.Banks.ToListAsync().ConfigureAwait(false);
             return this.Mapper.Map<List<Bank>>(data);
