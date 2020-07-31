@@ -6,11 +6,11 @@ namespace AdminAssistant.UI
 {
     public abstract class ServiceBase
     {
-        protected HttpClient HttpClient { get; }
+        protected IHttpClientProvider HttpClient { get; }
         protected IMapper Mapper { get; }
         protected ILoggingProvider Log { get; }
 
-        public ServiceBase(HttpClient httpClient, IMapper mapper, ILoggingProvider log)
+        public ServiceBase(IHttpClientProvider httpClient, IMapper mapper, ILoggingProvider log)
         {
             this.HttpClient = httpClient;
             this.Log = log;

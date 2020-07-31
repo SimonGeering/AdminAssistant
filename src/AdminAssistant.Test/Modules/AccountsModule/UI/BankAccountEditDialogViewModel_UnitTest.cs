@@ -23,16 +23,16 @@ namespace AdminAssistant.Accounts.Modules.AccountsModule.UI
         public async Task Have_All_Lookups_Populated_Given_TheScreenHasLoaded()
         {
             // Arrange
-            var mockHttpClientJsonProvider = new Mock<HttpClient>();
+            var mockHttpClientProvider = new Mock<IHttpClientProvider>();
 
-            mockHttpClientJsonProvider
+            mockHttpClientProvider
                 .Setup(x => x.GetFromJsonAsync<BankAccountType[]>("api/v1/BankAccountType", It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(new BankAccountType[]
                 {
                     Factory.BankAccountType.WithTestData().Build()
                 }));
 
-            mockHttpClientJsonProvider
+            mockHttpClientProvider
                 .Setup(x => x.GetFromJsonAsync<Currency[]>("api/v1/Currency", It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(new Currency[]
                 {
@@ -42,7 +42,7 @@ namespace AdminAssistant.Accounts.Modules.AccountsModule.UI
             var services = new ServiceCollection();
             services.AddMocksOfExternalDependencies();
             services.AddAdminAssistantClientServices();
-            services.AddTransient((sp) => mockHttpClientJsonProvider.Object);
+            services.AddTransient((sp) => mockHttpClientProvider.Object);
 
             // Act
             var vm = services.BuildServiceProvider().GetRequiredService<IBankAccountEditDialogViewModel>();

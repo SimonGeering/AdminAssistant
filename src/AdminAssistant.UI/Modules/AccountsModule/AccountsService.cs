@@ -12,8 +12,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class AccountsService : ServiceBase, IAccountsService
     {
-        public AccountsService(HttpClient httpClient, IMapper mapper, ILoggingProvider log)
-            : base(httpClient, mapper, log)
+        public AccountsService(IHttpClientProvider httpClientProvider, IMapper mapper, ILoggingProvider log)
+            : base(httpClientProvider, mapper, log)
         {
         }
         public async Task<IList<BankAccountType>> LoadBankAccountTypesLookupDataAsync()
