@@ -26,13 +26,12 @@ namespace AdminAssistant.WebAPI.v1
         [ProducesResponseType(typeof(IEnumerable<BankResponseDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<BankResponseDto>>> Get()
         {
-            throw new System.NotImplementedException();
-            //this.Log.Start();
+            this.Log.Start();
 
-            //var result = await Mediator.Send(new BankAccountTypesQuery()).ConfigureAwait(false);
-            //var response = Mapper.Map<IEnumerable<BankAccountTypeResponseDto>>(result.Value);
-
-            //return this.Log.Finish(this.Ok(response));
+            var result = await this.Mediator.Send(new BankQuery()).ConfigureAwait(false);
+            var response = this.Mapper.Map<IEnumerable<BankResponseDto>>(result.Value);
+            
+            return this.Log.Finish(this.Ok(response));
         }
     }
 }

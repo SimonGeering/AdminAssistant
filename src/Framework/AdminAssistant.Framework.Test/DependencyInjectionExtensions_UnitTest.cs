@@ -12,12 +12,39 @@ namespace AdminAssistant.Framework
     {
         [SkippableFact]
         [Trait("Category", "Unit")]
-        public async Task BeAbleToInstantiateAllRegisteredTypes()
+        public async Task BeAbleToInstantiateAllRegisteredClientSideTypes()
         {
             // Arrange
             var services = new ServiceCollection();
             services.AddMocksOfExternalDependencies();
-            services.AddFrameworkServices();
+            services.AddClientFrameworkServices();
+
+            var serviceProvider = services.BuildServiceProvider();
+
+            // Act
+            var result = new List<object>();
+
+            foreach (var serviceDescriptor in services)
+            {
+                var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
+                instance.Should().NotBeNull();
+                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                result.Add(instance);
+            }
+
+            // Assert
+            result.Should().HaveCount(services.Count);
+            await Task.CompletedTask.ConfigureAwait(false);
+        }
+
+        [SkippableFact]
+        [Trait("Category", "Unit")]
+        public async Task BeAbleToInstantiateAllRegisteredServerSideTypes()
+        {
+            // Arrange
+            var services = new ServiceCollection();
+            services.AddMocksOfExternalDependencies();
+            services.AddServerFrameworkServices();
 
             var serviceProvider = services.BuildServiceProvider();
 

@@ -1,3 +1,14 @@
+/*
+
+Table "Budget.BudgetEntry" 
+{
+  "BudgetEntryID" INT [pk]
+  "BudgetID" INT
+  "AuditID" INT
+}
+
+*/
+
 namespace AdminAssistant.DAL.EntityFramework.Model.Budget
 {
     public class BudgetEntryEntity

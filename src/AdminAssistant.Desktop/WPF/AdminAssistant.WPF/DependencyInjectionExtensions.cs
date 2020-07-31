@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddAdminAssistantDesktopServices(this IServiceCollection services)
         {
-            services.AddFrameworkServices();
+            services.AddClientFrameworkServices();
             services.AddAdminAssistantClientSideDomainModel();
             services.AddAdminAssistantUI();
 

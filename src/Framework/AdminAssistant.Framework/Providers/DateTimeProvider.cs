@@ -11,7 +11,8 @@ namespace AdminAssistant.Framework.Providers
         ///<returns>An object whose value is the current UTC date and time.</returns>
         DateTime UtcNow { get; }
     }
-    public class DateTimeProvider : IDateTimeProvider
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class DateTimeProvider : IDateTimeProvider
     {
         public DateTime UtcNow => DateTime.UtcNow;
     }

@@ -9,7 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             Guard.Against.Null(configurationSettings, nameof(configurationSettings));
 
-            services.AddFrameworkServices();
+            services.AddServerFrameworkServices();
             services.AddAdminAssistantServerSideDomainModel();
             services.AddAdminAssistantServerSideDAL(configurationSettings);
         }

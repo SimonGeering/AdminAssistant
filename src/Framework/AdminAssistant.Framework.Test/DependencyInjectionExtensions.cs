@@ -27,6 +27,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 .Returns(() => mockLogger.Object);
 
             services.AddTransient((sp) => mockLoggerFactory.Object);
+            // TODO: look at if this can be refactored to allow 
             services.AddTransient<ILoggingProvider, LoggingProvider>();
         }
     }

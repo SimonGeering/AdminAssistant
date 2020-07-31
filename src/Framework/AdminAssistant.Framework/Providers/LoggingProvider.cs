@@ -6,6 +6,8 @@ namespace AdminAssistant.Framework.Providers
 {
     public interface ILoggingProvider : ILogger
     {
+        public const string LogCategoryName = "AdminAssistant";
+
         /// <summary></summary>
         /// <param name="memberName"></param>
         /// <param name="sourceFilePath"></param>
@@ -56,13 +58,11 @@ namespace AdminAssistant.Framework.Providers
     }
     public class LoggingProvider : ILoggingProvider
     {
-        public const string LogCategoryName = "AdminAssistant";
-
         private readonly ILogger logger;
 
         public LoggingProvider(ILoggerFactory loggerFactory)
         {
-            this.logger = loggerFactory.CreateLogger(LogCategoryName);
+            this.logger = loggerFactory.CreateLogger(ILoggingProvider.LogCategoryName);
         }
 
         public void LogDebug(EventId eventId, Exception exception, string message, params object[] args) => logger.Log(LogLevel.Debug, eventId, exception, message, args);

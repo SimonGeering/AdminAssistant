@@ -1,3 +1,15 @@
+/*
+Table "Assets.Asset" 
+{
+  "AssetID" INT [pk]
+  "ManufacturerID" INT [null]
+  "AuditID" INT [not null]
+  "OwnerID" INT [not null]
+  "PurchasePrice" INT
+  "DepreciatedValue" INT
+  "ReplacementCost" INT
+}
+*/
 namespace AdminAssistant.DAL.EntityFramework.Model.AssetRegister
 {
     public class AssetEntity

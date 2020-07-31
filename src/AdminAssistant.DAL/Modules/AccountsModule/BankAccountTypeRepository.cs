@@ -15,7 +15,13 @@ namespace AdminAssistant.DAL.Modules.AccountsModule
         {
         }
 
-        public async Task<IList<BankAccountType>> GetBankAccountTypeListAsync()
+        public async Task<BankAccountType> GetAsync(int id)
+        {
+            var data = await this.DbContext.BankAccountTypes.FirstOrDefaultAsync(x => x.BankAccountTypeID == id).ConfigureAwait(false);
+            return this.Mapper.Map<BankAccountType>(data);
+        }
+
+        public async Task<List<BankAccountType>> GetListAsync()
         {
             var data = await this.DbContext.BankAccountTypes.ToListAsync().ConfigureAwait(false);
             return this.Mapper.Map<List<BankAccountType>>(data);

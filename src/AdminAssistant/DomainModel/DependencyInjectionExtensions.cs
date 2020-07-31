@@ -23,7 +23,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IUserContextProvider, UserContextProvider>();
 
             // Set-up Add MediatR ...
-            services.AddMediatR(typeof(BankAccountByIDHandler));
+            services.AddMediatR(typeof(BankAccountByIDQuery));
         }
 
         private static void AddAccountsDomainModel(IServiceCollection services)

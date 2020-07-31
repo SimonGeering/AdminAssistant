@@ -1,19 +1,13 @@
 using System;
 using System.Collections.Generic;
-using AdminAssistant.Framework.Providers;
+
 using AdminAssistant.UI.Shared;
-using AutoMapper;
 
 namespace AdminAssistant.UI.Services
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class AppService : ServiceBase, IAppService
+    internal class AppService : IAppService
     {
-        public AppService(IHttpClientJsonProvider httpClient, IMapper mapper, ILoggingProvider log)
-            : base(httpClient, mapper, log)
-        {
-        }
-
         private const ModeEnum DefaultMode = ModeEnum.Company;
         private const ModuleEnum DefaultModule = ModuleEnum.Dashboard;
 

@@ -25,7 +25,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             services.AddAdminAssistantServerSideDomainModel();
 
             var mockBankAccountRepository = new Mock<IBankAccountRepository>();
-            mockBankAccountRepository.Setup(x => x.CreateBankAccountAsync(bankAccount))
+            mockBankAccountRepository.Setup(x => x.SaveAsync(bankAccount))
                 .Returns(() =>
                 {
                     var result = bankAccount.DeepClone();

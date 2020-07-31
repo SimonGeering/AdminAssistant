@@ -1,3 +1,12 @@
+/*
+Table "Contacts.ContactAddress" 
+{
+  "ContactAddressID" INT [pk]
+  "AuditID" INT
+  "AddressID" INT
+  "ContactID" INT
+}
+*/
 namespace AdminAssistant.DAL.EntityFramework.Model.Contacts
 {
     public class ContactAddressEntity

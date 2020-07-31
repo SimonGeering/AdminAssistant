@@ -11,15 +11,15 @@ namespace AdminAssistant.UI.Modules.AccountsModule
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class AccountsService : ServiceBase, IAccountsService
     {
-        public AccountsService(IHttpClientJsonProvider httpClient, IMapper mapper, ILoggingProvider log)
-            : base(httpClient, mapper, log)
+        public AccountsService(IHttpClientProvider httpClientProvider, IMapper mapper, ILoggingProvider log)
+            : base(httpClientProvider, mapper, log)
         {
         }
         public async Task<IList<BankAccountType>> LoadBankAccountTypesLookupDataAsync()
         {
             this.Log.Start();
 
-            var response = await this.HttpClient.GetFromJsonAsync<BankAccountTypeResponseDto[]>("api/v1/BankAccountType").ConfigureAwait(false);
+            var response = await this.HttpClient.GetFromJsonAsync<BankAccountTypeResponseDto[]>("api/v1/accounts/BankAccountType").ConfigureAwait(false);
 
             var result = new List<BankAccountType>(this.Mapper.Map<IEnumerable<BankAccountType>>(response));
             result.Insert(0, new BankAccountType() { BankAccountTypeID = 0, Description = string.Empty });
@@ -31,7 +31,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
         {
             this.Log.Start();
 
-            var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>("api/v1/Currency").ConfigureAwait(false);
+            var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>("api/v1/core/Currency").ConfigureAwait(false);
 
             var result = new List<Currency>(this.Mapper.Map<IEnumerable<Currency>>(response));
             result.Insert(0, new Currency() { CurrencyID = 0, Symbol = string.Empty, DecimalFormat = string.Empty });
@@ -45,7 +45,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
 
             var request = this.Mapper.Map<BankAccountCreateRequestDto>(model);
 
-            var response = await this.HttpClient.PostAsJsonAsync("api/v1/BankAccount", request).ConfigureAwait(false);
+            var response = await this.HttpClient.PostAsJsonAsync("api/v1/accounts/BankAccount", request).ConfigureAwait(false);
 
             //var result = this.Mapper.Map<BankAccount>(response.);
 
@@ -58,7 +58,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
 
             var request = this.Mapper.Map<BankAccountUpdateRequestDto>(model);
 
-            var response = await this.HttpClient.PutAsJsonAsync("api/v1/BankAccount", request).ConfigureAwait(false);
+            var response = await this.HttpClient.PutAsJsonAsync("api/v1/accounts/BankAccount", request).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode == false)
             {

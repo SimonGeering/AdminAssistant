@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
 namespace AdminAssistant.DAL.Modules.AccountsModule
 {
-    public interface ICurrencyRepository
+    public interface ICurrencyRepository : IReadOnlyRepository<Currency>
     {
-        Task<IList<Currency>> GetCurrencyListAsync();
     }
 }
