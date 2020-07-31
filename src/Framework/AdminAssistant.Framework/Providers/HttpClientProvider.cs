@@ -20,6 +20,7 @@ namespace AdminAssistant.Framework.Providers
         Task<HttpResponseMessage> Delete(string requestUri);
 
     }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class HttpClientProvider : IHttpClientProvider
     {
         private readonly HttpClient httpClient;
