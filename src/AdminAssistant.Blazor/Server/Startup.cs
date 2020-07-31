@@ -62,8 +62,8 @@ namespace AdminAssistant.Blazor.Server
                 c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
                 c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 
-                // Include documentation from XML Doc Comments ...
-                c.IncludeXmlComments(System.IO.Path.Combine(System.AppContext.BaseDirectory, "AdminAssistant.Blazor.Server.docs.xml"));
+                // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
+                c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
             });
 
             services.AddAutoMapper(typeof(DAL.MappingProfile), typeof(WebAPI.MappingProfile));
