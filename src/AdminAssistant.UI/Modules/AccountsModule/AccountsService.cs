@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
@@ -11,7 +12,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class AccountsService : ServiceBase, IAccountsService
     {
-        public AccountsService(IHttpClientJsonProvider httpClient, IMapper mapper, ILoggingProvider log)
+        public AccountsService(HttpClient httpClient, IMapper mapper, ILoggingProvider log)
             : base(httpClient, mapper, log)
         {
         }
