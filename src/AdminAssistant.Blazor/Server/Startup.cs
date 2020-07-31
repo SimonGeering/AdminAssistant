@@ -21,10 +21,10 @@ namespace AdminAssistant.Blazor.Server
         private const string WebAPIVersion = "v1";
         private string WebAPITitle => $"Admin Assistant WebAPI {WebAPIVersion}.";
 
-        private readonly IWebHostEnvironment env;
+        private readonly IHostEnvironment env;
         private readonly IConfiguration configuration;
 
-        public Startup(IWebHostEnvironment env, IConfiguration configuration)
+        public Startup(IHostEnvironment env, IConfiguration configuration)
         {
             this.env = env;
             this.configuration = configuration;
@@ -63,7 +63,8 @@ namespace AdminAssistant.Blazor.Server
                 c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 
                 // Include documentation from XML Doc Comments ...
-                c.IncludeXmlComments(System.IO.Path.Combine(System.AppContext.BaseDirectory, "AdminAssistant.Blazor.Server.docs.xml"));
+                // TODO: Switch to using Swagger Attributes as this dosen't work with Integration test server.
+                //c.IncludeXmlComments(System.IO.Path.Combine(System.AppContext.BaseDirectory, "AdminAssistant.Blazor.Server.docs.xml"));
             });
 
             services.AddAutoMapper(typeof(DAL.MappingProfile), typeof(WebAPI.MappingProfile));
