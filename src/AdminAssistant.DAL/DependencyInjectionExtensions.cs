@@ -49,14 +49,22 @@ namespace Microsoft.Extensions.DependencyInjection
                         break;
                 }
             });
+
             AddAccountsDAL(services);
+            AddCoreDAL(services);
         }
 
         private static void AddAccountsDAL(this IServiceCollection services)
-        {
-            // Repositories ...
-            services.AddTransient<IBankAccountTypeRepository, BankAccountTypeRepository>();
+        {            
+            services.AddTransient<IBankAccountInfoRepository, BankAccountInfoRepository>();
             services.AddTransient<IBankAccountRepository, BankAccountRepository>();
+            services.AddTransient<IBankAccountTransactionRepository, BankAccountTransactionRepository>();
+            services.AddTransient<IBankAccountTypeRepository, BankAccountTypeRepository>();
+            services.AddTransient<IBankRepository, BankRepository>();
+        }
+
+        private static void AddCoreDAL(this IServiceCollection services)
+        {
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();
         }
     }

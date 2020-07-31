@@ -2,7 +2,7 @@ using System;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule
 {
-    public class BankAccountTransaction
+    public class BankAccountTransaction : IDatabasePersistable
     {
         public const int DescriptionMaxLength = Constants.DescriptionMaxLength;
 
@@ -22,5 +22,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
         public string Description { get; set; } = string.Empty;
         public string Notes { get; set; } = string.Empty;
         public DateTime TransactionDate { get; set; } = DateTime.Now;
+
+        public int PrimaryKey => this.BankAccountTransactionID;
     }
 }
