@@ -6,10 +6,10 @@ using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Framework.Providers;
+using AdminAssistant.UI.Modules.CoreModule;
 using AdminAssistant.UI.Shared;
 using Ardalis.GuardClauses;
 using FluentValidation.Results;
-using Microsoft.Extensions.Logging;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
@@ -19,6 +19,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         private readonly IAccountsStateStore accountsStateStore;
         private readonly IBankAccountValidator bankAccountValidator;
         private readonly IAccountsService accountsService;
+        private readonly ICoreService coreService;
 
         private BankAccount bankAccount = new BankAccount();
 
@@ -27,12 +28,14 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             ILoadingSpinner loadingSpinner,
             IAccountsStateStore accountsStateStore,
             IBankAccountValidator bankAccountValidator,            
-            IAccountsService accountsService)
+            IAccountsService accountsService,
+            ICoreService coreService)
             : base(log, loadingSpinner)
         {
             this.accountsStateStore = accountsStateStore;
             this.bankAccountValidator = bankAccountValidator;
             this.accountsService = accountsService;
+            this.coreService = coreService;
 
             this.accountsStateStore.EditAccount += (BankAccount bankAccount) =>
             {
@@ -259,7 +262,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             this.LoadingSpinner.OnShowLoadingSpinner();
 
             this.BankAccountTypes = await this.accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
-            this.Currencies = await this.accountsService.LoadCurrencyLookupDataAsync().ConfigureAwait(false);
+            this.Currencies = await this.coreService.GetCurrencyListAsync().ConfigureAwait(false);
 
             this.LoadingSpinner.OnHideLoadingSpinner();
 
