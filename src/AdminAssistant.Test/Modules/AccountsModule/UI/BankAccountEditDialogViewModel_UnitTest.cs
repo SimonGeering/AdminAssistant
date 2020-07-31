@@ -11,6 +11,8 @@ using AdminAssistant.UI.Modules.AccountsModule;
 using AdminAssistant.Framework.Providers;
 using Moq;
 using System.Threading;
+using System.Net.Http;
+using System.Net.Http.Json;
 
 namespace AdminAssistant.Accounts.Modules.AccountsModule.UI
 {
@@ -21,7 +23,7 @@ namespace AdminAssistant.Accounts.Modules.AccountsModule.UI
         public async Task Have_All_Lookups_Populated_Given_TheScreenHasLoaded()
         {
             // Arrange
-            var mockHttpClientJsonProvider = new Mock<IHttpClientJsonProvider>();
+            var mockHttpClientJsonProvider = new Mock<HttpClient>();
 
             mockHttpClientJsonProvider
                 .Setup(x => x.GetFromJsonAsync<BankAccountType[]>("api/v1/BankAccountType", It.IsAny<CancellationToken>()))
