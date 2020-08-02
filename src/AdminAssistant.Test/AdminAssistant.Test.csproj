@@ -60,15 +60,15 @@
     <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modules\AssetRegisterModule\" />
-    <Folder Include="Modules\BillingModule\" />
-    <Folder Include="Modules\CalendarModule\" />
-    <Folder Include="Modules\ContactsModule\" />
-    <Folder Include="Modules\DashboardModule\" />
-    <Folder Include="Modules\DocumentsModule\" />
-    <Folder Include="Modules\MailModule\" />
-    <Folder Include="Modules\Core\" />
-    <Folder Include="Modules\TasksModule\" />
-    <Folder Include="Modules\ReportsModule\" />
+    <Folder Include="DomainModel\Modules\AssetRegisterModule\" />
+    <Folder Include="DomainModel\Modules\BillingModule\" />
+    <Folder Include="DomainModel\Modules\CalendarModule\" />
+    <Folder Include="DomainModel\Modules\ContactsModule\" />
+    <Folder Include="DomainModel\Modules\DashboardModule\" />
+    <Folder Include="DomainModel\Modules\DocumentsModule\" />
+    <Folder Include="DomainModel\Modules\MailModule\" />
+    <Folder Include="DomainModel\Modules\Core\" />
+    <Folder Include="DomainModel\Modules\TasksModule\" />
+    <Folder Include="DomainModel\Modules\ReportsModule\" />
   </ItemGroup>
 </Project>
