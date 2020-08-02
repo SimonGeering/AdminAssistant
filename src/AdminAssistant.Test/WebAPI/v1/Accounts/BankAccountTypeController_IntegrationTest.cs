@@ -18,7 +18,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
     {
         protected override Action<IServiceCollection> ConfigureTestServices() => services =>
         {
-            var result = Task.FromResult(new List<BankAccountType>() { new BankAccountType() { BankAccountTypeID = 10, Description = "Test Type" } });
+            var result = Task.FromResult(new List<BankAccountType>() { Factory.BankAccountType.WithTestData(10).Build() });
 
             var mockBankAccountTypeRepository = new Mock<IBankAccountTypeRepository>();
             mockBankAccountTypeRepository.Setup(x => x.GetListAsync()).Returns(result);
