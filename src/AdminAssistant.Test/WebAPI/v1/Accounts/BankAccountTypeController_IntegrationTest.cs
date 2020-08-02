@@ -14,7 +14,7 @@ using System;
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
  
-    public class BankAccountType_Should : IntegrationTestBase
+    public class BankAccountTypeController_Should : IntegrationTestBase
     {
         protected override Action<IServiceCollection> ConfigureTestServices() => services =>
         {
