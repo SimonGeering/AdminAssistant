@@ -12,32 +12,32 @@ using Xunit;
 using System;
 
 namespace AdminAssistant.WebAPI.v1.Core
+{
+    public class CurrencyController_IntegrationTest : IntegrationTestBase
     {
+        private readonly Mock<ICurrencyRepository> mockCurrencyRepository = new Mock<ICurrencyRepository>();
 
-        public class CurrencyController_IntegrationTest : IntegrationTestBase
+        protected override Action<IServiceCollection> ConfigureTestServices() => services =>
         {
-            protected override Action<IServiceCollection> ConfigureTestServices() => services =>
-            {
-                var result = Task.FromResult(new List<Currency>() { Factory.Currency.WithTestData(10).Build() });
+            var result = new List<Currency>() { Factory.Currency.WithTestData(10).Build() };
+            mockCurrencyRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(result));
 
-                var mockCurrencyRepository = new Mock<ICurrencyRepository>();
-                mockCurrencyRepository.Setup(x => x.GetListAsync()).Returns(result);
+            services.AddSingleton(mockCurrencyRepository.Object);
+        };
 
-                services.AddSingleton(mockCurrencyRepository.Object);
-            };
+        [Fact]
+        [Trait("Category", "Integration")]
+        public async Task ReturnAListOfBankAccountType_GivenACallToBankAccountTypeGet()
+        {
+            // Arrange
 
-            [Fact]
-            [Trait("Category", "Integration")]
-            public async Task ReturnAListOfBankAccountType_GivenACallToBankAccountTypeGet()
-            {
-                // Arrange
+            // Act
+            var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>("api/v1/core/Currency").ConfigureAwait(false);
 
-                // Act
-                var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>("api/v1/core/Currency").ConfigureAwait(false);
-
-                // Assert
-                response.Should().NotBeEmpty();
-            }
+            // Assert
+            response.Should().NotBeEmpty();
+            mockCurrencyRepository.Verify(x => x.GetListAsync(), Times.Once());
+        }
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
