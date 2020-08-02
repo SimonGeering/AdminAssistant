@@ -2,7 +2,6 @@
 
 using AdminAssistant.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.WebAPI.v1;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
@@ -12,7 +11,7 @@ using System.Threading.Tasks;
 using Xunit;
 using System;
 
-namespace AdminAssistant.Modules.AccountsModule.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1.Accounts
 {
  
     public class BankAccountType_Should : IntegrationTestBase
