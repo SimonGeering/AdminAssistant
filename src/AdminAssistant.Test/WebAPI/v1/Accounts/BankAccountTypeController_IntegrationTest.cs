@@ -13,15 +13,15 @@ using System;
 
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
- 
     public class BankAccountTypeController_Should : IntegrationTestBase
     {
+        private readonly Mock<IBankAccountTypeRepository>  mockBankAccountTypeRepository = new Mock<IBankAccountTypeRepository>();
+
         protected override Action<IServiceCollection> ConfigureTestServices() => services =>
         {
-            var result = Task.FromResult(new List<BankAccountType>() { Factory.BankAccountType.WithTestData(10).Build() });
+            var result = new List<BankAccountType>() { Factory.BankAccountType.WithTestData(10).Build() };
 
-            var mockBankAccountTypeRepository = new Mock<IBankAccountTypeRepository>();
-            mockBankAccountTypeRepository.Setup(x => x.GetListAsync()).Returns(result);
+            mockBankAccountTypeRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(result));
 
             services.AddSingleton(mockBankAccountTypeRepository.Object);
         };
@@ -37,6 +37,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
 
             // Assert
             response.Should().NotBeEmpty();
+            mockBankAccountTypeRepository.Verify(x => x.GetListAsync(), Times.Once()); 
         }
     }
 }
