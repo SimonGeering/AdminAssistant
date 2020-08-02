@@ -9,6 +9,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1
 {
@@ -22,17 +23,12 @@ namespace AdminAssistant.WebAPI.v1
         {
         }
 
-        /// <summary>Updates and existing BankAccount.</summary>
-        /// <param name="bankAccountUpdateRequest">The BankAccount for which updates are to be persisted</param>
-        /// <returns>The updated BankAccountResponseDto</returns>
-        /// <response code="200">Ok</response>
-        /// <response code="404">NotFound - When the BankAccountID of the given <paramref name="bankAccountUpdateRequest"/> does not exist.</response>
-        /// <response code="422">UnprocessableEntity - When the given <paramref name="bankAccountUpdateRequest"/> is invalid.</response>
-        [HttpPut(Name = "PutBankAccount")]
-        [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
-        public async Task<ActionResult<BankAccountResponseDto>> Put([FromBody]BankAccountUpdateRequestDto bankAccountUpdateRequest)
+        [HttpPut]
+        [SwaggerOperation("Update an existing BankAccount.", OperationId = "PutBankAccount")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated BankAccountResponseDto", type: typeof(BankAccountResponseDto))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the BankAccountID of the given bankAccountUpdateRequest does not exist.")]
+        [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountUpdateRequest is invalid.")]
+        public async Task<ActionResult<BankAccountResponseDto>> Put([FromBody, SwaggerParameter("The BankAccount for which updates are to be persisted.", Required = true)]BankAccountUpdateRequestDto bankAccountUpdateRequest)
         {
             this.Log.Start();
 
@@ -42,7 +38,7 @@ namespace AdminAssistant.WebAPI.v1
             if (result.Status == ResultStatus.NotFound)
             {
                 result.ValidationErrors.ToList().ForEach((err) => this.ModelState.AddModelError(err.Key, err.Value));
-                return this.Log.Finish(this.UnprocessableEntity(this.ModelState));
+                return this.Log.Finish(this.NotFound(this.ModelState));
             }
 
             if (result.Status == ResultStatus.Invalid)
@@ -55,15 +51,11 @@ namespace AdminAssistant.WebAPI.v1
             return this.Log.Finish(this.Ok(response));
         }
 
-        /// <summary>Creates a new BankAccount</summary>
-        /// <param name="bankAccountCreateRequest">The details of the BankAccount to be created</param>
-        /// <returns>A BankAccountResponseDto for the newly created BankAccount</returns>
-        /// <response code="201">Created - When the bank account was created ok.</response>
-        /// <response code="422">UnprocessableEntity - When the given <paramref name="bankAccountCreateRequest"/> is invalid.</response>
-        [HttpPost(Name = "PostBankAccount")]
-        [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
-        public async Task<ActionResult<BankAccountResponseDto>> Post([FromBody]BankAccountCreateRequestDto bankAccountCreateRequest)
+        [HttpPost]
+        [SwaggerOperation("Creates a new BankAccount.", OperationId = "PostBankAccount")]
+        [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created bank account with its assigned newly ID.", type: typeof(BankAccountResponseDto))]
+        [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountCreateRequest is invalid.")]
+        public async Task<ActionResult<BankAccountResponseDto>> Post([FromBody, SwaggerParameter("The details of the BankAccount to be created.", Required = true)] BankAccountCreateRequestDto bankAccountCreateRequest)
         {
             this.Log.Start();
 
@@ -80,15 +72,11 @@ namespace AdminAssistant.WebAPI.v1
             return this.Log.Finish(this.CreatedAtRoute(nameof(GetBankAccountById), new {bankAccountID = response.BankAccountID}, response));
         }
 
-        /// <summary>Returns a BankAccountResponseDto with the given ID.</summary>
-        /// <param name="bankAccountID">The ID of the BankAccount to be returned.</param>
-        /// <returns>A BankAccountResponseDto</returns>
-        /// <response code="200">Ok</response>
-        /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
-        [HttpGet("{bankAccountID}", Name = "GetBankAccountById")]
-        [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<BankAccountResponseDto>> GetBankAccountById(int bankAccountID)
+        [HttpGet("{bankAccountID}")]
+        [SwaggerOperation("Gets the BankAccountResponseDto with the given ID.", OperationId = "GetBankAccountById")]
+        [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the BankAccount requested.", type: typeof(BankAccountResponseDto))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
+        public async Task<ActionResult<BankAccountResponseDto>> GetBankAccountById([SwaggerParameter("The ID of the BankAccount to be returned.", Required = true)]int bankAccountID)
         {
             this.Log.Start();
 
@@ -101,15 +89,11 @@ namespace AdminAssistant.WebAPI.v1
             return this.Log.Finish(this.Ok(response));
         }
 
-        /// <summary>Returns the transactions since the last bank account statement for the BankAccount with the given ID.</summary>
-        /// <param name="bankAccountID">The ID of the BankAccount.</param>
-        /// <returns>A list of BankAccountTransactionResponseDto</returns>
-        /// <response code="200">Ok</response>
-        /// <response code="404">NotFound - When the given <paramref name="bankAccountID"/> does not exist.</response>
-        [HttpGet("{bankAccountID}/transactions", Name = "GetBankAccountTransactionByBankAccountID")] // Define MediaType limits
-        [ProducesResponseType(typeof(IEnumerable<BankAccountTransactionResponseDto>), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> GetBankAccountTransactionListAsync(int bankAccountID)
+        [HttpGet("{bankAccountID}/transactions")]
+        [SwaggerOperation("Get the transactions since the last bank account statement for the BankAccount with the given ID.", OperationId = "GetBankAccountTransactionByBankAccountID")]
+        [SwaggerResponse(StatusCodes.Status200OK, "OK - returns a list of BankAccountTransactionResponseDto.", type: typeof(IEnumerable<BankAccountTransactionResponseDto>))]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
+        public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> GetBankAccountTransactionListAsync([SwaggerParameter("The ID of the BankAccount.", Required = true)] int bankAccountID)
         {
             this.Log.Start();
 

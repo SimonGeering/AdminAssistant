@@ -7,6 +7,8 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using Swashbuckle.AspNetCore.Annotations;
+
 namespace AdminAssistant.WebAPI.v1
 {
     [ApiController]
@@ -19,11 +21,10 @@ namespace AdminAssistant.WebAPI.v1
         {
         }
 
-        /// <summary>Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.</summary>
-        /// <returns>A list of BankAccountTypeResponseDto</returns>
-        /// <response code="200">Ok</response>
-        [HttpGet(Name = "GetBankAccountType")]
+        [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<BankAccountTypeResponseDto>), StatusCodes.Status200OK)]
+        [SwaggerOperation("Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.", OperationId = "GetBankAccountType")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankAccountTypeResponseDto", type: typeof(IEnumerable<BankAccountTypeResponseDto>))]
         public async Task<ActionResult<IEnumerable<BankAccountTypeResponseDto>>> Get()
         {
             this.Log.Start();
