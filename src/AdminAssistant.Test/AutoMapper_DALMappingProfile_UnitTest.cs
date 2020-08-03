@@ -36,6 +36,7 @@ namespace AdminAssistant.DAL
 
         [Theory]
         [Trait("Category", "Unit")]
+        [InlineData(typeof(BankEntity), typeof(Bank))]
         [InlineData(typeof(BankAccountTypeEntity), typeof(BankAccountType))]
         [InlineData(typeof(CurrencyEntity), typeof(Currency))]
         [InlineData(typeof(BankAccountTransactionEntity), typeof(BankAccountTransaction))]
