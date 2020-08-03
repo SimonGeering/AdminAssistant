@@ -9,6 +9,7 @@
     <nullable>enable</nullable>
     <LangVersion>latest</LangVersion>
     <Platforms>x64</Platforms>
+    <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
