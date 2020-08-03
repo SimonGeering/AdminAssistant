@@ -15,29 +15,18 @@ namespace AdminAssistant.WebAPI.v1.Accounts
 {
     public class BankAccountTypeController_Should : IntegrationTestBase
     {
-        private readonly Mock<IBankAccountTypeRepository>  mockBankAccountTypeRepository = new Mock<IBankAccountTypeRepository>();
-
-        protected override Action<IServiceCollection> ConfigureTestServices() => services =>
-        {
-            var result = new List<BankAccountType>() { Factory.BankAccountType.WithTestData(10).Build() };
-
-            mockBankAccountTypeRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(result));
-
-            services.AddSingleton(mockBankAccountTypeRepository.Object);
-        };
-
         [Fact]
         [Trait("Category", "Integration")]
         public async Task ReturnAListOfBankAccountType_GivenACallToBankAccountTypeGet()
         {
             // Arrange
+            await this.ResetDatabaseAsync().ConfigureAwait(false);
 
             // Act
             var response = await this.HttpClient.GetFromJsonAsync<BankAccountTypeResponseDto[]>("api/v1/accounts/BankAccountType").ConfigureAwait(false);
 
             // Assert
             response.Should().NotBeEmpty();
-            mockBankAccountTypeRepository.Verify(x => x.GetListAsync(), Times.Once()); 
         }
     }
 }
