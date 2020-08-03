@@ -7,7 +7,7 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
-    public class BankController_Should : IntegrationTestBase
+    public class BankController_IntegrationTest : IntegrationTestBase
     {
         [Fact]
         [Trait("Category", "Integration")]
