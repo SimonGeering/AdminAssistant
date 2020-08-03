@@ -16,7 +16,8 @@ namespace AdminAssistant
     {
         private readonly IHost testServer;
         private readonly Respawn.Checkpoint checkpoint;
-         
+        private readonly string connectionString;
+
         public IntegrationTestBase()
         {
             var hostBuilder = Host.CreateDefaultBuilder()
@@ -32,12 +33,10 @@ namespace AdminAssistant
                 });
 
             this.testServer = hostBuilder.Start();
+            this.connectionString = this.testServer.Services.GetService<IApplicationDbContext>().ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
 
-            this.DbContext = this.testServer.Services.GetService<IApplicationDbContext>();
-
-            this.HttpClient = this.testServer.GetTestClient();
-
-            this.checkpoint = new Respawn.Checkpoint {
+            this.checkpoint = new Respawn.Checkpoint
+            {
                 TablesToIgnore = new[]
                 {
                     "sysdiagrams",
@@ -48,18 +47,19 @@ namespace AdminAssistant
                 },
                 WithReseed = true
             };
+
+            this.Container = this.testServer.Services;
+            this.HttpClient = this.testServer.GetTestClient();
         }
 
-        protected IApplicationDbContext DbContext { get; }
+        protected IServiceProvider Container { get; }
         protected HttpClient HttpClient { get; }
 
-        protected async Task ResetDatabaseAsync()
-        {
-            var connectionStirng = this.DbContext.ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
-            await this.checkpoint.Reset(connectionStirng).ConfigureAwait(false);
-        }
+        protected async Task ResetDatabaseAsync() => await this.checkpoint.Reset(this.connectionString).ConfigureAwait(false);
 
         protected virtual Action<IServiceCollection> ConfigureTestServices() => services => { };
+
+        #region IDisposable
 
         private bool disposedValue;
 
@@ -73,7 +73,6 @@ namespace AdminAssistant
                     this.ResetDatabaseAsync().ConfigureAwait(false);
 
                     // dispose managed state (managed objects)
-                    this.DbContext.Dispose();
                     this.testServer.Dispose();
                 }
 
@@ -96,5 +95,6 @@ namespace AdminAssistant
             this.Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+        #endregion // IDisposable
     }
 }
