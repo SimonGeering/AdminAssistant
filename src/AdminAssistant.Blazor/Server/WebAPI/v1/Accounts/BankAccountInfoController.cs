@@ -7,6 +7,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1
 {
@@ -23,11 +24,10 @@ namespace AdminAssistant.WebAPI.v1
             this.userContextProvider = userContextProvider;
         }
 
-        /// <summary>Returns the summary info for all the available BankAccounts owned by the logged in user.</summary>
-        /// <returns>A collection of BankAccountInfoResponseDto</returns>
-        /// <response code="200">Ok - When one or more BankAccountInfo items are returned</response>
-        [HttpGet(Name = "GetBankAccountInfo")]
+        [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<BankAccountInfoResponseDto>), StatusCodes.Status200OK)]
+        [SwaggerOperation("Lists the summary info for all the available BankAccounts owned by the logged in user.", OperationId = "GetBankAccountInfo")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankAccountInfoResponseDto", type: typeof(IEnumerable<BankAccountInfoResponseDto>))]
         public async Task<ActionResult<IEnumerable<BankAccountInfoResponseDto>>> Get()
         {
             this.Log.Start();

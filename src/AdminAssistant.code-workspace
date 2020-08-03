@@ -5,6 +5,9 @@
 		}
 	],
 	"settings": {
+    "omnisharp.loggingLevel": "warning",
+    "omnisharp.enableEditorConfigSupport": true,
+		"omnisharp.enableRoslynAnalyzers": true,
     "files.associations": {
       "*/DevOps/.yml": "azure-pipelines"
     },

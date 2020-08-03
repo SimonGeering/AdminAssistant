@@ -6,6 +6,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1
 {
@@ -19,11 +20,9 @@ namespace AdminAssistant.WebAPI.v1
         {
         }
 
-        /// <summary>Lists all currencies supported by the API wherever a CurrencyID can be provided.</summary>
-        /// <returns>A list of CurrencyResponseDto</returns>
-        /// <response code="200">Ok</response>
-        [HttpGet(Name = "GetCurrency")]
-        [ProducesResponseType(typeof(IEnumerable<CurrencyResponseDto>), StatusCodes.Status200OK)]
+        [HttpGet]
+        [SwaggerOperation("Lists all currencies supported by the API wherever a CurrencyID can be provided.", OperationId = "GetCurrency")]
+        [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of CurrencyResponseDto", type: typeof(IEnumerable<CurrencyResponseDto>))]
         public async Task<ActionResult<IEnumerable<CurrencyResponseDto>>> Get()
         {
             this.Log.Start();

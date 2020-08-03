@@ -2,7 +2,6 @@
 
 using AdminAssistant.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.WebAPI.v1;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
@@ -12,19 +11,18 @@ using System.Threading.Tasks;
 using Xunit;
 using System;
 
-namespace AdminAssistant.Modules.AccountsModule.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1.Core
 {
- 
-    public class BankAccountType_Should : IntegrationTestBase
+    public class CurrencyController_IntegrationTest : IntegrationTestBase
     {
+        private readonly Mock<ICurrencyRepository> mockCurrencyRepository = new Mock<ICurrencyRepository>();
+
         protected override Action<IServiceCollection> ConfigureTestServices() => services =>
         {
-            var result = Task.FromResult(new List<BankAccountType>() { new BankAccountType() { BankAccountTypeID = 10, Description = "Test Type" } });
+            var result = new List<Currency>() { Factory.Currency.WithTestData(10).Build() };
+            mockCurrencyRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(result));
 
-            var mockBankAccountTypeRepository = new Mock<IBankAccountTypeRepository>();
-            mockBankAccountTypeRepository.Setup(x => x.GetListAsync()).Returns(result);
-
-            services.AddSingleton(mockBankAccountTypeRepository.Object);
+            services.AddSingleton(mockCurrencyRepository.Object);
         };
 
         [Fact]
@@ -34,10 +32,11 @@ namespace AdminAssistant.Modules.AccountsModule.WebAPI.v1
             // Arrange
 
             // Act
-            var response = await this.HttpClient.GetFromJsonAsync<BankAccountTypeResponseDto[]>("api/v1/accounts/BankAccountType").ConfigureAwait(false);
+            var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>("api/v1/core/Currency").ConfigureAwait(false);
 
             // Assert
             response.Should().NotBeEmpty();
+            mockCurrencyRepository.Verify(x => x.GetListAsync(), Times.Once());
         }
     }
 }
