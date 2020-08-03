@@ -1,15 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-
-using AdminAssistant.DAL.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using System.Collections.Generic;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using FluentAssertions;
 using Xunit;
-using System;
 
 namespace AdminAssistant.WebAPI.v1.Core
 {
@@ -27,7 +20,10 @@ namespace AdminAssistant.WebAPI.v1.Core
             var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>("api/v1/core/Currency").ConfigureAwait(false);
 
             // Assert
-            response.Should().NotBeEmpty();
+            response.Should().HaveCount(3);
+            response.Should().ContainSingle(x => x.Symbol == "GBP");
+            response.Should().ContainSingle(x => x.Symbol == "EUR");
+            response.Should().ContainSingle(x => x.Symbol == "USD");
         }
     }
 }
