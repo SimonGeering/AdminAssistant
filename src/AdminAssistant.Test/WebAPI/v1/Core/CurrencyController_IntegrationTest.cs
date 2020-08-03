@@ -13,30 +13,21 @@ using System;
 
 namespace AdminAssistant.WebAPI.v1.Core
 {
+    [Collection("SequentialDBBackedTests")]
     public class CurrencyController_IntegrationTest : IntegrationTestBase
     {
-        private readonly Mock<ICurrencyRepository> mockCurrencyRepository = new Mock<ICurrencyRepository>();
-
-        protected override Action<IServiceCollection> ConfigureTestServices() => services =>
-        {
-            var result = new List<Currency>() { Factory.Currency.WithTestData(10).Build() };
-            mockCurrencyRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(result));
-
-            services.AddSingleton(mockCurrencyRepository.Object);
-        };
-
         [Fact]
         [Trait("Category", "Integration")]
         public async Task ReturnAListOfBankAccountType_GivenACallToBankAccountTypeGet()
         {
             // Arrange
+            await this.ResetDatabaseAsync().ConfigureAwait(false);
 
             // Act
             var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>("api/v1/core/Currency").ConfigureAwait(false);
 
             // Assert
             response.Should().NotBeEmpty();
-            mockCurrencyRepository.Verify(x => x.GetListAsync(), Times.Once());
         }
     }
 }
