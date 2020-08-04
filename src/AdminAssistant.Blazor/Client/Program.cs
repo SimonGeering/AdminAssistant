@@ -20,6 +20,7 @@ namespace AdminAssistant.Blazor.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
+            // TODO: Switch to IHttpClientFactory - https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
             builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             builder.Services.AddLogging(logging =>
             {
@@ -48,7 +49,10 @@ namespace AdminAssistant.Blazor.Client
 
             // See https://blazor.syncfusion.com/documentation/introduction/
             builder.Services.AddSyncfusionBlazor();
-            builder.Services.AddAdminAssistantClientServices();
+
+            builder.Services.AddClientFrameworkServices();
+            builder.Services.AddAdminAssistantClientSideDomainModel();
+            builder.Services.AddAdminAssistantUI();
 
             await builder.Build().RunAsync().ConfigureAwait(true);
         }
