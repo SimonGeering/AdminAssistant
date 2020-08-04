@@ -1,12 +1,15 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using AdminAssistant.DAL.EntityFramework.Model.Accounts;
+using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
 using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
+    [Collection("SequentialDBBackedTests")]
     public class BankController_IntegrationTest : IntegrationTestBase
     {
         [Fact]
@@ -16,17 +19,16 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
-            this.DbContext.Banks.Add(new BankEntity() { BankName = "Acme Bank PLC" });
-            this.DbContext.Banks.Add(new BankEntity() { BankName = "Acme Building Society" });
-
-            await this.DbContext.SaveChangesAsync().ConfigureAwait(false);
+            var dal = this.Container.GetService<IBankRepository>();
+            var acmeBankPLC = await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }).ConfigureAwait(false);
+            var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
 
             // Act
             var response = await this.HttpClient.GetFromJsonAsync<BankResponseDto[]>("api/v1/accounts/Bank").ConfigureAwait(false);
 
             // Assert
-            response.Should().ContainSingle(x => x.BankName == "Acme Bank PLC");
-            response.Should().ContainSingle(x => x.BankName == "Acme Building Society");
+            response.Should().ContainSingle(x =>x.BankID == acmeBankPLC.BankID && x.BankName == acmeBankPLC.BankName);
+            response.Should().ContainSingle(x => x.BankID == acmeBuildingSociety.BankID && x.BankName == acmeBuildingSociety.BankName);
         }
     }
 }
