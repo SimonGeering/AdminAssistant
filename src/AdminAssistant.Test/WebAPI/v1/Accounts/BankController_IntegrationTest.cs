@@ -11,7 +11,25 @@ namespace AdminAssistant.WebAPI.v1.Accounts
 {
     [Collection("SequentialDBBackedTests")]
     public class BankController_IntegrationTest : IntegrationTestBase
-    {
+    { 
+        [Fact]
+        [Trait("Category", "Integration")]
+        public async Task ReturnABank_GivenACallToBankGetByID()
+        {
+            // Arrange
+            await this.ResetDatabaseAsync().ConfigureAwait(false);
+
+            var dal = this.Container.GetService<IBankRepository>();
+            await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }).ConfigureAwait(false);
+            var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
+
+            // Act
+            var response = await this.HttpClient.GetFromJsonAsync<BankResponseDto[]>($"api/v1/accounts/Bank/{acmeBuildingSociety.BankID}").ConfigureAwait(false);
+
+            // Assert
+            response.Should().OnlyContain(x => x.BankID == acmeBuildingSociety.BankID && x.BankName == acmeBuildingSociety.BankName);
+        }
+
         [Fact]
         [Trait("Category", "Integration")]
         public async Task ReturnAListOfBank_GivenACallToBankGet()
