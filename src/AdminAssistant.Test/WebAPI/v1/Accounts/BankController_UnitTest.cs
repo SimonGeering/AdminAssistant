@@ -25,9 +25,9 @@ namespace AdminAssistant.WebAPI.v1.Accounts
 
             var mockMediator = new Mock<IMediator>();
             mockMediator.Setup(x => x.Send(It.IsAny<BankByIDQuery>(), It.IsAny<CancellationToken>()))
-                        .Returns(Task.FromResult(Result<Bank>.NotFound())); 
+                        .Returns(Task.FromResult(Result<Bank>.NotFound()));
 
-            services.AddSingleton(mockMediator.Object);
+            services.AddTransient((sp) => mockMediator.Object);
             services.AddTransient<BankController>();
 
             // Act
