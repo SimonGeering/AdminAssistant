@@ -218,6 +218,7 @@ namespace AdminAssistant.DAL.EntityFramework
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
         // Migrations etc ...
+        string ConnectionString { get; }
         void EnsureDatabaseIsCreated();
         void Migrate();
     }
@@ -245,6 +246,7 @@ namespace AdminAssistant.DAL.EntityFramework
         public DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; } = null!;
 
         // Migrations etc ...
+        public string ConnectionString => this.Database.GetDbConnection().ConnectionString;
         public void EnsureDatabaseIsCreated() => this.Database.EnsureCreated();
         public void Migrate() => this.Database.Migrate();
 

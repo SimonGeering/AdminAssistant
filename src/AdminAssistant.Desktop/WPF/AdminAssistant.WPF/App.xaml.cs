@@ -22,12 +22,18 @@ namespace AdminAssistant.WPF
             host = new HostBuilder()
                 .ConfigureServices((hostContext, services) =>
                 {
+                    // TODO: Switch to IHttpClientFactory - https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
                     services.AddTransient(sp => new HttpClient { BaseAddress = new Uri("https://localhost:5001") });
                     services.AddAutoMapper(typeof(WebAPI.MappingProfile));
 
                     services.AddValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
 
-                    services.AddAdminAssistantDesktopServices();
+                    services.AddClientFrameworkServices();
+                    services.AddAdminAssistantClientSideDomainModel();
+                    services.AddAdminAssistantUI();
+
+                    services.AddSingleton<MainWindow>();
+                    services.AddTransient<BankAccountEditDialog>();
                 })
                 .ConfigureLogging(logging =>
                 {
@@ -43,9 +49,12 @@ namespace AdminAssistant.WPF
 
             using (var scope = host.Services.CreateScope())
             {
+#if DEBUG
                 // TODO: Switch back to main window.
-                //App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
                 App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<BankAccountEditDialog>();
+#else
+                App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
+#endif
                 App.Current.MainWindow.Show();
             }
         }

@@ -7,22 +7,21 @@ using Xunit;
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
     [Collection("SequentialDBBackedTests")]
-    public class BankAccountTypeController_Should : IntegrationTestBase
+    public class BankAccountController_Should : IntegrationTestBase
     {
-        [Fact]
+        [Fact(Skip = "WIP")]
         [Trait("Category", "Integration")]
-        public async Task ReturnAListOfBankAccountType_GivenACallToBankAccountTypeGet()
+        public async Task ReturnAListOfBanks_GivenACallToBankAccountGet()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
             // Act
-            var response = await this.HttpClient.GetFromJsonAsync<BankAccountTypeResponseDto[]>("api/v1/accounts/BankAccountType").ConfigureAwait(false);
+            var response = await this.HttpClient.GetFromJsonAsync<BankAccountResponseDto[]>("api/v1/accounts/BankAccount").ConfigureAwait(false);
 
             // Assert
-            response.Should().HaveCount(2);
-            response.Should().ContainSingle(x => x.Description == "Current Account");
-            response.Should().ContainSingle(x => x.Description == "Savings Account");
+            response.Should().NotBeEmpty();
+            response.Should().Contain(x => x.BankAccountID == 10);
         }
     }
 }

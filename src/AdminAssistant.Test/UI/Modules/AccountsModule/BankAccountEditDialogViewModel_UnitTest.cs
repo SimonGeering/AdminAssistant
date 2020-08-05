@@ -35,7 +35,9 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 
             var services = new ServiceCollection();
             services.AddMocksOfExternalDependencies();
-            services.AddAdminAssistantClientServices();
+            services.AddClientFrameworkServices();
+            services.AddAdminAssistantClientSideDomainModel();
+            services.AddAdminAssistantUI();
             services.AddTransient((sp) => mockHttpClientProvider.Object);
 
             // Act
@@ -54,7 +56,9 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             // Arrange
             var services = new ServiceCollection();
             services.AddMocksOfExternalDependencies();
-            services.AddAdminAssistantClientServices();
+            services.AddClientFrameworkServices();
+            services.AddAdminAssistantClientSideDomainModel();
+            services.AddAdminAssistantUI();
 
             var container = services.BuildServiceProvider();
 
@@ -73,7 +77,9 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             // Arrange
             var services = new ServiceCollection();
             services.AddMocksOfExternalDependencies();
-            services.AddAdminAssistantClientServices();
+            services.AddClientFrameworkServices();
+            services.AddAdminAssistantClientSideDomainModel();
+            services.AddAdminAssistantUI();
 
             var container = services.BuildServiceProvider();
 

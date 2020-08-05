@@ -1,18 +1,22 @@
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
+using AdminAssistant.DAL.EntityFramework;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Xunit;
 
 namespace AdminAssistant
 {
+    [Collection("SequentialDBBackedTests")]
     public abstract class IntegrationTestBase : IDisposable
     {
-        private readonly IHost testServer = null!;
-
-        protected HttpClient HttpClient { get; }
+        private readonly IHost testServer;
+        private readonly Respawn.Checkpoint checkpoint;
+        private readonly string connectionString;
 
         public IntegrationTestBase()
         {
@@ -29,10 +33,33 @@ namespace AdminAssistant
                 });
 
             this.testServer = hostBuilder.Start();
+            this.connectionString = this.testServer.Services.GetService<IApplicationDbContext>().ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
+
+            this.checkpoint = new Respawn.Checkpoint
+            {
+                TablesToIgnore = new[]
+                {
+                    "sysdiagrams",
+                    "__EFMigrationsHistory",
+                    "tblObjectType",
+                    "Currency",
+                    "BankAccountType"
+                },
+                WithReseed = true
+            };
+
+            this.Container = this.testServer.Services;
             this.HttpClient = this.testServer.GetTestClient();
         }
 
-        protected abstract Action<IServiceCollection> ConfigureTestServices();
+        protected IServiceProvider Container { get; }
+        protected HttpClient HttpClient { get; }
+
+        protected async Task ResetDatabaseAsync() => await this.checkpoint.Reset(this.connectionString).ConfigureAwait(false);
+
+        protected virtual Action<IServiceCollection> ConfigureTestServices() => services => { };
+
+        #region IDisposable
 
         private bool disposedValue;
 
@@ -42,6 +69,9 @@ namespace AdminAssistant
             {
                 if (disposing)
                 {
+                    // Clean up DB if tests failed ...
+                    this.ResetDatabaseAsync().ConfigureAwait(false);
+
                     // dispose managed state (managed objects)
                     this.testServer.Dispose();
                 }
@@ -65,5 +95,6 @@ namespace AdminAssistant
             this.Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
+        #endregion // IDisposable
     }
 }

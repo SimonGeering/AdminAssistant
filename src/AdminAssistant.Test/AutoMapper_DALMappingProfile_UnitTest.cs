@@ -4,7 +4,6 @@ using System;
 using FluentAssertions;
 using Xunit;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DAL.EntityFramework.Model;
 using AdminAssistant.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.DAL.EntityFramework.Model.Core;
 
@@ -36,9 +35,11 @@ namespace AdminAssistant.DAL
 
         [Theory]
         [Trait("Category", "Unit")]
+        [InlineData(typeof(BankEntity), typeof(Bank))]
         [InlineData(typeof(BankAccountTypeEntity), typeof(BankAccountType))]
         [InlineData(typeof(CurrencyEntity), typeof(Currency))]
         [InlineData(typeof(BankAccountTransactionEntity), typeof(BankAccountTransaction))]
+        [InlineData(typeof(Bank), typeof(BankEntity))]
         [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionEntity))]
         public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
         {

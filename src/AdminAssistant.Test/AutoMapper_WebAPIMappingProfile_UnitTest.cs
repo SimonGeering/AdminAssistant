@@ -1,10 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AutoMapper;
 using System;
-using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
-using Xunit.Sdk;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
 namespace AdminAssistant.WebAPI
@@ -36,11 +34,13 @@ namespace AdminAssistant.WebAPI
         [Theory]
         [Trait("Category", "Unit")]
         [InlineData(typeof(Currency), typeof(v1.CurrencyResponseDto))]
+        [InlineData(typeof(Bank), typeof(v1.BankResponseDto))]
         [InlineData(typeof(BankAccount), typeof(v1.BankAccountResponseDto))]
         [InlineData(typeof(BankAccountInfo), typeof(v1.BankAccountInfoResponseDto))]
         [InlineData(typeof(BankAccountType), typeof(v1.BankAccountTypeResponseDto))]
         [InlineData(typeof(BankAccountTransaction), typeof(v1.BankAccountTransactionResponseDto))]
         [InlineData(typeof(v1.CurrencyResponseDto), typeof(Currency))]
+        [InlineData(typeof(v1.BankResponseDto), typeof(Bank))]
         [InlineData(typeof(v1.BankAccountResponseDto), typeof(BankAccount))]
         [InlineData(typeof(v1.BankAccountInfoResponseDto), typeof(BankAccountInfo))]
         [InlineData(typeof(v1.BankAccountTypeResponseDto), typeof(BankAccountType))]

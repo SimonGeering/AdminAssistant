@@ -30,7 +30,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
                 var result = await bankRepository.GetListAsync().ConfigureAwait(false);
 
-                Trace.Assert(result.Count > 0, "Banl list was not populated.");
+                Trace.Assert(result.Count > 0, "Bank list was not populated.");
 
                 return this.Log.Finish(Result<IEnumerable<Bank>>.Success(result));
             }

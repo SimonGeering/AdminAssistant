@@ -21,7 +21,10 @@ namespace AdminAssistant
             // Arrange
             var services = new ServiceCollection();
             services.AddMocksOfExternalDependencies();
-            services.AddAdminAssistantServerServices(new ConfigurationSettings() { ConnectionString= "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+
+            services.AddServerFrameworkServices();
+            services.AddAdminAssistantServerSideDomainModel();
+            services.AddAdminAssistantServerSideDAL(new ConfigurationSettings() { ConnectionString= "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
 
             var serviceProvider = services.BuildServiceProvider();
 
@@ -62,7 +65,10 @@ namespace AdminAssistant
             // Arrange
             var services = new ServiceCollection();
             services.AddMocksOfExternalDependencies();
-            services.AddAdminAssistantClientServices();
+
+            services.AddClientFrameworkServices();
+            services.AddAdminAssistantClientSideDomainModel();
+            services.AddAdminAssistantUI();
 
             var serviceProvider = services.BuildServiceProvider();
 

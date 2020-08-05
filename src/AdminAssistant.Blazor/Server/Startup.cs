@@ -67,7 +67,10 @@ namespace AdminAssistant.Blazor.Server
             });
 
             services.AddAutoMapper(typeof(DAL.MappingProfile), typeof(WebAPI.MappingProfile));
-            services.AddAdminAssistantServerServices(this.configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>());
+
+            services.AddServerFrameworkServices();
+            services.AddAdminAssistantServerSideDomainModel();
+            services.AddAdminAssistantServerSideDAL(this.configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
