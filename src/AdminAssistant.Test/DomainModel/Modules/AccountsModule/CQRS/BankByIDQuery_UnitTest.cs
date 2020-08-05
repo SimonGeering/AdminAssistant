@@ -34,6 +34,30 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             // Assert
             result.Status.Should().Be(ResultStatus.NotFound);
         }
+
+        [Fact]
+        [Trait("Category", "Unit")]
+        public async Task Return_OkBank_GivenAnExistingBankID()
+        {
+            // Arrange
+            var bank = Factory.Bank.WithTestData(10).Build();
+
+            var services = new ServiceCollection();
+            services.AddMockLogging();
+            services.AddAdminAssistantServerSideDomainModel();
+
+            var mockBankRepository = new Mock<IBankRepository>();
+            mockBankRepository.Setup(x => x.GetAsync(bank.BankID)).Returns(Task.FromResult<Bank>(bank));
+
+            services.AddTransient((sp) => mockBankRepository.Object);
+
+            // Act
+            var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(bank.BankID)).ConfigureAwait(false);
+
+            // Assert
+            result.Status.Should().Be(ResultStatus.Ok);
+            result.Value.Should().Be(bank);
+        }
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
