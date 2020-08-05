@@ -35,6 +35,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
                 var result = await bankRepository.GetAsync(request.BankID).ConfigureAwait(false);
 
+                if (result == null || result.BankID == Constants.UnknownRecordID)
+                    return Result<Bank>.NotFound();
+
                 return this.Log.Finish(Result<Bank>.Success(result));
             }
         }
