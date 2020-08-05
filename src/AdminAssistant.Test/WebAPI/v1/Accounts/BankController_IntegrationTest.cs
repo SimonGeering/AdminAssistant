@@ -24,10 +24,11 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
 
             // Act
-            var response = await this.HttpClient.GetFromJsonAsync<BankResponseDto[]>($"api/v1/accounts/Bank/{acmeBuildingSociety.BankID}").ConfigureAwait(false);
+            BankResponseDto response = await this.HttpClient.GetFromJsonAsync<BankResponseDto>($"api/v1/accounts/Bank/{acmeBuildingSociety.BankID}").ConfigureAwait(false);
 
             // Assert
-            response.Should().OnlyContain(x => x.BankID == acmeBuildingSociety.BankID && x.BankName == acmeBuildingSociety.BankName);
+            response.BankID.Should().Be(acmeBuildingSociety.BankID);
+            response.BankName.Should().Be(acmeBuildingSociety.BankName);
         }
 
         [Fact]
