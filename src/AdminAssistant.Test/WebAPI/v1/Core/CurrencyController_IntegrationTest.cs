@@ -11,7 +11,7 @@ namespace AdminAssistant.WebAPI.v1.Core
     {
         [Fact]
         [Trait("Category", "Integration")]
-        public async Task ReturnAListOfBankAccountType_GivenACallToBankAccountTypeGet()
+        public async Task ReturnAListOfCurrencies_GivenACallTo_Currency_Get()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
