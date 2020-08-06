@@ -47,7 +47,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             services.AddAdminAssistantServerSideDomainModel();
 
             var mockBankRepository = new Mock<IBankRepository>();
-            mockBankRepository.Setup(x => x.GetAsync(bank.BankID)).Returns(Task.FromResult<Bank>(bank));
+            mockBankRepository.Setup(x => x.GetAsync(bank.BankID)).Returns(Task.FromResult(bank));
 
             services.AddTransient((sp) => mockBankRepository.Object);
 
