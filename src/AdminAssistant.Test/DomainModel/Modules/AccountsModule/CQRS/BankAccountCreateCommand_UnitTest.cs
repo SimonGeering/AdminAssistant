@@ -15,7 +15,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_APersistedBankAccount_GivenAValidBankAccountCreateCommand()
+        public async Task Return_APersistedBankAccount_GivenAValidBankAccount()
         {
             // Arrange
             var bankAccount = Factory.BankAccount.WithTestData().Build();
@@ -48,7 +48,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_ValidationError_GivenAnInvalidBankAccountCreateCommand()
+        public async Task Return_ValidationError_GivenAnInvalidBankAccount()
         {
             // Arrange
             var services = new ServiceCollection();
