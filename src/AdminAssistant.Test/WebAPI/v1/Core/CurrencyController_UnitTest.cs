@@ -16,7 +16,7 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Core
 {
-    public class CurrencyController_GetBankById_Should
+    public class CurrencyController_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
