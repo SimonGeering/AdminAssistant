@@ -15,7 +15,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_ABankAccount_GivenAValidBankAccountCreateCommand()
+        public async Task Return_APersistedBankAccount_GivenAValidBankAccountCreateCommand()
         {
             // Arrange
             var bankAccount = Factory.BankAccount.WithTestData().Build();
