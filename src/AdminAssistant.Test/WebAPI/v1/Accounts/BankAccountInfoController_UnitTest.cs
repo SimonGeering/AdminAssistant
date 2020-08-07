@@ -17,11 +17,11 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
-    public class BankAccountInfoController_GetBankById_Should
+    public class BankAccountInfoController_Get_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_AListOfBankAccountInfo_Given_NoArguments()
+        public async Task Return_Status200OK_With_AListOfBankAccountInfo_Given_NoArguments()
         {
             // Arrange
             var bankAccountInfoList = new List<BankAccountInfo>()

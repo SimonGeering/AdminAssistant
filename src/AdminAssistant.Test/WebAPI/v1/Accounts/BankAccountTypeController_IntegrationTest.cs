@@ -7,11 +7,11 @@ using Xunit;
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
     [Collection("SequentialDBBackedTests")]
-    public class BankAccountTypeController_Should : IntegrationTestBase
+    public class BankAccountType_Get_Should : IntegrationTestBase
     {
         [Fact]
         [Trait("Category", "Integration")]
-        public async Task ReturnAListOfBankAccountType_GivenACallToBankAccountTypeGet()
+        public async Task Return_AllBankAccountTypes_Given_NoParameters()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);

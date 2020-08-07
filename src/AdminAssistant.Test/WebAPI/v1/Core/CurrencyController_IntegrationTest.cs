@@ -7,11 +7,11 @@ using Xunit;
 namespace AdminAssistant.WebAPI.v1.Core
 {
     [Collection("SequentialDBBackedTests")]
-    public class CurrencyController_IntegrationTest : IntegrationTestBase
+    public class Currency_Get_Should : IntegrationTestBase
     {
         [Fact]
         [Trait("Category", "Integration")]
-        public async Task ReturnAListOfCurrencies_GivenACallTo_Currency_Get()
+        public async Task Return_AllCurrencies_Given_NoParameters()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);

@@ -13,11 +13,11 @@ using Xunit;
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
     [Collection("SequentialDBBackedTests")]
-    public class BankAccountInfoController_Should : IntegrationTestBase
+    public class BankAccountInfo_Get_Should : IntegrationTestBase
     {
         [Fact(Skip="WIP Unit test mapping domain to entity")]
         [Trait("Category", "Integration")]
-        public async Task ReturnAListOfBankAccountInfo_GivenACallToBankAccountInfoGet()
+        public async Task Return_AllBankAccountInfo_Given_NoParameters()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);

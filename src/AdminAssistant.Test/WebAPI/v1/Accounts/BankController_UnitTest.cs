@@ -20,7 +20,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_Ok200Bank_Given_AnExistingBankID()
+        public async Task Return_Ok200Bank_With_ABank_Given_AnExistingBankID()
         {
             // Arrange
             var bank = Factory.Bank.WithTestData(10).Build();
@@ -79,7 +79,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_Ok200Bank_Given_NoArguments()
+        public async Task Return_Status200Ok_WithAListOfBank_Given_NoArguments()
         {
             // Arrange
             var banks = new List<Bank>()

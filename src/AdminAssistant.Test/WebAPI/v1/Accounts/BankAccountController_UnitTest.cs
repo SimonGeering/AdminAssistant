@@ -14,11 +14,11 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
-    public class BankAccountController_GetBankById_Should
+    public class BankAccountController_GetBankAccountById_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_Ok200Bank_Given_AnExistingBankAccountID()
+        public async Task Return_Status200Ok_With_ABankAccount_Given_AnExistingBankAccountID()
         {
             // Arrange
             var bankAccount = Factory.BankAccount.WithTestData(10).Build();

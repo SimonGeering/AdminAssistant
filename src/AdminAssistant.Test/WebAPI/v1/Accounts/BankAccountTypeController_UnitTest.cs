@@ -20,7 +20,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task ReturnAListOfBankAccountType_Given_NoArguments()
+        public async Task Return_Status200OK_With_AListOfBankAccountType_Given_NoArguments()
         {
             // Arrange
             var bankAccountTypes = new List<BankAccountType>()

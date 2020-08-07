@@ -10,11 +10,11 @@ using Xunit;
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
     [Collection("SequentialDBBackedTests")]
-    public class BankController_IntegrationTest : IntegrationTestBase
+    public class Bank_Get_Should : IntegrationTestBase
     { 
         [Fact]
         [Trait("Category", "Integration")]
-        public async Task ReturnABank_GivenACallToBankGetByID()
+        public async Task Return_ABank_Given_BankID()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
@@ -33,7 +33,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
 
         [Fact]
         [Trait("Category", "Integration")]
-        public async Task ReturnAListOfBank_GivenACallToBankGet()
+        public async Task Return_AllBanks_Given_NoParameters()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);

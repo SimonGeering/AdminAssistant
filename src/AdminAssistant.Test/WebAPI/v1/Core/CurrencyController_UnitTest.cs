@@ -16,11 +16,11 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Core
 {
-    public class CurrencyController_Should
+    public class CurrencyController_Get_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task ReturnAListOfCurrencies_GivenACallTo_Currency_Get()
+        public async Task Return_Status200OK_With_AListOfCurrency_Given_NoArguments()
         {
             // Arrange
             var currencies = new List<Currency>()
