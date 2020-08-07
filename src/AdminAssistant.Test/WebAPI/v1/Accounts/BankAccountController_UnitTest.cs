@@ -16,6 +16,44 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
+    public class BankAccountController_Put_Should
+    {
+    }
+
+    public class BankAccountController_Post_Should
+    {
+        [Fact]
+        [Trait("Category", "Unit")]
+        public async Task Return_Status422UnprocessableEntity_Given_AnInvalidBankAccount()
+        {
+            // Arrange
+            var validationErrors = new Dictionary<string, string>();
+            var bankAccount = Factory.BankAccount.WithTestData(10).Build();
+
+            var services = new ServiceCollection();
+            services.AddMocksOfExternalDependencies();
+
+            var mockMediator = new Mock<IMediator>();
+            mockMediator.Setup(x => x.Send(It.IsAny<BankAccountCreateCommand>(), It.IsAny<CancellationToken>()))
+                        .Returns(Task.FromResult(Result<BankAccount>.Invalid(validationErrors)));
+
+            services.AddTransient((sp) => mockMediator.Object);
+            services.AddTransient<BankAccountController>();
+
+            var container = services.BuildServiceProvider();
+
+            var mapper = container.GetRequiredService<IMapper>();
+            var bankAccountRequest = mapper.Map<BankAccountCreateRequestDto>(bankAccount);
+
+            // Act
+            var response = await container.GetRequiredService<BankAccountController>().Post(bankAccountRequest).ConfigureAwait(false);
+
+            // Assert
+            response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+            response.Value.Should().BeNull();
+        }
+    }
+
     public class BankAccountController_GetBankAccountById_Should
     {
         [Fact]
