@@ -21,6 +21,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
         public IBankAccountTransactionBuilder WithTestData(int bankAccountTransactionID = Constants.UnknownRecordID)
         {
             this.BankAccountTransactionID = bankAccountTransactionID;
+            this.BankAccountID = 10;
             this.Description = "Test Transaction";
             return this;
         }
