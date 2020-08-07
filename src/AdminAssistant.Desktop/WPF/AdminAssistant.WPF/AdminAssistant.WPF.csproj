@@ -18,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.6" />
     <PackageReference Include="Syncfusion.SfInput.WPF" Version="18.2.0.45" />
     <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="18.2.0.45" />
     <PackageReference Include="Syncfusion.Shared.WPF" Version="18.2.0.45" />
