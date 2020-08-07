@@ -9,19 +9,19 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>AdminAssistant.WebAPI.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.WebAPI.Shared.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>AdminAssistant.WebAPI.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.WebAPI.Shared.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.WebAPI.docs.xml" />
+    <None Remove="AdminAssistant.WebAPI.Shared.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
+    <ProjectReference Include="..\..\AdminAssistant\AdminAssistant.csproj" />
   </ItemGroup>
   
 </Project>
