@@ -1,6 +1,5 @@
 using AutoMapper;
 using AdminAssistant.Framework.Providers;
-using System.Net.Http;
 
 namespace AdminAssistant.UI
 {

@@ -20,14 +20,14 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             var mockHttpClientProvider = new Mock<IHttpClientProvider>();
 
             mockHttpClientProvider
-                .Setup(x => x.GetFromJsonAsync<BankAccountType[]>("api/v1/BankAccountType", It.IsAny<CancellationToken>()))
+                .Setup(x => x.GetFromJsonAsync<BankAccountType[]>(Constants.AdminAssistantWebAPI, "api/v1/BankAccountType", It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(new BankAccountType[]
                 {
                     Factory.BankAccountType.WithTestData().Build()
                 }));
 
             mockHttpClientProvider
-                .Setup(x => x.GetFromJsonAsync<Currency[]>("api/v1/Currency", It.IsAny<CancellationToken>()))
+                .Setup(x => x.GetFromJsonAsync<Currency[]>(Constants.AdminAssistantWebAPI, "api/v1/Currency", It.IsAny<CancellationToken>()))
                 .Returns(Task.FromResult(new Currency[]
                 {
                     Factory.Currency.WithTestData().Build()

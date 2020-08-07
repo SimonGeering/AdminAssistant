@@ -19,7 +19,7 @@ namespace AdminAssistant.UI.Modules.CoreModule
         {
             this.Log.Start();
 
-            var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>("api/v1/core/Currency").ConfigureAwait(false);
+            var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>(Constants.AdminAssistantWebAPI, "api/v1/core/Currency").ConfigureAwait(false);
 
             var result = new List<Currency>(this.Mapper.Map<IEnumerable<Currency>>(response));
             result.Insert(0, new Currency() { CurrencyID = 0, Symbol = string.Empty, DecimalFormat = string.Empty });
