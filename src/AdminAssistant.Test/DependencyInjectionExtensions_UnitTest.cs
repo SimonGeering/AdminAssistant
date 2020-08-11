@@ -53,8 +53,8 @@ namespace AdminAssistant
             }
 
             // Assert
-            var expectedInstanceCountExcludingMediatR = services.Count(x => x.ServiceType.FullName?.StartsWith("MediatR", StringComparison.InvariantCulture) == false);
-            result.Should().HaveCount(expectedInstanceCountExcludingMediatR);
+            var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.StartsWith("MediatR", StringComparison.InvariantCulture) == false);
+            result.Should().HaveCount(expectedInstanceCountLessExclusions);
             await Task.CompletedTask.ConfigureAwait(false);
         }
 
@@ -65,6 +65,7 @@ namespace AdminAssistant
             // Arrange
             var services = new ServiceCollection();
             services.AddMocksOfExternalDependencies();
+            services.AddTransient((sp) => new Mock<UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient>().Object);
 
             services.AddClientFrameworkServices();
             services.AddAdminAssistantClientSideDomainModel();

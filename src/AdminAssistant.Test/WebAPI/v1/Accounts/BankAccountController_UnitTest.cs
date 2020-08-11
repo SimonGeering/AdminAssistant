@@ -27,7 +27,11 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         public async Task Return_Status422UnprocessableEntity_Given_AnInvalidBankAccount()
         {
             // Arrange
-            var validationErrors = new Dictionary<string, string>();
+            var validationErrors = new Dictionary<string, string>()
+            {
+                { "ExampleErrorCode", "ExampleErrorMessage" },
+                { "ExampleErrorCode2", "ExampleErrorMessage2" }
+            };
             var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
             var services = new ServiceCollection();
@@ -51,6 +55,23 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             // Assert
             response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
             response.Value.Should().BeNull();
+
+            var result = (UnprocessableEntityObjectResult)response.Result;
+
+            var value = (SerializableError)result.Value;
+            value.Keys.Should().BeEquivalentTo(validationErrors.Keys);
+
+            //var moo = (value as Dictionary<string, object>);
+            //var moo2 = moo as Dictionary<string, string>;
+            //value.Values.Should().BeEquivalentTo(validationErrors.Values);
+            //value.Should().HaveCount(banks.Count);
+
+            //var expected = banks.ToArray();
+            //for (int i = 0; i < expected.Length; i++)
+            //{
+            //    value[i].BankID.Should().Be(expected[i].BankID);
+            //    value[i].BankName.Should().Be(expected[i].BankName);
+            //}
         }
     }
 

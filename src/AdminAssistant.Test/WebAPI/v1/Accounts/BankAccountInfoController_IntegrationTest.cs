@@ -1,11 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-
-using System;
-using System.Collections.Generic;
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
@@ -36,7 +33,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             //                                       .Build()).ConfigureAwait(false);
 
             // Act
-            var response = await this.HttpClient.GetFromJsonAsync<BankAccountInfoResponseDto[]>("api/v1/accounts/BankAccountInfo").ConfigureAwait(false);
+            var response = await this.Container.GetService<IAdminAssistantWebAPIClient>().GetBankAccountInfoAsync().ConfigureAwait(false);
 
             // Assert
             response.Should().ContainSingle(x => x.AccountName == acmeSavingsAccount.AccountName);
