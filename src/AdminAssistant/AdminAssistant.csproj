@@ -17,29 +17,67 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DAL\Modules\Accounts\**" />
+    <EmbeddedResource Remove="DAL\Modules\Accounts\**" />
+    <None Remove="DAL\Modules\Accounts\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="AdminAssistant.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="8.6.0" />
-    <PackageReference Include="MediatR" Version="8.0.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+    <PackageReference Include="FluentValidation" Version="9.0.1" />
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DAL\Modules\Accounts\" />
-    <Folder Include="DomainModel\Modules\Accounts\" />
-    <Folder Include="DomainModel\Infrastructure\" />
+    <Folder Include="DAL\Modules\BillingModule\" />
+    <Folder Include="DAL\Modules\AssetRegisterModule\" />
+    <Folder Include="DAL\Modules\BudgetModule\" />
+    <Folder Include="DAL\Modules\CalendarModule\" />
+    <Folder Include="DAL\Modules\ContactsModule\" />
+    <Folder Include="DAL\Modules\DashboardModule\" />
+    <Folder Include="DAL\Modules\DocumentsModule\" />
+    <Folder Include="DAL\Modules\MailModule\" />
+    <Folder Include="DAL\Modules\TasksModule\" />
+    <Folder Include="DAL\Modules\ReportsModule\" />
+    <Folder Include="DomainModel\Modules\AssetRegisterModule\" />
+    <Folder Include="DomainModel\Modules\BillingModule\" />
+    <Folder Include="DomainModel\Modules\CalendarModule\" />
+    <Folder Include="DomainModel\Modules\ContactsModule\" />
+    <Folder Include="DomainModel\Modules\DashboardModule\" />
+    <Folder Include="DomainModel\Modules\DocumentsModule\" />
+    <Folder Include="DomainModel\Modules\MailModule\" />
+    <Folder Include="DomainModel\Modules\TasksModule\" />
+    <Folder Include="DomainModel\Modules\ReportsModule\" />
+    <Folder Include="UI\Modules\AssetRegisterModule\" />
+    <Folder Include="UI\Modules\BillingModule\" />
+    <Folder Include="UI\Modules\BudgetModule\" />
+    <Folder Include="UI\Modules\CalendarModule\" />
+    <Folder Include="UI\Modules\ContactsModule\" />
+    <Folder Include="UI\Modules\DashboardModule\" />
+    <Folder Include="UI\Modules\DocumentsModule\" />
+    <Folder Include="UI\Modules\MailModule\" />
+    <Folder Include="UI\Modules\TasksModule\" />
+    <Folder Include="UI\Modules\ReportsModule\" />
     <Folder Include="UI\Shared\Services\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>
 
 </Project>

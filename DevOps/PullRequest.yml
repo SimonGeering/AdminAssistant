@@ -25,14 +25,12 @@ stages:
       vmImage: 'windows-latest' # Need windows to get code coverage report - https://github.com/actions/virtual-environments/tree/master/images/win
       #name: Self-Hosted
     steps:
-    # Write out secret for NuGet.config to access DevExpress secured NuGet feed ...
-    # See https://supportcenter.devexpress.com/ticket/details/T818634/devexpress-nuget-how-to-hide-unique-nuget-feed-in-azure-devops-build-pipeline
-    - task: PowerShell@2
-      displayName: 'Load DevExpress secured NuGet feed'
+    # Set-up build environment ...
+    - task: UseDotNet@2
+      displayName: 'Ensure CI uses correct sdk Version'
       inputs:
-        targetType: 'inline'
-        script: 'Write-Host "##vso[task.setvariable variable=DX_NUGET_PUB;]$(DX_NUGET)"'
-        pwsh: true
+        packageType: 'sdk'
+        version: '3.1.302'
     # Restore dependencies ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet restore'
@@ -51,8 +49,17 @@ stages:
       displayName: 'dotnet build'
       inputs:
         command: 'build'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.NonXamarin.sln
         arguments: '--configuration Release --no-restore'
+    # SG 20-Apr-2020: Comment the following for now as it does not work with x64 build config.
+    # - task: XamarinAndroid@1
+    #   displayName: 'Xamarin Android dotnet build'
+    #   inputs:
+    #     projectFile: 'src/AdminAssistant.Xamarin/Android/AdminAssistant.Android.csproj'
+    #     configuration: 'Release'
+    #     msbuildVersionOption: 'latest'
+    #     msbuildArchitectureOption: 'x64'
+    #     jdkOption: 'JDKVersion'
     - task: Npm@1
       displayName: 'Blazor npm build'
       inputs:
@@ -66,4 +73,4 @@ stages:
         command: 'test'
         projects: 'src/AdminAssistant.sln'
         testRunTitle: 'Unit Tests'
-        arguments: '--configuration Release --no-build'
+        arguments: '--configuration Release --filter Category=Unit --no-build'

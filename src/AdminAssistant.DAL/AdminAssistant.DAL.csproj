@@ -17,6 +17,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="EntityFramework\Model\AssetRegister\IAssetRegisterSchema.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="AdminAssistant.Accounts.DAL.docs.xml" />
     <None Remove="AdminAssistant.DAL.docs.xml" />
   </ItemGroup>
@@ -26,20 +30,38 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="9.0.0" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Graph" Version="1.20.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
     <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="EntityFramework\Model\Contacts\" />
+    <Folder Include="EntityFramework\Model\Core\" />
+    <Folder Include="EntityFramework\Model\Dashboard\" />
+    <Folder Include="EntityFramework\Model\Documents\" />
+    <Folder Include="EntityFramework\Model\Mail\" />
+    <Folder Include="EntityFramework\Model\Reports\" />
+    <Folder Include="Modules\AssetRegisterModule\" />
+    <Folder Include="Modules\BillingModule\" />
+    <Folder Include="Modules\BudgetingModule\" />
+    <Folder Include="Modules\CalendarModule\" />
+    <Folder Include="Modules\ContactsModule\" />
+    <Folder Include="Modules\DashboardModule\" />
+    <Folder Include="Modules\DocumentsModule\" />
+    <Folder Include="Modules\MailModule\" />
+    <Folder Include="Modules\TasksModule\" />
+    <Folder Include="Modules\ReportsModule\" />
   </ItemGroup>
 
 </Project>

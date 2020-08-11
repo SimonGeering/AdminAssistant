@@ -2,9 +2,11 @@
 
 Your very own personal admin assistant to help with all the paperwork and organisation
 
-![GitHub issues](https://img.shields.io/github/issues-raw/simongeering/adminassistant?label=total%20open) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/simongeering/adminassistant?label=total%20closed)  
+| master | dev |
+|--------|-----|
+|[![Build Status (Dev)](https://dev.azure.com/SimonGeering/AdminAssistant/_apis/build/status/PullRequest?branchName=master)](https://dev.azure.com/SimonGeering/AdminAssistant/_build/latest?definitionId=1&branchName=master)|[![Build Status (Dev)](https://dev.azure.com/SimonGeering/AdminAssistant/_apis/build/status/PullRequest?branchName=dev)](https://dev.azure.com/SimonGeering/AdminAssistant/_build/latest?definitionId=1&branchName=dev)|
 
-![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/simongeering/adminassistant)
+![GitHub issues](https://img.shields.io/github/issues-raw/simongeering/adminassistant?label=total%20open) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/simongeering/adminassistant?label=total%20closed) ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/simongeering/adminassistant)
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/simongeering/AdminAssistant) ![GitHub last commit (master)](https://img.shields.io/github/last-commit/simongeering/adminassistant/master?label=master) ![GitHub last commit (dev)](https://img.shields.io/github/last-commit/simongeering/adminassistant/dev?label=dev)  
 

@@ -21,23 +21,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.Blazor" Version="19.2.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor" Version="3.2.0-preview1.20073.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="3.2.0-preview1.20073.1" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.DevServer" Version="3.2.0-preview1.20073.1" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview1.20073.1" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
+
+    <PackageReference Include="Blazor.Extensions.Logging" Version="3.1.0-rc1-020501" />
+
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.0.1" />
+
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.6" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Blazor" Version="18.2.0.45" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Shared\Syncfusion\" />
     <Folder Include="Properties\" />
     <Folder Include="wwwroot\assets\css\" />
   </ItemGroup>

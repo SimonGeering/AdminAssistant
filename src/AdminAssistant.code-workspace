@@ -5,6 +5,9 @@
 		}
 	],
 	"settings": {
+    "omnisharp.loggingLevel": "warning",
+    "omnisharp.enableEditorConfigSupport": true,
+		"omnisharp.enableRoslynAnalyzers": true,
     "files.associations": {
       "*/DevOps/.yml": "azure-pipelines"
     },
@@ -21,7 +24,7 @@
       "**/lcov.info": true,
       "**/AdminAssistant.db": true,
       "**/AdminAssistant.mdf": true,
-      "**/AdminAssistant.ldf": true
+      "**/AdminAssistant.ldf": true,
     },
     "cSpell.language": "en-GB",
     "cSpell.enableCompoundWords": true,
@@ -38,16 +41,20 @@
     "cSpell.words": [
       "Admin",
       "Apps",
+      "Ardalis",
       "blazor",
       "Bootswatch",
       "Emoji",
       "geering",
       "markdownlint",
+      "MediatR",
       "nuget",
       "pwsh",
       "setvariable",
+      "Setup",
       "titlebar",
       "vsts",
+      "Xunit",
       "webassembly"
     ],
     "todo-tree.filtering.excludeGlobs": [

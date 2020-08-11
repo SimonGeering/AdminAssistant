@@ -255,6 +255,7 @@ ServiceFabricBackup/
 *.mdf
 *.ldf
 *.ndf
+*.bak
 
 # Business Intelligence projects
 *.rdl.data
@@ -363,3 +364,5 @@ MigrationBackup/
 
 # Code Coverage
 **/lcov.info
+/src/.cr/personal
+/src/global.json

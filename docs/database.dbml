@@ -1,0 +1,390 @@
+project Admin_Assistant
+{
+  database_type: "SQL Server"
+}
+
+//
+// ==============================
+// Core Module 
+// ==============================
+//
+Table "Core.Audit" 
+{
+  "AuditID" INT [pk, increment]
+  "IsArchived" BIT [not null]
+  "IsDeleted" BIT [not null]
+  "CreatedOn" DATETIME2 [not null]
+  "CreatedBy" NVARCHAR(50) [not null]
+  "ReplacementCost" INT
+  "UpdatedOn" DATETIME2
+  "UpdatedBy" NVARCHAR(50) [not null]
+  "ArchivedOn" DATETIME2
+  "ArchivedBy" NVARCHAR(50) [not null]
+  "DeletedOn" DATETIME2
+  "DeletedBy" NVARCHAR(50) [not null]
+}
+
+Table "Core.Owner" 
+{
+  "OwnerID" INT [pk, increment]
+  "CompanyID" INT
+  "PersonalDetailsID" INT
+}
+
+Table "Core.Company" 
+{
+  "CompanyID" INT [pk, increment]
+  "AuditID" INT
+  "UserProfileID" INT
+  "Name" NVARCHAR(50)
+  "CompanyNumber" NVARCHAR(50)
+  "VATNumber" NVARCHAR(50)
+  "DateOfIncorporation" DATETIME2
+}
+Ref: "Core.Company"."CompanyID" < "Core.Owner"."CompanyID"
+
+Table "Core.UserProfile" 
+{
+  "UserProfileID" INT [pk, increment]
+  "AuditID" INT
+  "SignOn" NVARCHAR(50)
+  "MSGraphID" NVARCHAR(50)
+}
+Ref: "Core.UserProfile"."UserProfileID" < "Core.PersonalDetails"."UserProfileID"
+Ref: "Core.UserProfile"."UserProfileID" < "Core.UserProfilePermission"."UserProfileID"
+Ref: "Core.UserProfile"."UserProfileID" < "Core.Company"."UserProfileID"
+Ref: "Core.UserProfile"."UserProfileID" < "Core.UserProfileSetting"."UserProfileID"
+
+Table "Core.Permission" 
+{
+  "PermissionID" INT [pk]
+  "PermissionKey" NVARCHAR(20)
+}
+Ref: "Core.Permission"."PermissionID" < "Core.UserProfilePermission"."PermissionID"
+
+Table "Core.PersonalDetails" 
+{
+  "PersonalDetailsID" INT [pk]
+  "AuditID" INT
+  "UserProfileID" NVARCHAR(255)
+}
+Ref: "Core.PersonalDetails"."PersonalDetailsID" < "Core.Owner"."PersonalDetailsID"
+
+Table "Core.UserProfileSetting" 
+{
+  "UserProfileSettingID" INT [pk]
+  "UserProfileID" INT
+  "SettingID" INT
+}
+Table "Core.UserProfilePermission" 
+{
+  "UserProfilePermissionID" INT [pk]
+  "UserProfileID" INT
+  "PermissionID" INT
+}
+
+Table "Core.Setting" 
+{
+  "SettingID" INT [pk]
+  "SettingKey" NVARCHAR(20)
+}
+Ref: "Core.Setting"."SettingID" < "Core.UserProfileSetting"."SettingID"
+
+Table "Core.Currency" 
+{
+  "CurrencyID" INT [pk]
+  "IsDeprecated" BIT
+  "Symbol" CHAR(3)
+  "DecimalFormat" CHAR(5)
+}
+Ref: "Core.Currency"."CurrencyID" < "Accounts.BankAccount"."CurrencyID"
+Ref: "Core.Currency"."CurrencyID" < "Accounts.BankAccountTransaction"."CurrencyID"
+
+//
+// ==============================
+// Accounts Module
+// ==============================
+//
+Table "Accounts.Bank" 
+{
+  "BankID" INT [pk]
+  "AuditID" INT
+  "Name" NVRCHAR(50)
+}
+Ref: "Accounts.Bank"."BankID" < "Accounts.BankAccount"."BankID"
+
+Table "Accounts.BankAccountType" 
+{
+  "BankAccountTypeID" INT [pk]
+  "IsDeprecated" BIT
+  "Description" NVARCHAR(255)
+  "AllowPersonal" BIT
+  "AllowCompany" BIT
+}
+Ref: "Accounts.BankAccountType"."BankAccountTypeID" < "Accounts.BankAccount"."BankAccountTypeID"
+
+Table "Accounts.BankAccount" 
+{
+  "BankAccountID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "BankID" INT
+  "BankAccountTypeID" INT
+  "CurrencyID" INT
+  "AccountName" NVARCHAR(50)
+  "OpeningBalance" INT
+  "CurrentBalance" INT
+  "OpenedOn" DATETIME2
+  "IsBudgeted" BIT
+}
+Ref: "Accounts.BankAccount"."BankAccountID" < "Accounts.BankAccountTransaction"."BankAccountID"
+
+Table "Accounts.BankAccountTransaction" 
+{
+  "BankAccountTransactionID" INT [pk]
+  "AuditID" INT
+  "BankAccountID" INT
+  "PayeeID" INT
+  "CurrencyID" INT
+  "BankAccountTransactionTypeID" INT
+  "BankAccountStatementID" INT
+  "BankAccountStatementNumber" INT
+  "IsReconciled" BIT
+  "TransactionDate" DATETIME2
+  "Credit" INT
+  "Debit" INT
+  "Description" NVARCHAR(255)
+  "Notes" NVARCHAR(4000)
+}
+
+Table "Accounts.Payee" 
+{
+  "PayeeID" INT [pk]
+  "AuditID" INT
+  "Name" NVARCHAR(255)
+}
+Ref: "Accounts.Payee"."PayeeID" < "Accounts.BankAccountTransaction"."PayeeID"
+Ref: "Accounts.Payee"."PayeeID" < "Accounts.PayeeContact"."PayeeID"
+
+Table "Accounts.PayeeContact" 
+{
+  "PayeeContactID" INT [pk]
+  "AuditID" INT
+  "PayeeID" INT
+  "ContactID" INT
+  "IsPrimaryContact" BIT
+}
+
+Table "Accounts.BankAccountTransactionType" 
+{
+  "BankAccountTransactionTypeID" INT [pk]
+  "IsDeprecated" BIT
+  "Description" NVARCHAR(255)
+}
+Ref: "Accounts.BankAccountTransactionType"."BankAccountTransactionTypeID" < "Accounts.BankAccountTransaction"."BankAccountTransactionTypeID"
+
+Table "Accounts.BankAccountTransactionDocument" 
+{
+  "BankAccountTransactionDocumentID" INT [pk]
+  "AuditID" INT
+  "BankAccountTransactionID" INT
+  "DocumentID" INT
+}
+Ref: "Accounts.BankAccountTransaction"."BankAccountTransactionID" < "Accounts.BankAccountTransactionDocument"."BankAccountTransactionDocumentID"
+
+Table "Accounts.BankAccountStatement" 
+{
+  "BankAccountStatementID" INT [pk]
+  "DocumentID" INT
+  "AuditID" INT
+  "StatementDate" DATETIME2
+  "IsReconciled" BIT
+  "StartDate" DATETIME2
+  "EndDate" DATETIME2
+  "OpeningBalance" INT
+  "ClosingBalance" INT
+  "TotalPaymentsIn" INT
+  "TotalPaymentsOut" INT
+}
+
+//
+// ==============================
+// Dashboard Module
+// ==============================
+//
+
+//
+// ==============================
+// Mail Module
+// ==============================
+//
+
+//
+// ==============================
+// Calendar (Appointment) Module
+// ==============================
+//
+Table "Calendar.Appointment" 
+{
+  "AppointmentD" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+}
+//
+// ==============================
+// Contacts Module
+// ==============================
+//
+Table "Contacts.Contact" 
+{
+  "ContactID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "TitleID" INT
+  "FirstName" NVARCHAR(50)
+  "LastName" NVARCHAR(50)
+  "DateOfBirth" DATETIME2
+}
+Ref: "Contacts.Contact"."ContactID" < "Contacts.ContactAddress"."ContactID"
+Ref: "Contacts.Contact"."ContactID" < "Accounts.PayeeContact"."ContactID"
+
+Table "Contacts.ContactAddress" 
+{
+  "ContactAddressID" INT [pk]
+  "AuditID" INT
+  "AddressID" INT
+  "ContactID" INT
+}
+
+Table "Contacts.Address" 
+{
+  "AddressID" INT [pk]
+  "AuditID" INT
+}
+Ref: "Contacts.Address"."AddressID" < "Contacts.ContactAddress"."AddressID"
+
+//
+// ==============================
+// Tasks Module
+// ==============================
+//
+Table "Tasks.Task" 
+{
+  "TaskID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+}
+
+//
+// ==============================
+// Assets Module
+// ==============================
+//
+Table "Assets.Asset" 
+{
+  "AssetID" INT [pk]
+  "ManufacturerID" INT [null]
+  "AuditID" INT [not null]
+  "OwnerID" INT [not null]
+  "PurchasePrice" INT
+  "DepreciatedValue" INT
+  "ReplacementCost" INT
+}
+
+Table "Assets.Manufacturer" 
+{
+  "ManufacturerID" INT [pk]
+  "AuditID" INT
+  "ManufacturerName" NVARCHAR(50)  
+}
+Ref: "Assets.Manufacturer"."ManufacturerID" < "Assets.Asset"."ManufacturerID"
+
+//
+// ==============================
+// Billing Module
+// ==============================
+//
+Table "Billing.Invoice" 
+{
+  "InvoiceID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+}
+
+Table "Billing.Supplier" 
+{
+  "SupplierID" INT [pk]
+  "AuditID" INT
+  "SupplierName" NVARCHAR(50)  
+}
+
+Table "Billing.Client" 
+{
+  "ClientID" INT [pk]
+  "AuditID" INT
+  "ClientName" NVARCHAR(50)
+}
+//
+// ==============================
+// Budget Module
+// ==============================
+//
+
+Table "Budget.BudgetEntry" 
+{
+  "BudgetEntryID" INT [pk]
+  "BudgetID" INT
+  "AuditID" INT
+}
+
+Table "Budget.Budget" 
+{
+  "BudgetID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "BudgetName" NVARCHAR(50)
+}
+Ref: "Budget.Budget"."BudgetID" < "Budget.BudgetEntry"."BudgetID"
+
+//
+// ==============================
+// Documents Module
+// ==============================
+//
+Table "Documents.Document" 
+{
+  "DocumentID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "URI" NVARCHAR(255)
+}
+Ref: "Documents.Document"."DocumentID" < "Accounts.BankAccountStatement"."DocumentID"
+Ref: "Documents.Document"."DocumentID" < "Accounts.BankAccountTransactionDocument"."DocumentID"
+
+//
+// ==============================
+// Food Module
+// ==============================
+//
+Table "Food.Produce" 
+{
+  "ProduceID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+  "URI" NVARCHAR(255)
+}
+
+Table "Food.MealPlan" 
+{
+  "MealPlanID" INT [pk]
+  "AuditID" INT
+  "OwnerID" INT
+}
+
+//
+// ==============================
+// Reports Module
+// ==============================
+//
+
+

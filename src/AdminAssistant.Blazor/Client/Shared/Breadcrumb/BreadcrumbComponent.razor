@@ -1,4 +1,4 @@
-@inject AdminAssistant.UI.Shared.Breadcrumb.IBreadcrumbViewModel vm
+@inherits AdminAssistantComponentBase<AdminAssistant.UI.Shared.Breadcrumb.IBreadcrumbViewModel>
 
 <div class="cl-breadcrumb">
   <ol class="breadcrumb">
@@ -7,12 +7,3 @@
     <li class="breadcrumb-item active"><i class="fa @this.vm.ActiveModule.Icon" aria-hidden="true"></i>&nbsp;@this.vm.ActiveModule.Label</li>
   </ol>
 </div>
-
-@code
-{
-  protected override void OnInitialized()
-  {
-    this.vm.PropertyChanged += (o, e) => this.StateHasChanged();
-    base.OnInitialized();
-  }
-}

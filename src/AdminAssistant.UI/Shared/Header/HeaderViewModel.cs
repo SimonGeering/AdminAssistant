@@ -1,12 +1,15 @@
+using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Services;
 
 namespace AdminAssistant.UI.Shared.Header
 {
-    public class HeaderViewModel : ViewModelBase, IHeaderViewModel
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class HeaderViewModel : ViewModelBase, IHeaderViewModel
     {
         private readonly IAppStateStore appStateStore;
 
-        public HeaderViewModel(IAppStateStore appStateStore)
+        public HeaderViewModel(IAppStateStore appStateStore, ILoggingProvider log, ILoadingSpinner loadingSpinner)
+            : base(log, loadingSpinner)
         {
             this.appStateStore = appStateStore;
             

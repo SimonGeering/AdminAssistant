@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Services;
 
 namespace AdminAssistant.UI.Shared.Sidebar
 {
-    public class SidebarViewModel : ViewModelBase, ISidebarViewModel
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class SidebarViewModel : ViewModelBase, ISidebarViewModel
     {
         private const string SelectedModuleStyle = "active";
 
@@ -15,7 +17,8 @@ namespace AdminAssistant.UI.Shared.Sidebar
         private readonly ModeSelectionStateSettings contractedModeSelectionDropDownState;
         private readonly ModeSelectionStateSettings expandedModeSelectionDropDownState;
 
-        public SidebarViewModel(IAppStateStore appStateStore, IAppService appService)
+        public SidebarViewModel(IAppStateStore appStateStore, IAppService appService, ILoggingProvider log, ILoadingSpinner loadingSpinner)
+            : base(log, loadingSpinner)
         {
             this.appStateStore = appStateStore;
             this.appService = appService;

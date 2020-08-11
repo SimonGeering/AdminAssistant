@@ -1,10 +1,9 @@
 using System;
 using System.Data.Common;
 using AdminAssistant.DAL.EntityFramework;
-using AdminAssistant.DAL.Modules.Accounts;
+using AdminAssistant.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -20,17 +19,17 @@ namespace Microsoft.Extensions.DependencyInjection
             AddAccountsDAL(services);
         }
 #endif
-        public static void AddAdminAssistantServerSideDAL(this IServiceCollection services, IConfiguration configuration)
+        public static void AddAdminAssistantServerSideDAL(this IServiceCollection services, ConfigurationSettings configurationSettings)
         {
             // EF Core ...
             services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder =>
             {
-                if (Enum.TryParse(configuration["DATABASE_PROVIDER"], out DatabaseProvider databaseProvider) == false)
-                    throw new Exception("Unable to load 'DATABASE_PROVIDER' application setting.");
+                if (Enum.TryParse(configurationSettings.DatabaseProvider, out DatabaseProvider databaseProvider) == false)
+                    throw new Exception("Unable to load 'DatabaseProvider' configuration setting.");
 
                 // This does not use GetConnectionString as KeyVault does not make the distinction.
                 // All secrets are key value pairs, here the key is the DB provider ...
-                var connectionString = configuration[$"{databaseProvider}"];
+                var connectionString = configurationSettings.ConnectionString;
 
                 if (string.IsNullOrEmpty(connectionString))
                     throw new Exception("Configuration failed to load");
@@ -50,14 +49,22 @@ namespace Microsoft.Extensions.DependencyInjection
                         break;
                 }
             });
+
             AddAccountsDAL(services);
+            AddCoreDAL(services);
         }
 
         private static void AddAccountsDAL(this IServiceCollection services)
-        {
-            // Repositories ...
-            services.AddTransient<IBankAccountTypeRepository, BankAccountTypeRepository>();
+        {            
+            services.AddTransient<IBankAccountInfoRepository, BankAccountInfoRepository>();
             services.AddTransient<IBankAccountRepository, BankAccountRepository>();
+            services.AddTransient<IBankAccountTransactionRepository, BankAccountTransactionRepository>();
+            services.AddTransient<IBankAccountTypeRepository, BankAccountTypeRepository>();
+            services.AddTransient<IBankRepository, BankRepository>();
+        }
+
+        private static void AddCoreDAL(this IServiceCollection services)
+        {
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();
         }
     }
