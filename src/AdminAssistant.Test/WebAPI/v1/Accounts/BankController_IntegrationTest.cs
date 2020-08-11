@@ -1,8 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Net.Http.Json;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
@@ -10,11 +10,11 @@ using Xunit;
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
     [Collection("SequentialDBBackedTests")]
-    public class BankController_IntegrationTest : IntegrationTestBase
+    public class Bank_Get_Should : IntegrationTestBase
     { 
         [Fact]
         [Trait("Category", "Integration")]
-        public async Task ReturnABank_GivenACallToBankGetByID()
+        public async Task Return_ABank_Given_BankID()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
@@ -24,7 +24,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
 
             // Act
-            BankResponseDto response = await this.HttpClient.GetFromJsonAsync<BankResponseDto>($"api/v1/accounts/Bank/{acmeBuildingSociety.BankID}").ConfigureAwait(false);
+            var response = await this.Container.GetService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID).ConfigureAwait(false);
 
             // Assert
             response.BankID.Should().Be(acmeBuildingSociety.BankID);
@@ -33,7 +33,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
 
         [Fact]
         [Trait("Category", "Integration")]
-        public async Task ReturnAListOfBank_GivenACallToBankGet()
+        public async Task Return_AllBanks_Given_NoParameters()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
@@ -43,7 +43,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
 
             // Act
-            var response = await this.HttpClient.GetFromJsonAsync<BankResponseDto[]>("api/v1/accounts/Bank").ConfigureAwait(false);
+            var response = await this.Container.GetService<IAdminAssistantWebAPIClient>().GetBankAsync().ConfigureAwait(false);
 
             // Assert
             response.Should().ContainSingle(x =>x.BankID == acmeBankPLC.BankID && x.BankName == acmeBankPLC.BankName);

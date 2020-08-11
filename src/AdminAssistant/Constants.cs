@@ -15,5 +15,6 @@ namespace AdminAssistant
         public const int MSGraphIDMaxLength = 50;
 
         public const string DateFormat = "dd-MMM-yyyy";
+        public const string AdminAssistantWebAPIClient = "AdminAssistantWebAPIClient";
     }
 }

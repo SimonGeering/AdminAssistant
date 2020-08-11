@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.EntityFramework;
+using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +18,7 @@ namespace AdminAssistant
         private readonly IHost testServer;
         private readonly Respawn.Checkpoint checkpoint;
         private readonly string connectionString;
+        private readonly HttpClient httpClient;
 
         public IntegrationTestBase()
         {
@@ -49,15 +51,18 @@ namespace AdminAssistant
             };
 
             this.Container = this.testServer.Services;
-            this.HttpClient = this.testServer.GetTestClient();
+            this.httpClient = this.testServer.GetTestClient();
         }
 
         protected IServiceProvider Container { get; }
-        protected HttpClient HttpClient { get; }
 
         protected async Task ResetDatabaseAsync() => await this.checkpoint.Reset(this.connectionString).ConfigureAwait(false);
 
-        protected virtual Action<IServiceCollection> ConfigureTestServices() => services => { };
+        protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
+        {
+            // Register the WebAPIClient using the test httpClient ... 
+            services.AddTransient<IAdminAssistantWebAPIClient>((sp) => new AdminAssistantWebAPIClient(this.httpClient) { BaseUrl = this.httpClient.BaseAddress.ToString() } );
+        };
 
         #region IDisposable
 
@@ -74,6 +79,7 @@ namespace AdminAssistant
 
                     // dispose managed state (managed objects)
                     this.testServer.Dispose();
+                    this.httpClient.Dispose();
                 }
 
                 // free unmanaged resources (unmanaged objects) and override finalizer

@@ -1,13 +1,11 @@
 using Syncfusion.Blazor;
 using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Blazor.Extensions.Logging;
 using FluentValidation;
-using AutoMapper;
 
 namespace AdminAssistant.Blazor.Client
 {
@@ -20,8 +18,7 @@ namespace AdminAssistant.Blazor.Client
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            // TODO: Switch to IHttpClientFactory - https://docs.microsoft.com/en-us/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
-            builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddAdminAssistantWebAPIClient(new Uri(builder.HostEnvironment.BaseAddress));
             builder.Services.AddLogging(logging =>
             {
                 // NB Configuration must be done in code as no other option is currently supported client side.
@@ -42,7 +39,6 @@ namespace AdminAssistant.Blazor.Client
                 // TODO: Configure other production logging options.
 #endif
             });
-            builder.Services.AddAutoMapper(typeof(WebAPI.MappingProfile));
 
             // See https://github.com/ryanelian/FluentValidation.Blazor
             builder.Services.AddValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();

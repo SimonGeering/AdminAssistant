@@ -1,4 +1,5 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.Modules.AccountsModule;
 using Ardalis.Result;
@@ -6,19 +7,19 @@ using FluentAssertions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using ObjectCloner.Extensions;
 using Xunit;
-using ObjectCloner.Extensions; // https://github.com/marcelltoth/ObjectCloner
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 {
-    public class BankAccountCreateCommand_Should
+    public class BankAccountUpdateCommand_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_APersistedBankAccount_GivenAValidBankAccount()
+        public async Task SaveAndReturn_APersistedBankAccount_GivenAValidBankAccount()
         {
             // Arrange
-            var bankAccount = Factory.BankAccount.WithTestData().Build();
+            var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
             var services = new ServiceCollection();
             services.AddMockLogging();
@@ -26,17 +27,12 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
             var mockBankAccountRepository = new Mock<IBankAccountRepository>();
             mockBankAccountRepository.Setup(x => x.SaveAsync(bankAccount))
-                .Returns(() =>
-                {
-                    var result = bankAccount.DeepClone();
-                    result.BankAccountID = 30;
-                    return Task.FromResult(result);
-                });
+                                     .Returns(Task.FromResult(bankAccount));
 
             services.AddTransient((sp) => mockBankAccountRepository.Object);
 
             // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountCreateCommand(bankAccount)).ConfigureAwait(false);
+            var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount)).ConfigureAwait(false);
 
             // Assert
             result.Should().NotBeNull();
@@ -60,7 +56,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
                                                  .WithAccountName(string.Empty)
                                                  .Build();
             // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountCreateCommand(bankAccount)).ConfigureAwait(false);
+            var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount)).ConfigureAwait(false);
 
             // Assert
             result.Should().NotBeNull();

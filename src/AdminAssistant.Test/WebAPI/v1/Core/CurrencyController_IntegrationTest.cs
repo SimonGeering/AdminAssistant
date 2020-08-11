@@ -1,23 +1,24 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Net.Http.Json;
 using System.Threading.Tasks;
+using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Core
 {
     [Collection("SequentialDBBackedTests")]
-    public class CurrencyController_IntegrationTest : IntegrationTestBase
+    public class Currency_Get_Should : IntegrationTestBase
     {
         [Fact]
         [Trait("Category", "Integration")]
-        public async Task ReturnAListOfBankAccountType_GivenACallToBankAccountTypeGet()
+        public async Task Return_AllCurrencies_Given_NoParameters()
         {
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
             // Act
-            var response = await this.HttpClient.GetFromJsonAsync<CurrencyResponseDto[]>("api/v1/core/Currency").ConfigureAwait(false);
+            var response = await this.Container.GetService<IAdminAssistantWebAPIClient>().GetCurrencyAsync().ConfigureAwait(false);
 
             // Assert
             response.Should().HaveCount(3);

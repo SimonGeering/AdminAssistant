@@ -1,4 +1,6 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
@@ -18,7 +20,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_Ok200Bank_GivenAnExistingBankID()
+        public async Task Return_Ok200Bank_With_ABank_Given_AnExistingBankID()
         {
             // Arrange
             var bank = Factory.Bank.WithTestData(10).Build();
@@ -51,7 +53,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
 
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Return_Status404NotFound_GivenANonExistentBankID()
+        public async Task Return_Status404NotFound_Given_ANonExistentBankID()
         {
             // Arrange
             var services = new ServiceCollection();
@@ -70,6 +72,52 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             // Assert
             response.Result.Should().BeOfType<NotFoundResult>();
             response.Value.Should().BeNull();
+        }
+    }
+
+    public class BankController_Get_Should
+    {
+        [Fact]
+        [Trait("Category", "Unit")]
+        public async Task Return_Status200Ok_WithAListOfBank_Given_NoArguments()
+        {
+            // Arrange
+            var banks = new List<Bank>()
+            {
+                Factory.Bank.WithTestData(10).WithBankName("Acme Bank PLC").Build(),
+                Factory.Bank.WithTestData(20).WithBankName("Acme Building Society").Build()
+            };
+
+            var services = new ServiceCollection();
+            services.AddMockLogging();
+            services.AddAutoMapper(typeof(MappingProfile));
+
+            var mockMediator = new Mock<IMediator>();
+            mockMediator.Setup(x => x.Send(It.IsAny<BankQuery>(), It.IsAny<CancellationToken>()))
+                        .Returns(Task.FromResult(Result<IEnumerable<Bank>>.Success(banks)));
+
+            services.AddTransient((sp) => mockMediator.Object);
+            services.AddTransient<BankController>();
+
+            // Act
+            var response = await services.BuildServiceProvider().GetRequiredService<BankController>().Get().ConfigureAwait(false);
+
+            // Assert
+            response.Result.Should().BeOfType<OkObjectResult>();
+            response.Value.Should().BeNull();
+
+            var result = (OkObjectResult)response.Result;
+            result.Value.Should().BeAssignableTo<IEnumerable<BankResponseDto>>();
+
+            var value = ((IEnumerable<BankResponseDto>)result.Value).ToArray();
+            value.Should().HaveCount(banks.Count);
+
+            var expected = banks.ToArray();
+            for (int i = 0; i < expected.Length; i++)
+            {
+                value[i].BankID.Should().Be(expected[i].BankID);
+                value[i].BankName.Should().Be(expected[i].BankName);
+            }
         }
     }
 }

@@ -10,11 +10,19 @@ using AdminAssistant.UI.Shared.Header;
 using AdminAssistant.UI.Shared.Footer;
 using AdminAssistant.UI.Shared.Sidebar;
 using AdminAssistant.UI.Shared;
+using AdminAssistant.UI.Shared.WebAPIClient.v1;
+using AutoMapper;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
+        public static void AddAdminAssistantWebAPIClient(this IServiceCollection services, System.Uri baseAddress)
+        {
+            services.AddHttpClient<IAdminAssistantWebAPIClient, AdminAssistantWebAPIClient>(AdminAssistant.Constants.AdminAssistantWebAPIClient, (httpClient) => httpClient.BaseAddress = baseAddress);
+            services.AddAutoMapper(typeof(MappingProfile));
+        }
+
         public static void AddAdminAssistantUI(this IServiceCollection services)
         {
             // Add Accounts UI ...

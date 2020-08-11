@@ -37,7 +37,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             {
                 log.Start();
 
-                // Don't need this for now as the calidator no longer needs extra context.
+                // Don't need this for now as the validator no longer needs extra context.
                 // Keep it here for reference of how to do this.
                 //
                 // var ctx = new FluentValidation.ValidationContext<BankAccount>(command.BankAccount);

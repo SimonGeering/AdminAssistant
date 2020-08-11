@@ -7,8 +7,6 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddClientFrameworkServices(this IServiceCollection services)
         {
             AddFrameworkServices(services);
-
-            services.AddTransient<IHttpClientProvider, HttpClientProvider>();
         }
 
         public static void AddServerFrameworkServices(this IServiceCollection services)

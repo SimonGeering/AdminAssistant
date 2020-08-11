@@ -5,7 +5,7 @@ using FluentAssertions;
 using Xunit;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
-namespace AdminAssistant.WebAPI
+namespace AdminAssistant.WebAPI.v1
 {
     public class WebAPIMappingProfile_Should
     {

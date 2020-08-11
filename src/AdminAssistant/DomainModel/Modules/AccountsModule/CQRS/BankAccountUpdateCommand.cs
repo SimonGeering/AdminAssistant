@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.Modules.AccountsModule;
@@ -36,13 +38,22 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
                 log.Start();
 
                 var validationResult = await bankAccountValidator.ValidateAsync(command.BankAccount).ConfigureAwait(false);
-                throw new System.NotImplementedException();
-                //var result = this.bankAccountValidator.Validate(command.BankAccount);
 
-                //if (result.IsValid == false)
+                if (validationResult.IsValid == false)
+                {
+                    int count = 1;
+                    var validationErrors = new Dictionary<string, string>();
 
+                    foreach (var error in validationResult.Errors.Where(x => x.Severity == FluentValidation.Severity.Error))
+                    {
+                        validationErrors.Add($"{count}_{error.ErrorCode}", error.ErrorMessage);
+                        count++;
+                    }
+                    return log.Finish(Result<BankAccount>.Invalid(validationErrors));
+                }
 
-                //return await bankAccountRepository.Save().ConfigureAwait(false);
+                var result = await bankAccountRepository.SaveAsync(command.BankAccount).ConfigureAwait(false);
+                return log.Finish(Result<BankAccount>.Success(result));
             }
         }
     }

@@ -47,11 +47,14 @@ namespace AdminAssistant.Blazor.Server
             });
 
             services.AddHttpContextAccessor();
-            services.AddControllers().AddFluentValidation(c =>
-            {
-                c.RegisterValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
+            services.AddControllers()
+                .AddNewtonsoftJson()
+                .AddFluentValidation(c =>
+                {
+                    c.RegisterValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
 
-            });
+                });
+
             services.AddSwaggerGen(c =>
             {
                 // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
@@ -65,6 +68,7 @@ namespace AdminAssistant.Blazor.Server
                 // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
                 c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
             });
+            services.AddSwaggerGenNewtonsoftSupport();
 
             services.AddAutoMapper(typeof(DAL.MappingProfile), typeof(WebAPI.MappingProfile));
 

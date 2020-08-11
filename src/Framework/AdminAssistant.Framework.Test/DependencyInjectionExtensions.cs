@@ -1,5 +1,4 @@
 using System;
-using System.Net.Http;
 using AdminAssistant.Framework.Providers;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
@@ -12,7 +11,6 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddMocksOfExternalDependencies(this IServiceCollection services)
         {
             services.AddMockLogging();
-            services.AddTransient(sp => new Mock<HttpClient>().Object);
             services.AddTransient((sp) => new Mock<IMapper>().Object);
         }
 
