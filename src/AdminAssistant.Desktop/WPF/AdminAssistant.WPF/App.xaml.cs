@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using FluentValidation;
-using AutoMapper;
 using Syncfusion.SfSkinManager;
 using AdminAssistant.WPF.Modules.AccountsModule;
 using System;
@@ -21,8 +20,7 @@ namespace AdminAssistant.WPF
             host = new HostBuilder()
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHttpClient(Constants.AdminAssistantWebAPI, (httpClient) => httpClient.BaseAddress = new Uri("https://localhost:5001"));
-                    services.AddAutoMapper(typeof(WebAPI.MappingProfile));
+                    services.AddAdminAssistantWebAPIClient(new Uri("https://localhost:5001"));
 
                     services.AddValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
 

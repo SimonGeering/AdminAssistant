@@ -22,7 +22,6 @@ namespace AdminAssistant.WebAPI.v1
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<BankAccountTypeResponseDto>), StatusCodes.Status200OK)]
         [SwaggerOperation("Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.", OperationId = "GetBankAccountType")]
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankAccountTypeResponseDto", type: typeof(IEnumerable<BankAccountTypeResponseDto>))]
         public async Task<ActionResult<IEnumerable<BankAccountTypeResponseDto>>> Get()
