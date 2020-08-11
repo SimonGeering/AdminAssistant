@@ -1,0 +1,44 @@
+graph TD
+    subgraph Framework
+      id8([AdminAssistant.Framework])
+      id9(AdminAssistant.Framework.Test)
+      style id9 fill:#FFE699
+      id9 --> id8
+    end
+
+    subgraph Entry Points
+      id1(AdminAssistant.Blazor.Server)
+      style id1 fill:#C6E0B4
+      id2(AdminAssistant.Blazor.Client)
+      style id2 fill:#C6E0B4
+      id6(AdminAssistant.Test)
+      style id6 fill:#FFE699
+    end
+
+    subgraph Core
+      id3([AdminAssistant])
+      style id3 fill:#B4C6E7
+      id4([AdminAssistant.DAL])
+      style id4 fill:#B4C6E7
+      id5([AdminAssistant.DomainModel])
+      style id5 fill:#B4C6E7
+      id7([AdminAssistant.UI])
+      style id7 fill:#B4C6E7
+    end
+
+      id1 --> id2
+      id1 --> id4
+      id1 --> id5
+      id1 --> id8
+
+      id2 --> id5
+      id2 --> id7
+
+      id4 --> id3
+      id4 --> id8
+
+      id5 --> id3
+
+      id6 --> id5
+
+      id7 --> id3
