@@ -32,7 +32,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		..\docs\cli.md = ..\docs\cli.md
 		..\docs\database.dbml = ..\docs\database.dbml
-		global.json = global.json
 		..\tools.ps1 = ..\tools.ps1
 	EndProjectSection
 EndProject
