@@ -1,17 +1,18 @@
 using AutoMapper;
 using AdminAssistant.Framework.Providers;
+using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.UI
 {
     public abstract class ServiceBase
     {
-        protected IHttpClientProvider HttpClient { get; }
+        protected IAdminAssistantWebAPIClient AdminAssistantWebAPIClient { get; }
         protected IMapper Mapper { get; }
         protected ILoggingProvider Log { get; }
 
-        public ServiceBase(IHttpClientProvider httpClient, IMapper mapper, ILoggingProvider log)
+        public ServiceBase(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
         {
-            this.HttpClient = httpClient;
+            this.AdminAssistantWebAPIClient = adminAssistantWebAPIClient;
             this.Log = log;
             this.Mapper = mapper;
         }
