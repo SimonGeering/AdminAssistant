@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
@@ -22,8 +22,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         string HeaderText { get; }
         bool ShowDialog { get; set; }
 
-        IEnumerable<BankAccountType> BankAccountTypes { get; }
-        IEnumerable<Currency> Currencies { get; }
+        BindingList<BankAccountType> BankAccountTypes { get; }
+        BindingList<Currency> Currencies { get; }
 
         Task OnSaveButtonClick();
         void OnCancelButtonClick();

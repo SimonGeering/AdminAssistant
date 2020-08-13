@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
@@ -149,27 +149,9 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             }
         }
 
-        private IEnumerable<BankAccountType> bankAccountTypes = new List<BankAccountType>();
-        public IEnumerable<BankAccountType> BankAccountTypes
-        {
-            get => this.bankAccountTypes;
-            private set
-            {
-                this.bankAccountTypes = value;
-                this.OnPropertyChanged();
-            }
-        }
+        public BindingList<BankAccountType> BankAccountTypes { get; } = new BindingList<BankAccountType>();
 
-        private IEnumerable<Currency> currencies = new List<Currency>();
-        public IEnumerable<Currency> Currencies
-        {
-            get => this.currencies;
-            private set
-            {
-                this.currencies = value;
-                this.OnPropertyChanged();
-            }
-        }
+        public BindingList<Currency> Currencies { get; } = new BindingList<Currency>();
 
         private string headerText = string.Empty;
         public string HeaderText
@@ -240,13 +222,13 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             {
                 if ((this.bankAccount as IDatabasePersistable).IsNew)
                 {
-                    var savedBankAccountResult = await this.accountsService.CreateBankAccountAsync(this.bankAccount).ConfigureAwait(false);
+                    var savedBankAccountResult = await this.accountsService.CreateBankAccountAsync(this.bankAccount).ConfigureAwait(true);
                     // TODO: Notify OnBankAccountCreated
                     // this.accountsStateStore.OnBankAccountCreated(savedBankAccount);
                 }
                 else
                 {
-                    var savedBankAccountResult = await this.accountsService.UpdateBankAccountAsync(this.bankAccount).ConfigureAwait(false);
+                    var savedBankAccountResult = await this.accountsService.UpdateBankAccountAsync(this.bankAccount).ConfigureAwait(true);
                     // TODO: Notify OnBankAccountUpdated
                     // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
                 }
@@ -261,12 +243,15 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             this.Log.Start();
             this.LoadingSpinner.OnShowLoadingSpinner();
 
-            this.BankAccountTypes = await this.accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
-            this.Currencies = await this.coreService.GetCurrencyListAsync().ConfigureAwait(false);
+            var bankAccountTypes = await this.accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(true);
+            bankAccountTypes.ForEach(item => this.BankAccountTypes.Add(item));
+
+            var currencies = await this.coreService.GetCurrencyListAsync().ConfigureAwait(true);
+            currencies.ForEach(item => this.Currencies.Add(item));
 
             this.LoadingSpinner.OnHideLoadingSpinner();
 
-            await base.OnInitializedAsync().ConfigureAwait(false);
+            await base.OnInitializedAsync().ConfigureAwait(true);
             this.Log.Finish();
         }
 
@@ -344,9 +329,9 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 
         public bool ShowDialog { get; set; } = false;
 
-        public IEnumerable<BankAccountType> BankAccountTypes => new List<BankAccountType>();
+        public BindingList<BankAccountType> BankAccountTypes => new BindingList<BankAccountType>();
 
-        public IEnumerable<Currency> Currencies => new List<Currency>();
+        public BindingList<Currency> Currencies => new BindingList<Currency>();
 
         public string AccountNameValidationMessage => string.Empty;
 
