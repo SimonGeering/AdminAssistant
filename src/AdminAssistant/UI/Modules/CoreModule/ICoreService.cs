@@ -6,6 +6,6 @@ namespace AdminAssistant.UI.Modules.CoreModule
 {
     public interface ICoreService
     {
-        Task<List<Currency>> GetCurrencyListAsync();
+        Task<IList<Currency>> GetCurrencyListAsync();
     }
 }
