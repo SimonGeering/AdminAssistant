@@ -9,6 +9,7 @@ using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Modules.CoreModule;
 using AdminAssistant.UI.Shared;
 using Ardalis.GuardClauses;
+using AsyncAwaitBestPractices.MVVM;
 using FluentValidation.Results;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
@@ -47,6 +48,9 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
                 this.RefreshValidation();
                 this.ShowDialog = true;
             };
+
+            this.Cancel = new AsyncCommand(execute: this.OnCancelButtonClick);
+            this.Save = new AsyncCommand(execute: this.OnSaveButtonClick);
         }
 
         public string AccountName
@@ -195,22 +199,27 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         public string AccountNameValidationMessage { get; private set; } = string.Empty;
         public string AccountNameValidationClass { get; private set; } = string.Empty;
 
+        public IAsyncCommand Cancel { get; }
+        public IAsyncCommand Save { get; }
+
         public void OnBankAccountTypeChanged() => this.RefreshValidation();
 
         public void OnCurrencyChanged() => this.RefreshValidation();
 
 
-        public void OnCancelButtonClick()
+        private async Task OnCancelButtonClick()
         {
             this.Log.Start();
 
             this.bankAccount = new BankAccount();
             this.ShowDialog = false;
 
+            await Task.CompletedTask.ConfigureAwait(true);
+
             this.Log.Finish();
         }
 
-        public async Task OnSaveButtonClick()
+        private async Task OnSaveButtonClick()
         {
             this.Log.Start();
 
@@ -318,12 +327,10 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         public bool IsBudgeted { get; set; } = false;
         public int OpeningBalance { get; set; } = 0;
         public int CurrentBalance { get; private set; } = 0;
-        public DateTime OpenedOn { get; set; }
+        public DateTime OpenedOn { get; set; } = DateTime.Today;
 
-        public BankAccountEditDialogDesignTimeViewModel()
-        {
-            this.OpenedOn = DateTime.Today;
-        }
+        public IAsyncCommand Cancel { get; } = new AsyncCommand(() => Task.FromResult(false));
+        public IAsyncCommand Save { get; } = new AsyncCommand(() => Task.FromResult(false));
 
         public string HeaderText { get; private set; } = "Create Bank Account";
 

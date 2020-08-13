@@ -18,7 +18,7 @@
         <div class="cl-row2">
           <label>Account Type</label>
           <div class="cl-account-type">
-            <SfDropDownList @bind-Value="@this.vm.BankAccountTypeID" OnChange="@(() => this.vm.OnBankAccountTypeChanged())" TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" DataSource="@this.vm.BankAccountTypes">
+            <SfDropDownList @bind-Value="@this.vm.BankAccountTypeID" OnChange="@(_ => this.vm.OnBankAccountTypeChanged())" TValue="int" TItem="BankAccountType" PopupHeight="230px" Placeholder="Account Type" DataSource="@this.vm.BankAccountTypes">
               <DropDownListFieldSettings Text="Description" Value="BankAccountTypeID" />
             </SfDropDownList>
           </div>
@@ -29,7 +29,7 @@
         </div>
         <div class="cl-row3">
           <label>Currency</label>
-          <SfDropDownList @bind-Value="@this.vm.CurrencyID" OnChange="@(() => this.vm.OnCurrencyChanged())" TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" DataSource="@this.vm.Currencies">
+          <SfDropDownList @bind-Value="@this.vm.CurrencyID" OnChange="@(_ => this.vm.OnCurrencyChanged())" TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" DataSource="@this.vm.Currencies">
             <DropDownListFieldSettings Text="Symbol" Value="CurrencyID" />
           </SfDropDownList>
           @*<div class="cl-label">Opening balance</div>
@@ -40,7 +40,7 @@
   </DialogTemplates>
   <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
   <DialogButtons>
-    <DialogButton OnClick="@this.vm.OnCancelButtonClick" Content="Discard" IconCss="fa fa-lg fa-trash-o" />
-    <DialogButton OnClick="@this.vm.OnSaveButtonClick" Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true" />
+    <DialogButton OnClick="@(_ => this.vm.Cancel.ExecuteAsync())" Disabled="@(!this.vm.Cancel.CanExecute(null))" Content="Discard" IconCss="fa fa-lg fa-trash-o" />
+    <DialogButton OnClick="@(_ => this.vm.Save.ExecuteAsync())" Disabled="@(!this.vm.Save.CanExecute(null))" Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true" />
   </DialogButtons>
 </SfDialog>

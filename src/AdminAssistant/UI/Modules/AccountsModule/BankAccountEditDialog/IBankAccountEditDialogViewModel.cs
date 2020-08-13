@@ -1,7 +1,9 @@
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AsyncAwaitBestPractices.MVVM;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
@@ -25,8 +27,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         BindingList<BankAccountType> BankAccountTypes { get; }
         BindingList<Currency> Currencies { get; }
 
-        Task OnSaveButtonClick();
-        void OnCancelButtonClick();
+        IAsyncCommand Save { get; }
+        IAsyncCommand Cancel { get; }
 
         void OnAccountNameChanged(string accountName);
         string AccountNameValidationMessage { get; }
