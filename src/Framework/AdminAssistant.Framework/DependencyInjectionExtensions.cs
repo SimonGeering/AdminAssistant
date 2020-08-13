@@ -6,18 +6,21 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddClientFrameworkServices(this IServiceCollection services)
         {
+            services.AddTransient<ILoggingProvider, ClientSideLoggingProvider>();
+
             AddFrameworkServices(services);
         }
 
         public static void AddServerFrameworkServices(this IServiceCollection services)
         {
+            services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
+
             AddFrameworkServices(services);
         }
 
         private static void AddFrameworkServices(this IServiceCollection services)
         {
             services.AddTransient<IDateTimeProvider, DateTimeProvider>();
-            services.AddTransient<ILoggingProvider, LoggingProvider>();
         }
     }
 }

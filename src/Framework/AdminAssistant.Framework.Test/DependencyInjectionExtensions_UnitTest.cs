@@ -16,7 +16,7 @@ namespace AdminAssistant.Framework
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddMocksOfExternalDependencies();
+            services.AddMocksOfExternalClientSideDependencies();
             services.AddClientFrameworkServices();
 
             var serviceProvider = services.BuildServiceProvider();
@@ -43,7 +43,7 @@ namespace AdminAssistant.Framework
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddMocksOfExternalDependencies();
+            services.AddMocksOfExternalServerSideDependencies();
             services.AddServerFrameworkServices();
 
             var serviceProvider = services.BuildServiceProvider();

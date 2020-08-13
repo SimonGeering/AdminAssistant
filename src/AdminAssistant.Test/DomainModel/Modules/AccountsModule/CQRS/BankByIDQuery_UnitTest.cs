@@ -20,7 +20,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             var nonExistentBankID = Constants.UnknownRecordID;
 
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAdminAssistantServerSideDomainModel();
 
             var mockBankRepository = new Mock<IBankRepository>();
@@ -43,7 +43,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             var bank = Factory.Bank.WithTestData(10).Build();
 
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAdminAssistantServerSideDomainModel();
 
             var mockBankRepository = new Mock<IBankRepository>();

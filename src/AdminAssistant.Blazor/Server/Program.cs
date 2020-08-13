@@ -20,7 +20,17 @@ namespace AdminAssistant.Blazor.Server
 #if DEBUG
                     logging.AddConsole();
                     logging.AddDebug();
+
+                    logging.AddFilter("Default", LogLevel.Information)
+                           .AddFilter(Framework.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Debug)
+                           .AddFilter("Microsoft", LogLevel.Warning)
+                           .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else
+                    logging.AddFilter("Default", LogLevel.Warning)
+                           .AddFilter(Framework.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Warning)
+                           .AddFilter("Microsoft", LogLevel.Warning)
+                           .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
+
                     // TODO: Configure production logging.
 #endif
                 })
