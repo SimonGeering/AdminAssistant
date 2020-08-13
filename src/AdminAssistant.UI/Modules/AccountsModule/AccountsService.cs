@@ -26,18 +26,6 @@ namespace AdminAssistant.UI.Modules.AccountsModule
             return this.Log.Finish(result);
         }
 
-        public async Task<IList<Currency>> LoadCurrencyLookupDataAsync()
-        {
-            this.Log.Start();
-
-            var response = await this.AdminAssistantWebAPIClient.GetCurrencyAsync().ConfigureAwait(false);
-
-            var result = new List<Currency>(this.Mapper.Map<IEnumerable<Currency>>(response));
-            result.Insert(0, new Currency() { CurrencyID = 0, Symbol = string.Empty, DecimalFormat = string.Empty });
-
-            return this.Log.Finish(result);
-        }
-
         public async Task<BankAccount> CreateBankAccountAsync(BankAccount model)
         {
             this.Log.Start();
