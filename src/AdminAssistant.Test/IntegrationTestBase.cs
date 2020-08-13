@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.EntityFramework;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
+using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
@@ -62,6 +63,7 @@ namespace AdminAssistant
         {
             // Register the WebAPIClient using the test httpClient ... 
             services.AddTransient<IAdminAssistantWebAPIClient>((sp) => new AdminAssistantWebAPIClient(this.httpClient) { BaseUrl = this.httpClient.BaseAddress.ToString() } );
+            services.AddAutoMapper(typeof(MappingProfile));
         };
 
         #region IDisposable
