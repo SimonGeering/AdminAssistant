@@ -1,4 +1,5 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using System;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
@@ -7,6 +8,7 @@ using AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
+using static AdminAssistant.TestConstants;
 
 namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
 {
@@ -29,8 +31,22 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             accountsStateStore.OnEditAccount(new BankAccount());
 
             // Assert
-            vm.Currencies.Should().NotBeEmpty();
+            vm.BankAccountID.Should().Be(Constants.NewRecordID);
+
+            vm.BankAccountTypeID.Should().Be(Constants.UnknownRecordID);
             vm.BankAccountTypes.Should().NotBeEmpty();
+
+            vm.CurrencyID.Should().Be(Constants.UnknownRecordID);
+            vm.Currencies.Should().NotBeEmpty();
+
+            vm.AccountName.Should().BeEmpty();
+            vm.IsBudgeted.Should().BeFalse();
+            vm.OpeningBalance.Should().Be(Zero);
+            vm.CurrentBalance.Should().Be(Zero);
+            vm.OpenedOn.Should().Be(default);
+
+            vm.HeaderText.Should().Be(IBankAccountEditDialogViewModel.NewBankAccountHeader);
+            vm.ShowDialog.Should().BeTrue();
 
             var savedBankAccounts = await this.Container.GetService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
             savedBankAccounts.Should().BeEmpty();
@@ -62,16 +78,16 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
         [Trait("Category", "Integration")]
         public async Task OnlyEnableSave_WhenNoValidationErrorsShown()
         {
-            // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
             var vm = this.Container.GetService<IBankAccountEditDialogViewModel>();
             await vm.OnInitializedAsync().ConfigureAwait(false);
 
             var accountsStateStore = this.Container.GetService<IAccountsStateStore>();
+            accountsStateStore.OnEditAccount(new BankAccount());
 
             // Act
-            accountsStateStore.OnEditAccount(new BankAccount());
+            vm.OnCancelButtonClick();
 
             // Assert
             //vm.AccountNameValidationMessage
