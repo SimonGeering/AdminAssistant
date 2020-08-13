@@ -14,7 +14,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
             : base(adminAssistantWebAPIClient, mapper, log)
         {
         }
-        public async Task<IList<BankAccountType>> LoadBankAccountTypesLookupDataAsync()
+        public async Task<List<BankAccountType>> LoadBankAccountTypesLookupDataAsync()
         {
             this.Log.Start();
 

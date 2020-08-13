@@ -15,7 +15,7 @@ namespace AdminAssistant.UI.Modules.CoreModule
         {
         }
         
-        public async Task<IList<Currency>> GetCurrencyListAsync()
+        public async Task<List<Currency>> GetCurrencyListAsync()
         {
             this.Log.Start();
 
