@@ -8,13 +8,32 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
-        public static void AddMocksOfExternalDependencies(this IServiceCollection services)
+        public static void AddMocksOfExternalServerSideDependencies(this IServiceCollection services)
         {
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddTransient((sp) => new Mock<IMapper>().Object);
         }
 
-        public static void AddMockLogging(this IServiceCollection services)
+        public static void AddMocksOfExternalClientSideDependencies(this IServiceCollection services)
+        {
+            services.AddMockClientSideLogging();
+            services.AddTransient((sp) => new Mock<IMapper>().Object);
+        }
+
+        public static void AddMockServerSideLogging(this IServiceCollection services)
+        {
+            AddMockLogging(services);    
+
+            services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
+        }
+
+        public static void AddMockClientSideLogging(this IServiceCollection services)
+        {
+            AddMockLogging(services);
+            services.AddTransient<ILoggingProvider, ClientSideLoggingProvider>();
+        }
+
+        private static void AddMockLogging(IServiceCollection services)
         {
             var mockLogger = new Mock<ILogger>();
             mockLogger.Setup(m => m.Log(It.IsAny<LogLevel>(), It.IsAny<EventId>(), It.IsAny<object>(), It.IsAny<Exception>(), It.IsAny<Func<object, Exception, string>>()))
@@ -26,7 +45,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddTransient((sp) => mockLoggerFactory.Object);
             // TODO: look at if this can be refactored to allow 
-            services.AddTransient<ILoggingProvider, LoggingProvider>();
+            services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
         }
     }
 }

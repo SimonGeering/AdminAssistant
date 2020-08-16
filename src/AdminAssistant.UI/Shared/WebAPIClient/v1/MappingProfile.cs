@@ -8,7 +8,7 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
             : base(typeof(MappingProfile).Assembly)
         {
             this.CreateMap<CurrencyResponseDto, DomainModel.Modules.AccountsModule.Currency>();
-            this.CreateMap<BankAccountResponseDto, DomainModel.Modules.AccountsModule.Currency>();
+            this.CreateMap<BankAccountTypeResponseDto, DomainModel.Modules.AccountsModule.BankAccountType>();
         }
     }
 }

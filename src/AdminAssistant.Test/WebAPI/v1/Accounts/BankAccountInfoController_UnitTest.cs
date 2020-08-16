@@ -39,7 +39,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
                                    .Returns(new User() { UserID = 10, SignOn = "simongeering" });
 
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAutoMapper(typeof(MappingProfile));
             services.AddTransient((sp) => mockMediator.Object);
             services.AddTransient((sp) => mockUserContextProvider.Object);

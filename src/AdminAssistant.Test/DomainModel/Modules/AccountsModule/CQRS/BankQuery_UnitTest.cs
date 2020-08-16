@@ -21,7 +21,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             var bankList = new List<Bank>() { Factory.Bank.WithTestData(20).Build() };
 
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAdminAssistantServerSideDomainModel();
 
             var mockBankRepository = new Mock<IBankRepository>();

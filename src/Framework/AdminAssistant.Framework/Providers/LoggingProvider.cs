@@ -6,7 +6,8 @@ namespace AdminAssistant.Framework.Providers
 {
     public interface ILoggingProvider : ILogger
     {
-        public const string LogCategoryName = "AdminAssistant";
+        public const string ClientSideLogCategory = "Admin Assistant - Client";
+        public const string ServerSideLogCategory = "Admin Assistant - Server";
 
         /// <summary></summary>
         /// <param name="memberName"></param>
@@ -56,13 +57,30 @@ namespace AdminAssistant.Framework.Providers
         /// <returns></returns>
         public TResult Finish<TResult>(TResult result, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0);
     }
-    public class LoggingProvider : ILoggingProvider
+
+    public class ClientSideLoggingProvider : LoggingProvider, ILoggingProvider
+    {
+        public ClientSideLoggingProvider(ILoggerFactory loggerFactory)
+            : base(loggerFactory, ILoggingProvider.ClientSideLogCategory)
+        {                
+        }
+    }
+
+    public class ServerSideLoggingProvider : LoggingProvider, ILoggingProvider
+    {
+        public ServerSideLoggingProvider(ILoggerFactory loggerFactory)
+            : base(loggerFactory, ILoggingProvider.ServerSideLogCategory)
+        {
+        }
+    }
+
+    public abstract class LoggingProvider : ILoggingProvider
     {
         private readonly ILogger logger;
 
-        public LoggingProvider(ILoggerFactory loggerFactory)
+        public LoggingProvider(ILoggerFactory loggerFactory, string logCategoryName)
         {
-            this.logger = loggerFactory.CreateLogger(ILoggingProvider.LogCategoryName);
+            this.logger = loggerFactory.CreateLogger(logCategoryName);
         }
 
         public void LogDebug(EventId eventId, Exception exception, string message, params object[] args) => logger.Log(LogLevel.Debug, eventId, exception, message, args);

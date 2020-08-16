@@ -37,7 +37,17 @@ namespace AdminAssistant.WPF
 #if DEBUG
                     logging.AddConsole();
                     logging.AddDebug();
+
+                    logging.AddFilter("Default", LogLevel.Information)
+                           .AddFilter(Framework.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
+                           .AddFilter("Microsoft", LogLevel.Warning)
+                           .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else
+                    logging.AddFilter("Default", LogLevel.Warning)
+                           .AddFilter(Framework.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Warning)
+                           .AddFilter("Microsoft", LogLevel.Warning)
+                           .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
+
                     // TODO: Configure production logging.
 #endif
                 })

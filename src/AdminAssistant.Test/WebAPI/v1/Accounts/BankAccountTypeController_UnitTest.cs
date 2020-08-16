@@ -30,7 +30,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             };
 
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAutoMapper(typeof(MappingProfile));
 
             var mockMediator = new Mock<IMediator>();

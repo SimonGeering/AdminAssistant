@@ -1,14 +1,16 @@
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AsyncAwaitBestPractices.MVVM;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
     public interface IBankAccountEditDialogViewModel : IViewModelBase
     {
-        const string NewBankAccountHeader = "New bank account";
-        const string EditBankAccountHeader = "Edit bank account";
+        public const string NewBankAccountHeader = "New bank account";
+        public const string EditBankAccountHeader = "Edit bank account";
 
         int BankAccountID { get; }
         int BankAccountTypeID { get; set; }
@@ -22,11 +24,11 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         string HeaderText { get; }
         bool ShowDialog { get; set; }
 
-        IEnumerable<BankAccountType> BankAccountTypes { get; }
-        IEnumerable<Currency> Currencies { get; }
+        BindingList<BankAccountType> BankAccountTypes { get; }
+        BindingList<Currency> Currencies { get; }
 
-        Task OnSaveButtonClick();
-        void OnCancelButtonClick();
+        IAsyncCommand Save { get; }
+        IAsyncCommand Cancel { get; }
 
         void OnAccountNameChanged(string accountName);
         string AccountNameValidationMessage { get; }

@@ -26,7 +26,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             };
 
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAdminAssistantServerSideDomainModel();
 
             var mockRepository = new Mock<IBankAccountInfoRepository>();
