@@ -3,11 +3,13 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.EntityFramework;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
+using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Xunit;
 
 namespace AdminAssistant
@@ -23,16 +25,36 @@ namespace AdminAssistant
         public IntegrationTestBase()
         {
             var hostBuilder = Host.CreateDefaultBuilder()
-                .ConfigureWebHostDefaults(webBuilder =>
+                .ConfigureLogging(logging =>
                 {
-                    webBuilder.UseStartup<Blazor.Server.Startup>();
-                    webBuilder.ConfigureTestServices(ConfigureTestServices());
-                    webBuilder.UseTestServer();
+                    logging.ClearProviders();
+#if DEBUG
+                    logging.AddConsole();
+                    logging.AddDebug();
+
+                    logging.AddFilter("Default", LogLevel.Information)
+                            .AddFilter(Framework.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Debug)
+                            .AddFilter("Microsoft", LogLevel.Warning)
+                            .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
+#else
+                    logging.AddFilter("Default", LogLevel.Warning)
+                           .AddFilter(Framework.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Warning)
+                           .AddFilter("Microsoft", LogLevel.Warning)
+                           .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
+
+                    // TODO: Configure production logging.
+#endif
                 })
                 .ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     config.AddUserSecrets(System.Reflection.Assembly.GetExecutingAssembly());
-                });
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                 {
+                     webBuilder.UseStartup<Blazor.Server.Startup>();
+                     webBuilder.ConfigureTestServices(ConfigureTestServices());
+                     webBuilder.UseTestServer();
+                 });
 
             this.testServer = hostBuilder.Start();
             this.connectionString = this.testServer.Services.GetService<IApplicationDbContext>().ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
@@ -62,6 +84,7 @@ namespace AdminAssistant
         {
             // Register the WebAPIClient using the test httpClient ... 
             services.AddTransient<IAdminAssistantWebAPIClient>((sp) => new AdminAssistantWebAPIClient(this.httpClient) { BaseUrl = this.httpClient.BaseAddress.ToString() } );
+            services.AddAutoMapper(typeof(MappingProfile));
         };
 
         #region IDisposable

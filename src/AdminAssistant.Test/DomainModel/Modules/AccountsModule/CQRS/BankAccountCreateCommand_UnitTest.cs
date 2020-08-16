@@ -21,7 +21,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             var bankAccount = Factory.BankAccount.WithTestData().Build();
 
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAdminAssistantServerSideDomainModel();
 
             var mockBankAccountRepository = new Mock<IBankAccountRepository>();
@@ -52,7 +52,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAdminAssistantServerSideDomainModel();
             services.AddTransient((sp) => new Mock<IBankAccountRepository>().Object);
 

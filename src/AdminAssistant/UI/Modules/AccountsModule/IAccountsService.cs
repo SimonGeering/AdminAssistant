@@ -6,7 +6,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
 {
     public interface IAccountsService
     {
-        Task<IList<BankAccountType>> LoadBankAccountTypesLookupDataAsync();
+        Task<List<BankAccountType>> LoadBankAccountTypesLookupDataAsync();
         Task<BankAccount> CreateBankAccountAsync(BankAccount model);
         Task<BankAccount> UpdateBankAccountAsync(BankAccount model);
     }

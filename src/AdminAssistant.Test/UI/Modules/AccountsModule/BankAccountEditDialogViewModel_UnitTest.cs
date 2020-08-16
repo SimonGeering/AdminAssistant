@@ -35,7 +35,7 @@
 //                }));
 
 //            var services = new ServiceCollection();
-//            services.AddMocksOfExternalDependencies();
+//            services.AddMocksOfExternalClientSideDependencies();
 //            services.AddClientFrameworkServices();
 //            services.AddAdminAssistantClientSideDomainModel();
 //            services.AddAdminAssistantUI();
@@ -56,7 +56,7 @@
 //        {
 //            // Arrange
 //            var services = new ServiceCollection();
-//            services.AddMocksOfExternalDependencies();
+//            services.AddMocksOfExternalClientSideDependencies();
 //            services.AddClientFrameworkServices();
 //            services.AddAdminAssistantClientSideDomainModel();
 //            services.AddAdminAssistantUI();
@@ -77,7 +77,7 @@
 //        {
 //            // Arrange
 //            var services = new ServiceCollection();
-//            services.AddMocksOfExternalDependencies();
+//            services.AddMocksOfExternalClientSideDependencies();
 //            services.AddClientFrameworkServices();
 //            services.AddAdminAssistantClientSideDomainModel();
 //            services.AddAdminAssistantUI();

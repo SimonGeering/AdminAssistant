@@ -20,7 +20,7 @@ namespace AdminAssistant
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddMocksOfExternalDependencies();
+            services.AddMocksOfExternalServerSideDependencies();
 
             services.AddServerFrameworkServices();
             services.AddAdminAssistantServerSideDomainModel();
@@ -64,7 +64,7 @@ namespace AdminAssistant
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddMocksOfExternalDependencies();
+            services.AddMocksOfExternalClientSideDependencies();
             services.AddTransient((sp) => new Mock<UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient>().Object);
 
             services.AddClientFrameworkServices();

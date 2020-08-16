@@ -35,7 +35,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
             var services = new ServiceCollection();
-            services.AddMocksOfExternalDependencies();
+            services.AddMocksOfExternalServerSideDependencies();
 
             var mockMediator = new Mock<IMediator>();
             mockMediator.Setup(x => x.Send(It.IsAny<BankAccountCreateCommand>(), It.IsAny<CancellationToken>()))
@@ -85,7 +85,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAutoMapper(typeof(MappingProfile));
 
             var mockMediator = new Mock<IMediator>();
@@ -116,7 +116,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddMocksOfExternalDependencies();
+            services.AddMocksOfExternalServerSideDependencies();
 
             var mockMediator = new Mock<IMediator>();
             mockMediator.Setup(x => x.Send(It.IsAny<BankAccountByIDQuery>(), It.IsAny<CancellationToken>()))
@@ -149,7 +149,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             };
 
             var services = new ServiceCollection();
-            services.AddMockLogging();
+            services.AddMockServerSideLogging();
             services.AddAutoMapper(typeof(MappingProfile));
 
             var mockMediator = new Mock<IMediator>();
@@ -186,7 +186,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         {
             // Arrange
             var services = new ServiceCollection();
-            services.AddMocksOfExternalDependencies();
+            services.AddMocksOfExternalServerSideDependencies();
 
             var mockMediator = new Mock<IMediator>();
             mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTransactionsByBankAccountIDQuery>(), It.IsAny<CancellationToken>()))
