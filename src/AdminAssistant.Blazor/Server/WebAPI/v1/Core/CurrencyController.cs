@@ -23,7 +23,7 @@ namespace AdminAssistant.WebAPI.v1
         [HttpGet]
         [SwaggerOperation("Lists all currencies supported by the API wherever a CurrencyID can be provided.", OperationId = "GetCurrency")]
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of CurrencyResponseDto", type: typeof(IEnumerable<CurrencyResponseDto>))]
-        public async Task<ActionResult<IEnumerable<CurrencyResponseDto>>> Get()
+        public async Task<ActionResult<IEnumerable<CurrencyResponseDto>>> GetCurrency()
         {
             this.Log.Start();
 

@@ -17,7 +17,7 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
-    public class BankAccountInfoController_Get_Should
+    public class BankAccountInfoController_BankAccountInfoGet_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
@@ -46,7 +46,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankAccountInfoController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountInfoController>().Get().ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountInfoController>().BankAccountInfoGet().ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<OkObjectResult>();

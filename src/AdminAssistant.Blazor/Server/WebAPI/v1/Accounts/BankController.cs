@@ -25,7 +25,7 @@ namespace AdminAssistant.WebAPI.v1
         [SwaggerOperation("Gets the Bank with the given ID.", OperationId = "GetBankById")]
         [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the Bank requested.", type: typeof(BankResponseDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankID does not exist.")]
-        public async Task<ActionResult<BankResponseDto>> GetBankById([SwaggerParameter("The ID of the Bank to be returned.", Required = true)] int bankID)
+        public async Task<ActionResult<BankResponseDto>> BankGetById([SwaggerParameter("The ID of the Bank to be returned.", Required = true)] int bankID)
         {
             this.Log.Start();
 
@@ -41,7 +41,7 @@ namespace AdminAssistant.WebAPI.v1
         [HttpGet]
         [SwaggerOperation("Lists all banks.", OperationId = "GetBank")]
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankResponseDto", type: typeof(IEnumerable<BankResponseDto>))]
-        public async Task<ActionResult<IEnumerable<BankResponseDto>>> Get()
+        public async Task<ActionResult<IEnumerable<BankResponseDto>>> BankGet()
         {
             this.Log.Start();
 
