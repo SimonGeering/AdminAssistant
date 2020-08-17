@@ -9,8 +9,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountRightSidebar
     {
         private readonly IAccountsStateStore accountsStateStore;
 
-        public BankAccountRightSidebarViewModel(IAccountsStateStore accountsStateStore, ILoggingProvider log, ILoadingSpinner loadingSpinner)
-            : base(log, loadingSpinner)
+        public BankAccountRightSidebarViewModel(IAccountsStateStore accountsStateStore, ILoggingProvider log)
+            : base(log)
         {
             this.accountsStateStore = accountsStateStore;
         }

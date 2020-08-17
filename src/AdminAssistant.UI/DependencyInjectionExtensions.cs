@@ -45,8 +45,6 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.AddTransient<IAppService, AppService>();
             services.AddScoped<IAppStateStore, AppStateStore>();
-
-            services.AddTransient<ILoadingSpinner, LoadingSpinner>();
         }
     }
 }

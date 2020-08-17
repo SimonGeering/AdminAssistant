@@ -17,8 +17,8 @@ namespace AdminAssistant.UI.Shared.Sidebar
         private readonly ModeSelectionStateSettings contractedModeSelectionDropDownState;
         private readonly ModeSelectionStateSettings expandedModeSelectionDropDownState;
 
-        public SidebarViewModel(IAppStateStore appStateStore, IAppService appService, ILoggingProvider log, ILoadingSpinner loadingSpinner)
-            : base(log, loadingSpinner)
+        public SidebarViewModel(IAppStateStore appStateStore, IAppService appService, ILoggingProvider log)
+            : base(log)
         {
             this.appStateStore = appStateStore;
             this.appService = appService;

@@ -8,8 +8,7 @@ namespace AdminAssistant.UI.Shared.Header
     {
         private readonly IAppStateStore appStateStore;
 
-        public HeaderViewModel(IAppStateStore appStateStore, ILoggingProvider log, ILoadingSpinner loadingSpinner)
-            : base(log, loadingSpinner)
+        public HeaderViewModel(IAppStateStore appStateStore, ILoggingProvider log) : base(log)
         {
             this.appStateStore = appStateStore;
             

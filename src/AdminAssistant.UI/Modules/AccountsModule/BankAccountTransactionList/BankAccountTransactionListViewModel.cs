@@ -8,8 +8,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountTransactionList
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class BankAccountTransactionListViewModel : ViewModelBase, IBankAccountTransactionListViewModel
     {
-        public BankAccountTransactionListViewModel(ILoggingProvider log, ILoadingSpinner loadingSpinner)
-            : base(log, loadingSpinner)
+        public BankAccountTransactionListViewModel(ILoggingProvider log)
+            : base(log)
         {
 
         }

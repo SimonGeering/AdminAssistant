@@ -26,32 +26,26 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 
         public BankAccountEditDialogViewModel(
             ILoggingProvider log,
-            ILoadingSpinner loadingSpinner,
             IAccountsStateStore accountsStateStore,
             IBankAccountValidator bankAccountValidator,            
             IAccountsService accountsService,
             ICoreService coreService)
-            : base(log, loadingSpinner)
+            : base(log)
         {
+            this.IsBusy = true;
+
             this.accountsStateStore = accountsStateStore;
             this.bankAccountValidator = bankAccountValidator;
             this.accountsService = accountsService;
             this.coreService = coreService;
 
-            this.accountsStateStore.EditAccount += (BankAccount bankAccount) =>
-            {
-                Guard.Against.Null(bankAccount, nameof(bankAccount));
-
-                this.bankAccount = bankAccount;
-
-                this.HeaderText = (this.bankAccount as IDatabasePersistable).IsNew ? IBankAccountEditDialogViewModel.NewBankAccountHeader : IBankAccountEditDialogViewModel.EditBankAccountHeader;
-                this.RefreshValidation();
-                this.ShowDialog = true;
-            };
-
+            this.accountsStateStore.EditAccount += this.OnEditAccount;
             this.Cancel = new AsyncCommand(execute: this.OnCancelButtonClick);
             this.Save = new AsyncCommand(execute: this.OnSaveButtonClick);
         }
+
+        public IAsyncCommand Cancel { get; }
+        public IAsyncCommand Save { get; }
 
         public string AccountName
         {
@@ -199,13 +193,9 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         public string AccountNameValidationMessage { get; private set; } = string.Empty;
         public string AccountNameValidationClass { get; private set; } = string.Empty;
 
-        public IAsyncCommand Cancel { get; }
-        public IAsyncCommand Save { get; }
-
         public void OnBankAccountTypeChanged() => this.RefreshValidation();
 
         public void OnCurrencyChanged() => this.RefreshValidation();
-
 
         private async Task OnCancelButtonClick()
         {
@@ -223,45 +213,69 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         {
             this.Log.Start();
 
-            this.LoadingSpinner.OnShowLoadingSpinner();
-
-            var canSave = this.RefreshValidation();
-
-            if (canSave)
+            try
             {
-                if ((this.bankAccount as IDatabasePersistable).IsNew)
+                this.IsBusy = true;
+
+                var canSave = this.RefreshValidation();
+
+                if (canSave)
                 {
-                    var savedBankAccountResult = await this.accountsService.CreateBankAccountAsync(this.bankAccount).ConfigureAwait(true);
-                    // TODO: Notify OnBankAccountCreated
-                    // this.accountsStateStore.OnBankAccountCreated(savedBankAccount);
+                    if ((this.bankAccount as IDatabasePersistable).IsNew)
+                    {
+                        var savedBankAccountResult = await this.accountsService.CreateBankAccountAsync(this.bankAccount).ConfigureAwait(true);
+                        // TODO: Notify OnBankAccountCreated
+                        // this.accountsStateStore.OnBankAccountCreated(savedBankAccount);
+                    }
+                    else
+                    {
+                        var savedBankAccountResult = await this.accountsService.UpdateBankAccountAsync(this.bankAccount).ConfigureAwait(true);
+                        // TODO: Notify OnBankAccountUpdated
+                        // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
+                    }
+                    this.ShowDialog = false;
                 }
-                else
-                {
-                    var savedBankAccountResult = await this.accountsService.UpdateBankAccountAsync(this.bankAccount).ConfigureAwait(true);
-                    // TODO: Notify OnBankAccountUpdated
-                    // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
-                }
-                this.ShowDialog = false;
             }
-            this.LoadingSpinner.OnHideLoadingSpinner();
+            finally
+            {
+                this.IsBusy = false;
+            }
             this.Log.Finish();
         }
 
-        public override async Task OnInitializedAsync()
+        public override async Task OnLoadedAsync()
         {
             this.Log.Start();
-            this.LoadingSpinner.OnShowLoadingSpinner();
 
-            var bankAccountTypes = await this.accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(true);
-            bankAccountTypes.ForEach(item => this.BankAccountTypes.Add(item));
+            try
+            {
+                this.IsBusy = true;
 
-            var currencies = await this.coreService.GetCurrencyListAsync().ConfigureAwait(true);
-            currencies.ForEach(item => this.Currencies.Add(item));
+                var bankAccountTypes = await this.accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(true);
+                bankAccountTypes.ForEach(item => this.BankAccountTypes.Add(item));
 
-            this.LoadingSpinner.OnHideLoadingSpinner();
+                var currencies = await this.coreService.GetCurrencyListAsync().ConfigureAwait(true);
+                currencies.ForEach(item => this.Currencies.Add(item));
 
-            await base.OnInitializedAsync().ConfigureAwait(true);
+                await base.OnLoadedAsync().ConfigureAwait(true);
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
+
             this.Log.Finish();
+        }
+
+        private void OnEditAccount(BankAccount bankAccount)
+        {
+            Guard.Against.Null(bankAccount, nameof(bankAccount));
+
+            this.bankAccount = bankAccount;
+
+            this.HeaderText = (this.bankAccount as IDatabasePersistable).IsNew ? IBankAccountEditDialogViewModel.NewBankAccountHeader : IBankAccountEditDialogViewModel.EditBankAccountHeader;
+            this.RefreshValidation();
+            this.ShowDialog = true;
         }
 
         private bool RefreshValidation()
