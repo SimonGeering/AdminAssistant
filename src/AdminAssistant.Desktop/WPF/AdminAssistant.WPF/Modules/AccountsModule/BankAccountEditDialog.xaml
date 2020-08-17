@@ -7,6 +7,7 @@
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   d:DataContext="{d:DesignInstance Type=vm:BankAccountEditDialogDesignTimeViewModel, IsDesignTimeCreatable=True}"
   xmlns:sf="http://schemas.syncfusion.com/wpf"
+  xmlns:sfBusy="clr-namespace:Syncfusion.Windows.Controls.Notification;assembly=Syncfusion.SfBusyIndicator.WPF"
   xmlns:sfskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
   sfskin:SfSkinManager.VisualStyle="Office2019Black"  
   mc:Ignorable="d"
@@ -14,7 +15,7 @@
   Title="{Binding HeaderText}"
   Height="190" Width="600"
   MinHeight="190" MinWidth="600">
-  
+
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="16"/>
@@ -44,6 +45,8 @@
       <ColumnDefinition Width="16"/>
     </Grid.ColumnDefinitions>
 
+    <sfBusy:SfBusyIndicator IsBusy="{Binding IsBusy}" VerticalAlignment="Center" AnimationType="SlicedCircle" />
+
     <Label Grid.Row="1" Grid.Column="1" Content="Account name" />
     <sf:SfTextBoxExt Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6" Text="{Binding AccountName}" VerticalContentAlignment="Center" />
     <CheckBox Grid.Row="1" Grid.Column="10"  Content="On budget" VerticalAlignment="Center" />
@@ -61,8 +64,8 @@
     <Line Grid.Row="8" Height="10" Grid.Column="0" Grid.ColumnSpan="5" />
 
     <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="10" Orientation="Horizontal" HorizontalAlignment="Right">
-      <Button Content="Cancel" Margin="0,0,8,0" Padding="8,4,8,4" />
-      <Button Content="Save" Padding="8,4,8,4" />
+      <Button Command="{Binding Cancel}" Content="Cancel" Margin="0,0,8,0" Padding="8,4,8,4" />
+      <Button Command="{Binding Save}" Content="Save" Padding="8,4,8,4" />
     </StackPanel>
   </Grid>
 </sf:ChromelessWindow>

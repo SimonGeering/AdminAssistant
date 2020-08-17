@@ -1,7 +1,5 @@
 using System;
 using System.ComponentModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AsyncAwaitBestPractices.MVVM;
 
