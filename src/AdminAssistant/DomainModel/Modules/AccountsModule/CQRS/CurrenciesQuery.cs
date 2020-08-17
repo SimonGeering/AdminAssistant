@@ -26,13 +26,11 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
             public override async Task<Result<IEnumerable<Currency>>> Handle(CurrenciesQuery request, CancellationToken cancellationToken)
             {
-                this.Log.Start();
-
                 var result = await currencyRepository.GetListAsync().ConfigureAwait(false);
 
                 Trace.Assert(result.Count > 0, "Currency list was not populated.");
 
-                return this.Log.Finish(Result<IEnumerable<Currency>>.Success(result));
+                return Result<IEnumerable<Currency>>.Success(result);
             }
         }
     }

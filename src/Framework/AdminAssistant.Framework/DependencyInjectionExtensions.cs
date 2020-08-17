@@ -1,4 +1,6 @@
+using AdminAssistant.Framework.MediatR;
 using AdminAssistant.Framework.Providers;
+using MediatR;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -14,6 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddServerFrameworkServices(this IServiceCollection services)
         {
             services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>)); // Use typeof because <,>
 
             AddFrameworkServices(services);
         }

@@ -24,13 +24,11 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
             public override async Task<Result<IEnumerable<BankAccountType>>> Handle(BankAccountTypesQuery request, CancellationToken cancellationToken)
             {
-                this.Log.Start();
-
                 var result = await bankAccountTypeRepository.GetListAsync().ConfigureAwait(false);
 
                 Trace.Assert(result.Count > 0, "BankAccountType list was not populated.");
 
-                return this.Log.Finish(Result<IEnumerable<BankAccountType>>.Success(result));
+                return Result<IEnumerable<BankAccountType>>.Success(result);
             }
         }
     }

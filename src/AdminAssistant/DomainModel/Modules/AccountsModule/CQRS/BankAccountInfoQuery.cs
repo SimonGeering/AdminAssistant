@@ -29,11 +29,9 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
             public override async Task<Result<IEnumerable<BankAccountInfo>>> Handle(BankAccountInfoQuery request, CancellationToken cancellationToken)
             {
-                this.Log.Start();
-
                 // TODO: implement owned entities - pass in request.OwnerID
                 var bankAccountInfoList = await bankAccountInfoRepository.GetListAsync().ConfigureAwait(false);
-                return this.Log.Finish(Result<IEnumerable<BankAccountInfo>>.Success(bankAccountInfoList));
+                return Result<IEnumerable<BankAccountInfo>>.Success(bankAccountInfoList);
             }
         }
     }

@@ -38,7 +38,7 @@ namespace AdminAssistant
 
                 try
                 {
-                    if (serviceDescriptor.ServiceType.FullName.StartsWith("MediatR", StringComparison.InvariantCulture))
+                    if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture))
                         continue;
 
                     var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
@@ -53,7 +53,7 @@ namespace AdminAssistant
             }
 
             // Assert
-            var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.StartsWith("MediatR", StringComparison.InvariantCulture) == false);
+            var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.Contains("MediatR", StringComparison.InvariantCulture) == false);
             result.Should().HaveCount(expectedInstanceCountLessExclusions);
             await Task.CompletedTask.ConfigureAwait(false);
         }
