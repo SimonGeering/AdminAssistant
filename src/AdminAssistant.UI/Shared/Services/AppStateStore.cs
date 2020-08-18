@@ -4,7 +4,7 @@ using AdminAssistant.UI.Shared;
 namespace AdminAssistant.UI.Services
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class AppStateStore : PropertyChangedNotificationBase, IAppStateStore
+    internal class AppStateStore : IAppStateStore
     {
         private readonly IAppService appService;
 

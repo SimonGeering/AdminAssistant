@@ -1,10 +1,9 @@
 using System;
-using System.ComponentModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
 namespace AdminAssistant.UI.Modules.AccountsModule
 {
-    public interface IAccountsStateStore : INotifyPropertyChanged
+    public interface IAccountsStateStore
     {
         event Action<BankAccount>? EditAccount;
         void OnEditAccount(BankAccount bankAccount);

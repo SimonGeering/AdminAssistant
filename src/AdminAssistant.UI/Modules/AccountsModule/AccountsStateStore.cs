@@ -4,7 +4,7 @@ using AdminAssistant.DomainModel.Modules.AccountsModule;
 namespace AdminAssistant.UI.Modules.AccountsModule
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class AccountsStateStore : PropertyChangedNotificationBase, IAccountsStateStore
+    internal class AccountsStateStore : IAccountsStateStore
     {
         public event Action<BankAccount>? CreateAccount;
         public event Action<BankAccount>? EditAccount;

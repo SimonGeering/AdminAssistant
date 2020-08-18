@@ -2,10 +2,11 @@ using System;
 using System.Threading.Tasks;
 using AdminAssistant.Framework.Providers;
 using AsyncAwaitBestPractices.MVVM;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
 
 namespace AdminAssistant.UI
 {
-    public abstract class ViewModelBase : PropertyChangedNotificationBase, IViewModelBase
+    public abstract class ViewModelBase : ObservableObject, IViewModelBase
     {
         [Obsolete("Replaced with OnLoadedAsync")]
         public virtual async Task OnInitializedAsync() => await OnLoadedAsync().ConfigureAwait(true);
@@ -13,16 +14,12 @@ namespace AdminAssistant.UI
         protected ILoggingProvider Log { get; }
 
         private bool isBusy;
-
         public virtual bool IsBusy
         {
-            get => isBusy; protected set
+            get => isBusy;
+            protected set
             {
-                if (isBusy == value)
-                    return;
-
-                isBusy = value;
-                this.OnPropertyChanged();
+                this.SetProperty(ref isBusy, value);
                 this.OnIsBusyChanged(isBusy);
             }
         }
@@ -43,11 +40,13 @@ namespace AdminAssistant.UI
         }
     }
 #if DEBUG
-    public abstract class DesignTimeViewModelBase : PropertyChangedNotificationBase, IViewModelBase
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA0414", Justification = "Designer Support")]
+    public abstract class DesignTimeViewModelBase : ObservableObject, IViewModelBase
     {
         public Task OnInitializedAsync() => throw new System.NotImplementedException();
 
         public bool IsBusy { get; }
+
         public event EventHandler<bool> IsBusyChanged = null!;
             
         public IAsyncCommand Loaded { get; } = null!;
