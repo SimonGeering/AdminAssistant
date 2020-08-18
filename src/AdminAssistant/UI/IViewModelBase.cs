@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using AsyncAwaitBestPractices.MVVM;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace AdminAssistant.UI
 {
@@ -11,6 +11,6 @@ namespace AdminAssistant.UI
         bool IsBusy { get; }
         event EventHandler<bool> IsBusyChanged;
 
-        IAsyncCommand Loaded { get; }
+        IAsyncRelayCommand Loaded { get; }
     }
 }

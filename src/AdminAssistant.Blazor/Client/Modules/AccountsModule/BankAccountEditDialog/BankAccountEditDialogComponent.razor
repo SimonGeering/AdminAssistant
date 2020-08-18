@@ -1,5 +1,6 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog.IBankAccountEditDialogViewModel>
 @using AdminAssistant.DomainModel.Modules.AccountsModule
+@using Microsoft.Toolkit.Mvvm.Input;
 
 <SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true" ShowCloseIcon="true">
   <DialogTemplates>
@@ -40,7 +41,7 @@
   </DialogTemplates>
   <DialogAnimationSettings Effect="@DialogEffect.Zoom" Duration=400 />
   <DialogButtons>
-    <DialogButton OnClick="@(_ => this.vm.Cancel.ExecuteAsync())" Disabled="@(!this.vm.Cancel.CanExecute(null))" Content="Discard" IconCss="fa fa-lg fa-trash-o" />
-    <DialogButton OnClick="@(_ => this.vm.Save.ExecuteAsync())" Disabled="@(!this.vm.Save.CanExecute(null))" Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true" />
+    <DialogButton OnClick="@(_ => this.vm.Cancel.ExecuteAsync(null))" Disabled="@(!this.vm.Cancel.CanExecute(null))" Content="Discard" IconCss="fa fa-lg fa-trash-o" />
+    <DialogButton OnClick="@(_ => this.vm.Save.ExecuteAsync(null))" Disabled="@(!this.vm.Save.CanExecute(null))" Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true" />
   </DialogButtons>
 </SfDialog>

@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using AdminAssistant.Framework.Providers;
-using AsyncAwaitBestPractices.MVVM;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace AdminAssistant.UI
 {
@@ -29,14 +29,14 @@ namespace AdminAssistant.UI
         protected void OnIsBusyChanged(bool isBusy) => this.IsBusyChanged?.Invoke(this, isBusy);
         
 
-        public IAsyncCommand Loaded { get; }
+        public IAsyncRelayCommand Loaded { get; }
 
         public virtual async Task OnLoadedAsync() => await Task.CompletedTask.ConfigureAwait(false);
 
         public ViewModelBase(ILoggingProvider log)
         {
             this.Log = log;
-            this.Loaded = new AsyncCommand(execute: this.OnLoadedAsync);
+            this.Loaded = new AsyncRelayCommand(execute: this.OnLoadedAsync);
         }
     }
 #if DEBUG
@@ -49,7 +49,7 @@ namespace AdminAssistant.UI
 
         public event EventHandler<bool> IsBusyChanged = null!;
             
-        public IAsyncCommand Loaded { get; } = null!;
+        public IAsyncRelayCommand Loaded { get; } = null!;
     }
 #endif // DEBUG
 }

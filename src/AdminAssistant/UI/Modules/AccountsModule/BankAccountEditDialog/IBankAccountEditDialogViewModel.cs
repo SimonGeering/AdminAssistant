@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AsyncAwaitBestPractices.MVVM;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
@@ -25,8 +25,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         BindingList<BankAccountType> BankAccountTypes { get; }
         BindingList<Currency> Currencies { get; }
 
-        IAsyncCommand Save { get; }
-        IAsyncCommand Cancel { get; }
+        IAsyncRelayCommand Save { get; }
+        IAsyncRelayCommand Cancel { get; }
 
         void OnAccountNameChanged(string accountName);
         string AccountNameValidationMessage { get; }

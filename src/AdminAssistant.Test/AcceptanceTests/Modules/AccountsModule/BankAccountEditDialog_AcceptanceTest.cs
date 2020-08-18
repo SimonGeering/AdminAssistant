@@ -65,7 +65,7 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             accountsStateStore.OnEditAccount(new BankAccount());
 
             // Act
-            await vm.Cancel.ExecuteAsync().ConfigureAwait(true);
+            await vm.Cancel.ExecuteAsync(null).ConfigureAwait(true);
 
             // Assert
             vm.ShowDialog.Should().BeFalse();
@@ -87,7 +87,7 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             accountsStateStore.OnEditAccount(new BankAccount());
 
             // Act
-            await vm.Cancel.ExecuteAsync().ConfigureAwait(true);
+            await vm.Cancel.ExecuteAsync(null).ConfigureAwait(true);
             
             // Assert
             //vm.AccountNameValidationMessage

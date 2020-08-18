@@ -7,10 +7,9 @@ using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Modules.CoreModule;
-using AdminAssistant.UI.Shared;
 using Ardalis.GuardClauses;
-using AsyncAwaitBestPractices.MVVM;
 using FluentValidation.Results;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
@@ -40,12 +39,12 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             this.coreService = coreService;
 
             this.accountsStateStore.EditAccount += this.OnEditAccount;
-            this.Cancel = new AsyncCommand(execute: this.OnCancelButtonClick);
-            this.Save = new AsyncCommand(execute: this.OnSaveButtonClick);
+            this.Cancel = new AsyncRelayCommand(execute: this.OnCancelButtonClick);
+            this.Save = new AsyncRelayCommand(execute: this.OnSaveButtonClick);
         }
 
-        public IAsyncCommand Cancel { get; }
-        public IAsyncCommand Save { get; }
+        public IAsyncRelayCommand Cancel { get; }
+        public IAsyncRelayCommand Save { get; }
 
         public string AccountName
         {
@@ -343,8 +342,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         public int CurrentBalance { get; private set; } = 0;
         public DateTime OpenedOn { get; set; } = DateTime.Today;
 
-        public IAsyncCommand Cancel { get; } = new AsyncCommand(() => Task.FromResult(false));
-        public IAsyncCommand Save { get; } = new AsyncCommand(() => Task.FromResult(false));
+        public IAsyncRelayCommand Cancel { get; } = new AsyncRelayCommand(() => Task.FromResult(false));
+        public IAsyncRelayCommand Save { get; } = new AsyncRelayCommand(() => Task.FromResult(false));
 
         public string HeaderText { get; private set; } = "Create Bank Account";
 
