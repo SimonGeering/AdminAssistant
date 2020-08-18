@@ -7,6 +7,7 @@ using AdminAssistant.UI.Modules.AccountsModule;
 using AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Toolkit.Mvvm.Messaging;
 using Xunit;
 using static AdminAssistant.TestConstants;
 
@@ -25,10 +26,10 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             var vm = this.Container.GetService<IBankAccountEditDialogViewModel>();
             await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var accountsStateStore = this.Container.GetService<IAccountsStateStore>();
+            var messenger = this.Container.GetService<IMessenger>();
 
             // Act
-            accountsStateStore.OnEditAccount(new BankAccount());
+            messenger.Send(new EditBankAccountMessage(new BankAccount()));
 
             // Assert
             vm.BankAccountID.Should().Be(Constants.NewRecordID);
@@ -61,8 +62,8 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             var vm = this.Container.GetService<IBankAccountEditDialogViewModel>();
             await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var accountsStateStore = this.Container.GetService<IAccountsStateStore>();
-            accountsStateStore.OnEditAccount(new BankAccount());
+            var messenger = this.Container.GetService<IMessenger>();
+            messenger.Send(new EditBankAccountMessage(new BankAccount()));
 
             // Act
             await vm.Cancel.ExecuteAsync(null).ConfigureAwait(true);
@@ -83,8 +84,8 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             var vm = this.Container.GetService<IBankAccountEditDialogViewModel>();
             await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var accountsStateStore = this.Container.GetService<IAccountsStateStore>();
-            accountsStateStore.OnEditAccount(new BankAccount());
+            var messenger = this.Container.GetService<IMessenger>();
+            messenger.Send(new EditBankAccountMessage(new BankAccount()));
 
             // Act
             await vm.Cancel.ExecuteAsync(null).ConfigureAwait(true);

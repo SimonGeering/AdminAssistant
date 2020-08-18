@@ -4,5 +4,5 @@
 
 <h3>BankAccountRightSidebar</h3>
 
-<SfButton ID="Accounts_AddAccount" @onclick="@this.vm.OnAddAccountButtonClick">Add Account</SfButton>
+<SfButton ID="Accounts_AddAccount" @onclick="@(_ => this.vm.AddBankAccount.Execute(null))">Add Account</SfButton>
 <BankAccountEditDialogComponent></BankAccountEditDialogComponent>

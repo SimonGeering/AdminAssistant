@@ -12,6 +12,7 @@ using AdminAssistant.UI.Shared.Sidebar;
 using AdminAssistant.UI.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using AutoMapper;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -25,6 +26,9 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static void AddAdminAssistantUI(this IServiceCollection services)
         {
+            // Add MVVM Toolkit registrations ...
+            services.AddSingleton<IMessenger, Messenger>();
+
             // Add Accounts UI ...
             services.AddTransient<IAccountsViewModel, AccountsViewModel>();
             services.AddTransient<IBankAccountBalanceListViewModel, BankAccountBalanceListViewModel>();
@@ -32,7 +36,6 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IBankAccountRightSidebarViewModel, BankAccountRightSidebarViewModel>();
             services.AddTransient<IBankAccountTransactionListViewModel, BankAccountTransactionListViewModel>();
             services.AddTransient<IAccountsService, AccountsService>();
-            services.AddScoped<IAccountsStateStore, AccountsStateStore>();
 
             // Add Core Services ...
             services.AddTransient<ICoreService, CoreService>();

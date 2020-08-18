@@ -2,10 +2,11 @@ using System;
 using System.ComponentModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
-    public interface IBankAccountEditDialogViewModel : IViewModelBase
+    public interface IBankAccountEditDialogViewModel : IViewModelBase, IRecipient<EditBankAccountMessage>
     {
         public const string NewBankAccountHeader = "New bank account";
         public const string EditBankAccountHeader = "Edit bank account";

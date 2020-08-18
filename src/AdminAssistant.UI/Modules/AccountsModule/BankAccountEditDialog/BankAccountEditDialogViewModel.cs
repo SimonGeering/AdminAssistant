@@ -7,40 +7,46 @@ using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Modules.CoreModule;
-using Ardalis.GuardClauses;
 using FluentValidation.Results;
 using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel
     {
-        private readonly IAccountsStateStore accountsStateStore;
         private readonly IBankAccountValidator bankAccountValidator;
         private readonly IAccountsService accountsService;
         private readonly ICoreService coreService;
+        private readonly IMessenger messenger;
 
         private BankAccount bankAccount = new BankAccount();
 
         public BankAccountEditDialogViewModel(
             ILoggingProvider log,
-            IAccountsStateStore accountsStateStore,
             IBankAccountValidator bankAccountValidator,            
             IAccountsService accountsService,
-            ICoreService coreService)
+            ICoreService coreService,
+            IMessenger messenger)
             : base(log)
         {
             this.IsBusy = true;
 
-            this.accountsStateStore = accountsStateStore;
             this.bankAccountValidator = bankAccountValidator;
             this.accountsService = accountsService;
             this.coreService = coreService;
+            this.messenger = messenger;
 
-            this.accountsStateStore.EditAccount += this.OnEditAccount;
+            this.messenger.Register(this);
+
             this.Cancel = new AsyncRelayCommand(execute: this.OnCancelButtonClick);
             this.Save = new AsyncRelayCommand(execute: this.OnSaveButtonClick);
+        }
+
+        ~BankAccountEditDialogViewModel()
+        {
+            this.messenger.Unregister<EditBankAccountMessage>(this);
         }
 
         public IAsyncRelayCommand Cancel { get; }
@@ -54,6 +60,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
                 if (this.bankAccount.AccountName.Equals(value, StringComparison.InvariantCulture))
                     return;
 
+                // TODO: Switch to call base helper extension.
+                // TODO: Hook Property changed and call refresh validation once for all properties.
                 this.bankAccount.AccountName = value;
                 this.RefreshValidation();
                 this.OnPropertyChanged();
@@ -266,11 +274,9 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             this.Log.Finish();
         }
 
-        private void OnEditAccount(BankAccount bankAccount)
+        public void Receive(EditBankAccountMessage message)
         {
-            Guard.Against.Null(bankAccount, nameof(bankAccount));
-
-            this.bankAccount = bankAccount;
+            this.bankAccount = message.BankAccount;
 
             this.HeaderText = (this.bankAccount as IDatabasePersistable).IsNew ? IBankAccountEditDialogViewModel.NewBankAccountHeader : IBankAccountEditDialogViewModel.EditBankAccountHeader;
             this.RefreshValidation();
@@ -362,6 +368,8 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
         public void OnCancelButtonClick() => throw new System.NotImplementedException();
         public void OnCurrencyChanged() => throw new System.NotImplementedException();
         public Task OnSaveButtonClick() => throw new System.NotImplementedException();
+
+        public void Receive(EditBankAccountMessage message) => throw new NotImplementedException();
     }
 #endif // DEBUG
 }
