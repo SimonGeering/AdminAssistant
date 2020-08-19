@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using AdminAssistant.UI.Modules.BudgetModule;
 
 namespace AdminAssistant.WPF.Modules.BudgetModule
 {
-    /// <summary>
-    /// Interaction logic for BudgetComponent.xaml
-    /// </summary>
     public partial class BudgetComponent : UserControl
     {
         public BudgetComponent()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+        }
+
+        public BudgetComponent(IBudgetViewModel budgetViewModel)
+            : this()
+        {
+            this.DataContext = budgetViewModel;
         }
     }
 }

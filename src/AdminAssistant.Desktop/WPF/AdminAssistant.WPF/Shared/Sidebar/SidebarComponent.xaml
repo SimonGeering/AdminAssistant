@@ -1,0 +1,27 @@
+<UserControl x:Class="AdminAssistant.WPF.Shared.Sidebar.SidebarComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdminAssistant.WPF.Shared.Sidebar"
+             Background="Yellow"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+  <Grid>
+    <Label Content="Side Bar" />
+    <StackPanel>
+      <Button Content="Dashboard" />
+      <Button Content="Mail" />
+      <Button Content="Calendar" />
+      <Button Content="Contacts" />
+      <Button Content="Tasks" />
+      <Button Content="Accounts" />
+      <Button Content="Assets" />
+      <Button Content="Billing" />
+      <Button Content="Budget" />
+      <Button Content="Documents" />
+      <Button Content="Reports" />
+      <Button Content="Admin" />
+    </StackPanel>
+  </Grid>
+</UserControl>

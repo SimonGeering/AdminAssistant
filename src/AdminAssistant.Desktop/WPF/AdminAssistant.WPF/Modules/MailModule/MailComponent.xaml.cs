@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using AdminAssistant.UI.Modules.MailModule;
 
 namespace AdminAssistant.WPF.Modules.MailModule
 {
-    /// <summary>
-    /// Interaction logic for MailComponent.xaml
-    /// </summary>
     public partial class MailComponent : UserControl
     {
         public MailComponent()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+        }
+
+        public MailComponent(IMailViewModel mailViewModel)
+            : this()
+        {
+            this.DataContext = mailViewModel;
         }
     }
 }
