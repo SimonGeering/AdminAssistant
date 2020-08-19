@@ -38,16 +38,13 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
             this.coreService = coreService;
             this.messenger = messenger;
 
-            this.messenger.Register(this);
+            this.messenger.RegisterAll(this);
 
             this.Cancel = new AsyncRelayCommand(execute: this.OnCancelButtonClick);
             this.Save = new AsyncRelayCommand(execute: this.OnSaveButtonClick);
         }
 
-        ~BankAccountEditDialogViewModel()
-        {
-            this.messenger.Unregister<EditBankAccountMessage>(this);
-        }
+        ~BankAccountEditDialogViewModel() => this.messenger.UnregisterAll(this);
 
         public IAsyncRelayCommand Cancel { get; }
         public IAsyncRelayCommand Save { get; }

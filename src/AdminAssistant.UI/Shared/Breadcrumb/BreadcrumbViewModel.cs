@@ -1,34 +1,41 @@
 using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Services;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace AdminAssistant.UI.Shared.Breadcrumb
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class BreadcrumbViewModel : ViewModelBase, IBreadcrumbViewModel
     {
-        private readonly IAppStateStore appStateStore;
+        private readonly IMessenger messenger;
 
-        public BreadcrumbViewModel(IAppStateStore appStateStore, ILoggingProvider log) : base(log)
+        public BreadcrumbViewModel(IMessenger messenger, IAppService appService, ILoggingProvider log)
+            : base(log)
         {
-            this.appStateStore = appStateStore;
+            this.messenger = messenger;
+            this.messenger.RegisterAll(this);
 
-            this.ActiveMode = this.appStateStore.ActiveMode;
-            this.ActiveModule = this.appStateStore.ActiveModule;
-
-            this.appStateStore.ActiveModeChanged += () =>
-            {
-                this.ActiveMode = this.appStateStore.ActiveMode;
-                this.OnPropertyChanged();
-            };
-            this.appStateStore.ActiveModuleChanged += () =>
-            {
-                this.ActiveModule = this.appStateStore.ActiveModule;
-                this.OnPropertyChanged();
-            };
+            this.activeMode = appService.GetDefaultMode();
+            this.activeModule = appService.GetDefaultModule();
         }
 
-        public ModeSelectionItem ActiveMode { get; private set; }
+        ~BreadcrumbViewModel() => this.messenger.UnregisterAll(this);
 
-        public ModuleSelectionItem ActiveModule { get; private set; }
+        private ModeSelectionItem activeMode;
+        public ModeSelectionItem ActiveMode
+        {
+            get => activeMode;
+            private set => this.SetProperty(ref activeMode, value);
+        }
+
+        private ModuleSelectionItem activeModule;
+        public ModuleSelectionItem ActiveModule
+        {
+            get => activeModule;
+            private set => this.SetProperty(ref activeModule, value);
+        }
+
+        public void Receive(ModeSelectionChangedMessage message) => this.ActiveMode = message.Value;
+        public void Receive(ModuleSelectionChangedMessage message) => this.ActiveModule = message.Value;
     }
 }
