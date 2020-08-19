@@ -34,5 +34,8 @@ namespace AdminAssistant.UI.Shared.Header
             get => activeModule;
             private set => this.SetProperty(ref activeModule, value);
         }
+
+        public void Receive(ModeSelectionChangedMessage message) => this.ActiveMode = message.Value;
+        public void Receive(ModuleSelectionChangedMessage message) => this.ActiveModule = message.Value;
     }
 }
