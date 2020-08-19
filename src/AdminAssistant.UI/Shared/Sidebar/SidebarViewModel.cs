@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Services;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace AdminAssistant.UI.Shared.Sidebar
 {
@@ -10,17 +11,17 @@ namespace AdminAssistant.UI.Shared.Sidebar
         private const string SelectedModuleStyle = "active";
 
         private readonly IAppService appService;
-        private readonly IAppStateStore appStateStore;
+        private readonly IMessenger messenger;
 
         private readonly SidebarStateSettings contractedSidebarState;
         private readonly SidebarStateSettings expandedSidebarState;
         private readonly ModeSelectionStateSettings contractedModeSelectionDropDownState;
         private readonly ModeSelectionStateSettings expandedModeSelectionDropDownState;
 
-        public SidebarViewModel(IAppStateStore appStateStore, IAppService appService, ILoggingProvider log)
+        public SidebarViewModel(IMessenger messenger, IAppService appService, ILoggingProvider log)
             : base(log)
         {
-            this.appStateStore = appStateStore;
+            this.messenger = messenger;
             this.appService = appService;
 
             this.contractedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Contracted, "fa fa-lg fa-angle-double-right", "cl-navbar-contracted", false);
@@ -86,7 +87,7 @@ namespace AdminAssistant.UI.Shared.Sidebar
             this.ActiveMode = selectedMode;
             this.ModeSelectionDropDown = this.contractedModeSelectionDropDownState;
 
-            this.appStateStore.OnActiveModeChanged(this.ActiveMode);
+            this.messenger.Send(new ModeSelectionChangedMessage(this.ActiveMode));
         }
 
         public void OnSelectedModuleChanged(ModuleSelectionItem selectedModule)
@@ -95,7 +96,7 @@ namespace AdminAssistant.UI.Shared.Sidebar
             this.Modules.ForEach(x => x.StyleClass = string.Empty);
             this.ActiveModule.StyleClass = SelectedModuleStyle;
 
-            this.appStateStore.OnActiveModuleChanged(this.ActiveModule);
+            this.messenger.Send(new ModuleSelectionChangedMessage(this.ActiveModule));
         }
     }
 }
