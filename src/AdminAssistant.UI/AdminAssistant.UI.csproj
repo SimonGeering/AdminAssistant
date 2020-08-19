@@ -45,17 +45,4 @@
     <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Modules\AssetRegisterModule\" />
-    <Folder Include="Modules\BillingModule\" />
-    <Folder Include="Modules\BudgetModule\" />
-    <Folder Include="Modules\CalendarModule\" />
-    <Folder Include="Modules\ContactsModule\" />
-    <Folder Include="Modules\DashboardModule\" />
-    <Folder Include="Modules\DocumentsModule\" />
-    <Folder Include="Modules\MailModule\" />
-    <Folder Include="Modules\TasksModule\" />
-    <Folder Include="Modules\ReportingModule\" />
-  </ItemGroup>
-
 </Project>

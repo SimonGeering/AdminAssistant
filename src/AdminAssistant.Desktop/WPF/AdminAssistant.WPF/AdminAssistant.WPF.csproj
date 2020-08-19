@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.0.1" />
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.4.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.6" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.6" />
     <PackageReference Include="Syncfusion.SfBusyIndicator.WPF" Version="18.2.0.45" />
@@ -33,16 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\AssetRegisterModule\" />
-    <Folder Include="Modules\BillingModule\" />
-    <Folder Include="Modules\BudgetModule\" />
-    <Folder Include="Modules\CalendarModule\" />
-    <Folder Include="Modules\ContactsModule\" />
-    <Folder Include="Modules\DashboardModule\" />
-    <Folder Include="Modules\DocumentsModule\" />
-    <Folder Include="Modules\MailModule\" />
-    <Folder Include="Modules\TasksModule\" />
-    <Folder Include="Modules\ReportsModule\" />
     <Folder Include="Shared\Breadcrumb\" />
     <Folder Include="Shared\Footer\" />
     <Folder Include="Shared\Header\" />

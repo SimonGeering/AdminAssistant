@@ -3,14 +3,14 @@ using System.Windows.Controls;
 
 namespace AdminAssistant.WPF.Modules.AccountsModule
 {
-    public partial class Accounts : UserControl
+    public partial class AccountsComponent : UserControl
     {
-        public Accounts()
+        public AccountsComponent()
         {
             this.InitializeComponent();
         }
 
-        public Accounts(IAccountsViewModel accountsViewModel)
+        public AccountsComponent(IAccountsViewModel accountsViewModel)
             : this()
         {    
             this.DataContext = accountsViewModel;

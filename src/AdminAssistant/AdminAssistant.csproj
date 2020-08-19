@@ -60,16 +60,6 @@
     <Folder Include="DomainModel\Modules\MailModule\" />
     <Folder Include="DomainModel\Modules\TasksModule\" />
     <Folder Include="DomainModel\Modules\ReportsModule\" />
-    <Folder Include="UI\Modules\AssetRegisterModule\" />
-    <Folder Include="UI\Modules\BillingModule\" />
-    <Folder Include="UI\Modules\BudgetModule\" />
-    <Folder Include="UI\Modules\CalendarModule\" />
-    <Folder Include="UI\Modules\ContactsModule\" />
-    <Folder Include="UI\Modules\DashboardModule\" />
-    <Folder Include="UI\Modules\DocumentsModule\" />
-    <Folder Include="UI\Modules\MailModule\" />
-    <Folder Include="UI\Modules\TasksModule\" />
-    <Folder Include="UI\Modules\ReportsModule\" />
     <Folder Include="UI\Shared\Services\" />
   </ItemGroup>
 

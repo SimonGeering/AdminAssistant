@@ -55,12 +55,7 @@ namespace AdminAssistant.WPF
 
             using (var scope = host.Services.CreateScope())
             {
-#if DEBUG
-                // TODO: Switch back to main window.
-                App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<BankAccountEditDialog>();
-#else
                 App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
-#endif
                 App.Current.MainWindow.Show();
             }
         }

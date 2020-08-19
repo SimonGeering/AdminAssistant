@@ -6,6 +6,7 @@
   xmlns:vm="clr-namespace:AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog;assembly=AdminAssistant.UI"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   d:DataContext="{d:DesignInstance Type=vm:BankAccountEditDialogDesignTimeViewModel, IsDesignTimeCreatable=True}"
+  xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
   xmlns:sf="http://schemas.syncfusion.com/wpf"
   xmlns:sfBusy="clr-namespace:Syncfusion.Windows.Controls.Notification;assembly=Syncfusion.SfBusyIndicator.WPF"
   xmlns:sfskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
@@ -65,7 +66,12 @@
 
     <StackPanel Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="10" Orientation="Horizontal" HorizontalAlignment="Right">
       <Button Command="{Binding Cancel}" Content="Cancel" Margin="0,0,8,0" Padding="8,4,8,4" />
-      <Button Command="{Binding Save}" Content="Save" Padding="8,4,8,4" />
+      <Button Command="{Binding Save}" Padding="8,4,8,4">
+        <StackPanel Orientation="Horizontal">
+          <iconPacks:PackIconFontAwesome Kind="SaveRegular"/>
+          <TextBlock Padding="4,0,0,0" VerticalAlignment="Center">Save</TextBlock>
+        </StackPanel>
+      </Button>
     </StackPanel>
   </Grid>
 </sf:ChromelessWindow>

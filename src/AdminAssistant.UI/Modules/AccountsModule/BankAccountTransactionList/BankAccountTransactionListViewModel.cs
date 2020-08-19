@@ -1,7 +1,6 @@
-using System.Collections.Generic;
+using System.ComponentModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.Providers;
-using AdminAssistant.UI.Shared;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountTransactionList
 {
@@ -15,6 +14,6 @@ namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountTransactionList
         }
         public bool ShowAccountEditDialog { get; } = false;
         public BankAccount? SelectedBankAccount { get; }
-        public IEnumerable<BankAccountTransaction> Transactions { get; } = new List<BankAccountTransaction>();
+        public BindingList<BankAccountTransaction> Transactions { get; } = new BindingList<BankAccountTransaction>();
     }
 }

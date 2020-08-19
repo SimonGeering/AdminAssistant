@@ -1,10 +1,10 @@
-using System.Collections.Generic;
+using System.ComponentModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
 namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountTransactionList
 {
     public interface IBankAccountTransactionListViewModel : IViewModelBase
     {
-        IEnumerable<BankAccountTransaction> Transactions { get; }
+        BindingList<BankAccountTransaction> Transactions { get; }
     }
 }
