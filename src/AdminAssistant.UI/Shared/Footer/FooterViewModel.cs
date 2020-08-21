@@ -7,9 +7,11 @@ namespace AdminAssistant.UI.Shared.Footer
     {
         public FooterViewModel(ILoggingProvider log) : base(log)
         {
-            this.Version = $" - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
+            log.Start();
+            this.FooterText = $"Admin Assistant - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
+            log.Finish();
         }
 
-        public string Version { get; }  
+        public string FooterText { get; }  
     }
 }

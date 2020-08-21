@@ -55,10 +55,16 @@ namespace AdminAssistant.WPF
 
             using (var scope = host.Services.CreateScope())
             {
+                App.Current.Resources.Add("ViewModelLocator", new ViewModelLocator(scope.ServiceProvider));
+#if DEBUG
+                // TODO: Switch back to main window.
+                App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<BankAccountEditDialog>();
+#else
                 App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
+#endif
                 App.Current.MainWindow.Show();
             }
-        }
+        }  
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {
