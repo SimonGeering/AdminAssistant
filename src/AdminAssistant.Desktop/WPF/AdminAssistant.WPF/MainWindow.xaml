@@ -8,7 +8,7 @@
         xmlns:breadcrumb="clr-namespace:AdminAssistant.WPF.Shared.Breadcrumb"
         xmlns:footer="clr-namespace:AdminAssistant.WPF.Shared.Footer"
         sfskin:SfSkinManager.VisualStyle="Office2019Black"
-        Title="Admin Assistant" Height="1280" Width="1024"
+        Title="Admin Assistant" Height="720" Width="1280"
         DataContext="{Binding MainWindowViewModel, Source={StaticResource ViewModelLocator}}">
 
   <DockPanel LastChildFill="True">

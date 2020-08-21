@@ -10,7 +10,6 @@ using AdminAssistant.UI.Modules.BillingModule;
 using AdminAssistant.UI.Modules.BudgetModule;
 using AdminAssistant.UI.Modules.CalendarModule;
 using AdminAssistant.UI.Modules.ContactsModule;
-using AdminAssistant.UI.Modules.CoreModule;
 using AdminAssistant.UI.Modules.DashboardModule;
 using AdminAssistant.UI.Modules.DocumentsModule;
 using AdminAssistant.UI.Modules.MailModule;
