@@ -1,4 +1,4 @@
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog;
+using AdminAssistant.UI.Modules.AccountsModule;
 
 namespace AdminAssistant.WPF.Modules.AccountsModule
 {

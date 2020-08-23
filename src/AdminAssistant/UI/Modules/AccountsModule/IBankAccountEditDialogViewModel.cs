@@ -4,7 +4,7 @@ using AdminAssistant.DomainModel.Modules.AccountsModule;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
-namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
+namespace AdminAssistant.UI.Modules.AccountsModule
 {
     public interface IBankAccountEditDialogViewModel : IViewModelBase, IRecipient<EditBankAccountMessage>
     {

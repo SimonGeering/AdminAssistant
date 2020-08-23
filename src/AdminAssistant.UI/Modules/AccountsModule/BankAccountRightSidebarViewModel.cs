@@ -1,10 +1,9 @@
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.Providers;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
-namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountRightSidebar
+namespace AdminAssistant.UI.Modules.AccountsModule
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class BankAccountRightSidebarViewModel : ViewModelBase, IBankAccountRightSidebarViewModel

@@ -11,7 +11,7 @@ using FluentValidation.Results;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
-namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
+namespace AdminAssistant.UI.Modules.AccountsModule
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel

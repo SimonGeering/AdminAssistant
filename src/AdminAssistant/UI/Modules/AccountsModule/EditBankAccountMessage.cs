@@ -1,5 +1,4 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-using Microsoft.Toolkit.Mvvm.Messaging.Messages;
 
 namespace AdminAssistant.UI.Modules.AccountsModule
 {

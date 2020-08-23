@@ -1,9 +1,5 @@
 using System;
 using AdminAssistant.UI.Modules.AccountsModule;
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountBalanceList;
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog;
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountRightSidebar;
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountTransactionList;
 using AdminAssistant.UI.Modules.AdminModule;
 using AdminAssistant.UI.Modules.AssetRegisterModule;
 using AdminAssistant.UI.Modules.BillingModule;

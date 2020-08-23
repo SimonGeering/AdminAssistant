@@ -1,10 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System;
 using System.Threading.Tasks;
 using AdminAssistant.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.UI.Modules.AccountsModule;
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Messaging;

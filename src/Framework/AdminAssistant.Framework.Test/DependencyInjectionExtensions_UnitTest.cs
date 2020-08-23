@@ -1,7 +1,9 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using System;
 using System.Collections.Generic;
-using System.Net.Http;
+using System.Linq;
 using System.Threading.Tasks;
+using Ardalis.GuardClauses;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
@@ -53,14 +55,29 @@ namespace AdminAssistant.Framework
 
             foreach (var serviceDescriptor in services)
             {
-                var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
-                instance.Should().NotBeNull();
-                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
-                result.Add(instance);
+                Guard.Against.Null(serviceDescriptor.ServiceType, "serviceDescriptor.ServiceType");
+                Guard.Against.NullOrEmpty(serviceDescriptor.ServiceType.FullName, "serviceDescriptor.ServiceType.FullName");
+
+                try
+                {
+                    if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture))
+                        continue;
+
+
+                    var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
+                    instance.Should().NotBeNull();
+                    instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                    result.Add(instance);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Unable to instantiate '{serviceDescriptor.ServiceType.FullName}'", ex);
+                }
             }
 
             // Assert
-            result.Should().HaveCount(services.Count);
+            var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.Contains("MediatR", StringComparison.InvariantCulture) == false);
+            result.Should().HaveCount(expectedInstanceCountLessExclusions);
             await Task.CompletedTask.ConfigureAwait(false);
         }
     }
