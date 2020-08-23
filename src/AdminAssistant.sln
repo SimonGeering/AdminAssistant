@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Clien
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Server", "AdminAssistant.Blazor\Server\AdminAssistant.Blazor.Server.csproj", "{32D85134-80F4-49D2-929E-8204E772360C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.DAL", "AdminAssistant.DAL\AdminAssistant.DAL.csproj", "{2A29E83F-8B0A-4194-8A43-372A6CB89265}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Test", "AdminAssistant.Test\AdminAssistant.Test.csproj", "{0ADEA26B-F913-4BC2-9860-3E9523C844ED}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.UI", "AdminAssistant.UI\AdminAssistant.UI.csproj", "{9E39B9F2-0A2E-4423-A4D8-19D6422AC859}"
@@ -55,6 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{11AEA9A6-3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Test", "AdminAssistant.Blazor\Test\AdminAssistant.Blazor.Test.csproj", "{C3175AC6-F3FE-495B-B534-34A440060A90}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Infra", "AdminAssistant.Infra\AdminAssistant.Infra.csproj", "{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,13 +77,6 @@ Global
 		{32D85134-80F4-49D2-929E-8204E772360C}.Release|Any CPU.ActiveCfg = Release|x64
 		{32D85134-80F4-49D2-929E-8204E772360C}.Release|x64.ActiveCfg = Release|x64
 		{32D85134-80F4-49D2-929E-8204E772360C}.Release|x64.Build.0 = Release|x64
-		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Debug|Any CPU.Build.0 = Debug|x64
-		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Debug|x64.ActiveCfg = Debug|x64
-		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Debug|x64.Build.0 = Debug|x64
-		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Release|Any CPU.ActiveCfg = Release|x64
-		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Release|x64.ActiveCfg = Release|x64
-		{2A29E83F-8B0A-4194-8A43-372A6CB89265}.Release|x64.Build.0 = Release|x64
 		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Debug|Any CPU.Build.0 = Debug|x64
 		{0ADEA26B-F913-4BC2-9860-3E9523C844ED}.Debug|x64.ActiveCfg = Debug|x64
@@ -144,6 +137,12 @@ Global
 		{C3175AC6-F3FE-495B-B534-34A440060A90}.Release|Any CPU.ActiveCfg = Release|x64
 		{C3175AC6-F3FE-495B-B534-34A440060A90}.Release|x64.ActiveCfg = Release|x64
 		{C3175AC6-F3FE-495B-B534-34A440060A90}.Release|x64.Build.0 = Release|x64
+		{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}.Debug|x64.ActiveCfg = Debug|x64
+		{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}.Debug|x64.Build.0 = Debug|x64
+		{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}.Release|Any CPU.ActiveCfg = Release|x64
+		{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}.Release|x64.ActiveCfg = Release|x64
+		{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
