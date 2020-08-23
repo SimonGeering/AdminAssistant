@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using AdminAssistant.Framework.Providers;
 using AdminAssistant.UI.Services;
-using AdminAssistant.UI.Shared.Sidebar;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace AdminAssistant.UI.Shared

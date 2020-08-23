@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using AdminAssistant.UI.Shared.Sidebar;
 
 namespace AdminAssistant.UI.Shared
 {
