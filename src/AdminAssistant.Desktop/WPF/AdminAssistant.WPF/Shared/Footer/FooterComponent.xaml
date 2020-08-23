@@ -1,9 +1,0 @@
-<UserControl x:Class="AdminAssistant.WPF.Shared.Footer.FooterComponent"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             DataContext="{Binding FooterViewModel, Source={StaticResource ViewModelLocator}}">
-  
-  <DockPanel LastChildFill="True">
-    <Label Height="auto" Content="{Binding FooterText}" HorizontalAlignment="Center" />
-  </DockPanel>
-</UserControl>

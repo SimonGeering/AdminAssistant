@@ -17,10 +17,6 @@ using AdminAssistant.UI.Modules.ReportsModule;
 using AdminAssistant.UI.Modules.TasksModule;
 using AdminAssistant.UI.Services;
 using AdminAssistant.UI.Shared;
-using AdminAssistant.UI.Shared.Breadcrumb;
-using AdminAssistant.UI.Shared.Header;
-using AdminAssistant.UI.Shared.Footer;
-using AdminAssistant.UI.Shared.Sidebar;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using AutoMapper;
 using Microsoft.Toolkit.Mvvm.Messaging;
@@ -87,11 +83,6 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<ITasksViewModel, TasksViewModel>();
 
             // Add Shared UI ...
-            services.AddSingleton<IBreadcrumbViewModel, BreadcrumbViewModel>();
-            services.AddSingleton<IHeaderViewModel, HeaderViewModel>();
-            services.AddSingleton<IFooterViewModel, FooterViewModel>();
-            services.AddSingleton<ISidebarViewModel, SidebarViewModel>();
-
             services.AddTransient<IAppService, AppService>();
             services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
         }
