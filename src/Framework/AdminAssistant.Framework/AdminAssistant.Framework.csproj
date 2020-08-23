@@ -37,4 +37,8 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\AdminAssistant\AdminAssistant.csproj" />
+  </ItemGroup>
+
 </Project>
