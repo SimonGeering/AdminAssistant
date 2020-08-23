@@ -9,21 +9,25 @@
       <RowDefinition x:Name="overflow" Height="*" />
     </Grid.RowDefinitions>
 
-    <sfnav:SfTreeNavigator Grid.Row="0" Width="100">
+    <sfnav:SfTreeNavigator Grid.Row="0" Width="100" SelectionChanged="{Binding }}" ItemsSource="{Binding Modules}" >
       <sfnav:SfTreeNavigator.HeaderTemplate>
         <DataTemplate>
-          <ComboBox SelectedItem="Company" SelectedValue="Company">
+          <ComboBox ItemsSource="{Binding Path=Modes}" DisplayMemberPath="Label" SelectedValuePath="Label" SelectedValue="{Binding Path=ActiveMode}" />
+
+          <!--<ComboBox SelectedItem="Company" SelectedValue="Company">
             <ComboBoxItem>Company</ComboBoxItem>
             <ComboBoxItem>Personal</ComboBoxItem>
-          </ComboBox>
+          </ComboBox>-->
         </DataTemplate>
       </sfnav:SfTreeNavigator.HeaderTemplate>
-      <!--<sfnav:SfTreeNavigator.ItemTemplate>
-        <DataTemplate>
-          <TextBlock>Moo</TextBlock>
-        </DataTemplate>
-      </sfnav:SfTreeNavigator.ItemTemplate>-->
-      <sfnav:SfTreeNavigatorItem Header="Dashboard"/>
+      <sfnav:SfTreeNavigator.ItemTemplate>
+        <HierarchicalDataTemplate ItemsSource="{Binding Modules}">
+          <StackPanel Orientation="Horizontal">
+            <TextBlock Text="{Binding Label}" FontWeight="Bold" VerticalAlignment="Center" Margin="18 0 0 0"/>
+          </StackPanel>
+        </HierarchicalDataTemplate>
+      </sfnav:SfTreeNavigator.ItemTemplate>
+      <!--<sfnav:SfTreeNavigatorItem Header="Dashboard"/>
       <sfnav:SfTreeNavigatorItem Header="Mail"/>
       <sfnav:SfTreeNavigatorItem Header="Calendar"/>
       <sfnav:SfTreeNavigatorItem Header="Contacts"/>
@@ -34,7 +38,7 @@
       <sfnav:SfTreeNavigatorItem Header="Budget"/>
       <sfnav:SfTreeNavigatorItem Header="Documents"/>
       <sfnav:SfTreeNavigatorItem Header="Reports"/>
-      <sfnav:SfTreeNavigatorItem Header="Admin"/>
+      <sfnav:SfTreeNavigatorItem Header="Admin"/>-->
     </sfnav:SfTreeNavigator>
     
   </Grid>

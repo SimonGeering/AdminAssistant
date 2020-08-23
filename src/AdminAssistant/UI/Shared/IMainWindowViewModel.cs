@@ -4,6 +4,6 @@ namespace AdminAssistant.UI.Shared
 {
     public interface IMainWindowViewModel : IViewModelBase, IRecipient<ModuleSelectionChangedMessage>
     {
-        IViewModelBase SelectedViewModel { get; }
+        ModuleEnum SelectedModule { get; }
     }
 }

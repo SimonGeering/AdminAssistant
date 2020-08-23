@@ -7,16 +7,46 @@
         xmlns:sidebar="clr-namespace:AdminAssistant.WPF.Shared.Sidebar"
         xmlns:breadcrumb="clr-namespace:AdminAssistant.WPF.Shared.Breadcrumb"
         xmlns:footer="clr-namespace:AdminAssistant.WPF.Shared.Footer"
+        xmlns:dashboardModule="clr-namespace:AdminAssistant.WPF.Modules.DashboardModule"
+        xmlns:accountsModule="clr-namespace:AdminAssistant.WPF.Modules.AccountsModule"
+        xmlns:shared="clr-namespace:AdminAssistant.UI.Shared;assembly=AdminAssistant"
         sfskin:SfSkinManager.VisualStyle="Office2019Black"
         Title="Admin Assistant" Height="720" Width="1280"
         DataContext="{Binding MainWindowViewModel, Source={StaticResource ViewModelLocator}}">
+
+  <Window.Resources>
+
+    <DataTemplate x:Key="DashboardViewTemplate" DataType="{x:Type UserControl}">
+      <dashboardModule:DashboardComponent />
+    </DataTemplate>
+
+    <DataTemplate x:Key="AccountsViewTemplate" DataType="{x:Type UserControl}">
+      <accountsModule:AccountsComponent />
+    </DataTemplate>
+  </Window.Resources>
 
   <DockPanel LastChildFill="True">
     <header:HeaderComponent DockPanel.Dock="Top" />
     <footer:FooterComponent DockPanel.Dock="Bottom" />
     <sidebar:SidebarComponent DockPanel.Dock="Left" />
     <breadcrumb:BreadcrumbComponent DockPanel.Dock="Top" />
-    <ContentControl Content="{Binding SelectedViewModel}"/>
+    
+    <ContentControl Content="{Binding}">
+      <ContentControl.Style>
+        <Style TargetType="{x:Type ContentControl}">
+          <Setter Property="ContentTemplate" Value="{StaticResource DashboardViewTemplate}" />
+          <Style.Triggers>
+            <DataTrigger Binding="{Binding SelectedViewModel}" Value="ModuleEnum.Dashboard">
+              <Setter Property="ContentTemplate" Value="{StaticResource DashboardViewTemplate}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding SelectedViewModel}" Value="ModuleEnum.Accounts">
+              <Setter Property="ContentTemplate" Value="{StaticResource AccountsViewTemplate}" />
+            </DataTrigger>
+          </Style.Triggers>
+        </Style>
+      </ContentControl.Style>
+    </ContentControl>
+    <ContentControl x:Name="ContentPannel" Content="{Binding SelectedViewModel}" />
   </DockPanel>
   
 </sf:ChromelessWindow>

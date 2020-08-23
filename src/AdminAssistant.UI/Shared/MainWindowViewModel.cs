@@ -10,41 +10,23 @@ namespace AdminAssistant.UI.Shared
     {
         private readonly IMessenger messenger;
 
-        private readonly IAccountsViewModel accountsViewModel;
-        private readonly IDashboardViewModel dashboardViewModel;
-
-        public MainWindowViewModel(IMessenger messenger, ILoggingProvider loggerProvider, IAccountsViewModel accountsViewModel, IDashboardViewModel dashboardViewModel)
+        public MainWindowViewModel(IMessenger messenger, ILoggingProvider loggerProvider)
             : base(loggerProvider)
         {
             this.messenger = messenger;
             this.messenger.RegisterAll(this);
 
-            this.accountsViewModel = accountsViewModel;
-            this.dashboardViewModel = dashboardViewModel;
-
-            this.selectedViewModel = accountsViewModel;
+            this.SelectedModule = ModuleEnum.Dashboard;
         }
         ~MainWindowViewModel() => this.messenger.UnregisterAll(this);
 
-        private IViewModelBase selectedViewModel;
-        public IViewModelBase SelectedViewModel
+        private ModuleEnum selectedModule;
+        public ModuleEnum SelectedModule
         {
-            get => selectedViewModel;
-            private set => SetProperty(ref selectedViewModel, value);
+            get => selectedModule;
+            private set => SetProperty(ref selectedModule, value);
         }
 
-        public void Receive(ModuleSelectionChangedMessage message)
-        {
-            switch (message.Value.Module)
-            {
-                case ModuleEnum.Accounts:
-                    this.SelectedViewModel = this.accountsViewModel;
-                    break;
-
-                case ModuleEnum.Dashboard:
-                    this.SelectedViewModel = this.dashboardViewModel;
-                    break;
-            }
-        }
+        public void Receive(ModuleSelectionChangedMessage message) => this.SelectedModule = message.Value.Module;
     }
 }

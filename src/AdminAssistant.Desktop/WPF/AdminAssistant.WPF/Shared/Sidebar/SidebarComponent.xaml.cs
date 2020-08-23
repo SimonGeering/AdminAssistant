@@ -1,5 +1,4 @@
 using System.Windows.Controls;
-using AdminAssistant.UI.Shared.Sidebar;
 
 namespace AdminAssistant.WPF.Shared.Sidebar
 {
@@ -8,11 +7,6 @@ namespace AdminAssistant.WPF.Shared.Sidebar
         public SidebarComponent()
         {
             this.InitializeComponent();
-        }
-        public SidebarComponent(ISidebarViewModel sidebarViewModel)
-            : this()
-        {
-            this.DataContext = sidebarViewModel;
         }
     }
 }

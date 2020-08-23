@@ -44,10 +44,10 @@ namespace AdminAssistant.UI.Shared.Sidebar
         public ModeSelectionStateSettings ModeSelectionDropDown { get; private set; }
 
         public List<ModeSelectionItem> Modes { get; private set; }
-        public ModeSelectionItem ActiveMode { get; private set; }
+        public ModeSelectionItem ActiveMode { get; set; }
 
         public List<ModuleSelectionItem> Modules { get; private set; }
-        public ModuleSelectionItem ActiveModule { get; private set; }
+        public ModuleSelectionItem ActiveModule { get; set; }
 
         public void OnModeSelectionDropDownClick()
         {
