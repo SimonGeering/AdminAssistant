@@ -9,20 +9,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <DocumentationFile>AdminAssistant.DAL.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Infra.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>AdminAssistant.DAL.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Infra.docs.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="EntityFramework\Model\AssetRegister\IAssetRegisterSchema.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="AdminAssistant.Accounts.DAL.docs.xml" />
-    <None Remove="AdminAssistant.DAL.docs.xml" />
+    <None Remove="AdminAssistant.Infra.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,22 +41,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="EntityFramework\Model\Contacts\" />
-    <Folder Include="EntityFramework\Model\Core\" />
-    <Folder Include="EntityFramework\Model\Dashboard\" />
-    <Folder Include="EntityFramework\Model\Documents\" />
-    <Folder Include="EntityFramework\Model\Mail\" />
-    <Folder Include="EntityFramework\Model\Reports\" />
-    <Folder Include="Modules\AssetRegisterModule\" />
-    <Folder Include="Modules\BillingModule\" />
-    <Folder Include="Modules\BudgetingModule\" />
-    <Folder Include="Modules\CalendarModule\" />
-    <Folder Include="Modules\ContactsModule\" />
-    <Folder Include="Modules\DashboardModule\" />
-    <Folder Include="Modules\DocumentsModule\" />
-    <Folder Include="Modules\MailModule\" />
-    <Folder Include="Modules\TasksModule\" />
-    <Folder Include="Modules\ReportsModule\" />
+    <Folder Include="DAL\EntityFramework\Model\Contacts\" />
+    <Folder Include="DAL\EntityFramework\Model\Core\" />
+    <Folder Include="DAL\EntityFramework\Model\Dashboard\" />
+    <Folder Include="DAL\EntityFramework\Model\Documents\" />
+    <Folder Include="DAL\EntityFramework\Model\Mail\" />
+    <Folder Include="DAL\EntityFramework\Model\Reports\" />
+    <Folder Include="DAL\Modules\AssetRegisterModule\" />
+    <Folder Include="DAL\Modules\BillingModule\" />
+    <Folder Include="DAL\Modules\BudgetingModule\" />
+    <Folder Include="DAL\Modules\CalendarModule\" />
+    <Folder Include="DAL\Modules\ContactsModule\" />
+    <Folder Include="DAL\Modules\DashboardModule\" />
+    <Folder Include="DAL\Modules\DocumentsModule\" />
+    <Folder Include="DAL\Modules\MailModule\" />
+    <Folder Include="DAL\Modules\TasksModule\" />
+    <Folder Include="DAL\Modules\ReportsModule\" />
   </ItemGroup>
 
 </Project>
