@@ -16,10 +16,6 @@ using AdminAssistant.UI.Modules.MailModule;
 using AdminAssistant.UI.Modules.ReportsModule;
 using AdminAssistant.UI.Modules.TasksModule;
 using AdminAssistant.UI.Shared;
-using AdminAssistant.UI.Shared.Breadcrumb;
-using AdminAssistant.UI.Shared.Footer;
-using AdminAssistant.UI.Shared.Header;
-using AdminAssistant.UI.Shared.Sidebar;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AdminAssistant.WPF
@@ -76,11 +72,6 @@ namespace AdminAssistant.WPF
         public ITasksViewModel TasksViewModel => this.serviceProvider.GetRequiredService<ITasksViewModel>();
 
         // Add Shared UI ...
-        public IBreadcrumbViewModel BreadcrumbViewModel => this.serviceProvider.GetRequiredService<IBreadcrumbViewModel>();
-        public IFooterViewModel FooterViewModel => this.serviceProvider.GetRequiredService<IFooterViewModel>();
-        public IHeaderViewModel HeaderViewModel => this.serviceProvider.GetRequiredService<IHeaderViewModel>();
-        public ISidebarViewModel SidebarViewModel => this.serviceProvider.GetRequiredService<ISidebarViewModel>();
-
         public IMainWindowViewModel MainWindowViewModel => this.serviceProvider.GetRequiredService<IMainWindowViewModel>();
     }
 }

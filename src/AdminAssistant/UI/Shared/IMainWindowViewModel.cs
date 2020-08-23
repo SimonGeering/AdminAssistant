@@ -1,9 +1,25 @@
-using Microsoft.Toolkit.Mvvm.Messaging;
+using System.Collections.Generic;
 
 namespace AdminAssistant.UI.Shared
 {
-    public interface IMainWindowViewModel : IViewModelBase, IRecipient<ModuleSelectionChangedMessage>
+    public interface IMainWindowViewModel : IViewModelBase
     {
-        IViewModelBase SelectedViewModel { get; }
+        SidebarStateSettings Sidebar { get; }
+
+        ModeSelectionStateSettings ModeSelectionDropDown { get; }
+
+        List<ModeSelectionItem> Modes { get; }
+        ModeSelectionItem ActiveMode { get; }
+
+        List<ModuleSelectionItem> Modules { get; }
+        ModuleSelectionItem ActiveModule { get; }
+
+        void OnModeSelectionDropDownClick();
+        void OnSideBarControlButtonClick();
+
+        void OnSelectedModeChanged(ModeSelectionItem mode);
+        void OnSelectedModuleChanged(ModuleSelectionItem selectedModule);
+
+        string FooterText { get; }
     }
 }

@@ -34,8 +34,4 @@
     <ProjectReference Include="..\..\..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Shared\Syncfusion\" />
-  </ItemGroup>
-
 </Project>

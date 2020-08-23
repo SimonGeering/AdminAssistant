@@ -1,4 +1,4 @@
-namespace AdminAssistant.UI.Shared.Sidebar
+namespace AdminAssistant.UI.Shared
 {
     public class SidebarStateSettings
     {
