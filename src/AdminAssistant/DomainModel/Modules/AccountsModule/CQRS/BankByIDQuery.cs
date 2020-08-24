@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Framework.Providers;
 using Ardalis.Result;
 using MediatR;
@@ -31,14 +31,12 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
             public override async Task<Result<Bank>> Handle(BankByIDQuery request, CancellationToken cancellationToken)
             {
-                this.Log.Start();
-
                 var result = await bankRepository.GetAsync(request.BankID).ConfigureAwait(false);
 
                 if (result == null || result.BankID == Constants.UnknownRecordID)
                     return Result<Bank>.NotFound();
 
-                return this.Log.Finish(Result<Bank>.Success(result));
+                return Result<Bank>.Success(result);
             }
         }
     }

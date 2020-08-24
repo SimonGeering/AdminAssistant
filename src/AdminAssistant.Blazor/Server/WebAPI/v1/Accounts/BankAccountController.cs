@@ -28,7 +28,7 @@ namespace AdminAssistant.WebAPI.v1
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated BankAccountResponseDto", type: typeof(BankAccountResponseDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the BankAccountID of the given bankAccountUpdateRequest does not exist.")]
         [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountUpdateRequest is invalid.")]
-        public async Task<ActionResult<BankAccountResponseDto>> Put([FromBody, SwaggerParameter("The BankAccount for which updates are to be persisted.", Required = true)]BankAccountUpdateRequestDto bankAccountUpdateRequest)
+        public async Task<ActionResult<BankAccountResponseDto>> BankAccountPut([FromBody, SwaggerParameter("The BankAccount for which updates are to be persisted.", Required = true)]BankAccountUpdateRequestDto bankAccountUpdateRequest)
         {
             this.Log.Start();
 
@@ -55,7 +55,7 @@ namespace AdminAssistant.WebAPI.v1
         [SwaggerOperation("Creates a new BankAccount.", OperationId = "PostBankAccount")]
         [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created bank account with its assigned newly ID.", type: typeof(BankAccountResponseDto))]
         [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountCreateRequest is invalid.")]
-        public async Task<ActionResult<BankAccountResponseDto>> Post([FromBody, SwaggerParameter("The details of the BankAccount to be created.", Required = true)] BankAccountCreateRequestDto bankAccountCreateRequest)
+        public async Task<ActionResult<BankAccountResponseDto>> BankAccountPost([FromBody, SwaggerParameter("The details of the BankAccount to be created.", Required = true)] BankAccountCreateRequestDto bankAccountCreateRequest)
         {
             this.Log.Start();
 
@@ -69,14 +69,14 @@ namespace AdminAssistant.WebAPI.v1
             }
 
             var response = this.Mapper.Map<BankAccountResponseDto>(result.Value);
-            return this.Log.Finish(this.CreatedAtRoute(nameof(GetBankAccountById), new {bankAccountID = response.BankAccountID}, response));
+            return this.Log.Finish(this.CreatedAtRoute(nameof(BankAccountGetById), new {bankAccountID = response.BankAccountID}, response));
         }
 
         [HttpGet("{bankAccountID}")]
         [SwaggerOperation("Gets the BankAccountResponseDto with the given ID.", OperationId = "GetBankAccountById")]
         [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the BankAccount requested.", type: typeof(BankAccountResponseDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
-        public async Task<ActionResult<BankAccountResponseDto>> GetBankAccountById([SwaggerParameter("The ID of the BankAccount to be returned.", Required = true)]int bankAccountID)
+        public async Task<ActionResult<BankAccountResponseDto>> BankAccountGetById([SwaggerParameter("The ID of the BankAccount to be returned.", Required = true)]int bankAccountID)
         {
             this.Log.Start();
 
@@ -93,7 +93,7 @@ namespace AdminAssistant.WebAPI.v1
         [SwaggerOperation("Get the transactions since the last bank account statement for the BankAccount with the given ID.", OperationId = "GetBankAccountTransactionByBankAccountID")]
         [SwaggerResponse(StatusCodes.Status200OK, "OK - returns a list of BankAccountTransactionResponseDto.", type: typeof(IEnumerable<BankAccountTransactionResponseDto>))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
-        public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> GetBankAccountTransactionListAsync([SwaggerParameter("The ID of the BankAccount.", Required = true)] int bankAccountID)
+        public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> BankAccountTransactionsGetByBankAccountID([SwaggerParameter("The ID of the BankAccount.", Required = true)] int bankAccountID)
         {
             this.Log.Start();
 

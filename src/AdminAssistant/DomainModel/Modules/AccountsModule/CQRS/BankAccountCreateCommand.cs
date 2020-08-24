@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Framework.Providers;
 using Ardalis.Result;
@@ -20,23 +20,20 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
         public BankAccount BankAccount { get; private set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-        internal class BankAccountCreateHandler : IRequestHandler<BankAccountCreateCommand, Result<BankAccount>>
+        internal class BankAccountCreateHandler : RequestHandlerBase<BankAccountCreateCommand, Result<BankAccount>>
         {
-            private readonly ILoggingProvider log;
             private readonly IBankAccountRepository bankAccountRepository;
             private readonly IBankAccountValidator bankAccountValidator;
 
-            public BankAccountCreateHandler(ILoggingProvider log, IBankAccountRepository bankAccountRepository, IBankAccountValidator bankAccountValidator)
+            public BankAccountCreateHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository, IBankAccountValidator bankAccountValidator)
+                : base(loggingProvider)
             {
-                this.log = log;
                 this.bankAccountRepository = bankAccountRepository;
                 this.bankAccountValidator = bankAccountValidator;
             }
 
-            public async Task<Result<BankAccount>> Handle(BankAccountCreateCommand command, CancellationToken cancellationToken)
+            public override async Task<Result<BankAccount>> Handle(BankAccountCreateCommand command, CancellationToken cancellationToken)
             {
-                log.Start();
-
                 // Don't need this for now as the validator no longer needs extra context.
                 // Keep it here for reference of how to do this.
                 //
@@ -55,11 +52,11 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
                         validationErrors.Add($"{count}_{error.ErrorCode}", error.ErrorMessage);
                         count++;
                     }
-                    return log.Finish(Result<BankAccount>.Invalid(validationErrors));
+                    return Result<BankAccount>.Invalid(validationErrors);
                 }
 
                 var result = await bankAccountRepository.SaveAsync(command.BankAccount).ConfigureAwait(false);
-                return log.Finish(Result<BankAccount>.Success(result));
+                return Result<BankAccount>.Success(result);
             }
         }
     }

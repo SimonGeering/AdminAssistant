@@ -1,28 +1,55 @@
+using System;
 using System.Threading.Tasks;
 using AdminAssistant.Framework.Providers;
-using AdminAssistant.UI.Shared;
+using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace AdminAssistant.UI
 {
-    public abstract class ViewModelBase : PropertyChangedNotificationBase, IViewModelBase
+    public abstract class ViewModelBase : ObservableObject, IViewModelBase
     {
+        [Obsolete("Replaced with OnLoadedAsync")]
+        public virtual async Task OnInitializedAsync() => await OnLoadedAsync().ConfigureAwait(true);
+
         protected ILoggingProvider Log { get; }
 
-        public ILoadingSpinner LoadingSpinner { get; }
+        private bool isBusy;
+        public virtual bool IsBusy
+        {
+            get => isBusy;
+            protected set
+            {
+                this.SetProperty(ref isBusy, value);
+                this.OnIsBusyChanged(isBusy);
+            }
+        }
 
-        public virtual async Task OnInitializedAsync() => await Task.CompletedTask.ConfigureAwait(false);
+        public event EventHandler<bool> IsBusyChanged = null!;
 
-        public ViewModelBase(ILoggingProvider log, ILoadingSpinner loadingSpinner)
+        protected void OnIsBusyChanged(bool isBusy) => this.IsBusyChanged?.Invoke(this, isBusy);
+        
+
+        public IAsyncRelayCommand Loaded { get; }
+
+        public virtual async Task OnLoadedAsync() => await Task.CompletedTask.ConfigureAwait(false);
+
+        public ViewModelBase(ILoggingProvider log)
         {
             this.Log = log;
-            this.LoadingSpinner = loadingSpinner;
+            this.Loaded = new AsyncRelayCommand(execute: this.OnLoadedAsync);
         }
     }
 #if DEBUG
-    public abstract class DesignTimeViewModelBase : PropertyChangedNotificationBase, IViewModelBase
+    public abstract class DesignTimeViewModelBase : ObservableObject, IViewModelBase
     {
-        public ILoadingSpinner LoadingSpinner => new DesignTimeLoadingSpinner();
         public Task OnInitializedAsync() => throw new System.NotImplementedException();
+
+        public bool IsBusy { get; }
+#pragma warning disable CS0414 // Assigned but never used
+
+        public event EventHandler<bool> IsBusyChanged = null!;
+#pragma warning restore CS0414
+        public IAsyncRelayCommand Loaded { get; } = null!;
     }
 #endif // DEBUG
 }

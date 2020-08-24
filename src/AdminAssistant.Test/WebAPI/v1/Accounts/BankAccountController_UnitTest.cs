@@ -20,7 +20,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
     {
     }
 
-    public class BankAccountController_Post_Should
+    public class BankAccountController_BankAccountPost_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
@@ -50,7 +50,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var bankAccountRequest = mapper.Map<BankAccountCreateRequestDto>(bankAccount);
 
             // Act
-            var response = await container.GetRequiredService<BankAccountController>().Post(bankAccountRequest).ConfigureAwait(false);
+            var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
@@ -75,7 +75,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         }
     }
 
-    public class BankAccountController_GetBankAccountById_Should
+    public class BankAccountController_BankAccountGetById_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
@@ -96,7 +96,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankAccountController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().GetBankAccountById(bankAccount.BankAccountID).ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<OkObjectResult>();
@@ -126,7 +126,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankAccountController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().GetBankAccountById(10).ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(10).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<NotFoundResult>();
@@ -134,7 +134,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         }
     }
 
-    public class BankAccountController_GetBankAccountTransactionList_Should
+    public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Should
     {
         [Fact(Skip="WIP")]
         [Trait("Category", "Unit")]
@@ -162,7 +162,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var container = services.BuildServiceProvider();
 
             // Act
-            var response = await container.GetRequiredService<BankAccountController>().GetBankAccountTransactionListAsync(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
+            var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
 
             // Assert
             var result = (OkObjectResult)response.Result;
@@ -196,7 +196,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankAccountController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().GetBankAccountTransactionListAsync(Constants.UnknownRecordID).ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(Constants.UnknownRecordID).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<NotFoundResult>();

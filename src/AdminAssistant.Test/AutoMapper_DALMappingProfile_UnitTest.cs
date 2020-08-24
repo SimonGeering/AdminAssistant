@@ -4,10 +4,10 @@ using System;
 using FluentAssertions;
 using Xunit;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DAL.EntityFramework.Model.Accounts;
-using AdminAssistant.DAL.EntityFramework.Model.Core;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 
-namespace AdminAssistant.DAL
+namespace AdminAssistant.Infra.DAL
 {
     public class DALMappingProfile_Should
     {

@@ -1,4 +1,4 @@
-using System;
+using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule
 {

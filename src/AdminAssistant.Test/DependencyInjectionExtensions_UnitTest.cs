@@ -22,9 +22,9 @@ namespace AdminAssistant
             var services = new ServiceCollection();
             services.AddMocksOfExternalServerSideDependencies();
 
-            services.AddServerFrameworkServices();
+            services.AddAdminAssistantServerSideProviders();
             services.AddAdminAssistantServerSideDomainModel();
-            services.AddAdminAssistantServerSideDAL(new ConfigurationSettings() { ConnectionString= "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+            services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString= "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
 
             var serviceProvider = services.BuildServiceProvider();
 
@@ -38,7 +38,7 @@ namespace AdminAssistant
 
                 try
                 {
-                    if (serviceDescriptor.ServiceType.FullName.StartsWith("MediatR", StringComparison.InvariantCulture))
+                    if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture))
                         continue;
 
                     var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
@@ -53,7 +53,7 @@ namespace AdminAssistant
             }
 
             // Assert
-            var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.StartsWith("MediatR", StringComparison.InvariantCulture) == false);
+            var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.Contains("MediatR", StringComparison.InvariantCulture) == false);
             result.Should().HaveCount(expectedInstanceCountLessExclusions);
             await Task.CompletedTask.ConfigureAwait(false);
         }
@@ -67,7 +67,7 @@ namespace AdminAssistant
             services.AddMocksOfExternalClientSideDependencies();
             services.AddTransient((sp) => new Mock<UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient>().Object);
 
-            services.AddClientFrameworkServices();
+            services.AddAdminAssistantClientSideProviders();
             services.AddAdminAssistantClientSideDomainModel();
             services.AddAdminAssistantUI();
 

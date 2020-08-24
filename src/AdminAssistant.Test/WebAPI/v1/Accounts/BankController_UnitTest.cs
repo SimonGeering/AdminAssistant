@@ -16,7 +16,7 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Accounts
 {
-    public class BankController_GetBankById_Should
+    public class BankController_BankGetById_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
@@ -37,7 +37,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankController>().GetBankById(bank.BankID).ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<OkObjectResult>();
@@ -67,7 +67,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankController>().GetBankById(10).ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(10).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<NotFoundResult>();
@@ -75,7 +75,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         }
     }
 
-    public class BankController_Get_Should
+    public class BankController_BankGet_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
@@ -100,7 +100,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankController>().Get().ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet().ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<OkObjectResult>();

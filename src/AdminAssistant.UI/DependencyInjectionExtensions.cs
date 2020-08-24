@@ -1,17 +1,21 @@
 using AdminAssistant.UI.Modules.AccountsModule;
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountBalanceList;
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog;
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountRightSidebar;
-using AdminAssistant.UI.Modules.AccountsModule.BankAccountTransactionList;
+using AdminAssistant.UI.Modules.AdminModule;
+using AdminAssistant.UI.Modules.AssetRegisterModule;
+using AdminAssistant.UI.Modules.BillingModule;
+using AdminAssistant.UI.Modules.BudgetModule;
+using AdminAssistant.UI.Modules.CalendarModule;
+using AdminAssistant.UI.Modules.ContactsModule;
 using AdminAssistant.UI.Modules.CoreModule;
+using AdminAssistant.UI.Modules.DashboardModule;
+using AdminAssistant.UI.Modules.DocumentsModule;
+using AdminAssistant.UI.Modules.MailModule;
+using AdminAssistant.UI.Modules.ReportsModule;
+using AdminAssistant.UI.Modules.TasksModule;
 using AdminAssistant.UI.Services;
-using AdminAssistant.UI.Shared.Breadcrumb;
-using AdminAssistant.UI.Shared.Header;
-using AdminAssistant.UI.Shared.Footer;
-using AdminAssistant.UI.Shared.Sidebar;
 using AdminAssistant.UI.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using AutoMapper;
+using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -25,28 +29,58 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static void AddAdminAssistantUI(this IServiceCollection services)
         {
-            // Add Accounts UI ...
-            services.AddTransient<IAccountsViewModel, AccountsViewModel>();
-            services.AddTransient<IBankAccountBalanceListViewModel, BankAccountBalanceListViewModel>();
-            services.AddTransient<IBankAccountEditDialogViewModel, BankAccountEditDialogViewModel>();
-            services.AddTransient<IBankAccountRightSidebarViewModel, BankAccountRightSidebarViewModel>();
-            services.AddTransient<IBankAccountTransactionListViewModel, BankAccountTransactionListViewModel>();
-            services.AddTransient<IAccountsService, AccountsService>();
-            services.AddScoped<IAccountsStateStore, AccountsStateStore>();
+            // Add MVVM Toolkit registrations ...
+            services.AddSingleton<IMessenger, Messenger>();
 
-            // Add Core Services ...
+            // Add Accounts UI ...
+            services.AddSingleton<IAccountsViewModel, AccountsViewModel>();
+
+            services.AddSingleton<IBankAccountBalanceListViewModel, BankAccountBalanceListViewModel>();
+            services.AddSingleton<IBankAccountEditDialogViewModel, BankAccountEditDialogViewModel>();
+            services.AddSingleton<IBankAccountRightSidebarViewModel, BankAccountRightSidebarViewModel>();
+            services.AddSingleton<IBankAccountTransactionListViewModel, BankAccountTransactionListViewModel>();
+
+            services.AddTransient<IAccountsService, AccountsService>();
+
+            // Add Admin UI ...
+            services.AddSingleton<IAdminViewModel, AdminViewModel>();
+
+            // Add Asset Register UI ...
+            services.AddSingleton<IAssetRegisterViewModel, AssetRegisterViewModel>();
+
+            // Add Billing UI ...
+            services.AddSingleton<IBillingViewModel, BillingViewModel>();
+
+            // Add Budget UI ...
+            services.AddSingleton<IBudgetViewModel, BudgetViewModel>();
+
+            // Add Calendar UI ...
+            services.AddSingleton<ICalendarViewModel, CalendarViewModel>();
+
+            // Add Contacts UI ...
+            services.AddSingleton<IContactsViewModel, ContactsViewModel>();
+
+            // Add Core UI ...
             services.AddTransient<ICoreService, CoreService>();
 
+            // Add Dashboard UI ...
+            services.AddSingleton<IDashboardViewModel, DashboardViewModel>();
+
+            // Add Documents UI ...
+            services.AddSingleton<IDocumentsViewModel, DocumentsViewModel>();
+
+            // Add Mail UI ...
+            services.AddSingleton<IMailViewModel, MailViewModel>();
+
+            // Add Reports UI ...
+            services.AddSingleton<IReportsViewModel, ReportsViewModel>();
+
+            // Add Tasks UI ...
+            services.AddSingleton<ITasksViewModel, TasksViewModel>();
+
             // Add Shared UI ...
-            services.AddTransient<IBreadcrumbViewModel, BreadcrumbViewModel>();
-            services.AddTransient<IHeaderViewModel, HeaderViewModel>();
-            services.AddTransient<IFooterViewModel, FooterViewModel>();
-            services.AddTransient<ISidebarViewModel, SidebarViewModel>();
-
             services.AddTransient<IAppService, AppService>();
-            services.AddScoped<IAppStateStore, AppStateStore>();
-
-            services.AddTransient<ILoadingSpinner, LoadingSpinner>();
+            services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
         }
     }
 }

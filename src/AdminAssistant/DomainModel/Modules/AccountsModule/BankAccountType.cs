@@ -1,3 +1,5 @@
+using AdminAssistant.Infra.DAL;
+
 namespace AdminAssistant.DomainModel.Modules.AccountsModule
 {
     public class BankAccountType : IDatabasePersistable

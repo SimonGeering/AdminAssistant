@@ -17,9 +17,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="DAL\Modules\Accounts\**" />
-    <EmbeddedResource Remove="DAL\Modules\Accounts\**" />
-    <None Remove="DAL\Modules\Accounts\**" />
+    <Compile Remove="Infra\DAL\Modules\Accounts\**" />
+    <EmbeddedResource Remove="Infra\DAL\Modules\Accounts\**" />
+    <None Remove="Infra\DAL\Modules\Accounts\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,7 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="4.2.0" />
+    <PackageReference Include="Ardalis.Result" Version="1.0.1" />
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="FluentValidation" Version="9.0.1" />
     <PackageReference Include="MediatR" Version="8.0.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
@@ -37,20 +38,22 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-preview2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DAL\Modules\BillingModule\" />
-    <Folder Include="DAL\Modules\AssetRegisterModule\" />
-    <Folder Include="DAL\Modules\BudgetModule\" />
-    <Folder Include="DAL\Modules\CalendarModule\" />
-    <Folder Include="DAL\Modules\ContactsModule\" />
-    <Folder Include="DAL\Modules\DashboardModule\" />
-    <Folder Include="DAL\Modules\DocumentsModule\" />
-    <Folder Include="DAL\Modules\MailModule\" />
-    <Folder Include="DAL\Modules\TasksModule\" />
-    <Folder Include="DAL\Modules\ReportsModule\" />
+    <Folder Include="Infra\DAL\Modules\BillingModule\" />
+    <Folder Include="Infra\DAL\Modules\AssetRegisterModule\" />
+    <Folder Include="Infra\DAL\Modules\BudgetModule\" />
+    <Folder Include="Infra\DAL\Modules\CalendarModule\" />
+    <Folder Include="Infra\DAL\Modules\ContactsModule\" />
+    <Folder Include="Infra\DAL\Modules\DashboardModule\" />
+    <Folder Include="Infra\DAL\Modules\DocumentsModule\" />
+    <Folder Include="Infra\DAL\Modules\MailModule\" />
+    <Folder Include="Infra\DAL\Modules\TasksModule\" />
+    <Folder Include="Infra\DAL\Modules\ReportsModule\" />
     <Folder Include="DomainModel\Modules\AssetRegisterModule\" />
     <Folder Include="DomainModel\Modules\BillingModule\" />
     <Folder Include="DomainModel\Modules\CalendarModule\" />
@@ -60,25 +63,10 @@
     <Folder Include="DomainModel\Modules\MailModule\" />
     <Folder Include="DomainModel\Modules\TasksModule\" />
     <Folder Include="DomainModel\Modules\ReportsModule\" />
-    <Folder Include="UI\Modules\AssetRegisterModule\" />
-    <Folder Include="UI\Modules\BillingModule\" />
-    <Folder Include="UI\Modules\BudgetModule\" />
-    <Folder Include="UI\Modules\CalendarModule\" />
-    <Folder Include="UI\Modules\ContactsModule\" />
-    <Folder Include="UI\Modules\DashboardModule\" />
-    <Folder Include="UI\Modules\DocumentsModule\" />
-    <Folder Include="UI\Modules\MailModule\" />
-    <Folder Include="UI\Modules\TasksModule\" />
-    <Folder Include="UI\Modules\ReportsModule\" />
-    <Folder Include="UI\Shared\Services\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>
 
 </Project>

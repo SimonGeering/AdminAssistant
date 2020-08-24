@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Framework.Providers;
 using Ardalis.Result;
 using MediatR;
 
@@ -16,16 +17,17 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
         public int BankAccountID { get; private set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-        internal class BankAccountByIDHandler : IRequestHandler<BankAccountByIDQuery, Result<BankAccount>>
+        internal class BankAccountByIDHandler : RequestHandlerBase<BankAccountByIDQuery, Result<BankAccount>>
         {
             private readonly IBankAccountRepository bankAccountRepository;
 
-            public BankAccountByIDHandler(IBankAccountRepository bankAccountRepository)
+            public BankAccountByIDHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository)
+                : base(loggingProvider)
             {
                 this.bankAccountRepository = bankAccountRepository;
             }
 
-            public async Task<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
+            public override async Task<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
             {
                 var bankAccount = await bankAccountRepository.GetAsync(request.BankAccountID).ConfigureAwait(false);
 

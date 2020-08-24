@@ -1,7 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using AdminAssistant.DAL.EntityFramework;
+using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;

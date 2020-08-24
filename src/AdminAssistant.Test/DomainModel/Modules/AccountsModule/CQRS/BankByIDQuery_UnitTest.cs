@@ -1,6 +1,6 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using System.Threading.Tasks;
-using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using Ardalis.Result;
 using FluentAssertions;
 using MediatR;

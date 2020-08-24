@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Framework.Providers;
 
 using Ardalis.Result;
@@ -26,13 +26,11 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
             public override async Task<Result<IEnumerable<Bank>>> Handle(BankQuery request, CancellationToken cancellationToken)
             {
-                this.Log.Start();
-
                 var result = await bankRepository.GetListAsync().ConfigureAwait(false);
 
                 Trace.Assert(result.Count > 0, "Bank list was not populated.");
 
-                return this.Log.Finish(Result<IEnumerable<Bank>>.Success(result));
+                return Result<IEnumerable<Bank>>.Success(result);
             }
         }
     }
