@@ -1,7 +1,7 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.DAL.EntityFramework.Model.Core
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
 {
     public class CurrencyEntity : IMapTo<Currency>
     {

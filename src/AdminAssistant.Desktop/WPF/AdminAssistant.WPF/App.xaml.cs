@@ -22,7 +22,7 @@ namespace AdminAssistant.WPF
                 {
                     services.AddAdminAssistantWebAPIClient(new Uri("https://localhost:5001"));
 
-                    services.AddValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
+                    services.AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
 
                     services.AddClientFrameworkServices();
                     services.AddAdminAssistantClientSideDomainModel();

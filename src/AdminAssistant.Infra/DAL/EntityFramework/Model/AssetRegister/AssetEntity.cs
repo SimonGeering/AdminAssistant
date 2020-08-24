@@ -10,7 +10,7 @@ Table "Assets.Asset"
   "ReplacementCost" INT
 }
 */
-namespace AdminAssistant.DAL.EntityFramework.Model.AssetRegister
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister
 {
     public class AssetEntity
     {

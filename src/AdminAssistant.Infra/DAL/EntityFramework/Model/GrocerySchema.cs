@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.DAL.EntityFramework.Model.Grocery
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery
 {
     internal class GrocerySchema
     {

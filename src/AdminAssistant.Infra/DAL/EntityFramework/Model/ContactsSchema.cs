@@ -1,7 +1,7 @@
-using AdminAssistant.DAL.EntityFramework.Model.Contacts;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.DAL.EntityFramework.Model
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model
 {
     internal class ContactsSchema
     {

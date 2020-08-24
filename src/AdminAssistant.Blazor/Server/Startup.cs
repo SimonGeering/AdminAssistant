@@ -51,7 +51,7 @@ namespace AdminAssistant.Blazor.Server
                 .AddNewtonsoftJson()
                 .AddFluentValidation(c =>
                 {
-                    c.RegisterValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
+                    c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
 
                 });
 
@@ -70,7 +70,7 @@ namespace AdminAssistant.Blazor.Server
             });
             services.AddSwaggerGenNewtonsoftSupport();
 
-            services.AddAutoMapper(typeof(DAL.MappingProfile), typeof(WebAPI.MappingProfile));
+            services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.MappingProfile));
 
             services.AddServerFrameworkServices();
             services.AddAdminAssistantServerSideDomainModel();

@@ -2,7 +2,7 @@ using AdminAssistant.DomainModel.Infrastructure;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.DAL.EntityFramework.Model.Core
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
 {
     internal class CoreSchema
     {

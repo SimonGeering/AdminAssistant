@@ -1,8 +1,8 @@
-using AdminAssistant.DAL.EntityFramework.Model.Accounts;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.DAL.EntityFramework.Model
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model
 {
     internal class AccountsSchema
     {

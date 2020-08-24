@@ -1,9 +1,9 @@
 using System;
-using AdminAssistant.DAL.EntityFramework.Model.Accounts;
-using AdminAssistant.DAL.EntityFramework.Model.AssetRegister;
-using AdminAssistant.DAL.EntityFramework.Model.Contacts;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 
-namespace AdminAssistant.DAL.EntityFramework.Model.Core
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
 {
     public class AuditEntity
     {

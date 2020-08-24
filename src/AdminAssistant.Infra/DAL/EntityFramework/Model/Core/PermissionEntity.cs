@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace AdminAssistant.DAL.EntityFramework.Model.Core
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
 {
     public class PermissionEntity
     {

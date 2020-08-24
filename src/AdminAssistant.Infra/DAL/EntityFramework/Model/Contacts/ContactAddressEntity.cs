@@ -7,7 +7,7 @@ Table "Contacts.ContactAddress"
   "ContactID" INT
 }
 */
-namespace AdminAssistant.DAL.EntityFramework.Model.Contacts
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts
 {
     public class ContactAddressEntity
     {

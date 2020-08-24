@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AdminAssistant.DAL.EntityFramework.Migrations
+namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 {
     public partial class UseSchemas : Migration
     {

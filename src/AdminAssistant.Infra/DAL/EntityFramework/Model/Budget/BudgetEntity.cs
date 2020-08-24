@@ -9,7 +9,7 @@ Table "Budget.Budget"
 Ref: "Budget.Budget"."BudgetID" < "Budget.BudgetEntry"."BudgetID"
 
 */
-namespace AdminAssistant.DAL.EntityFramework.Model.Budget
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Budget
 {
     public class BudgetEntity
     {

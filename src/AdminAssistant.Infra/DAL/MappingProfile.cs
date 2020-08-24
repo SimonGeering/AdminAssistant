@@ -1,6 +1,6 @@
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.DAL
+namespace AdminAssistant.Infra.DAL
 {
     public class MappingProfile : MappingProfileBase
     {

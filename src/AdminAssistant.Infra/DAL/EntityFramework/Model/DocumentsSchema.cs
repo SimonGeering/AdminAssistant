@@ -1,7 +1,7 @@
-using AdminAssistant.DAL.EntityFramework.Model.Documents;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.DAL.EntityFramework.Model
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model
 {
     internal class DocumentsSchema
     {

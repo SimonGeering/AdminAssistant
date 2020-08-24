@@ -7,7 +7,7 @@ Table "Calendar.Appointment"
 }
 
 */
-namespace AdminAssistant.DAL.EntityFramework.Model.Calendar
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Calendar
 {
     public class AppointmentEntity
     {

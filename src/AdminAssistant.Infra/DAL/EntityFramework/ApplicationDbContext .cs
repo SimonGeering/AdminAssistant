@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.DAL.EntityFramework.Model;
-using AdminAssistant.DAL.EntityFramework.Model.Accounts;
-using AdminAssistant.DAL.EntityFramework.Model.Budget;
-using AdminAssistant.DAL.EntityFramework.Model.Core;
+using AdminAssistant.Infra.DAL.EntityFramework.Model;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -197,7 +197,7 @@ Ref: "Accounts.BankAccountTransactionType"."BankAccountTransactionTypeID" < "Acc
 
 */
 
-namespace AdminAssistant.DAL.EntityFramework
+namespace AdminAssistant.Infra.DAL.EntityFramework
 {
     public interface IApplicationDbContext : IDisposable
     {

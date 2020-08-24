@@ -1,4 +1,4 @@
-namespace AdminAssistant.DAL.EntityFramework.Model.Documents
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Documents
 {
     /*
      Table "Documents.Document" 

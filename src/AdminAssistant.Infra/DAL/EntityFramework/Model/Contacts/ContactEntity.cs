@@ -15,7 +15,7 @@ Ref: "Contacts.Contact"."ContactID" < "Accounts.PayeeContact"."ContactID"
 */
 using System;
 
-namespace AdminAssistant.DAL.EntityFramework.Model.Contacts
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts
 {
     public class ContactEntity
     {

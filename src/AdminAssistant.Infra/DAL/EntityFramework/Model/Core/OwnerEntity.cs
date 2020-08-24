@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using AdminAssistant.DAL.EntityFramework.Model.Accounts;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
-namespace AdminAssistant.DAL.EntityFramework.Model.Core
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
 {
     public class OwnerEntity
     {

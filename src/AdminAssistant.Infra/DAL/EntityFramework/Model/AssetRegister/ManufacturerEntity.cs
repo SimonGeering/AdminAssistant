@@ -8,7 +8,7 @@ Table "Assets.Manufacturer"
 Ref: "Assets.Manufacturer"."ManufacturerID" < "Assets.Asset"."ManufacturerID"
 
 */
-namespace AdminAssistant.DAL.EntityFramework.Model.AssetRegister
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister
 {
     public class ManufacturerEntity
     {

@@ -6,6 +6,7 @@ using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.DAL;
 using AdminAssistant.UI.Modules.CoreModule;
 using FluentValidation.Results;
 using Microsoft.Toolkit.Mvvm.Input;

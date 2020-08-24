@@ -1,4 +1,4 @@
-using AdminAssistant.DAL.EntityFramework;
+using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
@@ -6,7 +6,7 @@ using AutoMapper;
 
 using System;
 
-namespace AdminAssistant.DAL
+namespace AdminAssistant.Infra.DAL
 {
     internal abstract class RepositoryBase
     {

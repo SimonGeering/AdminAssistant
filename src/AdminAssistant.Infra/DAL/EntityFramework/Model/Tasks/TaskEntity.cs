@@ -6,7 +6,7 @@ Table "Tasks.Task"
   "OwnerID" INT
 }
 */
-namespace AdminAssistant.DAL.EntityFramework.Model.Tasks
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Tasks
 {
     public class TaskEntity
     {

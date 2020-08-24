@@ -7,7 +7,7 @@ Table "Billing.SupplierEntity"
 }
 
 */
-namespace AdminAssistant.DAL.EntityFramework.Model.Billing
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Billing
 {
     public class SupplierEntity
     {

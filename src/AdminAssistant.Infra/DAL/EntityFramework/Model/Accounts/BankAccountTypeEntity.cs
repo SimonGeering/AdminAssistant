@@ -1,7 +1,7 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.DAL.EntityFramework.Model.Accounts
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts
 {
     public class BankAccountTypeEntity : IMapTo<BankAccountType>
     {

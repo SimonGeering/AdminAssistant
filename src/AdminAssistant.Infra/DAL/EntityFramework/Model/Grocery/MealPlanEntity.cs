@@ -1,4 +1,4 @@
-namespace AdminAssistant.DAL.EntityFramework.Model.Grocery
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery
 {
     public class MealPlanEntity
     {

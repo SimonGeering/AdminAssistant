@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.DAL.EntityFramework.Model.Budget
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Budget
 {
     internal class BudgetSchema
     {

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AdminAssistant.DAL.EntityFramework.Migrations
+namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20200217212153_Initial")]

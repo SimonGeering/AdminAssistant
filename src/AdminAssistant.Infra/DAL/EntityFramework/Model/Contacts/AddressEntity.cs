@@ -7,7 +7,7 @@ Table "Contacts.Address"
 Ref: "Contacts.Address"."AddressID" < "Contacts.ContactAddress"."AddressID"
 
 */
-namespace AdminAssistant.DAL.EntityFramework.Model.Contacts
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts
 {
     public class AddressEntity
     {

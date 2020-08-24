@@ -1,4 +1,4 @@
-namespace AdminAssistant.DomainModel
+namespace AdminAssistant.Infra.DAL
 {
     public interface IDatabasePersistable
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Data.Common;
-using AdminAssistant.DAL.EntityFramework;
-using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.EntityFramework;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 

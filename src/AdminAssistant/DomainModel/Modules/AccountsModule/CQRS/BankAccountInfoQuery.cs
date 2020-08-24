@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Framework.Providers;
 using Ardalis.Result;
 using MediatR;

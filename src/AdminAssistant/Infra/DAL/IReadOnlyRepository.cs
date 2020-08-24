@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using AdminAssistant.DomainModel;
-
-namespace AdminAssistant.DAL
+namespace AdminAssistant.Infra.DAL
 {
     public interface IReadOnlyRepository<TDomainModel>
         where TDomainModel : IDatabasePersistable
