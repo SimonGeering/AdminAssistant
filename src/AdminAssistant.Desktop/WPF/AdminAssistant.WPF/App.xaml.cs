@@ -22,9 +22,9 @@ namespace AdminAssistant.WPF
                 {
                     services.AddAdminAssistantWebAPIClient(new Uri("https://localhost:5001"));
 
-                    services.AddValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
+                    services.AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
 
-                    services.AddClientFrameworkServices();
+                    services.AddAdminAssistantClientSideProviders();
                     services.AddAdminAssistantClientSideDomainModel();
                     services.AddAdminAssistantUI();
 
@@ -55,15 +55,11 @@ namespace AdminAssistant.WPF
 
             using (var scope = host.Services.CreateScope())
             {
-#if DEBUG
-                // TODO: Switch back to main window.
-                App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<BankAccountEditDialog>();
-#else
+                App.Current.Resources.Add("ViewModelLocator", new ViewModelLocator(scope.ServiceProvider));
                 App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
-#endif
                 App.Current.MainWindow.Show();
             }
-        }
+        }  
 
         private void Application_Startup(object sender, StartupEventArgs e)
         {

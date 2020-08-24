@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Product>Admin Assistant</Product>
+    <nullable>enable</nullable>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DocumentationFile>AdminAssistant.Infra.docs.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DocumentationFile>AdminAssistant.Infra.docs.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AdminAssistant.Infra.docs.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.0.0" />
+    <PackageReference Include="AutoMapper" Version="10.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DAL\EntityFramework\Model\Contacts\" />
+    <Folder Include="DAL\EntityFramework\Model\Core\" />
+    <Folder Include="DAL\EntityFramework\Model\Dashboard\" />
+    <Folder Include="DAL\EntityFramework\Model\Documents\" />
+    <Folder Include="DAL\EntityFramework\Model\Mail\" />
+    <Folder Include="DAL\EntityFramework\Model\Reports\" />
+    <Folder Include="DAL\Modules\AssetRegisterModule\" />
+    <Folder Include="DAL\Modules\BillingModule\" />
+    <Folder Include="DAL\Modules\BudgetingModule\" />
+    <Folder Include="DAL\Modules\CalendarModule\" />
+    <Folder Include="DAL\Modules\ContactsModule\" />
+    <Folder Include="DAL\Modules\DashboardModule\" />
+    <Folder Include="DAL\Modules\DocumentsModule\" />
+    <Folder Include="DAL\Modules\MailModule\" />
+    <Folder Include="DAL\Modules\TasksModule\" />
+    <Folder Include="DAL\Modules\ReportsModule\" />
+  </ItemGroup>
+
+</Project>

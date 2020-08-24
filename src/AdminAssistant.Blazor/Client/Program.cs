@@ -41,12 +41,12 @@ namespace AdminAssistant.Blazor.Client
             });
 
             // See https://github.com/ryanelian/FluentValidation.Blazor
-            builder.Services.AddValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
+            builder.Services.AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
 
             // See https://blazor.syncfusion.com/documentation/introduction/
             builder.Services.AddSyncfusionBlazor();
 
-            builder.Services.AddClientFrameworkServices();
+            builder.Services.AddAdminAssistantClientSideProviders();
             builder.Services.AddAdminAssistantClientSideDomainModel();
             builder.Services.AddAdminAssistantUI();
 

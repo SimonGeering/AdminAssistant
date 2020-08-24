@@ -1,12 +1,16 @@
+using System;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using AdminAssistant.UI.Shared;
+using Microsoft.Toolkit.Mvvm.Input;
 
 namespace AdminAssistant.UI
 {
     public interface IViewModelBase : INotifyPropertyChanged
     {
         Task OnInitializedAsync();
-        ILoadingSpinner LoadingSpinner { get; }
+        bool IsBusy { get; }
+        event EventHandler<bool> IsBusyChanged;
+
+        IAsyncRelayCommand Loaded { get; }
     }
 }

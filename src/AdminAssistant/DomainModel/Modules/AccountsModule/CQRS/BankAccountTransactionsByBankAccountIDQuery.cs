@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Framework.Providers;
 using Ardalis.Result;
 using MediatR;
@@ -31,14 +31,12 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
             public override async Task<Result<IEnumerable<BankAccountTransaction>>> Handle(BankAccountTransactionsByBankAccountIDQuery request, CancellationToken cancellationToken)
             {
-                this.Log.Start();
-
                 var bankAccountTransactionList = await bankAccountTransactionRepository.GetListAsync(request.BankAccountID).ConfigureAwait(false);
 
                 if (bankAccountTransactionList != null && bankAccountTransactionList.Any())
-                    return this.Log.Finish(Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList));
+                    return Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList);
                 else
-                    return this.Log.Finish(Result<IEnumerable<BankAccountTransaction>>.NotFound());
+                    return Result<IEnumerable<BankAccountTransaction>>.NotFound();
             }
         }
     }

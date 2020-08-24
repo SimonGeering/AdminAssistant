@@ -20,17 +20,17 @@ namespace AdminAssistant.WebAPI.v1.Accounts
     {
     }
 
-    public class BankAccountController_Post_Should
+    public class BankAccountController_BankAccountPost_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
         public async Task Return_Status422UnprocessableEntity_Given_AnInvalidBankAccount()
         {
             // Arrange
-            var validationErrors = new Dictionary<string, string>()
+            var validationErrors = new List<ValidationError>()
             {
-                { "ExampleErrorCode", "ExampleErrorMessage" },
-                { "ExampleErrorCode2", "ExampleErrorMessage2" }
+                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
             };
             var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
@@ -50,32 +50,24 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var bankAccountRequest = mapper.Map<BankAccountCreateRequestDto>(bankAccount);
 
             // Act
-            var response = await container.GetRequiredService<BankAccountController>().Post(bankAccountRequest).ConfigureAwait(false);
+            var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
             response.Value.Should().BeNull();
 
             var result = (UnprocessableEntityObjectResult)response.Result;
+            var errors = (SerializableError)result.Value;
 
-            var value = (SerializableError)result.Value;
-            value.Keys.Should().BeEquivalentTo(validationErrors.Keys);
-
-            //var moo = (value as Dictionary<string, object>);
-            //var moo2 = moo as Dictionary<string, string>;
-            //value.Values.Should().BeEquivalentTo(validationErrors.Values);
-            //value.Should().HaveCount(banks.Count);
-
-            //var expected = banks.ToArray();
-            //for (int i = 0; i < expected.Length; i++)
-            //{
-            //    value[i].BankID.Should().Be(expected[i].BankID);
-            //    value[i].BankName.Should().Be(expected[i].BankName);
-            //}
+            foreach (var expectedErrorDetails in validationErrors)
+            {
+                string[] messages = (string[])errors[expectedErrorDetails.Identifier];
+                messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            }
         }
     }
 
-    public class BankAccountController_GetBankAccountById_Should
+    public class BankAccountController_BankAccountGetById_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
@@ -96,7 +88,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankAccountController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().GetBankAccountById(bankAccount.BankAccountID).ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<OkObjectResult>();
@@ -126,7 +118,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankAccountController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().GetBankAccountById(10).ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(10).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<NotFoundResult>();
@@ -134,7 +126,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         }
     }
 
-    public class BankAccountController_GetBankAccountTransactionList_Should
+    public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Should
     {
         [Fact(Skip="WIP")]
         [Trait("Category", "Unit")]
@@ -162,7 +154,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var container = services.BuildServiceProvider();
 
             // Act
-            var response = await container.GetRequiredService<BankAccountController>().GetBankAccountTransactionListAsync(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
+            var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
 
             // Assert
             var result = (OkObjectResult)response.Result;
@@ -196,7 +188,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             services.AddTransient<BankAccountController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().GetBankAccountTransactionListAsync(Constants.UnknownRecordID).ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(Constants.UnknownRecordID).ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<NotFoundResult>();

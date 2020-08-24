@@ -28,7 +28,7 @@ namespace AdminAssistant.WebAPI.v1
         [ProducesResponseType(typeof(IEnumerable<BankAccountInfoResponseDto>), StatusCodes.Status200OK)]
         [SwaggerOperation("Lists the summary info for all the available BankAccounts owned by the logged in user.", OperationId = "GetBankAccountInfo")]
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankAccountInfoResponseDto", type: typeof(IEnumerable<BankAccountInfoResponseDto>))]
-        public async Task<ActionResult<IEnumerable<BankAccountInfoResponseDto>>> Get()
+        public async Task<ActionResult<IEnumerable<BankAccountInfoResponseDto>>> BankAccountInfoGet()
         {
             this.Log.Start();
             

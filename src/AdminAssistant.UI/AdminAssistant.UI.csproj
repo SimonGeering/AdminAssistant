@@ -26,36 +26,22 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AsyncAwaitBestPractices.MVVM" Version="4.2.0" />
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.6" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Ardalis.GuardClauses" Version="1.5.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-preview2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
-    <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Modules\AssetRegisterModule\" />
-    <Folder Include="Modules\BillingModule\" />
-    <Folder Include="Modules\BudgetModule\" />
-    <Folder Include="Modules\CalendarModule\" />
-    <Folder Include="Modules\ContactsModule\" />
-    <Folder Include="Modules\DashboardModule\" />
-    <Folder Include="Modules\DocumentsModule\" />
-    <Folder Include="Modules\MailModule\" />
-    <Folder Include="Modules\TasksModule\" />
-    <Folder Include="Modules\ReportingModule\" />
   </ItemGroup>
 
 </Project>

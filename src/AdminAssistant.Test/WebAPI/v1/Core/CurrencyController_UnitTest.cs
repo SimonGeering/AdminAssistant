@@ -16,7 +16,7 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.Core
 {
-    public class CurrencyController_Get_Should
+    public class CurrencyController_GetCurrency_Should
     {
         [Fact]
         [Trait("Category", "Unit")]
@@ -41,7 +41,7 @@ namespace AdminAssistant.WebAPI.v1.Core
             services.AddTransient<CurrencyController>();
 
             // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().Get().ConfigureAwait(false);
+            var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().GetCurrency().ConfigureAwait(false);
 
             // Assert
             response.Result.Should().BeOfType<OkObjectResult>();

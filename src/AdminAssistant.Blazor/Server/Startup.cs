@@ -51,7 +51,7 @@ namespace AdminAssistant.Blazor.Server
                 .AddNewtonsoftJson()
                 .AddFluentValidation(c =>
                 {
-                    c.RegisterValidatorsFromAssemblyContaining<DomainModel.IDatabasePersistable>();
+                    c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
 
                 });
 
@@ -70,11 +70,11 @@ namespace AdminAssistant.Blazor.Server
             });
             services.AddSwaggerGenNewtonsoftSupport();
 
-            services.AddAutoMapper(typeof(DAL.MappingProfile), typeof(WebAPI.MappingProfile));
+            services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.MappingProfile));
 
-            services.AddServerFrameworkServices();
+            services.AddAdminAssistantServerSideProviders();
             services.AddAdminAssistantServerSideDomainModel();
-            services.AddAdminAssistantServerSideDAL(this.configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>());
+            services.AddAdminAssistantServerSideInfra(this.configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

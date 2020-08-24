@@ -11,7 +11,7 @@ namespace AdminAssistant.AcceptanceTests
         {
             base.ConfigureTestServices().Invoke(services);
 
-            services.AddClientFrameworkServices();
+            services.AddAdminAssistantClientSideProviders();
             services.AddAdminAssistantClientSideDomainModel();
             services.AddAdminAssistantUI();
         };

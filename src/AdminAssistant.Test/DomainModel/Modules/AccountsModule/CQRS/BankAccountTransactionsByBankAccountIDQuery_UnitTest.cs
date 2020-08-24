@@ -1,7 +1,7 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AdminAssistant.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using Ardalis.Result;
 using FluentAssertions;
 using MediatR;
@@ -30,7 +30,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             //services.AddTransient((sp) => mockBankRepository.Object);
 
             // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(null).ConfigureAwait(false);
+            var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(null!).ConfigureAwait(false);
 
             //// Assert
             //result.Status.Should().Be(ResultStatus.Ok);
