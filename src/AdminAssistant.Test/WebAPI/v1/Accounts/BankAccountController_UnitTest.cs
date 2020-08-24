@@ -27,10 +27,10 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         public async Task Return_Status422UnprocessableEntity_Given_AnInvalidBankAccount()
         {
             // Arrange
-            var validationErrors = new Dictionary<string, string>()
+            var validationErrors = new List<ValidationError>()
             {
-                { "ExampleErrorCode", "ExampleErrorMessage" },
-                { "ExampleErrorCode2", "ExampleErrorMessage2" }
+                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
             };
             var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
@@ -57,21 +57,13 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             response.Value.Should().BeNull();
 
             var result = (UnprocessableEntityObjectResult)response.Result;
+            var errors = (SerializableError)result.Value;
 
-            var value = (SerializableError)result.Value;
-            value.Keys.Should().BeEquivalentTo(validationErrors.Keys);
-
-            //var moo = (value as Dictionary<string, object>);
-            //var moo2 = moo as Dictionary<string, string>;
-            //value.Values.Should().BeEquivalentTo(validationErrors.Values);
-            //value.Should().HaveCount(banks.Count);
-
-            //var expected = banks.ToArray();
-            //for (int i = 0; i < expected.Length; i++)
-            //{
-            //    value[i].BankID.Should().Be(expected[i].BankID);
-            //    value[i].BankName.Should().Be(expected[i].BankName);
-            //}
+            foreach (var expectedErrorDetails in validationErrors)
+            {
+                string[] messages = (string[])errors[expectedErrorDetails.Identifier];
+                messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            }
         }
     }
 
