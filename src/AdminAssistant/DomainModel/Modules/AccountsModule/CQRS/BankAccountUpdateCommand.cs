@@ -6,6 +6,7 @@ using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Framework.Providers;
 using Ardalis.Result;
+using Ardalis.Result.FluentValidation;
 using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
@@ -34,19 +35,11 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 
             public override async Task<Result<BankAccount>> Handle(BankAccountUpdateCommand command, CancellationToken cancellationToken)
             {
-                var validationResult = await bankAccountValidator.ValidateAsync(command.BankAccount).ConfigureAwait(false);
+                var validationResult = await bankAccountValidator.ValidateAsync(command.BankAccount, cancellationToken).ConfigureAwait(false);
 
                 if (validationResult.IsValid == false)
                 {
-                    int count = 1;
-                    var validationErrors = new Dictionary<string, string>();
-
-                    foreach (var error in validationResult.Errors.Where(x => x.Severity == FluentValidation.Severity.Error))
-                    {
-                        validationErrors.Add($"{count}_{error.ErrorCode}", error.ErrorMessage);
-                        count++;
-                    }
-                    return Result<BankAccount>.Invalid(validationErrors);
+                    return Result<BankAccount>.Invalid(validationResult.AsErrors());
                 }
 
                 var result = await bankAccountRepository.SaveAsync(command.BankAccount).ConfigureAwait(false);

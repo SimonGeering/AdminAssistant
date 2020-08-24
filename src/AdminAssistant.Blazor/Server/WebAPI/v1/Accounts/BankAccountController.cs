@@ -37,13 +37,13 @@ namespace AdminAssistant.WebAPI.v1
 
             if (result.Status == ResultStatus.NotFound)
             {
-                result.ValidationErrors.ToList().ForEach((err) => this.ModelState.AddModelError(err.Key, err.Value));
+                result.ValidationErrors.ToList().ForEach((err) => this.ModelState.AddModelError(err.Identifier, err.ErrorMessage));
                 return this.Log.Finish(this.NotFound(this.ModelState));
             }
 
             if (result.Status == ResultStatus.Invalid)
             {
-                result.ValidationErrors.ToList().ForEach((err) => this.ModelState.AddModelError(err.Key, err.Value));
+                result.ValidationErrors.ToList().ForEach((err) => this.ModelState.AddModelError(err.Identifier, err.ErrorMessage));
                 return this.Log.Finish(this.UnprocessableEntity(this.ModelState));
             }
 
@@ -64,7 +64,7 @@ namespace AdminAssistant.WebAPI.v1
 
             if (result.Status == ResultStatus.Invalid)
             {
-                result.ValidationErrors.ToList().ForEach((err) => this.ModelState.AddModelError(err.Key, err.Value));
+                result.ValidationErrors.ToList().ForEach((err) => this.ModelState.AddModelError(err.Identifier, err.ErrorMessage));
                 return this.Log.Finish(this.UnprocessableEntity(this.ModelState)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
             }
 
@@ -103,7 +103,7 @@ namespace AdminAssistant.WebAPI.v1
                 return this.Log.Finish(this.NotFound());
 
             var response = this.Mapper.Map<BankAccountTransactionResponseDto>(result.Value);
-            return this.Log.Finish(this.Ok(result));
+            return this.Log.Finish(this.Ok(response));
         }
     }
 }

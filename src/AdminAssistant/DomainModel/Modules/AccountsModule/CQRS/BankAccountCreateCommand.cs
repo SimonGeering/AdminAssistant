@@ -7,6 +7,7 @@ using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Framework.Providers;
 using Ardalis.Result;
 using MediatR;
+using Ardalis.Result.FluentValidation;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 {
@@ -40,19 +41,11 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
                 // var ctx = new FluentValidation.ValidationContext<BankAccount>(command.BankAccount);
                 //ctx.RootContextData[Constants.IsCreateCommandContext] = true;
 
-                var validationResult = await bankAccountValidator.ValidateAsync(command.BankAccount).ConfigureAwait(false);
+                var validationResult = await bankAccountValidator.ValidateAsync(command.BankAccount, cancellationToken).ConfigureAwait(false);
 
                 if (validationResult.IsValid == false)
                 {
-                    int count = 1;
-                    var validationErrors = new Dictionary<string, string>();
-
-                    foreach (var error in validationResult.Errors.Where(x => x.Severity == FluentValidation.Severity.Error))
-                    {
-                        validationErrors.Add($"{count}_{error.ErrorCode}", error.ErrorMessage);
-                        count++;
-                    }
-                    return Result<BankAccount>.Invalid(validationErrors);
+                    return Result<BankAccount>.Invalid(validationResult.AsErrors());
                 }
 
                 var result = await bankAccountRepository.SaveAsync(command.BankAccount).ConfigureAwait(false);
