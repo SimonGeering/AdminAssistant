@@ -42,7 +42,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
-    <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>
 
 </Project>

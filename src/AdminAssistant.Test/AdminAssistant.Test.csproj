@@ -56,8 +56,6 @@
     <ProjectReference Include="..\AdminAssistant.Blazor\Server\AdminAssistant.Blazor.Server.csproj" />
     <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
     <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
-    <ProjectReference Include="..\Framework\AdminAssistant.Framework.Test\AdminAssistant.Framework.Test.csproj" />
-    <ProjectReference Include="..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DomainModel\Modules\AssetRegisterModule\" />

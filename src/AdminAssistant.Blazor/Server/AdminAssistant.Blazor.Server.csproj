@@ -46,7 +46,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
-    <ProjectReference Include="..\..\Framework\AdminAssistant.Framework\AdminAssistant.Framework.csproj" />
     <ProjectReference Include="..\Client\AdminAssistant.Blazor.Client.csproj" />
   </ItemGroup>
 

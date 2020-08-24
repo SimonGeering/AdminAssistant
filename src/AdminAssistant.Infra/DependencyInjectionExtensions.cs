@@ -4,11 +4,34 @@ using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using AdminAssistant.Framework.Providers;
+using MediatR;
+using AdminAssistant.Framework.MediatR;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
+        public static void AddClientFrameworkServices(this IServiceCollection services)
+        {
+            services.AddTransient<ILoggingProvider, ClientSideLoggingProvider>();
+
+            AddFrameworkServices(services);
+        }
+
+        public static void AddServerFrameworkServices(this IServiceCollection services)
+        {
+            services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>)); // Use typeof because <,>
+
+            AddFrameworkServices(services);
+        }
+
+        private static void AddFrameworkServices(this IServiceCollection services)
+        {
+            services.AddTransient<IDateTimeProvider, DateTimeProvider>();
+        }
+
 #if DEBUG
         public static void AddAdminAssistantServerSideDAL(this IServiceCollection services, DbConnection connection)
         {
