@@ -2,16 +2,16 @@ using AdminAssistant.Framework.Providers;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class DependencyInjectionExtensions
+    public static partial class DependencyInjectionExtensions
     {
-        public static void AddClientSideProviders(this IServiceCollection services)
+        public static void AddAdminAssistantClientSideProviders(this IServiceCollection services)
         {
             services.AddTransient<ILoggingProvider, ClientSideLoggingProvider>();
 
             AddSharedProviders(services);
         }
 
-        public static void AddServerSideProviders(this IServiceCollection services)
+        public static void AddAdminAssistantServerSideProviders(this IServiceCollection services)
         {
             services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
 

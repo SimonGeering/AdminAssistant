@@ -4,7 +4,6 @@ using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using AdminAssistant.Framework.Providers;
 using MediatR;
 using AdminAssistant.Framework.MediatR;
 
@@ -12,28 +11,8 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
-        public static void AddClientFrameworkServices(this IServiceCollection services)
-        {
-            services.AddTransient<ILoggingProvider, ClientSideLoggingProvider>();
-
-            AddFrameworkServices(services);
-        }
-
-        public static void AddServerFrameworkServices(this IServiceCollection services)
-        {
-            services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>)); // Use typeof because <,>
-
-            AddFrameworkServices(services);
-        }
-
-        private static void AddFrameworkServices(this IServiceCollection services)
-        {
-            services.AddTransient<IDateTimeProvider, DateTimeProvider>();
-        }
-
 #if DEBUG
-        public static void AddAdminAssistantServerSideDAL(this IServiceCollection services, DbConnection connection)
+        public static void AddAdminAssistantServerSideInfra(this IServiceCollection services, DbConnection connection)
         {
             services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder =>
             {
@@ -42,8 +21,10 @@ namespace Microsoft.Extensions.DependencyInjection
             AddAccountsDAL(services);
         }
 #endif
-        public static void AddAdminAssistantServerSideDAL(this IServiceCollection services, ConfigurationSettings configurationSettings)
+        public static void AddAdminAssistantServerSideInfra(this IServiceCollection services, ConfigurationSettings configurationSettings)
         {
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>)); // Use typeof because <,>
+
             // EF Core ...
             services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder =>
             {

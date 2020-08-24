@@ -46,7 +46,7 @@ namespace AdminAssistant.Blazor.Client
             // See https://blazor.syncfusion.com/documentation/introduction/
             builder.Services.AddSyncfusionBlazor();
 
-            builder.Services.AddClientFrameworkServices();
+            builder.Services.AddAdminAssistantClientSideProviders();
             builder.Services.AddAdminAssistantClientSideDomainModel();
             builder.Services.AddAdminAssistantUI();
 

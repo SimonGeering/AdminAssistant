@@ -24,7 +24,7 @@ namespace AdminAssistant.WPF
 
                     services.AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
 
-                    services.AddClientFrameworkServices();
+                    services.AddAdminAssistantClientSideProviders();
                     services.AddAdminAssistantClientSideDomainModel();
                     services.AddAdminAssistantUI();
 

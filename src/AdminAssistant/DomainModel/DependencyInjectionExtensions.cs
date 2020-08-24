@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
-    public static class DependencyInjectionExtensions
+    public static partial class DependencyInjectionExtensions
     {
         public static void AddAdminAssistantClientSideDomainModel(this IServiceCollection services)
         {
