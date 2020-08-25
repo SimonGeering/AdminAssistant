@@ -5,6 +5,7 @@
         xmlns:sfskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
         xmlns:dashboardModule="clr-namespace:AdminAssistant.WPF.Modules.DashboardModule"
         xmlns:accountsModule="clr-namespace:AdminAssistant.WPF.Modules.AccountsModule"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         sfskin:SfSkinManager.VisualStyle="Office2019Black"
         Title="Admin Assistant" Height="720" Width="1280"
         DataContext="{Binding MainWindowViewModel, Source={StaticResource ViewModelLocator}}">
@@ -33,25 +34,51 @@
     <!-- End Footer -->
 
     <!-- Start Sidebar -->
-    <Grid DockPanel.Dock="Left">
+    <Grid DockPanel.Dock="Left" Margin="8 0 8 0">
       <Grid.RowDefinitions>
-        <RowDefinition x:Name="navBar" Height="auto" />
+        <RowDefinition x:Name="navBarHeader" Height="auto" />
+        <RowDefinition x:Name="navBarBody" Height="auto" />
         <RowDefinition x:Name="overflow" Height="*" />
       </Grid.RowDefinitions>
-      <sf:SfTreeNavigator Grid.Row="0" Width="100" ItemsSource="{Binding Modules}" >
-        <sf:SfTreeNavigator.HeaderTemplate>
-          <DataTemplate>
-            <ComboBox ItemsSource="{Binding Path=Modes}" DisplayMemberPath="Label" SelectedValuePath="Label" SelectedValue="{Binding Path=ActiveMode}" />
-          </DataTemplate>
-        </sf:SfTreeNavigator.HeaderTemplate>
-        <sf:SfTreeNavigator.ItemTemplate>
-          <HierarchicalDataTemplate ItemsSource="{Binding Modules}">
-            <StackPanel Orientation="Horizontal">
-              <TextBlock Text="{Binding Label}" FontWeight="Bold" VerticalAlignment="Center" Margin="18 0 0 0"/>
-            </StackPanel>
-          </HierarchicalDataTemplate>
-        </sf:SfTreeNavigator.ItemTemplate>
-      </sf:SfTreeNavigator>
+      
+      <!-- Start Sidebar Header -->
+      <!--
+        TODO: Just hard code data, behavior and styling for now.
+        Want to get main UI functional and navigation not working is blocking that.
+      -->
+      <sf:SplitButtonAdv Name="btnModeSelection" Grid.Row="0" Grid.Column="0" SmallIcon="{iconPacks:FontAwesomeImage BuildingRegular, Brush=White}" Label="Company" Padding="4" >
+        <sf:DropDownMenuGroup>
+          <sf:DropDownMenuItem HorizontalAlignment="Left" Header="Company">
+            <sf:DropDownMenuItem.Icon><iconPacks:PackIconFontAwesome Kind="BuildingRegular" /></sf:DropDownMenuItem.Icon>
+          </sf:DropDownMenuItem>
+          <sf:DropDownMenuItem HorizontalAlignment="Left" Header="Personal">
+            <sf:DropDownMenuItem.Icon><iconPacks:PackIconFontAwesome Kind="UserSolid" /></sf:DropDownMenuItem.Icon>
+          </sf:DropDownMenuItem>
+        </sf:DropDownMenuGroup>
+      </sf:SplitButtonAdv>
+      <!-- End Sidebar Header -->
+
+      
+      <!-- Start Sidebar Body -->
+      <!--
+        TODO: Just hard code data, behavior and styling for now.
+        Want to get main UI functional and navigation not working is blocking that.
+      -->
+      <StackPanel Grid.Row="1" Grid.Column="0" Margin="0 8 0 0">
+        <sf:ButtonAdv Name="btn" Label="Dashboard" SmallIcon="{iconPacks:FontAwesomeImage TachometerAltSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4"/>
+        <sf:ButtonAdv Label="Mail" SmallIcon="{iconPacks:FontAwesomeImage EnvelopeRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Calendar" SmallIcon="{iconPacks:FontAwesomeImage CalendarAltRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Contacts" SmallIcon="{iconPacks:FontAwesomeImage AddressBookRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Tasks" SmallIcon="{iconPacks:FontAwesomeImage FlagRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Accounts" SmallIcon="{iconPacks:FontAwesomeImage PoundSignSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Assets" SmallIcon="{iconPacks:FontAwesomeImage GemRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Billing" SmallIcon="{iconPacks:FontAwesomeImage BullseyeSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Budget" SmallIcon="{iconPacks:FontAwesomeImage ChartLineSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Documents" SmallIcon="{iconPacks:FontAwesomeImage FileAltRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Reports" SmallIcon="{iconPacks:FontAwesomeImage ChartBarRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+        <sf:ButtonAdv Label="Setup" SmallIcon="{iconPacks:FontAwesomeImage ToolsSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+      </StackPanel>
+      <!-- End Sidebar Body -->
     </Grid>
     <!-- End Sidebar -->
 
@@ -61,17 +88,16 @@
     </Grid>
     <!-- End Breadcrumb -->
 
-
     <!-- Start Main Content -->
     <ContentControl Content="{Binding}">
       <ContentControl.Style>
         <Style TargetType="{x:Type ContentControl}">
           <Setter Property="ContentTemplate" Value="{StaticResource DashboardViewTemplate}" />
           <Style.Triggers>
-            <DataTrigger Binding="{Binding SelectedViewModel}" Value="ModuleEnum.Dashboard">
+            <DataTrigger Binding="{Binding SelectedModule}" Value="ModuleEnum.Dashboard">
               <Setter Property="ContentTemplate" Value="{StaticResource DashboardViewTemplate}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding SelectedViewModel}" Value="ModuleEnum.Accounts">
+            <DataTrigger Binding="{Binding SelectedModule}" Value="ModuleEnum.Accounts">
               <Setter Property="ContentTemplate" Value="{StaticResource AccountsViewTemplate}" />
             </DataTrigger>
           </Style.Triggers>

@@ -39,17 +39,4 @@ namespace AdminAssistant.UI
             this.Loaded = new AsyncRelayCommand(execute: this.OnLoadedAsync);
         }
     }
-#if DEBUG
-    public abstract class DesignTimeViewModelBase : ObservableObject, IViewModelBase
-    {
-        public Task OnInitializedAsync() => throw new System.NotImplementedException();
-
-        public bool IsBusy { get; }
-#pragma warning disable CS0414 // Assigned but never used
-
-        public event EventHandler<bool> IsBusyChanged = null!;
-#pragma warning restore CS0414
-        public IAsyncRelayCommand Loaded { get; } = null!;
-    }
-#endif // DEBUG
 }

@@ -96,7 +96,7 @@ namespace AdminAssistant.UI.Services
             ModuleEnum.AssetRegister => "fa fa-diamond",
             ModuleEnum.Billing => "fa fa-bullseye",
             ModuleEnum.Budget => "fa fa-line-chart",
-            ModuleEnum.Documents => "fa fa-book",
+            ModuleEnum.Documents => "fa fa-file-text-o",
             ModuleEnum.Reports => "fa fa-bar-chart-o",
             ModuleEnum.Dashboard => "fa fa-dashboard",
             _ => throw new ArgumentOutOfRangeException(nameof(module))

@@ -13,5 +13,7 @@ namespace AdminAssistant.UI.Shared
         Mail,
         Reports,
         Tasks,
+        //Notes,
+        //Groceries
     }
 }
