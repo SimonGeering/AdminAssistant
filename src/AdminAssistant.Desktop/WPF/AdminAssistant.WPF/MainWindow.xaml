@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sf="http://schemas.syncfusion.com/wpf"
         xmlns:sfskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+        xmlns:local="clr-namespace:AdminAssistant.WPF.Shared"
         xmlns:dashboardModule="clr-namespace:AdminAssistant.WPF.Modules.DashboardModule"
         xmlns:accountsModule="clr-namespace:AdminAssistant.WPF.Modules.AccountsModule"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
@@ -17,6 +18,9 @@
     <DataTemplate x:Key="AccountsViewTemplate" DataType="{x:Type UserControl}">
       <accountsModule:AccountsComponent />
     </DataTemplate>
+
+    <local:ModuleEnumToIconImageConverter x:Key="ModuleEnumToIconImageConverter" Brush="White" />
+    <local:ModeEnumToIconImageConverter x:Key="ModeEnumToIconImageConverter" Brush="White" />
   </Window.Resources>
 
   <DockPanel LastChildFill="True">
@@ -64,42 +68,13 @@
         TODO: Just hard code data, behavior and styling for now.
         Want to get main UI functional and navigation not working is blocking that.
       -->
-      <StackPanel Grid.Row="1" Grid.Column="0" Margin="0 8 0 0">
-        <sf:MenuAdv Orientation="Vertical">
-          <sf:MenuItemAdv Header="New">
-            <sf:MenuItemAdv.Icon>
-              <iconPacks:PackIconFontAwesome Kind="SaveRegular"/>
-            </sf:MenuItemAdv.Icon>
-          </sf:MenuItemAdv>
-          <sf:MenuItemAdv Header="Products" Icon="{iconPacks:FontAwesomeImage TachometerAltSolid, Brush=White}" />
-          <sf:MenuItemAdv Header="Business Intelligence" />
-          <sf:MenuItemAdv Header="User Interface" >
-            <sf:MenuItemAdv Header="WPF  ">
-              <sf:MenuItemAdv Header="Tools"/>
-              <sf:MenuItemAdv Header="Chart"/>
-              <sf:MenuItemAdv Header="Grid"/>
-              <sf:MenuItemAdv Header="Diagram"/>
-              <sf:MenuItemAdv Header="Gauge"/>
-              <sf:MenuItemAdv Header="Schedule"/>
-              <sf:MenuItemAdv Header="Edit"/>
-            </sf:MenuItemAdv>
-            <sf:MenuItemAdv Header="Silverlight "/>
-            <sf:MenuItemAdv Header="Reporting" />
-          </sf:MenuItemAdv>
-        </sf:MenuAdv>
-        <!--<sf:ButtonAdv Name="btn" Label="Dashboard" SmallIcon="{iconPacks:FontAwesomeImage TachometerAltSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4"/>
-        <sf:ButtonAdv Label="Mail" SmallIcon="{iconPacks:FontAwesomeImage EnvelopeRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Calendar" SmallIcon="{iconPacks:FontAwesomeImage CalendarAltRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Contacts" SmallIcon="{iconPacks:FontAwesomeImage AddressBookRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Tasks" SmallIcon="{iconPacks:FontAwesomeImage FlagRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Accounts" SmallIcon="{iconPacks:FontAwesomeImage PoundSignSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Assets" SmallIcon="{iconPacks:FontAwesomeImage GemRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Billing" SmallIcon="{iconPacks:FontAwesomeImage BullseyeSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Budget" SmallIcon="{iconPacks:FontAwesomeImage ChartLineSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Documents" SmallIcon="{iconPacks:FontAwesomeImage FileAltRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Reports" SmallIcon="{iconPacks:FontAwesomeImage ChartBarRegular, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
-        <sf:ButtonAdv Label="Setup" SmallIcon="{iconPacks:FontAwesomeImage ToolsSolid, Brush=White}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />-->
-      </StackPanel>
+      <ItemsControl Grid.Row="1" Grid.Column="0" Margin="0 8 0 0" ItemsSource="{Binding Modules}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <sf:ButtonAdv Label="{Binding Label}" SmallIcon="{Binding Module, Converter={StaticResource ModuleEnumToIconImageConverter}}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
       <!-- End Sidebar Body -->
     </Grid>
     <!-- End Sidebar -->

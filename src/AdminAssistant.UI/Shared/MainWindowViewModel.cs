@@ -60,7 +60,7 @@ namespace AdminAssistant.UI.Shared
         public ModuleEnum SelectedModule
         {
             get => selectedModule;
-            private set => SetProperty(ref selectedModule, value);
+            private set => this.SetProperty(ref selectedModule, value);
         }
 
         private ModeSelectionItem activeMode;

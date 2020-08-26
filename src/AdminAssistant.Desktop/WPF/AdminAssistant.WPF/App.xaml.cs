@@ -59,11 +59,8 @@ namespace AdminAssistant.WPF
                 App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
                 App.Current.MainWindow.Show();
             }
-        }  
-
-        private void Application_Startup(object sender, StartupEventArgs e)
-        {
-            SfSkinManager.ApplyStylesOnApplication = true;
         }
+
+        private void Application_Startup(object sender, StartupEventArgs e) => SfSkinManager.ApplyStylesOnApplication = true;
     }
 }
