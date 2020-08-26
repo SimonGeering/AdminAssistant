@@ -28,7 +28,7 @@ namespace AdminAssistant.Framework.MediatR
             Guard.Against.Null(request, nameof(request));
 
             //Request
-            var requestName = typeof(TRequest).Name;
+            string requestName = typeof(TRequest).Name;
 
             this.loggingProvider.LogInformation($"{requestName} Handling Started");
 
@@ -48,7 +48,7 @@ namespace AdminAssistant.Framework.MediatR
                 return response;
             }
 
-            var status = this.LogResultDetails(requestName, result);
+            string status = this.LogResultDetails(requestName, result);
 
             this.loggingProvider.LogInformation($"{requestName} Handling Completed - {status}");
             return response;

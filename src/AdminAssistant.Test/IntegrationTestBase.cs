@@ -53,7 +53,7 @@ namespace AdminAssistant
                 .ConfigureWebHostDefaults(webBuilder =>
                  {
                      webBuilder.UseStartup<Blazor.Server.Startup>();
-                     webBuilder.ConfigureTestServices(ConfigureTestServices());
+                     webBuilder.ConfigureTestServices(this.ConfigureTestServices());
                      webBuilder.UseTestServer();
                  });
 
@@ -98,7 +98,7 @@ namespace AdminAssistant
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!this.disposedValue)
             {
                 if (disposing)
                 {
@@ -112,7 +112,7 @@ namespace AdminAssistant
 
                 // free unmanaged resources (unmanaged objects) and override finalizer
                 // set large fields to null
-                disposedValue = true;
+                this.disposedValue = true;
             }
         }
 
