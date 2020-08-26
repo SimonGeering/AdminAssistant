@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Product>Admin Assistant</Product>
     <nullable>enable</nullable>
     <LangVersion>latest</LangVersion>
@@ -28,15 +27,14 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0-preview.8.20407.11" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0-preview.8.20407.11" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Ardalis.GuardClauses" Version="3.0.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-preview2" />
   </ItemGroup>
 
