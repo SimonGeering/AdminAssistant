@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <Platforms>x64</Platforms>
   </PropertyGroup>
@@ -22,8 +22,8 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-preview.8.20407.11" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0-preview.8.20407.11" />
     <PackageReference Include="Syncfusion.SfBusyIndicator.WPF" Version="18.2.0.55" />
     <PackageReference Include="Syncfusion.SfInput.WPF" Version="18.2.0.55" />
     <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="18.2.0.55" />
