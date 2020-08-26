@@ -18,7 +18,7 @@ namespace AdminAssistant.WebAPI.v1.Core
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
             // Act
-            var response = await this.Container.GetService<IAdminAssistantWebAPIClient>().GetCurrencyAsync().ConfigureAwait(false);
+            var response = await this.Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetCurrencyAsync().ConfigureAwait(false);
 
             // Assert
             response.Should().HaveCount(3);

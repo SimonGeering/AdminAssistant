@@ -19,7 +19,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
-            var dal = this.Container.GetService<IBankAccountRepository>();
+            var dal = this.Container.GetRequiredService<IBankAccountRepository>();
 
             var acmeSavingsAccount = Factory.BankAccount
                 .WithTestData()
@@ -33,7 +33,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             //                                       .Build()).ConfigureAwait(false);
 
             // Act
-            var response = await this.Container.GetService<IAdminAssistantWebAPIClient>().GetBankAccountInfoAsync().ConfigureAwait(false);
+            var response = await this.Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountInfoAsync().ConfigureAwait(false);
 
             // Assert
             response.Should().ContainSingle(x => x.AccountName == acmeSavingsAccount.AccountName);

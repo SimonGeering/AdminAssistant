@@ -19,7 +19,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
             // Act
-            var response = await this.Container.GetService<IAdminAssistantWebAPIClient>().GetBankAccountByIdAsync(bankAccountID).ConfigureAwait(false);
+            var response = await this.Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountByIdAsync(bankAccountID).ConfigureAwait(false);
 
             // Assert
             response.BankAccountID.Should().Be(bankAccountID);

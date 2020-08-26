@@ -1,4 +1,5 @@
 using AdminAssistant.DomainModel.Infrastructure;
+using Ardalis.GuardClauses;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using MicroElements.Swashbuckle.FluentValidation;
@@ -59,8 +60,17 @@ namespace AdminAssistant.Blazor.Server
             {
                 // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
                 // https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters - examples for getting swagger to do what you want
-                c.DocInclusionPredicate((_, api) => string.IsNullOrWhiteSpace(api.GroupName) == false);// Skip documenting any controller without a Group name from the ApiExplorerSettings attribute
-                c.TagActionsBy(api => new string[] { api.GroupName }); // Group by Group name from the ApiExplorerSettings attribute
+                c.DocInclusionPredicate((_, api) =>
+                {
+                    // Skip documenting any controller without a Group name from the ApiExplorerSettings attribute ...
+                    return string.IsNullOrWhiteSpace(api.GroupName) == false;
+                });
+                c.TagActionsBy(api =>
+                {
+                    // Group by Group name from the ApiExplorerSettings attribute ...
+                    Guard.Against.Null(api.GroupName, nameof(api.GroupName)); // Should be covered by DocInclusionPredicate.
+                    return new string[] { api.GroupName };
+                }); 
 
                 c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
                 c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation

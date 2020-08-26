@@ -9,6 +9,6 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts
         public string Description { get; set; } = string.Empty;
         public bool AllowPersonal { get; set; }
         public bool AllowCompany { get; set; }
-        public bool IsDeprecated { get; set; } = false;
+        public bool IsDeprecated { get; set; }
     }
 }

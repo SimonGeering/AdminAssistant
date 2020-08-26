@@ -21,10 +21,10 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             // Arrange
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
-            var vm = this.Container.GetService<IBankAccountEditDialogViewModel>();
+            var vm = this.Container.GetRequiredService<IBankAccountEditDialogViewModel>();
             await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var messenger = this.Container.GetService<IMessenger>();
+            var messenger = this.Container.GetRequiredService<IMessenger>();
 
             // Act
             messenger.Send(new EditBankAccountMessage(new BankAccount()));
@@ -47,7 +47,7 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             vm.HeaderText.Should().Be(IBankAccountEditDialogViewModel.NewBankAccountHeader);
             vm.ShowDialog.Should().BeTrue();
 
-            var savedBankAccounts = await this.Container.GetService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
+            var savedBankAccounts = await this.Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
             savedBankAccounts.Should().BeEmpty();
         }
 
@@ -57,10 +57,10 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
         {
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
-            var vm = this.Container.GetService<IBankAccountEditDialogViewModel>();
+            var vm = this.Container.GetRequiredService<IBankAccountEditDialogViewModel>();
             await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var messenger = this.Container.GetService<IMessenger>();
+            var messenger = this.Container.GetRequiredService<IMessenger>();
             messenger.Send(new EditBankAccountMessage(new BankAccount()));
 
             // Act
@@ -69,7 +69,7 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             // Assert
             vm.ShowDialog.Should().BeFalse();
 
-            var savedBankAccounts = await this.Container.GetService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
+            var savedBankAccounts = await this.Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
             savedBankAccounts.Should().BeEmpty();
         }
 
@@ -79,10 +79,10 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
         {
             await this.ResetDatabaseAsync().ConfigureAwait(false);
 
-            var vm = this.Container.GetService<IBankAccountEditDialogViewModel>();
+            var vm = this.Container.GetRequiredService<IBankAccountEditDialogViewModel>();
             await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var messenger = this.Container.GetService<IMessenger>();
+            var messenger = this.Container.GetRequiredService<IMessenger>();
             messenger.Send(new EditBankAccountMessage(new BankAccount()));
 
             // Act
