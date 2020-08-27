@@ -74,24 +74,24 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             savedBankAccounts.Should().BeEmpty();
         }
 
-        [Fact(Skip="WIP")]
-        [Trait("Category", "Integration")]
-        public async Task OnlyEnableSave_WhenNoValidationErrorsShown()
-        {
-            await this.ResetDatabaseAsync().ConfigureAwait(false);
+        //[Fact(Skip="WIP")]
+        //[Trait("Category", "Integration")]
+        //public async Task OnlyEnableSave_WhenNoValidationErrorsShown()
+        //{
+        //    await this.ResetDatabaseAsync().ConfigureAwait(false);
 
-            var vm = this.Container.GetRequiredService<IBankAccountEditDialogViewModel>();
-            await vm.OnInitializedAsync().ConfigureAwait(false);
+        //    var vm = this.Container.GetRequiredService<IBankAccountEditDialogViewModel>();
+        //    await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var messenger = this.Container.GetRequiredService<IMessenger>();
-            messenger.Send(new EditBankAccountMessage(new BankAccount()));
+        //    var messenger = this.Container.GetRequiredService<IMessenger>();
+        //    messenger.Send(new EditBankAccountMessage(new BankAccount()));
 
-            // Act
-            await vm.Cancel.ExecuteAsync(null).ConfigureAwait(true);
+        //    // Act
+        //    await vm.Cancel.ExecuteAsync(null).ConfigureAwait(true);
             
-            // Assert
-            //vm.AccountNameValidationMessage
-        }
+        //    // Assert
+        //    //vm.AccountNameValidationMessage
+        //}
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

@@ -128,49 +128,49 @@ namespace AdminAssistant.WebAPI.v1.Accounts
 
     public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Should
     {
-        [Fact(Skip="WIP")]
-        [Trait("Category", "Unit")]
-        public async Task Return_Status200Ok_With_AListOfBankAccountTransaction_Given_AnExistingBankAccountID()
-        {
-            // Arrange
-            var bankAccountTransactionList = new List<BankAccountTransaction>()
-            {
-                Factory.BankAccountTransaction.WithTestData(10).Build(),
-                Factory.BankAccountTransaction.WithTestData(20).Build(),
-                Factory.BankAccountTransaction.WithTestData(30).Build()
-            };
+        //[Fact(Skip="WIP")]
+        //[Trait("Category", "Unit")]
+        //public async Task Return_Status200Ok_With_AListOfBankAccountTransaction_Given_AnExistingBankAccountID()
+        //{
+        //    // Arrange
+        //    var bankAccountTransactionList = new List<BankAccountTransaction>()
+        //    {
+        //        Factory.BankAccountTransaction.WithTestData(10).Build(),
+        //        Factory.BankAccountTransaction.WithTestData(20).Build(),
+        //        Factory.BankAccountTransaction.WithTestData(30).Build()
+        //    };
 
-            var services = new ServiceCollection();
-            services.AddMockServerSideLogging();
-            services.AddAutoMapper(typeof(MappingProfile));
+        //    var services = new ServiceCollection();
+        //    services.AddMockServerSideLogging();
+        //    services.AddAutoMapper(typeof(MappingProfile));
 
-            var mockMediator = new Mock<IMediator>();
-            mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTransactionsByBankAccountIDQuery>(), It.IsAny<CancellationToken>()))
-                        .Returns(Task.FromResult(Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList)));
+        //    var mockMediator = new Mock<IMediator>();
+        //    mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTransactionsByBankAccountIDQuery>(), It.IsAny<CancellationToken>()))
+        //                .Returns(Task.FromResult(Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList)));
 
-            services.AddTransient((sp) => mockMediator.Object);
-            services.AddTransient<BankAccountController>();
+        //    services.AddTransient((sp) => mockMediator.Object);
+        //    services.AddTransient<BankAccountController>();
 
-            var container = services.BuildServiceProvider();
+        //    var container = services.BuildServiceProvider();
 
-            // Act
-            var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
+        //    // Act
+        //    var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
 
-            // Assert
-            var result = (OkObjectResult)response.Result;
-            result.Value.Should().BeAssignableTo<IEnumerable<BankAccountTransactionResponseDto>>();
+        //    // Assert
+        //    var result = (OkObjectResult)response.Result;
+        //    result.Value.Should().BeAssignableTo<IEnumerable<BankAccountTransactionResponseDto>>();
 
-            var value = ((IEnumerable<BankAccountTransactionResponseDto>)result.Value).ToArray();
-            value.Should().HaveCount(bankAccountTransactionList.Count);
+        //    var value = ((IEnumerable<BankAccountTransactionResponseDto>)result.Value).ToArray();
+        //    value.Should().HaveCount(bankAccountTransactionList.Count);
 
-            var expected = bankAccountTransactionList.ToArray();
-            for (int i = 0; i < expected.Length; i++)
-            {
-                // TODO: Switch this to use AutoMapper.
-                value[i].BankAccountTransactionID.Should().Be(expected[i].BankAccountTransactionID);
-                value[i].BankAccountID.Should().Be(expected[i].BankAccountID);
-            }
-        }
+        //    var expected = bankAccountTransactionList.ToArray();
+        //    for (int i = 0; i < expected.Length; i++)
+        //    {
+        //        // TODO: Switch this to use AutoMapper.
+        //        value[i].BankAccountTransactionID.Should().Be(expected[i].BankAccountTransactionID);
+        //        value[i].BankAccountID.Should().Be(expected[i].BankAccountID);
+        //    }
+        //}
 
         [Fact]
         [Trait("Category", "Unit")]
