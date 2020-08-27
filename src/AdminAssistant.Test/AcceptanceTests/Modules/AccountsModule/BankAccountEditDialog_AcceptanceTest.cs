@@ -1,3 +1,4 @@
+#if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
@@ -94,3 +95,4 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
+#endif // quick and dirty fix for #85 category filtering breaking CI Unit Test run.

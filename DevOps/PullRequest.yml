@@ -73,4 +73,5 @@ stages:
         command: 'test'
         projects: 'src/AdminAssistant.sln'
         testRunTitle: 'Unit Tests'
-        arguments: '--configuration Release --filter Category=Unit --no-build'
+        arguments: '--configuration Release --no-build'
+        #arguments: '--configuration Release --filter Category=Unit --no-build'

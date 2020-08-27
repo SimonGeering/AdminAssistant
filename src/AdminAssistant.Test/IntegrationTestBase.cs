@@ -1,3 +1,4 @@
+#if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -92,7 +93,7 @@ namespace AdminAssistant
             services.AddAutoMapper(typeof(MappingProfile));
         };
 
-        #region IDisposable
+#region IDisposable
 
         private bool disposedValue;
 
@@ -129,6 +130,7 @@ namespace AdminAssistant
             this.Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-        #endregion // IDisposable
+#endregion // IDisposable
     }
 }
+#endif // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
