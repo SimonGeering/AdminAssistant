@@ -15,8 +15,6 @@ namespace AdminAssistant.UI.Shared
 
         private readonly SidebarStateSettings contractedSidebarState;
         private readonly SidebarStateSettings expandedSidebarState;
-        private readonly ModeSelectionStateSettings contractedModeSelectionDropDownState;
-        private readonly ModeSelectionStateSettings expandedModeSelectionDropDownState;
 
         public MainWindowViewModel(IMessenger messenger, IAppService appService, ILoggingProvider loggerProvider)
             : base(loggerProvider)
@@ -28,8 +26,6 @@ namespace AdminAssistant.UI.Shared
 
             this.appService = appService;
 
-            this.SelectedModule = ModuleEnum.Dashboard;
-
             this.activeMode = appService.GetDefaultMode();
             this.activeModule = appService.GetDefaultModule();
 
@@ -38,10 +34,6 @@ namespace AdminAssistant.UI.Shared
             this.contractedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Contracted, "fa fa-lg fa-angle-double-right", "cl-navbar-contracted", false);
             this.expandedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Expanded, "fa fa-lg fa-angle-double-left", "cl-navbar-expanded", true);
             this.Sidebar = this.expandedSidebarState;
-
-            this.contractedModeSelectionDropDownState = new ModeSelectionStateSettings(ExpandedContractedStateToggle.Contracted, string.Empty);
-            this.expandedModeSelectionDropDownState = new ModeSelectionStateSettings(ExpandedContractedStateToggle.Expanded, "show");
-            this.ModeSelectionDropDown = this.contractedModeSelectionDropDownState;
 
             this.Modes = this.appService.GetModes();
             this.ActiveMode = this.appService.GetDefaultMode();
@@ -54,49 +46,25 @@ namespace AdminAssistant.UI.Shared
         }
         ~MainWindowViewModel() => this.messenger.UnregisterAll(this);
 
-        public string FooterText { get; }
-
-        private ModuleEnum selectedModule;
-        public ModuleEnum SelectedModule
-        {
-            get => selectedModule;
-            private set => this.SetProperty(ref selectedModule, value);
-        }
-
         private ModeSelectionItem activeMode;
         public ModeSelectionItem ActiveMode
         {
-            get => activeMode;
-            set => this.SetProperty(ref activeMode, value);
+            get => this.activeMode;
+            set => this.SetProperty(ref this.activeMode, value);
         }
 
         private ModuleSelectionItem activeModule;
         public ModuleSelectionItem ActiveModule
         {
-            get => activeModule;
-            set => this.SetProperty(ref activeModule, value);
+            get => this.activeModule;
+            set => this.SetProperty(ref this.activeModule, value);
         }
 
         public SidebarStateSettings Sidebar { get; private set; }
-        public ModeSelectionStateSettings ModeSelectionDropDown { get; private set; }
 
         public List<ModeSelectionItem> Modes { get; private set; }
 
         public List<ModuleSelectionItem> Modules { get; private set; }
-
-        public void OnModeSelectionDropDownClick()
-        {
-            switch (this.ModeSelectionDropDown.State)
-            {
-                case ExpandedContractedStateToggle.Contracted:
-                    this.ModeSelectionDropDown = this.expandedModeSelectionDropDownState;
-                    break;
-
-                case ExpandedContractedStateToggle.Expanded:
-                    this.ModeSelectionDropDown = this.contractedModeSelectionDropDownState;
-                    break;
-            }
-        }
 
         public void OnSideBarControlButtonClick()
         {
@@ -120,7 +88,7 @@ namespace AdminAssistant.UI.Shared
         public void OnSelectedModeChanged(ModeSelectionItem selectedMode)
         {
             this.ActiveMode = selectedMode;
-            this.ModeSelectionDropDown = this.contractedModeSelectionDropDownState;
+            //this.ModeSelectionDropDown = this.contractedModeSelectionDropDownState;
 
             this.messenger.Send(new ModeSelectionChangedMessage(this.ActiveMode));
         }
@@ -133,5 +101,7 @@ namespace AdminAssistant.UI.Shared
 
             this.messenger.Send(new ModuleSelectionChangedMessage(this.ActiveModule));
         }
+
+        public string FooterText { get; }
     }
 }

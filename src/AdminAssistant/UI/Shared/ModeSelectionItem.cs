@@ -14,5 +14,7 @@ namespace AdminAssistant.UI.Shared
         public string Tag { get; set; }
         public string Label { get; set; }
         public string Icon { get; set; }
+
+        public override string ToString() => this.Mode.ToString();
     }
 }
