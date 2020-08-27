@@ -9,9 +9,6 @@ namespace AdminAssistant.WPF.Modules.AccountsModule
             this.InitializeComponent();
         }
 
-        private void ChromelessWindow_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            (this.DataContext as IBankAccountEditDialogViewModel).Loaded.ExecuteAsync(null);
-        }
+        private void ChromelessWindow_Loaded(object sender, System.Windows.RoutedEventArgs e) => ((IBankAccountEditDialogViewModel)this.DataContext).Loaded.ExecuteAsync(null);
     }
 }

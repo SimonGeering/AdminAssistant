@@ -1,8 +1,10 @@
+#if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
+using Ardalis.GuardClauses;
 using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
@@ -52,12 +54,12 @@ namespace AdminAssistant
                 .ConfigureWebHostDefaults(webBuilder =>
                  {
                      webBuilder.UseStartup<Blazor.Server.Startup>();
-                     webBuilder.ConfigureTestServices(ConfigureTestServices());
+                     webBuilder.ConfigureTestServices(this.ConfigureTestServices());
                      webBuilder.UseTestServer();
                  });
 
             this.testServer = hostBuilder.Start();
-            this.connectionString = this.testServer.Services.GetService<IApplicationDbContext>().ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
+            this.connectionString = this.testServer.Services.GetRequiredService<IApplicationDbContext>().ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
 
             this.checkpoint = new Respawn.Checkpoint
             {
@@ -83,17 +85,21 @@ namespace AdminAssistant
         protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
         {
             // Register the WebAPIClient using the test httpClient ... 
-            services.AddTransient<IAdminAssistantWebAPIClient>((sp) => new AdminAssistantWebAPIClient(this.httpClient) { BaseUrl = this.httpClient.BaseAddress.ToString() } );
+            services.AddTransient<IAdminAssistantWebAPIClient>((sp) =>
+            {
+                Guard.Against.Null(this.httpClient.BaseAddress, "httpClient.BaseAddress");
+                return new AdminAssistantWebAPIClient(this.httpClient) { BaseUrl = this.httpClient.BaseAddress.ToString() };
+            });
             services.AddAutoMapper(typeof(MappingProfile));
         };
 
-        #region IDisposable
+#region IDisposable
 
         private bool disposedValue;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!this.disposedValue)
             {
                 if (disposing)
                 {
@@ -107,7 +113,7 @@ namespace AdminAssistant
 
                 // free unmanaged resources (unmanaged objects) and override finalizer
                 // set large fields to null
-                disposedValue = true;
+                this.disposedValue = true;
             }
         }
 
@@ -124,6 +130,7 @@ namespace AdminAssistant
             this.Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-        #endregion // IDisposable
+#endregion // IDisposable
     }
 }
+#endif // quick and dirty fix for #85 category filtering breaking CI Unit Test run.

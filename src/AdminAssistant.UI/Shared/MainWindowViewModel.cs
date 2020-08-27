@@ -21,6 +21,8 @@ namespace AdminAssistant.UI.Shared
         public MainWindowViewModel(IMessenger messenger, IAppService appService, ILoggingProvider loggerProvider)
             : base(loggerProvider)
         {
+            this.Log.Start();
+
             this.messenger = messenger;
             this.messenger.RegisterAll(this);
 
@@ -31,10 +33,7 @@ namespace AdminAssistant.UI.Shared
             this.activeMode = appService.GetDefaultMode();
             this.activeModule = appService.GetDefaultModule();
 
-            this.Log.Start();
             this.FooterText = $"Admin Assistant - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
-            this.Log.Finish();
-
 
             this.contractedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Contracted, "fa fa-lg fa-angle-double-right", "cl-navbar-contracted", false);
             this.expandedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Expanded, "fa fa-lg fa-angle-double-left", "cl-navbar-expanded", true);
@@ -50,6 +49,8 @@ namespace AdminAssistant.UI.Shared
             this.Modules = this.appService.GetModules();
             this.ActiveModule = this.appService.GetDefaultModule();
             this.ActiveModule.StyleClass = SelectedModuleStyle;
+
+            this.Log.Finish();
         }
         ~MainWindowViewModel() => this.messenger.UnregisterAll(this);
 
@@ -59,7 +60,7 @@ namespace AdminAssistant.UI.Shared
         public ModuleEnum SelectedModule
         {
             get => selectedModule;
-            private set => SetProperty(ref selectedModule, value);
+            private set => this.SetProperty(ref selectedModule, value);
         }
 
         private ModeSelectionItem activeMode;

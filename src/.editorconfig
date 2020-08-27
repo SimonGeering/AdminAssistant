@@ -1,4 +1,4 @@
-﻿# Rules in this file were initially inferred by Visual Studio IntelliCode from the C:\Source\GitHub\SimonGeering\AdminAssistant\src codebase based on best match to current usage at 14/03/2020
+# Rules in this file were initially inferred by Visual Studio IntelliCode from the C:\Source\GitHub\SimonGeering\AdminAssistant\src codebase based on best match to current usage at 14/03/2020
 # You can modify the rules from these initially generated values to suit your own policies
 # You can learn more about editorconfig here: https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
 
@@ -92,7 +92,7 @@ dotnet_style_predefined_type_for_locals_parameters_members = true:suggestion
 #prefer events to be prefaced with this. in C# or Me. in Visual Basic
 dotnet_style_qualification_for_event = true:suggestion
 #prefer fields not to be prefaced with this. or Me. in Visual Basic
-dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_field = true:suggestion
 #prefer methods to be prefaced with this. in C# or Me. in Visual Basic
 dotnet_style_qualification_for_method = true:suggestion
 #prefer properties to be prefaced with this. in C# or Me. in Visual Basic

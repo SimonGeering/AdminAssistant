@@ -12,7 +12,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
         {
 
         }
-        public bool ShowAccountEditDialog { get; } = false;
+        public bool ShowAccountEditDialog { get; }
         public BankAccount? SelectedBankAccount { get; }
         public BindingList<BankAccountTransaction> Transactions { get; } = new BindingList<BankAccountTransaction>();
     }
