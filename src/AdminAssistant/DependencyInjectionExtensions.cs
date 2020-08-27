@@ -19,9 +19,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         private static void AddSharedProviders(this IServiceCollection services)
-        {
-            services.AddTransient<IDateTimeProvider, DateTimeProvider>();
-        }
+            => services.AddTransient<IDateTimeProvider, DateTimeProvider>();
     }
 }
 

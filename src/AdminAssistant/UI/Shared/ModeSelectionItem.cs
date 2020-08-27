@@ -4,10 +4,10 @@ namespace AdminAssistant.UI.Shared
     {
         public ModeSelectionItem(ModeEnum mode, string tag, string label, string icon)
         {
-            this.Mode = mode;
-            this.Tag = tag;
-            this.Label = label;
-            this.Icon = icon;
+            Mode = mode;
+            Tag = tag;
+            Label = label;
+            Icon = icon;
         }
 
         public ModeEnum Mode { get; set; }
@@ -15,6 +15,6 @@ namespace AdminAssistant.UI.Shared
         public string Label { get; set; }
         public string Icon { get; set; }
 
-        public override string ToString() => this.Mode.ToString();
+        public override string ToString() => Mode.ToString();
     }
 }

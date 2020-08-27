@@ -11,6 +11,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
         public string Symbol { get; set; } = string.Empty;
         public string DecimalFormat { get; set; } = string.Empty;
 
-        public int PrimaryKey => this.CurrencyID;
+        public int PrimaryKey => CurrencyID;
     }
 }

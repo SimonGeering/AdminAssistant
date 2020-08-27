@@ -1,34 +1,36 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AutoMapper;
 using System;
-using FluentAssertions;
-using Xunit;
+using System.Diagnostics.CodeAnalysis;
+using AutoMapper;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
+using FluentAssertions;
+using Xunit;
 
 namespace AdminAssistant.Infra.DAL
 {
     public class DALMappingProfile_Should
     {
-        private readonly IConfigurationProvider configuration;
-        private readonly IMapper mapper;
+        private readonly IConfigurationProvider _configuration;
+        private readonly IMapper _mapper;
 
         public DALMappingProfile_Should()
         {
-            this.configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
+            _configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
 
-            this.mapper = this.configuration.CreateMapper();
+            _mapper = _configuration.CreateMapper();
         }
 
         [Fact]
         [Trait("Category", "Unit")]
+        [SuppressMessage("Style", "IDE0022:Use expression body for methods", Justification = "One line test")]
         public void HaveValidConfiguration()
         {
             // Arrange
 
             // Act
-            this.configuration.AssertConfigurationIsValid();
+            _configuration.AssertConfigurationIsValid();
 
             // Assert
         }
@@ -47,7 +49,7 @@ namespace AdminAssistant.Infra.DAL
             var instance = Activator.CreateInstance(source);
 
             // Act
-            var result = this.mapper.Map(instance, source, destination);
+            var result = _mapper.Map(instance, source, destination);
 
             // Assert
             result.Should().NotBeNull();

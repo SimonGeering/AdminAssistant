@@ -18,14 +18,14 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
 
         public async Task<Bank> GetAsync(int bankID)
         {
-            var data = await this.DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == bankID).ConfigureAwait(false);
-            return this.Mapper.Map<Bank>(data);
+            var data = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == bankID).ConfigureAwait(false);
+            return Mapper.Map<Bank>(data);
         }
 
         public async Task<List<Bank>> GetListAsync()
         {
-            var data = await this.DbContext.Banks.ToListAsync().ConfigureAwait(false);
-            return this.Mapper.Map<List<Bank>>(data);
+            var data = await DbContext.Banks.ToListAsync().ConfigureAwait(false);
+            return Mapper.Map<List<Bank>>(data);
         }
 
         public async Task<Bank> SaveAsync(Bank domainObjectToSave)
@@ -33,25 +33,25 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
             var entity = Mapper.Map<BankEntity>(domainObjectToSave);
 
             if (base.IsNew(domainObjectToSave))
-                this.DbContext.Banks.Add(entity);
+                DbContext.Banks.Add(entity);
             else
-                this.DbContext.Banks.Update(entity);
+                DbContext.Banks.Update(entity);
 
-            await this.DbContext.SaveChangesAsync().ConfigureAwait(false);
+            await DbContext.SaveChangesAsync().ConfigureAwait(false);
 
-            return this.Mapper.Map<Bank>(entity);
+            return Mapper.Map<Bank>(entity);
         }
 
         public async Task DeleteAsync(int id)
         {
-            var entity = await this.DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id).ConfigureAwait(false);
+            var entity = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id).ConfigureAwait(false);
 
             // TODO: make this a custom domain exception and handle in controller.
             if (entity.BankID != id)
                 throw new System.ArgumentException($"Record with ID {id} not found", nameof(id));
 
-            this.DbContext.Banks.Remove(entity);
-            await this.DbContext.SaveChangesAsync().ConfigureAwait(false);
+            DbContext.Banks.Remove(entity);
+            await DbContext.SaveChangesAsync().ConfigureAwait(false);
             return;
         }
     }

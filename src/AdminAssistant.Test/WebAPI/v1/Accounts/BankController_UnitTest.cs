@@ -46,7 +46,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var result = (OkObjectResult)response.Result;
             result.Value.Should().BeAssignableTo<BankResponseDto>();
 
-            var value = ((BankResponseDto)result.Value);
+            var value = (BankResponseDto)result.Value;
             value.BankID.Should().Be(bank.BankID);
             value.BankName.Should().Be(bank.BankName);
         }
@@ -113,10 +113,10 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             value.Should().HaveCount(banks.Count);
 
             var expected = banks.ToArray();
-            for (int i = 0; i < expected.Length; i++)
+            for (var index = 0; index < expected.Length; index++)
             {
-                value[i].BankID.Should().Be(expected[i].BankID);
-                value[i].BankName.Should().Be(expected[i].BankName);
+                value[index].BankID.Should().Be(expected[index].BankID);
+                value[index].BankName.Should().Be(expected[index].BankName);
             }
         }
     }

@@ -16,10 +16,10 @@ namespace AdminAssistant.WebAPI.v1.Core
         public async Task Return_AllCurrencies_Given_NoParameters()
         {
             // Arrange
-            await this.ResetDatabaseAsync().ConfigureAwait(false);
+            await ResetDatabaseAsync().ConfigureAwait(false);
 
             // Act
-            var response = await this.Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetCurrencyAsync().ConfigureAwait(false);
+            var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetCurrencyAsync().ConfigureAwait(false);
 
             // Assert
             response.Should().HaveCount(3);

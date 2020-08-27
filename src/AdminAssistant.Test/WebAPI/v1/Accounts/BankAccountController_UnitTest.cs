@@ -61,7 +61,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
 
             foreach (var expectedErrorDetails in validationErrors)
             {
-                string[] messages = (string[])errors[expectedErrorDetails.Identifier];
+                var messages = (string[])errors[expectedErrorDetails.Identifier];
                 messages.Should().Contain(expectedErrorDetails.ErrorMessage);
             }
         }
@@ -97,7 +97,7 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             var result = (OkObjectResult)response.Result;
             result.Value.Should().BeAssignableTo<BankAccountResponseDto>();
 
-            var value = ((BankAccountResponseDto)result.Value);
+            var value = (BankAccountResponseDto)result.Value;
             value.BankAccountID.Should().Be(bankAccount.BankAccountID);
             value.AccountName.Should().Be(bankAccount.AccountName);
         }

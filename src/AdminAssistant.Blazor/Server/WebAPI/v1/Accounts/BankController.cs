@@ -27,15 +27,15 @@ namespace AdminAssistant.WebAPI.v1
         [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankID does not exist.")]
         public async Task<ActionResult<BankResponseDto>> BankGetById([SwaggerParameter("The ID of the Bank to be returned.", Required = true)] int bankID)
         {
-            this.Log.Start();
+            Log.Start();
 
-            var result = await this.Mediator.Send(new BankByIDQuery(bankID)).ConfigureAwait(false);
+            var result = await Mediator.Send(new BankByIDQuery(bankID)).ConfigureAwait(false);
 
             if (result.Status == ResultStatus.NotFound)
-                return this.Log.Finish(this.NotFound());
+                return Log.Finish(NotFound());
 
-            var response = this.Mapper.Map<BankResponseDto>(result.Value);
-            return this.Log.Finish(this.Ok(response));
+            var response = Mapper.Map<BankResponseDto>(result.Value);
+            return Log.Finish(Ok(response));
         }
 
         [HttpGet]
@@ -43,12 +43,12 @@ namespace AdminAssistant.WebAPI.v1
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankResponseDto", type: typeof(IEnumerable<BankResponseDto>))]
         public async Task<ActionResult<IEnumerable<BankResponseDto>>> BankGet()
         {
-            this.Log.Start();
+            Log.Start();
 
-            var result = await this.Mediator.Send(new BankQuery()).ConfigureAwait(false);
-            var response = this.Mapper.Map<IEnumerable<BankResponseDto>>(result.Value);
+            var result = await Mediator.Send(new BankQuery()).ConfigureAwait(false);
+            var response = Mapper.Map<IEnumerable<BankResponseDto>>(result.Value);
             
-            return this.Log.Finish(this.Ok(response));
+            return Log.Finish(Ok(response));
         }
     }
 }

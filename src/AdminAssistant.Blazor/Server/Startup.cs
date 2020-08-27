@@ -22,13 +22,13 @@ namespace AdminAssistant.Blazor.Server
         private const string WebAPIVersion = "v1";
         private string WebAPITitle => $"Admin Assistant WebAPI {WebAPIVersion}.";
 
-        private readonly IHostEnvironment env;
-        private readonly IConfiguration configuration;
+        private readonly IHostEnvironment _env;
+        private readonly IConfiguration _configuration;
 
         public Startup(IHostEnvironment env, IConfiguration configuration)
         {
-            this.env = env;
-            this.configuration = configuration;
+            _env = env;
+            _configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -42,29 +42,20 @@ namespace AdminAssistant.Blazor.Server
                 opts.Filters.Add(new ConsumesAttribute("application/json")); // Request limit
                 opts.ReturnHttpNotAcceptable = true; // Force client to only request media types based on the above limits.
             });
-            services.AddResponseCompression(opts =>
-            {
-                opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
-            });
+            services.AddResponseCompression(opts => opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" }));
 
             services.AddHttpContextAccessor();
             services.AddControllers()
                 .AddNewtonsoftJson()
-                .AddFluentValidation(c =>
-                {
-                    c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
-
-                });
+                .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>());
 
             services.AddSwaggerGen(c =>
             {
                 // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
                 // https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters - examples for getting swagger to do what you want
-                c.DocInclusionPredicate((_, api) =>
-                {
-                    // Skip documenting any controller without a Group name from the ApiExplorerSettings attribute ...
-                    return string.IsNullOrWhiteSpace(api.GroupName) == false;
-                });
+
+                // Skip documenting any controller without a Group name from the ApiExplorerSettings attribute ...
+                c.DocInclusionPredicate((_, api) => string.IsNullOrWhiteSpace(api.GroupName) == false);
                 c.TagActionsBy(api =>
                 {
                     // Group by Group name from the ApiExplorerSettings attribute ...
@@ -84,7 +75,7 @@ namespace AdminAssistant.Blazor.Server
 
             services.AddAdminAssistantServerSideProviders();
             services.AddAdminAssistantServerSideDomainModel();
-            services.AddAdminAssistantServerSideInfra(this.configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>());
+            services.AddAdminAssistantServerSideInfra(_configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -101,15 +92,12 @@ namespace AdminAssistant.Blazor.Server
             // Add OpenAPI/Swagger middleware ...
 
             // Serves the registered OpenAPI/Swagger documents on `/swagger/v1/swagger.json`
-            app.UseSwagger(c =>
-            {
-                c.SerializeAsV2 = true; // Needed for the VS2019 to be able to generate a REST Client.
-            });
-
+            app.UseSwagger(c => c.SerializeAsV2 = true); // Needed for the VS2019 to be able to generate a REST Client.
+            
             // Serves the Swagger UI 3 web ui to view the OpenAPI/Swagger documents by default on `/swagger`
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", this.WebAPITitle);
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", WebAPITitle);
                 c.RoutePrefix = "api-docs";
                 c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
             });

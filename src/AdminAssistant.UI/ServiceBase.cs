@@ -12,9 +12,9 @@ namespace AdminAssistant.UI
 
         public ServiceBase(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
         {
-            this.AdminAssistantWebAPIClient = adminAssistantWebAPIClient;
-            this.Log = log;
-            this.Mapper = mapper;
+            AdminAssistantWebAPIClient = adminAssistantWebAPIClient;
+            Log = log;
+            Mapper = mapper;
         }
     }
 }

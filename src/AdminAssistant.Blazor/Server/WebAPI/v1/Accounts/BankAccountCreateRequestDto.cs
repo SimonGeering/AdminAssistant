@@ -1,7 +1,6 @@
 using System;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.TypeMapping;
-
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1
@@ -22,9 +21,7 @@ namespace AdminAssistant.WebAPI.v1
         public DateTime OpenedOn { get; set; }
 
         public void MapTo(AutoMapper.Profile profile)
-        {
-            profile.CreateMap< BankAccountCreateRequestDto, BankAccount>()
-                .ForMember(x => x.BankAccountID, opt => opt.Ignore());
-        }
+            => profile.CreateMap<BankAccountCreateRequestDto, BankAccount>()
+                      .ForMember(x => x.BankAccountID, opt => opt.Ignore());
     }
 }

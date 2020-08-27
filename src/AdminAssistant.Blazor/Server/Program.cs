@@ -7,10 +7,7 @@ namespace AdminAssistant.Blazor.Server
 {
     public static class Program
     {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+        public static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder()
@@ -34,13 +31,7 @@ namespace AdminAssistant.Blazor.Server
                     // TODO: Configure production logging.
 #endif
                 })
-                .ConfigureAppConfiguration((hostingContext, config) =>
-                {
-                    config.AddCommandLine(args);
-                })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                .ConfigureAppConfiguration((hostingContext, config) => config.AddCommandLine(args))
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
     }
 }

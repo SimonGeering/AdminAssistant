@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
@@ -9,27 +10,21 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 {
     public class BankAccountByIDQuery : IRequest<Result<BankAccount>>
     {
-        public BankAccountByIDQuery(int bankAccountID)
-        {
-            this.BankAccountID = bankAccountID;
-        }
+        public BankAccountByIDQuery(int bankAccountID) => BankAccountID = bankAccountID;
 
         public int BankAccountID { get; private set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+        [SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
         internal class BankAccountByIDHandler : RequestHandlerBase<BankAccountByIDQuery, Result<BankAccount>>
         {
-            private readonly IBankAccountRepository bankAccountRepository;
+            private readonly IBankAccountRepository _bankAccountRepository;
 
             public BankAccountByIDHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository)
-                : base(loggingProvider)
-            {
-                this.bankAccountRepository = bankAccountRepository;
-            }
+                : base(loggingProvider) => _bankAccountRepository = bankAccountRepository;
 
             public override async Task<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
             {
-                var bankAccount = await bankAccountRepository.GetAsync(request.BankAccountID).ConfigureAwait(false);
+                var bankAccount = await _bankAccountRepository.GetAsync(request.BankAccountID).ConfigureAwait(false);
 
                 if (bankAccount == null || bankAccount.BankAccountID == Constants.UnknownRecordID)
                     return Result<BankAccount>.NotFound();

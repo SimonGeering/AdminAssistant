@@ -18,14 +18,14 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         public async Task Return_ABank_Given_BankID()
         {
             // Arrange
-            await this.ResetDatabaseAsync().ConfigureAwait(false);
+            await ResetDatabaseAsync().ConfigureAwait(false);
 
-            var dal = this.Container.GetRequiredService<IBankRepository>();
+            var dal = Container.GetRequiredService<IBankRepository>();
             await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }).ConfigureAwait(false);
             var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
 
             // Act
-            var response = await this.Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID).ConfigureAwait(false);
+            var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID).ConfigureAwait(false);
 
             // Assert
             response.BankID.Should().Be(acmeBuildingSociety.BankID);
@@ -37,14 +37,14 @@ namespace AdminAssistant.WebAPI.v1.Accounts
         public async Task Return_AllBanks_Given_NoParameters()
         {
             // Arrange
-            await this.ResetDatabaseAsync().ConfigureAwait(false);
+            await ResetDatabaseAsync().ConfigureAwait(false);
 
-            var dal = this.Container.GetRequiredService<IBankRepository>();
+            var dal = Container.GetRequiredService<IBankRepository>();
             var acmeBankPLC = await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }).ConfigureAwait(false);
             var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
 
             // Act
-            var response = await this.Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAsync().ConfigureAwait(false);
+            var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAsync().ConfigureAwait(false);
 
             // Assert
             response.Should().ContainSingle(x =>x.BankID == acmeBankPLC.BankID && x.BankName == acmeBankPLC.BankName);

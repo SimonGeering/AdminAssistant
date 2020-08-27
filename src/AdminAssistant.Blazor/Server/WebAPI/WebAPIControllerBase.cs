@@ -9,9 +9,9 @@ namespace AdminAssistant.WebAPI.v1
     {
         public WebAPIControllerBase(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
         {
-            this.Mapper = mapper;
-            this.Mediator = mediator;
-            this.Log = loggingProvider;
+            Mapper = mapper;
+            Mediator = mediator;
+            Log = loggingProvider;
         }
 
         protected IMapper Mapper { get; }

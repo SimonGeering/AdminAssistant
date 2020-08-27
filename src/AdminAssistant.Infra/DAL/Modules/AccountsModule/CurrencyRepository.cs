@@ -17,14 +17,14 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
 
         public async Task<Currency> GetAsync(int id)
         {
-            var data = await this.DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
-            return this.Mapper.Map<Currency>(data);
+            var data = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
+            return Mapper.Map<Currency>(data);
         }
 
         public async Task<List<Currency>> GetListAsync()
         {
-            var data = await this.DbContext.Currencies.ToListAsync().ConfigureAwait(false);
-            return this.Mapper.Map<List<Currency>>(data);
+            var data = await DbContext.Currencies.ToListAsync().ConfigureAwait(false);
+            return Mapper.Map<List<Currency>>(data);
         }
     }
 }

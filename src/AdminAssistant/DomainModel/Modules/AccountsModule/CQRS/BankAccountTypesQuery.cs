@@ -14,17 +14,14 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
         internal class BankAccountTypesHandler : RequestHandlerBase<BankAccountTypesQuery, Result<IEnumerable<BankAccountType>>>
         {
-            private readonly IBankAccountTypeRepository bankAccountTypeRepository;
+            private readonly IBankAccountTypeRepository _bankAccountTypeRepository;
 
             public BankAccountTypesHandler(IBankAccountTypeRepository bankAccountTypeRepository, ILoggingProvider loggingProvider)
-                : base(loggingProvider)
-            {
-                this.bankAccountTypeRepository = bankAccountTypeRepository;
-            }
+                : base(loggingProvider) => _bankAccountTypeRepository = bankAccountTypeRepository;
 
             public override async Task<Result<IEnumerable<BankAccountType>>> Handle(BankAccountTypesQuery request, CancellationToken cancellationToken)
             {
-                var result = await bankAccountTypeRepository.GetListAsync().ConfigureAwait(false);
+                var result = await _bankAccountTypeRepository.GetListAsync().ConfigureAwait(false);
 
                 Trace.Assert(result.Count > 0, "BankAccountType list was not populated.");
 

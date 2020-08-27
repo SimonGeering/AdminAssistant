@@ -10,54 +10,54 @@ namespace AdminAssistant.UI.Shared
     {
         private const string SelectedModuleStyle = "active";
 
-        private readonly IMessenger messenger;
-        private readonly IAppService appService;
+        private readonly IMessenger _messenger;
+        private readonly IAppService _appService;
 
-        private readonly SidebarStateSettings contractedSidebarState;
-        private readonly SidebarStateSettings expandedSidebarState;
+        private readonly SidebarStateSettings _contractedSidebarState;
+        private readonly SidebarStateSettings _expandedSidebarState;
 
         public MainWindowViewModel(IMessenger messenger, IAppService appService, ILoggingProvider loggerProvider)
             : base(loggerProvider)
         {
-            this.Log.Start();
+            Log.Start();
 
-            this.messenger = messenger;
-            this.messenger.RegisterAll(this);
+            _messenger = messenger;
+            _messenger.RegisterAll(this);
 
-            this.appService = appService;
+            _appService = appService;
 
-            this.activeMode = appService.GetDefaultMode();
-            this.activeModule = appService.GetDefaultModule();
+            _activeMode = appService.GetDefaultMode();
+            _activeModule = appService.GetDefaultModule();
 
-            this.FooterText = $"Admin Assistant - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
+            FooterText = $"Admin Assistant - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
 
-            this.contractedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Contracted, "fa fa-lg fa-angle-double-right", "cl-navbar-contracted", false);
-            this.expandedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Expanded, "fa fa-lg fa-angle-double-left", "cl-navbar-expanded", true);
-            this.Sidebar = this.expandedSidebarState;
+            _contractedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Contracted, "fa fa-lg fa-angle-double-right", "cl-navbar-contracted", false);
+            _expandedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Expanded, "fa fa-lg fa-angle-double-left", "cl-navbar-expanded", true);
+            Sidebar = _expandedSidebarState;
 
-            this.Modes = this.appService.GetModes();
-            this.ActiveMode = this.appService.GetDefaultMode();
+            Modes = _appService.GetModes();
+            ActiveMode = _appService.GetDefaultMode();
 
-            this.Modules = this.appService.GetModules();
-            this.ActiveModule = this.appService.GetDefaultModule();
-            this.ActiveModule.StyleClass = SelectedModuleStyle;
+            Modules = _appService.GetModules();
+            ActiveModule = _appService.GetDefaultModule();
+            ActiveModule.StyleClass = SelectedModuleStyle;
 
-            this.Log.Finish();
+            Log.Finish();
         }
-        ~MainWindowViewModel() => this.messenger.UnregisterAll(this);
+        ~MainWindowViewModel() => _messenger.UnregisterAll(this);
 
-        private ModeSelectionItem activeMode;
+        private ModeSelectionItem _activeMode;
         public ModeSelectionItem ActiveMode
         {
-            get => this.activeMode;
-            set => this.SetProperty(ref this.activeMode, value);
+            get => _activeMode;
+            set => SetProperty(ref _activeMode, value);
         }
 
-        private ModuleSelectionItem activeModule;
+        private ModuleSelectionItem _activeModule;
         public ModuleSelectionItem ActiveModule
         {
-            get => this.activeModule;
-            set => this.SetProperty(ref this.activeModule, value);
+            get => _activeModule;
+            set => SetProperty(ref _activeModule, value);
         }
 
         public SidebarStateSettings Sidebar { get; private set; }
@@ -68,38 +68,36 @@ namespace AdminAssistant.UI.Shared
 
         public void OnSideBarControlButtonClick()
         {
-            switch (this.Sidebar.State)
+            switch (Sidebar.State)
             {
                 case ExpandedContractedStateToggle.Contracted:
-                    this.Sidebar = this.expandedSidebarState;
-                    this.Modes.ForEach((module) => { module.Label = module.Tag; });
-                    this.Modules.ForEach((module) => { module.Label = module.Tag; });
+                    Sidebar = _expandedSidebarState;
+                    Modes.ForEach((module) => module.Label = module.Tag);
+                    Modules.ForEach((module) => module.Label = module.Tag);
                     break;
 
                 case ExpandedContractedStateToggle.Expanded:
-                    this.Sidebar = this.contractedSidebarState;
-                    this.Modes.ForEach((module) => { module.Label = string.Empty; });
-                    this.Modules.ForEach((module) => { module.Label = string.Empty; });
+                    Sidebar = _contractedSidebarState;
+                    Modes.ForEach((module) => module.Label = string.Empty);
+                    Modules.ForEach((module) => module.Label = string.Empty);
                     break;
             }
-            this.OnPropertyChanged(nameof(this.Sidebar));
+            OnPropertyChanged(nameof(Sidebar));
         }
 
         public void OnSelectedModeChanged(ModeSelectionItem selectedMode)
         {
-            this.ActiveMode = selectedMode;
-            //this.ModeSelectionDropDown = this.contractedModeSelectionDropDownState;
-
-            this.messenger.Send(new ModeSelectionChangedMessage(this.ActiveMode));
+            ActiveMode = selectedMode;
+            _messenger.Send(new ModeSelectionChangedMessage(ActiveMode));
         }
 
         public void OnSelectedModuleChanged(ModuleSelectionItem selectedModule)
         {
-            this.ActiveModule = selectedModule;
-            this.Modules.ForEach(x => x.StyleClass = string.Empty);
-            this.ActiveModule.StyleClass = SelectedModuleStyle;
+            ActiveModule = selectedModule;
+            Modules.ForEach(x => x.StyleClass = string.Empty);
+            ActiveModule.StyleClass = SelectedModuleStyle;
 
-            this.messenger.Send(new ModuleSelectionChangedMessage(this.ActiveModule));
+            _messenger.Send(new ModuleSelectionChangedMessage(ActiveModule));
         }
 
         public string FooterText { get; }
