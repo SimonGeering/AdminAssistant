@@ -27,10 +27,10 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             {
                 var bankAccountTransactionList = await _bankAccountTransactionRepository.GetListAsync(request.BankAccountID).ConfigureAwait(false);
 
-                if (bankAccountTransactionList != null && bankAccountTransactionList.Any())
-                    return Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList);
-                else
+                if (bankAccountTransactionList == null || bankAccountTransactionList.Any() == false)
                     return Result<IEnumerable<BankAccountTransaction>>.NotFound();
+
+                return Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList);
             }
         }
     }

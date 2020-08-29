@@ -63,7 +63,6 @@
     <Folder Include="DomainModel\Modules\CalendarModule\" />
     <Folder Include="DomainModel\Modules\ContactsModule\" />
     <Folder Include="DomainModel\Modules\DashboardModule\" />
-    <Folder Include="DomainModel\Modules\DocumentsModule\" />
     <Folder Include="DomainModel\Modules\MailModule\" />
     <Folder Include="DomainModel\Modules\TasksModule\" />
     <Folder Include="DomainModel\Modules\ReportsModule\" />
