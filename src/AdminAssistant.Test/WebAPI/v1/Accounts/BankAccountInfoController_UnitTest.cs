@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Infrastructure;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
@@ -59,10 +60,10 @@ namespace AdminAssistant.WebAPI.v1.Accounts
             value.Should().HaveCount(bankAccountInfoList.Count);
 
             var expected = bankAccountInfoList.ToArray();
-            for (int i = 0; i < expected.Length; i++)
+            for (var index = 0; index < expected.Length; index++)
             {
-                value[i].BankAccountID.Should().Be(expected[i].BankAccountID);
-                value[i].AccountName.Should().Be(expected[i].AccountName);
+                value[index].BankAccountID.Should().Be(expected[index].BankAccountID);
+                value[index].AccountName.Should().Be(expected[index].AccountName);
             }
         }
     }

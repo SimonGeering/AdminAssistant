@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using Ardalis.Result;
@@ -54,11 +55,11 @@ namespace AdminAssistant.WebAPI.v1.Core
             value.Should().HaveCount(currencies.Count);
 
             var expected = currencies.ToArray();
-            for (int i = 0; i < expected.Length; i++)
+            for (var index = 0; index < expected.Length; index++)
             {
-                value[i].CurrencyID.Should().Be(expected[i].CurrencyID);
-                value[i].Symbol.Should().Be(expected[i].Symbol);
-                value[i].DecimalFormat.Should().Be(expected[i].DecimalFormat);
+                value[index].CurrencyID.Should().Be(expected[index].CurrencyID);
+                value[index].Symbol.Should().Be(expected[index].Symbol);
+                value[index].DecimalFormat.Should().Be(expected[index].DecimalFormat);
             }
         }
     }
