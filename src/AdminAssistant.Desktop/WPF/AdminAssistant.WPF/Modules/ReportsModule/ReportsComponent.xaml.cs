@@ -5,15 +5,9 @@ namespace AdminAssistant.WPF.Modules.ReportsModule
 {
     public partial class ReportsComponent : UserControl
     {
-        public ReportsComponent()
-        {
-            this.InitializeComponent();
-        }
+        public ReportsComponent() => InitializeComponent();
 
         public ReportsComponent(IReportsViewModel reportsViewModel)
-            : this()
-        {
-            this.DataContext = reportsViewModel;
-        }
+            : this() => DataContext = reportsViewModel;
     }
 }

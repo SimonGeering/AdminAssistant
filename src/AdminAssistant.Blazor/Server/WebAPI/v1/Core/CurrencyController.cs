@@ -25,12 +25,12 @@ namespace AdminAssistant.WebAPI.v1
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of CurrencyResponseDto", type: typeof(IEnumerable<CurrencyResponseDto>))]
         public async Task<ActionResult<IEnumerable<CurrencyResponseDto>>> GetCurrency()
         {
-            this.Log.Start();
+            Log.Start();
 
-            var result = await this.Mediator.Send(new CurrenciesQuery()).ConfigureAwait(false);
-            var response = this.Mapper.Map<IEnumerable<CurrencyResponseDto>>(result.Value);
+            var result = await Mediator.Send(new CurrenciesQuery()).ConfigureAwait(false);
+            var response = Mapper.Map<IEnumerable<CurrencyResponseDto>>(result.Value);
 
-            return this.Log.Finish(this.Ok(response));
+            return Log.Finish(Ok(response));
         }
     }
 }

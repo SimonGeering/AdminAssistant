@@ -1,5 +1,3 @@
-using System;
-
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
 {
     public interface IBankAccountInfoBuilder
@@ -11,19 +9,16 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
     {
         public static BankAccountInfo Default(IBankAccountInfoBuilder builder) => builder.Build();
 
-        public BankAccountInfo Build()
-        {
-            return this;
-        }
+        public BankAccountInfo Build() => this;
 
         public IBankAccountInfoBuilder WithTestData(int bankAccountID = 0)
         {
-            this.BankAccountID = bankAccountID;
-            this.AccountName = "A valid account name";
-            this.CurrentBalance = 0;
-            this.Symbol = "GBP";
-            this.DecimalFormat = "2.2-2";
-            this.IsBudgeted = false;
+            BankAccountID = bankAccountID;
+            AccountName = "A valid account name";
+            CurrentBalance = 0;
+            Symbol = "GBP";
+            DecimalFormat = "2.2-2";
+            IsBudgeted = false;
 
             return this;
         }

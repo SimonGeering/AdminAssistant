@@ -17,19 +17,19 @@ namespace AdminAssistant.Blazor.Client.Shared
 
         protected override void OnInitialized()
         {
-            this.vm.PropertyChanged += (o, e) => this.StateHasChanged();
-            this.vm.IsBusyChanged += (sender, isBusy) =>
+            vm.PropertyChanged += (o, e) => StateHasChanged();
+            vm.IsBusyChanged += (sender, isBusy) =>
             {
                 if (isBusy)
-                    this.SfSpinner.ShowSpinner("#loadingTarget");
+                    SfSpinner.ShowSpinner("#loadingTarget");
                 else
-                    this.SfSpinner.HideSpinner("#loadingTarget");
+                    SfSpinner.HideSpinner("#loadingTarget");
             };
             base.OnInitialized();
         }
 
         protected override Task OnAfterRenderAsync(bool firstRender) => base.OnAfterRenderAsync(firstRender);
 
-        protected override Task OnInitializedAsync() => this.vm.OnInitializedAsync();
+        protected override Task OnInitializedAsync() => vm.OnInitializedAsync();
     }
 }

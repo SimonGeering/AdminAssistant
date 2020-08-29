@@ -4,29 +4,30 @@ using System;
 using FluentAssertions;
 using Xunit;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AdminAssistant.WebAPI.v1
 {
     public class WebAPIMappingProfile_Should
     {
-        private readonly IConfigurationProvider configuration;
-        private readonly IMapper mapper;
+        private readonly IConfigurationProvider _configuration;
+        private readonly IMapper _mapper;
 
         public WebAPIMappingProfile_Should()
         {
-            this.configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
-
-            this.mapper = this.configuration.CreateMapper();
+            _configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
+            _mapper = _configuration.CreateMapper();
         }
 
         [Fact]
         [Trait("Category", "Unit")]
+        [SuppressMessage("Style", "IDE0022:Use expression body for methods", Justification = "One line test")]
         public void HaveValidConfiguration()
         {
             // Arrange
 
             // Act
-            this.configuration.AssertConfigurationIsValid();
+            _configuration.AssertConfigurationIsValid();
 
             // Assert
         }
@@ -53,7 +54,7 @@ namespace AdminAssistant.WebAPI.v1
             var instance = Activator.CreateInstance(source);
 
             // Act
-            var result = this.mapper.Map(instance, source, destination);
+            var result = _mapper.Map(instance, source, destination);
 
             // Assert
             result.Should().NotBeNull();

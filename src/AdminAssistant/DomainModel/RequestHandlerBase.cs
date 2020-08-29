@@ -10,10 +10,7 @@ namespace AdminAssistant.DomainModel
     {
         protected ILoggingProvider Log { get; }
 
-        public RequestHandlerBase(ILoggingProvider loggingProvider)
-        {
-            this.Log = loggingProvider;
-        }
+        public RequestHandlerBase(ILoggingProvider loggingProvider) => Log = loggingProvider;
 
         public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
     }

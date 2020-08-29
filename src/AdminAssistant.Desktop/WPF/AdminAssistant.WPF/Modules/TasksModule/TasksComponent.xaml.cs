@@ -5,15 +5,9 @@ namespace AdminAssistant.WPF.Modules.TasksModule
 {
     public partial class TasksComponent : UserControl
     {
-        public TasksComponent()
-        {
-            this.InitializeComponent();
-        }
+        public TasksComponent() => InitializeComponent();
 
         public TasksComponent(ITasksViewModel tasksViewModel)
-            : this()
-        {
-            this.DataContext = tasksViewModel;
-        }
+            : this() => DataContext = tasksViewModel;
     }
 }

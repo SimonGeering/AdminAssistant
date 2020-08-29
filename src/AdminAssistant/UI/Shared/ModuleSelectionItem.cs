@@ -4,12 +4,12 @@ namespace AdminAssistant.UI.Shared
     {
         public ModuleSelectionItem(ModuleEnum module, string tag, string label, string icon)
         {
-            this.Module = module;
-            this.Tag = tag;
-            this.Label = label;
-            this.Icon = icon;
-            this.Route = $"/{module.ToString().ToLowerInvariant()}";
-            this.StyleClass = string.Empty;
+            Module = module;
+            Tag = tag;
+            Label = label;
+            Icon = icon;
+            Route = $"/{module.ToString().ToLowerInvariant()}";
+            StyleClass = string.Empty;
             return ;
         }
         public ModuleEnum Module { get; set; }

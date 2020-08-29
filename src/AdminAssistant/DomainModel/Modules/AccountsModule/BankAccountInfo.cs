@@ -11,6 +11,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
         public string DecimalFormat { get; set; } = string.Empty;
         public bool IsBudgeted { get; set; }
 
-        public int PrimaryKey => this.BankAccountID;
+        public int PrimaryKey => BankAccountID;
     }
 }

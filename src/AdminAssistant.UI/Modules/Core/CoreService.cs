@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
@@ -7,7 +8,7 @@ using AutoMapper;
 
 namespace AdminAssistant.UI.Modules.CoreModule
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    [SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class CoreService : ServiceBase, ICoreService
     {
         public CoreService(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
@@ -17,14 +18,14 @@ namespace AdminAssistant.UI.Modules.CoreModule
         
         public async Task<List<Currency>> GetCurrencyListAsync()
         {
-            this.Log.Start();
+            Log.Start();
 
-            var response = await this.AdminAssistantWebAPIClient.GetCurrencyAsync().ConfigureAwait(false);
+            var response = await AdminAssistantWebAPIClient.GetCurrencyAsync().ConfigureAwait(false);
 
-            var result = new List<Currency>(this.Mapper.Map<IEnumerable<Currency>>(response));
+            var result = new List<Currency>(Mapper.Map<IEnumerable<Currency>>(response));
             result.Insert(0, new Currency() { CurrencyID = 0, Symbol = string.Empty, DecimalFormat = string.Empty });
 
-            return this.Log.Finish(result);
+            return Log.Finish(result);
         }
     }
 }

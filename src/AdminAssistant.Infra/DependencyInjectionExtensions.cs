@@ -1,5 +1,6 @@
 using System;
 using System.Data.Common;
+using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Infrastructure;
@@ -14,10 +15,7 @@ namespace Microsoft.Extensions.DependencyInjection
 #if DEBUG
         public static void AddAdminAssistantServerSideInfra(this IServiceCollection services, DbConnection connection)
         {
-            services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder =>
-            {
-                optionsBuilder.UseSqlite(connection);
-            });
+            services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder => optionsBuilder.UseSqlite(connection));
             AddAccountsDAL(services);
         }
 #endif
@@ -67,6 +65,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IBankRepository, BankRepository>();
         }
 
+        [SuppressMessage("Style", "IDE0022:Use expression body for methods", Justification = "WIP")]
         private static void AddCoreDAL(this IServiceCollection services)
         {
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();

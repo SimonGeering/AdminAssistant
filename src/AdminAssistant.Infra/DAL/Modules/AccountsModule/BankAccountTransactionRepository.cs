@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-
 using AutoMapper;
-
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
@@ -21,14 +18,14 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
 
         public async Task<BankAccountTransaction> GetAsync(int id)
         {
-            var data = await this.DbContext.BankAccountTransactions.FirstOrDefaultAsync(x => x.BankAccountTransactionID == id).ConfigureAwait(false);
-            return this.Mapper.Map<BankAccountTransaction>(data);
+            var data = await DbContext.BankAccountTransactions.FirstOrDefaultAsync(x => x.BankAccountTransactionID == id).ConfigureAwait(false);
+            return Mapper.Map<BankAccountTransaction>(data);
         }
 
         public async Task<List<BankAccountTransaction>> GetListAsync(int parentID)
         {
-            var data = await this.DbContext.BankAccountTransactions.Where(x => x.BankAccountID == parentID).ToListAsync().ConfigureAwait(false);
-            return this.Mapper.Map<List<BankAccountTransaction>>(data);
+            var data = await DbContext.BankAccountTransactions.Where(x => x.BankAccountID == parentID).ToListAsync().ConfigureAwait(false);
+            return Mapper.Map<List<BankAccountTransaction>>(data);
         }
     }
 }

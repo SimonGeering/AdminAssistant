@@ -20,12 +20,12 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
         public async Task ShowAnNewBankAccount_WhenOpenedForCreate()
         {
             // Arrange
-            await this.ResetDatabaseAsync().ConfigureAwait(false);
+            await ResetDatabaseAsync().ConfigureAwait(false);
 
-            var vm = this.Container.GetRequiredService<IBankAccountEditDialogViewModel>();
+            var vm = Container.GetRequiredService<IBankAccountEditDialogViewModel>();
             await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var messenger = this.Container.GetRequiredService<IMessenger>();
+            var messenger = Container.GetRequiredService<IMessenger>();
 
             // Act
             messenger.Send(new EditBankAccountMessage(new BankAccount()));
@@ -48,7 +48,7 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             vm.HeaderText.Should().Be(IBankAccountEditDialogViewModel.NewBankAccountHeader);
             vm.ShowDialog.Should().BeTrue();
 
-            var savedBankAccounts = await this.Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
+            var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
             savedBankAccounts.Should().BeEmpty();
         }
 
@@ -56,12 +56,12 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
         [Trait("Category", "Integration")]
         public async Task CloseWithoutSaving_WhenCancelButtonIsClicked()
         {
-            await this.ResetDatabaseAsync().ConfigureAwait(false);
+            await ResetDatabaseAsync().ConfigureAwait(false);
 
-            var vm = this.Container.GetRequiredService<IBankAccountEditDialogViewModel>();
+            var vm = Container.GetRequiredService<IBankAccountEditDialogViewModel>();
             await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var messenger = this.Container.GetRequiredService<IMessenger>();
+            var messenger = Container.GetRequiredService<IMessenger>();
             messenger.Send(new EditBankAccountMessage(new BankAccount()));
 
             // Act
@@ -70,28 +70,28 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
             // Assert
             vm.ShowDialog.Should().BeFalse();
 
-            var savedBankAccounts = await this.Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
+            var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
             savedBankAccounts.Should().BeEmpty();
         }
 
-        [Fact(Skip="WIP")]
-        [Trait("Category", "Integration")]
-        public async Task OnlyEnableSave_WhenNoValidationErrorsShown()
-        {
-            await this.ResetDatabaseAsync().ConfigureAwait(false);
+        //[Fact(Skip="WIP")]
+        //[Trait("Category", "Integration")]
+        //public async Task OnlyEnableSave_WhenNoValidationErrorsShown()
+        //{
+        //    await this.ResetDatabaseAsync().ConfigureAwait(false);
 
-            var vm = this.Container.GetRequiredService<IBankAccountEditDialogViewModel>();
-            await vm.OnInitializedAsync().ConfigureAwait(false);
+        //    var vm = this.Container.GetRequiredService<IBankAccountEditDialogViewModel>();
+        //    await vm.OnInitializedAsync().ConfigureAwait(false);
 
-            var messenger = this.Container.GetRequiredService<IMessenger>();
-            messenger.Send(new EditBankAccountMessage(new BankAccount()));
+        //    var messenger = this.Container.GetRequiredService<IMessenger>();
+        //    messenger.Send(new EditBankAccountMessage(new BankAccount()));
 
-            // Act
-            await vm.Cancel.ExecuteAsync(null).ConfigureAwait(true);
+        //    // Act
+        //    await vm.Cancel.ExecuteAsync(null).ConfigureAwait(true);
             
-            // Assert
-            //vm.AccountNameValidationMessage
-        }
+        //    // Assert
+        //    //vm.AccountNameValidationMessage
+        //}
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

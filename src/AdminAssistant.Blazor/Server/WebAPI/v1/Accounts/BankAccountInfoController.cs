@@ -16,13 +16,10 @@ namespace AdminAssistant.WebAPI.v1
     [ApiExplorerSettings(GroupName = "Accounts - BankAccountInfo")]
     public class BankAccountInfoController : WebAPIControllerBase
     {
-        private readonly IUserContextProvider userContextProvider;
+        private readonly IUserContextProvider _userContextProvider;
 
         public BankAccountInfoController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider, IUserContextProvider userContextProvider)
-            : base(mapper, mediator, loggingProvider)
-        {
-            this.userContextProvider = userContextProvider;
-        }
+            : base(mapper, mediator, loggingProvider) => _userContextProvider = userContextProvider;
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<BankAccountInfoResponseDto>), StatusCodes.Status200OK)]
@@ -30,12 +27,12 @@ namespace AdminAssistant.WebAPI.v1
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankAccountInfoResponseDto", type: typeof(IEnumerable<BankAccountInfoResponseDto>))]
         public async Task<ActionResult<IEnumerable<BankAccountInfoResponseDto>>> BankAccountInfoGet()
         {
-            this.Log.Start();
+            Log.Start();
             
-            var result = await this.Mediator.Send(new BankAccountInfoQuery(this.userContextProvider.GetCurrentUser().UserID)).ConfigureAwait(false);
-            var response = this.Mapper.Map<IEnumerable<BankAccountInfoResponseDto>>(result.Value);
+            var result = await Mediator.Send(new BankAccountInfoQuery(_userContextProvider.GetCurrentUser().UserID)).ConfigureAwait(false);
+            var response = Mapper.Map<IEnumerable<BankAccountInfoResponseDto>>(result.Value);
 
-            return this.Log.Finish(this.Ok(response));
+            return Log.Finish(Ok(response));
         }
     }
 }

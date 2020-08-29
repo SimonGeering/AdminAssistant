@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:AdminAssistant.WPF.Shared"
         xmlns:dashboardModule="clr-namespace:AdminAssistant.WPF.Modules.DashboardModule"
         xmlns:accountsModule="clr-namespace:AdminAssistant.WPF.Modules.AccountsModule"
-        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         sfskin:SfSkinManager.VisualStyle="Office2019Black"
         Title="Admin Assistant" Height="720" Width="1280"
         DataContext="{Binding MainWindowViewModel, Source={StaticResource ViewModelLocator}}">
@@ -18,6 +17,9 @@
     <DataTemplate x:Key="AccountsViewTemplate" DataType="{x:Type UserControl}">
       <accountsModule:AccountsComponent />
     </DataTemplate>
+
+    <!--<local:ModeSelectionItemToStringConverter x:Key="ModeSelectionItemToStringConverter" />-->
+    <local:ModeSelectionItemToIconImageConverter x:Key="ModeSelectionItemToIconImageConverter" Brush="White" />
 
     <local:ModuleEnumToIconImageConverter x:Key="ModuleEnumToIconImageConverter" Brush="White" />
     <local:ModeEnumToIconImageConverter x:Key="ModeEnumToIconImageConverter" Brush="White" />
@@ -49,19 +51,28 @@
       <!--
         TODO: Just hard code data, behavior and styling for now.
         Want to get main UI functional and navigation not working is blocking that.
+                  <Image Source="{iconPacks:FontAwesomeImage BuildingRegular, Brush=White}" />
+      <sf:DropDownButtonAdv Name="btnModeSelection" Grid.Row="0" Grid.Column="0" SmallIcon="{iconPacks:FontAwesomeImage BuildingRegular, Brush=White}" Label="Company" Padding="4" >
+      {Binding ActiveMode}
       -->
-      <sf:SplitButtonAdv Name="btnModeSelection" Grid.Row="0" Grid.Column="0" SmallIcon="{iconPacks:FontAwesomeImage BuildingRegular, Brush=White}" Label="Company" Padding="4" >
-        <sf:DropDownMenuGroup>
-          <sf:DropDownMenuItem HorizontalAlignment="Left" Header="Company">
-            <sf:DropDownMenuItem.Icon><iconPacks:PackIconFontAwesome Kind="BuildingRegular" /></sf:DropDownMenuItem.Icon>
-          </sf:DropDownMenuItem>
-          <sf:DropDownMenuItem HorizontalAlignment="Left" Header="Personal">
-            <sf:DropDownMenuItem.Icon><iconPacks:PackIconFontAwesome Kind="UserSolid" /></sf:DropDownMenuItem.Icon>
-          </sf:DropDownMenuItem>
-        </sf:DropDownMenuGroup>
-      </sf:SplitButtonAdv>
-      <!-- End Sidebar Header -->
+      <sf:DropDownButtonAdv Grid.Row="0" Grid.Column="0" Padding="4"
+                            Label="{Binding Path=ActiveMode}"
+                            SmallIcon="{Binding ActiveMode, Converter={StaticResource ModeSelectionItemToIconImageConverter}}">
 
+        <sf:DropDownMenuGroup ItemsSource="{Binding Path=Modes}">
+          <sf:DropDownMenuGroup.ItemTemplate>
+            <DataTemplate>
+              <sf:DropDownMenuItem Header="{Binding Label}" HorizontalAlignment="Left">
+                <sf:DropDownMenuItem.Icon>
+                  <Image Source="{Binding Mode, Converter={StaticResource ModeEnumToIconImageConverter}}" />
+                </sf:DropDownMenuItem.Icon>
+              </sf:DropDownMenuItem>
+            </DataTemplate>
+          </sf:DropDownMenuGroup.ItemTemplate>
+        </sf:DropDownMenuGroup>
+      </sf:DropDownButtonAdv>
+
+      <!-- End Sidebar Header -->
       
       <!-- Start Sidebar Body -->
       <!--
@@ -71,7 +82,7 @@
       <ItemsControl Grid.Row="1" Grid.Column="0" Margin="0 8 0 0" ItemsSource="{Binding Modules}">
         <ItemsControl.ItemTemplate>
           <DataTemplate>
-            <sf:ButtonAdv Label="{Binding Label}" SmallIcon="{Binding Module, Converter={StaticResource ModuleEnumToIconImageConverter}}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
+            <sf:ButtonAdv Command="" Label="{Binding Label}" SmallIcon="{Binding Module, Converter={StaticResource ModuleEnumToIconImageConverter}}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
           </DataTemplate>
         </ItemsControl.ItemTemplate>
       </ItemsControl>

@@ -35,14 +35,10 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
         private static void AddBudgetDomainModel(IServiceCollection services)
-        {
-            services.AddTransient<IBudgetValidator, BudgetValidator>();
-        }
+            => services.AddTransient<IBudgetValidator, BudgetValidator>();
 
         private static void AddCoreDomainModel(IServiceCollection services)
-        {
-            services.AddTransient<ICurrencyValidator, CurrencyValidator>();
-        }
+            => services.AddTransient<ICurrencyValidator, CurrencyValidator>();
     }
 }
 

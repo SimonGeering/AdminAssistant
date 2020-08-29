@@ -13,31 +13,27 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
     {
         public static Currency Default(ICurrencyBuilder builder) => builder.Build();
 
-        public Currency Build()
-        {
-            return this;
-        }
+        public Currency Build() => this;
 
-        public ICurrencyBuilder WithoutADecimalFormat() => this.WithDecimalFormat(string.Empty);
+        public ICurrencyBuilder WithoutADecimalFormat() => WithDecimalFormat(string.Empty);
         public ICurrencyBuilder WithDecimalFormat(string decimalFormat)
         {
-            this.DecimalFormat = decimalFormat;
+            DecimalFormat = decimalFormat;
             return this;
         }
 
-        public ICurrencyBuilder WithoutASymbol() => this.WithSymbol(string.Empty);
+        public ICurrencyBuilder WithoutASymbol() => WithSymbol(string.Empty);
         public ICurrencyBuilder WithSymbol(string symbol)
         {
-            this.Symbol = symbol;
+            Symbol = symbol;
             return this;
         }
 
         public ICurrencyBuilder WithTestData(int currencyID = Constants.UnknownRecordID)
         {
-            this.CurrencyID = currencyID;
-            this.Symbol = "GBP";
-            this.DecimalFormat = "2.2-2";
-
+            CurrencyID = currencyID;
+            Symbol = "GBP";
+            DecimalFormat = "2.2-2";
             return this;
         }
     }

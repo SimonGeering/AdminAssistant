@@ -26,12 +26,12 @@ namespace AdminAssistant.WebAPI.v1
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankAccountTypeResponseDto", type: typeof(IEnumerable<BankAccountTypeResponseDto>))]
         public async Task<ActionResult<IEnumerable<BankAccountTypeResponseDto>>> BankAccountTypeGet()
         {
-            this.Log.Start();
+            Log.Start();
 
-            var result = await this.Mediator.Send(new BankAccountTypesQuery()).ConfigureAwait(false);
-            var response = this.Mapper.Map<IEnumerable<BankAccountTypeResponseDto>>(result.Value);
+            var result = await Mediator.Send(new BankAccountTypesQuery()).ConfigureAwait(false);
+            var response = Mapper.Map<IEnumerable<BankAccountTypeResponseDto>>(result.Value);
 
-            return this.Log.Finish(this.Ok(response));
+            return Log.Finish(Ok(response));
         }
     }
 }
