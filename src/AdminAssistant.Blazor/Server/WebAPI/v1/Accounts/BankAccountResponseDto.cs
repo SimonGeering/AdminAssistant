@@ -6,7 +6,7 @@ using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1
 {
-    public class BankAccountResponseDto : IMapFrom<BankAccount>, IMapTo<BankAccount>
+    public class BankAccountResponseDto : IMapFrom<BankAccount>
     {
         [SwaggerSchema("The BankAccount identifier.", ReadOnly = true)]
         public int BankAccountID { get; set; }

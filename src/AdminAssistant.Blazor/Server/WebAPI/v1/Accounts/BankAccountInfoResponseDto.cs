@@ -3,7 +3,7 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.WebAPI.v1
 {
-    public class BankAccountInfoResponseDto : IMapFrom<BankAccountInfo>, IMapTo<BankAccountInfo>
+    public class BankAccountInfoResponseDto : IMapFrom<BankAccountInfo>
     {
         public int BankAccountID { get; set; }
         public string AccountName { get; set; } = string.Empty;
