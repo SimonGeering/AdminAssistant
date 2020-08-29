@@ -36,7 +36,13 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
         [Theory]
         [Trait("Category", "Unit")]
         [InlineData(typeof(CurrencyResponseDto), typeof(Currency))]
+        [InlineData(typeof(BankResponseDto), typeof(Bank))]
+        [InlineData(typeof(BankAccountResponseDto), typeof(BankAccount))]
+        [InlineData(typeof(BankAccountInfoResponseDto), typeof(BankAccountInfo))]
         [InlineData(typeof(BankAccountTypeResponseDto), typeof(BankAccountType))]
+        [InlineData(typeof(BankAccountTransactionResponseDto), typeof(BankAccountTransaction))]
+        [InlineData(typeof(BankAccount), typeof(BankAccountCreateRequestDto))]
+        [InlineData(typeof(BankAccount), typeof(BankAccountUpdateRequestDto))]
         public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange

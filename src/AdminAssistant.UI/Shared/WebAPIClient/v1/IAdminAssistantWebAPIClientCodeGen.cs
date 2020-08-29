@@ -195,7 +195,7 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
         public int? CurrentBalance { get; set; }= default!;
     
         [Newtonsoft.Json.JsonProperty("openedOn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? OpenedOn { get; set; }= default!;
+        public System.DateTime? OpenedOn { get; set; }= default!;
     
     
     }
@@ -227,7 +227,7 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
         public int? CurrentBalance { get; set; }= default!;
     
         [Newtonsoft.Json.JsonProperty("openedOn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? OpenedOn { get; set; }= default!;
+        public System.DateTime? OpenedOn { get; set; }= default!;
     
     
     }
@@ -259,7 +259,7 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
         public int? CurrentBalance { get; set; }= default!;
     
         [Newtonsoft.Json.JsonProperty("openedOn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? OpenedOn { get; set; }= default!;
+        public System.DateTime? OpenedOn { get; set; }= default!;
     
     
     }
