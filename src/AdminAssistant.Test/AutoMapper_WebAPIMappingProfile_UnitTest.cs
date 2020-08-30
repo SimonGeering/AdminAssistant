@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.BudgetModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AutoMapper;
 using FluentAssertions;
@@ -41,6 +42,7 @@ namespace AdminAssistant.WebAPI.v1
         [InlineData(typeof(BankAccountInfo), typeof(BankAccountInfoResponseDto))]
         [InlineData(typeof(BankAccountType), typeof(BankAccountTypeResponseDto))]
         [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionResponseDto))]
+        [InlineData(typeof(Budget), typeof(BudgetResponseDto))]
         [InlineData(typeof(Document), typeof(DocumentResponseDto))]
         public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
         {
