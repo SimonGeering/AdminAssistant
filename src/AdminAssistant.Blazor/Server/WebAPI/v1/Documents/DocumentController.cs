@@ -12,7 +12,7 @@ namespace AdminAssistant.WebAPI.v1
 {
     [ApiController]
     [Route("api/v1/core/[controller]")]
-    [ApiExplorerSettings(GroupName = "Core - Currency")]
+    [ApiExplorerSettings(GroupName = "Documents - Document")]
     public class DocumentController : WebAPIControllerBase
     {
         public DocumentController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
