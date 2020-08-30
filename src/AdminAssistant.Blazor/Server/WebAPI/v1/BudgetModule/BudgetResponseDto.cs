@@ -1,7 +1,7 @@
 using AdminAssistant.DomainModel.Modules.BudgetModule;
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1.BudgetModule
 {
     public class BudgetResponseDto : IMapFrom<Budget>
     {

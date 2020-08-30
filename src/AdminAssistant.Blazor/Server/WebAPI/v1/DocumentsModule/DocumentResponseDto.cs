@@ -1,7 +1,7 @@
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1.DocumentsModule
 {
     public class DocumentResponseDto : IMapFrom<Document>
     {

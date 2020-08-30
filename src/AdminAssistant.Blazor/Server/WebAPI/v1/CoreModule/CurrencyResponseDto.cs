@@ -1,7 +1,7 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1.CoreModule
 {
     public class CurrencyResponseDto : IMapFrom<Currency>
     {

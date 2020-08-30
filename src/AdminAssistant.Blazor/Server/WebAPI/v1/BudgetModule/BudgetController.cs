@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace AdminAssistant.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1.BudgetModule
 {
     [ApiController]
     [Route("api/v1/core/[controller]")]

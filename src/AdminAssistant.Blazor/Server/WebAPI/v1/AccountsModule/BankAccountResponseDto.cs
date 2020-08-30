@@ -4,7 +4,7 @@ using AdminAssistant.Framework.TypeMapping;
 
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace AdminAssistant.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1.AccountsModule
 {
     public class BankAccountResponseDto : IMapFrom<BankAccount>
     {

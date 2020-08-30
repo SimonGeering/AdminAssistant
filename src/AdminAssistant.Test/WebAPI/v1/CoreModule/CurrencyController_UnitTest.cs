@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.Core
+namespace AdminAssistant.WebAPI.v1.CoreModule
 {
     public class CurrencyController_GetCurrency_Should
     {

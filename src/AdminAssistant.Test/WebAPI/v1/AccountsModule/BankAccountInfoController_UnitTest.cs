@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.Accounts
+namespace AdminAssistant.WebAPI.v1.AccountsModule
 {
     public class BankAccountInfoController_BankAccountInfoGet_Should
     {

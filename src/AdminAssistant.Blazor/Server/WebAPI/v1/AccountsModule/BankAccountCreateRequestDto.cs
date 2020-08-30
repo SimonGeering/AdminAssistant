@@ -3,7 +3,7 @@ using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.TypeMapping;
 using Swashbuckle.AspNetCore.Annotations;
 
-namespace AdminAssistant.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1.AccountsModule
 {
     [SwaggerSchema(Required = new[] { "BankAccountTypeID", "CurrencyID", "AccountName", "IsBudgeted", "OpeningBalance", "OpenedOn" })]
 

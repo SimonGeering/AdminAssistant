@@ -6,7 +6,7 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.Accounts
+namespace AdminAssistant.WebAPI.v1.AccountsModule
 {
     [Collection("SequentialDBBackedTests")]
     public class BankAccount_Get_Should : IntegrationTestBase

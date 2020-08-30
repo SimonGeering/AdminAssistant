@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
 using Ardalis.Result;
@@ -16,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.Documents
+namespace AdminAssistant.WebAPI.v1.DocumentsModule
 {
     public class DocumentController_UnitTest_Should
     {

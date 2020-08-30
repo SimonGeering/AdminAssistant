@@ -6,7 +6,7 @@ using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.Core
+namespace AdminAssistant.WebAPI.v1.CoreModule
 {
     [Collection("SequentialDBBackedTests")]
     public class Currency_Get_Should : IntegrationTestBase
