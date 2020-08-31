@@ -11,6 +11,7 @@ using AdminAssistant.UI.Modules.CoreModule;
 using FluentValidation.Results;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
+using AdminAssistant.DomainModel.Modules.CoreModule;
 
 namespace AdminAssistant.UI.Modules.AccountsModule
 {

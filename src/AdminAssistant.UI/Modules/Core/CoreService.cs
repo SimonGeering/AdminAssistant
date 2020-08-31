@@ -1,7 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.Infra.Providers;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using AutoMapper;

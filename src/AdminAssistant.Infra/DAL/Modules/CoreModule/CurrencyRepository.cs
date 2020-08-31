@@ -2,10 +2,10 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.CoreModule;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
+namespace AdminAssistant.Infra.DAL.Modules.CoreModule
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class CurrencyRepository : RepositoryBase, ICurrencyRepository

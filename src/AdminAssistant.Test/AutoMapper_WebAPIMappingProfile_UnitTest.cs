@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.BudgetModule;
+using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.DomainModel.Modules.TasksModule;
 using AdminAssistant.WebAPI.v1.AccountsModule;

@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.Providers;
 using Ardalis.Result;
 using MediatR;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
+namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS
 {
     public class CurrenciesQuery : IRequest<Result<IEnumerable<Currency>>>
     {

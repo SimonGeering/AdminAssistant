@@ -7,6 +7,7 @@ using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using FluentAssertions;
 using Xunit;
+using AdminAssistant.DomainModel.Modules.CoreModule;
 
 namespace AdminAssistant.Infra.DAL
 {

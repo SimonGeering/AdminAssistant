@@ -8,6 +8,7 @@ using AdminAssistant.DomainModel.Shared;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
 using AdminAssistant.Framework.MediatR;
+using AdminAssistant.Infra.DAL.Modules.CoreModule;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

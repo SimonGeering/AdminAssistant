@@ -1,6 +1,6 @@
 using AdminAssistant.Infra.DAL;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule
+namespace AdminAssistant.DomainModel.Modules.CoreModule
 {
     public class Currency : IDatabasePersistable
     {

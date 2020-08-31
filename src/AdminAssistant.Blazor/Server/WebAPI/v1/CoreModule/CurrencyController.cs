@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using MediatR;

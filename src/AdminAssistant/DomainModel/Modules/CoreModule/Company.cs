@@ -1,4 +1,4 @@
-namespace AdminAssistant.DomainModel.Modules.AccountsModule
+namespace AdminAssistant.DomainModel.Modules.CoreModule
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable", Justification = "WIP Code")]
     public class Company

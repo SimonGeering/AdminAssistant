@@ -1,4 +1,4 @@
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
+namespace AdminAssistant.DomainModel.Modules.CoreModule.Builders
 {
     public interface ICurrencyBuilder
     {

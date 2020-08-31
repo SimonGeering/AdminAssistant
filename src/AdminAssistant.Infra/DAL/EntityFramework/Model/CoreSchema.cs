@@ -1,5 +1,5 @@
 using AdminAssistant.DomainModel.Shared;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.CoreModule;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core

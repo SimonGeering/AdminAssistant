@@ -3,6 +3,7 @@ using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
 using MediatR;
+using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
