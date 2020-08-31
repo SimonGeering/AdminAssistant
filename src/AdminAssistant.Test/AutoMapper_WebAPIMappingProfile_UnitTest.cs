@@ -4,10 +4,12 @@ using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.BudgetModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
+using AdminAssistant.DomainModel.Modules.TasksModule;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using AdminAssistant.WebAPI.v1.BudgetModule;
 using AdminAssistant.WebAPI.v1.CoreModule;
 using AdminAssistant.WebAPI.v1.DocumentsModule;
+using AdminAssistant.WebAPI.v1.TasksModule;
 using AutoMapper;
 using FluentAssertions;
 using Xunit;
@@ -48,6 +50,7 @@ namespace AdminAssistant.WebAPI.v1
         [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionResponseDto))]
         [InlineData(typeof(Budget), typeof(BudgetResponseDto))]
         [InlineData(typeof(Document), typeof(DocumentResponseDto))]
+        [InlineData(typeof(TaskList), typeof(TaskListResponseDto))]
         public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange

@@ -65,7 +65,6 @@
     <Folder Include="DomainModel\Modules\ContactsModule\" />
     <Folder Include="DomainModel\Modules\DashboardModule\" />
     <Folder Include="DomainModel\Modules\MailModule\" />
-    <Folder Include="DomainModel\Modules\TasksModule\" />
     <Folder Include="DomainModel\Modules\ReportsModule\" />
     <Folder Include="Infra\Providers\" />
   </ItemGroup>

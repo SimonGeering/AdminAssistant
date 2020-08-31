@@ -65,7 +65,6 @@
     <Folder Include="WebAPI\v1\BillingModule\" />
     <Folder Include="WebAPI\v1\MailModule\" />
     <Folder Include="WebAPI\v1\ReportsModule\" />
-    <Folder Include="WebAPI\v1\TasksModule\" />
   </ItemGroup>
 
 </Project>
