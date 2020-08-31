@@ -27,7 +27,7 @@ namespace AdminAssistant.Blazor.Client
                 logging.AddBrowserConsole();
 #if DEBUG
                 logging.AddFilter("Default", LogLevel.Information)
-                       .AddFilter(Framework.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
+                       .AddFilter(Infra.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
                        .AddFilter("Microsoft", LogLevel.Warning)
                        .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else

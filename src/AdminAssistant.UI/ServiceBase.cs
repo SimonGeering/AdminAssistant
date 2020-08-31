@@ -1,5 +1,5 @@
 using AutoMapper;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.UI

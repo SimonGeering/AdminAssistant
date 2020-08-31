@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 
-namespace AdminAssistant.Framework.Providers
+namespace AdminAssistant.Infra.Providers
 {
     public interface ILoggingProvider : ILogger
     {

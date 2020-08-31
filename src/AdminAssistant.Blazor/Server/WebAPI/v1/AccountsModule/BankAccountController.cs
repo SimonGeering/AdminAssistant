@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using Ardalis.Result;
 using AutoMapper;
 using MediatR;

@@ -2,7 +2,7 @@ using System;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 
-namespace AdminAssistant.Framework.Providers
+namespace AdminAssistant.Infra.Providers
 {
     public class ClientSideLoggingProvider : LoggingProvider, ILoggingProvider
     {

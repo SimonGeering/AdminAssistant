@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using AdminAssistant.Infra.DAL;
 using AdminAssistant.UI.Modules.CoreModule;
 using FluentValidation.Results;

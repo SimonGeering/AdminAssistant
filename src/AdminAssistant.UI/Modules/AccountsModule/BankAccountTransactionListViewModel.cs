@@ -1,6 +1,6 @@
 using System.ComponentModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.AccountsModule
 {

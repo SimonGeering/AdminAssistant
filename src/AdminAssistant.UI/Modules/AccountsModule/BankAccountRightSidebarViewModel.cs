@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 

@@ -1,4 +1,4 @@
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

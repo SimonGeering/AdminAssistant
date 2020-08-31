@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.BudgetModule.CQRS;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;

@@ -1,4 +1,4 @@
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

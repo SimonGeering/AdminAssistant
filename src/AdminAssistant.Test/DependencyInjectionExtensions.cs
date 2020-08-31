@@ -1,5 +1,5 @@
 using System;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using Moq;

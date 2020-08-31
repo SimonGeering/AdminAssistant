@@ -1,8 +1,7 @@
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using Ardalis.GuardClauses;
 using Ardalis.Result;
 using MediatR;

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace AdminAssistant.UI.Shared
