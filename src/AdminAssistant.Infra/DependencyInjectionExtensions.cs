@@ -3,7 +3,7 @@ using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Infrastructure;
+using AdminAssistant.DomainModel.Shared;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
 using AdminAssistant.Framework.MediatR;

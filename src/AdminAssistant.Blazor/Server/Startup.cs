@@ -1,4 +1,4 @@
-using AdminAssistant.DomainModel.Infrastructure;
+using AdminAssistant.DomainModel.Shared;
 using Ardalis.GuardClauses;
 using AutoMapper;
 using FluentValidation.AspNetCore;

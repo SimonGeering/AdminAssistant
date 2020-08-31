@@ -1,4 +1,4 @@
-namespace AdminAssistant.DomainModel.Infrastructure
+namespace AdminAssistant.DomainModel.Shared
 {
     public enum DatabaseProvider
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdminAssistant.DomainModel.Infrastructure;
+using AdminAssistant.DomainModel.Shared;
 using Ardalis.GuardClauses;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;

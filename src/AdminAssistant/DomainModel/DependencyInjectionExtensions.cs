@@ -1,4 +1,4 @@
-using AdminAssistant.DomainModel.Infrastructure;
+using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
