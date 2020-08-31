@@ -3,6 +3,7 @@ using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Infra.Providers;
 using AdminAssistant.DomainModel.Shared;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
@@ -56,6 +57,23 @@ namespace Microsoft.Extensions.DependencyInjection
             AddCoreDAL(services);
         }
 
+        public static void AddAdminAssistantClientSideProviders(this IServiceCollection services)
+        {
+            // TODO: For now take a hard dependency between client side UI projects and Infra, inc un-needed anciliairy dependencies.
+            // This can be resolved in furuture by splitting infra into multiple assemblies, but this is not worth doing
+            // until it gets bigger sure to implementation of other integrations.
+            services.AddTransient<ILoggingProvider, ClientSideLoggingProvider>();
+
+            AddSharedProviders(services);
+        }
+
+        public static void AddAdminAssistantServerSideProviders(this IServiceCollection services)
+        {
+            services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
+
+            AddSharedProviders(services);
+        }
+
         private static void AddAccountsDAL(this IServiceCollection services)
         {            
             services.AddTransient<IBankAccountInfoRepository, BankAccountInfoRepository>();
@@ -70,6 +88,9 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();
         }
+
+        private static void AddSharedProviders(this IServiceCollection services)
+            => services.AddTransient<IDateTimeProvider, DateTimeProvider>();
     }
 }
 
