@@ -1,4 +1,5 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule.Builders;
+using AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders;
 using AdminAssistant.DomainModel.Modules.BudgetModule.Builders;
 using AdminAssistant.DomainModel.Modules.CoreModule.Builders;
 using AdminAssistant.DomainModel.Modules.DocumentsModule.Builders;
@@ -14,6 +15,9 @@ namespace AdminAssistant.DomainModel
         public static IBankAccountInfoBuilder BankAccountInfo => new BankAccountInfoBuilder();
         public static IBankAccountTypeBuilder BankAccountType => new BankAccountTypeBuilder();
         public static IBankAccountTransactionBuilder BankAccountTransaction => new BankAccountTransactionBuilder();
+
+        // Asset Register Module ...
+        public static IAssetBuilder Asset => new AssetBuilder();
 
         // Budget Module ...
         public static IBudgetBuilder Budget => new BudgetBuilder();

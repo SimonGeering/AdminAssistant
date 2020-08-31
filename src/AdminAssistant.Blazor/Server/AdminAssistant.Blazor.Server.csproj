@@ -61,7 +61,6 @@
     <Folder Include="WebAPI\v1\ContactsModule\" />
     <Folder Include="WebAPI\v1\CalendarModule\" />
     <Folder Include="WebAPI\v1\DashboardModule\" />
-    <Folder Include="WebAPI\v1\AssetRegisterModule\" />
     <Folder Include="WebAPI\v1\BillingModule\" />
     <Folder Include="WebAPI\v1\MailModule\" />
     <Folder Include="WebAPI\v1\ReportsModule\" />

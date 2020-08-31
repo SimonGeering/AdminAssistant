@@ -61,7 +61,6 @@
     <Folder Include="Infra\DAL\Modules\MailModule\" />
     <Folder Include="Infra\DAL\Modules\TasksModule\" />
     <Folder Include="Infra\DAL\Modules\ReportsModule\" />
-    <Folder Include="DomainModel\Modules\AssetRegisterModule\" />
     <Folder Include="DomainModel\Modules\BillingModule\" />
     <Folder Include="DomainModel\Modules\CalendarModule\" />
     <Folder Include="DomainModel\Modules\ContactsModule\" />

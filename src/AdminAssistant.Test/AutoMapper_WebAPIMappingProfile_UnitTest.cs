@@ -2,11 +2,13 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.AssetRegisterModule;
 using AdminAssistant.DomainModel.Modules.BudgetModule;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.DomainModel.Modules.TasksModule;
 using AdminAssistant.WebAPI.v1.AccountsModule;
+using AdminAssistant.WebAPI.v1.AssetRegisterModule;
 using AdminAssistant.WebAPI.v1.BudgetModule;
 using AdminAssistant.WebAPI.v1.CoreModule;
 using AdminAssistant.WebAPI.v1.DocumentsModule;
@@ -43,13 +45,14 @@ namespace AdminAssistant.WebAPI.v1
 
         [Theory]
         [Trait("Category", "Unit")]
-        [InlineData(typeof(Currency), typeof(CurrencyResponseDto))]
+        [InlineData(typeof(Asset), typeof(AssetResponseDto))]
         [InlineData(typeof(Bank), typeof(BankResponseDto))]
         [InlineData(typeof(BankAccount), typeof(BankAccountResponseDto))]
         [InlineData(typeof(BankAccountInfo), typeof(BankAccountInfoResponseDto))]
         [InlineData(typeof(BankAccountType), typeof(BankAccountTypeResponseDto))]
         [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionResponseDto))]
         [InlineData(typeof(Budget), typeof(BudgetResponseDto))]
+        [InlineData(typeof(Currency), typeof(CurrencyResponseDto))]
         [InlineData(typeof(Document), typeof(DocumentResponseDto))]
         [InlineData(typeof(TaskList), typeof(TaskListResponseDto))]
         public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
