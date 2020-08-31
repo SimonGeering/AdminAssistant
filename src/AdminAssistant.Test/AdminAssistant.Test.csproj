@@ -22,6 +22,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DomainModel\Modules\Core\**" />
+    <EmbeddedResource Remove="DomainModel\Modules\Core\**" />
+    <None Remove="DomainModel\Modules\Core\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="AdminAssistant.Accounts.Test.docs.xml" />
     <None Remove="AdminAssistant.Test.docs.xml" />
     <None Remove="lcov.info" />
@@ -71,7 +77,6 @@
     <Folder Include="DomainModel\Modules\BillingModule\" />
     <Folder Include="DomainModel\Modules\CalendarModule\" />
     <Folder Include="DomainModel\Modules\ContactsModule\" />
-    <Folder Include="DomainModel\Modules\Core\Validation\" />
     <Folder Include="DomainModel\Modules\DashboardModule\" />
     <Folder Include="DomainModel\Modules\DocumentsModule\" />
     <Folder Include="DomainModel\Modules\MailModule\" />
