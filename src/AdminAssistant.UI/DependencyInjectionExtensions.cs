@@ -11,7 +11,6 @@ using AdminAssistant.UI.Modules.DocumentsModule;
 using AdminAssistant.UI.Modules.MailModule;
 using AdminAssistant.UI.Modules.ReportsModule;
 using AdminAssistant.UI.Modules.TasksModule;
-using AdminAssistant.UI.Services;
 using AdminAssistant.UI.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using AutoMapper;

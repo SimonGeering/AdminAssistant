@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-using AdminAssistant.UI.Shared;
-
-namespace AdminAssistant.UI.Services
+namespace AdminAssistant.UI.Shared
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class AppService : IAppService
