@@ -57,6 +57,7 @@
     <Folder Include="DAL\Modules\DashboardModule\" />
     <Folder Include="DAL\Modules\DocumentsModule\" />
     <Folder Include="DAL\Modules\MailModule\" />
+    <Folder Include="DAL\Modules\CoreModule\" />
     <Folder Include="DAL\Modules\TasksModule\" />
     <Folder Include="DAL\Modules\ReportsModule\" />
   </ItemGroup>

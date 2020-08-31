@@ -71,6 +71,7 @@
     <Folder Include="DomainModel\Modules\BillingModule\" />
     <Folder Include="DomainModel\Modules\CalendarModule\" />
     <Folder Include="DomainModel\Modules\ContactsModule\" />
+    <Folder Include="DomainModel\Modules\Core\Validation\" />
     <Folder Include="DomainModel\Modules\DashboardModule\" />
     <Folder Include="DomainModel\Modules\DocumentsModule\" />
     <Folder Include="DomainModel\Modules\MailModule\" />

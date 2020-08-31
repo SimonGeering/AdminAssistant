@@ -48,7 +48,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DomainModel\Modules\CoreModule\" />
+    <Folder Include="DomainModel\Modules\CoreModule\Builders\" />
+    <Folder Include="DomainModel\Modules\CoreModule\CQRS\" />
+    <Folder Include="DomainModel\Modules\CoreModule\Validation\" />
     <Folder Include="Infra\DAL\Modules\BillingModule\" />
     <Folder Include="Infra\DAL\Modules\AssetRegisterModule\" />
     <Folder Include="Infra\DAL\Modules\BudgetModule\" />
