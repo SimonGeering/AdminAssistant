@@ -71,7 +71,7 @@ namespace AdminAssistant.Blazor.Server
             });
             services.AddSwaggerGenNewtonsoftSupport();
 
-            services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.MappingProfile));
+            services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
 
             services.AddAdminAssistantServerSideProviders();
             services.AddAdminAssistantServerSideDomainModel();

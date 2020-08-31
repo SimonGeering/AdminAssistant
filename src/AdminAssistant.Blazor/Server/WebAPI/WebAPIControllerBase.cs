@@ -3,7 +3,7 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.WebAPI.v1
+namespace AdminAssistant.WebAPI
 {
     public abstract class WebAPIControllerBase : ControllerBase
     {
