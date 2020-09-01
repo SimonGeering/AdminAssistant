@@ -58,7 +58,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="WebAPI\v1\ContactsModule\" />
     <Folder Include="WebAPI\v1\DashboardModule\" />
     <Folder Include="WebAPI\v1\BillingModule\" />
     <Folder Include="WebAPI\v1\MailModule\" />
