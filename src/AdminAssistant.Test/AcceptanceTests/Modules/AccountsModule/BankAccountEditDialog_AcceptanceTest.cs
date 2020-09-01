@@ -16,7 +16,7 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
     public class BankAccountEditDialog_Should : AcceptanceTestBase
     {
         [Fact]
-        [Trait("Category", "Integration")]
+        [Trait("Category", "Acceptance")]
         public async Task ShowAnNewBankAccount_WhenOpenedForCreate()
         {
             // Arrange
@@ -53,7 +53,7 @@ namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule
         }
 
         [Fact]
-        [Trait("Category", "Integration")]
+        [Trait("Category", "Acceptance")]
         public async Task CloseWithoutSaving_WhenCancelButtonIsClicked()
         {
             await ResetDatabaseAsync().ConfigureAwait(false);
