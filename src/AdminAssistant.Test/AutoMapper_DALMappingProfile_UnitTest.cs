@@ -40,11 +40,25 @@ namespace AdminAssistant.Infra.DAL
         [Trait("Category", "Unit")]
         [InlineData(typeof(BankEntity), typeof(Bank))]
         [InlineData(typeof(BankAccountTypeEntity), typeof(BankAccountType))]
-        [InlineData(typeof(CurrencyEntity), typeof(Currency))]
         [InlineData(typeof(BankAccountTransactionEntity), typeof(BankAccountTransaction))]
         [InlineData(typeof(Bank), typeof(BankEntity))]
         [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionEntity))]
-        public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
+        public void ShouldSupportAccountsSchemaMappingFromSourceToDestination(Type source, Type destination)
+        {
+            // Arrange
+            var instance = Activator.CreateInstance(source);
+
+            // Act
+            var result = _mapper.Map(instance, source, destination);
+
+            // Assert
+            result.Should().NotBeNull();
+        }
+
+        [Theory]
+        [Trait("Category", "Unit")]
+        [InlineData(typeof(CurrencyEntity), typeof(Currency))]
+        public void ShouldSupportCoreSchemaMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange
             var instance = Activator.CreateInstance(source);
