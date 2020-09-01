@@ -11,8 +11,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace AdminAssistant.WebAPI.v1.ContactsModule
 {
     [ApiController]
-    [Route("api/v1/core/[controller]")]
-    [ApiExplorerSettings(GroupName = "Contacts - Contact")]
+    [Route("api/v1/contacts-module/[controller]")]
+    [ApiExplorerSettings(GroupName = "Contacts Module")]
     public class ContactController : WebAPIControllerBase
     {
         public ContactController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)

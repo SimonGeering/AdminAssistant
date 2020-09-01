@@ -11,8 +11,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace AdminAssistant.WebAPI.v1.TasksModule
 {
     [ApiController]
-    [Route("api/v1/core/[controller]")]
-    [ApiExplorerSettings(GroupName = "Tasks - TaskList")]
+    [Route("api/v1/tasks-module/[controller]")]
+    [ApiExplorerSettings(GroupName = "Tasks Module")]
     public class TaskListController : WebAPIControllerBase
     {
         public TaskListController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)

@@ -11,8 +11,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace AdminAssistant.WebAPI.v1.DocumentsModule
 {
     [ApiController]
-    [Route("api/v1/core/[controller]")]
-    [ApiExplorerSettings(GroupName = "Documents - Document")]
+    [Route("api/v1/document-module/[controller]")]
+    [ApiExplorerSettings(GroupName = "Documents Module")]
     public class DocumentController : WebAPIControllerBase
     {
         public DocumentController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)

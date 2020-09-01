@@ -12,8 +12,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace AdminAssistant.WebAPI.v1.AccountsModule
 {
     [ApiController]
-    [Route("api/v1/accounts/[controller]")]
-    [ApiExplorerSettings(GroupName = "Accounts - BankAccountType")]
+    [Route("api/v1/accounts-module/[controller]")]
+    [ApiExplorerSettings(GroupName = "Accounts Module")]
     public class BankAccountTypeController : WebAPIControllerBase
     {
         public BankAccountTypeController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)

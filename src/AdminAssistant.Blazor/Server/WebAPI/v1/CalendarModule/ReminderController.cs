@@ -11,8 +11,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace AdminAssistant.WebAPI.v1.CalendarModule
 {
     [ApiController]
-    [Route("api/v1/core/[controller]")]
-    [ApiExplorerSettings(GroupName = "Calendar - Reminder")]
+    [Route("api/v1/calendar-module/[controller]")]
+    [ApiExplorerSettings(GroupName = "Calendar Module")]
     public class ReminderController : WebAPIControllerBase
     {
         public ReminderController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)

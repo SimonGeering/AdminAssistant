@@ -9,7 +9,7 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
         public MappingProfile()
             : base(typeof(MappingProfile).Assembly)
         {
-            CreateMap<CurrencyResponseDto, Currency>();
+            // Accounts Module ...
             CreateMap<BankResponseDto, Bank>();
             CreateMap<BankAccountResponseDto, BankAccount>();
             CreateMap<BankAccountInfoResponseDto, BankAccountInfo>();
@@ -18,6 +18,24 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
             CreateMap<BankAccount, BankAccountCreateRequestDto>()
                 .ForMember(x => x.Balance, opt => opt.Ignore());
             CreateMap<BankAccount, BankAccountUpdateRequestDto>();
+
+            // Asset Register Module ...
+
+            // Budget Module ...
+
+            // Calendar Module ...
+
+            // Contact Module ...
+
+            // Core Module ...
+            CreateMap<CurrencyResponseDto, Currency>();
+
+            // Documents Module ...
+
+            // Mail Module ...
+
+            // Tasks Module ...
+
         }
     }
 }

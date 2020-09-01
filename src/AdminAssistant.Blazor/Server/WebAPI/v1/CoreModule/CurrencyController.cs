@@ -11,8 +11,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace AdminAssistant.WebAPI.v1.CoreModule
 {
     [ApiController]
-    [Route("api/v1/core/[controller]")]
-    [ApiExplorerSettings(GroupName = "Core - Currency")]
+    [Route("api/v1/core-module/[controller]")]
+    [ApiExplorerSettings(GroupName = "Core Module")]
     public class CurrencyController : WebAPIControllerBase
     {
         public CurrencyController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)

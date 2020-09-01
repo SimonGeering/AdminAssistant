@@ -11,8 +11,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace AdminAssistant.WebAPI.v1.AssetRegisterModule
 {
     [ApiController]
-    [Route("api/v1/core/[controller]")]
-    [ApiExplorerSettings(GroupName = "Asset Register - Asset")]
+    [Route("api/v1/assetregister-module/[controller]")]
+    [ApiExplorerSettings(GroupName = "Asset Register Module")]
     public class AssetController : WebAPIControllerBase
     {
         public AssetController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)

@@ -11,8 +11,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace AdminAssistant.WebAPI.v1.BudgetModule
 {
     [ApiController]
-    [Route("api/v1/core/[controller]")]
-    [ApiExplorerSettings(GroupName = "Budgets - Budget")]
+    [Route("api/v1/budget-module/[controller]")]
+    [ApiExplorerSettings(GroupName = "Budget Module")]
     public class BudgetController : WebAPIControllerBase
     {
         public BudgetController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)

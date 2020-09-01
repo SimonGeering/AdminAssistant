@@ -11,8 +11,8 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace AdminAssistant.WebAPI.v1.MailModule
 {
     [ApiController]
-    [Route("api/v1/core/[controller]")]
-    [ApiExplorerSettings(GroupName = "MailMessage Register - MailMessage")]
+    [Route("api/v1/mail-module/[controller]")]
+    [ApiExplorerSettings(GroupName = "Mail Module")]
     public class MailMessageController : WebAPIControllerBase
     {
         public MailMessageController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
