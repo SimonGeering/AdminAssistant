@@ -1,6 +1,7 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule.Builders;
 using AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders;
 using AdminAssistant.DomainModel.Modules.BudgetModule.Builders;
+using AdminAssistant.DomainModel.Modules.CalendarModule.Builders;
 using AdminAssistant.DomainModel.Modules.CoreModule.Builders;
 using AdminAssistant.DomainModel.Modules.DocumentsModule.Builders;
 using AdminAssistant.DomainModel.Modules.TasksModule.Builders;
@@ -21,6 +22,9 @@ namespace AdminAssistant.DomainModel
 
         // Budget Module ...
         public static IBudgetBuilder Budget => new BudgetBuilder();
+
+        // Calendar Module ...
+        public static IReminderBuilder Reminder => new ReminderBuilder();
 
         // Core Module ...
         public static ICurrencyBuilder Currency => new CurrencyBuilder();

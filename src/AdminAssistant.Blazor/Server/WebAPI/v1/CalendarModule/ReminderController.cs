@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
+using AdminAssistant.DomainModel.Modules.CalendarModule.CQRS;
 using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using MediatR;
@@ -23,7 +23,7 @@ namespace AdminAssistant.WebAPI.v1.CalendarModule
         [HttpGet]
         [SwaggerOperation("Lists all reminders.", OperationId = "GetReminder")]
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of ReminderResponseDto", type: typeof(IEnumerable<ReminderResponseDto>))]
-        public async Task<ActionResult<IEnumerable<ReminderResponseDto>>> GetDocuments()
+        public async Task<ActionResult<IEnumerable<ReminderResponseDto>>> GetReminders()
         {
             Log.Start();
 
