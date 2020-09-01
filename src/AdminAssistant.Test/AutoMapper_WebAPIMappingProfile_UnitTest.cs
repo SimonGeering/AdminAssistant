@@ -8,6 +8,7 @@ using AdminAssistant.DomainModel.Modules.CalendarModule;
 using AdminAssistant.DomainModel.Modules.ContactsModule;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
+using AdminAssistant.DomainModel.Modules.MailModule;
 using AdminAssistant.DomainModel.Modules.TasksModule;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using AdminAssistant.WebAPI.v1.AssetRegisterModule;
@@ -16,6 +17,7 @@ using AdminAssistant.WebAPI.v1.CalendarModule;
 using AdminAssistant.WebAPI.v1.ContactsModule;
 using AdminAssistant.WebAPI.v1.CoreModule;
 using AdminAssistant.WebAPI.v1.DocumentsModule;
+using AdminAssistant.WebAPI.v1.MailModule;
 using AdminAssistant.WebAPI.v1.TasksModule;
 using AutoMapper;
 using FluentAssertions;
@@ -145,6 +147,21 @@ namespace AdminAssistant.WebAPI.v1
         [Trait("Category", "Unit")]
         [InlineData(typeof(Document), typeof(DocumentResponseDto))]
         public void ShouldSupportDocumentsModuleMappingFromSourceToDestination(Type source, Type destination)
+        {
+            // Arrange
+            var instance = Activator.CreateInstance(source);
+
+            // Act
+            var result = _mapper.Map(instance, source, destination);
+
+            // Assert
+            result.Should().NotBeNull();
+        }
+
+        [Theory]
+        [Trait("Category", "Unit")]
+        [InlineData(typeof(MailMessage), typeof(MailMessageResponseDto))]
+        public void ShouldSupportMailModuleMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange
             var instance = Activator.CreateInstance(source);

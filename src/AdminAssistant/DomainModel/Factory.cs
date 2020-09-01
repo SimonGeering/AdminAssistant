@@ -5,6 +5,7 @@ using AdminAssistant.DomainModel.Modules.CalendarModule.Builders;
 using AdminAssistant.DomainModel.Modules.ContactsModule.Builders;
 using AdminAssistant.DomainModel.Modules.CoreModule.Builders;
 using AdminAssistant.DomainModel.Modules.DocumentsModule.Builders;
+using AdminAssistant.DomainModel.Modules.MailModule.Builders;
 using AdminAssistant.DomainModel.Modules.TasksModule.Builders;
 
 namespace AdminAssistant.DomainModel
@@ -35,6 +36,9 @@ namespace AdminAssistant.DomainModel
 
         // Documents Module ...
         public static IDocumentBuilder Document => new DocumentBuilder();
+
+        // Mail Module ...
+        public static IMailMessageBuilder MailMessage => new MailMessageBuilder();
 
         // Tasks Module ...
         public static ITaskListBuilder TaskList => new TaskListBuilder();

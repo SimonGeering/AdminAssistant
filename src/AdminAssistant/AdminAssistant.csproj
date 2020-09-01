@@ -63,7 +63,6 @@
     <Folder Include="Infra\DAL\Modules\ReportsModule\" />
     <Folder Include="DomainModel\Modules\BillingModule\" />
     <Folder Include="DomainModel\Modules\DashboardModule\" />
-    <Folder Include="DomainModel\Modules\MailModule\" />
     <Folder Include="DomainModel\Modules\ReportsModule\" />
     <Folder Include="Infra\Providers\" />
   </ItemGroup>
