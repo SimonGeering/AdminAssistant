@@ -56,6 +56,9 @@ namespace AdminAssistant.WebAPI.v1
         [InlineData(typeof(BankAccountInfo), typeof(BankAccountInfoResponseDto))]
         [InlineData(typeof(BankAccountType), typeof(BankAccountTypeResponseDto))]
         [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionResponseDto))]
+        [InlineData(typeof(BankAccountCreateRequestDto), typeof(BankAccount))]
+        [InlineData(typeof(BankAccountUpdateRequestDto), typeof(BankAccount))]
+
         public void ShouldSupportAccountsModuleMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange
