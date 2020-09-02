@@ -21,7 +21,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
             var response = await AdminAssistantWebAPIClient.GetBankAccountTypeAsync().ConfigureAwait(false);
 
             var result = new List<BankAccountType>(Mapper.Map<IEnumerable<BankAccountType>>(response));
-            result.Insert(0, new BankAccountType() { BankAccountTypeID = 0, Description = string.Empty });
+            result.Insert(0, new BankAccountType() { BankAccountTypeID = Constants.UnknownRecordID, Description = string.Empty });
 
             return Log.Finish(result);
         }
