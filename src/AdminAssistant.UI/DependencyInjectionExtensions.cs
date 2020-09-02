@@ -67,6 +67,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
             // Add Documents UI ...
             services.AddSingleton<IDocumentsViewModel, DocumentsViewModel>();
+            services.AddTransient<IDocumentsService, DocumentsService>();
 
             // Add Mail UI ...
             services.AddSingleton<IMailViewModel, MailViewModel>();
