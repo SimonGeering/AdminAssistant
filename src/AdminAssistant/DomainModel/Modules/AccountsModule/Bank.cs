@@ -9,6 +9,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
         public int BankID { get; set; } = Constants.UnknownRecordID;
         public string BankName { get; set; } = string.Empty;
 
-        public int PrimaryKey => this.BankID;
+        public int PrimaryKey => BankID;
     }
 }

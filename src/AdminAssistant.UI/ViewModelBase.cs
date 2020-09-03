@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
@@ -13,20 +13,20 @@ namespace AdminAssistant.UI
 
         protected ILoggingProvider Log { get; }
 
-        private bool isBusy;
+        private bool _isBusy;
         public virtual bool IsBusy
         {
-            get => isBusy;
+            get => _isBusy;
             protected set
             {
-                this.SetProperty(ref isBusy, value);
-                this.OnIsBusyChanged(isBusy);
+                SetProperty(ref _isBusy, value);
+                OnIsBusyChanged(_isBusy);
             }
         }
 
         public event EventHandler<bool> IsBusyChanged = null!;
 
-        protected void OnIsBusyChanged(bool isBusy) => this.IsBusyChanged?.Invoke(this, isBusy);
+        protected void OnIsBusyChanged(bool isBusy) => IsBusyChanged?.Invoke(this, isBusy);
         
 
         public IAsyncRelayCommand Loaded { get; }
@@ -35,8 +35,8 @@ namespace AdminAssistant.UI
 
         public ViewModelBase(ILoggingProvider log)
         {
-            this.Log = log;
-            this.Loaded = new AsyncRelayCommand(execute: this.OnLoadedAsync);
+            Log = log;
+            Loaded = new AsyncRelayCommand(execute: OnLoadedAsync);
         }
     }
 }

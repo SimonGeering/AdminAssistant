@@ -246,9 +246,9 @@ namespace AdminAssistant.Infra.DAL.EntityFramework
         public DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; } = null!;
 
         // Migrations etc ...
-        public string ConnectionString => this.Database.GetDbConnection().ConnectionString;
-        public void EnsureDatabaseIsCreated() => this.Database.EnsureCreated();
-        public void Migrate() => this.Database.Migrate();
+        public string ConnectionString => Database.GetDbConnection().ConnectionString;
+        public void EnsureDatabaseIsCreated() => Database.EnsureCreated();
+        public void Migrate() => Database.Migrate();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

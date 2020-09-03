@@ -7,7 +7,6 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model
     {
         private const string Name = "Contacts";
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "WIP")]
         internal static void OnModelCreating(ModelBuilder modelBuilder)
         {
             ContactsSchema.Address_OnModelCreating(modelBuilder);

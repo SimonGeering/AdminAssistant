@@ -1,10 +1,14 @@
+using AdminAssistant.Infra.DAL;
+
 namespace AdminAssistant.DomainModel.Modules.BudgetModule
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable", Justification = "WIP Code")]
-    public class Budget
+    public class Budget : IDatabasePersistable
     {
         public const int BudgetNameMaxLength = Constants.NameMaxLength;
 
+        public int BudgetID { get; set; }
         public string BudgetName { get; set; } = string.Empty;
+
+        public int PrimaryKey => BudgetID;
     }
 }

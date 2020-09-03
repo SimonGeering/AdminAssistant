@@ -1,6 +1,6 @@
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.WebAPI
+namespace AdminAssistant.WebAPI.v1
 {
     public class MappingProfile : MappingProfileBase
     {

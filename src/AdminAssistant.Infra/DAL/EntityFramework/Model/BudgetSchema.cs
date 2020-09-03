@@ -6,7 +6,6 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Budget
     {
         private const string Name = "Budget";
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA1801:Review unused parameters", Justification = "WIP")]
         internal static void OnModelCreating(ModelBuilder modelBuilder)
         {
             BudgetSchema.Budget_OnModelCreating(modelBuilder);

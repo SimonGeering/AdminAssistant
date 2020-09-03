@@ -11,13 +11,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>AdminAssistant.Infra.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>AdminAssistant.Infra.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -59,6 +57,7 @@
     <Folder Include="DAL\Modules\DashboardModule\" />
     <Folder Include="DAL\Modules\DocumentsModule\" />
     <Folder Include="DAL\Modules\MailModule\" />
+    <Folder Include="DAL\Modules\CoreModule\" />
     <Folder Include="DAL\Modules\TasksModule\" />
     <Folder Include="DAL\Modules\ReportsModule\" />
   </ItemGroup>

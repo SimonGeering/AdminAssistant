@@ -1,4 +1,3 @@
-using Ardalis.GuardClauses;
 using AutoMapper;
 using System;
 using System.Linq;
@@ -12,8 +11,8 @@ namespace AdminAssistant.Framework.TypeMapping
         /// <param name="assembly"></param>
         public MappingProfileBase(Assembly assembly)
         {
-            this.ApplyIMapFromMappings(assembly);
-            this.ApplyIMapToMappings(assembly);
+            ApplyIMapFromMappings(assembly);
+            ApplyIMapToMappings(assembly);
         }
 
         private void ApplyIMapFromMappings(Assembly assembly)
@@ -24,7 +23,7 @@ namespace AdminAssistant.Framework.TypeMapping
 
             foreach (var type in mapFromTypes)
             {
-                object? instance = Activator.CreateInstance(type);
+                var instance = Activator.CreateInstance(type);
 
                 if (instance is null)
                     throw new ArgumentException("Unable to load type mapping from assembly", nameof(assembly));
@@ -60,7 +59,7 @@ namespace AdminAssistant.Framework.TypeMapping
 
             foreach (var type in mapToTypes)
             {
-                object? instance = Activator.CreateInstance(type);
+                var instance = Activator.CreateInstance(type);
 
                 if (instance is null)
                     throw new ArgumentException("Unable to load type mapping from assembly", nameof(assembly));

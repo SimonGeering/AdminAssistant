@@ -4,10 +4,10 @@ namespace AdminAssistant.UI.Shared
     {
         public SidebarStateSettings(ExpandedContractedStateToggle state, string icon, string styleClass, bool showContent)
         {
-            this.State = state;
-            this.Icon = icon;
-            this.StyleClass = styleClass;
-            this.ShowContent = showContent;
+            State = state;
+            Icon = icon;
+            StyleClass = styleClass;
+            ShowContent = showContent;
         }
 
         public ExpandedContractedStateToggle State { get; private set; }

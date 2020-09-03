@@ -30,10 +30,16 @@
     <div class="cl-sidebar">
       <SfSidebar HtmlAttributes="@(new Dictionary<string, object>() { { "class", "sidebar-menu" } })" Target=".cl-main" Width="180px" DockSize="50px" EnableDock="true" IsOpen="this.vm.Sidebar.ShowContent">
         <ChildContent>
-          <SfSplitButton Target="#listview" Content="@this.vm.ActiveMode.Label" IconCss="@this.vm.ActiveMode.Icon"></SfSplitButton>
-          <SfListView ID="listview" DataSource="this.vm.Modes">
-            <ListViewFieldSettings Text="@(nameof(ModeSelectionItem.Label))" IconCss="@(nameof(ModeSelectionItem.Icon))"></ListViewFieldSettings>
-          </SfListView>
+
+          <SfDropDownButton Content="@this.vm.ActiveMode.Label" IconCss="@(this.vm.ActiveMode.Icon)" CssClass="e-vertical">
+            <DropDownMenuItems>
+              @foreach (var mode in this.vm.Modes)
+              {
+                <DropDownMenuItem Text="@(mode.Label)" IconCss="@(mode.Icon)" />
+              }
+            </DropDownMenuItems>
+          </SfDropDownButton>
+
           <SfButton IconCss="@this.vm.Sidebar.Icon" @onclick=this.vm.OnSideBarControlButtonClick /> <br />
           <SfMenu CssClass="dock-menu" Items="this.vm.Modules" ModelType="@typeof(ModuleSelectionItem)" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Vertical">
             <MenuFieldSettings ItemId="@(nameof(ModuleSelectionItem.Module))" Text="@(nameof(ModuleSelectionItem.Label))" Url="@(nameof(ModuleSelectionItem.Route))" IconCss="@(nameof(ModuleSelectionItem.Icon))" />

@@ -10,20 +10,17 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Builders
     {
         public static Budget Default(IBudgetBuilder builder) => builder.Build();
 
-        public Budget Build()
-        {
-            return this;
-        }
+        public Budget Build() => this;
 
         public IBudgetBuilder WithTestData(int budgetID = Constants.UnknownRecordID)
         {
-            this.BudgetName = "Test Budget";
+            BudgetName = "Test Budget";
             return this;
         }
 
         public IBudgetBuilder WithBudgetName(string budgetName)
         {
-            this.BudgetName = budgetName;
+            BudgetName = budgetName;
             return this;
         }
     }

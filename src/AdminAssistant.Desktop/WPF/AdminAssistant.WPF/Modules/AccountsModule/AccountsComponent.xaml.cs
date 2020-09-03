@@ -4,9 +4,6 @@ namespace AdminAssistant.WPF.Modules.AccountsModule
 {
     public partial class AccountsComponent : UserControl
     {
-        public AccountsComponent()
-        {
-            this.InitializeComponent();
-        }
+        public AccountsComponent() => InitializeComponent();
     }
 }

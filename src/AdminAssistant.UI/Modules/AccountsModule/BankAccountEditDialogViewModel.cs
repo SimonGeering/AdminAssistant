@@ -1,25 +1,27 @@
 using System;
 using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using AdminAssistant.Infra.DAL;
 using AdminAssistant.UI.Modules.CoreModule;
 using FluentValidation.Results;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
+using AdminAssistant.DomainModel.Modules.CoreModule;
 
 namespace AdminAssistant.UI.Modules.AccountsModule
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    [SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel
     {
-        private readonly IBankAccountValidator bankAccountValidator;
-        private readonly IAccountsService accountsService;
-        private readonly ICoreService coreService;
-        private readonly IMessenger messenger;
+        private readonly IBankAccountValidator _bankAccountValidator;
+        private readonly IAccountsService _accountsService;
+        private readonly ICoreService _coreService;
+        private readonly IMessenger _messenger;
 
         private BankAccount bankAccount = new BankAccount();
 
@@ -31,123 +33,123 @@ namespace AdminAssistant.UI.Modules.AccountsModule
             IMessenger messenger)
             : base(log)
         {
-            this.IsBusy = true;
+            IsBusy = true;
 
-            this.bankAccountValidator = bankAccountValidator;
-            this.accountsService = accountsService;
-            this.coreService = coreService;
-            this.messenger = messenger;
+            _bankAccountValidator = bankAccountValidator;
+            _accountsService = accountsService;
+            _coreService = coreService;
+            _messenger = messenger;
 
-            this.messenger.RegisterAll(this);
+            _messenger.RegisterAll(this);
 
-            this.Cancel = new AsyncRelayCommand(execute: this.OnCancelButtonClick);
-            this.Save = new AsyncRelayCommand(execute: this.OnSaveButtonClick);
+            Cancel = new AsyncRelayCommand(execute: OnCancelButtonClick);
+            Save = new AsyncRelayCommand(execute: OnSaveButtonClick);
         }
 
-        ~BankAccountEditDialogViewModel() => this.messenger.UnregisterAll(this);
+        ~BankAccountEditDialogViewModel() => _messenger.UnregisterAll(this);
 
         public IAsyncRelayCommand Cancel { get; }
         public IAsyncRelayCommand Save { get; }
 
         public string AccountName
         {
-            get => this.bankAccount.AccountName;
+            get => bankAccount.AccountName;
             set
             {
-                if (this.bankAccount.AccountName.Equals(value, StringComparison.InvariantCulture))
+                if (bankAccount.AccountName.Equals(value, StringComparison.InvariantCulture))
                     return;
 
                 // TODO: Switch to call base helper extension.
                 // TODO: Hook Property changed and call refresh validation once for all properties.
-                this.bankAccount.AccountName = value;
-                this.RefreshValidation();
-                this.OnPropertyChanged();
+                bankAccount.AccountName = value;
+                RefreshValidation();
+                OnPropertyChanged();
             }
         }
 
         public int BankAccountID
         {
-            get => this.bankAccount.BankAccountID;
+            get => bankAccount.BankAccountID;
             set
             {
-                if (this.bankAccount.BankAccountID.Equals(value))
+                if (bankAccount.BankAccountID.Equals(value))
                     return;
 
-                this.bankAccount.BankAccountID = value;
-                this.RefreshValidation();
-                this.OnPropertyChanged();
+                bankAccount.BankAccountID = value;
+                RefreshValidation();
+                OnPropertyChanged();
             }
         }
 
         public int BankAccountTypeID
         {
-            get => this.bankAccount.BankAccountTypeID;
+            get => bankAccount.BankAccountTypeID;
             set
             {
-                if (this.bankAccount.BankAccountTypeID.Equals(value))
+                if (bankAccount.BankAccountTypeID.Equals(value))
                     return;
 
-                this.bankAccount.BankAccountTypeID = value;
-                this.RefreshValidation();
-                this.OnPropertyChanged();
+                bankAccount.BankAccountTypeID = value;
+                RefreshValidation();
+                OnPropertyChanged();
             }
         }
 
         public int CurrencyID
         {
-            get => this.bankAccount.CurrencyID;
+            get => bankAccount.CurrencyID;
             set
             {
-                if (this.bankAccount.CurrencyID.Equals(value))
+                if (bankAccount.CurrencyID.Equals(value))
                     return;
 
-                this.bankAccount.CurrencyID = value;
-                this.RefreshValidation();
-                this.OnPropertyChanged();
+                bankAccount.CurrencyID = value;
+                RefreshValidation();
+                OnPropertyChanged();
             }
         }
 
         public bool IsBudgeted
         {
-            get => this.bankAccount.IsBudgeted;
+            get => bankAccount.IsBudgeted;
             set
             {
-                if (this.bankAccount.IsBudgeted.Equals(value))
+                if (bankAccount.IsBudgeted.Equals(value))
                     return;
 
-                this.bankAccount.IsBudgeted = value;
-                this.RefreshValidation();
-                this.OnPropertyChanged();
+                bankAccount.IsBudgeted = value;
+                RefreshValidation();
+                OnPropertyChanged();
             }
         }
 
         public int OpeningBalance 
         {
-            get => this.bankAccount.OpeningBalance;
+            get => bankAccount.OpeningBalance;
             set
             {
-                if (this.bankAccount.OpeningBalance.Equals(value))
+                if (bankAccount.OpeningBalance.Equals(value))
                     return;
 
-                this.bankAccount.OpeningBalance = value;
-                this.RefreshValidation();
-                this.OnPropertyChanged();
+                bankAccount.OpeningBalance = value;
+                RefreshValidation();
+                OnPropertyChanged();
             }
         }
 
-        public int CurrentBalance => this.bankAccount.CurrentBalance;
+        public int CurrentBalance => bankAccount.CurrentBalance;
 
         public DateTime OpenedOn
         {
-            get => this.bankAccount.OpenedOn;
+            get => bankAccount.OpenedOn;
             set
             {
-                if (this.bankAccount.OpenedOn.Equals(value))
+                if (bankAccount.OpenedOn.Equals(value))
                     return;
 
-                this.bankAccount.OpenedOn = value;
-                this.RefreshValidation();
-                this.OnPropertyChanged();
+                bankAccount.OpenedOn = value;
+                RefreshValidation();
+                OnPropertyChanged();
             }
         }
 
@@ -158,134 +160,133 @@ namespace AdminAssistant.UI.Modules.AccountsModule
         private string headerText = string.Empty;
         public string HeaderText
         {
-            get => this.headerText;
+            get => headerText;
             private set
             {
-                if (this.headerText.Equals(value, StringComparison.InvariantCulture))
+                if (headerText.Equals(value, StringComparison.InvariantCulture))
                     return;
 
-                this.headerText = value;
-                this.OnPropertyChanged();
+                headerText = value;
+                OnPropertyChanged();
             }
         }
 
         private bool showDialog;
         public bool ShowDialog
         {
-            get => this.showDialog;
+            get => showDialog;
             set
             {
-                if (this.showDialog.Equals(value))
+                if (showDialog.Equals(value))
                     return;
 
-                this.showDialog = value;
-                this.OnPropertyChanged();
+                showDialog = value;
+                OnPropertyChanged();
             }
         }
 
         public void OnAccountNameChanged(string accountName)
         {
-            this.Log.Start();
+            Log.Start();
 
-            this.bankAccount.AccountName = accountName;
-            this.RefreshValidation();
-            this.OnPropertyChanged();
+            bankAccount.AccountName = accountName;
+            RefreshValidation();
+            OnPropertyChanged();
 
-            this.Log.Finish();
+            Log.Finish();
         }
 
         public string AccountNameValidationMessage { get; private set; } = string.Empty;
         public string AccountNameValidationClass { get; private set; } = string.Empty;
 
-        public void OnBankAccountTypeChanged() => this.RefreshValidation();
+        public void OnBankAccountTypeChanged() => RefreshValidation();
 
-        public void OnCurrencyChanged() => this.RefreshValidation();
+        public void OnCurrencyChanged() => RefreshValidation();
 
         private async Task OnCancelButtonClick()
         {
-            this.Log.Start();
+            Log.Start();
 
-            this.bankAccount = new BankAccount();
-            this.ShowDialog = false;
+            bankAccount = new BankAccount();
+            ShowDialog = false;
 
             await Task.CompletedTask.ConfigureAwait(true);
 
-            this.Log.Finish();
+            Log.Finish();
         }
 
+        [SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "WIP")]
         private async Task OnSaveButtonClick()
         {
-            this.Log.Start();
+            Log.Start();
 
             try
             {
-                this.IsBusy = true;
+                IsBusy = true;
 
-                var canSave = this.RefreshValidation();
+                var canSave = RefreshValidation();
 
                 if (canSave)
                 {
-                    if ((this.bankAccount as IDatabasePersistable).IsNew)
+                    if ((bankAccount as IDatabasePersistable).IsNew)
                     {
-                        var savedBankAccountResult = await this.accountsService.CreateBankAccountAsync(this.bankAccount).ConfigureAwait(true);
+                        var savedBankAccountResult = await _accountsService.CreateBankAccountAsync(bankAccount).ConfigureAwait(true);
                         // TODO: Notify OnBankAccountCreated
                         // this.accountsStateStore.OnBankAccountCreated(savedBankAccount);
                     }
                     else
                     {
-                        var savedBankAccountResult = await this.accountsService.UpdateBankAccountAsync(this.bankAccount).ConfigureAwait(true);
+                        var savedBankAccountResult = await _accountsService.UpdateBankAccountAsync(bankAccount).ConfigureAwait(true);
                         // TODO: Notify OnBankAccountUpdated
                         // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
                     }
-                    this.ShowDialog = false;
+                    ShowDialog = false;
                 }
             }
             finally
             {
-                this.IsBusy = false;
+                IsBusy = false;
             }
-            this.Log.Finish();
+            Log.Finish();
         }
 
         public override async Task OnLoadedAsync()
         {
-            this.Log.Start();
+            Log.Start();
 
             try
             {
-                this.IsBusy = true;
+                IsBusy = true;
 
-                var bankAccountTypes = await this.accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(true);
-                bankAccountTypes.ForEach(item => this.BankAccountTypes.Add(item));
+                var bankAccountTypes = await _accountsService.LoadBankAccountTypesLookupDataAsync().ConfigureAwait(true);
+                bankAccountTypes.ForEach(item => BankAccountTypes.Add(item));
 
-                var currencies = await this.coreService.GetCurrencyListAsync().ConfigureAwait(true);
-                currencies.ForEach(item => this.Currencies.Add(item));
+                var currencies = await _coreService.GetCurrencyListAsync().ConfigureAwait(true);
+                currencies.ForEach(item => Currencies.Add(item));
 
                 await base.OnLoadedAsync().ConfigureAwait(true);
             }
             finally
             {
-                this.IsBusy = false;
+                IsBusy = false;
             }
 
-            this.Log.Finish();
+            Log.Finish();
         }
 
         public void Receive(EditBankAccountMessage message)
         {
-            this.bankAccount = message.BankAccount;
-
-            this.HeaderText = (this.bankAccount as IDatabasePersistable).IsNew ? IBankAccountEditDialogViewModel.NewBankAccountHeader : IBankAccountEditDialogViewModel.EditBankAccountHeader;
-            this.RefreshValidation();
-            this.ShowDialog = true;
+            bankAccount = message.BankAccount;
+            HeaderText = (bankAccount as IDatabasePersistable).IsNew ? IBankAccountEditDialogViewModel.NewBankAccountHeader : IBankAccountEditDialogViewModel.EditBankAccountHeader;
+            RefreshValidation();
+            ShowDialog = true;
         }
 
         private bool RefreshValidation()
         {
-            var result = this.bankAccountValidator.Validate(this.bankAccount);
-
-            this.AccountNameValidationMessage = this.GetValidationMessageForField(nameof(BankAccount.AccountName), result);
-            this.AccountNameValidationClass = this.GetValidationClassForField(nameof(BankAccount.AccountName), result);
+            var result = _bankAccountValidator.Validate(bankAccount);
+            AccountNameValidationMessage = GetValidationMessageForField(nameof(BankAccount.AccountName), result);
+            AccountNameValidationClass = GetValidationClassForField(nameof(BankAccount.AccountName), result);
 
             return result.IsValid;
         }
@@ -309,7 +310,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
             if (result.Errors.Any(x => x.PropertyName == fieldName) == false)
                 return ValidationMessage.None;
 
-            return this.GetValidationClassForSeverity(result.Errors.Single(x => x.PropertyName == fieldName).Severity);
+            return GetValidationClassForSeverity(result.Errors.Single(x => x.PropertyName == fieldName).Severity);
         }
 
         private string GetValidationClassForSeverity(FluentValidation.Severity severity) => severity switch
