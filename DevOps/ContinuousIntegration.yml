@@ -1,7 +1,7 @@
 name: $(BuildID)
 
-pr: # PR builds
-  autoCancel: true
+trigger: # CI Builds
+  batch: true
   branches:
     include:
     - dev
@@ -11,7 +11,7 @@ pr: # PR builds
     - ./DevOps
     - ./docs
 
-trigger: none # Disable CI Builds
+pr: none # Disable PR builds
 
 resources:
 - repo: self
