@@ -1,8 +1,7 @@
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using Ardalis.GuardClauses;
 using Ardalis.Result;
 using MediatR;
@@ -14,14 +13,11 @@ namespace AdminAssistant.Framework.MediatR
     /// <typeparam name="TRequest"></typeparam>
     /// <typeparam name="TResponse"></typeparam>
     /// <remarks>See "https://www.codewithmukesh.com/blog/mediatr-pipeline-behaviour/"</remarks>
-    public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+    public class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
     {
-        private readonly ILoggingProvider loggingProvider;
+        private readonly ILoggingProvider _loggingProvider;
 
-        public LoggingBehaviour(ILoggingProvider loggingProvider)
-        {
-            this.loggingProvider = loggingProvider;
-        }
+        public LoggingBehaviour(ILoggingProvider loggingProvider) => _loggingProvider = loggingProvider;
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
         {
@@ -30,27 +26,27 @@ namespace AdminAssistant.Framework.MediatR
             //Request
             var requestName = typeof(TRequest).Name;
 
-            this.loggingProvider.LogInformation($"{requestName} Handling Started");
+            _loggingProvider.LogInformation($"{requestName} Handling Started");
 
-            foreach (PropertyInfo prop in request.GetType().GetProperties())
+            foreach (var prop in request.GetType().GetProperties())
             {
-                this.loggingProvider.LogDebug("{Property} : {@Value}", prop.Name, prop.GetValue(request, null));
+                _loggingProvider.LogDebug("{Property} : {@Value}", prop.Name, prop.GetValue(request, null));
             }
 
             var response = await next().ConfigureAwait(false);
 
             //Response
-            var result = (response as IResult);
+            var result = response as IResult;
 
             if (result == null)
             {
-                this.loggingProvider.LogInformation($"{requestName} Handling Completed");
+                _loggingProvider.LogInformation($"{requestName} Handling Completed");
                 return response;
             }
 
-            var status = this.LogResultDetails(requestName, result);
+            var status = LogResultDetails(requestName, result);
 
-            this.loggingProvider.LogInformation($"{requestName} Handling Completed - {status}");
+            _loggingProvider.LogInformation($"{requestName} Handling Completed - {status}");
             return response;
         }
 
@@ -58,12 +54,12 @@ namespace AdminAssistant.Framework.MediatR
         {
             if (result.Errors.Any())
             {
-                this.loggingProvider.LogDebug($"{requestName} Handling - {result.Errors.Count()} Errors:");
+                _loggingProvider.LogDebug($"{requestName} Handling - {result.Errors.Count()} Errors:");
             }
 
             if (result.ValidationErrors.Any())
             {
-                this.loggingProvider.LogDebug($"{requestName} Handling - {result.ValidationErrors.Count} Validation Errors:");
+                _loggingProvider.LogDebug($"{requestName} Handling - {result.ValidationErrors.Count} Validation Errors:");
             }
 
             return result.Status.ToString();

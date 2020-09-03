@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using AdminAssistant.Framework.Providers;
-using AdminAssistant.UI.Services;
+using AdminAssistant.Infra.Providers;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace AdminAssistant.UI.Shared
@@ -10,127 +9,96 @@ namespace AdminAssistant.UI.Shared
     {
         private const string SelectedModuleStyle = "active";
 
-        private readonly IMessenger messenger;
-        private readonly IAppService appService;
+        private readonly IMessenger _messenger;
+        private readonly IAppService _appService;
 
-        private readonly SidebarStateSettings contractedSidebarState;
-        private readonly SidebarStateSettings expandedSidebarState;
-        private readonly ModeSelectionStateSettings contractedModeSelectionDropDownState;
-        private readonly ModeSelectionStateSettings expandedModeSelectionDropDownState;
+        private readonly SidebarStateSettings _contractedSidebarState;
+        private readonly SidebarStateSettings _expandedSidebarState;
 
         public MainWindowViewModel(IMessenger messenger, IAppService appService, ILoggingProvider loggerProvider)
             : base(loggerProvider)
         {
-            this.messenger = messenger;
-            this.messenger.RegisterAll(this);
+            Log.Start();
 
-            this.appService = appService;
+            _messenger = messenger;
+            _messenger.RegisterAll(this);
 
-            this.SelectedModule = ModuleEnum.Dashboard;
+            _appService = appService;
 
-            this.activeMode = appService.GetDefaultMode();
-            this.activeModule = appService.GetDefaultModule();
+            _activeMode = appService.GetDefaultMode();
+            _activeModule = appService.GetDefaultModule();
 
-            this.Log.Start();
-            this.FooterText = $"Admin Assistant - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
-            this.Log.Finish();
+            FooterText = $"Admin Assistant - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
 
+            _contractedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Contracted, "fa fa-lg fa-angle-double-right", "cl-navbar-contracted", false);
+            _expandedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Expanded, "fa fa-lg fa-angle-double-left", "cl-navbar-expanded", true);
+            Sidebar = _expandedSidebarState;
 
-            this.contractedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Contracted, "fa fa-lg fa-angle-double-right", "cl-navbar-contracted", false);
-            this.expandedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Expanded, "fa fa-lg fa-angle-double-left", "cl-navbar-expanded", true);
-            this.Sidebar = this.expandedSidebarState;
+            Modes = _appService.GetModes();
+            ActiveMode = _appService.GetDefaultMode();
 
-            this.contractedModeSelectionDropDownState = new ModeSelectionStateSettings(ExpandedContractedStateToggle.Contracted, string.Empty);
-            this.expandedModeSelectionDropDownState = new ModeSelectionStateSettings(ExpandedContractedStateToggle.Expanded, "show");
-            this.ModeSelectionDropDown = this.contractedModeSelectionDropDownState;
+            Modules = _appService.GetModules();
+            ActiveModule = _appService.GetDefaultModule();
+            ActiveModule.StyleClass = SelectedModuleStyle;
 
-            this.Modes = this.appService.GetModes();
-            this.ActiveMode = this.appService.GetDefaultMode();
-
-            this.Modules = this.appService.GetModules();
-            this.ActiveModule = this.appService.GetDefaultModule();
-            this.ActiveModule.StyleClass = SelectedModuleStyle;
+            Log.Finish();
         }
-        ~MainWindowViewModel() => this.messenger.UnregisterAll(this);
+        ~MainWindowViewModel() => _messenger.UnregisterAll(this);
 
-        public string FooterText { get; }
-
-        private ModuleEnum selectedModule;
-        public ModuleEnum SelectedModule
-        {
-            get => selectedModule;
-            private set => SetProperty(ref selectedModule, value);
-        }
-
-        private ModeSelectionItem activeMode;
+        private ModeSelectionItem _activeMode;
         public ModeSelectionItem ActiveMode
         {
-            get => activeMode;
-            set => this.SetProperty(ref activeMode, value);
+            get => _activeMode;
+            set => SetProperty(ref _activeMode, value);
         }
 
-        private ModuleSelectionItem activeModule;
+        private ModuleSelectionItem _activeModule;
         public ModuleSelectionItem ActiveModule
         {
-            get => activeModule;
-            set => this.SetProperty(ref activeModule, value);
+            get => _activeModule;
+            set => SetProperty(ref _activeModule, value);
         }
 
         public SidebarStateSettings Sidebar { get; private set; }
-        public ModeSelectionStateSettings ModeSelectionDropDown { get; private set; }
 
         public List<ModeSelectionItem> Modes { get; private set; }
 
         public List<ModuleSelectionItem> Modules { get; private set; }
 
-        public void OnModeSelectionDropDownClick()
-        {
-            switch (this.ModeSelectionDropDown.State)
-            {
-                case ExpandedContractedStateToggle.Contracted:
-                    this.ModeSelectionDropDown = this.expandedModeSelectionDropDownState;
-                    break;
-
-                case ExpandedContractedStateToggle.Expanded:
-                    this.ModeSelectionDropDown = this.contractedModeSelectionDropDownState;
-                    break;
-            }
-        }
-
         public void OnSideBarControlButtonClick()
         {
-            switch (this.Sidebar.State)
+            switch (Sidebar.State)
             {
                 case ExpandedContractedStateToggle.Contracted:
-                    this.Sidebar = this.expandedSidebarState;
-                    this.Modes.ForEach((module) => { module.Label = module.Tag; });
-                    this.Modules.ForEach((module) => { module.Label = module.Tag; });
+                    Sidebar = _expandedSidebarState;
+                    Modes.ForEach((module) => module.Label = module.Tag);
+                    Modules.ForEach((module) => module.Label = module.Tag);
                     break;
 
                 case ExpandedContractedStateToggle.Expanded:
-                    this.Sidebar = this.contractedSidebarState;
-                    this.Modes.ForEach((module) => { module.Label = string.Empty; });
-                    this.Modules.ForEach((module) => { module.Label = string.Empty; });
+                    Sidebar = _contractedSidebarState;
+                    Modes.ForEach((module) => module.Label = string.Empty);
+                    Modules.ForEach((module) => module.Label = string.Empty);
                     break;
             }
-            this.OnPropertyChanged(nameof(this.Sidebar));
+            OnPropertyChanged(nameof(Sidebar));
         }
 
         public void OnSelectedModeChanged(ModeSelectionItem selectedMode)
         {
-            this.ActiveMode = selectedMode;
-            this.ModeSelectionDropDown = this.contractedModeSelectionDropDownState;
-
-            this.messenger.Send(new ModeSelectionChangedMessage(this.ActiveMode));
+            ActiveMode = selectedMode;
+            _messenger.Send(new ModeSelectionChangedMessage(ActiveMode));
         }
 
         public void OnSelectedModuleChanged(ModuleSelectionItem selectedModule)
         {
-            this.ActiveModule = selectedModule;
-            this.Modules.ForEach(x => x.StyleClass = string.Empty);
-            this.ActiveModule.StyleClass = SelectedModuleStyle;
+            ActiveModule = selectedModule;
+            Modules.ForEach(x => x.StyleClass = string.Empty);
+            ActiveModule.StyleClass = SelectedModuleStyle;
 
-            this.messenger.Send(new ModuleSelectionChangedMessage(this.ActiveModule));
+            _messenger.Send(new ModuleSelectionChangedMessage(ActiveModule));
         }
+
+        public string FooterText { get; }
     }
 }

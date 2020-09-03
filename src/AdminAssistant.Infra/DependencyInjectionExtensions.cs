@@ -1,11 +1,14 @@
 using System;
 using System.Data.Common;
+using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Infrastructure;
+using AdminAssistant.Infra.Providers;
+using AdminAssistant.DomainModel.Shared;
 using Microsoft.EntityFrameworkCore;
 using MediatR;
 using AdminAssistant.Framework.MediatR;
+using AdminAssistant.Infra.DAL.Modules.CoreModule;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -14,10 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
 #if DEBUG
         public static void AddAdminAssistantServerSideInfra(this IServiceCollection services, DbConnection connection)
         {
-            services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder =>
-            {
-                optionsBuilder.UseSqlite(connection);
-            });
+            services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder => optionsBuilder.UseSqlite(connection));
             AddAccountsDAL(services);
         }
 #endif
@@ -58,6 +58,23 @@ namespace Microsoft.Extensions.DependencyInjection
             AddCoreDAL(services);
         }
 
+        public static void AddAdminAssistantClientSideProviders(this IServiceCollection services)
+        {
+            // TODO: For now take a hard dependency between client side UI projects and Infra, inc un-needed anciliairy dependencies.
+            // This can be resolved in furuture by splitting infra into multiple assemblies, but this is not worth doing
+            // until it gets bigger sure to implementation of other integrations.
+            services.AddTransient<ILoggingProvider, ClientSideLoggingProvider>();
+
+            AddSharedProviders(services);
+        }
+
+        public static void AddAdminAssistantServerSideProviders(this IServiceCollection services)
+        {
+            services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
+
+            AddSharedProviders(services);
+        }
+
         private static void AddAccountsDAL(this IServiceCollection services)
         {            
             services.AddTransient<IBankAccountInfoRepository, BankAccountInfoRepository>();
@@ -67,10 +84,14 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddTransient<IBankRepository, BankRepository>();
         }
 
+        [SuppressMessage("Style", "IDE0022:Use expression body for methods", Justification = "WIP")]
         private static void AddCoreDAL(this IServiceCollection services)
         {
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();
         }
+
+        private static void AddSharedProviders(this IServiceCollection services)
+            => services.AddTransient<IDateTimeProvider, DateTimeProvider>();
     }
 }
 

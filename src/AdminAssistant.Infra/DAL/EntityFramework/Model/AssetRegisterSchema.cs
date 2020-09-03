@@ -7,10 +7,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model
     {
         private const string Name = "Accounts";
 
-        internal static void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            AssetRegisterSchema.Asset_OnModelCreating(modelBuilder);
-        }
+        internal static void OnModelCreating(ModelBuilder modelBuilder) => Asset_OnModelCreating(modelBuilder);
 
         private static void Asset_OnModelCreating(ModelBuilder modelBuilder)
         {

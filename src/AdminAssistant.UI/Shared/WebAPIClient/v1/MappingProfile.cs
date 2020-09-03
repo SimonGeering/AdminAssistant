@@ -1,3 +1,12 @@
+using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.AssetRegisterModule;
+using AdminAssistant.DomainModel.Modules.BudgetModule;
+using AdminAssistant.DomainModel.Modules.CalendarModule;
+using AdminAssistant.DomainModel.Modules.ContactsModule;
+using AdminAssistant.DomainModel.Modules.CoreModule;
+using AdminAssistant.DomainModel.Modules.DocumentsModule;
+using AdminAssistant.DomainModel.Modules.MailModule;
+using AdminAssistant.DomainModel.Modules.TasksModule;
 using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.UI.Shared.WebAPIClient.v1
@@ -7,8 +16,39 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
         public MappingProfile()
             : base(typeof(MappingProfile).Assembly)
         {
-            this.CreateMap<CurrencyResponseDto, DomainModel.Modules.AccountsModule.Currency>();
-            this.CreateMap<BankAccountTypeResponseDto, DomainModel.Modules.AccountsModule.BankAccountType>();
+            // Accounts Module ...
+            CreateMap<BankResponseDto, Bank>();
+            CreateMap<BankAccountResponseDto, BankAccount>();
+            CreateMap<BankAccountInfoResponseDto, BankAccountInfo>();
+            CreateMap<BankAccountTypeResponseDto, BankAccountType>();
+            CreateMap<BankAccountTransactionResponseDto, BankAccountTransaction>();
+            CreateMap<BankAccount, BankAccountCreateRequestDto>()
+                .ForMember(x => x.Balance, opt => opt.Ignore());
+            CreateMap<BankAccount, BankAccountUpdateRequestDto>();
+
+            // Asset Register Module ...
+            CreateMap<AssetResponseDto, Asset>();
+
+            // Budget Module ...
+            CreateMap<BudgetResponseDto, Budget>();
+
+            // Calendar Module ...
+            CreateMap<ReminderResponseDto, Reminder>();
+
+            // Contact Module ...
+            CreateMap<ContactResponseDto, Contact>();
+
+            // Core Module ...
+            CreateMap<CurrencyResponseDto, Currency>();
+
+            // Documents Module ...
+            CreateMap<DocumentResponseDto, Document>();
+
+            // Mail Module ...
+            CreateMap<MailMessageResponseDto, MailMessage>();
+
+            // Tasks Module ...
+            CreateMap<TaskListResponseDto, TaskList>();
         }
     }
 }

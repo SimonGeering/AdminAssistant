@@ -4,115 +4,49 @@
 
 <div class="cl-app">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-
-    <!-- Start Header -->
+  <!-- Start Header -->
+  <!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2" aria-controls="navbar2" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="#">Admin Assistant</a>
     <div class="collapse navbar-collapse justify-content-between" id="navbar2">
-
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="text" placeholder="Search">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
-
       <div>
         <h4><i aria-hidden="true" class="fa @this.vm.ActiveMode.Icon"></i>&nbsp;@this.vm.ActiveMode.Label&nbsp;-&nbsp;<i aria-hidden="true" class="fa @this.vm.ActiveModule.Icon"></i>&nbsp;@this.vm.ActiveModule.Label</h4>
       </div>
-
       <div>
       </div>
     </div>
-  </nav>
+  </nav>-->
   <!-- End Header -->
 
   <div class="cl-main">
 
     <!-- Start Sidebar -->
-    @*<div class="cl-sidebar @this.vm.Sidebar.StyleClass">
-        <div class="card">
-          <div class="card-header">
-            <div class="cl-sidebar-control">
-              <button type="button" class="btn btn-primary" @onclick=this.vm.OnSideBarControlButtonClick>
-                <span class="fa @this.vm.Sidebar.Icon"></span>
-              </button>
-            </div>
-            <div class="cl-mode-selection">
-              <ul class="nav nav-pills">
-                <li class="nav-item dropdown @this.vm.ModeSelectionDropDown.StyleClass">
-                  <a class="nav-link dropdown-toggle" @onclick="this.vm.OnModeSelectionDropDownClick">&nbsp;<i class="fa @this.vm.ActiveMode.Icon"></i>&nbsp;@this.vm.ActiveMode.Label</a>
-                  <div class="dropdown-menu @this.vm.ModeSelectionDropDown.StyleClass" style="position: absolute; transform: translate3d(0px, 30px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
-                    @foreach (var mode in this.vm.Modes)
-                    {
-                    <a class="dropdown-item" @onclick="() => this.vm.OnSelectedModeChanged(mode)">&nbsp;<i class="fa @mode.Icon"></i>&nbsp;@mode.Label</a>
-                    }
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="list-group">
-              @foreach (var module in this.vm.Modules)
-              {
-              <a href="/@module.Module.ToString().ToLower()" class="list-group-item list-group-item-action @module.StyleClass" @onclick="() => this.vm.OnSelectedModuleChanged(module)">&nbsp;<i style="min-width: 15px;" class="fa @module.Icon"></i>&nbsp;@module.Label</a>
-              }
-            </div>
-          </div>
-        </div>
-      </div>*@
-
-      <!--
-          @*<SfDropDownList TValue="ModeSelectionItem" TItem="ModeSelectionItem" Value="@this.vm.ActiveMode" DataSource="@this.vm.Modes" PopupHeight="230px">*@
-          <SfDropDownList TValue="ModeSelectionItem" TItem="ModeSelectionItem" DataSource="@this.vm.Modes" PopupHeight="230px">
-            <DropDownListTemplates TItem="ModeSelectionItem">
-              <ItemTemplate>
-                <div>
-                  <a id="ItemTemplate" @onclick="() => this.vm.OnSelectedModeChanged((context as ModeSelectionItem))">&nbsp;<i class="@((context as ModeSelectionItem).Icon)"></i>&nbsp;@((context as ModeSelectionItem).Label)</a>
-                </div>
-              </ItemTemplate>
-              <ValueTemplate>
-                <span id="ValueTemplate">&nbsp;<i class="@((context as ModeSelectionItem).Icon)"></i>&nbsp;@((context as ModeSelectionItem).Label)</span>
-                @*<a @onclick="this.vm.OnModeSelectionDropDownClick">&nbsp;<i class="@(this.vm.ActiveMode.Icon)"></i>&nbsp;@(this.vm.ActiveMode.Label)</a>*@
-                @*<div>
-                </div>*@
-              </ValueTemplate>
-            </DropDownListTemplates>
-            @*<DropDownListEvents TValue="ModeEnum" ValueChange="@OnModeSelectionChange" OnValueSelect="@OnModeSelectionSelect"></DropDownListEvents>*@
-            <DropDownListFieldSettings IconCss="@(nameof(ModeSelectionItem.Icon))" Text="@(nameof(ModeSelectionItem.Label))" Value="@(nameof(ModeSelectionItem.Mode))"></DropDownListFieldSettings>
-          </SfDropDownList>
-    -->
-
     <div class="cl-sidebar">
       <SfSidebar HtmlAttributes="@(new Dictionary<string, object>() { { "class", "sidebar-menu" } })" Target=".cl-main" Width="180px" DockSize="50px" EnableDock="true" IsOpen="this.vm.Sidebar.ShowContent">
         <ChildContent>
 
-          <SfSplitButton Target="#listview" Content="@this.vm.ActiveMode.Label" IconCss="@this.vm.ActiveMode.Icon"></SfSplitButton>
-          <SfListView ID="listview" DataSource="this.vm.Modes">
-            <ListViewFieldSettings Text="@(nameof(ModeSelectionItem.Label))" IconCss="@(nameof(ModeSelectionItem.Icon))"></ListViewFieldSettings>
-          </SfListView>
-
-          <SfDropDownButton Content="@this.vm.ActiveMode.Label" IconCss="@this.vm.ActiveMode.Icon">
-            <SplitButtonEvents ItemSelected="select"></SplitButtonEvents>
-            @*<DropDownButtonItems>
-                @foreach (var mode in this.vm.Modes)
-                {
-                  <DropDownButtonItem Id="@mode.Mode.ToString()" Text="@mode.Label" IconCss="@mode.Icon" />
-                }
-              </DropDownButtonItems>*@
+          <SfDropDownButton Content="@this.vm.ActiveMode.Label" IconCss="@(this.vm.ActiveMode.Icon)" CssClass="e-vertical">
+            <DropDownMenuItems>
+              @foreach (var mode in this.vm.Modes)
+              {
+                <DropDownMenuItem Text="@(mode.Label)" IconCss="@(mode.Icon)" />
+              }
+            </DropDownMenuItems>
           </SfDropDownButton>
+
           <SfButton IconCss="@this.vm.Sidebar.Icon" @onclick=this.vm.OnSideBarControlButtonClick /> <br />
           <SfMenu CssClass="dock-menu" Items="this.vm.Modules" ModelType="@typeof(ModuleSelectionItem)" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Vertical">
-            <MenuEvents ItemSelected="itemSelected"></MenuEvents>
             <MenuFieldSettings ItemId="@(nameof(ModuleSelectionItem.Module))" Text="@(nameof(ModuleSelectionItem.Label))" Url="@(nameof(ModuleSelectionItem.Route))" IconCss="@(nameof(ModuleSelectionItem.Icon))" />
           </SfMenu>
         </ChildContent>
       </SfSidebar>
     </div>
-
-    @*<SidebarComponent />*@
     <!-- End Sidebar -->
 
     <div class="cl-outlet">
@@ -144,15 +78,12 @@
   .sidebar-menu .e-menu-wrapper ul .e-menu-item.e-menu-caret-icon {
     width: 220px;
   }
-
   .sidebar-menu .e-menu-wrapper ul .e-menu-item:hover, .e-menu-wrapper ul .e-menu-item.e-focused:hover {
     background-color: #3e454c !important;
   }
-
   .e-menu-wrapper ul .e-menu-item.e-selected {
     background-color: #3e454c !important;
   }
-
   .e-menu-wrapper ul .e-menu-item .e-caret,
   #header .search-icon,
   .sidebar-menu .action-btn,
@@ -160,21 +91,17 @@
   .e-menu-wrapper ul .e-menu-item {
     color: #fff !important;
   }
-
   .e-close .e-menu-wrapper ul .e-menu-item {
     width: 50px;
   }
-
   .e-close ul .e-menu-item.e-menu-caret-icon {
     padding-right: 12px;
   }
-
   .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item .e-caret,
   .sidebar-menu.e-dock.e-close .main-menu-header,
   .sidebar-menu.e-dock.e-close .action-btn {
     display: none;
   }
-
   .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item.e-menu-caret-icon,
   .sidebar-menu.e-dock.e-close .e-menu-wrapper ul.e-vertical {
     min-width: 0;
@@ -263,55 +190,3 @@
     margin-top: -56px;
   }
 </style>
-
-@code
-{
-  public ModeSelectionItem SelectedMode { get; set; }
-
-  //private void OnItemSelected(MenuEventArgs e)
-  //{
-  //  Console.WriteLine($"OnItemSelected: {e.Item.Id}");
-  //  Console.WriteLine($"OnItemSelected: {e.Item.Url}");
-  //}
-
-  private void select(Syncfusion.Blazor.SplitButtons.MenuEventArgs e)
-  {
-    Console.WriteLine("OnModeSelectionChange");
-    Console.WriteLine($"e.Value; {e.Item.Id}");
-    //this.vm.OnSelectedModeChanged();
-    this.StateHasChanged();
-  }
-
-  private void itemSelected()
-  {
-  }
-
-  private void OnModeSelectionChange(Syncfusion.Blazor.DropDowns.ChangeEventArgs<ModeEnum> e)
-  {
-    Console.WriteLine("OnModeSelectionChange");
-    Console.WriteLine($"e.Value; {e.Value}");
-    //this.vm.OnSelectedModeChanged(e.Value);
-    this.StateHasChanged();
-  }
-
-  public void OnModeSelectionSelect(Syncfusion.Blazor.DropDowns.SelectEventArgs e)
-  {
-    Console.WriteLine("OnModeSelectionSelect");
-
-    Console.WriteLine($"SelectedMode.Mode: {this.SelectedMode.Mode.ToString()}");
-    //Console.WriteLine($"e.ItemData: {e.ItemData}");
-  }
-
-  protected override void OnInitialized()
-  {
-    Console.WriteLine("OnInitialized");
-    this.SelectedMode = this.vm.ActiveMode;
-    NavigationManager.LocationChanged += HandleLocationChanged;
-    base.OnInitialized();
-  }
-
-  private void HandleLocationChanged(object sender, LocationChangedEventArgs e)
-  {
-    Console.WriteLine($"HandleLocationChanged: Location={e.Location}, IsNavigationIntercepted={e.IsNavigationIntercepted}");
-  }
-}

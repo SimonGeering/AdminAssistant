@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:sf="http://schemas.syncfusion.com/wpf"
         xmlns:sfskin ="clr-namespace:Syncfusion.SfSkinManager;assembly=Syncfusion.SfSkinManager.WPF"
+        xmlns:local="clr-namespace:AdminAssistant.WPF.Shared"
         xmlns:dashboardModule="clr-namespace:AdminAssistant.WPF.Modules.DashboardModule"
         xmlns:accountsModule="clr-namespace:AdminAssistant.WPF.Modules.AccountsModule"
         sfskin:SfSkinManager.VisualStyle="Office2019Black"
@@ -16,6 +17,12 @@
     <DataTemplate x:Key="AccountsViewTemplate" DataType="{x:Type UserControl}">
       <accountsModule:AccountsComponent />
     </DataTemplate>
+
+    <!--<local:ModeSelectionItemToStringConverter x:Key="ModeSelectionItemToStringConverter" />-->
+    <local:ModeSelectionItemToIconImageConverter x:Key="ModeSelectionItemToIconImageConverter" Brush="White" />
+
+    <local:ModuleEnumToIconImageConverter x:Key="ModuleEnumToIconImageConverter" Brush="White" />
+    <local:ModeEnumToIconImageConverter x:Key="ModeEnumToIconImageConverter" Brush="White" />
   </Window.Resources>
 
   <DockPanel LastChildFill="True">
@@ -33,25 +40,53 @@
     <!-- End Footer -->
 
     <!-- Start Sidebar -->
-    <Grid DockPanel.Dock="Left">
+    <Grid DockPanel.Dock="Left" Margin="8 0 8 0">
       <Grid.RowDefinitions>
-        <RowDefinition x:Name="navBar" Height="auto" />
+        <RowDefinition x:Name="navBarHeader" Height="auto" />
+        <RowDefinition x:Name="navBarBody" Height="auto" />
         <RowDefinition x:Name="overflow" Height="*" />
       </Grid.RowDefinitions>
-      <sf:SfTreeNavigator Grid.Row="0" Width="100" ItemsSource="{Binding Modules}" >
-        <sf:SfTreeNavigator.HeaderTemplate>
+      
+      <!-- Start Sidebar Header -->
+      <!--
+        TODO: Just hard code data, behavior and styling for now.
+        Want to get main UI functional and navigation not working is blocking that.
+                  <Image Source="{iconPacks:FontAwesomeImage BuildingRegular, Brush=White}" />
+      <sf:DropDownButtonAdv Name="btnModeSelection" Grid.Row="0" Grid.Column="0" SmallIcon="{iconPacks:FontAwesomeImage BuildingRegular, Brush=White}" Label="Company" Padding="4" >
+      {Binding ActiveMode}
+      -->
+      <sf:DropDownButtonAdv Grid.Row="0" Grid.Column="0" Padding="4"
+                            Label="{Binding Path=ActiveMode}"
+                            SmallIcon="{Binding ActiveMode, Converter={StaticResource ModeSelectionItemToIconImageConverter}}">
+
+        <sf:DropDownMenuGroup ItemsSource="{Binding Path=Modes}">
+          <sf:DropDownMenuGroup.ItemTemplate>
+            <DataTemplate>
+              <sf:DropDownMenuItem Header="{Binding Label}" HorizontalAlignment="Left">
+                <sf:DropDownMenuItem.Icon>
+                  <Image Source="{Binding Mode, Converter={StaticResource ModeEnumToIconImageConverter}}" />
+                </sf:DropDownMenuItem.Icon>
+              </sf:DropDownMenuItem>
+            </DataTemplate>
+          </sf:DropDownMenuGroup.ItemTemplate>
+        </sf:DropDownMenuGroup>
+      </sf:DropDownButtonAdv>
+
+      <!-- End Sidebar Header -->
+      
+      <!-- Start Sidebar Body -->
+      <!--
+        TODO: Just hard code data, behavior and styling for now.
+        Want to get main UI functional and navigation not working is blocking that.
+      -->
+      <ItemsControl Grid.Row="1" Grid.Column="0" Margin="0 8 0 0" ItemsSource="{Binding Modules}">
+        <ItemsControl.ItemTemplate>
           <DataTemplate>
-            <ComboBox ItemsSource="{Binding Path=Modes}" DisplayMemberPath="Label" SelectedValuePath="Label" SelectedValue="{Binding Path=ActiveMode}" />
+            <sf:ButtonAdv Command="" Label="{Binding Label}" SmallIcon="{Binding Module, Converter={StaticResource ModuleEnumToIconImageConverter}}" IsCheckable="True" HorizontalContentAlignment="left" Margin="0 2 0 0" Padding="4" />
           </DataTemplate>
-        </sf:SfTreeNavigator.HeaderTemplate>
-        <sf:SfTreeNavigator.ItemTemplate>
-          <HierarchicalDataTemplate ItemsSource="{Binding Modules}">
-            <StackPanel Orientation="Horizontal">
-              <TextBlock Text="{Binding Label}" FontWeight="Bold" VerticalAlignment="Center" Margin="18 0 0 0"/>
-            </StackPanel>
-          </HierarchicalDataTemplate>
-        </sf:SfTreeNavigator.ItemTemplate>
-      </sf:SfTreeNavigator>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+      <!-- End Sidebar Body -->
     </Grid>
     <!-- End Sidebar -->
 
@@ -61,17 +96,16 @@
     </Grid>
     <!-- End Breadcrumb -->
 
-
     <!-- Start Main Content -->
     <ContentControl Content="{Binding}">
       <ContentControl.Style>
         <Style TargetType="{x:Type ContentControl}">
           <Setter Property="ContentTemplate" Value="{StaticResource DashboardViewTemplate}" />
           <Style.Triggers>
-            <DataTrigger Binding="{Binding SelectedViewModel}" Value="ModuleEnum.Dashboard">
+            <DataTrigger Binding="{Binding SelectedModule}" Value="ModuleEnum.Dashboard">
               <Setter Property="ContentTemplate" Value="{StaticResource DashboardViewTemplate}" />
             </DataTrigger>
-            <DataTrigger Binding="{Binding SelectedViewModel}" Value="ModuleEnum.Accounts">
+            <DataTrigger Binding="{Binding SelectedModule}" Value="ModuleEnum.Accounts">
               <Setter Property="ContentTemplate" Value="{StaticResource AccountsViewTemplate}" />
             </DataTrigger>
           </Style.Triggers>

@@ -16,6 +16,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
         public int CurrentBalance { get; set; }
         public DateTime OpenedOn { get; set; }
 
-        public int PrimaryKey => this.BankAccountID;
+        public int PrimaryKey => BankAccountID;
     }
 }

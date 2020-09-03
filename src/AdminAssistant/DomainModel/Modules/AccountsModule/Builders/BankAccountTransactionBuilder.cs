@@ -1,5 +1,3 @@
-using System;
-
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
 {
     public interface IBankAccountTransactionBuilder
@@ -13,28 +11,25 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
     {
         public static BankAccountTransaction Default(IBankAccountTransactionBuilder builder) => builder.Build();
 
-        public BankAccountTransaction Build()
-        {
-            return this;
-        }
+        public BankAccountTransaction Build() => this;
 
         public IBankAccountTransactionBuilder WithTestData(int bankAccountTransactionID = Constants.UnknownRecordID)
         {
-            this.BankAccountTransactionID = bankAccountTransactionID;
-            this.BankAccountID = 10;
-            this.Description = "Test Transaction";
+            BankAccountTransactionID = bankAccountTransactionID;
+            BankAccountID = 10;
+            Description = "Test Transaction";
             return this;
         }
 
         public IBankAccountTransactionBuilder WithBankAccountID(int bankAccountID)
         {
-            this.BankAccountID = bankAccountID;
+            BankAccountID = bankAccountID;
             return this;
         }
 
         public IBankAccountTransactionBuilder WithDescription(string description)
         {
-            this.Description = description;
+            Description = description;
             return this;
         }
     }

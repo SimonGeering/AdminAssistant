@@ -2,10 +2,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using AdminAssistant.Framework.Providers;
-
+using AdminAssistant.Infra.Providers;
 using Ardalis.Result;
 using MediatR;
 
@@ -16,17 +14,14 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
         internal class BankHandler : RequestHandlerBase<BankQuery, Result<IEnumerable<Bank>>>
         {
-            private readonly IBankRepository bankRepository;
+            private readonly IBankRepository _bankRepository;
 
             public BankHandler(IBankRepository bankRepository, ILoggingProvider loggingProvider)
-                : base(loggingProvider)
-            {
-                this.bankRepository = bankRepository;
-            }
+                : base(loggingProvider) => _bankRepository = bankRepository;
 
             public override async Task<Result<IEnumerable<Bank>>> Handle(BankQuery request, CancellationToken cancellationToken)
             {
-                var result = await bankRepository.GetListAsync().ConfigureAwait(false);
+                var result = await _bankRepository.GetListAsync().ConfigureAwait(false);
 
                 Trace.Assert(result.Count > 0, "Bank list was not populated.");
 

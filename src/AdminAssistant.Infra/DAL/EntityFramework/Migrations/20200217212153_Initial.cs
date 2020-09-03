@@ -1,3 +1,4 @@
+#pragma warning disable IDE0053 // Use expression body for lambda expressions
 using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
@@ -692,3 +693,4 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
         }
     }
 }
+#pragma warning restore IDE0053 // Use expression body for lambda expressions
