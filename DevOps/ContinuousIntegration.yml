@@ -2,7 +2,6 @@ name: $(BuildID)
 
 trigger: # CI Builds
   autoCancel: true
-  batch: true
   branches:
     include:
     - dev
