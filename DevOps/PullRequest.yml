@@ -1,7 +1,8 @@
 name: $(BuildID)
 
-pr:
+pr: # PR builds
   autoCancel: true
+  batch: true
   branches:
     include:
     - dev
