@@ -24,7 +24,7 @@ namespace AdminAssistant.Blazor.Server
                            .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else
                     logging.AddFilter("Default", LogLevel.Warning)
-                           .AddFilter(Framework.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Warning)
+                           .AddFilter(Infra.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Warning)
                            .AddFilter("Microsoft", LogLevel.Warning)
                            .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
 
