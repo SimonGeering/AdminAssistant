@@ -9,18 +9,12 @@ using Microsoft.EntityFrameworkCore;
 using MediatR;
 using AdminAssistant.Framework.MediatR;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
+using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
-#if DEBUG
-        public static void AddAdminAssistantServerSideInfra(this IServiceCollection services, DbConnection connection)
-        {
-            services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder => optionsBuilder.UseSqlite(connection));
-            AddAccountsDAL(services);
-        }
-#endif
         public static void AddAdminAssistantServerSideInfra(this IServiceCollection services, ConfigurationSettings configurationSettings)
         {
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>)); // Use typeof because <,>
@@ -53,9 +47,7 @@ namespace Microsoft.Extensions.DependencyInjection
                         break;
                 }
             });
-
-            AddAccountsDAL(services);
-            AddCoreDAL(services);
+            AddDALRepositories(services);
         }
 
         public static void AddAdminAssistantClientSideProviders(this IServiceCollection services)
@@ -75,8 +67,21 @@ namespace Microsoft.Extensions.DependencyInjection
             AddSharedProviders(services);
         }
 
+        private static void AddDALRepositories(this IServiceCollection services)
+        {
+            AddAccountsDAL(services);
+            AddCoreDAL(services);
+            AddDocumentsDAL(services);
+        }
+
+        [SuppressMessage("Style", "IDE0022:Use expression body for methods", Justification = "WIP")]
+        private static void AddDocumentsDAL(this IServiceCollection services)
+        {
+            services.AddTransient<IDocumentRepository, DocumentRepository>();
+        }
+
         private static void AddAccountsDAL(this IServiceCollection services)
-        {            
+        {
             services.AddTransient<IBankAccountInfoRepository, BankAccountInfoRepository>();
             services.AddTransient<IBankAccountRepository, BankAccountRepository>();
             services.AddTransient<IBankAccountTransactionRepository, BankAccountTransactionRepository>();

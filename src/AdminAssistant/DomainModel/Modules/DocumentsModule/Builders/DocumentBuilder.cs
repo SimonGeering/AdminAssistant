@@ -1,10 +1,12 @@
+using System;
+
 namespace AdminAssistant.DomainModel.Modules.DocumentsModule.Builders
 {
     public interface IDocumentBuilder
     {
         Document Build();
         IDocumentBuilder WithTestData(int documentID = Constants.UnknownRecordID);
-        IDocumentBuilder WithFileName(string fileName);
+        IDocumentBuilder WithUri(Uri uri);
     }
     internal class DocumentBuilder : Document, IDocumentBuilder
     {
@@ -16,12 +18,12 @@ namespace AdminAssistant.DomainModel.Modules.DocumentsModule.Builders
         public IDocumentBuilder WithTestData(int documentID = Constants.UnknownRecordID)
         {
             DocumentID = documentID;
-            FileName = "SomRandomFileName.txt";
+            Uri = new Uri("SomRandomFileName.txt");
             return this;
         }
-        public IDocumentBuilder WithFileName(string fileName)
+        public IDocumentBuilder WithUri(Uri uri)
         {
-            FileName = fileName;
+            Uri = uri;
             return this;
         }
     }

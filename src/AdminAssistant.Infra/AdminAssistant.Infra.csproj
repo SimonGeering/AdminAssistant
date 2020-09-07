@@ -55,7 +55,6 @@
     <Folder Include="DAL\Modules\CalendarModule\" />
     <Folder Include="DAL\Modules\ContactsModule\" />
     <Folder Include="DAL\Modules\DashboardModule\" />
-    <Folder Include="DAL\Modules\DocumentsModule\" />
     <Folder Include="DAL\Modules\MailModule\" />
     <Folder Include="DAL\Modules\CoreModule\" />
     <Folder Include="DAL\Modules\TasksModule\" />
