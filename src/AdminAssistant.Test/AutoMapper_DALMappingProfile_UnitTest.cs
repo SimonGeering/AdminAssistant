@@ -76,6 +76,7 @@ namespace AdminAssistant.Infra.DAL
         [Theory]
         [Trait("Category", "Unit")]
         [InlineData(typeof(CurrencyEntity), typeof(Currency))]
+        [InlineData(typeof(Currency), typeof(CurrencyEntity))]
         public void ShouldSupportCoreSchemaMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange

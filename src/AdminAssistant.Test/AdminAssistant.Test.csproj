@@ -55,6 +55,7 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0-preview-20200812-03" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-preview.8.20407.11" />
     <PackageReference Include="Moq" Version="4.14.5" />
+    <PackageReference Include="MockQueryable.Moq" Version="5.0.0-preview.7" />
     <PackageReference Include="ObjectCloner.Extensions" Version="2.0.1" />
     <PackageReference Include="Respawn" Version="3.3.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -81,5 +82,6 @@
     <Folder Include="DomainModel\Modules\MailModule\" />
     <Folder Include="DomainModel\Modules\TasksModule\" />
     <Folder Include="DomainModel\Modules\ReportsModule\" />
+    <Folder Include="Infra\DAL\Modules\DocumentsModule\" />
   </ItemGroup>
 </Project>
