@@ -15,7 +15,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model
         {
             modelBuilder.Entity<DocumentEntity>().ToTable("Document").Metadata.SetSchema(Name);
             modelBuilder.Entity<DocumentEntity>().HasKey(x => x.DocumentID);
-            modelBuilder.Entity<DocumentEntity>().Property(x => x.URI).IsRequired().IsUnicode().HasMaxLength(Document.URIMaxLength);
+            modelBuilder.Entity<DocumentEntity>().Property(x => x.FileName).IsRequired().IsUnicode().HasMaxLength(Document.FileNameMaxLength);
             // TODO: Document_OnModelCreating
         }
     }

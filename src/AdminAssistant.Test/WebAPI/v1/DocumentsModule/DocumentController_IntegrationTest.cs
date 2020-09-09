@@ -1,6 +1,5 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System;
 using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
@@ -22,8 +21,8 @@ namespace AdminAssistant.WebAPI.v1.DocumentsModule
             await ResetDatabaseAsync().ConfigureAwait(false);
 
             var dal = Container.GetRequiredService<IDocumentRepository>();
-            await dal.SaveAsync(new Document() { Uri = new Uri("TestFileName.txt") }).ConfigureAwait(false);
-            await dal.SaveAsync(new Document() { Uri = new Uri("TestFileTwo.pdf") }).ConfigureAwait(false);
+            await dal.SaveAsync(new Document() { FileName = "TestFileName.txt" }).ConfigureAwait(false);
+            await dal.SaveAsync(new Document() { FileName = "TestFileTwo.pdf" }).ConfigureAwait(false);
 
             // Act
             var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetDocumentAsync().ConfigureAwait(false);

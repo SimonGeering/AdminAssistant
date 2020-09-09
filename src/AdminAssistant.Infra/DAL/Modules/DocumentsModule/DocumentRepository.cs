@@ -5,15 +5,22 @@ using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using Microsoft.EntityFrameworkCore;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
+using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class DocumentRepository : RepositoryBase, IDocumentRepository
     {
-        public DocumentRepository(IApplicationDbContext dbContext, IMapper mapper)
+        private readonly IUserContextProvider _userContextProvider;
+        private readonly IDateTimeProvider _dateTimeProvider;
+
+        public DocumentRepository(IApplicationDbContext dbContext, IMapper mapper, IUserContextProvider userContextProvider, IDateTimeProvider dateTimeProvider)
             : base(dbContext, mapper)
         {
+            _userContextProvider = userContextProvider;
+            _dateTimeProvider = dateTimeProvider;
         }
 
         public async Task<Document> GetAsync(int documentID)
@@ -33,9 +40,19 @@ namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule
             var entity = Mapper.Map<DocumentEntity>(domainObjectToSave);
 
             if (base.IsNew(domainObjectToSave))
+            {
+                entity.Audit = new EntityFramework.Model.Core.AuditEntity()
+                {
+                    CreatedBy = _userContextProvider.GetCurrentUser().SignOn,
+                    CreatedOn = _dateTimeProvider.UtcNow
+                };
                 DbContext.Documents.Add(entity);
+            }
             else
+            {
+                // TODO: handle audit change
                 DbContext.Documents.Update(entity);
+            }
 
             await DbContext.SaveChangesAsync().ConfigureAwait(false);
 
