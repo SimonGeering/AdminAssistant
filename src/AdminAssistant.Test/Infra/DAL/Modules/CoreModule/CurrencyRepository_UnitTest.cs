@@ -20,7 +20,7 @@ namespace AdminAssistant.Infra.DAL.Modules.CoreModule
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Returns_CurrencyList()
+        public async Task Returns_PopulatedCurrencyList_WhenDatabaseHasData()
         {
             // Arrange
             var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
@@ -46,6 +46,39 @@ namespace AdminAssistant.Infra.DAL.Modules.CoreModule
             // Assert
             result.Should().HaveCount(currencyList.Count);
             result.Should().BeEquivalentTo(currencyList);
+        }
+    }
+
+    public class CurrencyRepository_GetAsync
+    {
+        [Fact]
+        [Trait("Category", "Unit")]
+        public async Task Returns_ACurrency_WhenDatabaseContainseAnItemWithTheGivenID()
+        {
+            // Arrange
+            var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
+            
+            var currencyList = new List<Currency>()
+            {
+                Factory.Currency.WithTestData(10).Build(),
+                Factory.Currency.WithTestData(20).Build()
+            };
+            var currencyData = mapper.Map<IList<CurrencyEntity>>(currencyList);
+
+            var mockDbContext = new Mock<IApplicationDbContext>();
+            mockDbContext.Setup(x => x.Currencies)
+                .Returns(currencyData.AsQueryable().BuildMockDbSet().Object);
+
+            var services = new ServiceCollection();
+            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+            services.AddTransient((sp) => mockDbContext.Object);
+
+            // Act
+            var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetAsync(currencyList.First().CurrencyID).ConfigureAwait(false);
+
+            // Assert
+            result.Should().BeEquivalentTo(currencyList.First());
         }
     }
 }
