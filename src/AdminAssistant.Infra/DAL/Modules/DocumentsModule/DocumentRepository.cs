@@ -1,26 +1,21 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
-using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
-using Microsoft.EntityFrameworkCore;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Infra.DAL.EntityFramework;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using AdminAssistant.Infra.Providers;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class DocumentRepository : RepositoryBase, IDocumentRepository
     {
-        private readonly IUserContextProvider _userContextProvider;
-        private readonly IDateTimeProvider _dateTimeProvider;
-
-        public DocumentRepository(IApplicationDbContext dbContext, IMapper mapper, IUserContextProvider userContextProvider, IDateTimeProvider dateTimeProvider)
-            : base(dbContext, mapper)
+        public DocumentRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
+            : base(dbContext, mapper, dateTimeProvider, userContextProvider)
         {
-            _userContextProvider = userContextProvider;
-            _dateTimeProvider = dateTimeProvider;
         }
 
         public async Task<Document> GetAsync(int documentID)
@@ -43,8 +38,8 @@ namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule
             {
                 entity.Audit = new EntityFramework.Model.Core.AuditEntity()
                 {
-                    CreatedBy = _userContextProvider.GetCurrentUser().SignOn,
-                    CreatedOn = _dateTimeProvider.UtcNow
+                    CreatedBy = UserContextProvider.GetCurrentUser().SignOn,
+                    CreatedOn = DateTimeProvider.UtcNow
                 };
                 DbContext.Documents.Add(entity);
             }

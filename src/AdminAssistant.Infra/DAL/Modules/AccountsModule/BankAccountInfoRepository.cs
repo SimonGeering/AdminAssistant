@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Infra.DAL.EntityFramework;
+using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,8 +13,8 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class BankAccountInfoRepository : RepositoryBase, IBankAccountInfoRepository
     {
-        public BankAccountInfoRepository(IApplicationDbContext dbContext, IMapper mapper)
-            : base(dbContext, mapper)
+        public BankAccountInfoRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
+            : base(dbContext, mapper, dateTimeProvider, userContextProvider)
         {
         }
 

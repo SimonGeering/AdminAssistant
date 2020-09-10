@@ -7,6 +7,7 @@ using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
+using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,8 @@ namespace AdminAssistant.Infra.DAL.Modules.CoreModule
 
             var services = new ServiceCollection();
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
+            services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
             services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
             services.AddTransient((sp) => mockDbContext.Object);
 
@@ -71,6 +74,8 @@ namespace AdminAssistant.Infra.DAL.Modules.CoreModule
 
             var services = new ServiceCollection();
             services.AddAutoMapper(typeof(MappingProfile));
+            services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
+            services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
             services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
             services.AddTransient((sp) => mockDbContext.Object);
 
