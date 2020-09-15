@@ -32,13 +32,13 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="9.2.0" />
     <PackageReference Include="MicroElements.Swashbuckle.FluentValidation" Version="4.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.0-preview.8.20414.8" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.0-preview.8.20414.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.0-rc.1.*" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-preview.8.20407.4">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-rc.1.*">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -47,9 +47,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.Newtonsoft" Version="5.5.1" />
 
-    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="5.0.0-preview.8.20414.8" />
-    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0-preview.8.20407.11" />
-    <PackageReference Include="System.Net.Http.Json" Version="5.0.0-preview.8.20407.11" />
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0-rc.1.*" />
   </ItemGroup>
 
   <ItemGroup>
