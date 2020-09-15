@@ -6,11 +6,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery
     {
         private const string Name = "Grocery";
 
-        internal static void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            GrocerySchema.GroceryItem_OnModelCreating(modelBuilder);
-            // TODO: GrocerySchema.OnModelCreating
-        }
+        // TODO: GrocerySchema.OnModelCreating
+        internal static void OnModelCreating(ModelBuilder modelBuilder) => GroceryItem_OnModelCreating(modelBuilder);
 
         private static void GroceryItem_OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -6,6 +6,7 @@ using AdminAssistant.Infra.DAL.EntityFramework.Model;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -214,6 +215,9 @@ namespace AdminAssistant.Infra.DAL.EntityFramework
         DbSet<BankAccountTransactionEntity> BankAccountTransactions { get; set; }
         DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; }
 
+        // Documents ...
+        DbSet<DocumentEntity> Documents { get; set; }
+
         // TODO: Soft Delete https://medium.com/@unhandlederror/deleting-it-softly-with-ef-core-5f191db5cf72
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
@@ -245,10 +249,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework
         public DbSet<BankAccountTransactionEntity> BankAccountTransactions { get; set; } = null!;
         public DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; } = null!;
 
+        // Documents ...
+        public DbSet<DocumentEntity> Documents { get; set; } = null!;
+
         // Migrations etc ...
-        public string ConnectionString => this.Database.GetDbConnection().ConnectionString;
-        public void EnsureDatabaseIsCreated() => this.Database.EnsureCreated();
-        public void Migrate() => this.Database.Migrate();
+        public string ConnectionString => Database.GetDbConnection().ConnectionString;
+        public void EnsureDatabaseIsCreated() => Database.EnsureCreated();
+        public void Migrate() => Database.Migrate();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

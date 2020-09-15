@@ -39,12 +39,12 @@ namespace AdminAssistant.WPF
                     logging.AddDebug();
 
                     logging.AddFilter("Default", LogLevel.Information)
-                           .AddFilter(Framework.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
+                           .AddFilter(Infra.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
                            .AddFilter("Microsoft", LogLevel.Warning)
                            .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else
                     logging.AddFilter("Default", LogLevel.Warning)
-                           .AddFilter(Framework.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Warning)
+                           .AddFilter(Infra.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Warning)
                            .AddFilter("Microsoft", LogLevel.Warning)
                            .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
 
@@ -59,11 +59,8 @@ namespace AdminAssistant.WPF
                 App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
                 App.Current.MainWindow.Show();
             }
-        }  
-
-        private void Application_Startup(object sender, StartupEventArgs e)
-        {
-            SfSkinManager.ApplyStylesOnApplication = true;
         }
+
+        private void Application_Startup(object sender, StartupEventArgs e) => SfSkinManager.ApplyStylesOnApplication = true;
     }
 }

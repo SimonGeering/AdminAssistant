@@ -1,17 +1,13 @@
+using System.Windows;
 using AdminAssistant.UI.Modules.AccountsModule;
+using Syncfusion.Windows.Shared;
 
 namespace AdminAssistant.WPF.Modules.AccountsModule
 {
-    public partial class BankAccountEditDialog : Syncfusion.Windows.Shared.ChromelessWindow
+    public partial class BankAccountEditDialog : ChromelessWindow
     {
-        public BankAccountEditDialog()
-        {
-            this.InitializeComponent();
-        }
+        public BankAccountEditDialog() => InitializeComponent();
 
-        private void ChromelessWindow_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            (this.DataContext as IBankAccountEditDialogViewModel).Loaded.ExecuteAsync(null);
-        }
+        private void ChromelessWindow_Loaded(object sender, RoutedEventArgs e) => ((IBankAccountEditDialogViewModel)DataContext).Loaded.ExecuteAsync(null);
     }
 }

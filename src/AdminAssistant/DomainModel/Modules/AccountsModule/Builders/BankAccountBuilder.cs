@@ -14,35 +14,32 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
     {
         public static BankAccount Default(IBankAccountBuilder builder) => builder.Build();
 
-        public BankAccount Build()
-        {
-            return this;
-        }
+        public BankAccount Build() => this;
 
         public IBankAccountBuilder WithTestData(int bankAccountID = Constants.UnknownRecordID)
         {
-            this.BankAccountID = bankAccountID;
-            this.AccountName = "A valid account name";
-            this.CurrencyID = 10;
-            this.BankAccountTypeID = 10;
-            this.OpenedOn = DateTime.Now;
+            BankAccountID = bankAccountID;
+            AccountName = "A valid account name";
+            CurrencyID = 10;
+            BankAccountTypeID = 10;
+            OpenedOn = DateTime.Now;
             return this;
         }
 
         public IBankAccountBuilder WithBankAccountTypeID(int bankAccountTypeID)
         {
-            this.BankAccountTypeID = bankAccountTypeID;
+            BankAccountTypeID = bankAccountTypeID;
             return this;
         }
         public IBankAccountBuilder WithCurrencyID(int currencyID)
         {
-            this.CurrencyID = currencyID;
+            CurrencyID = currencyID;
             return this;
         }
 
         public IBankAccountBuilder WithAccountName(string accountName)
         {
-            this.AccountName = accountName;
+            AccountName = accountName;
             return this;
         }
     }

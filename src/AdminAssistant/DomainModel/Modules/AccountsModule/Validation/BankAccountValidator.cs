@@ -7,7 +7,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "Fluent Validators are never used as collections directly")]
     internal class BankAccountValidator : AbstractValidator<BankAccount>, IBankAccountValidator
     {
         //private bool BankAccountBeingCreated(CustomContext context) => context.ParentContext.RootContextData.ContainsKey(Constants.IsCreateCommandContext);
@@ -34,19 +33,19 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
             //        }
             //    });
 
-            this.RuleFor(x => x.AccountName)
+            RuleFor(x => x.AccountName)
                 .NotEmpty()
                 .MaximumLength(BankAccount.AccountNameMaxLength);
 
-            this.RuleFor(x => x.BankAccountTypeID)
+            RuleFor(x => x.BankAccountTypeID)
                 .NotEqual(Constants.UnknownRecordID);
 
-            this.RuleFor(x => x.CurrencyID)
+            RuleFor(x => x.CurrencyID)
                 .NotEqual(Constants.UnknownRecordID);
 
             // TODO: Validate BankAccountTypeID selection
 
-            this.RuleFor(x => x.OpenedOn)
+            RuleFor(x => x.OpenedOn)
                 .NotNull();
         }
     }

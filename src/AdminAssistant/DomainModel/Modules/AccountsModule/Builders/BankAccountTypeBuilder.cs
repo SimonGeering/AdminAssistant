@@ -10,21 +10,18 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
     {
         public static BankAccountType Default(IBankAccountTypeBuilder builder) => builder.Build();
 
-        public BankAccountType Build()
-        {
-            return this;
-        }
+        public BankAccountType Build() => this;
 
         public IBankAccountTypeBuilder WithTestData(int bankAccountTypeID = Constants.NewRecordID)
         {
-            this.BankAccountTypeID = bankAccountTypeID;
-            this.Description = "A valid BankAccountType description";
+            BankAccountTypeID = bankAccountTypeID;
+            Description = "A valid BankAccountType description";
             return this;
         }
 
         public IBankAccountTypeBuilder WithDescription(string description)
         {
-            this.Description = description;
+            Description = description;
             return this;
         }
     }

@@ -8,6 +8,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
 
         public int BankAccountTypeID { get; set; }
         public string Description { get; set; } = string.Empty;
-        public int PrimaryKey => this.BankAccountTypeID;
+        public int PrimaryKey => BankAccountTypeID;
     }
 }

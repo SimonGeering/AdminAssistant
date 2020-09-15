@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Product>Admin Assistant</Product>
     <IsPackable>false</IsPackable>
     <RootNamespace>AdminAssistant</RootNamespace>
     <nullable>enable</nullable>
     <LangVersion>latest</LangVersion>
-    <Platforms>x64</Platforms>
+    <Platforms>AnyCPU</Platforms>
     <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DomainModel\Modules\Core\**" />
+    <EmbeddedResource Remove="DomainModel\Modules\Core\**" />
+    <None Remove="DomainModel\Modules\Core\**" />
+  </ItemGroup>
+
   <ItemGroup>
     <None Remove="AdminAssistant.Accounts.Test.docs.xml" />
     <None Remove="AdminAssistant.Test.docs.xml" />
     <None Remove="lcov.info" />
   </ItemGroup>
+
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" Version="3.0.0" />
     <PackageReference Include="coverlet.msbuild" Version="2.9.0">
@@ -31,17 +46,18 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="FluentValidation" Version="9.1.3" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.7" />
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="3.1.7" />
+    <PackageReference Include="FluentValidation" Version="9.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.0-rc.1.*" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.7" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0-preview-20200812-03" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-rc.1.*" />
     <PackageReference Include="Moq" Version="4.14.5" />
+    <PackageReference Include="MockQueryable.Moq" Version="5.0.0-preview.7" />
     <PackageReference Include="ObjectCloner.Extensions" Version="2.0.1" />
     <PackageReference Include="Respawn" Version="3.3.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -51,21 +67,23 @@
     </PackageReference>
     <PackageReference Include="Xunit.SkippableFact" Version="1.4.13" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\AdminAssistant.Blazor\Client\AdminAssistant.Blazor.Client.csproj" />
     <ProjectReference Include="..\AdminAssistant.Blazor\Server\AdminAssistant.Blazor.Server.csproj" />
     <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
     <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
   </ItemGroup>
+
   <ItemGroup>
     <Folder Include="DomainModel\Modules\AssetRegisterModule\" />
     <Folder Include="DomainModel\Modules\BillingModule\" />
     <Folder Include="DomainModel\Modules\CalendarModule\" />
     <Folder Include="DomainModel\Modules\ContactsModule\" />
     <Folder Include="DomainModel\Modules\DashboardModule\" />
-    <Folder Include="DomainModel\Modules\DocumentsModule\" />
     <Folder Include="DomainModel\Modules\MailModule\" />
     <Folder Include="DomainModel\Modules\TasksModule\" />
     <Folder Include="DomainModel\Modules\ReportsModule\" />
+    <Folder Include="Infra\DAL\Modules\DocumentsModule\" />
   </ItemGroup>
 </Project>

@@ -24,6 +24,6 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule
         public string Notes { get; set; } = string.Empty;
         public DateTime TransactionDate { get; set; } = DateTime.Now;
 
-        public int PrimaryKey => this.BankAccountTransactionID;
+        public int PrimaryKey => BankAccountTransactionID;
     }
 }

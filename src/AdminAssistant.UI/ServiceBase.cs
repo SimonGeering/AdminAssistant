@@ -1,5 +1,5 @@
 using AutoMapper;
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.UI
@@ -12,9 +12,9 @@ namespace AdminAssistant.UI
 
         public ServiceBase(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
         {
-            this.AdminAssistantWebAPIClient = adminAssistantWebAPIClient;
-            this.Log = log;
-            this.Mapper = mapper;
+            AdminAssistantWebAPIClient = adminAssistantWebAPIClient;
+            Log = log;
+            Mapper = mapper;
         }
     }
 }

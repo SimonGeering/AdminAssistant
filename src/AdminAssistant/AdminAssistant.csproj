@@ -1,19 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <Product>Admin Assistant</Product>
     <nullable>enable</nullable>
     <LangVersion>latest</LangVersion>
-    <Platforms>x64</Platforms>
+    <Platforms>AnyCPU</Platforms>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>AdminAssistant.docs.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <DocumentationFile>AdminAssistant\AdminAssistant.docs.xml</DocumentationFile>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>AdminAssistant.docs.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,42 +31,41 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ardalis.Result" Version="3.0.0" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.0.0" />
+    <PackageReference Include="Ardalis.Result" Version="3.0.2" />
+    <PackageReference Include="Ardalis.Result.FluentValidation" Version="3.0.1" />
     <PackageReference Include="AutoMapper" Version="10.0.0" />
-    <PackageReference Include="FluentValidation" Version="9.1.3" />
+    <PackageReference Include="FluentValidation" Version="9.2.0" />
     <PackageReference Include="MediatR" Version="8.1.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0-rc.1.*" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.0-preview2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="DomainModel\Modules\CoreModule\Builders\" />
+    <Folder Include="DomainModel\Modules\CoreModule\CQRS\" />
+    <Folder Include="DomainModel\Modules\CoreModule\Validation\" />
     <Folder Include="Infra\DAL\Modules\BillingModule\" />
     <Folder Include="Infra\DAL\Modules\AssetRegisterModule\" />
     <Folder Include="Infra\DAL\Modules\BudgetModule\" />
     <Folder Include="Infra\DAL\Modules\CalendarModule\" />
     <Folder Include="Infra\DAL\Modules\ContactsModule\" />
     <Folder Include="Infra\DAL\Modules\DashboardModule\" />
-    <Folder Include="Infra\DAL\Modules\DocumentsModule\" />
     <Folder Include="Infra\DAL\Modules\MailModule\" />
     <Folder Include="Infra\DAL\Modules\TasksModule\" />
     <Folder Include="Infra\DAL\Modules\ReportsModule\" />
-    <Folder Include="DomainModel\Modules\AssetRegisterModule\" />
     <Folder Include="DomainModel\Modules\BillingModule\" />
-    <Folder Include="DomainModel\Modules\CalendarModule\" />
-    <Folder Include="DomainModel\Modules\ContactsModule\" />
     <Folder Include="DomainModel\Modules\DashboardModule\" />
-    <Folder Include="DomainModel\Modules\DocumentsModule\" />
-    <Folder Include="DomainModel\Modules\MailModule\" />
-    <Folder Include="DomainModel\Modules\TasksModule\" />
     <Folder Include="DomainModel\Modules\ReportsModule\" />
+    <Folder Include="Infra\Providers\" />
   </ItemGroup>
 
   <ItemGroup>

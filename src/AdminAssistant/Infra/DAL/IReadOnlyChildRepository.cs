@@ -8,6 +8,6 @@ namespace AdminAssistant.Infra.DAL
     {
         Task<TDomainModel> GetAsync(int id);
         Task<List<TDomainModel>> GetListAsync(int parentID);
-        Task<List<TDomainModel>> GetListAsync(IDatabasePersistable parent) => this.GetListAsync(parent.PrimaryKey);
+        Task<List<TDomainModel>> GetListAsync(IDatabasePersistable parent) => GetListAsync(parent.PrimaryKey);
     }
 }

@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-using AdminAssistant.UI.Shared;
-
-namespace AdminAssistant.UI.Services
+namespace AdminAssistant.UI.Shared
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
     internal class AppService : IAppService
@@ -13,36 +11,30 @@ namespace AdminAssistant.UI.Services
 
         //        private int OwnerID { get; set; } = 10; // TODO: switch to owner details later.
         //
-        public ModeSelectionItem GetDefaultMode() => this.GetModeItem(DefaultMode);
+        public ModeSelectionItem GetDefaultMode() => GetModeItem(DefaultMode);
 
-        public List<ModeSelectionItem> GetModes()
+        public List<ModeSelectionItem> GetModes() => new List<ModeSelectionItem>()
         {
-            return new List<ModeSelectionItem>()
-            {
-                this.GetModeItem(ModeEnum.Company),
-                this.GetModeItem(ModeEnum.Personal),
-            };
-        }
+            GetModeItem(ModeEnum.Company),
+            GetModeItem(ModeEnum.Personal),
+        };
 
-        public List<ModuleSelectionItem> GetModules()
+        public List<ModuleSelectionItem> GetModules() => new List<ModuleSelectionItem>()
         {
-            return new List<ModuleSelectionItem>()
-            {
-                this.GetModuleItem(ModuleEnum.Dashboard),
-                this.GetModuleItem(ModuleEnum.Mail),
-                this.GetModuleItem(ModuleEnum.Calendar),
-                this.GetModuleItem(ModuleEnum.Contacts),
-                this.GetModuleItem(ModuleEnum.Tasks),
-                this.GetModuleItem(ModuleEnum.Accounts),
-                this.GetModuleItem(ModuleEnum.AssetRegister),
-                this.GetModuleItem(ModuleEnum.Billing),
-                this.GetModuleItem(ModuleEnum.Budget),
-                this.GetModuleItem(ModuleEnum.Documents),
-                this.GetModuleItem(ModuleEnum.Reports),
-            };
-        }
+            GetModuleItem(ModuleEnum.Dashboard),
+            GetModuleItem(ModuleEnum.Mail),
+            GetModuleItem(ModuleEnum.Calendar),
+            GetModuleItem(ModuleEnum.Contacts),
+            GetModuleItem(ModuleEnum.Tasks),
+            GetModuleItem(ModuleEnum.Accounts),
+            GetModuleItem(ModuleEnum.AssetRegister),
+            GetModuleItem(ModuleEnum.Billing),
+            GetModuleItem(ModuleEnum.Budget),
+            GetModuleItem(ModuleEnum.Documents),
+            GetModuleItem(ModuleEnum.Reports),
+        };
 
-        public ModuleSelectionItem GetDefaultModule() => this.GetModuleItem(DefaultModule);
+        public ModuleSelectionItem GetDefaultModule() => GetModuleItem(DefaultModule);
 
         private string GetLabelForMode(ModeEnum mode) => mode switch
         {
@@ -53,14 +45,14 @@ namespace AdminAssistant.UI.Services
 
         private ModeSelectionItem GetModeItem(ModeEnum mode)
         {
-            var label = this.GetLabelForMode(mode);
-            return new ModeSelectionItem(mode, tag: label, label: label, icon: this.GetIconForMode(mode));
+            var label = GetLabelForMode(mode);
+            return new ModeSelectionItem(mode, tag: label, label: label, icon: GetIconForMode(mode));
         }
 
         private ModuleSelectionItem GetModuleItem(ModuleEnum module)
         {
-            var label = this.GetLabelForModule(module);
-            return new ModuleSelectionItem(module, tag: label, label: label, icon: this.GetIconForModule(module));
+            var label = GetLabelForModule(module);
+            return new ModuleSelectionItem(module, tag: label, label: label, icon: GetIconForModule(module));
         }
 
         private string GetIconForMode(ModeEnum mode) => mode switch
@@ -96,7 +88,7 @@ namespace AdminAssistant.UI.Services
             ModuleEnum.AssetRegister => "fa fa-diamond",
             ModuleEnum.Billing => "fa fa-bullseye",
             ModuleEnum.Budget => "fa fa-line-chart",
-            ModuleEnum.Documents => "fa fa-book",
+            ModuleEnum.Documents => "fa fa-file-text-o",
             ModuleEnum.Reports => "fa fa-bar-chart-o",
             ModuleEnum.Dashboard => "fa fa-dashboard",
             _ => throw new ArgumentOutOfRangeException(nameof(module))

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using AdminAssistant.UI.Shared;
 
-namespace AdminAssistant.UI.Services
+namespace AdminAssistant.UI.Shared
 {
     public interface IAppService
     {

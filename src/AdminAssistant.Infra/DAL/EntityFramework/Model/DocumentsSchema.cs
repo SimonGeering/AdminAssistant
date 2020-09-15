@@ -1,3 +1,4 @@
+using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,16 +8,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model
     {
         private const string Name = "Documents";
 
-        internal static void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            DocumentsSchema.Document_OnModelCreating(modelBuilder);
-            // TODO: DocumentsSchema.OnModelCreating
-        }
+        // TODO: DocumentsSchema.OnModelCreating
+        internal static void OnModelCreating(ModelBuilder modelBuilder) => Document_OnModelCreating(modelBuilder);
 
         private static void Document_OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DocumentEntity>().ToTable("Document").Metadata.SetSchema(DocumentsSchema.Name);
+            modelBuilder.Entity<DocumentEntity>().ToTable("Document").Metadata.SetSchema(Name);
             modelBuilder.Entity<DocumentEntity>().HasKey(x => x.DocumentID);
+            modelBuilder.Entity<DocumentEntity>().Property(x => x.FileName).IsRequired().IsUnicode().HasMaxLength(Document.FileNameMaxLength);
             // TODO: Document_OnModelCreating
         }
     }

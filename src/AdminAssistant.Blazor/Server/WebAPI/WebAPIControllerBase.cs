@@ -1,17 +1,17 @@
-using AdminAssistant.Framework.Providers;
+using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.WebAPI.v1
+namespace AdminAssistant.WebAPI
 {
     public abstract class WebAPIControllerBase : ControllerBase
     {
         public WebAPIControllerBase(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
         {
-            this.Mapper = mapper;
-            this.Mediator = mediator;
-            this.Log = loggingProvider;
+            Mapper = mapper;
+            Mediator = mediator;
+            Log = loggingProvider;
         }
 
         protected IMapper Mapper { get; }
