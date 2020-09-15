@@ -4,7 +4,7 @@ Your very own personal admin assistant to help with all the paperwork and organi
 
 | master | dev |
 |--------|-----|
-|[![Build Status (Dev)](https://dev.azure.com/SimonGeering/AdminAssistant/_apis/build/status/PullRequest?branchName=master)](https://dev.azure.com/SimonGeering/AdminAssistant/_build/latest?definitionId=1&branchName=master)|[![Build Status (Dev)](https://dev.azure.com/SimonGeering/AdminAssistant/_apis/build/status/PullRequest?branchName=dev)](https://dev.azure.com/SimonGeering/AdminAssistant/_build/latest?definitionId=1&branchName=dev)|
+|[![Build Status (Dev)](https://dev.azure.com/SimonGeering/AdminAssistant/_apis/build/status/AzureDevops_ContinuousIntegration?branchName=master)](https://dev.azure.com/SimonGeering/AdminAssistant/_build/latest?definitionId=2&branchName=master)|[![Build Status (Dev)](https://dev.azure.com/SimonGeering/AdminAssistant/_apis/build/status/AzureDevops_ContinuousIntegration?branchName=dev)](https://dev.azure.com/SimonGeering/AdminAssistant/_build/latest?definitionId=2&branchName=dev)|
 
 ![GitHub issues](https://img.shields.io/github/issues-raw/simongeering/adminassistant?label=total%20open) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/simongeering/adminassistant?label=total%20closed) ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/simongeering/adminassistant)
 
