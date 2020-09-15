@@ -30,14 +30,14 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.1.*" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0-rc.1.*" />
-    <PackageReference Include="Syncfusion.SfBusyIndicator.WPF" Version="18.2.0.55" />
-    <PackageReference Include="Syncfusion.SfInput.WPF" Version="18.2.0.55" />
-    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="18.2.0.55" />
-    <PackageReference Include="Syncfusion.Shared.WPF" Version="18.2.0.55" />
-    <PackageReference Include="Syncfusion.SfTreeView.WPF" Version="18.2.0.55" />
-    <PackageReference Include="Syncfusion.Themes.Office2019Black.WPF" Version="18.2.0.55" />
-    <PackageReference Include="Syncfusion.Themes.Office2019Colorful.WPF" Version="18.2.0.55" />
-    <PackageReference Include="Syncfusion.Themes.Office365.WPF" Version="18.2.0.55" />
+    <PackageReference Include="Syncfusion.SfBusyIndicator.WPF" Version="18.2.0.58" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="18.2.0.58" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="18.2.0.58" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="18.2.0.58" />
+    <PackageReference Include="Syncfusion.SfTreeView.WPF" Version="18.2.0.58" />
+    <PackageReference Include="Syncfusion.Themes.Office2019Black.WPF" Version="18.2.0.58" />
+    <PackageReference Include="Syncfusion.Themes.Office2019Colorful.WPF" Version="18.2.0.58" />
+    <PackageReference Include="Syncfusion.Themes.Office365.WPF" Version="18.2.0.58" />
   </ItemGroup>
 
   <ItemGroup>
