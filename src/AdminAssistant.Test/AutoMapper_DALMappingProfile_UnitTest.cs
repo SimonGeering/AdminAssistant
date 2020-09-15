@@ -8,6 +8,8 @@ using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using FluentAssertions;
 using Xunit;
 using AdminAssistant.DomainModel.Modules.CoreModule;
+using AdminAssistant.DomainModel.Modules.DocumentsModule;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 
 namespace AdminAssistant.Infra.DAL
 {
@@ -42,6 +44,7 @@ namespace AdminAssistant.Infra.DAL
         [InlineData(typeof(BankAccountTypeEntity), typeof(BankAccountType))]
         [InlineData(typeof(BankAccountTransactionEntity), typeof(BankAccountTransaction))]
         [InlineData(typeof(Bank), typeof(BankEntity))]
+        [InlineData(typeof(BankAccountType), typeof(BankAccountTypeEntity))]
         [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionEntity))]
         public void ShouldSupportAccountsSchemaMappingFromSourceToDestination(Type source, Type destination)
         {
@@ -57,7 +60,24 @@ namespace AdminAssistant.Infra.DAL
 
         [Theory]
         [Trait("Category", "Unit")]
+        [InlineData(typeof(DocumentEntity), typeof(Document))]
+        [InlineData(typeof(Document), typeof(DocumentEntity))]
+        public void ShouldSupportDocumentsSchemaMappingFromSourceToDestination(Type source, Type destination)
+        {
+            // Arrange
+            var instance = Activator.CreateInstance(source);
+
+            // Act
+            var result = _mapper.Map(instance, source, destination);
+
+            // Assert
+            result.Should().NotBeNull();
+        }
+
+        [Theory]
+        [Trait("Category", "Unit")]
         [InlineData(typeof(CurrencyEntity), typeof(Currency))]
+        [InlineData(typeof(Currency), typeof(CurrencyEntity))]
         public void ShouldSupportCoreSchemaMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange

@@ -1,4 +1,6 @@
+using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
+using AdminAssistant.Infra.Providers;
 using AutoMapper;
 
 namespace AdminAssistant.Infra.DAL
@@ -7,12 +9,17 @@ namespace AdminAssistant.Infra.DAL
     {
         protected IApplicationDbContext DbContext { get; }
         protected IMapper Mapper { get; }
+        protected IDateTimeProvider DateTimeProvider { get; }
+        protected IUserContextProvider UserContextProvider { get; }
 
-        public RepositoryBase(IApplicationDbContext dbContext, IMapper mapper)
+        public RepositoryBase(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
         {
             DbContext = dbContext;
             Mapper = mapper;
+            DateTimeProvider = dateTimeProvider;
+            UserContextProvider = userContextProvider;
         }
+
         public bool IsNew(IDatabasePersistable domainObject) => domainObject.IsNew;
     }
 }
