@@ -6,6 +6,8 @@
     <nullable>enable</nullable>
     <LangVersion>latest</LangVersion>
     <Platforms>AnyCPU</Platforms>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

@@ -5,6 +5,8 @@
     <AssemblyName>AdminAssistant.Blazor.Client</AssemblyName>
     <nullable>enable</nullable>
     <LangVersion>latest</LangVersion>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
