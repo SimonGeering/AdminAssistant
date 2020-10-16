@@ -1,4 +1,5 @@
 using System;
+using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
@@ -8,6 +9,13 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
+        public static void AddMockUserContextProvider(this IServiceCollection services)
+        {
+            var mockUserContext = new Mock<IUserContextProvider>();
+            mockUserContext.Setup(x => x.GetCurrentUser()).Returns(new User() { SignOn = "TestUser" });
+            services.AddTransient((sp) => mockUserContext.Object);
+        }
+
         public static void AddMocksOfExternalServerSideDependencies(this IServiceCollection services)
         {
             services.AddMockServerSideLogging();

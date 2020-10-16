@@ -203,6 +203,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework
     public interface IApplicationDbContext : IDisposable
     {
         // Core ...
+        DbSet<AuditEntity> AuditTrail { get; set; }
         DbSet<UserProfileEntity> UserProfiles { get; set; }
         DbSet<CurrencyEntity> Currencies { get; set; }
 
@@ -237,6 +238,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework
         }
 
         // Core ...
+        public DbSet<AuditEntity> AuditTrail { get; set; } = null!;
         public DbSet<UserProfileEntity> UserProfiles { get; set; } = null!;
         public DbSet<CurrencyEntity> Currencies { get; set; } = null!;
 
