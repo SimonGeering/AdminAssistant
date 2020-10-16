@@ -10,6 +10,7 @@ using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using FluentAssertions;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.DependencyInjection;
 using MockQueryable.Moq;
 using Moq;
@@ -24,6 +25,8 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
         public async Task Returns_BankAccountWithNewID_WhenSavingNewBankAccount()
         {
             // Arrange
+            BankAccountEntity? entitySaved;
+
             var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
             var bankAccountList = new List<BankAccount>()
             {
@@ -39,7 +42,9 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
 
             var mockDbContext = new Mock<IApplicationDbContext>();
             var mockBankAccounts = data.AsQueryable().BuildMockDbSet();
-            mockBankAccounts.Setup(x => x.Add(It.IsAny<BankAccountEntity>())).Returns(() => { });
+            mockBankAccounts.Setup(x => x.Add(It.IsAny<BankAccountEntity>()))
+                .Callback<BankAccountEntity>((param) => entitySaved = param)
+                .Returns((EntityEntry<BankAccountEntity>)null!);
             mockDbContext.Setup(x => x.BankAccounts).Returns(mockBankAccounts.Object);
 
             var services = new ServiceCollection();
@@ -83,38 +88,6 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
         }
 
         //Returns_BankAccountWithExitingID_WhenSavingNewBankAccount
-
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task Returns_PopulatedBankAccountList_WhenDatabaseHasData()
-        {
-            // Arrange
-            var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
-            var bankAccountList = new List<BankAccount>()
-            {
-                Factory.BankAccount.WithTestData(10).Build(),
-                Factory.BankAccount.WithTestData(20).Build()
-            };
-            var data = mapper.Map<IList<BankAccountEntity>>(bankAccountList);
-
-            var mockDbContext = new Mock<IApplicationDbContext>();
-            mockDbContext.Setup(x => x.BankAccounts)
-                .Returns(data.AsQueryable().BuildMockDbSet().Object);
-
-            var services = new ServiceCollection();
-            services.AddAutoMapper(typeof(MappingProfile));
-            services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
-            services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
-            services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
-            services.AddTransient((sp) => mockDbContext.Object);
-
-            // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
-
-            // Assert
-            result.Should().HaveCount(bankAccountList.Count);
-            result.Should().BeEquivalentTo(bankAccountList);
-        }
 
         [Fact]
         [Trait("Category", "Unit")]
