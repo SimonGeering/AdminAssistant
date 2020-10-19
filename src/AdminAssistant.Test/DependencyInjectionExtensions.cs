@@ -1,5 +1,6 @@
 using System;
 using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
@@ -9,10 +10,28 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
+        public static void AddMockDbContext(this IServiceCollection services, Mock<IApplicationDbContext> mockDbContext)
+            => services.AddTransient((sp) => mockDbContext.Object);
+
         public static void AddMockUserContextProvider(this IServiceCollection services)
         {
+            var result = new User() { SignOn = "TestUser" };
+            services.AddMockUserContextProvider(result);
+        }
+        public static void AddMockUserContextProvider(this IServiceCollection services, User user)
+        {
             var mockUserContext = new Mock<IUserContextProvider>();
-            mockUserContext.Setup(x => x.GetCurrentUser()).Returns(new User() { SignOn = "TestUser" });
+            mockUserContext.Setup(x => x.GetCurrentUser()).Returns(user);
+            services.AddTransient((sp) => mockUserContext.Object);
+        }
+
+        public static void AddMockDateTimeProvider(this IServiceCollection services)
+            => services.AddMockDateTimeProvider(DateTime.UtcNow);
+
+        public static void AddMockDateTimeProvider(this IServiceCollection services, DateTime dateTime)
+        {
+            var mockUserContext = new Mock<IDateTimeProvider>();
+            mockUserContext.Setup(x => x.UtcNow).Returns(dateTime);
             services.AddTransient((sp) => mockUserContext.Object);
         }
 

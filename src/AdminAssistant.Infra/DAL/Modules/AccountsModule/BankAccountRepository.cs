@@ -33,14 +33,17 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
             {
                 entity.Audit = new EntityFramework.Model.Core.AuditEntity()
                 {
-                    UpdatedBy = UserContextProvider.GetCurrentUser().SignOn,
-                    UpdatedOn = DateTimeProvider.UtcNow
+                    CreatedBy = UserContextProvider.GetCurrentUser().SignOn,
+                    CreatedOn = DateTimeProvider.UtcNow
                 };
                 DbContext.BankAccounts.Add(entity);
             }
             else
             {
-                // TODO: handle audit change
+                entity.Audit = DbContext.AuditTrail.Single(x => x.AuditID == entity.AuditID);
+                entity.Audit.UpdatedBy = UserContextProvider.GetCurrentUser().SignOn;
+                entity.Audit.UpdatedOn = DateTimeProvider.UtcNow;
+
                 DbContext.BankAccounts.Update(entity);
             }
 

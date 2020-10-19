@@ -1,4 +1,5 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -103,11 +104,11 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
             mockDbContext.Setup(x => x.BankAccounts).Returns(mockBankAccounts.Object);
 
             var services = new ServiceCollection();
-            services.AddAutoMapper(typeof(MappingProfile));
-            services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
+            services.AddMockDateTimeProvider();
             services.AddMockUserContextProvider();
+            services.AddMockDbContext(mockDbContext);
+            services.AddAutoMapper(typeof(MappingProfile));
             services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
-            services.AddTransient((sp) => mockDbContext.Object);
 
             var newBankAccountToSave = Factory.BankAccount.WithAccountName("TestNewBankAccountToSave").Build();
 
@@ -121,26 +122,21 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
 
         //UpdatesAuditing_WhenSavingAnExistingBankAccount
 
-        private bool IsValidForInsert(BankAccountEntity entity)
+        private bool IsValidForInsert(BankAccountEntity bankAccountToSave)
         {
-            if (entity.BankAccountID != Constants.NewRecordID)
-                return false;
+            bankAccountToSave.BankAccountID.Should().Be(Constants.NewRecordID);
+            bankAccountToSave.Audit.Should().NotBeNull();
 
-            return IsValidForAuditedSave(entity);
+            bankAccountToSave.Audit.CreatedBy.Should().NotBeNullOrEmpty();
+            bankAccountToSave.Audit.CreatedOn.Should().NotBe(default);
+
+            return true;
         }
 
-        private bool IsValidForUpdate(BankAccountEntity entity)
+        private bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
         {
-            if (entity.BankAccountID == Constants.NewRecordID)
-                return false;
-
-            return IsValidForAuditedSave(entity);
-        }
-
-        private bool IsValidForAuditedSave(BankAccountEntity entity)
-        {
-            if (entity.Audit == null)
-                return false;
+            bankAccountToSave.BankAccountID.Should().NotBe(Constants.NewRecordID);
+            bankAccountToSave.Audit.Should().NotBeNull();
 
             return true;
         }
