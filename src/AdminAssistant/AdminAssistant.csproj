@@ -35,7 +35,7 @@
     <PackageReference Include="Ardalis.Result" Version="3.0.2" />
     <PackageReference Include="Ardalis.Result.FluentValidation" Version="3.0.1" />
     <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="FluentValidation" Version="9.2.0" />
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
     <PackageReference Include="MediatR" Version="8.1.0" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0-rc.1.*" />
