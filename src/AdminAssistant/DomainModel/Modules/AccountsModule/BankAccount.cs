@@ -3,18 +3,18 @@ using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule
 {
-    public class BankAccount : IDatabasePersistable
+    public record BankAccount : IDatabasePersistable
     {
         public const int AccountNameMaxLength = Constants.NameMaxLength;
 
-        public int BankAccountID { get; set; }
-        public int BankAccountTypeID { get; set; } = Constants.UnknownRecordID;
-        public int CurrencyID { get; set; }
-        public string AccountName { get; set; } = string.Empty;
-        public bool IsBudgeted { get; set; }
-        public int OpeningBalance { get; set; }
-        public int CurrentBalance { get; set; }
-        public DateTime OpenedOn { get; set; }
+        public int BankAccountID { get; init; }
+        public int BankAccountTypeID { get; init; } = Constants.UnknownRecordID;
+        public int CurrencyID { get; init; }
+        public string AccountName { get; init; } = string.Empty;
+        public bool IsBudgeted { get; init; }
+        public int OpeningBalance { get; init; }
+        public int CurrentBalance { get; init; }
+        public DateTime OpenedOn { get; init; }
 
         public int PrimaryKey => BankAccountID;
     }
