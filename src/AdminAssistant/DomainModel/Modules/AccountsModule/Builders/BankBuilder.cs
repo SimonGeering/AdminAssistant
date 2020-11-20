@@ -6,20 +6,26 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
         IBankBuilder WithTestData(int bankID = Constants.UnknownRecordID);
         IBankBuilder WithBankName(string bankName);
     }
-    internal class BankBuilder : Bank, IBankBuilder
+    internal class BankBuilder : IBankBuilder
     {
-        public Bank Build() => this;
+        private Bank _bank = new Bank();
+
+        public static Bank Default(IBankBuilder builder) => builder.Build();
+        public Bank Build() => _bank;
 
         public IBankBuilder WithTestData(int bankID = Constants.UnknownRecordID)
         {
-            BankID = bankID;
-            BankName = "ACME Bank PLC";
+            _bank = _bank with
+            {
+                BankID = bankID,
+                BankName = "ACME Bank PLC"
+            };
             return this;
         }
 
         public IBankBuilder WithBankName(string bankName)
         {
-            BankName = bankName;
+            _bank = _bank with { BankName = bankName };
             return this;
         }
     }
