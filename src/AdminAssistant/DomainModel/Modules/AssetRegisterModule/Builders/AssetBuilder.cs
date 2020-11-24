@@ -6,22 +6,27 @@ namespace AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders
         IAssetBuilder WithTestData(int assetID = Constants.UnknownRecordID);
         IAssetBuilder WithAssetName(string assetName);
     }
-    internal class AssetBuilder : Asset, IAssetBuilder
+    internal class AssetBuilder : IAssetBuilder
     {
+        private Asset _asset = new Asset();
+
         public static Asset Default(IAssetBuilder builder) => builder.Build();
         public static Asset Default(AssetBuilder builder) => builder.Build();
 
-        public Asset Build() => this;
+        public Asset Build() => _asset;
 
         public IAssetBuilder WithTestData(int assetID = Constants.UnknownRecordID)
         {
-            AssetID = assetID;
-            AssetName = "2 bed detached house";
+            _asset = _asset with
+            {
+                AssetID = assetID,
+                AssetName = "2 bed detached house"
+            };
             return this;
         }
         public IAssetBuilder WithAssetName(string assetName)
         {
-            AssetName = assetName;
+            _asset = _asset with { AssetName = assetName };
             return this;
         }
     }
