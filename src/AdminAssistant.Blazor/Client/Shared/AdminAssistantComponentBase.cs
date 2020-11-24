@@ -24,9 +24,9 @@ namespace AdminAssistant.Blazor.Client.Shared
                 //    throw new System.NullReferenceException("Loading spinner reference not set on component base");
 
                 if (isBusy)
-                    SfSpinner.ShowSpinner("#loadingTarget");
+                    SfSpinner.Show();
                 else
-                    SfSpinner.HideSpinner("#loadingTarget");
+                    SfSpinner.Hide();
             };            
             base.OnInitialized();
         }
