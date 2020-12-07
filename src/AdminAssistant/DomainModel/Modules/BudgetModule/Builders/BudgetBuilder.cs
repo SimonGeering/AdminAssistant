@@ -6,21 +6,27 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Builders
         IBudgetBuilder WithTestData(int budgetID = Constants.UnknownRecordID);
         IBudgetBuilder WithBudgetName(string empty);
     }
-    internal class BudgetBuilder : Budget, IBudgetBuilder
+    internal class BudgetBuilder : IBudgetBuilder
     {
+        private Budget _budget = new Budget();
+
         public static Budget Default(IBudgetBuilder builder) => builder.Build();
 
-        public Budget Build() => this;
+        public Budget Build() => _budget;
 
         public IBudgetBuilder WithTestData(int budgetID = Constants.UnknownRecordID)
         {
-            BudgetName = "Test Budget";
+            _budget = _budget with
+            {
+                BudgetID = budgetID,
+                BudgetName = "Test Budget"
+            };
             return this;
         }
 
         public IBudgetBuilder WithBudgetName(string budgetName)
         {
-            BudgetName = budgetName;
+            _budget = _budget with { BudgetName = budgetName };
             return this;
         }
     }
