@@ -26,8 +26,8 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.3.0" />
     <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.8.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.1.*" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0-rc.1.*" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Syncfusion.SfBusyIndicator.WPF" Version="18.3.0.52" />
     <PackageReference Include="Syncfusion.SfInput.WPF" Version="18.3.0.52" />
     <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="18.3.0.52" />
