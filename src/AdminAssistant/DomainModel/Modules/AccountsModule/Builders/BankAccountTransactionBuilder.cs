@@ -7,29 +7,34 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
         IBankAccountTransactionBuilder WithBankAccountID(int bankAccountID);
         IBankAccountTransactionBuilder WithDescription(string empty);
     }
-    internal class BankAccountTransactionBuilder : BankAccountTransaction, IBankAccountTransactionBuilder
+    internal class BankAccountTransactionBuilder : IBankAccountTransactionBuilder
     {
+        private BankAccountTransaction _bankAccountTransaction = new BankAccountTransaction();
+
         public static BankAccountTransaction Default(IBankAccountTransactionBuilder builder) => builder.Build();
 
-        public BankAccountTransaction Build() => this;
+        public BankAccountTransaction Build() => _bankAccountTransaction;
 
         public IBankAccountTransactionBuilder WithTestData(int bankAccountTransactionID = Constants.UnknownRecordID)
         {
-            BankAccountTransactionID = bankAccountTransactionID;
-            BankAccountID = 10;
-            Description = "Test Transaction";
+            _bankAccountTransaction = _bankAccountTransaction with
+            {
+                BankAccountTransactionID = bankAccountTransactionID,
+                BankAccountID = 10,
+                Description = "Test Transaction"
+            };
             return this;
         }
 
         public IBankAccountTransactionBuilder WithBankAccountID(int bankAccountID)
         {
-            BankAccountID = bankAccountID;
+            _bankAccountTransaction = _bankAccountTransaction with { BankAccountID = bankAccountID };
             return this;
         }
 
         public IBankAccountTransactionBuilder WithDescription(string description)
         {
-            Description = description;
+            _bankAccountTransaction = _bankAccountTransaction with { Description = description };
             return this;
         }
     }

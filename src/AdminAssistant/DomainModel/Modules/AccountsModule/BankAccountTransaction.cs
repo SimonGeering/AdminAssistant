@@ -3,26 +3,26 @@ using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule
 {
-    public class BankAccountTransaction : IDatabasePersistable
+    public record BankAccountTransaction : IDatabasePersistable
     {
         public const int DescriptionMaxLength = Constants.DescriptionMaxLength;
 
-        public int BankAccountTransactionID { get; set; }
-        public int BankAccountID { get; set; }
+        public int BankAccountTransactionID { get; init; }
+        public int BankAccountID { get; init; }
 
-        public int PayeeID { get; set; }
-        public string PayeeName { get; set; } = string.Empty;
+        public int PayeeID { get; init; }
+        public string PayeeName { get; init; } = string.Empty;
 
-        public int CurrencyID { get; set; }
-        public string Symbol { get; set; } = string.Empty;
-        public string DecimalFormat { get; set; } = string.Empty;
+        public int CurrencyID { get; init; }
+        public string Symbol { get; init; } = string.Empty;
+        public string DecimalFormat { get; init; } = string.Empty;
 
-        public int Credit { get; set; }
-        public int Debit { get; set; }
-        public int Balance { get; set; }
-        public string Description { get; set; } = string.Empty;
-        public string Notes { get; set; } = string.Empty;
-        public DateTime TransactionDate { get; set; } = DateTime.Now;
+        public int Credit { get; init; }
+        public int Debit { get; init; }
+        public int Balance { get; init; }
+        public string Description { get; init; } = string.Empty;
+        public string Notes { get; init; } = string.Empty;
+        public DateTime TransactionDate { get; init; } = DateTime.Now;
 
         public int PrimaryKey => BankAccountTransactionID;
     }
