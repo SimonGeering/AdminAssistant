@@ -1,5 +1,4 @@
-#pragma warning disable IDE0053 // Use expression body for lambda expressions
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
@@ -8,22 +7,41 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "Contacts");
+
+            migrationBuilder.EnsureSchema(
+                name: "AssetRegister");
+
+            migrationBuilder.EnsureSchema(
+                name: "Core");
+
+            migrationBuilder.EnsureSchema(
+                name: "Accounts");
+
+            migrationBuilder.EnsureSchema(
+                name: "Budget");
+
+            migrationBuilder.EnsureSchema(
+                name: "Documents");
+
             migrationBuilder.CreateTable(
                 name: "Audit",
+                schema: "Core",
                 columns: table => new
                 {
-                    AuditID = table.Column<int>(nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IsArchived = table.Column<bool>(nullable: false, defaultValue: false),
-                    IsDeleted = table.Column<bool>(nullable: false, defaultValue: false),
-                    CreatedOn = table.Column<DateTime>(nullable: false, defaultValueSql: "GETDATE()"),
-                    CreatedBy = table.Column<string>(maxLength: 50, nullable: false),
-                    UpdatedOn = table.Column<DateTime>(nullable: false),
-                    UpdatedBy = table.Column<string>(maxLength: 50, nullable: false),
-                    ArchivedOn = table.Column<DateTime>(nullable: false),
-                    ArchivedBy = table.Column<string>(maxLength: 50, nullable: false),
-                    DeletedOn = table.Column<DateTime>(nullable: false),
-                    DeletedBy = table.Column<string>(maxLength: 50, nullable: false)
+                    IsArchived = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ArchivedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ArchivedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,15 +49,30 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BankAccountType",
+                name: "Bank",
+                schema: "Accounts",
                 columns: table => new
                 {
-                    BankAccountTypeID = table.Column<int>(nullable: false)
+                    BankID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Description = table.Column<string>(maxLength: 255, nullable: false),
-                    AllowPersonal = table.Column<bool>(nullable: false, defaultValue: false),
-                    AllowCompany = table.Column<bool>(nullable: false, defaultValue: false),
-                    IsDeprecated = table.Column<bool>(nullable: false, defaultValue: false)
+                    BankName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bank", x => x.BankID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BankAccountType",
+                schema: "Accounts",
+                columns: table => new
+                {
+                    BankAccountTypeID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    AllowPersonal = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    AllowCompany = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    IsDeprecated = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -48,12 +81,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ContactAddress",
+                schema: "Contacts",
                 columns: table => new
                 {
-                    ContactAddressID = table.Column<int>(nullable: false)
+                    ContactAddressID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AddressID = table.Column<int>(nullable: false),
-                    ContactID = table.Column<int>(nullable: false)
+                    AddressID = table.Column<int>(type: "int", nullable: false),
+                    ContactID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,13 +96,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Currency",
+                schema: "Core",
                 columns: table => new
                 {
-                    CurrencyID = table.Column<int>(nullable: false)
+                    CurrencyID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Symbol = table.Column<string>(type: "CHAR(3)", maxLength: 3, nullable: false),
                     DecimalFormat = table.Column<string>(type: "CHAR(5)", maxLength: 5, nullable: false),
-                    IsDeprecated = table.Column<bool>(nullable: false, defaultValue: false)
+                    IsDeprecated = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -77,11 +112,12 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Permission",
+                schema: "Core",
                 columns: table => new
                 {
-                    PermissionID = table.Column<int>(nullable: false)
+                    PermissionID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PermissionKey = table.Column<string>(maxLength: 20, nullable: false)
+                    PermissionKey = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,11 +126,12 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Setting",
+                schema: "Core",
                 columns: table => new
                 {
-                    SettingID = table.Column<int>(nullable: false)
+                    SettingID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SettingKey = table.Column<string>(maxLength: 20, nullable: false)
+                    SettingKey = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -103,11 +140,12 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Address",
+                schema: "Contacts",
                 columns: table => new
                 {
-                    AddressID = table.Column<int>(nullable: false)
+                    AddressID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuditID = table.Column<int>(nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,6 +153,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_Address_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
@@ -122,15 +161,16 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Asset",
+                schema: "AssetRegister",
                 columns: table => new
                 {
-                    AssetID = table.Column<int>(nullable: false)
+                    AssetID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuditID = table.Column<int>(nullable: false),
-                    OwnerID = table.Column<int>(nullable: false),
-                    PurchasePrice = table.Column<int>(nullable: false),
-                    DepreciatedValue = table.Column<int>(nullable: false),
-                    ReplacementCost = table.Column<int>(nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    PurchasePrice = table.Column<int>(type: "int", nullable: false),
+                    DepreciatedValue = table.Column<int>(type: "int", nullable: false),
+                    ReplacementCost = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -138,6 +178,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_Asset_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
@@ -145,19 +186,20 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "BankAccountTransaction",
+                schema: "Accounts",
                 columns: table => new
                 {
-                    BankAccountTransactionID = table.Column<int>(nullable: false)
+                    BankAccountTransactionID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BankAccountID = table.Column<int>(nullable: false),
-                    AuditID = table.Column<int>(nullable: false),
-                    PayeeID = table.Column<int>(nullable: false),
-                    CurrencyID = table.Column<int>(nullable: false),
-                    Credit = table.Column<int>(nullable: false),
-                    Debit = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(maxLength: 255, nullable: false),
-                    Notes = table.Column<string>(maxLength: 4000, nullable: false),
-                    TransactionDate = table.Column<DateTime>(nullable: false)
+                    BankAccountID = table.Column<int>(type: "int", nullable: false),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    PayeeID = table.Column<int>(type: "int", nullable: false),
+                    CurrencyID = table.Column<int>(type: "int", nullable: false),
+                    Credit = table.Column<int>(type: "int", nullable: false),
+                    Debit = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Notes = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false),
+                    TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -165,6 +207,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_BankAccountTransaction_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
@@ -172,13 +215,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Budget",
+                schema: "Budget",
                 columns: table => new
                 {
-                    BudgetID = table.Column<int>(nullable: false)
+                    BudgetID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuditID = table.Column<int>(nullable: false),
-                    OwnerID = table.Column<int>(nullable: false),
-                    BudgetName = table.Column<string>(maxLength: 50, nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    BudgetName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,6 +230,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_Budget_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
@@ -193,12 +238,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "BudgetEntry",
+                schema: "Budget",
                 columns: table => new
                 {
-                    BudgetEntryID = table.Column<int>(nullable: false)
+                    BudgetEntryID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    BudgetID = table.Column<int>(nullable: false),
-                    AuditID = table.Column<int>(nullable: false)
+                    BudgetID = table.Column<int>(type: "int", nullable: false),
+                    AuditID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -206,6 +252,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_BudgetEntry_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
@@ -213,14 +260,15 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Contact",
+                schema: "Contacts",
                 columns: table => new
                 {
-                    ContactID = table.Column<int>(nullable: false)
+                    ContactID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OwnerID = table.Column<int>(nullable: false),
-                    TitleID = table.Column<int>(nullable: false),
-                    DateOfBirth = table.Column<DateTime>(nullable: false),
-                    AuditID = table.Column<int>(nullable: false)
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    TitleID = table.Column<int>(type: "int", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    AuditID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -228,6 +276,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_Contact_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
@@ -235,12 +284,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Document",
+                schema: "Documents",
                 columns: table => new
                 {
-                    DocumentID = table.Column<int>(nullable: false)
+                    DocumentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuditID = table.Column<int>(nullable: false),
-                    OwnerID = table.Column<int>(nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -248,6 +299,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_Document_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
@@ -255,12 +307,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Payee",
+                schema: "Accounts",
                 columns: table => new
                 {
-                    PayeeID = table.Column<int>(nullable: false)
+                    PayeeID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuditID = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -268,6 +321,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_Payee_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
@@ -275,13 +329,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserProfile",
+                schema: "Core",
                 columns: table => new
                 {
-                    UserProfileID = table.Column<int>(nullable: false)
+                    UserProfileID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuditID = table.Column<int>(nullable: false),
-                    SignOn = table.Column<string>(maxLength: 50, nullable: false),
-                    MSGraphID = table.Column<string>(maxLength: 50, nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    SignOn = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    MSGraphID = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -289,6 +344,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_UserProfile_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
@@ -296,16 +352,17 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Company",
+                schema: "Core",
                 columns: table => new
                 {
-                    CompanyID = table.Column<int>(nullable: false)
+                    CompanyID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuditID = table.Column<int>(nullable: false),
-                    UserProfileID = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(maxLength: 50, nullable: false),
-                    CompanyNumber = table.Column<string>(maxLength: 50, nullable: false),
-                    VATNumber = table.Column<string>(maxLength: 50, nullable: false),
-                    DateOfIncorporation = table.Column<DateTime>(nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    UserProfileID = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CompanyNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    VATNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DateOfIncorporation = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -313,12 +370,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_Company_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Company_UserProfile_UserProfileID",
                         column: x => x.UserProfileID,
+                        principalSchema: "Core",
                         principalTable: "UserProfile",
                         principalColumn: "UserProfileID",
                         onDelete: ReferentialAction.Restrict);
@@ -326,12 +385,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "PersonalDetails",
+                schema: "Core",
                 columns: table => new
                 {
-                    PersonalDetailsID = table.Column<int>(nullable: false)
+                    PersonalDetailsID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuditID = table.Column<int>(nullable: false),
-                    UserProfileID = table.Column<int>(nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    UserProfileID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -339,12 +399,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_PersonalDetails_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_PersonalDetails_UserProfile_UserProfileID",
                         column: x => x.UserProfileID,
+                        principalSchema: "Core",
                         principalTable: "UserProfile",
                         principalColumn: "UserProfileID",
                         onDelete: ReferentialAction.Restrict);
@@ -352,12 +414,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserProfilePermission",
+                schema: "Core",
                 columns: table => new
                 {
-                    UserProfilePermissionID = table.Column<int>(nullable: false)
+                    UserProfilePermissionID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserProfileID = table.Column<int>(nullable: false),
-                    PermissionID = table.Column<int>(nullable: false)
+                    UserProfileID = table.Column<int>(type: "int", nullable: false),
+                    PermissionID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -365,12 +428,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_UserProfilePermission_Permission_PermissionID",
                         column: x => x.PermissionID,
+                        principalSchema: "Core",
                         principalTable: "Permission",
                         principalColumn: "PermissionID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_UserProfilePermission_UserProfile_UserProfileID",
                         column: x => x.UserProfileID,
+                        principalSchema: "Core",
                         principalTable: "UserProfile",
                         principalColumn: "UserProfileID",
                         onDelete: ReferentialAction.Restrict);
@@ -378,12 +443,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UserProfileSetting",
+                schema: "Core",
                 columns: table => new
                 {
-                    UserProfileSettingID = table.Column<int>(nullable: false)
+                    UserProfileSettingID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserProfileID = table.Column<int>(nullable: false),
-                    SettingID = table.Column<int>(nullable: false)
+                    UserProfileID = table.Column<int>(type: "int", nullable: false),
+                    SettingID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -391,12 +457,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_UserProfileSetting_Setting_SettingID",
                         column: x => x.SettingID,
+                        principalSchema: "Core",
                         principalTable: "Setting",
                         principalColumn: "SettingID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_UserProfileSetting_UserProfile_UserProfileID",
                         column: x => x.UserProfileID,
+                        principalSchema: "Core",
                         principalTable: "UserProfile",
                         principalColumn: "UserProfileID",
                         onDelete: ReferentialAction.Restrict);
@@ -404,12 +472,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Owner",
+                schema: "Core",
                 columns: table => new
                 {
-                    OwnerID = table.Column<int>(nullable: false)
+                    OwnerID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CompanyID = table.Column<int>(nullable: true),
-                    PersonalDetailsID = table.Column<int>(nullable: false)
+                    CompanyID = table.Column<int>(type: "int", nullable: true),
+                    PersonalDetailsID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -417,12 +486,14 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_Owner_Company_CompanyID",
                         column: x => x.CompanyID,
+                        principalSchema: "Core",
                         principalTable: "Company",
                         principalColumn: "CompanyID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Owner_PersonalDetails_PersonalDetailsID",
                         column: x => x.PersonalDetailsID,
+                        principalSchema: "Core",
                         principalTable: "PersonalDetails",
                         principalColumn: "PersonalDetailsID",
                         onDelete: ReferentialAction.Restrict);
@@ -430,19 +501,20 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateTable(
                 name: "BankAccount",
+                schema: "Accounts",
                 columns: table => new
                 {
-                    BankAccountID = table.Column<int>(nullable: false)
+                    BankAccountID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AuditID = table.Column<int>(nullable: false),
-                    OwnerID = table.Column<int>(nullable: false),
-                    BankAccountTypeID = table.Column<int>(nullable: false),
-                    CurrencyID = table.Column<int>(nullable: false),
-                    AccountName = table.Column<string>(maxLength: 50, nullable: false),
-                    OpeningBalance = table.Column<int>(nullable: false),
-                    CurrentBalance = table.Column<int>(nullable: false),
-                    OpenedOn = table.Column<DateTime>(nullable: false),
-                    IsBudgeted = table.Column<bool>(nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    BankAccountTypeID = table.Column<int>(type: "int", nullable: false),
+                    CurrencyID = table.Column<int>(type: "int", nullable: false),
+                    AccountName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    OpeningBalance = table.Column<int>(type: "int", nullable: false),
+                    CurrentBalance = table.Column<int>(type: "int", nullable: false),
+                    OpenedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsBudgeted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -450,24 +522,28 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     table.ForeignKey(
                         name: "FK_BankAccount_Audit_AuditID",
                         column: x => x.AuditID,
+                        principalSchema: "Core",
                         principalTable: "Audit",
                         principalColumn: "AuditID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_BankAccount_Currency_CurrencyID",
                         column: x => x.CurrencyID,
+                        principalSchema: "Core",
                         principalTable: "Currency",
                         principalColumn: "CurrencyID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_BankAccount_Owner_OwnerID",
                         column: x => x.OwnerID,
+                        principalSchema: "Core",
                         principalTable: "Owner",
                         principalColumn: "OwnerID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
+                schema: "Accounts",
                 table: "BankAccountType",
                 columns: new[] { "BankAccountTypeID", "AllowCompany", "AllowPersonal", "Description" },
                 values: new object[,]
@@ -477,6 +553,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                 });
 
             migrationBuilder.InsertData(
+                schema: "Core",
                 table: "Currency",
                 columns: new[] { "CurrencyID", "DecimalFormat", "Symbol" },
                 values: new object[,]
@@ -488,139 +565,164 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Address_AuditID",
+                schema: "Contacts",
                 table: "Address",
                 column: "AuditID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Asset_AuditID",
+                schema: "AssetRegister",
                 table: "Asset",
                 column: "AuditID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_BankAccount_AuditID",
+                schema: "Accounts",
                 table: "BankAccount",
                 column: "AuditID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_BankAccount_CurrencyID",
+                schema: "Accounts",
                 table: "BankAccount",
                 column: "CurrencyID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BankAccount_OwnerID",
+                schema: "Accounts",
                 table: "BankAccount",
                 column: "OwnerID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BankAccountTransaction_AuditID",
+                schema: "Accounts",
                 table: "BankAccountTransaction",
                 column: "AuditID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Budget_AuditID",
+                schema: "Budget",
                 table: "Budget",
                 column: "AuditID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BudgetEntry_AuditID",
+                schema: "Budget",
                 table: "BudgetEntry",
                 column: "AuditID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Company_AuditID",
+                schema: "Core",
                 table: "Company",
                 column: "AuditID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Company_UserProfileID",
+                schema: "Core",
                 table: "Company",
                 column: "UserProfileID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contact_AuditID",
+                schema: "Contacts",
                 table: "Contact",
                 column: "AuditID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Document_AuditID",
+                schema: "Documents",
                 table: "Document",
                 column: "AuditID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Owner_PersonalDetailsID",
-                table: "Owner",
-                column: "PersonalDetailsID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Owner_CompanyID_PersonalDetailsID",
+                schema: "Core",
                 table: "Owner",
                 columns: new[] { "CompanyID", "PersonalDetailsID" },
                 unique: true,
                 filter: "[CompanyID] IS NOT NULL AND [PersonalDetailsID] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Owner_PersonalDetailsID",
+                schema: "Core",
+                table: "Owner",
+                column: "PersonalDetailsID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Payee_AuditID",
+                schema: "Accounts",
                 table: "Payee",
                 column: "AuditID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Permission_PermissionKey",
+                schema: "Core",
                 table: "Permission",
                 column: "PermissionKey",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersonalDetails_AuditID",
+                schema: "Core",
                 table: "PersonalDetails",
                 column: "AuditID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_PersonalDetails_UserProfileID",
+                schema: "Core",
                 table: "PersonalDetails",
                 column: "UserProfileID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Setting_SettingKey",
+                schema: "Core",
                 table: "Setting",
                 column: "SettingKey",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserProfile_AuditID",
+                schema: "Core",
                 table: "UserProfile",
                 column: "AuditID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserProfile_SignOn",
+                schema: "Core",
                 table: "UserProfile",
                 column: "SignOn",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserProfilePermission_PermissionID",
+                schema: "Core",
                 table: "UserProfilePermission",
                 column: "PermissionID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserProfilePermission_UserProfileID_PermissionID",
+                schema: "Core",
                 table: "UserProfilePermission",
                 columns: new[] { "UserProfileID", "PermissionID" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserProfileSetting_SettingID",
+                schema: "Core",
                 table: "UserProfileSetting",
                 column: "SettingID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserProfileSetting_UserProfileID_SettingID",
+                schema: "Core",
                 table: "UserProfileSetting",
                 columns: new[] { "UserProfileID", "SettingID" },
                 unique: true);
@@ -629,68 +731,92 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Address");
+                name: "Address",
+                schema: "Contacts");
 
             migrationBuilder.DropTable(
-                name: "Asset");
+                name: "Asset",
+                schema: "AssetRegister");
 
             migrationBuilder.DropTable(
-                name: "BankAccount");
+                name: "Bank",
+                schema: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "BankAccountTransaction");
+                name: "BankAccount",
+                schema: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "BankAccountType");
+                name: "BankAccountTransaction",
+                schema: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "Budget");
+                name: "BankAccountType",
+                schema: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "BudgetEntry");
+                name: "Budget",
+                schema: "Budget");
 
             migrationBuilder.DropTable(
-                name: "Contact");
+                name: "BudgetEntry",
+                schema: "Budget");
 
             migrationBuilder.DropTable(
-                name: "ContactAddress");
+                name: "Contact",
+                schema: "Contacts");
 
             migrationBuilder.DropTable(
-                name: "Document");
+                name: "ContactAddress",
+                schema: "Contacts");
 
             migrationBuilder.DropTable(
-                name: "Payee");
+                name: "Document",
+                schema: "Documents");
 
             migrationBuilder.DropTable(
-                name: "UserProfilePermission");
+                name: "Payee",
+                schema: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "UserProfileSetting");
+                name: "UserProfilePermission",
+                schema: "Core");
 
             migrationBuilder.DropTable(
-                name: "Currency");
+                name: "UserProfileSetting",
+                schema: "Core");
 
             migrationBuilder.DropTable(
-                name: "Owner");
+                name: "Currency",
+                schema: "Core");
 
             migrationBuilder.DropTable(
-                name: "Permission");
+                name: "Owner",
+                schema: "Core");
 
             migrationBuilder.DropTable(
-                name: "Setting");
+                name: "Permission",
+                schema: "Core");
 
             migrationBuilder.DropTable(
-                name: "Company");
+                name: "Setting",
+                schema: "Core");
 
             migrationBuilder.DropTable(
-                name: "PersonalDetails");
+                name: "Company",
+                schema: "Core");
 
             migrationBuilder.DropTable(
-                name: "UserProfile");
+                name: "PersonalDetails",
+                schema: "Core");
 
             migrationBuilder.DropTable(
-                name: "Audit");
+                name: "UserProfile",
+                schema: "Core");
+
+            migrationBuilder.DropTable(
+                name: "Audit",
+                schema: "Core");
         }
     }
 }
-#pragma warning restore IDE0053 // Use expression body for lambda expressions

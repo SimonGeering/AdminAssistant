@@ -40,24 +40,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" Version="3.0.0" />
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.0.1" />
     <PackageReference Include="coverlet.msbuild" Version="2.9.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="FluentValidation" Version="9.2.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0-rc.1.*" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0-rc.1.*" />
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.0-rc.1.*" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0-preview-20200812-03" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-rc.1.*" />
-    <PackageReference Include="Moq" Version="4.14.5" />
-    <PackageReference Include="MockQueryable.Moq" Version="5.0.0-preview.7" />
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="5.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
+    <PackageReference Include="Moq" Version="4.15.2" />
+    <PackageReference Include="MockQueryable.Moq" Version="5.0.0" />
     <PackageReference Include="ObjectCloner.Extensions" Version="2.0.1" />
     <PackageReference Include="Respawn" Version="3.3.0" />
     <PackageReference Include="xunit" Version="2.4.1" />

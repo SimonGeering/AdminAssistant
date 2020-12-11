@@ -29,7 +29,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
                 .Returns(() =>
                 {
                     var result = bankAccount.DeepClone();
-                    result.BankAccountID = 30;
+                    result = result with { BankAccountID = 30 };
                     return Task.FromResult(result);
                 });
 

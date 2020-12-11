@@ -17,7 +17,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.0-preview.8.20407.4");
+                .HasAnnotation("ProductVersion", "5.0.0-rc.1.20451.13");
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountEntity", b =>
                 {
@@ -511,7 +511,6 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("PersonalDetailsID")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("OwnerID");
@@ -715,6 +714,12 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("OwnerID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
+
+                    b.Navigation("Currency");
+
+                    b.Navigation("Owner");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTransactionEntity", b =>
@@ -724,6 +729,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AuditID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.PayeeEntity", b =>
@@ -733,6 +740,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AuditID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister.AssetEntity", b =>
@@ -742,6 +751,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister.AssetEntity", "AuditID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Budget.BudgetEntity", b =>
@@ -751,6 +762,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AuditID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Budget.BudgetEntryEntity", b =>
@@ -760,6 +773,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AuditID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.AddressEntity", b =>
@@ -769,6 +784,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.AddressEntity", "AuditID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.ContactEntity", b =>
@@ -778,6 +795,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AuditID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CompanyEntity", b =>
@@ -793,6 +812,10 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("UserProfileID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
+
+                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.OwnerEntity", b =>
@@ -805,8 +828,11 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     b.HasOne("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PersonalDetailsEntity", "PersonalDetails")
                         .WithMany("Owns")
                         .HasForeignKey("PersonalDetailsID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Company");
+
+                    b.Navigation("PersonalDetails");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PersonalDetailsEntity", b =>
@@ -822,6 +848,10 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PersonalDetailsEntity", "UserProfileID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
+
+                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfileEntity", b =>
@@ -831,6 +861,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfileEntity", "AuditID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfilePermissionEntity", b =>
@@ -846,6 +878,10 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("UserProfileID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfileSettingEntity", b =>
@@ -861,6 +897,10 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("UserProfileID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Setting");
+
+                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Documents.DocumentEntity", b =>
@@ -870,6 +910,66 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                         .HasForeignKey("AuditID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Audit");
+                });
+
+            modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.AuditEntity", b =>
+                {
+                    b.Navigation("Address")
+                        .IsRequired();
+
+                    b.Navigation("Asset")
+                        .IsRequired();
+
+                    b.Navigation("BankAccount")
+                        .IsRequired();
+
+                    b.Navigation("Company")
+                        .IsRequired();
+
+                    b.Navigation("PersonalDetails")
+                        .IsRequired();
+
+                    b.Navigation("UserProfile")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CompanyEntity", b =>
+                {
+                    b.Navigation("Owns");
+                });
+
+            modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.OwnerEntity", b =>
+                {
+                    b.Navigation("BankAccounts");
+                });
+
+            modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PermissionEntity", b =>
+                {
+                    b.Navigation("UserProfilePermissions");
+                });
+
+            modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PersonalDetailsEntity", b =>
+                {
+                    b.Navigation("Owns");
+                });
+
+            modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.SettingEntity", b =>
+                {
+                    b.Navigation("UserProfileSettings");
+                });
+
+            modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfileEntity", b =>
+                {
+                    b.Navigation("Companies");
+
+                    b.Navigation("Permissions");
+
+                    b.Navigation("PersonalDetails")
+                        .IsRequired();
+
+                    b.Navigation("Settings");
                 });
 #pragma warning restore 612, 618
         }

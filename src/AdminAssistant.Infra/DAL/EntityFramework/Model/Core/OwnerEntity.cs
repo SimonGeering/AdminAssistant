@@ -10,7 +10,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
         public int? PersonalDetailsID { get; set; }
 
         public CompanyEntity Company { get; set; } = null!;
-        public PersonalDetailsEntity PersonalDetails { get; internal set; } = null!;
+        public PersonalDetailsEntity PersonalDetails { get; set; } = null!;
         public IList<BankAccountEntity> BankAccounts { get; internal set; } = new List<BankAccountEntity>();
     }
 }

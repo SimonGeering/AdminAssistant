@@ -30,9 +30,22 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
             var entity = Mapper.Map<BankAccountEntity>(domainObjectToSave);
 
             if (base.IsNew(domainObjectToSave))
+            {
+                entity.Audit = new EntityFramework.Model.Core.AuditEntity()
+                {
+                    CreatedBy = UserContextProvider.GetCurrentUser().SignOn,
+                    CreatedOn = DateTimeProvider.UtcNow
+                };
                 DbContext.BankAccounts.Add(entity);
+            }
             else
+            {
+                entity.Audit = DbContext.AuditTrail.Single(x => x.AuditID == entity.AuditID);
+                entity.Audit.UpdatedBy = UserContextProvider.GetCurrentUser().SignOn;
+                entity.Audit.UpdatedOn = DateTimeProvider.UtcNow;
+
                 DbContext.BankAccounts.Update(entity);
+            }
 
             await DbContext.SaveChangesAsync().ConfigureAwait(false);
 

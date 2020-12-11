@@ -2,7 +2,7 @@ using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.DomainModel.Modules.BudgetModule
 {
-    public class Budget : IDatabasePersistable
+    public record Budget : IDatabasePersistable
     {
         public const int BudgetNameMaxLength = Constants.NameMaxLength;
 
