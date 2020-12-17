@@ -1,9 +1,8 @@
-using System;
 using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.DomainModel.Modules.DocumentsModule
 {
-    public class Document : IDatabasePersistable
+    public record Document : IDatabasePersistable
     {
         public const int FileNameMaxLength = 255;
 
