@@ -6,22 +6,27 @@ namespace AdminAssistant.DomainModel.Modules.CalendarModule.Builders
         IReminderBuilder WithTestData(int reminderID = Constants.UnknownRecordID);
         IReminderBuilder WithReminderName(string reminderName);
     }
-    internal class ReminderBuilder : Reminder, IReminderBuilder
+    internal class ReminderBuilder : IReminderBuilder
     {
+        private Reminder _reminder = new Reminder();
+
         public static Reminder Default(IReminderBuilder builder) => builder.Build();
         public static Reminder Default(ReminderBuilder builder) => builder.Build();
 
-        public Reminder Build() => this;
+        public Reminder Build() => _reminder;
 
         public IReminderBuilder WithTestData(int reminderID = Constants.UnknownRecordID)
         {
-            ReminderID = reminderID;
-            ReminderName = "Do something important";
+            _reminder = _reminder with
+            {
+                ReminderID = reminderID,
+                ReminderName = "Do something important"
+            };
             return this;
         }
         public IReminderBuilder WithReminderName(string reminderName)
         {
-            ReminderName = reminderName;
+            _reminder = _reminder with { ReminderName = reminderName };
             return this;
         }
     }
