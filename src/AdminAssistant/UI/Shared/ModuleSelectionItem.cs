@@ -12,6 +12,7 @@ namespace AdminAssistant.UI.Shared
             StyleClass = string.Empty;
             return ;
         }
+        public string ID => Module.ToString();
         public ModuleEnum Module { get; set; }
         public string Tag { get; set; }
 
