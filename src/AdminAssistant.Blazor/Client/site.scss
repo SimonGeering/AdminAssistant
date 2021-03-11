@@ -17,6 +17,7 @@ $h3-font-size: 1.5rem !default; // template uses 2rem
 
 @import './Modules/AccountsModule/accounts.scss';
 
+
 #blazor-error-ui {
   background: lightyellow;
   bottom: 0;
@@ -77,12 +78,12 @@ $h3-font-size: 1.5rem !default; // template uses 2rem
         .card-body {
           padding: 0px;
           //padding-left: 0px;
-          .cl-mode-selection {
-            //.ui-dropdown {
-            .nav-item {
-              //padding:
-            }
-          }
+          // .cl-mode-selection {
+          //   //.ui-dropdown {
+          //   .nav-item {
+          //     //padding:
+          //   }
+          // }
 
           .main-menu {
 
