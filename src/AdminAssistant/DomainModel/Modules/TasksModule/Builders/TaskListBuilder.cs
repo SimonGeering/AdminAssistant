@@ -6,22 +6,27 @@ namespace AdminAssistant.DomainModel.Modules.TasksModule.Builders
         ITaskListBuilder WithTestData(int taskListID = Constants.UnknownRecordID);
         ITaskListBuilder WithTaskListName(string taskListName);
     }
-    internal class TaskListBuilder : TaskList, ITaskListBuilder
+    internal class TaskListBuilder : ITaskListBuilder
     {
+        private TaskList _taskList = new TaskList();
+
         public static TaskList Default(ITaskListBuilder builder) => builder.Build();
         public static TaskList Default(TaskListBuilder builder) => builder.Build();
 
-        public TaskList Build() => this;
+        public TaskList Build() => _taskList;
 
         public ITaskListBuilder WithTestData(int taskListID = Constants.UnknownRecordID)
         {
-            TaskListID = taskListID;
-            TaskListName = "My Task List";
+            _taskList = _taskList with
+            {
+                TaskListID = taskListID,
+                TaskListName = "My Task List"
+            };
             return this;
         }
         public ITaskListBuilder WithTaskListName(string taskListName)
         {
-            TaskListName = taskListName;
+            _taskList = _taskList with { TaskListName = taskListName };
             return this;
         }
     }

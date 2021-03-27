@@ -2,7 +2,7 @@ using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.DomainModel.Modules.MailModule
 {
-    public class MailMessage : IDatabasePersistable
+    public record MailMessage : IDatabasePersistable
     {
         public const int SubjectNameMaxLength = Constants.DescriptionMaxLength;
 

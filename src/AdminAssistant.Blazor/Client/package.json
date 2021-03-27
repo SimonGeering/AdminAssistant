@@ -2,7 +2,7 @@
   "name": "adminassistant.blazor.client",
   "version": "0.0.0",
   "scripts": {
-    "start": "node-sass ./site.scss ./wwwroot/assets/css/site.css --watch",
+    "start": "node-sass --watch ./site.scss ./wwwroot/assets/css/site.css",
     "build": "node-sass ./site.scss ./wwwroot/assets/css/site.css",
     "release": "npm run compile-styles && npm run css-minify",
     "compile-styles": "node-sass --output-style expanded --source-map true --source-map-contents true --precision 6 ./site.scss ./wwwroot/assets/css/site.css",
