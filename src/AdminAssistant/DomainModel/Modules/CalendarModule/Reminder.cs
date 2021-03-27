@@ -2,7 +2,7 @@ using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.DomainModel.Modules.CalendarModule
 {
-    public class Reminder : IDatabasePersistable
+    public record Reminder : IDatabasePersistable
     {
         public const int ReminderNameMaxLength = Constants.NameMaxLength;
 
