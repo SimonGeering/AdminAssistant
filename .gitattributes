@@ -204,6 +204,8 @@ Procfile          text
 *.*ignore         text
 
 # GitHub linguist overides
-
 docs/* -linguist-documentation
 src/AdminAssistant.Blazor/Client/Shared/Syncfusion/* linguist-vendored
+src/AdminAssistant.Blazor/Client/Shared/Syncfusion/Themes/* linguist-vendored
+fabric.scss linguist-vendored
+fabric-dark.scss linguist-vendored
