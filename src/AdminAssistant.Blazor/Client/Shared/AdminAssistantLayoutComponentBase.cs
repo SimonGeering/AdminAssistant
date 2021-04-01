@@ -21,9 +21,9 @@ namespace AdminAssistant.Blazor.Client.Shared
             vm.IsBusyChanged += (sender, isBusy) =>
             {
                 if (isBusy)
-                    SfSpinner.Show();
+                    SfSpinner.ShowAsync();
                 else
-                    SfSpinner.Hide();
+                    SfSpinner.HideAsync();
             };
             base.OnInitialized();
         }
