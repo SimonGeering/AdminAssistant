@@ -29,7 +29,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddAdminAssistantUI(this IServiceCollection services)
         {
             // Add MVVM Toolkit registrations ...
-            services.AddSingleton<IMessenger, Messenger>();
+            services.AddSingleton<IMessenger, StrongReferenceMessenger>();
 
             // Add Accounts UI ...
             services.AddSingleton<IAccountsViewModel, AccountsViewModel>();
