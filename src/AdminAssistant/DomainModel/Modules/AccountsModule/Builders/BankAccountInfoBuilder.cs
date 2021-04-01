@@ -5,21 +5,25 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
         BankAccountInfo Build();
         IBankAccountInfoBuilder WithTestData(int bankAccountInfoID = Constants.UnknownRecordID);
     }
-    internal class BankAccountInfoBuilder : BankAccountInfo, IBankAccountInfoBuilder
+    internal class BankAccountInfoBuilder : IBankAccountInfoBuilder
     {
+        private BankAccountInfo _bankAccountInfo = new BankAccountInfo();
+
         public static BankAccountInfo Default(IBankAccountInfoBuilder builder) => builder.Build();
 
-        public BankAccountInfo Build() => this;
+        public BankAccountInfo Build() => _bankAccountInfo;
 
         public IBankAccountInfoBuilder WithTestData(int bankAccountID = 0)
         {
-            BankAccountID = bankAccountID;
-            AccountName = "A valid account name";
-            CurrentBalance = 0;
-            Symbol = "GBP";
-            DecimalFormat = "2.2-2";
-            IsBudgeted = false;
-
+            _bankAccountInfo = _bankAccountInfo with 
+            {
+                BankAccountID = bankAccountID,
+                AccountName = "A valid account name",
+                CurrentBalance = 0,
+                Symbol = "GBP",
+                DecimalFormat = "2.2-2",
+                IsBudgeted = false
+            };
             return this;
         }
     }

@@ -1,9 +1,12 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.EntityFramework;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
+using AdminAssistant.Infra.Providers;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
 using AutoMapper;
@@ -61,6 +64,7 @@ namespace AdminAssistant
 
             _checkpoint = new Respawn.Checkpoint
             {
+                // Ignore system tables and anything that was populated by the EF seed data... 
                 TablesToIgnore = new[]
                 {
                     "sysdiagrams",
@@ -78,7 +82,54 @@ namespace AdminAssistant
 
         protected IServiceProvider Container { get; }
 
-        protected async Task ResetDatabaseAsync() => await _checkpoint.Reset(_connectionString).ConfigureAwait(false);
+        protected async Task ResetDatabaseAsync()
+        {
+            await _checkpoint.Reset(_connectionString).ConfigureAwait(false);
+
+            // Test Seed data ...
+            var dbContext = Container.GetRequiredService<IApplicationDbContext>();
+            var dateTimeProvider = Container.GetRequiredService<IDateTimeProvider>();
+
+            // TODO: Replace this with IUserProfileRepository when it exists ...
+            var testUserProfile = new UserProfileEntity()
+            {
+                SignOn = "TestUser",
+                Audit = GetAuditForCreate()
+            };
+            dbContext.UserProfiles.Add(testUserProfile);
+
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+
+            // TODO: Replace this with ICompanyRepository when it exists ...
+            var testCompanyOwner = new OwnerEntity()
+            {
+                Company = new CompanyEntity()
+                {
+                    Name = "ACME Corp",
+                    CompanyNumber = "12345678910",
+                    VATNumber = "zz1224324543",
+                    DateOfIncorporation = DateTime.Today,
+                    Audit = GetAuditForCreate(),
+                    UserProfile = testUserProfile
+                }
+            };
+            dbContext.Owners.Add(testCompanyOwner);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+
+            // TODO: Replace this with IPersonalDetailsRepository when it exists ...
+            var testPersonOwner = new OwnerEntity()
+            {
+                PersonalDetails = new PersonalDetailsEntity()
+                {
+                    Audit = GetAuditForCreate(),
+                    UserProfile = testUserProfile
+                }
+            };
+            dbContext.Owners.Add(testPersonOwner);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+
+            AuditEntity GetAuditForCreate() => new AuditEntity() { CreatedBy = "TestUser", CreatedOn = dateTimeProvider.UtcNow };
+        }
 
         protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
         {
@@ -90,6 +141,7 @@ namespace AdminAssistant
             });
             services.AddAutoMapper(typeof(MappingProfile));
         };
+
 
 #region IDisposable
 

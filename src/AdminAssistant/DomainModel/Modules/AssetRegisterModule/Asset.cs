@@ -2,7 +2,7 @@ using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.DomainModel.Modules.AssetRegisterModule
 {
-    public class Asset : IDatabasePersistable
+    public record Asset : IDatabasePersistable
     {
         public const int AssetNameMaxLength = Constants.NameMaxLength;
 

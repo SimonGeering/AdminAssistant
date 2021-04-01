@@ -92,12 +92,12 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
 
             modelBuilder.Entity<OwnerEntity>()
                 .HasOne(c => c.Company)
-                .WithMany(o => o.Owns)
+                .WithMany(o => o.Owns).IsRequired(false)
                 .HasForeignKey(x => x.CompanyID);
 
             modelBuilder.Entity<OwnerEntity>()
                 .HasOne(c => c.PersonalDetails)
-                .WithMany(o => o.Owns)
+                .WithMany(o => o.Owns).IsRequired(false)
                 .HasForeignKey(x => x.PersonalDetailsID);
 
             modelBuilder.Entity<OwnerEntity>()

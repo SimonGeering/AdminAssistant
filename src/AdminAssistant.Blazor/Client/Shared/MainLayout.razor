@@ -41,8 +41,8 @@
           </SfDropDownButton>
 
           <SfButton IconCss="@this.vm.Sidebar.Icon" @onclick=this.vm.OnSideBarControlButtonClick /> <br />
-          <SfMenu CssClass="dock-menu" Items="this.vm.Modules" ModelType="@typeof(ModuleSelectionItem)" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Vertical">
-            <MenuFieldSettings ItemId="@(nameof(ModuleSelectionItem.Module))" Text="@(nameof(ModuleSelectionItem.Label))" Url="@(nameof(ModuleSelectionItem.Route))" IconCss="@(nameof(ModuleSelectionItem.Icon))" />
+          <SfMenu CssClass="dock-menu" Items="this.vm.Modules" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Vertical">
+            <MenuFieldSettings ItemId="@(nameof(ModuleSelectionItem.ID))" Text="@(nameof(ModuleSelectionItem.Label))" Url="@(nameof(ModuleSelectionItem.Route))" IconCss="@(nameof(ModuleSelectionItem.Icon))" />
           </SfMenu>
         </ChildContent>
       </SfSidebar>

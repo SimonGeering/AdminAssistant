@@ -2,7 +2,7 @@ using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.DomainModel.Modules.ContactsModule
 {
-    public class Contact : IDatabasePersistable
+    public record Contact : IDatabasePersistable
     {
         public const int ContactFirstNameMaxLength = Constants.NameMaxLength;
         public const int ContactLastNameMaxLength = Constants.NameMaxLength;

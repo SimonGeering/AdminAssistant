@@ -61,7 +61,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
 
                 // TODO: Switch to call base helper extension.
                 // TODO: Hook Property changed and call refresh validation once for all properties.
-                bankAccount.AccountName = value;
+                bankAccount = bankAccount with { AccountName = value };
                 RefreshValidation();
                 OnPropertyChanged();
             }
@@ -75,7 +75,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
                 if (bankAccount.BankAccountID.Equals(value))
                     return;
 
-                bankAccount.BankAccountID = value;
+                bankAccount = bankAccount with { BankAccountID = value };
                 RefreshValidation();
                 OnPropertyChanged();
             }
@@ -89,7 +89,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
                 if (bankAccount.BankAccountTypeID.Equals(value))
                     return;
 
-                bankAccount.BankAccountTypeID = value;
+                bankAccount = bankAccount with { BankAccountTypeID = value };
                 RefreshValidation();
                 OnPropertyChanged();
             }
@@ -103,7 +103,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
                 if (bankAccount.CurrencyID.Equals(value))
                     return;
 
-                bankAccount.CurrencyID = value;
+                bankAccount = bankAccount with { CurrencyID = value };
                 RefreshValidation();
                 OnPropertyChanged();
             }
@@ -117,7 +117,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
                 if (bankAccount.IsBudgeted.Equals(value))
                     return;
 
-                bankAccount.IsBudgeted = value;
+                bankAccount = bankAccount with { IsBudgeted = value };
                 RefreshValidation();
                 OnPropertyChanged();
             }
@@ -131,7 +131,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
                 if (bankAccount.OpeningBalance.Equals(value))
                     return;
 
-                bankAccount.OpeningBalance = value;
+                bankAccount = bankAccount with { OpeningBalance = value };
                 RefreshValidation();
                 OnPropertyChanged();
             }
@@ -147,7 +147,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
                 if (bankAccount.OpenedOn.Equals(value))
                     return;
 
-                bankAccount.OpenedOn = value;
+                bankAccount = bankAccount with { OpenedOn = value };
                 RefreshValidation();
                 OnPropertyChanged();
             }
@@ -189,7 +189,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
         {
             Log.Start();
 
-            bankAccount.AccountName = accountName;
+            bankAccount = bankAccount with { AccountName = accountName };
             RefreshValidation();
             OnPropertyChanged();
 

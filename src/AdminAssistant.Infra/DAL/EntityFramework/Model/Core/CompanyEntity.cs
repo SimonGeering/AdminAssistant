@@ -13,8 +13,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
         public string VATNumber { get; set; } = string.Empty;
         public DateTime DateOfIncorporation { get; set; }
 
-        public AuditEntity Audit { get; internal set; } = null!;
-        public UserProfileEntity UserProfile { get; internal set; } = null!;
+        public AuditEntity Audit { get; set; } = null!;
+        public UserProfileEntity UserProfile { get; set; } = null!;
         public IList<OwnerEntity> Owns { get; internal set; } = new List<OwnerEntity>();
     }
 }
