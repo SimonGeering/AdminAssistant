@@ -63,6 +63,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             result.Status.Should().Be(ResultStatus.Invalid);
             result.ValidationErrors.Should().NotBeEmpty();
         }
+        // TODO: Add test for BankAccountUpdateCommand where BankAccountID not in IBankAccountRepository
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
