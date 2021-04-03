@@ -3,6 +3,7 @@ using Ardalis.GuardClauses;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using MicroElements.Swashbuckle.FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -35,6 +36,18 @@ namespace AdminAssistant.Blazor.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var configSettings = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {                
+                options.Authority = $"https://{configSettings.Auth0Authority}/";
+                options.Audience = configSettings.Auth0ApiIdentifier;
+            });
+
             services.AddMvc(opts =>
             {
                 // Define MediaType limits ...
@@ -75,7 +88,7 @@ namespace AdminAssistant.Blazor.Server
 
             services.AddAdminAssistantServerSideProviders();
             services.AddAdminAssistantServerSideDomainModel();
-            services.AddAdminAssistantServerSideInfra(_configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>());
+            services.AddAdminAssistantServerSideInfra(configSettings);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -105,9 +118,9 @@ namespace AdminAssistant.Blazor.Server
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
-
             app.UseRouting();
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
