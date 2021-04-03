@@ -52,6 +52,8 @@ namespace AdminAssistant.WebAPI.v1
         [Theory]
         [Trait("Category", "Unit")]
         [InlineData(typeof(Bank), typeof(BankResponseDto))]
+        [InlineData(typeof(BankCreateRequestDto), typeof(Bank))]
+        [InlineData(typeof(BankUpdateRequestDto), typeof(Bank))]
         [InlineData(typeof(BankAccount), typeof(BankAccountResponseDto))]
         [InlineData(typeof(BankAccountInfo), typeof(BankAccountInfoResponseDto))]
         [InlineData(typeof(BankAccountType), typeof(BankAccountTypeResponseDto))]

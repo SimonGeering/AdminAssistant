@@ -17,6 +17,58 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.AccountsModule
 {
+    public class BankController_Put_Should
+    {
+        // TODO: BankController_Put UnitTests
+    }
+
+    public class BankController_BankPost_Should
+    {
+        [Fact]
+        [Trait("Category", "Unit")]
+        public async Task Return_Status422UnprocessableEntity_Given_AnInvalidBank()
+        {
+            // Arrange
+            var validationErrors = new List<ValidationError>()
+            {
+                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+            };
+            var bank = Factory.Bank.WithTestData(10).Build();
+
+            var services = new ServiceCollection();
+            services.AddMocksOfExternalServerSideDependencies();
+
+            var mockMediator = new Mock<IMediator>();
+            mockMediator.Setup(x => x.Send(It.IsAny<BankCreateCommand>(), It.IsAny<CancellationToken>()))
+                        .Returns(Task.FromResult(Result<Bank>.Invalid(validationErrors)));
+
+            services.AddTransient((sp) => mockMediator.Object);
+            services.AddTransient<BankController>();
+
+            var container = services.BuildServiceProvider();
+
+            var mapper = container.GetRequiredService<IMapper>();
+            var bankRequest = mapper.Map<BankCreateRequestDto>(bank);
+
+            // Act
+            var response = await container.GetRequiredService<BankController>().BankPost(bankRequest).ConfigureAwait(false);
+
+            // Assert
+            response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+            response.Value.Should().BeNull();
+
+            var result = (UnprocessableEntityObjectResult)response.Result;
+            var errors = (SerializableError)result.Value;
+
+            foreach (var expectedErrorDetails in validationErrors)
+            {
+                var messages = (string[])errors[expectedErrorDetails.Identifier];
+                messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            }
+        }
+    }
+
     public class BankController_BankGetById_Should
     {
         [Fact]
