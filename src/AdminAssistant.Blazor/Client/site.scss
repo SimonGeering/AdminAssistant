@@ -1,5 +1,5 @@
 // Fonts
-//$font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-size-base: 0.875rem !default; // template uses 0.9375
 $h1-font-size: 2.5rem !default;// template uses 3rem
 $h2-font-size: 2rem !default;// template uses 2.5rem
@@ -18,65 +18,65 @@ $h3-font-size: 1.5rem !default; // template uses 2rem
 @import './Modules/AccountsModule/accounts.scss';
 
 
-#blazor-error-ui {
-  background: lightyellow;
-  bottom: 0;
-  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
-  display: none;
-  left: 0;
-  padding: 0.6rem 1.25rem 0.7rem 1.25rem;
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-}
-#blazor-error-ui .dismiss {
-  cursor: pointer;
-  position: absolute;
-  right: 0.75rem;
-  top: 0.5rem;
-}
+//#blazor-error-ui {
+//  background: lightyellow;
+//  bottom: 0;
+//  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+//  display: none;
+//  left: 0;
+//  padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+//  position: fixed;
+//  width: 100%;
+//  z-index: 1000;
+//}
+//#blazor-error-ui .dismiss {
+//  cursor: pointer;
+//  position: absolute;
+//  right: 0.75rem;
+//  top: 0.5rem;
+//}
 
-.cl-app {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+//.cl-app {
+//  display: flex;
+//  flex-direction: column;
+//  min-height: 100vh;
 
-  .cl-main {
-    display: inherit;
-    flex-direction: row;
-    flex-grow: 1;
+//  .cl-main {
+//    display: inherit;
+//    flex-direction: row;
+//    flex-grow: 1;
 
-    .cl-sidebar {
-      display: inherit;
-      height: 100%;
-      padding-top: $cl-padding;
-      padding-left: $cl-padding;
+//    .cl-sidebar {
+//      display: inherit;
+//      height: 100%;
+//      padding-top: $cl-padding;
+//      padding-left: $cl-padding;
       //.ui-card {
-      .card {
+//      .card {
         //.ui-card-header {
-        .card-header {
-          padding: 0px 0px 2px 0px;
+//        .card-header {
+//          padding: 0px 0px 2px 0px;
 
-          .cl-sidebar-control {
-            width: 100%;
-            position: relative;
-            height: 22px;
+//          .cl-sidebar-control {
+//            width: 100%;
+//            position: relative;
+//            height: 22px;
             //.ui-button {
-            .btn {
-              position: absolute;
-              top: -0px;
-              right: -0px;
-              width: 24px;
-              height: 22px;
-              padding: 0px;
-              border-bottom-right-radius: 0;
-              border-top-left-radius: 0;
-            }
-          }
-        }
+//            .btn {
+//              position: absolute;
+//              top: -0px;
+//              right: -0px;
+//              width: 24px;
+//              height: 22px;
+//              padding: 0px;
+//              border-bottom-right-radius: 0;
+//              border-top-left-radius: 0;
+//            }
+//          }
+//        }
         //.ui-card-body {
-        .card-body {
-          padding: 0px;
+//        .card-body {
+//          padding: 0px;
           //padding-left: 0px;
           // .cl-mode-selection {
           //   //.ui-dropdown {
@@ -85,66 +85,66 @@ $h3-font-size: 1.5rem !default; // template uses 2rem
           //   }
           // }
 
-          .main-menu {
+//          .main-menu {
 
-            .ui-menu {
-              border-top: none;
-              border-top-right-radius: 0;
-              border-top-left-radius: 0;
-              border-left-style: none;
-              border-bottom-left-radius: 0;
-              width: auto;
-            }
-          }
-        }
-      }
-    }
+//            .ui-menu {
+//              border-top: none;
+//              border-top-right-radius: 0;
+//              border-top-left-radius: 0;
+//              border-left-style: none;
+//              border-bottom-left-radius: 0;
+//              width: auto;
+//            }
+//          }
+//        }
+//      }
+//    }
 
-    $contractedWidth: 74px;
-    $expandedWidth: auto;
+//    $contractedWidth: 74px;
+//    $expandedWidth: auto;
 
-    .cl-navbar-contracted {
+//    .cl-navbar-contracted {
 
-      @extend .cl-sidebar;
-      min-width: $contractedWidth;
-      max-width: $contractedWidth;
-    }
+//      @extend .cl-sidebar;
+//      min-width: $contractedWidth;
+//      max-width: $contractedWidth;
+//    }
 
-    .cl-navbar-expanded {
+//    .cl-navbar-expanded {
 
-      @extend .cl-sidebar;
-      min-width: $expandedWidth;
-      max-width: $expandedWidth;
-    }
+//      @extend .cl-sidebar;
+//      min-width: $expandedWidth;
+//      max-width: $expandedWidth;
+//    }
 
-    .cl-outlet {
-      flex-grow: 1;
-      padding-top: $cl-padding;
-      padding-left: $cl-padding;
-      padding-right: $cl-padding;
+//    .cl-outlet {
+//      flex-grow: 1;
+//      padding-top: $cl-padding;
+//      padding-left: $cl-padding;
+//      padding-right: $cl-padding;
 
-      .cl-breadcrumb {
-        margin-top: 1px;
-        padding: 0px;
-        margin-right: $cl-padding-small;
-        margin-left: $cl-padding-small;
+//      .cl-breadcrumb {
+//        margin-top: 1px;
+//        padding: 0px;
+//        margin-right: $cl-padding-small;
+//        margin-left: $cl-padding-small;
 
-        .ui-breadcrumb {
-          padding: 0px;
-          border-width: 1px;
+//        .ui-breadcrumb {
+//          padding: 0px;
+//          border-width: 1px;
 
-          .ui-widget {
-            font-size: 12px;
-          }
-        }
-      }
-    }
-  }
-  .cl-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 100%;
-  }
-}
+//          .ui-widget {
+//            font-size: 12px;
+//          }
+//        }
+//      }
+//    }
+//  }
+//  .cl-footer {
+//    display: flex;
+//    align-items: center;
+//    justify-content: center;
+//    height: 40px;
+//    width: 100%;
+//  }
+//}
