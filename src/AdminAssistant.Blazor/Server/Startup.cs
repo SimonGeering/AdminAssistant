@@ -146,6 +146,7 @@ namespace AdminAssistant.Blazor.Server
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", WebAPITitle);
                 c.RoutePrefix = "api-docs";
                 c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
+                // Additional OAuth settings (See https://github.com/swagger-api/swagger-ui/blob/v3.10.0/docs/usage/oauth2.md)
                 c.OAuthClientId(_configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>().Auth0ClientId);
             });
             
