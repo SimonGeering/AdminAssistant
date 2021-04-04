@@ -366,3 +366,4 @@ MigrationBackup/
 **/lcov.info
 /src/.cr/personal
 /src/global.json
+/ux

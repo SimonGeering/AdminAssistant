@@ -128,7 +128,7 @@ namespace AdminAssistant
             dbContext.Owners.Add(testPersonOwner);
             await dbContext.SaveChangesAsync().ConfigureAwait(false);
 
-            AuditEntity GetAuditForCreate() => new AuditEntity() { CreatedBy = "TestUser", CreatedOn = dateTimeProvider.UtcNow };
+            AuditEntity GetAuditForCreate() => new() { CreatedBy = "TestUser", CreatedOn = dateTimeProvider.UtcNow };
         }
 
         protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
