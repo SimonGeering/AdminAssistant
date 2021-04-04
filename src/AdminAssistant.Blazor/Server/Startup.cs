@@ -41,14 +41,15 @@ namespace AdminAssistant.Blazor.Server
         {
             var configSettings = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
 
-            services.AddAuthentication(options =>
+            services.AddAuthentication(opts =>
             {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {                
-                options.Authority = $"https://{configSettings.Auth0Authority}/";
-                options.Audience = configSettings.Auth0ApiIdentifier;
+                opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(opts =>
+            {
+                opts.Authority = $"https://{configSettings.Auth0Authority}/";
+                opts.Audience = configSettings.Auth0ApiIdentifier;
             });
 
             services.AddMvc(opts =>
@@ -58,7 +59,10 @@ namespace AdminAssistant.Blazor.Server
                 opts.Filters.Add(new ConsumesAttribute("application/json")); // Request limit
                 opts.ReturnHttpNotAcceptable = true; // Force client to only request media types based on the above limits.
             });
-            services.AddResponseCompression(opts => opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" }));
+            services.AddResponseCompression(opts =>
+            {
+                opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
+            });
 
             services.AddHttpContextAccessor();
             services.AddControllers(opts =>
