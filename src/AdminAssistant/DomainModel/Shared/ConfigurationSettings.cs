@@ -6,5 +6,6 @@ namespace AdminAssistant.DomainModel.Shared
         public string ConnectionString { get; set; } = string.Empty;
         public string Auth0Authority { get; set; } = string.Empty;
         public string Auth0ApiIdentifier { get; set; } = string.Empty;
+        public string Auth0ClientId { get; set; } = string.Empty;
     }
 }
