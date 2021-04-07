@@ -60,7 +60,6 @@ namespace AdminAssistant.WebAPI.v1
         [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionResponseDto))]
         [InlineData(typeof(BankAccountCreateRequestDto), typeof(BankAccount))]
         [InlineData(typeof(BankAccountUpdateRequestDto), typeof(BankAccount))]
-
         public void ShouldSupportAccountsModuleMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange
@@ -136,6 +135,8 @@ namespace AdminAssistant.WebAPI.v1
         [Theory]
         [Trait("Category", "Unit")]
         [InlineData(typeof(Currency), typeof(CurrencyResponseDto))]
+        [InlineData(typeof(CurrencyCreateRequestDto), typeof(Currency))]
+        [InlineData(typeof(CurrencyUpdateRequestDto), typeof(Currency))]
         public void ShouldSupportCoreModuleMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange
