@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
+using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
@@ -54,7 +55,22 @@ namespace AdminAssistant
                     // TODO: Configure production logging.
 #endif
                 })
-                .ConfigureAppConfiguration((hostingContext, config) => config.AddUserSecrets(Assembly.GetExecutingAssembly()))
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddUserSecrets(Assembly.GetExecutingAssembly());
+
+                    // Get config from UserSecrets so we can refer to it when setting up Test config setting overrides below ...
+                    var baseConfig = config.Build();
+
+                    // Switch out the DB for a Test DB by convention - assumes a '_TestDB' suffix to prod DB name ...
+                    var connectionStringFromUserSecrets = baseConfig.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>().ConnectionString;
+                    // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
+                    var testConnectionString = connectionStringFromUserSecrets.Replace("Initial Catalog=AdminAssistant", "Initial Catalog=AdminAssistant_Test", StringComparison.InvariantCulture);
+                    config.AddInMemoryCollection(new Dictionary<string, string>
+                    {
+                        [$"{nameof(ConfigurationSettings)}:{nameof(ConfigurationSettings.ConnectionString)}"] = testConnectionString
+                    });
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                  {
                      webBuilder.UseStartup<Blazor.Server.Startup>();
@@ -63,6 +79,8 @@ namespace AdminAssistant
                  });
 
             _testServer = hostBuilder.Start();
+
+            // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
             _connectionString = _testServer.Services.GetRequiredService<IApplicationDbContext>().ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
 
             _checkpoint = new Respawn.Checkpoint
