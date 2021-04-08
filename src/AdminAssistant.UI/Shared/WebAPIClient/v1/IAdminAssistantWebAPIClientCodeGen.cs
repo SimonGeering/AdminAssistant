@@ -180,6 +180,28 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ContactResponseDto>> GetContactAsync(System.Threading.CancellationToken cancellationToken);
     
+        /// <summary>Update an existing Currency.</summary>
+        /// <returns>Ok - returns the updated CurrencyResponseDto</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<CurrencyResponseDto> PutCurrencyAsync(CurrencyUpdateRequestDto? body);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Update an existing Currency.</summary>
+        /// <returns>Ok - returns the updated CurrencyResponseDto</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<CurrencyResponseDto> PutCurrencyAsync(CurrencyUpdateRequestDto? body, System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Creates a new Currency.</summary>
+        /// <returns>Created - returns the created currency with its assigned newly ID.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<CurrencyResponseDto> PostCurrencyAsync(CurrencyCreateRequestDto? body);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Creates a new Currency.</summary>
+        /// <returns>Created - returns the created currency with its assigned newly ID.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<CurrencyResponseDto> PostCurrencyAsync(CurrencyCreateRequestDto? body, System.Threading.CancellationToken cancellationToken);
+    
         /// <summary>Lists all currencies supported by the API wherever a CurrencyID can be provided.</summary>
         /// <returns>Ok - returns a list of CurrencyResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
@@ -190,6 +212,19 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
         /// <returns>Ok - returns a list of CurrencyResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CurrencyResponseDto>> GetCurrencyAsync(System.Threading.CancellationToken cancellationToken);
+    
+        /// <summary>Gets the Currency with the given ID.</summary>
+        /// <param name="currencyID">The ID of the Currency to be returned.</param>
+        /// <returns>OK - returns the Bank requested.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<CurrencyResponseDto> GetCurrencyByIdAsync(int currencyID);
+    
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <summary>Gets the Currency with the given ID.</summary>
+        /// <param name="currencyID">The ID of the Currency to be returned.</param>
+        /// <returns>OK - returns the Bank requested.</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<CurrencyResponseDto> GetCurrencyByIdAsync(int currencyID, System.Threading.CancellationToken cancellationToken);
     
         /// <summary>Lists all documents.</summary>
         /// <returns>Ok - returns a list of DocumentResponseDto</returns>
@@ -481,8 +516,40 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
     }
     
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.3.11.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class CurrencyCreateRequestDto 
+    {
+        /// <summary>The Currency identifier.</summary>
+        [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? CurrencyID { get; set; }= default!;
+    
+        [Newtonsoft.Json.JsonProperty("symbol", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Symbol { get; set; }= default!;
+    
+        [Newtonsoft.Json.JsonProperty("decimalFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? DecimalFormat { get; set; }= default!;
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.3.11.0 (Newtonsoft.Json v12.0.0.0)")]
     public partial class CurrencyResponseDto 
     {
+        [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? CurrencyID { get; set; }= default!;
+    
+        [Newtonsoft.Json.JsonProperty("symbol", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? Symbol { get; set; }= default!;
+    
+        [Newtonsoft.Json.JsonProperty("decimalFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string? DecimalFormat { get; set; }= default!;
+    
+    
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.3.11.0 (Newtonsoft.Json v12.0.0.0)")]
+    public partial class CurrencyUpdateRequestDto 
+    {
+        /// <summary>The Currency identifier.</summary>
         [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrencyID { get; set; }= default!;
     
