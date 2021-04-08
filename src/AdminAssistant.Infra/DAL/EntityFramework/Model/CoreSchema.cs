@@ -6,6 +6,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
 {
     public static class CoreSchema
     {
+        public const string DefaultCurrencyDecimalFormat = "2.2-2";
+
         private const string Name = "Core";
 
         /// <summary>Sets up static lookup data for the core module.</summary>
@@ -18,15 +20,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
         /// <returns>Out of the box default currencies.</returns>
         public static CurrencyEntity[] GetCurrencySeedData(bool includeIDs = false)
         {
-            const string defaultDecimalFormat = "2.2-2";
-
-            var GBP = new CurrencyEntity { Symbol = "GBP", DecimalFormat = defaultDecimalFormat };
+            var GBP = new CurrencyEntity { Symbol = "GBP", DecimalFormat = DefaultCurrencyDecimalFormat };
             if (includeIDs) GBP.CurrencyID = 1;
 
-            var EUR = new CurrencyEntity { Symbol = "EUR", DecimalFormat = defaultDecimalFormat };
+            var EUR = new CurrencyEntity { Symbol = "EUR", DecimalFormat = DefaultCurrencyDecimalFormat };
             if (includeIDs) EUR.CurrencyID = 2;
 
-            var USD = new CurrencyEntity { Symbol = "USD", DecimalFormat = defaultDecimalFormat };
+            var USD = new CurrencyEntity { Symbol = "USD", DecimalFormat = DefaultCurrencyDecimalFormat };
             if (includeIDs) USD.CurrencyID = 3;
 
             return new CurrencyEntity[] { GBP, EUR, USD };
