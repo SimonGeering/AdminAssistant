@@ -4,9 +4,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model
 {
-    internal class AccountsSchema
+    public static class AccountsSchema
     {
         private const string Name = "Accounts";
+
+        /// <summary>Sets up static lookup data for the accounts module.</summary>
+        /// <remarks>
+        /// This is used both in the EF Core migrations for the prod DB as well as functional acceptance and integration
+        /// tests. In the latter case, it simulate migrations having been run, because the `Respawn` NuGet package
+        /// clears down the DB to blank between each test execution.
+        /// </remarks>
+        /// <param name="includeIDs">`True` for EF Core migration code otherwise `False`.</param>
+        /// <returns>Out of the box default bank account types.</returns>
+        public static BankAccountTypeEntity[] GetBankAccountTypesSeedData(bool includeIDs = false)
+        {
+            var currentAccount = new BankAccountTypeEntity() { Description = "Current Account", AllowCompany = true, AllowPersonal = true };
+            if (includeIDs) currentAccount.BankAccountTypeID = 1;
+
+            var savingsAccount = new BankAccountTypeEntity() { Description = "Savings Account", AllowCompany = true, AllowPersonal = true };
+            if (includeIDs) savingsAccount.BankAccountTypeID = 2;
+
+            return new BankAccountTypeEntity[]
+            {
+                currentAccount,
+                savingsAccount
+            };
+        }
 
         internal static void OnModelCreating(ModelBuilder builder)
         {
@@ -53,12 +76,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model
             builder.Entity<BankAccountTypeEntity>().Property(x => x.AllowCompany).IsRequired().HasDefaultValue(false);
             builder.Entity<BankAccountTypeEntity>().Property(x => x.IsDeprecated).IsRequired().HasDefaultValue(false);
 
-            builder.Entity<BankAccountTypeEntity>().HasData(new BankAccountTypeEntity[]
-            {
-                    new BankAccountTypeEntity() { BankAccountTypeID = 1, Description = "Current Account", AllowCompany = true, AllowPersonal = true },
-                    new BankAccountTypeEntity() { BankAccountTypeID = 2, Description = "Savings Account", AllowCompany = true, AllowPersonal = true },
-            });
-        }
+            builder.Entity<BankAccountTypeEntity>().HasData(GetBankAccountTypesSeedData(true));
+        }        
 
         private static void Payee_OnModelCreating(ModelBuilder builder)
         {

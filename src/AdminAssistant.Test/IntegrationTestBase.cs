@@ -1,10 +1,13 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.EntityFramework;
+using AdminAssistant.Infra.DAL.EntityFramework.Model;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.Providers;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
@@ -69,9 +72,7 @@ namespace AdminAssistant
                 {
                     "sysdiagrams",
                     "__EFMigrationsHistory",
-                    "tblObjectType",
-                    "Currency",
-                    "BankAccountType"
+                    "tblObjectType"
                 },
                 WithReseed = true
             };
@@ -90,45 +91,11 @@ namespace AdminAssistant
             var dbContext = Container.GetRequiredService<IApplicationDbContext>();
             var dateTimeProvider = Container.GetRequiredService<IDateTimeProvider>();
 
-            // TODO: Replace this with IUserProfileRepository when it exists ...
-            var testUserProfile = new UserProfileEntity()
-            {
-                SignOn = "TestUser",
-                Audit = GetAuditForCreate()
-            };
-            dbContext.UserProfiles.Add(testUserProfile);
-
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
-
-            // TODO: Replace this with ICompanyRepository when it exists ...
-            var testCompanyOwner = new OwnerEntity()
-            {
-                Company = new CompanyEntity()
-                {
-                    Name = "ACME Corp",
-                    CompanyNumber = "12345678910",
-                    VATNumber = "zz1224324543",
-                    DateOfIncorporation = DateTime.Today,
-                    Audit = GetAuditForCreate(),
-                    UserProfile = testUserProfile
-                }
-            };
-            dbContext.Owners.Add(testCompanyOwner);
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
-
-            // TODO: Replace this with IPersonalDetailsRepository when it exists ...
-            var testPersonOwner = new OwnerEntity()
-            {
-                PersonalDetails = new PersonalDetailsEntity()
-                {
-                    Audit = GetAuditForCreate(),
-                    UserProfile = testUserProfile
-                }
-            };
-            dbContext.Owners.Add(testPersonOwner);
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
-
-            AuditEntity GetAuditForCreate() => new() { CreatedBy = "TestUser", CreatedOn = dateTimeProvider.UtcNow };
+            var testBankAccountTypes = await SeedBankAccountTypeTestData(dbContext);
+            var testCurrencies = await SeedCurrencyTestData(dbContext);
+            var testUserProfile = await SeedUserProfileTestData(dbContext, dateTimeProvider).ConfigureAwait(false);
+            var testCompanyOwner = await SeedCompanyOwnerTestData(dbContext, dateTimeProvider, testUserProfile).ConfigureAwait(false);
+            var testPersonalOwner = await SeedPersonalOwnerTestData(dbContext, dateTimeProvider, testUserProfile).ConfigureAwait(false);
         }
 
         protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
@@ -142,8 +109,73 @@ namespace AdminAssistant
             services.AddAutoMapper(typeof(MappingProfile));
         };
 
+        private async Task<List<BankAccountTypeEntity>> SeedBankAccountTypeTestData(IApplicationDbContext dbContext)
+        {
+            var testBankAccountTypes = AccountsSchema.GetBankAccountTypesSeedData();
+            dbContext.BankAccountTypes.AddRange(testBankAccountTypes);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testBankAccountTypes.ToList();
+        }
 
-#region IDisposable
+        private async Task<List<CurrencyEntity>> SeedCurrencyTestData(IApplicationDbContext dbContext)
+        {
+            var testCurrencies = CoreSchema.GetCurrencySeedData();
+            dbContext.Currencies.AddRange(testCurrencies);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testCurrencies.ToList();
+        }
+
+        private async Task<UserProfileEntity> SeedUserProfileTestData(IApplicationDbContext dbContext, IDateTimeProvider dateTimeProvider)
+        {
+            var testUserProfile = new UserProfileEntity()
+            {
+                SignOn = "TestUser",
+                Audit = GetAuditForCreate(dateTimeProvider)
+            };
+            dbContext.UserProfiles.Add(testUserProfile);
+
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testUserProfile;
+        }
+
+        private async Task<OwnerEntity> SeedCompanyOwnerTestData(IApplicationDbContext dbContext, IDateTimeProvider dateTimeProvider, UserProfileEntity testUserProfile)
+        {
+            var testCompanyOwner = new OwnerEntity()
+            {
+                Company = new CompanyEntity()
+                {
+                    Name = "ACME Corp",
+                    CompanyNumber = "12345678910",
+                    VATNumber = "zz1224324543",
+                    DateOfIncorporation = DateTime.Today,
+                    Audit = GetAuditForCreate(dateTimeProvider),
+                    UserProfile = testUserProfile
+                }
+            };
+            dbContext.Owners.Add(testCompanyOwner);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testCompanyOwner;
+        }
+
+        private async Task<OwnerEntity> SeedPersonalOwnerTestData(IApplicationDbContext dbContext, IDateTimeProvider dateTimeProvider, UserProfileEntity testUserProfile)
+        {
+            var testPersonalOwner = new OwnerEntity()
+            {
+                PersonalDetails = new PersonalDetailsEntity()
+                {
+                    Audit = GetAuditForCreate(dateTimeProvider),
+                    UserProfile = testUserProfile
+                }
+            };
+            dbContext.Owners.Add(testPersonalOwner);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testPersonalOwner;
+        }
+
+        private AuditEntity GetAuditForCreate(IDateTimeProvider dateTimeProvider)
+            => new() { CreatedBy = "TestUser", CreatedOn = dateTimeProvider.UtcNow };
+
+        #region IDisposable
 
         private bool disposedValue;
 

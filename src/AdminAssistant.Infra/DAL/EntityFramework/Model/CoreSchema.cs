@@ -4,9 +4,33 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
 {
-    internal class CoreSchema
+    public static class CoreSchema
     {
         private const string Name = "Core";
+
+        /// <summary>Sets up static lookup data for the core module.</summary>
+        /// <remarks>
+        /// This is used both in the EF Core migrations for the prod DB as well as functional acceptance and integration
+        /// tests. In the latter case, it simulate migrations having been run, because the `Respawn` NuGet package
+        /// clears down the DB to blank between each test execution.
+        /// </remarks>
+        /// <param name="includeIDs">`True` for EF Core migration code otherwise `False`.</param>
+        /// <returns>Out of the box default currencies.</returns>
+        public static CurrencyEntity[] GetCurrencySeedData(bool includeIDs = false)
+        {
+            const string defaultDecimalFormat = "2.2-2";
+
+            var GBP = new CurrencyEntity { Symbol = "GBP", DecimalFormat = defaultDecimalFormat };
+            if (includeIDs) GBP.CurrencyID = 1;
+
+            var EUR = new CurrencyEntity { Symbol = "EUR", DecimalFormat = defaultDecimalFormat };
+            if (includeIDs) EUR.CurrencyID = 2;
+
+            var USD = new CurrencyEntity { Symbol = "USD", DecimalFormat = defaultDecimalFormat };
+            if (includeIDs) USD.CurrencyID = 3;
+
+            return new CurrencyEntity[] { GBP, EUR, USD };
+        }
 
         internal static void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -76,12 +100,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
             modelBuilder.Entity<CurrencyEntity>().Property(x => x.Symbol).IsRequired().IsUnicode().HasMaxLength(Currency.SymbolMaxLength).HasColumnType($"CHAR({Currency.SymbolMaxLength})");
             modelBuilder.Entity<CurrencyEntity>().Property(x => x.DecimalFormat).IsRequired().HasMaxLength(Currency.DecimalFormatMaxLength).HasColumnType($"CHAR({Currency.DecimalFormatMaxLength})");
             modelBuilder.Entity<CurrencyEntity>().Property(x => x.IsDeprecated).IsRequired().HasDefaultValue(false);
-            modelBuilder.Entity<CurrencyEntity>().HasData(new CurrencyEntity[]
-            {
-                new CurrencyEntity { CurrencyID = 1, Symbol = "GBP", DecimalFormat = "2.2-2" },
-                new CurrencyEntity { CurrencyID = 2, Symbol = "EUR", DecimalFormat = "2.2-2" },
-                new CurrencyEntity { CurrencyID = 3, Symbol = "USD", DecimalFormat = "2.2-2" },
-            });
+            modelBuilder.Entity<CurrencyEntity>().HasData(GetCurrencySeedData(true));
         }
 
         private static void Owner_OnModelCreating(ModelBuilder modelBuilder)
