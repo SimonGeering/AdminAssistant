@@ -26,14 +26,14 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
         [HttpPut]
         [SwaggerOperation("Update an existing Currency.", OperationId = "PutCurrency")]
         [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated CurrencyResponseDto", type: typeof(CurrencyResponseDto))]
-        [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the BankID of the given currencyUpdateRequest does not exist.")]
+        [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the CurrencyID of the given currencyUpdateRequest does not exist.")]
         [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given currencyUpdateRequest is invalid.")]
-        public async Task<ActionResult<CurrencyResponseDto>> BankPut([FromBody, SwaggerParameter("The Currency for which updates are to be persisted.", Required = true)] CurrencyUpdateRequestDto currencyUpdateRequest)
+        public async Task<ActionResult<CurrencyResponseDto>> CurrencyPut([FromBody, SwaggerParameter("The Currency for which updates are to be persisted.", Required = true)] CurrencyUpdateRequestDto currencyUpdateRequest)
         {
             Log.Start();
 
-            var bank = Mapper.Map<Currency>(currencyUpdateRequest);
-            var result = await Mediator.Send(new CurrencyUpdateCommand(bank)).ConfigureAwait(false);
+            var currency = Mapper.Map<Currency>(currencyUpdateRequest);
+            var result = await Mediator.Send(new CurrencyUpdateCommand(currency)).ConfigureAwait(false);
 
             if (result.Status == ResultStatus.NotFound)
             {
@@ -74,7 +74,7 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
 
         [HttpGet("{currencyID}")]
         [SwaggerOperation("Gets the Currency with the given ID.", OperationId = "GetCurrencyById")]
-        [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the Bank requested.", type: typeof(CurrencyResponseDto))]
+        [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the Currency requested.", type: typeof(CurrencyResponseDto))]
         [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given CurrencyID does not exist.")]
         public async Task<ActionResult<CurrencyResponseDto>> CurrencyGetById([SwaggerParameter("The ID of the Currency to be returned.", Required = true)] int currencyID)
         {
