@@ -21,7 +21,80 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
     {
         public class CurrencyController_Put_Should
         {
+            [Fact()]
+            [Trait("Category", "Unit")]
+            public async Task Return_Status404NotFound_Given_ANonExistentCurrencyID()
+            {
+                // Arrange
+                var currency = Factory.Currency.WithTestData(10).Build();
+
+                var services = new ServiceCollection();
+                services.AddMocksOfExternalServerSideDependencies();
+
+                var mockMediator = new Mock<IMediator>();
+                mockMediator.Setup(x => x.Send(It.IsAny<CurrencyUpdateCommand>(), It.IsAny<CancellationToken>()))
+                            .Returns(Task.FromResult(Result<Currency>.NotFound()));
+
+                services.AddTransient((sp) => mockMediator.Object);
+                services.AddTransient<CurrencyController>();
+
+                var container = services.BuildServiceProvider();
+
+                var mapper = container.GetRequiredService<IMapper>();
+                var currencyRequest = mapper.Map<CurrencyUpdateRequestDto>(currency);
+
+                // Act
+                var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest).ConfigureAwait(false);
+
+                // Assert
+                response.Result.Should().BeOfType<NotFoundObjectResult>();
+                response.Value.Should().BeNull();
+            }
+
             // TODO: CurrencyController_Put UnitTests
+            [Fact()]
+            [Trait("Category", "Unit")]
+            public async Task Return_Status404NotFound_Given_AnInvalidCurrency()
+            {
+                // Arrange
+                var validationErrors = new List<ValidationError>()
+                {
+                    new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                    new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+                };
+                var currency = Factory.Currency.WithTestData(10).Build();
+
+                var services = new ServiceCollection();
+                services.AddMocksOfExternalServerSideDependencies();
+
+                var mockMediator = new Mock<IMediator>();
+                mockMediator.Setup(x => x.Send(It.IsAny<CurrencyUpdateCommand>(), It.IsAny<CancellationToken>()))
+                            .Returns(Task.FromResult(Result<Currency>.Invalid(validationErrors)));
+
+                services.AddTransient((sp) => mockMediator.Object);
+                services.AddTransient<CurrencyController>();
+
+                var container = services.BuildServiceProvider();
+
+                var mapper = container.GetRequiredService<IMapper>();
+                var currencyRequest = mapper.Map<CurrencyUpdateRequestDto>(currency);
+
+                // Act
+                var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest).ConfigureAwait(false);
+
+                // Assert
+                response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+                response.Value.Should().BeNull();
+
+                var result = (UnprocessableEntityObjectResult)response.Result;
+                var errors = (SerializableError)result.Value;
+
+                foreach (var expectedErrorDetails in validationErrors)
+                {
+                    var messages = (string[])errors[expectedErrorDetails.Identifier];
+                    messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+                }
+            }
         }
 
         public class CurrencyController_CurrencyPost_Should
@@ -71,11 +144,11 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
             }
         }
 
-        public class BankController_BankGetById_Should
+        public class CurrencyController_CurrencyGetById_Should
         {
             [Fact()]
             [Trait("Category", "Unit")]
-            public async Task Return_Ok200Bank_With_ABank_Given_AnExistingBankID()
+            public async Task Return_Ok200Currency_With_ACurrency_Given_AnExistingCurrencyID()
             {
                 // Arrange
                 var currency = Factory.Currency.WithTestData(10).Build();
@@ -109,7 +182,7 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
 
             [Fact]
             [Trait("Category", "Unit")]
-            public async Task Return_Status404NotFound_Given_ANonExistentBankID()
+            public async Task Return_Status404NotFound_Given_ANonExistentCurrencyID()
             {
                 // Arrange
                 var services = new ServiceCollection();
