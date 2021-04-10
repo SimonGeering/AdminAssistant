@@ -1,0 +1,50 @@
+
+.bank-account-edit-dialog {
+  display: flex;
+  flex-direction: column;
+}
+
+.row1 {
+  display: inherit;
+  flex-direction: row;
+  align-items: center;
+  margin-top: var(--cl-margin-small);
+}
+  .row1 .account-name {
+    display: inherit;
+    flex-grow: 1;
+    margin-right: var(--cl-margin);
+  }
+
+  .cl-account-edit-dialog .cl-row2 {
+    display: inherit;
+    flex-direction: row;
+    align-items: center;
+    margin-top: var(--cl-margin);
+  }
+    .cl-account-edit-dialog .cl-row2 .cl-account-type {
+      width: 130px;
+      margin-left: 7px;
+      margin-right: var(--cl-margin);
+    }
+    .cl-account-edit-dialog .cl-row2 .cl-opened-on {
+      width: 85px;
+    }
+
+  .cl-account-edit-dialog .cl-row3 {
+    display: inherit;
+    flex-direction: row;
+    align-items: center;
+    margin-top: var(--cl-margin);
+    margin-bottom: var(--cl-margin-small);
+  }
+    .cl-account-edit-dialog .cl-row3 .cl-currency {
+      width: 80px;
+      margin-left: 31px;
+      margin-right: 47px;
+    }
+    .cl-account-edit-dialog .cl-row3 .cl-opening-balance {
+      text-align: right;
+      width: 91px;
+    }
+

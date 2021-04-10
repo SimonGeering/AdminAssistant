@@ -13,6 +13,6 @@ namespace AdminAssistant.UI.Shared
         public ExpandedContractedStateToggle State { get; private set; }
         public string Icon { get; private set; }
         public string StyleClass { get; private set; }
-        public bool ShowContent { get; private set; }
+        public bool ShowContent { get; set; }
     }
 }
