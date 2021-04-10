@@ -1,0 +1,319 @@
+:root {
+  --font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+  --font-size-base: 0.875rem;
+  --h1-font-size: 2.5rem;
+  --h2-font-size: 2rem;
+  --h3-font-size: 1.5rem;
+  --cl-fontSize: 12px;
+  --cl-padding-small: 4px;
+  --cl-padding: 8px;
+  --cl-margin-small: 4px;
+  --cl-margin: 8px;
+  --cl-backgroundColorLight: #383838;
+  --cl-backgroundColor: #252526;
+  --cl-backgroundColorDark: #1E1E1E;
+  --cl-foreColor: #f2f5f7;
+  --cl-boarderColorLight: #DDDDDD;
+  --cl-boarderColor: #444444;
+  --cl-boarderColorDark: #444444; }
+
+#blazor-error-ui {
+  background: lightyellow;
+  bottom: 0;
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+  display: none;
+  left: 0;
+  padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1000; }
+
+#blazor-error-ui .dismiss {
+  cursor: pointer;
+  position: absolute;
+  right: 0.75rem;
+  top: 0.5rem; }
+
+/*
+.cl-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .cl-main {
+    display: inherit;
+    flex-direction: row;
+    flex-grow: 1;
+
+    .cl-sidebar {
+      display: inherit;
+      height: 100%;
+      padding-top: var(--cl-padding);
+      padding-left: var(--cl-padding);
+
+      .ui-card {
+        .card {
+          .ui-card-header {
+            .card-header {
+              padding: 0px 0px 2px 0px;
+
+              .cl-sidebar-control {
+                width: 100%;
+                position: relative;
+                height: 22px;
+
+                .ui-button {
+                  .btn {
+                    position: absolute;
+                    top: -0px;
+                    right: -0px;
+                    width: 24px;
+                    height: 22px;
+                    padding: 0px;
+                    border-bottom-right-radius: 0;
+                    border-top-left-radius: 0;
+                  }
+                }
+              }
+
+              .ui-card-body {
+                .card-body {
+                  padding: 0px;
+                  padding-left: 0px;
+
+                  .cl-mode-selection {
+                    .ui-dropdown {
+                    .nav-item {
+                      padding:
+                    }
+                  }
+
+                  .main-menu {
+
+                    .ui-menu {
+                      border-top: none;
+                      border-top-right-radius: 0;
+                      border-top-left-radius: 0;
+                      border-left-style: none;
+                      border-bottom-left-radius: 0;
+                      width: auto;
+                    }
+                  }
+                }
+              }
+            }
+
+            --contractedWidth: 74px;
+            --expandedWidth: auto;
+
+            .cl-navbar-contracted {
+
+              @extend .cl-sidebar;
+              min-width: var(--contractedWidth);
+              max-width: var(--contractedWidth);
+            }
+
+            .cl-navbar-expanded {
+
+              @extend .cl-sidebar;
+              min-width: var(--expandedWidth);
+              max-width: var(--expandedWidth);
+            }
+
+            .cl-outlet {
+              flex-grow: 1;
+              padding-top: var(--cl-padding);
+              padding-left: var(--cl-padding);
+              padding-right: var(--cl-padding);
+
+              .cl-breadcrumb {
+                margin-top: 1px;
+                padding: 0px;
+                margin-right: var(--cl-padding-small);
+                margin-left: var(--cl-padding-small);
+
+                .ui-breadcrumb {
+                  padding: 0px;
+                  border-width: 1px;
+
+                  .ui-widget {
+                    font-size: 12px;
+                  }
+                }
+              }
+            }
+          }
+
+          .cl-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.cl-accounts {
+  display: flex;
+  flex-direction: row;
+
+  .cl-moduleBody {
+    display: inherit;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .cl-moduleHeader {
+      display: inherit;
+      flex-direction: column;
+      padding-left: var(--cl-padding-small);
+      color: var(--cl-foreColor);
+    }
+
+    .cl-accounts-list {
+      display: inherit;
+      flex-grow: 1;
+      padding-top: var(--cl-padding-small);
+
+      .cl-account-transaction-list {
+        width: 100%;
+      }
+    }
+
+    --contractedWidth: 36px;
+    --expandedWidth: 300px;
+
+    .cl-right-sidebar {
+      display: inherit;
+      padding: var(--cl-padding);
+
+      .ui-card {
+
+        .ui-card-header {
+          background-color: var(--cl-backgroundColor);
+
+          .cl-sidebar-control {
+            width: 100%;
+            position: relative;
+            height: 22px;
+
+            .ui-button {
+              position: absolute;
+              top: -1px;
+              left: -1px;
+              width: 24px;
+              height: 22px;
+              border-bottom-left-radius: 0;
+              background-color: var(--cl-backgroundColorDark);
+
+              .ui-button-icon-only {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+
+        .ui-card-body {
+          background-color: var(--cl-backgroundColor);
+
+          .cl-on-budget-accounts {
+            margin-bottom: var(--cl-margin);
+            padding-bottom: var(--cl-padding);
+          }
+        }
+      }
+    }
+
+    .cl-right-sidebar-contracted {
+
+      @extend .cl-right-sidebar;
+      min-width: var(--contractedWidth);
+      max-width: var(--contractedWidth);
+    }
+
+    .cl-right-sidebar-expanded {
+
+      @extend .cl-right-sidebar;
+      min-width: var(--expandedWidth);
+      max-width: var(--expandedWidth);
+    }
+
+    .cl-account-balance-list {
+
+      .ui-panel {
+        background-color: var(--cl-backgroundColorLight);
+
+        .ui-panel-titlebar {
+          margin: var(--cl-margin);
+
+          .ui-panel-titlebar-icon {
+            min-width: 18px;
+            text-align: center;
+            font-size: 12px;
+            padding: 0px;
+          }
+        }
+      }
+    }
+
+    .cl-account-edit-dialog {
+      display: flex;
+      flex-direction: column;
+
+      .cl-row1 {
+        display: inherit;
+        flex-direction: row;
+        align-items: center;
+        margin-top: var(--cl-margin-small);
+
+        .cl-account-name {
+          display: inherit;
+          flex-grow: 1;
+          margin-right: var(--cl-margin);
+        }
+      }
+
+      .cl-row2 {
+        display: inherit;
+        flex-direction: row;
+        align-items: center;
+        margin-top: var(--cl-margin);
+
+        .cl-account-type {
+          width: 130px;
+          margin-left: 7px;
+          margin-right: var(--cl-margin);
+        }
+
+        .cl-opened-on {
+          width: 85px;
+        }
+      }
+
+      .cl-row3 {
+        display: inherit;
+        flex-direction: row;
+        align-items: center;
+        margin-top: var(--cl-margin);
+        margin-bottom: var(--cl-margin-small);
+
+        .cl-currency {
+          width: 80px;
+          margin-left: 31px;
+          margin-right: 47px;
+        }
+
+        .cl-opening-balance {
+          text-align: right;
+          width: 91px;
+        }
+      }
+    }
+  }
+}*/
