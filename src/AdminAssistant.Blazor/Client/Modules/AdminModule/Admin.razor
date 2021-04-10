@@ -1,6 +1,28 @@
 @page "/admin"
-<h3>Admin</h3>
 
-@code {
+@using AdminAssistant.Blazor.Client.Modules.AccountsModule.Admin
+@using AdminAssistant.Blazor.Client.Modules.CoreModule.Admin
 
-}
+<div class="admin">
+  <h3>Admin</h3>
+  <SfTab CssClass="BlazorTab">
+    <TabItems>
+      <TabItem>
+        <ChildContent>
+          <TabHeader Text="Banks" />
+        </ChildContent>
+        <ContentTemplate>
+          <BankListComponent></BankListComponent>
+        </ContentTemplate>
+      </TabItem>
+      <TabItem>
+        <ChildContent>
+          <TabHeader Text="Currencies" />
+        </ChildContent>
+        <ContentTemplate>
+          <CurrencyListComponent></CurrencyListComponent>
+        </ContentTemplate>
+      </TabItem>
+    </TabItems>
+  </SfTab>
+</div>
