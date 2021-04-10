@@ -56,7 +56,7 @@ namespace AdminAssistant.Infra.DAL.Modules.CoreModule
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Returns_ACurrency_WhenDatabaseContainseAnItemWithTheGivenID()
+        public async Task Returns_ACurrency_WhenDatabaseContainsAnItemWithTheGivenID()
         {
             // Arrange
             var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();

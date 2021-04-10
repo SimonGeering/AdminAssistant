@@ -7,10 +7,10 @@
         <Header><div id="Accounts_BankAccountEditDialog_Title">@this.vm.HeaderText</div></Header>
         <Content>
             <SfSpinner @ref="this.SfSpinner" Target="#loadingTarget" Label="Loading...." Type="SpinnerType.Fabric" />
-            <div id="loadingTarget" class="cl-account-edit-dialog">
+            <div id="loadingTarget" class="bank-account-edit-dialog">
                 <div class="cl-row1">
                     <label>Account name</label>
-                    <div class="form-group">
+                    <div class="account-name">
                         <SfTextBox Value="@this.vm.AccountName" ValueChanged="@((value) => this.vm.OnAccountNameChanged(value))" Placeholder="@this.vm.AccountNameValidationMessage" CssClass="@this.vm.AccountNameValidationClass"></SfTextBox>
                     </div>
                     <SfCheckBox @bind-Checked="@this.vm.IsBudgeted" Label="On budget"></SfCheckBox>

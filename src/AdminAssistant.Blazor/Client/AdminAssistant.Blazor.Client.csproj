@@ -35,6 +35,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="5.0.4" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
     <PackageReference Include="Syncfusion.Blazor" Version="19.1.0.54" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="19.1.0.54" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,7 +46,6 @@
   <ItemGroup>
     <Folder Include="Shared\Syncfusion\" />
     <Folder Include="Properties\" />
-    <Folder Include="wwwroot\assets\css\" />
   </ItemGroup>
 
   <ItemGroup>
