@@ -2,37 +2,41 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  -ms-transform: translate(-50%,-50%); /* IE 9 */
-  -webkit-transform: translate(-50%,-50%); /* Safari */
-  transform: translate(-50%,-50%); /* Standard syntax */
-  .loading-bar {
+  -ms-transform: translate(-50%, -50%);
+  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%);
+  /* Safari */
+  transform: translate(-50%, -50%);
+  /* Standard syntax */
+}
+
+  .loading .loading-bar {
     display: inline-block;
     width: 6px;
     height: 30px;
     border-radius: 4px;
     animation: loading 1s ease-in-out infinite;
+  }
 
-    &:nth-child(1) {
+    .loading .loading-bar:nth-child(1) {
       background-color: #222;
       animation-delay: 0;
     }
 
-    &:nth-child(2) {
+    .loading .loading-bar:nth-child(2) {
       background-color: #222;
       animation-delay: 0.09s;
     }
 
-    &:nth-child(3) {
+    .loading .loading-bar:nth-child(3) {
       background-color: #222;
       animation-delay: .18s;
     }
 
-    &:nth-child(4) {
+    .loading .loading-bar:nth-child(4) {
       background-color: #222;
       animation-delay: .27s;
     }
-  }
-}
 
 @keyframes loading {
   0% {

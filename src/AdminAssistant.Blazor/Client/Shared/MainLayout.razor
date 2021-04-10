@@ -2,36 +2,26 @@
 @inject NavigationManager NavigationManager
 @using AdminAssistant.UI.Shared;
 
-<div class="cl-app">
-
-  <!-- Start Header -->
-  <AccessControl />
-  <!--<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar2" aria-controls="navbar2" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <a class="navbar-brand" href="#">Admin Assistant</a>
-    <div class="collapse navbar-collapse justify-content-between" id="navbar2">
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
-      <div>
-        <h4><i aria-hidden="true" class="fa @this.vm.ActiveMode.Icon"></i>&nbsp;@this.vm.ActiveMode.Label&nbsp;-&nbsp;<i aria-hidden="true" class="fa @this.vm.ActiveModule.Icon"></i>&nbsp;@this.vm.ActiveModule.Label</h4>
-      </div>
-      <div>
-      </div>
+@*<div id="wrapper">*@
+  <div class="col-lg-12 col-sm-12 col-md-12">
+    <div class="header-section dock-menu" id="header">
+      <ul class="header-list">
+        <li id="hamburger" class="icon-menu icon list" @onclick="@this.vm.OnSideBarControlButtonClick"></li>
+        <input type="text" placeholder="Search..." class="search-icon list">
+        <li class="right-header list">
+          @*<div class="horizontal-menu">
+            <SfMenu CssClass="dock-menu" Items="@AccountMenuItems" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Horizontal"></SfMenu>
+          </div>*@
+        </li>
+        <li class="right-header list support">Support</li>
+        <li class="right-header list tour">Tour</li>
+      </ul>
+      <AccessControl />
     </div>
-  </nav>-->
-  <!-- End Header -->
-
-  <div class="cl-main">
-
-    <!-- Start Sidebar -->
-    <div class="cl-sidebar">
-      <SfSidebar HtmlAttributes="@(new Dictionary<string, object>() { { "class", "sidebar-menu" } })" Target=".cl-main" Width="180px" DockSize="50px" EnableDock="true" IsOpen="this.vm.Sidebar.ShowContent">
-        <ChildContent>
-
+    <SfSidebar HtmlAttributes="@(new Dictionary<string, object>() { { "class", "sidebar-menu" } })" Target=".main-content" Width="220px" DockSize="50px" EnableDock="true" @bind-IsOpen="this.vm.Sidebar.ShowContent">
+      <ChildContent>
+        <div class="main-menu">
+          <p class="main-menu-header">Admin Assistant</p>
           <SfDropDownButton Content="@this.vm.ActiveMode.Label" IconCss="@(this.vm.ActiveMode.Icon)" CssClass="e-vertical">
             <DropDownMenuItems>
               @foreach (var mode in this.vm.Modes)
@@ -40,154 +30,20 @@
               }
             </DropDownMenuItems>
           </SfDropDownButton>
+          <div>
+            <SfMenu CssClass="dock-menu" Items="this.vm.Modules" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Vertical">
+              <MenuFieldSettings ItemId="@(nameof(ModuleSelectionItem.ID))" Text="@(nameof(ModuleSelectionItem.Label))" Url="@(nameof(ModuleSelectionItem.Route))" IconCss="@(nameof(ModuleSelectionItem.Icon))" />
+            </SfMenu>
+          </div>
+        </div>
+      </ChildContent>
+    </SfSidebar>
 
-          <SfButton IconCss="@this.vm.Sidebar.Icon" @onclick=this.vm.OnSideBarControlButtonClick /> <br />
-          <SfMenu CssClass="dock-menu" Items="this.vm.Modules" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Vertical">
-            <MenuFieldSettings ItemId="@(nameof(ModuleSelectionItem.ID))" Text="@(nameof(ModuleSelectionItem.Label))" Url="@(nameof(ModuleSelectionItem.Route))" IconCss="@(nameof(ModuleSelectionItem.Icon))" />
-          </SfMenu>
-        </ChildContent>
-      </SfSidebar>
-    </div>
-    <!-- End Sidebar -->
-
-    <div class="cl-outlet">
-
-      <!-- Start Breadcrumb -->
-      <div class="cl-breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;Home</li>
-          <li class="breadcrumb-item active"><i class="fa @this.vm.ActiveMode.Icon" aria-hidden="true"></i>&nbsp;@this.vm.ActiveMode.Label</li>
-          <li class="breadcrumb-item active"><i class="fa @this.vm.ActiveModule.Icon" aria-hidden="true"></i>&nbsp;@this.vm.ActiveModule.Label</li>
-        </ol>
+    <div class="main-content" id="maintext">
+      <div class="content">
+        @Body
       </div>
-      <!-- End Breadcrumb -->
-
-      @Body
     </div>
+
   </div>
-
-  <!-- Start Footer -->
-  <div class="cl-footer">
-    <div>@this.vm.FooterText</div>
-  </div>
-  <!-- End Footer -->
-
-</div>
-
-<style>
-
-  .sidebar-menu .e-menu-wrapper ul .e-menu-item.e-menu-caret-icon {
-    width: 220px;
-  }
-  .sidebar-menu .e-menu-wrapper ul .e-menu-item:hover, .e-menu-wrapper ul .e-menu-item.e-focused:hover {
-    background-color: #3e454c !important;
-  }
-  .e-menu-wrapper ul .e-menu-item.e-selected {
-    background-color: #3e454c !important;
-  }
-  .e-menu-wrapper ul .e-menu-item .e-caret,
-  #header .search-icon,
-  .sidebar-menu .action-btn,
-  #header .e-menu-item .e-caret,
-  .e-menu-wrapper ul .e-menu-item {
-    color: #fff !important;
-  }
-  .e-close .e-menu-wrapper ul .e-menu-item {
-    width: 50px;
-  }
-  .e-close ul .e-menu-item.e-menu-caret-icon {
-    padding-right: 12px;
-  }
-  .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item .e-caret,
-  .sidebar-menu.e-dock.e-close .main-menu-header,
-  .sidebar-menu.e-dock.e-close .action-btn {
-    display: none;
-  }
-  .sidebar-menu.e-dock.e-close .e-menu-wrapper ul .e-menu-item.e-menu-caret-icon,
-  .sidebar-menu.e-dock.e-close .e-menu-wrapper ul.e-vertical {
-    min-width: 0;
-    width: 50px !important;
-  }
-
-  .sidebar-menu.e-dock.e-close .e-menu-wrapper ul.e-menu {
-    font-size: 0;
-  }
-
-  .sidebar-menu.e-dock.e-close .e-menu-item .e-menu-icon {
-    font-size: 20px;
-    padding: 0;
-  }
-
-  .e-menu-wrapper ul .e-menu-item.e-focused {
-    background-color: #33383e !important;
-  }
-
-  .sidebar-menu, #header ul, .e-menu-wrapper, .e-menu-wrapper ul {
-    background-color: #33383e !important;
-    color: #fff !important;
-    overflow: hidden;
-  }
-
-    .sidebar-menu .action-btn {
-      margin-left: 16px;
-      width: 165px;
-      height: 30px;
-      font-size: 13px;
-      border-radius: 5px;
-    }
-
-    .sidebar-menu .action-btn {
-      background-color: #1784c7;
-    }
-
-  .sidebar-menu {
-    margin-left: -1px;
-  }
-
-  body {
-    margin: 0;
-    overflow-y: hidden;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .sf-new .sb-header,
-  .sf-new .sb-bread-crumb,
-  .sf-new #action-description,
-  .sf-new .sb-action-description,
-  .sf-new .e-tab-header,
-  .sf-new .description-section,
-  .sf-new #description-section,
-  .sf-new #description,
-  .sf-new #navigation-btn,
-  .sf-new .sb-toolbar-splitter,
-  .sf-new .sb-footer, .sf-new #left-sidebar, .sb-component-name {
-    display: none
-  }
-
-  .sf-new .sb-right-pane.e-view {
-    margin-left: 0px !important;
-  }
-
-  .sb-action-description.sb-rightpane-padding {
-    padding-bottom: 0;
-  }
-
-  .description-section {
-    padding-top: 0;
-  }
-
-  #content-tab.sb-content-tab {
-    height: 100% !important;
-  }
-
-  .sf-new .container-fluid,
-  .sf-new .container-fluid .control-section,
-  #sidebar-section, description-section sb-rightpane-padding {
-    padding: 0;
-  }
-
-  .sb-component-name.sb-rightpane-padding {
-    margin-top: -56px;
-  }
-</style>
+@*</div>*@

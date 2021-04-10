@@ -366,4 +366,5 @@ MigrationBackup/
 **/lcov.info
 /src/.cr/personal
 /src/global.json
+/ux
 /src/AdminAssistant.Blazor/Client/wwwroot/appsettings.json
