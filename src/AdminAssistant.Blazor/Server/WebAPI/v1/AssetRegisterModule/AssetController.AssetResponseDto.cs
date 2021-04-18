@@ -3,9 +3,9 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.WebAPI.v1.AssetRegisterModule
 {
-    public class AssetResponseDto : IMapFrom<Asset>
+    public record AssetResponseDto : IMapFrom<Asset>
     {
-        public int AssetID { get; set; }
-        public string AssetName { get; set; } = string.Empty;
+        public int AssetID { get; init; }
+        public string AssetName { get; init; } = string.Empty;
     }
 }
