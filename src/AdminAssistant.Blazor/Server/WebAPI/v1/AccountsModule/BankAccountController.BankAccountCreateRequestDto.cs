@@ -7,18 +7,18 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
 {
     [SwaggerSchema(Required = new[] { "BankAccountTypeID", "CurrencyID", "AccountName", "IsBudgeted", "OpeningBalance", "OpenedOn" })]
 
-    public class BankAccountCreateRequestDto : IMapTo<BankAccount>
+    public record BankAccountCreateRequestDto : IMapTo<BankAccount>
     {
         [SwaggerSchema("The BankAccount identifier.", ReadOnly = true)]
-        public int BankAccountTypeID { get; set; }
+        public int BankAccountTypeID { get; init; }
         [SwaggerSchema("The BankAccountType for this BankAccount.")]
-        public int CurrencyID { get; set; }
-        public string AccountName { get; set; } = string.Empty;
-        public int Balance { get; set; }
-        public bool IsBudgeted { get; set; }
-        public int OpeningBalance { get; set; }
-        public int CurrentBalance { get; set; }
-        public DateTime OpenedOn { get; set; }
+        public int CurrencyID { get; init; }
+        public string AccountName { get; init; } = string.Empty;
+        public int Balance { get; init; }
+        public bool IsBudgeted { get; init; }
+        public int OpeningBalance { get; init; }
+        public int CurrentBalance { get; init; }
+        public DateTime OpenedOn { get; init; }
 
         public void MapTo(AutoMapper.Profile profile)
             => profile.CreateMap<BankAccountCreateRequestDto, BankAccount>()
