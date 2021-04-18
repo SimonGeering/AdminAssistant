@@ -3,9 +3,9 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.WebAPI.v1.TasksModule
 {
-    public class TaskListResponseDto : IMapFrom<TaskList>
+    public record TaskListResponseDto : IMapFrom<TaskList>
     {
-        public int TaskListID { get; set; }
-        public string TaskListName { get; set; } = string.Empty;
+        public int TaskListID { get; init; }
+        public string TaskListName { get; init; } = string.Empty;
     }
 }

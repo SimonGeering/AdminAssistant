@@ -3,9 +3,9 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.WebAPI.v1.CalendarModule
 {
-    public class ReminderResponseDto : IMapFrom<Reminder>
+    public record ReminderResponseDto : IMapFrom<Reminder>
     {
-        public int ReminderID { get; set; }
-        public string ReminderName { get; set; } = string.Empty;
+        public int ReminderID { get; init; }
+        public string ReminderName { get; init; } = string.Empty;
     }
 }

@@ -8,29 +8,24 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 {
-    public class BankAccountByIDQuery : IRequest<Result<BankAccount>>
+    public record BankAccountByIDQuery(int BankAccountID) : IRequest<Result<BankAccount>>;
+
+    [SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class BankAccountByIDHandler : RequestHandlerBase<BankAccountByIDQuery, Result<BankAccount>>
     {
-        public BankAccountByIDQuery(int bankAccountID) => BankAccountID = bankAccountID;
+        private readonly IBankAccountRepository _bankAccountRepository;
 
-        public int BankAccountID { get; private set; }
+        public BankAccountByIDHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository)
+            : base(loggingProvider) => _bankAccountRepository = bankAccountRepository;
 
-        [SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-        internal class BankAccountByIDHandler : RequestHandlerBase<BankAccountByIDQuery, Result<BankAccount>>
+        public override async Task<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
         {
-            private readonly IBankAccountRepository _bankAccountRepository;
+            var bankAccount = await _bankAccountRepository.GetAsync(request.BankAccountID).ConfigureAwait(false);
 
-            public BankAccountByIDHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository)
-                : base(loggingProvider) => _bankAccountRepository = bankAccountRepository;
+            if (bankAccount == null || bankAccount.BankAccountID == Constants.UnknownRecordID)
+                return Result<BankAccount>.NotFound();
 
-            public override async Task<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
-            {
-                var bankAccount = await _bankAccountRepository.GetAsync(request.BankAccountID).ConfigureAwait(false);
-
-                if (bankAccount == null || bankAccount.BankAccountID == Constants.UnknownRecordID)
-                    return Result<BankAccount>.NotFound();
-
-                return Result<BankAccount>.Success(bankAccount);
-            }
+            return Result<BankAccount>.Success(bankAccount);
         }
     }
 }

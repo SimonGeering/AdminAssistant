@@ -3,9 +3,9 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.WebAPI.v1.BudgetModule
 {
-    public class BudgetResponseDto : IMapFrom<Budget>
+    public record BudgetResponseDto : IMapFrom<Budget>
     {
-        public int BudgetID { get; set; }
-        public string BudgetName { get; set; } = string.Empty;
+        public int BudgetID { get; init; }
+        public string BudgetName { get; init; } = string.Empty;
     }
 }

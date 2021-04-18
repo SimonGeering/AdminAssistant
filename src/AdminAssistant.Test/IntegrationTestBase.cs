@@ -101,6 +101,7 @@ namespace AdminAssistant
 
         protected IServiceProvider Container { get; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "Keep local variables to allow future cascade and keep consistent code pattern")]
         protected async Task ResetDatabaseAsync()
         {
             await _checkpoint.Reset(_connectionString).ConfigureAwait(false);

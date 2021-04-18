@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
@@ -11,37 +9,32 @@ using Ardalis.Result.FluentValidation;
 
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS
 {
-    public class CurrencyCreateCommand : IRequest<Result<Currency>>
+    public record CurrencyCreateCommand(Currency Currency) : IRequest<Result<Currency>>;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class CurrencyCreateHandler : RequestHandlerBase<CurrencyCreateCommand, Result<Currency>>
     {
-        public CurrencyCreateCommand(Currency currency) => Currency = currency;
+        private readonly ICurrencyRepository currencyRepository;
+        private readonly ICurrencyValidator currencyValidator;
 
-        public Currency Currency { get; private set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-        internal class CurrencyCreateHandler : RequestHandlerBase<CurrencyCreateCommand, Result<Currency>>
+        public CurrencyCreateHandler(ILoggingProvider loggingProvider, ICurrencyRepository currencyRepository, ICurrencyValidator currencyValidator)
+            : base(loggingProvider)
         {
-            private readonly ICurrencyRepository currencyRepository;
-            private readonly ICurrencyValidator currencyValidator;
+            this.currencyRepository = currencyRepository;
+            this.currencyValidator = currencyValidator;
+        }
 
-            public CurrencyCreateHandler(ILoggingProvider loggingProvider, ICurrencyRepository currencyRepository, ICurrencyValidator currencyValidator)
-                : base(loggingProvider)
+        public override async Task<Result<Currency>> Handle(CurrencyCreateCommand command, CancellationToken cancellationToken)
+        {
+            var validationResult = await currencyValidator.ValidateAsync(command.Currency, cancellationToken).ConfigureAwait(false);
+
+            if (validationResult.IsValid == false)
             {
-                this.currencyRepository = currencyRepository;
-                this.currencyValidator = currencyValidator;
+                return Result<Currency>.Invalid(validationResult.AsErrors());
             }
 
-            public override async Task<Result<Currency>> Handle(CurrencyCreateCommand command, CancellationToken cancellationToken)
-            {
-                var validationResult = await currencyValidator.ValidateAsync(command.Currency, cancellationToken).ConfigureAwait(false);
-
-                if (validationResult.IsValid == false)
-                {
-                    return Result<Currency>.Invalid(validationResult.AsErrors());
-                }
-
-                var result = await currencyRepository.SaveAsync(command.Currency).ConfigureAwait(false);
-                return Result<Currency>.Success(result);
-            }
+            var result = await currencyRepository.SaveAsync(command.Currency).ConfigureAwait(false);
+            return Result<Currency>.Success(result);
         }
     }
 }

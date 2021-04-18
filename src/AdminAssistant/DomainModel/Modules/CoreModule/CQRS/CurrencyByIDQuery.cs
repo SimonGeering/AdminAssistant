@@ -7,29 +7,24 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS
 {
-    public class CurrencyByIDQuery : IRequest<Result<Currency>>
+    public record CurrencyByIDQuery(int CurrencyID) : IRequest<Result<Currency>>;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class CurrencyByIDHandler : RequestHandlerBase<CurrencyByIDQuery, Result<Currency>>
     {
-        public CurrencyByIDQuery(int currencyID) => CurrencyID = currencyID;
+        private readonly ICurrencyRepository _currencyRepository;
 
-        public int CurrencyID { get; private set; }
+        public CurrencyByIDHandler(ICurrencyRepository currencyRepository, ILoggingProvider loggingProvider)
+            : base(loggingProvider) => _currencyRepository = currencyRepository;
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-        internal class CurrencyByIDHandler : RequestHandlerBase<CurrencyByIDQuery, Result<Currency>>
+        public override async Task<Result<Currency>> Handle(CurrencyByIDQuery request, CancellationToken cancellationToken)
         {
-            private readonly ICurrencyRepository _currencyRepository;
+            var result = await _currencyRepository.GetAsync(request.CurrencyID).ConfigureAwait(false);
 
-            public CurrencyByIDHandler(ICurrencyRepository currencyRepository, ILoggingProvider loggingProvider)
-                : base(loggingProvider) => _currencyRepository = currencyRepository;
+            if (result == null || result.CurrencyID == Constants.UnknownRecordID)
+                return Result<Currency>.NotFound();
 
-            public override async Task<Result<Currency>> Handle(CurrencyByIDQuery request, CancellationToken cancellationToken)
-            {
-                var result = await _currencyRepository.GetAsync(request.CurrencyID).ConfigureAwait(false);
-
-                if (result == null || result.CurrencyID == Constants.UnknownRecordID)
-                    return Result<Currency>.NotFound();
-
-                return Result<Currency>.Success(result);
-            }
+            return Result<Currency>.Success(result);
         }
     }
 }
