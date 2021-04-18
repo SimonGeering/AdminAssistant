@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
@@ -11,37 +9,32 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 {
-    public class BankUpdateCommand : IRequest<Result<Bank>>
+    public record BankUpdateCommand(Bank Bank) : IRequest<Result<Bank>>;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class BankUpdateHandler : RequestHandlerBase<BankUpdateCommand, Result<Bank>>
     {
-        public BankUpdateCommand(Bank bank) => Bank = bank;
+        private readonly IBankRepository _bankRepository;
+        private readonly IBankValidator _bankValidator;
 
-        public Bank Bank { get; private set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-        internal class BankUpdateHandler : RequestHandlerBase<BankUpdateCommand, Result<Bank>>
+        public BankUpdateHandler(ILoggingProvider loggingProvider, IBankRepository bankRepository, IBankValidator bankValidator)
+            : base(loggingProvider)
         {
-            private readonly IBankRepository _bankRepository;
-            private readonly IBankValidator _bankValidator;
+            _bankRepository = bankRepository;
+            _bankValidator = bankValidator;
+        }
 
-            public BankUpdateHandler(ILoggingProvider loggingProvider, IBankRepository bankRepository, IBankValidator bankValidator)
-                : base(loggingProvider)
+        public override async Task<Result<Bank>> Handle(BankUpdateCommand command, CancellationToken cancellationToken)
+        {
+            var validationResult = await _bankValidator.ValidateAsync(command.Bank, cancellationToken).ConfigureAwait(false);
+
+            if (validationResult.IsValid == false)
             {
-                _bankRepository = bankRepository;
-                _bankValidator = bankValidator;
+                return Result<Bank>.Invalid(validationResult.AsErrors());
             }
 
-            public override async Task<Result<Bank>> Handle(BankUpdateCommand command, CancellationToken cancellationToken)
-            {
-                var validationResult = await _bankValidator.ValidateAsync(command.Bank, cancellationToken).ConfigureAwait(false);
-
-                if (validationResult.IsValid == false)
-                {
-                    return Result<Bank>.Invalid(validationResult.AsErrors());
-                }
-
-                var result = await _bankRepository.SaveAsync(command.Bank).ConfigureAwait(false);
-                return Result<Bank>.Success(result);
-            }
+            var result = await _bankRepository.SaveAsync(command.Bank).ConfigureAwait(false);
+            return Result<Bank>.Success(result);
         }
     }
 }

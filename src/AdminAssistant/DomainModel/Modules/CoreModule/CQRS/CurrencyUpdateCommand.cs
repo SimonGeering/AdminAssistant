@@ -9,37 +9,32 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS
 {
-    public class CurrencyUpdateCommand : IRequest<Result<Currency>>
+    public record CurrencyUpdateCommand(Currency Currency) : IRequest<Result<Currency>>;
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
+    internal class CurrencyUpdateHandler : RequestHandlerBase<CurrencyUpdateCommand, Result<Currency>>
     {
-        public CurrencyUpdateCommand(Currency currency) => Currency = currency;
+        private readonly ICurrencyRepository _currencyRepository;
+        private readonly ICurrencyValidator _currencyValidator;
 
-        public Currency Currency { get; private set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-        internal class CurrencyUpdateHandler : RequestHandlerBase<CurrencyUpdateCommand, Result<Currency>>
+        public CurrencyUpdateHandler(ILoggingProvider loggingProvider, ICurrencyRepository currencyRepository, ICurrencyValidator currencyValidator)
+            : base(loggingProvider)
         {
-            private readonly ICurrencyRepository _currencyRepository;
-            private readonly ICurrencyValidator _currencyValidator;
+            _currencyRepository = currencyRepository;
+            _currencyValidator = currencyValidator;
+        }
 
-            public CurrencyUpdateHandler(ILoggingProvider loggingProvider, ICurrencyRepository currencyRepository, ICurrencyValidator currencyValidator)
-                : base(loggingProvider)
+        public override async Task<Result<Currency>> Handle(CurrencyUpdateCommand command, CancellationToken cancellationToken)
+        {
+            var validationResult = await _currencyValidator.ValidateAsync(command.Currency, cancellationToken).ConfigureAwait(false);
+
+            if (validationResult.IsValid == false)
             {
-                _currencyRepository = currencyRepository;
-                _currencyValidator = currencyValidator;
+                return Result<Currency>.Invalid(validationResult.AsErrors());
             }
 
-            public override async Task<Result<Currency>> Handle(CurrencyUpdateCommand command, CancellationToken cancellationToken)
-            {
-                var validationResult = await _currencyValidator.ValidateAsync(command.Currency, cancellationToken).ConfigureAwait(false);
-
-                if (validationResult.IsValid == false)
-                {
-                    return Result<Currency>.Invalid(validationResult.AsErrors());
-                }
-
-                var result = await _currencyRepository.SaveAsync(command.Currency).ConfigureAwait(false);
-                return Result<Currency>.Success(result);
-            }
+            var result = await _currencyRepository.SaveAsync(command.Currency).ConfigureAwait(false);
+            return Result<Currency>.Success(result);
         }
     }
 }

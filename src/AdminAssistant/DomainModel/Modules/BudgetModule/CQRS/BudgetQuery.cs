@@ -4,7 +4,5 @@ using MediatR;
 
 namespace AdminAssistant.DomainModel.Modules.BudgetModule.CQRS
 {
-    public class BudgetQuery : IRequest<Result<IEnumerable<Budget>>>
-    {
-    }
+    public record BudgetQuery : IRequest<Result<IEnumerable<Budget>>>;
 }
