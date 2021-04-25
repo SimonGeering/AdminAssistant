@@ -41,8 +41,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
-    <ProjectReference Include="..\..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+    <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
 </Project>

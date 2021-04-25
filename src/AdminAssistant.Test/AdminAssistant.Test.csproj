@@ -65,8 +65,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant.Blazor\Client\AdminAssistant.Blazor.Client.csproj" />
-    <ProjectReference Include="..\AdminAssistant.Blazor\Server\AdminAssistant.Blazor.Server.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Blazor.Client\AdminAssistant.Blazor.Client.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
     <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
     <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
   </ItemGroup>

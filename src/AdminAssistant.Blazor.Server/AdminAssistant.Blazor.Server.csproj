@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,8 +52,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
-    <ProjectReference Include="..\Client\AdminAssistant.Blazor.Client.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Blazor.Client\AdminAssistant.Blazor.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>
