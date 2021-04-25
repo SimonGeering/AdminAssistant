@@ -2,6 +2,7 @@ using Syncfusion.Blazor;
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Blazor.Extensions.Logging;
@@ -39,6 +40,11 @@ namespace AdminAssistant.Blazor.Client
 
                 // TODO: Configure other production logging options.
 #endif
+            });
+            builder.Services.AddOidcAuthentication(options =>
+            {
+                builder.Configuration.Bind("Auth0", options.ProviderOptions);
+                options.ProviderOptions.ResponseType = "code";
             });
 
             // See https://github.com/ryanelian/FluentValidation.Blazor
