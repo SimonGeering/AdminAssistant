@@ -65,6 +65,7 @@ namespace AdminAssistant.Blazor.Server
             });
 
             services.AddHttpContextAccessor();
+
             services.AddControllers(opts =>
             {
                 // Add [Authorize] for all controllers ...
@@ -73,6 +74,8 @@ namespace AdminAssistant.Blazor.Server
 
             }).AddNewtonsoftJson()
               .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>());
+
+            services.AddHealthChecks();
 
             services.AddSwaggerGen(c =>
             {
@@ -144,7 +147,7 @@ namespace AdminAssistant.Blazor.Server
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", WebAPITitle);
-                c.RoutePrefix = "api-docs";
+                c.RoutePrefix = "api/docs";
                 c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
                 // Additional OAuth settings (See https://github.com/swagger-api/swagger-ui/blob/v3.10.0/docs/usage/oauth2.md)
                 c.OAuthClientId(_configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>().Auth0ClientId);
@@ -156,6 +159,7 @@ namespace AdminAssistant.Blazor.Server
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseHealthChecks("/api/health");
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
