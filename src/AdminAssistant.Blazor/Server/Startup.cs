@@ -3,10 +3,10 @@ using Ardalis.GuardClauses;
 using AutoMapper;
 using FluentValidation.AspNetCore;
 using MicroElements.Swashbuckle.FluentValidation;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -15,8 +15,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Web;
 
 namespace AdminAssistant.Blazor.Server
 {
@@ -39,18 +43,7 @@ namespace AdminAssistant.Blazor.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var configSettings = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
-
-            services.AddAuthentication(opts =>
-            {
-                opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(opts =>
-            {
-                opts.Authority = $"https://{configSettings.Auth0Authority}/";
-                opts.Audience = configSettings.Auth0ApiIdentifier;
-            });
+            var config = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
 
             services.AddMvc(opts =>
             {
@@ -64,6 +57,8 @@ namespace AdminAssistant.Blazor.Server
                 opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
             });
 
+            // TODO: OIDC https://damienbod.com/2021/04/12/securing-blazor-web-assembly-using-cookies-and-auth0/
+            // TODO: investigate https://damienbod.com/2021/03/08/securing-blazor-web-assembly-using-cookies/
             services.AddHttpContextAccessor();
 
             services.AddControllers(opts =>
@@ -89,34 +84,35 @@ namespace AdminAssistant.Blazor.Server
                     // Group by Group name from the ApiExplorerSettings attribute ...
                     Guard.Against.Null(api.GroupName, nameof(api.GroupName)); // Should be covered by DocInclusionPredicate.
                     return new string[] { api.GroupName };
-                }); 
-
+                });
                 c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                c.OperationFilter<AuthorizeOperationFilter>();
+                c.AddSecurityDefinition("OAuth2", new OpenApiSecurityScheme
                 {
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
+                    // Based on example here https://github.com/lurumad/swagger-ui-pkce
+                    // See blog post https://lurumad.github.io/swagger-ui-with-pkce-using-swashbuckle-asp-net-core
                     Type = SecuritySchemeType.OAuth2,
+
                     Flows = new OpenApiOAuthFlows
                     {
-                        Implicit = new OpenApiOAuthFlow
+                        AuthorizationCode = new OpenApiOAuthFlow
                         {
+                            AuthorizationUrl = new Uri(config.Auth0AuthorizeEndpoint),
+                            TokenUrl = new Uri(config.Auth0TokenEndpoint),
                             Scopes = new Dictionary<string, string>
                             {
-                                { "openid", "Open Id" }
-                            },
-                            AuthorizationUrl = new System.Uri($"https://{configSettings.Auth0Authority}/" + "authorize?audience=" + configSettings.Auth0ApiIdentifier)
+                                { "Admin", "Admin Assistant Administrators" },
+                                { "User", "Admin Assistant users" }
+                            },                            
                         }
-                    }
+                    },                    
+                    Description = "Admin Assistant Server OpenId Security Scheme"
                 });
+
                 c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 
                 // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
                 c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
-
-                // Let Swagger UI know that we put Authorize on all endpoints using a filter policy
-                // See services.AddControllers code above ...
-                c.OperationFilter<SwaggerSecurityRequirementsOperationFilter>();
             });
             services.AddSwaggerGenNewtonsoftSupport();
 
@@ -124,7 +120,7 @@ namespace AdminAssistant.Blazor.Server
 
             services.AddAdminAssistantServerSideProviders();
             services.AddAdminAssistantServerSideDomainModel();
-            services.AddAdminAssistantServerSideInfra(configSettings);
+            services.AddAdminAssistantServerSideInfra(config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -146,11 +142,18 @@ namespace AdminAssistant.Blazor.Server
             // Serves the Swagger UI 3 web ui to view the OpenAPI/Swagger documents by default on `/swagger`
             app.UseSwaggerUI(c =>
             {
+                var config = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", WebAPITitle);
                 c.RoutePrefix = "api/docs";
                 c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
                 // Additional OAuth settings (See https://github.com/swagger-api/swagger-ui/blob/v3.10.0/docs/usage/oauth2.md)
-                c.OAuthClientId(_configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>().Auth0ClientId);
+                c.OAuthClientId(config.Auth0ClientId);
+                c.OAuthClientSecret(config.Auth0ClientId);
+                c.OAuthAppName(config.Auth0AppName);
+                c.OAuthScopeSeparator(" ");
+                c.OAuthUsePkce();
+                c.UseRequestInterceptor("(req) => { if (req.url.endsWith('oauth/token') && req.body) req.body += '&audience=" + HttpUtility.UrlEncode("https://localhost:5001/api") + "'; return req; }");
             });
             
             app.UseHttpsRedirection();
@@ -169,49 +172,40 @@ namespace AdminAssistant.Blazor.Server
         }
     }
 
-    public class SwaggerSecurityRequirementsOperationFilter : Swashbuckle.AspNetCore.SwaggerGen.IOperationFilter
+    public class AuthorizeOperationFilter : IOperationFilter
     {
-        /// <summary>
-        /// Applies this filter on swagger documentation generation.
-        /// </summary>
-        /// <param name="operation"></param>
-        /// <param name="context"></param>
-        public void Apply(OpenApiOperation operation, Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext context)
+        public void Apply(OpenApiOperation operation, OperationFilterContext context)
         {
-            // then check if there is a method-level 'AllowAnonymous', as this overrides any controller-level 'Authorize'
-            var anonControllerScope = context
-                    .MethodInfo
-                    .DeclaringType
-                    .GetCustomAttributes(true)
-                    .OfType<AllowAnonymousAttribute>();
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
+            if (context.MethodInfo == null)
+                throw new ArgumentNullException(nameof(context.MethodInfo));
+            if (context.MethodInfo.DeclaringType == null)
+                throw new ArgumentNullException(nameof(context.MethodInfo.DeclaringType));
 
-            var anonMethodScope = context
-                    .MethodInfo
-                    .GetCustomAttributes(true)
-                    .OfType<AllowAnonymousAttribute>();
+            var authAttributes = context.MethodInfo.DeclaringType.GetCustomAttributes(true)
+                            .Union(context.MethodInfo.GetCustomAttributes(true))
+                            .OfType<AuthorizeAttribute>();
 
-            // only add authorization specification information if there is at least one 'Authorize' in the chain and NO method-level 'AllowAnonymous'
-            if (!anonMethodScope.Any() && !anonControllerScope.Any())
+            if (authAttributes.Any())
             {
-                // add generic message if the controller methods dont already specify the response type
-                if (!operation.Responses.ContainsKey("401"))
-                    operation.Responses.Add("401", new OpenApiResponse { Description = "If Authorization header not present, has no value or no valid jwt bearer token" });
+                operation.Responses.Add(StatusCodes.Status401Unauthorized.ToString(), new OpenApiResponse { Description = nameof(HttpStatusCode.Unauthorized) });
+                operation.Responses.Add(StatusCodes.Status403Forbidden.ToString(), new OpenApiResponse { Description = nameof(HttpStatusCode.Forbidden) });
+            }
 
-                if (!operation.Responses.ContainsKey("403"))
-                    operation.Responses.Add("403", new OpenApiResponse { Description = "If user not authorized to perform requested action" });
+            if (authAttributes.Any())
+            {
+                operation.Security = new List<OpenApiSecurityRequirement>();
 
-                var jwtAuthScheme = new OpenApiSecurityScheme
+                var oauth2SecurityScheme = new OpenApiSecurityScheme()
                 {
-                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "OAuth2" },
                 };
 
-                operation.Security = new List<OpenApiSecurityRequirement>
+                operation.Security.Add(new OpenApiSecurityRequirement()
                 {
-                    new OpenApiSecurityRequirement
-                    {
-                        [ jwtAuthScheme ] = new List<string>()
-                    }
-                };
+                    [oauth2SecurityScheme] = new[] { "OAuth2" }
+                });
             }
         }
     }
