@@ -26,6 +26,9 @@ namespace AdminAssistant.Blazor.Server
 {
     public class Startup
     {
+        // TODO: Remove when auth works.
+        private const bool includeAuth = false;
+
         // TODO: Make version a constant shared with WebAPI Assemblies
         private const string WebAPIVersion = "v1";
         private string WebAPITitle => $"Admin Assistant WebAPI {WebAPIVersion}.";
@@ -65,7 +68,8 @@ namespace AdminAssistant.Blazor.Server
             {
                 // Add [Authorize] for all controllers ...
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-                opts.Filters.Add(new AuthorizeFilter(policy));
+                if (includeAuth)
+                    opts.Filters.Add(new AuthorizeFilter(policy));
 
             }).AddNewtonsoftJson()
               .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>());
@@ -86,29 +90,32 @@ namespace AdminAssistant.Blazor.Server
                     return new string[] { api.GroupName };
                 });
                 c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
-                c.OperationFilter<AuthorizeOperationFilter>();
-                c.AddSecurityDefinition("OAuth2", new OpenApiSecurityScheme
-                {
-                    // Based on example here https://github.com/lurumad/swagger-ui-pkce
-                    // See blog post https://lurumad.github.io/swagger-ui-with-pkce-using-swashbuckle-asp-net-core
-                    Type = SecuritySchemeType.OAuth2,
 
-                    Flows = new OpenApiOAuthFlows
+                if (includeAuth)
+                {
+                    c.OperationFilter<AuthorizeOperationFilter>();
+                    c.AddSecurityDefinition("OAuth2", new OpenApiSecurityScheme
                     {
-                        AuthorizationCode = new OpenApiOAuthFlow
+                        // Based on example here https://github.com/lurumad/swagger-ui-pkce
+                        // See blog post https://lurumad.github.io/swagger-ui-with-pkce-using-swashbuckle-asp-net-core
+                        Type = SecuritySchemeType.OAuth2,
+
+                        Flows = new OpenApiOAuthFlows
                         {
-                            AuthorizationUrl = new Uri(config.Auth0AuthorizeEndpoint),
-                            TokenUrl = new Uri(config.Auth0TokenEndpoint),
-                            Scopes = new Dictionary<string, string>
+                            AuthorizationCode = new OpenApiOAuthFlow
+                            {
+                                AuthorizationUrl = new Uri(config.Auth0AuthorizeEndpoint),
+                                TokenUrl = new Uri(config.Auth0TokenEndpoint),
+                                Scopes = new Dictionary<string, string>
                             {
                                 { "Admin", "Admin Assistant Administrators" },
                                 { "User", "Admin Assistant users" }
-                            },                            
-                        }
-                    },                    
-                    Description = "Admin Assistant Server OpenId Security Scheme"
-                });
-
+                            },
+                            }
+                        },
+                        Description = "Admin Assistant Server OpenId Security Scheme"
+                    });
+                }
                 c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 
                 // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
@@ -147,21 +154,28 @@ namespace AdminAssistant.Blazor.Server
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", WebAPITitle);
                 c.RoutePrefix = "api/docs";
                 c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
-                // Additional OAuth settings (See https://github.com/swagger-api/swagger-ui/blob/v3.10.0/docs/usage/oauth2.md)
-                c.OAuthClientId(config.Auth0ClientId);
-                c.OAuthClientSecret(config.Auth0ClientId);
-                c.OAuthAppName(config.Auth0AppName);
-                c.OAuthScopeSeparator(" ");
-                c.OAuthUsePkce();
-                c.UseRequestInterceptor("(req) => { if (req.url.endsWith('oauth/token') && req.body) req.body += '&audience=" + HttpUtility.UrlEncode("https://localhost:5001/api") + "'; return req; }");
+
+                if (includeAuth)
+                {
+                    // Additional OAuth settings (See https://github.com/swagger-api/swagger-ui/blob/v3.10.0/docs/usage/oauth2.md)
+                    c.OAuthClientId(config.Auth0ClientId);
+                    c.OAuthClientSecret(config.Auth0ClientId);
+                    c.OAuthAppName(config.Auth0AppName);
+                    c.OAuthScopeSeparator(" ");
+                    c.OAuthUsePkce();
+                    c.UseRequestInterceptor("(req) => { if (req.url.endsWith('oauth/token') && req.body) req.body += '&audience=" + HttpUtility.UrlEncode("https://localhost:5001/api") + "'; return req; }");
+                }
             });
             
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
+            if (includeAuth)
+            {
+                app.UseAuthentication();
+                app.UseAuthorization();
+            }
             app.UseHealthChecks("/api/health");
             app.UseEndpoints(endpoints =>
             {
