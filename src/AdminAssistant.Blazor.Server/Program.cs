@@ -1,37 +1,28 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using AdminAssistant.Blazor.Server;
+using AdminAssistant.Infra.Providers;
 
-namespace AdminAssistant.Blazor.Server
-{
-    public static class Program
+Host.CreateDefaultBuilder()
+    .ConfigureLogging(logging =>
     {
-        public static void Main(string[] args) => CreateHostBuilder(args).Build().Run();
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder()
-                .ConfigureLogging(logging =>
-                {
-                    logging.ClearProviders();
+        logging.ClearProviders();
 #if DEBUG
-                    logging.AddConsole();
-                    logging.AddDebug();
+        logging.AddConsole();
+        logging.AddDebug();
 
-                    logging.AddFilter("Default", LogLevel.Information)
-                           .AddFilter(Infra.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Debug)
-                           .AddFilter("Microsoft", LogLevel.Warning)
-                           .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
+        logging.AddFilter("Default", LogLevel.Information)
+                .AddFilter(ILoggingProvider.ServerSideLogCategory, LogLevel.Debug)
+                .AddFilter("Microsoft", LogLevel.Warning)
+                .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else
-                    logging.AddFilter("Default", LogLevel.Warning)
-                           .AddFilter(Infra.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Warning)
-                           .AddFilter("Microsoft", LogLevel.Warning)
-                           .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
+        logging.AddFilter("Default", LogLevel.Warning)
+                .AddFilter(ILoggingProvider.ServerSideLogCategory, LogLevel.Warning)
+                .AddFilter("Microsoft", LogLevel.Warning)
+                .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
 
-                    // TODO: Configure production logging.
+        // TODO: Configure production logging.
 #endif
-                })
-                .ConfigureAppConfiguration((hostingContext, config) => config.AddCommandLine(args))
-                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
-    }
-}
+    })
+    .ConfigureAppConfiguration((hostingContext, config) => config.AddCommandLine(args))
+    .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>())
+    .Build()
+    .Run();
