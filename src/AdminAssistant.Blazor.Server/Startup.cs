@@ -2,23 +2,11 @@ using AdminAssistant.DomainModel.Shared;
 using Ardalis.GuardClauses;
 using AutoMapper;
 using FluentValidation.AspNetCore;
-using MicroElements.Swashbuckle.FluentValidation;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.ResponseCompression;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Web;
 
@@ -26,9 +14,6 @@ namespace AdminAssistant.Blazor.Server
 {
     public class Startup
     {
-        // TODO: Remove when auth works.
-        private const bool includeAuth = false;
-
         // TODO: Make version a constant shared with WebAPI Assemblies
         private const string WebAPIVersion = "v1";
         private string WebAPITitle => $"Admin Assistant WebAPI {WebAPIVersion}.";
@@ -64,14 +49,7 @@ namespace AdminAssistant.Blazor.Server
             // TODO: investigate https://damienbod.com/2021/03/08/securing-blazor-web-assembly-using-cookies/
             services.AddHttpContextAccessor();
 
-            services.AddControllers(opts =>
-            {
-                // Add [Authorize] for all controllers ...
-                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-                if (includeAuth)
-                    opts.Filters.Add(new AuthorizeFilter(policy));
-
-            }).AddNewtonsoftJson()
+            services.AddControllers().AddNewtonsoftJson()
               .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>());
 
             services.AddHealthChecks();
@@ -90,32 +68,6 @@ namespace AdminAssistant.Blazor.Server
                     return new string[] { api.GroupName };
                 });
                 c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
-
-                if (includeAuth)
-                {
-                    c.OperationFilter<AuthorizeOperationFilter>();
-                    c.AddSecurityDefinition("OAuth2", new OpenApiSecurityScheme
-                    {
-                        // Based on example here https://github.com/lurumad/swagger-ui-pkce
-                        // See blog post https://lurumad.github.io/swagger-ui-with-pkce-using-swashbuckle-asp-net-core
-                        Type = SecuritySchemeType.OAuth2,
-
-                        Flows = new OpenApiOAuthFlows
-                        {
-                            AuthorizationCode = new OpenApiOAuthFlow
-                            {
-                                AuthorizationUrl = new Uri(config.Auth0AuthorizeEndpoint),
-                                TokenUrl = new Uri(config.Auth0TokenEndpoint),
-                                Scopes = new Dictionary<string, string>
-                            {
-                                { "Admin", "Admin Assistant Administrators" },
-                                { "User", "Admin Assistant users" }
-                            },
-                            }
-                        },
-                        Description = "Admin Assistant Server OpenId Security Scheme"
-                    });
-                }
                 c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 
                 // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
@@ -154,28 +106,12 @@ namespace AdminAssistant.Blazor.Server
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", WebAPITitle);
                 c.RoutePrefix = "api/docs";
                 c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
-
-                if (includeAuth)
-                {
-                    // Additional OAuth settings (See https://github.com/swagger-api/swagger-ui/blob/v3.10.0/docs/usage/oauth2.md)
-                    c.OAuthClientId(config.Auth0ClientId);
-                    c.OAuthClientSecret(config.Auth0ClientId);
-                    c.OAuthAppName(config.Auth0AppName);
-                    c.OAuthScopeSeparator(" ");
-                    c.OAuthUsePkce();
-                    c.UseRequestInterceptor("(req) => { if (req.url.endsWith('oauth/token') && req.body) req.body += '&audience=" + HttpUtility.UrlEncode("https://localhost:5001/api") + "'; return req; }");
-                }
             });
             
             app.UseHttpsRedirection();
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
             app.UseRouting();
-            if (includeAuth)
-            {
-                app.UseAuthentication();
-                app.UseAuthorization();
-            }
             app.UseHealthChecks("/api/health");
             app.UseEndpoints(endpoints =>
             {
@@ -183,44 +119,6 @@ namespace AdminAssistant.Blazor.Server
                 endpoints.MapControllers();
                 endpoints.MapFallbackToFile("index.html");
             });
-        }
-    }
-
-    public class AuthorizeOperationFilter : IOperationFilter
-    {
-        public void Apply(OpenApiOperation operation, OperationFilterContext context)
-        {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
-            if (context.MethodInfo == null)
-                throw new ArgumentNullException(nameof(context.MethodInfo));
-            if (context.MethodInfo.DeclaringType == null)
-                throw new ArgumentNullException(nameof(context.MethodInfo.DeclaringType));
-
-            var authAttributes = context.MethodInfo.DeclaringType.GetCustomAttributes(true)
-                            .Union(context.MethodInfo.GetCustomAttributes(true))
-                            .OfType<AuthorizeAttribute>();
-
-            if (authAttributes.Any())
-            {
-                operation.Responses.Add(StatusCodes.Status401Unauthorized.ToString(), new OpenApiResponse { Description = nameof(HttpStatusCode.Unauthorized) });
-                operation.Responses.Add(StatusCodes.Status403Forbidden.ToString(), new OpenApiResponse { Description = nameof(HttpStatusCode.Forbidden) });
-            }
-
-            if (authAttributes.Any())
-            {
-                operation.Security = new List<OpenApiSecurityRequirement>();
-
-                var oauth2SecurityScheme = new OpenApiSecurityScheme()
-                {
-                    Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "OAuth2" },
-                };
-
-                operation.Security.Add(new OpenApiSecurityRequirement()
-                {
-                    [oauth2SecurityScheme] = new[] { "OAuth2" }
-                });
-            }
         }
     }
 }

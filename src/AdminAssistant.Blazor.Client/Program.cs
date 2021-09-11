@@ -43,11 +43,6 @@ namespace AdminAssistant.Blazor.Client
                 // TODO: Configure other production logging options.
 #endif
             });
-            builder.Services.AddOidcAuthentication(options =>
-            {
-                builder.Configuration.Bind("Auth0", options.ProviderOptions);
-                options.ProviderOptions.ResponseType = "code";
-            });
 
             // See https://github.com/ryanelian/FluentValidation.Blazor
             builder.Services.AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
