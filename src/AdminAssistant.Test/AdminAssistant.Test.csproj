@@ -5,7 +5,7 @@
     <Product>Admin Assistant</Product>
     <IsPackable>false</IsPackable>
     <RootNamespace>AdminAssistant</RootNamespace>
-    <nullable>enable</nullable>
+    <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <Platforms>AnyCPU</Platforms>
     <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
@@ -41,10 +41,6 @@
 
   <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" Version="3.1.0" />
-    <PackageReference Include="coverlet.msbuild" Version="3.0.3">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="FluentValidation" Version="9.5.3" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.0-preview.7.21377.19" />
@@ -58,8 +54,12 @@
     <PackageReference Include="Respawn" Version="4.0.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
-      <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.0.2">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Xunit.SkippableFact" Version="1.4.13" />
   </ItemGroup>

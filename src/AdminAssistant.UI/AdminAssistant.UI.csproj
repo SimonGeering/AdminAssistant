@@ -2,13 +2,17 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Product>Admin Assistant</Product>
-    <nullable>enable</nullable>
+    <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <Platforms>AnyCPU</Platforms>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+  
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>AdminAssistant.UI.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
