@@ -5,6 +5,5 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable", Justification = "Static Program class incompatible with client side blazor.", Scope = "type", Target = "~T:AdminAssistant.Blazor.Client.Program")]
 [assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Keep vm lowercase as used by blazor html markup", Scope = "member", Target = "~P:AdminAssistant.Blazor.Client.Shared.AdminAssistantLayoutComponentBase`1.vm")]
 [assembly: SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Keep vm lowercase as used by blazor html markup", Scope = "member", Target = "~P:AdminAssistant.Blazor.Client.Shared.AdminAssistantComponentBase`1.vm")]
