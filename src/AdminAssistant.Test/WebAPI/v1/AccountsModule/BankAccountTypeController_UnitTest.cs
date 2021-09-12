@@ -45,13 +45,15 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
             var response = await services.BuildServiceProvider().GetRequiredService<BankAccountTypeController>().BankAccountTypeGet().ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
 
-            var result = (OkObjectResult)response.Result;
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<IEnumerable<BankAccountTypeResponseDto>>();
 
-            var value = ((IEnumerable<BankAccountTypeResponseDto>)result.Value).ToArray();
+            result.Value.Should().NotBeNull();
+            var value = ((IEnumerable<BankAccountTypeResponseDto>)result.Value!).ToArray();
             value.Should().HaveCount(bankAccountTypes.Count);
 
             var expected = bankAccountTypes.ToArray();

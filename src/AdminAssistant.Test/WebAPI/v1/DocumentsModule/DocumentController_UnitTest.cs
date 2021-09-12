@@ -45,10 +45,11 @@ namespace AdminAssistant.WebAPI.v1.DocumentsModule
             var response = await services.BuildServiceProvider().GetRequiredService<DocumentController>().GetDocuments().ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
 
-            var result = (OkObjectResult)response.Result;
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<IEnumerable<DocumentResponseDto>>();
 
             //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();

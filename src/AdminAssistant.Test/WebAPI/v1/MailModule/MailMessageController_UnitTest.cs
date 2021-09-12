@@ -45,10 +45,11 @@ namespace AdminAssistant.WebAPI.v1.MailModule
             var response = await services.BuildServiceProvider().GetRequiredService<MailMessageController>().GetMailMessages().ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
 
-            var result = (OkObjectResult)response.Result;
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<IEnumerable<MailMessageResponseDto>>();
 
             //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();

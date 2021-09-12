@@ -45,10 +45,11 @@ namespace AdminAssistant.WebAPI.v1.CalendarModule
             var response = await services.BuildServiceProvider().GetRequiredService<ReminderController>().GetReminders().ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
 
-            var result = (OkObjectResult)response.Result;
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<IEnumerable<ReminderResponseDto>>();
 
             //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();

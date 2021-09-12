@@ -63,8 +63,8 @@ namespace Microsoft.Extensions.DependencyInjection
         private static void AddMockLogging(IServiceCollection services)
         {
             var mockLogger = new Mock<ILogger>();
-            mockLogger.Setup(m => m.Log(It.IsAny<LogLevel>(), It.IsAny<EventId>(), It.IsAny<object>(), It.IsAny<Exception>(), It.IsAny<Func<object, Exception, string>>()))
-                .Callback<LogLevel, EventId, object, Exception, Func<object, Exception, string>>((logLevel, eventId, state, exception, formatter) => Console.WriteLine($"{state}"));
+            mockLogger.Setup(m => m.Log(It.IsAny<LogLevel>(), It.IsAny<EventId>(), It.IsAny<object>(), It.IsAny<Exception?>(), It.IsAny<Func<object, Exception?, string>>()))
+                .Callback<LogLevel, EventId, object, Exception?, Func<object, Exception?, string>>((logLevel, eventId, state, exception, formatter) => Console.WriteLine($"{state}"));
 
             var mockLoggerFactory = new Mock<ILoggerFactory>();
             mockLoggerFactory.Setup(x => x.CreateLogger(It.IsAny<string>()))
