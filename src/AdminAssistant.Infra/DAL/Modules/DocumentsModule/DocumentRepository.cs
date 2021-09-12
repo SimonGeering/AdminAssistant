@@ -18,7 +18,7 @@ namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule
         {
         }
 
-        public async Task<Document> GetAsync(int documentID)
+        public async Task<Document?> GetAsync(int documentID)
         {
             var data = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == documentID).ConfigureAwait(false);
             return Mapper.Map<Document>(data);
@@ -59,8 +59,8 @@ namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule
             var entity = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == documentID).ConfigureAwait(false);
 
             // TODO: make this a custom domain exception and handle in controller.
-            if (entity.DocumentID != documentID)
-                throw new System.ArgumentException($"Record with ID {documentID} not found", nameof(documentID));
+            if (entity == null || entity.DocumentID != documentID)
+                throw new ArgumentException($"Record with ID {documentID} not found", nameof(documentID));
 
             DbContext.Documents.Remove(entity);
             await DbContext.SaveChangesAsync().ConfigureAwait(false);

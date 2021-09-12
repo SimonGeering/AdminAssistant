@@ -41,15 +41,15 @@ namespace AdminAssistant.Infra.DAL.Modules.CoreModule
             var entity = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
 
             // TODO: make this a custom domain exception and handle in controller.
-            if (entity.CurrencyID != id)
-                throw new System.ArgumentException($"Record with ID {id} not found", nameof(id));
+            if (entity == null || entity.CurrencyID != id)
+                throw new ArgumentException($"Record with ID {id} not found", nameof(id));
 
             DbContext.Currencies.Remove(entity);
             await DbContext.SaveChangesAsync().ConfigureAwait(false);
             return;
         }
 
-        public async Task<Currency> GetAsync(int id)
+        public async Task<Currency?> GetAsync(int id)
         {
             var data = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
             return Mapper.Map<Currency>(data);
