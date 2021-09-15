@@ -7,7 +7,7 @@
     <div class="header-section dock-menu" id="header">
       <ul class="header-list">
         <li id="hamburger" class="icon-menu icon list" @onclick="@this.vm.OnSideBarControlButtonClick"></li>
-        <input type="text" placeholder="Search..." class="search-icon list">
+        <li><input type="text" placeholder="Search..." class="search-icon list"></li>
         <li class="right-header list">
           @*<div class="horizontal-menu">
             <SfMenu CssClass="dock-menu" Items="@AccountMenuItems" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Horizontal"></SfMenu>
@@ -16,7 +16,6 @@
         <li class="right-header list support">Support</li>
         <li class="right-header list tour">Tour</li>
       </ul>
-      <AccessControl />
     </div>
     <SfSidebar HtmlAttributes="@(new Dictionary<string, object>() { { "class", "sidebar-menu" } })" Target=".main-content" Width="220px" DockSize="50px" EnableDock="true" @bind-IsOpen="this.vm.Sidebar.ShowContent">
       <ChildContent>
