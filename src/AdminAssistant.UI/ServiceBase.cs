@@ -4,7 +4,7 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.UI
 {
-    public abstract class ServiceBase
+    internal abstract class ServiceBase
     {
         protected IAdminAssistantWebAPIClient AdminAssistantWebAPIClient { get; }
         protected IMapper Mapper { get; }

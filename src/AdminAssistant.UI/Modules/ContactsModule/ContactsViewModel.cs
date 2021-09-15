@@ -2,7 +2,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.ContactsModule
 {
-    public class ContactsViewModel : ViewModelBase, IContactsViewModel
+    internal class ContactsViewModel : ViewModelBase, IContactsViewModel
     {
         public ContactsViewModel(ILoggingProvider loggingProvider)
             : base(loggingProvider)

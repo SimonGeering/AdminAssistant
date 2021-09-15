@@ -4,7 +4,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 namespace AdminAssistant.UI
 {
-    public abstract class ViewModelBase : ObservableObject, IViewModelBase
+    internal abstract class ViewModelBase : ObservableObject, IViewModelBase
     {
         [Obsolete("Replaced with OnLoadedAsync")]
         public virtual async Task OnInitializedAsync() => await OnLoadedAsync().ConfigureAwait(true);
