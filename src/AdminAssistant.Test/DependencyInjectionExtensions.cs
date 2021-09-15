@@ -1,4 +1,3 @@
-using System;
 using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.Providers;

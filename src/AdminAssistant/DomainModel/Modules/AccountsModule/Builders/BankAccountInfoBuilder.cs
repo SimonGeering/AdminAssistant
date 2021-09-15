@@ -7,7 +7,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
     }
     internal class BankAccountInfoBuilder : IBankAccountInfoBuilder
     {
-        private BankAccountInfo _bankAccountInfo = new BankAccountInfo();
+        private BankAccountInfo _bankAccountInfo = new();
 
         public static BankAccountInfo Default(IBankAccountInfoBuilder builder) => builder.Build();
 

@@ -1,4 +1,3 @@
-using System;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;

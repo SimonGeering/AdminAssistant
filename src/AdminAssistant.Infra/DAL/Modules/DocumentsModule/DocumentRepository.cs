@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using AutoMapper;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.DomainModel.Shared;

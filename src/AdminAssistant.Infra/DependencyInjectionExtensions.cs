@@ -1,5 +1,3 @@
-using System;
-using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;

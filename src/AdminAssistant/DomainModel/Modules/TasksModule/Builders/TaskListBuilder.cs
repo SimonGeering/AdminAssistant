@@ -8,7 +8,7 @@ namespace AdminAssistant.DomainModel.Modules.TasksModule.Builders
     }
     internal class TaskListBuilder : ITaskListBuilder
     {
-        private TaskList _taskList = new TaskList();
+        private TaskList _taskList = new();
 
         public static TaskList Default(ITaskListBuilder builder) => builder.Build();
         public static TaskList Default(TaskListBuilder builder) => builder.Build();

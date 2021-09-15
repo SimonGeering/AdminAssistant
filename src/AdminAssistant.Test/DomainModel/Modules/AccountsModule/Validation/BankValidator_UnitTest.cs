@@ -2,7 +2,6 @@
 using FluentAssertions;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation

@@ -1,13 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using Ardalis.Result;
 using FluentAssertions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using ObjectCloner.Extensions;
 using Xunit;
 
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS

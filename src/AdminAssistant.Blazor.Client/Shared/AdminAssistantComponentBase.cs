@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using AdminAssistant.UI;
 using Microsoft.AspNetCore.Components;
 using Syncfusion.Blazor.Spinner;
@@ -13,7 +12,7 @@ namespace AdminAssistant.Blazor.Client.Shared
         protected TViewModel vm { get; set; }
 #pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 
-        protected SfSpinner SfSpinner { get; set; } = new SfSpinner();
+        protected SfSpinner SfSpinner { get; set; } = new();
 
         protected override void OnInitialized()
         {

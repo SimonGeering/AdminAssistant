@@ -1,14 +1,10 @@
 using AdminAssistant.DomainModel.Shared;
 using Ardalis.GuardClauses;
-using AutoMapper;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using System.Net;
-using System.Web;
 
 namespace AdminAssistant.Blazor.Server
 {

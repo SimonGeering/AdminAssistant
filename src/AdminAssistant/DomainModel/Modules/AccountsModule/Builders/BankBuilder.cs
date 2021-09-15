@@ -8,7 +8,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
     }
     internal class BankBuilder : IBankBuilder
     {
-        private Bank _bank = new Bank();
+        private Bank _bank = new();
 
         public static Bank Default(IBankBuilder builder) => builder.Build();
         public Bank Build() => _bank;

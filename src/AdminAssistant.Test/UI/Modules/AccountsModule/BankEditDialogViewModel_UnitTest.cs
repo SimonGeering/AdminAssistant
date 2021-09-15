@@ -1,6 +1,5 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using System.Diagnostics.CodeAnalysis;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace AdminAssistant.UI.Modules.AccountsModule

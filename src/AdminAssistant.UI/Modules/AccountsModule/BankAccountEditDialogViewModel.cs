@@ -1,8 +1,5 @@
-using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Infra.Providers;
@@ -23,7 +20,7 @@ namespace AdminAssistant.UI.Modules.AccountsModule
         private readonly ICoreService _coreService;
         private readonly IMessenger _messenger;
 
-        private BankAccount bankAccount = new BankAccount();
+        private BankAccount bankAccount = new();
 
         public BankAccountEditDialogViewModel(
             ILoggingProvider log,

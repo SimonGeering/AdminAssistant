@@ -8,7 +8,7 @@ namespace AdminAssistant.DomainModel.Modules.BudgetModule.Builders
     }
     internal class BudgetBuilder : IBudgetBuilder
     {
-        private Budget _budget = new Budget();
+        private Budget _budget = new();
 
         public static Budget Default(IBudgetBuilder builder) => builder.Build();
 

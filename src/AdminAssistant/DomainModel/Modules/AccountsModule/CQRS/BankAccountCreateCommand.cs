@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.Infra.Providers;

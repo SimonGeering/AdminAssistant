@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 using AdminAssistant.Infra.Providers;
 using Ardalis.Result;

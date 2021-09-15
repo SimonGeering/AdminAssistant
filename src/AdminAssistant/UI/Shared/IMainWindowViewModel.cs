@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace AdminAssistant.UI.Shared
 {
     public interface IMainWindowViewModel : IViewModelBase

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace AdminAssistant.UI.Shared
 {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
@@ -13,13 +10,13 @@ namespace AdminAssistant.UI.Shared
         //
         public ModeSelectionItem GetDefaultMode() => GetModeItem(DefaultMode);
 
-        public List<ModeSelectionItem> GetModes() => new List<ModeSelectionItem>()
+        public List<ModeSelectionItem> GetModes() => new()
         {
             GetModeItem(ModeEnum.Company),
             GetModeItem(ModeEnum.Personal),
         };
 
-        public List<ModuleSelectionItem> GetModules() => new List<ModuleSelectionItem>()
+        public List<ModuleSelectionItem> GetModules() => new()
         {
             GetModuleItem(ModuleEnum.Dashboard),
             GetModuleItem(ModuleEnum.Mail),
