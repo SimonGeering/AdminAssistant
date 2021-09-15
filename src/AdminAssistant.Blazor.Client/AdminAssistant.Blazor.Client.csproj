@@ -5,6 +5,7 @@
     <AssemblyName>AdminAssistant.Blazor.Client</AssemblyName>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>AdminAssistant.Blazor.Client</RootNamespace>
     <LangVersion>latest</LangVersion>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>

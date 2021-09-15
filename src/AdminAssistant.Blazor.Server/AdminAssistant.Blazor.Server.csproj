@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>AdminAssistant.Blazor.Server</RootNamespace>
     <LangVersion>latest</LangVersion>
     <Platforms>AnyCPU</Platforms>
     <AssemblyName>AdminAssistant.Blazor.Server</AssemblyName>
