@@ -9,6 +9,8 @@ using AdminAssistant.Framework.MediatR;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
+
 namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions

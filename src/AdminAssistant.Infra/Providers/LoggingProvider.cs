@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AdminAssistant.Infra.Providers
 {
-    public class ClientSideLoggingProvider : LoggingProvider, ILoggingProvider
+    internal class ClientSideLoggingProvider : LoggingProvider, ILoggingProvider
     {
         public ClientSideLoggingProvider(ILoggerFactory loggerFactory)
             : base(loggerFactory, ILoggingProvider.ClientSideLogCategory)
@@ -11,7 +11,7 @@ namespace AdminAssistant.Infra.Providers
         }
     }
 
-    public class ServerSideLoggingProvider : LoggingProvider, ILoggingProvider
+    internal class ServerSideLoggingProvider : LoggingProvider, ILoggingProvider
     {
         public ServerSideLoggingProvider(ILoggerFactory loggerFactory)
             : base(loggerFactory, ILoggingProvider.ServerSideLogCategory)
@@ -19,7 +19,7 @@ namespace AdminAssistant.Infra.Providers
         }
     }
 
-    public abstract class LoggingProvider : ILoggingProvider
+    internal abstract class LoggingProvider : ILoggingProvider
     {
         private readonly ILogger _logger;
 
