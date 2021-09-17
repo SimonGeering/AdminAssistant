@@ -30,7 +30,8 @@ stages:
       displayName: 'Ensure CI uses correct sdk Version'
       inputs:
         packageType: 'sdk'
-        version: '6.0.0-rc.1.21451.13'
+        version: '6.0.x'
+        includePreviewVersions: true
     # Restore dependencies ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet restore'
