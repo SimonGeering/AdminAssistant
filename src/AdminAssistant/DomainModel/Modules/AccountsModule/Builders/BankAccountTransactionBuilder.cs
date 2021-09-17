@@ -9,7 +9,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
     }
     internal class BankAccountTransactionBuilder : IBankAccountTransactionBuilder
     {
-        private BankAccountTransaction _bankAccountTransaction = new BankAccountTransaction();
+        private BankAccountTransaction _bankAccountTransaction = new();
 
         public static BankAccountTransaction Default(IBankAccountTransactionBuilder builder) => builder.Build();
 

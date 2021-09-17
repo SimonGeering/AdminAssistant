@@ -1,13 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AssetRegisterModule;
 using AdminAssistant.DomainModel.Modules.AssetRegisterModule.CQRS;
 using Ardalis.Result;
-using AutoMapper;
 using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -43,12 +38,13 @@ namespace AdminAssistant.WebAPI.v1.AssetRegisterModule
 
             // Act
             var response = await services.BuildServiceProvider().GetRequiredService<AssetController>().GetAssets().ConfigureAwait(false);
-             
-            // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
-            response.Value.Should().BeNull();
 
-            var result = (OkObjectResult)response.Result;
+            // Assert
+            response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
+
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<IEnumerable<AssetResponseDto>>();
 
             //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();

@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
 {
     public class SettingEntity

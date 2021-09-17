@@ -11,7 +11,7 @@ namespace AdminAssistant.DomainModel.Modules.CoreModule.Builders
     }
     internal class CurrencyBuilder : ICurrencyBuilder
     {
-        private Currency _currency = new Currency();
+        private Currency _currency = new();
 
         public static Currency Default(ICurrencyBuilder builder) => builder.Build();
 

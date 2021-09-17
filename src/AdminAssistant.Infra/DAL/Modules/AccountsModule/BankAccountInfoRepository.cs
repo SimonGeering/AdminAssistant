@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
@@ -19,7 +16,7 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
         }
 
         // TODO: Check this transform is being done in TSQL server side.
-        public async Task<BankAccountInfo> GetAsync(int id) => await DbContext.BankAccounts.Select(x => new BankAccountInfo
+        public async Task<BankAccountInfo?> GetAsync(int id) => await DbContext.BankAccounts.Select(x => new BankAccountInfo
         {
             BankAccountID = x.BankAccountID,
             AccountName = x.AccountName,

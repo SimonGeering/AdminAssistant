@@ -1,5 +1,3 @@
-using System;
-using System.Data.Common;
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
@@ -10,6 +8,8 @@ using MediatR;
 using AdminAssistant.Framework.MediatR;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
+
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
 
 namespace Microsoft.Extensions.DependencyInjection
 {

@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
@@ -57,18 +54,18 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
             var entity = await DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == id).ConfigureAwait(false);
 
             // TODO: make this a custom domain exception and handle in controller.
-            if (entity.BankAccountID != id)
-                throw new System.ArgumentException($"Record with ID {id} not found", nameof(id));
+            if (entity == null || entity.BankAccountID != id)
+                throw new ArgumentException($"Record with ID {id} not found", nameof(id));
 
             DbContext.BankAccounts.Remove(entity);
             await DbContext.SaveChangesAsync().ConfigureAwait(false);
             return;
         }
 
-        public async Task<BankAccount> GetAsync(int id)
+        public async Task<BankAccount?> GetAsync(int id)
         {
             var data = await DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == id).ConfigureAwait(false);
-            return Mapper.Map<BankAccount>(data);
+            return Mapper.Map<BankAccount?>(data);
         }
 
         public async Task<List<BankAccount>> GetListAsync()

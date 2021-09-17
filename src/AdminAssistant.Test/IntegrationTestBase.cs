@@ -1,15 +1,13 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
-using System;
-using System.Linq;
-using System.Net.Http;
 using System.Reflection;
-using System.Threading.Tasks;
+using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
+using AdminAssistant.Infra.DAL.EntityFramework.Model;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.Providers;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
-using AutoMapper;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
@@ -51,7 +49,22 @@ namespace AdminAssistant
                     // TODO: Configure production logging.
 #endif
                 })
-                .ConfigureAppConfiguration((hostingContext, config) => config.AddUserSecrets(Assembly.GetExecutingAssembly()))
+                .ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    config.AddUserSecrets(Assembly.GetExecutingAssembly());
+
+                    // Get config from UserSecrets so we can refer to it when setting up Test config setting overrides below ...
+                    var baseConfig = config.Build();
+
+                    // Switch out the DB for a Test DB by convention - assumes a '_TestDB' suffix to prod DB name ...
+                    var connectionStringFromUserSecrets = baseConfig.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>().ConnectionString;
+                    // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
+                    var testConnectionString = connectionStringFromUserSecrets.Replace("Initial Catalog=AdminAssistant", "Initial Catalog=AdminAssistant_Test", StringComparison.InvariantCulture);
+                    config.AddInMemoryCollection(new Dictionary<string, string>
+                    {
+                        [$"{nameof(ConfigurationSettings)}:{nameof(ConfigurationSettings.ConnectionString)}"] = testConnectionString
+                    });
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                  {
                      webBuilder.UseStartup<Blazor.Server.Startup>();
@@ -60,6 +73,8 @@ namespace AdminAssistant
                  });
 
             _testServer = hostBuilder.Start();
+
+            // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
             _connectionString = _testServer.Services.GetRequiredService<IApplicationDbContext>().ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
 
             _checkpoint = new Respawn.Checkpoint
@@ -69,9 +84,7 @@ namespace AdminAssistant
                 {
                     "sysdiagrams",
                     "__EFMigrationsHistory",
-                    "tblObjectType",
-                    "Currency",
-                    "BankAccountType"
+                    "tblObjectType"
                 },
                 WithReseed = true
             };
@@ -82,6 +95,7 @@ namespace AdminAssistant
 
         protected IServiceProvider Container { get; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "Keep local variables to allow future cascade and keep consistent code pattern")]
         protected async Task ResetDatabaseAsync()
         {
             await _checkpoint.Reset(_connectionString).ConfigureAwait(false);
@@ -90,45 +104,11 @@ namespace AdminAssistant
             var dbContext = Container.GetRequiredService<IApplicationDbContext>();
             var dateTimeProvider = Container.GetRequiredService<IDateTimeProvider>();
 
-            // TODO: Replace this with IUserProfileRepository when it exists ...
-            var testUserProfile = new UserProfileEntity()
-            {
-                SignOn = "TestUser",
-                Audit = GetAuditForCreate()
-            };
-            dbContext.UserProfiles.Add(testUserProfile);
-
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
-
-            // TODO: Replace this with ICompanyRepository when it exists ...
-            var testCompanyOwner = new OwnerEntity()
-            {
-                Company = new CompanyEntity()
-                {
-                    Name = "ACME Corp",
-                    CompanyNumber = "12345678910",
-                    VATNumber = "zz1224324543",
-                    DateOfIncorporation = DateTime.Today,
-                    Audit = GetAuditForCreate(),
-                    UserProfile = testUserProfile
-                }
-            };
-            dbContext.Owners.Add(testCompanyOwner);
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
-
-            // TODO: Replace this with IPersonalDetailsRepository when it exists ...
-            var testPersonOwner = new OwnerEntity()
-            {
-                PersonalDetails = new PersonalDetailsEntity()
-                {
-                    Audit = GetAuditForCreate(),
-                    UserProfile = testUserProfile
-                }
-            };
-            dbContext.Owners.Add(testPersonOwner);
-            await dbContext.SaveChangesAsync().ConfigureAwait(false);
-
-            AuditEntity GetAuditForCreate() => new AuditEntity() { CreatedBy = "TestUser", CreatedOn = dateTimeProvider.UtcNow };
+            var testBankAccountTypes = await SeedBankAccountTypeTestData(dbContext);
+            var testCurrencies = await SeedCurrencyTestData(dbContext);
+            var testUserProfile = await SeedUserProfileTestData(dbContext, dateTimeProvider).ConfigureAwait(false);
+            var testCompanyOwner = await SeedCompanyOwnerTestData(dbContext, dateTimeProvider, testUserProfile).ConfigureAwait(false);
+            var testPersonalOwner = await SeedPersonalOwnerTestData(dbContext, dateTimeProvider, testUserProfile).ConfigureAwait(false);
         }
 
         protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
@@ -142,8 +122,73 @@ namespace AdminAssistant
             services.AddAutoMapper(typeof(MappingProfile));
         };
 
+        private async Task<List<BankAccountTypeEntity>> SeedBankAccountTypeTestData(IApplicationDbContext dbContext)
+        {
+            var testBankAccountTypes = AccountsSchema.GetBankAccountTypesSeedData();
+            dbContext.BankAccountTypes.AddRange(testBankAccountTypes);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testBankAccountTypes.ToList();
+        }
 
-#region IDisposable
+        private async Task<List<CurrencyEntity>> SeedCurrencyTestData(IApplicationDbContext dbContext)
+        {
+            var testCurrencies = CoreSchema.GetCurrencySeedData();
+            dbContext.Currencies.AddRange(testCurrencies);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testCurrencies.ToList();
+        }
+
+        private async Task<UserProfileEntity> SeedUserProfileTestData(IApplicationDbContext dbContext, IDateTimeProvider dateTimeProvider)
+        {
+            var testUserProfile = new UserProfileEntity()
+            {
+                SignOn = "TestUser",
+                Audit = GetAuditForCreate(dateTimeProvider)
+            };
+            dbContext.UserProfiles.Add(testUserProfile);
+
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testUserProfile;
+        }
+
+        private async Task<OwnerEntity> SeedCompanyOwnerTestData(IApplicationDbContext dbContext, IDateTimeProvider dateTimeProvider, UserProfileEntity testUserProfile)
+        {
+            var testCompanyOwner = new OwnerEntity()
+            {
+                Company = new CompanyEntity()
+                {
+                    Name = "ACME Corp",
+                    CompanyNumber = "12345678910",
+                    VATNumber = "zz1224324543",
+                    DateOfIncorporation = DateTime.Today,
+                    Audit = GetAuditForCreate(dateTimeProvider),
+                    UserProfile = testUserProfile
+                }
+            };
+            dbContext.Owners.Add(testCompanyOwner);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testCompanyOwner;
+        }
+
+        private async Task<OwnerEntity> SeedPersonalOwnerTestData(IApplicationDbContext dbContext, IDateTimeProvider dateTimeProvider, UserProfileEntity testUserProfile)
+        {
+            var testPersonalOwner = new OwnerEntity()
+            {
+                PersonalDetails = new PersonalDetailsEntity()
+                {
+                    Audit = GetAuditForCreate(dateTimeProvider),
+                    UserProfile = testUserProfile
+                }
+            };
+            dbContext.Owners.Add(testPersonalOwner);
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
+            return testPersonalOwner;
+        }
+
+        private AuditEntity GetAuditForCreate(IDateTimeProvider dateTimeProvider)
+            => new() { CreatedBy = "TestUser", CreatedOn = dateTimeProvider.UtcNow };
+
+        #region IDisposable
 
         private bool disposedValue;
 

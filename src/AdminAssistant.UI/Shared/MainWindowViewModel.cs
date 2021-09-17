@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using AdminAssistant.Infra.Providers;
 using Microsoft.Toolkit.Mvvm.Messaging;
 

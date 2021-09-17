@@ -30,7 +30,8 @@ stages:
       displayName: 'Ensure CI uses correct sdk Version'
       inputs:
         packageType: 'sdk'
-        version: '5.0.100'
+        version: '6.0.x'
+        includePreviewVersions: true
     # Restore dependencies ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet restore'
@@ -39,11 +40,6 @@ stages:
         projects: 'src/AdminAssistant.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
-    - task: Npm@1
-      displayName: 'Blazor npm install'
-      inputs:
-        command: 'install'
-        workingDir: 'src/AdminAssistant.Blazor/Client'
     # Build ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet build'
@@ -51,21 +47,6 @@ stages:
         command: 'build'
         projects: 'src/AdminAssistant.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.NonXamarin.sln
         arguments: '--configuration Release --no-restore'
-    # SG 20-Apr-2020: Comment the following for now as it does not work with x64 build config.
-    # - task: XamarinAndroid@1
-    #   displayName: 'Xamarin Android dotnet build'
-    #   inputs:
-    #     projectFile: 'src/AdminAssistant.Xamarin/Android/AdminAssistant.Android.csproj'
-    #     configuration: 'Release'
-    #     msbuildVersionOption: 'latest'
-    #     msbuildArchitectureOption: 'x64'
-    #     jdkOption: 'JDKVersion'
-    - task: Npm@1
-      displayName: 'Blazor npm build'
-      inputs:
-        command: 'custom'
-        workingDir: 'src/AdminAssistant.Blazor/Client'
-        customCommand: 'run build'
     # Run Unit Tests ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet test'

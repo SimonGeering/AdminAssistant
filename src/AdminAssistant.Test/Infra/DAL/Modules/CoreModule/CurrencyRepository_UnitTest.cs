@@ -1,7 +1,4 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Shared;
@@ -56,7 +53,7 @@ namespace AdminAssistant.Infra.DAL.Modules.CoreModule
     {
         [Fact]
         [Trait("Category", "Unit")]
-        public async Task Returns_ACurrency_WhenDatabaseContainseAnItemWithTheGivenID()
+        public async Task Returns_ACurrency_WhenDatabaseContainsAnItemWithTheGivenID()
         {
             // Arrange
             var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();

@@ -2,7 +2,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.BillingModule
 {
-    public class BillingViewModel : ViewModelBase, IBillingViewModel
+    internal class BillingViewModel : ViewModelBase, IBillingViewModel
     {
         public BillingViewModel(ILoggingProvider loggingProvider)
             : base(loggingProvider)

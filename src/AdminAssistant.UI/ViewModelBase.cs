@@ -1,12 +1,10 @@
-using System;
-using System.Threading.Tasks;
 using AdminAssistant.Infra.Providers;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace AdminAssistant.UI
 {
-    public abstract class ViewModelBase : ObservableObject, IViewModelBase
+    internal abstract class ViewModelBase : ObservableObject, IViewModelBase
     {
         [Obsolete("Replaced with OnLoadedAsync")]
         public virtual async Task OnInitializedAsync() => await OnLoadedAsync().ConfigureAwait(true);

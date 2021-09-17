@@ -1,8 +1,4 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
@@ -17,6 +13,60 @@ using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.AccountsModule
 {
+    public class BankController_Put_Should
+    {
+        // TODO: BankController_Put UnitTests
+    }
+
+    public class BankController_BankPost_Should
+    {
+        [Fact]
+        [Trait("Category", "Unit")]
+        public async Task Return_Status422UnprocessableEntity_Given_AnInvalidBank()
+        {
+            // Arrange
+            var validationErrors = new List<ValidationError>()
+            {
+                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+            };
+            var bank = Factory.Bank.WithTestData(10).Build();
+
+            var services = new ServiceCollection();
+            services.AddMocksOfExternalServerSideDependencies();
+
+            var mockMediator = new Mock<IMediator>();
+            mockMediator.Setup(x => x.Send(It.IsAny<BankCreateCommand>(), It.IsAny<CancellationToken>()))
+                        .Returns(Task.FromResult(Result<Bank>.Invalid(validationErrors)));
+
+            services.AddTransient((sp) => mockMediator.Object);
+            services.AddTransient<BankController>();
+
+            var container = services.BuildServiceProvider();
+
+            var mapper = container.GetRequiredService<IMapper>();
+            var bankRequest = mapper.Map<BankCreateRequestDto>(bank);
+
+            // Act
+            var response = await container.GetRequiredService<BankController>().BankPost(bankRequest).ConfigureAwait(false);
+
+            // Assert
+            response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+
+            var result = (UnprocessableEntityObjectResult)response.Result!;
+            result.Value.Should().NotBeNull();
+            var errors = (SerializableError)result.Value!;
+
+            foreach (var expectedErrorDetails in validationErrors)
+            {
+                var messages = (string[])errors[expectedErrorDetails.Identifier];
+                messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            }
+        }
+    }
+
     public class BankController_BankGetById_Should
     {
         [Fact]
@@ -41,13 +91,15 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
             var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID).ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
 
-            var result = (OkObjectResult)response.Result;
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<BankResponseDto>();
 
-            var value = (BankResponseDto)result.Value;
+            result.Value.Should().NotBeNull();
+            var value = (BankResponseDto)result.Value!;
             value.BankID.Should().Be(bank.BankID);
             value.BankName.Should().Be(bank.BankName);
         }
@@ -104,13 +156,15 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
             var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet().ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
-
-            var result = (OkObjectResult)response.Result;
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
+            
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<IEnumerable<BankResponseDto>>();
 
-            var value = ((IEnumerable<BankResponseDto>)result.Value).ToArray();
+            result.Value.Should().NotBeNull();
+            var value = ((IEnumerable<BankResponseDto>)result.Value!).ToArray();
             value.Should().HaveCount(banks.Count);
 
             var expected = banks.ToArray();

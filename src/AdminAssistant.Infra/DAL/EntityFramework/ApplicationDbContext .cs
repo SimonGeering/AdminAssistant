@@ -1,7 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.EntityFramework.Model;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;

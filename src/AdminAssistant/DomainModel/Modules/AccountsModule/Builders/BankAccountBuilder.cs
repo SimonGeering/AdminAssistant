@@ -1,5 +1,3 @@
-using System;
-
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
 {
     public interface IBankAccountBuilder
@@ -12,7 +10,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders
     }
     internal class BankAccountBuilder : IBankAccountBuilder
     {
-        private BankAccount _bankAccount = new BankAccount();
+        private BankAccount _bankAccount = new();
 
         public static BankAccount Default(IBankAccountBuilder builder) => builder.Build();
 

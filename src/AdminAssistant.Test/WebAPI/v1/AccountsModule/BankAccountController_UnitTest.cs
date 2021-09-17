@@ -1,8 +1,4 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
@@ -19,6 +15,7 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
 {
     public class BankAccountController_Put_Should
     {
+        // TODO: BankAccountController_Put UnitTests
     }
 
     public class BankAccountController_BankAccountPost_Should
@@ -54,11 +51,12 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
             var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest).ConfigureAwait(false);
 
             // Assert
+            response.Result.Should().NotBeNull();
             response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
             response.Value.Should().BeNull();
 
-            var result = (UnprocessableEntityObjectResult)response.Result;
-            var errors = (SerializableError)result.Value;
+            var result = (UnprocessableEntityObjectResult)response.Result!;
+            var errors = (SerializableError)result.Value!;
 
             foreach (var expectedErrorDetails in validationErrors)
             {
@@ -92,13 +90,14 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
             var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID).ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
 
-            var result = (OkObjectResult)response.Result;
+            response.Result.Should().NotBeNull();
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<BankAccountResponseDto>();
 
-            var value = (BankAccountResponseDto)result.Value;
+            result.Value.Should().NotBeNull();
+            var value = (BankAccountResponseDto)result.Value!;
             value.BankAccountID.Should().Be(bankAccount.BankAccountID);
             value.AccountName.Should().Be(bankAccount.AccountName);
         }

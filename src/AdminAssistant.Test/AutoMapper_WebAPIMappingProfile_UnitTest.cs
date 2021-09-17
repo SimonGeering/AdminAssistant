@@ -1,5 +1,4 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System;
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AssetRegisterModule;
@@ -52,13 +51,14 @@ namespace AdminAssistant.WebAPI.v1
         [Theory]
         [Trait("Category", "Unit")]
         [InlineData(typeof(Bank), typeof(BankResponseDto))]
+        [InlineData(typeof(BankCreateRequestDto), typeof(Bank))]
+        [InlineData(typeof(BankUpdateRequestDto), typeof(Bank))]
         [InlineData(typeof(BankAccount), typeof(BankAccountResponseDto))]
         [InlineData(typeof(BankAccountInfo), typeof(BankAccountInfoResponseDto))]
         [InlineData(typeof(BankAccountType), typeof(BankAccountTypeResponseDto))]
         [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionResponseDto))]
         [InlineData(typeof(BankAccountCreateRequestDto), typeof(BankAccount))]
         [InlineData(typeof(BankAccountUpdateRequestDto), typeof(BankAccount))]
-
         public void ShouldSupportAccountsModuleMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange
@@ -134,6 +134,8 @@ namespace AdminAssistant.WebAPI.v1
         [Theory]
         [Trait("Category", "Unit")]
         [InlineData(typeof(Currency), typeof(CurrencyResponseDto))]
+        [InlineData(typeof(CurrencyCreateRequestDto), typeof(Currency))]
+        [InlineData(typeof(CurrencyUpdateRequestDto), typeof(Currency))]
         public void ShouldSupportCoreModuleMappingFromSourceToDestination(Type source, Type destination)
         {
             // Arrange

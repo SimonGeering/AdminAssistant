@@ -8,8 +8,8 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Budget
 
         internal static void OnModelCreating(ModelBuilder modelBuilder)
         {
-            BudgetSchema.Budget_OnModelCreating(modelBuilder);
-            BudgetSchema.BudgetEntry_OnModelCreating(modelBuilder);
+            Budget_OnModelCreating(modelBuilder);
+            BudgetEntry_OnModelCreating(modelBuilder);
 
             // TODO: BudgetSchema.OnModelCreating
         }

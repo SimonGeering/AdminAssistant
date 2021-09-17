@@ -1,5 +1,3 @@
-using System;
-
 namespace AdminAssistant.Infra.Providers
 {
     public interface IDateTimeProvider

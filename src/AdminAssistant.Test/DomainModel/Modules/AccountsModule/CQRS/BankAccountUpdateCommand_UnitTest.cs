@@ -1,13 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using Ardalis.Result;
 using FluentAssertions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
-using ObjectCloner.Extensions;
 using Xunit;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
@@ -63,6 +60,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             result.Status.Should().Be(ResultStatus.Invalid);
             result.ValidationErrors.Should().NotBeEmpty();
         }
+        // TODO: Add test for BankAccountUpdateCommand where BankAccountID not in IBankAccountRepository
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
