@@ -1,5 +1,4 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System;
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AssetRegisterModule;

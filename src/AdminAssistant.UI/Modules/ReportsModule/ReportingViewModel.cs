@@ -2,7 +2,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.ReportsModule
 {
-    public class ReportsViewModel : ViewModelBase, IReportsViewModel
+    internal class ReportsViewModel : ViewModelBase, IReportsViewModel
     {
         public ReportsViewModel(ILoggingProvider loggingProvider)
             : base(loggingProvider)

@@ -1,8 +1,0 @@
-<UserControl x:Class="AdminAssistant.WPF.Modules.AccountsModule.BankAccountRightSidebarComponent"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             DataContext="{Binding BankAccountRightSidebarViewModel, Source={StaticResource ViewModelLocator}}">
-  <Grid>
-            
-  </Grid>
-</UserControl>

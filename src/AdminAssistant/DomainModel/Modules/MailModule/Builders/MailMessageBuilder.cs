@@ -8,7 +8,7 @@ namespace AdminAssistant.DomainModel.Modules.MailModule.Builders
     }
     internal class MailMessageBuilder : IMailMessageBuilder
     {
-        private MailMessage _mailMessage = new MailMessage();
+        private MailMessage _mailMessage = new();
 
         public static MailMessage Default(IMailMessageBuilder builder) => builder.Build();
         public static MailMessage Default(MailMessageBuilder builder) => builder.Build();

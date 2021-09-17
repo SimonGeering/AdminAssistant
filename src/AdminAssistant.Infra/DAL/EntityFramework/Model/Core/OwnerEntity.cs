@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core

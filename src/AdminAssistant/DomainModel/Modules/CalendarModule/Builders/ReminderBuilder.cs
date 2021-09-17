@@ -8,7 +8,7 @@ namespace AdminAssistant.DomainModel.Modules.CalendarModule.Builders
     }
     internal class ReminderBuilder : IReminderBuilder
     {
-        private Reminder _reminder = new Reminder();
+        private Reminder _reminder = new();
 
         public static Reminder Default(IReminderBuilder builder) => builder.Build();
         public static Reminder Default(ReminderBuilder builder) => builder.Build();

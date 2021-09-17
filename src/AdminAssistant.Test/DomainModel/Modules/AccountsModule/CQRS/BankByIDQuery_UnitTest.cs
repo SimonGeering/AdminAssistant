@@ -1,5 +1,4 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using Ardalis.Result;
 using FluentAssertions;
@@ -24,7 +23,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             services.AddAdminAssistantServerSideDomainModel();
 
             var mockBankRepository = new Mock<IBankRepository>();
-            mockBankRepository.Setup(x => x.GetAsync(nonExistentBankID)).Returns(Task.FromResult<Bank>(null!));
+            mockBankRepository.Setup(x => x.GetAsync(nonExistentBankID)).Returns(Task.FromResult<Bank?>(null!));
 
             services.AddTransient((sp) => mockBankRepository.Object);
 
@@ -47,7 +46,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
             services.AddAdminAssistantServerSideDomainModel();
 
             var mockBankRepository = new Mock<IBankRepository>();
-            mockBankRepository.Setup(x => x.GetAsync(bank.BankID)).Returns(Task.FromResult(bank));
+            mockBankRepository.Setup(x => x.GetAsync(bank.BankID)).Returns(Task.FromResult<Bank?>(bank));
 
             services.AddTransient((sp) => mockBankRepository.Object);
 

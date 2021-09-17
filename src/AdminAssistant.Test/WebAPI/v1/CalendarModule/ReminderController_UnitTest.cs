@@ -1,13 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.CalendarModule;
 using AdminAssistant.DomainModel.Modules.CalendarModule.CQRS;
 using Ardalis.Result;
-using AutoMapper;
 using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -45,10 +40,11 @@ namespace AdminAssistant.WebAPI.v1.CalendarModule
             var response = await services.BuildServiceProvider().GetRequiredService<ReminderController>().GetReminders().ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
 
-            var result = (OkObjectResult)response.Result;
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<IEnumerable<ReminderResponseDto>>();
 
             //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();

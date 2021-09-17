@@ -1,8 +1,4 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
@@ -55,11 +51,13 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
             var response = await container.GetRequiredService<BankController>().BankPost(bankRequest).ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
             response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
 
-            var result = (UnprocessableEntityObjectResult)response.Result;
-            var errors = (SerializableError)result.Value;
+            var result = (UnprocessableEntityObjectResult)response.Result!;
+            result.Value.Should().NotBeNull();
+            var errors = (SerializableError)result.Value!;
 
             foreach (var expectedErrorDetails in validationErrors)
             {
@@ -93,13 +91,15 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
             var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID).ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
 
-            var result = (OkObjectResult)response.Result;
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<BankResponseDto>();
 
-            var value = (BankResponseDto)result.Value;
+            result.Value.Should().NotBeNull();
+            var value = (BankResponseDto)result.Value!;
             value.BankID.Should().Be(bank.BankID);
             value.BankName.Should().Be(bank.BankName);
         }
@@ -156,13 +156,15 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
             var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet().ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
-
-            var result = (OkObjectResult)response.Result;
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
+            
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<IEnumerable<BankResponseDto>>();
 
-            var value = ((IEnumerable<BankResponseDto>)result.Value).ToArray();
+            result.Value.Should().NotBeNull();
+            var value = ((IEnumerable<BankResponseDto>)result.Value!).ToArray();
             value.Should().HaveCount(banks.Count);
 
             var expected = banks.ToArray();

@@ -9,9 +9,9 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model
 
         internal static void OnModelCreating(ModelBuilder modelBuilder)
         {
-            ContactsSchema.Address_OnModelCreating(modelBuilder);
-            ContactsSchema.ContactAddress_OnModelCreating(modelBuilder);
-            ContactsSchema.Contact_OnModelCreating(modelBuilder);
+            Address_OnModelCreating(modelBuilder);
+            ContactAddress_OnModelCreating(modelBuilder);
+            Contact_OnModelCreating(modelBuilder);
 
             // TODO: ContactsSchema.OnModelCreating
         }

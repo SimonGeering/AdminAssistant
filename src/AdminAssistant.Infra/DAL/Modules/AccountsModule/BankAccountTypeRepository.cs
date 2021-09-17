@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using AutoMapper;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Shared;
@@ -17,7 +15,7 @@ namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
         {
         }
 
-        public async Task<BankAccountType> GetAsync(int id)
+        public async Task<BankAccountType?> GetAsync(int id)
         {
             var data = await DbContext.BankAccountTypes.FirstOrDefaultAsync(x => x.BankAccountTypeID == id).ConfigureAwait(false);
             return Mapper.Map<BankAccountType>(data);

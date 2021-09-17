@@ -8,7 +8,7 @@ namespace AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders
     }
     internal class AssetBuilder : IAssetBuilder
     {
-        private Asset _asset = new Asset();
+        private Asset _asset = new();
 
         public static Asset Default(IAssetBuilder builder) => builder.Build();
         public static Asset Default(AssetBuilder builder) => builder.Build();

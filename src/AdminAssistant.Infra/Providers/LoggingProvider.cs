@@ -1,10 +1,9 @@
-using System;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 
 namespace AdminAssistant.Infra.Providers
 {
-    public class ClientSideLoggingProvider : LoggingProvider, ILoggingProvider
+    internal class ClientSideLoggingProvider : LoggingProvider, ILoggingProvider
     {
         public ClientSideLoggingProvider(ILoggerFactory loggerFactory)
             : base(loggerFactory, ILoggingProvider.ClientSideLogCategory)
@@ -12,7 +11,7 @@ namespace AdminAssistant.Infra.Providers
         }
     }
 
-    public class ServerSideLoggingProvider : LoggingProvider, ILoggingProvider
+    internal class ServerSideLoggingProvider : LoggingProvider, ILoggingProvider
     {
         public ServerSideLoggingProvider(ILoggerFactory loggerFactory)
             : base(loggerFactory, ILoggingProvider.ServerSideLogCategory)
@@ -20,7 +19,7 @@ namespace AdminAssistant.Infra.Providers
         }
     }
 
-    public abstract class LoggingProvider : ILoggingProvider
+    internal abstract class LoggingProvider : ILoggingProvider
     {
         private readonly ILogger _logger;
 
@@ -60,7 +59,7 @@ namespace AdminAssistant.Infra.Providers
         public void Log(LogLevel logLevel, EventId eventId, string message, params object[] args) => _logger.Log(logLevel, eventId, null, message, args);
         public void Log(LogLevel logLevel, Exception exception, string message, params object[] args) => _logger.Log(logLevel, 0, exception, message, args);
         public void Log(LogLevel logLevel, EventId eventId, Exception exception, string message, params object[] args) => _logger.Log(logLevel, eventId, exception, message, args);
-        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter) => _logger.Log<TState>(logLevel, eventId, state, exception, formatter);
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter) => _logger.Log(logLevel, eventId, state, exception, formatter);
 
         public IDisposable BeginScope<TState>(TState state) => _logger.BeginScope(state);
         public IDisposable BeginScope(string messageFormat, params object[] args) => _logger.BeginScope(messageFormat, args);

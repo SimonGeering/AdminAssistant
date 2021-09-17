@@ -9,7 +9,7 @@ namespace AdminAssistant.DomainModel.Modules.ContactsModule.Builders
     }
     internal class ContactBuilder : IContactBuilder
     {
-        private Contact _contact = new Contact();
+        private Contact _contact = new();
 
         public static Contact Default(IContactBuilder builder) => builder.Build();
         public static Contact Default(ContactBuilder builder) => builder.Build();

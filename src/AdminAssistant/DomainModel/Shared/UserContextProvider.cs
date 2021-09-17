@@ -10,6 +10,6 @@ namespace AdminAssistant.DomainModel.Shared
     {
         // TODO: Implement IUserContextProvider.GetCurrentUser;
         // TODO: Hard coded user ID.
-        public User GetCurrentUser() => new User() { UserID = 10, SignOn = "simongeering" };
+        public User GetCurrentUser() => new() { UserID = 10, SignOn = "simongeering" };
     }
 }

@@ -1,5 +1,3 @@
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.Providers;
 using Ardalis.Result;

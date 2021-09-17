@@ -2,7 +2,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.BudgetModule
 {
-    public class BudgetViewModel : ViewModelBase, IBudgetViewModel
+    internal class BudgetViewModel : ViewModelBase, IBudgetViewModel
     {
         public BudgetViewModel(ILoggingProvider loggingProvider)
             : base(loggingProvider)

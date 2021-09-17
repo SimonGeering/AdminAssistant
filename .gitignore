@@ -367,4 +367,4 @@ MigrationBackup/
 /src/.cr/personal
 /src/global.json
 /ux
-/src/AdminAssistant.Blazor/Client/wwwroot/appsettings.json
+/src/AdminAssistant.Blazor.Client/wwwroot/appsettings.json

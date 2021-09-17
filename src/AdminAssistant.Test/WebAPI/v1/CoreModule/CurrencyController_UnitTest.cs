@@ -1,8 +1,4 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
@@ -83,11 +79,13 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
                 var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest).ConfigureAwait(false);
 
                 // Assert
-                response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
                 response.Value.Should().BeNull();
+                response.Result.Should().NotBeNull();
+                response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
 
-                var result = (UnprocessableEntityObjectResult)response.Result;
-                var errors = (SerializableError)result.Value;
+                var result = (UnprocessableEntityObjectResult)response.Result!;
+                result.Value.Should().NotBeNull();
+                var errors = (SerializableError)result.Value!;
 
                 foreach (var expectedErrorDetails in validationErrors)
                 {
@@ -130,11 +128,14 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
                 var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest).ConfigureAwait(false);
 
                 // Assert
-                response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
                 response.Value.Should().BeNull();
+                response.Result.Should().NotBeNull();
+                response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
 
-                var result = (UnprocessableEntityObjectResult)response.Result;
-                var errors = (SerializableError)result.Value;
+                var result = (UnprocessableEntityObjectResult)response.Result!;
+
+                result.Value.Should().NotBeNull();
+                var errors = (SerializableError)result.Value!;
 
                 foreach (var expectedErrorDetails in validationErrors)
                 {
@@ -168,13 +169,15 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
                 var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(currency.CurrencyID).ConfigureAwait(false);
 
                 // Assert
-                response.Result.Should().BeOfType<OkObjectResult>();
                 response.Value.Should().BeNull();
+                response.Result.Should().NotBeNull();
+                response.Result.Should().BeOfType<OkObjectResult>();
 
-                var result = (OkObjectResult)response.Result;
+                var result = (OkObjectResult)response.Result!;
+                result.Value.Should().NotBeNull();
                 result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
 
-                var value = (CurrencyResponseDto)result.Value;
+                var value = (CurrencyResponseDto)result.Value!;
                 value.CurrencyID.Should().Be(currency.CurrencyID);
                 value.Symbol.Should().Be(currency.Symbol);
                 value.DecimalFormat.Should().Be(currency.DecimalFormat);
@@ -230,13 +233,15 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
             var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().GetCurrency().ConfigureAwait(false);
 
             // Assert
-            response.Result.Should().BeOfType<OkObjectResult>();
             response.Value.Should().BeNull();
+            response.Result.Should().NotBeNull();
+            response.Result.Should().BeOfType<OkObjectResult>();
 
-            var result = (OkObjectResult)response.Result;
+            var result = (OkObjectResult)response.Result!;
             result.Value.Should().BeAssignableTo<IEnumerable<CurrencyResponseDto>>();
 
-            var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();
+            result.Value.Should().NotBeNull();
+            var value = ((IEnumerable<CurrencyResponseDto>)result.Value!).ToArray();
             value.Should().HaveCount(currencies.Count);
 
             var expected = currencies.ToArray();
