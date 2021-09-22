@@ -1,29 +1,26 @@
-using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Infra.Providers;
 using Ardalis.Result;
 using MediatR;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
+namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+
+public record BankAccountByIDQuery(int BankAccountID) : IRequest<Result<BankAccount>>;
+
+internal class BankAccountByIDHandler : RequestHandlerBase<BankAccountByIDQuery, Result<BankAccount>>
 {
-    public record BankAccountByIDQuery(int BankAccountID) : IRequest<Result<BankAccount>>;
+    private readonly IBankAccountRepository _bankAccountRepository;
 
-    [SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class BankAccountByIDHandler : RequestHandlerBase<BankAccountByIDQuery, Result<BankAccount>>
+    public BankAccountByIDHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository)
+        : base(loggingProvider) => _bankAccountRepository = bankAccountRepository;
+
+    public override async Task<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
     {
-        private readonly IBankAccountRepository _bankAccountRepository;
+        var bankAccount = await _bankAccountRepository.GetAsync(request.BankAccountID).ConfigureAwait(false);
 
-        public BankAccountByIDHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository)
-            : base(loggingProvider) => _bankAccountRepository = bankAccountRepository;
+        if (bankAccount == null || bankAccount.BankAccountID == Constants.UnknownRecordID)
+            return Result<BankAccount>.NotFound();
 
-        public override async Task<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
-        {
-            var bankAccount = await _bankAccountRepository.GetAsync(request.BankAccountID).ConfigureAwait(false);
-
-            if (bankAccount == null || bankAccount.BankAccountID == Constants.UnknownRecordID)
-                return Result<BankAccount>.NotFound();
-
-            return Result<BankAccount>.Success(bankAccount);
-        }
+        return Result<BankAccount>.Success(bankAccount);
     }
 }

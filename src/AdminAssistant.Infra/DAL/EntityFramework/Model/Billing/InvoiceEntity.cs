@@ -7,9 +7,8 @@ Table "Billing.InvoiceEntity"
 }
 
 */
-namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Billing
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Billing;
+
+public class InvoiceEntity
 {
-    public class InvoiceEntity
-    {
-    }
 }

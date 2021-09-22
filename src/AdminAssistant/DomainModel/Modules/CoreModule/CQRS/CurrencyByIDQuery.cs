@@ -3,26 +3,24 @@ using AdminAssistant.Infra.Providers;
 using Ardalis.Result;
 using MediatR;
 
-namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS
+namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
+
+public record CurrencyByIDQuery(int CurrencyID) : IRequest<Result<Currency>>;
+
+internal class CurrencyByIDHandler : RequestHandlerBase<CurrencyByIDQuery, Result<Currency>>
 {
-    public record CurrencyByIDQuery(int CurrencyID) : IRequest<Result<Currency>>;
+    private readonly ICurrencyRepository _currencyRepository;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class CurrencyByIDHandler : RequestHandlerBase<CurrencyByIDQuery, Result<Currency>>
+    public CurrencyByIDHandler(ICurrencyRepository currencyRepository, ILoggingProvider loggingProvider)
+        : base(loggingProvider) => _currencyRepository = currencyRepository;
+
+    public override async Task<Result<Currency>> Handle(CurrencyByIDQuery request, CancellationToken cancellationToken)
     {
-        private readonly ICurrencyRepository _currencyRepository;
+        var result = await _currencyRepository.GetAsync(request.CurrencyID).ConfigureAwait(false);
 
-        public CurrencyByIDHandler(ICurrencyRepository currencyRepository, ILoggingProvider loggingProvider)
-            : base(loggingProvider) => _currencyRepository = currencyRepository;
+        if (result == null || result.CurrencyID == Constants.UnknownRecordID)
+            return Result<Currency>.NotFound();
 
-        public override async Task<Result<Currency>> Handle(CurrencyByIDQuery request, CancellationToken cancellationToken)
-        {
-            var result = await _currencyRepository.GetAsync(request.CurrencyID).ConfigureAwait(false);
-
-            if (result == null || result.CurrencyID == Constants.UnknownRecordID)
-                return Result<Currency>.NotFound();
-
-            return Result<Currency>.Success(result);
-        }
+        return Result<Currency>.Success(result);
     }
 }

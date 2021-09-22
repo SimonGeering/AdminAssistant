@@ -1,8 +1,7 @@
-namespace AdminAssistant.UI.Modules.DocumentsModule
+namespace AdminAssistant.UI.Modules.DocumentsModule;
+
+public interface IDocumentsViewModel : IViewModelBase
 {
-    public interface IDocumentsViewModel : IViewModelBase
-    {
-        string HeaderText { get; }
-        string SubHeaderText { get; }
-    }
+    string HeaderText { get; }
+    string SubHeaderText { get; }
 }

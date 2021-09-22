@@ -1,9 +1,8 @@
 using AdminAssistant.DomainModel.Modules.CoreModule;
 
-namespace AdminAssistant.UI.Modules.CoreModule
+namespace AdminAssistant.UI.Modules.CoreModule;
+
+public interface ICoreService
 {
-    public interface ICoreService
-    {
-        Task<List<Currency>> GetCurrencyListAsync();
-    }
+    Task<List<Currency>> GetCurrencyListAsync();
 }

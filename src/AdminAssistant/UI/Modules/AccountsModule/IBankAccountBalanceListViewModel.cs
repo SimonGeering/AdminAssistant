@@ -1,6 +1,5 @@
-namespace AdminAssistant.UI.Modules.AccountsModule
+namespace AdminAssistant.UI.Modules.AccountsModule;
+
+public interface IBankAccountBalanceListViewModel : IViewModelBase
 {
-    public interface IBankAccountBalanceListViewModel : IViewModelBase
-    {
-    }
 }

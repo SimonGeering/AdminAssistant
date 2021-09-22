@@ -1,9 +1,8 @@
-namespace AdminAssistant.DomainModel.Shared
+namespace AdminAssistant.DomainModel.Shared;
+
+public enum DatabaseProvider
 {
-    public enum DatabaseProvider
-    {
-        SQLServer,
-        SQLServerLocalDB,
-        SQLite,
-    }
+    SQLServer,
+    SQLServerLocalDB,
+    SQLite,
 }

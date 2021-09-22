@@ -1,14 +1,13 @@
 using AdminAssistant.Infra.DAL;
 
-namespace AdminAssistant.DomainModel.Modules.BudgetModule
+namespace AdminAssistant.DomainModel.Modules.BudgetModule;
+
+public record Budget : IDatabasePersistable
 {
-    public record Budget : IDatabasePersistable
-    {
-        public const int BudgetNameMaxLength = Constants.NameMaxLength;
+    public const int BudgetNameMaxLength = Constants.NameMaxLength;
 
-        public int BudgetID { get; set; }
-        public string BudgetName { get; set; } = string.Empty;
+    public int BudgetID { get; set; }
+    public string BudgetName { get; set; } = string.Empty;
 
-        public int PrimaryKey => BudgetID;
-    }
+    public int PrimaryKey => BudgetID;
 }

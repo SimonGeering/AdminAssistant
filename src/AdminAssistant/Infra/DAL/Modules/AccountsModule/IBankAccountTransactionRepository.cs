@@ -1,8 +1,7 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
-namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
+namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
+
+public interface IBankAccountTransactionRepository : IReadOnlyChildRepository<BankAccountTransaction>
 {
-    public interface IBankAccountTransactionRepository : IReadOnlyChildRepository<BankAccountTransaction>
-    {
-    }
 }

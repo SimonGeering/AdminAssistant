@@ -10,86 +10,85 @@ using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 
-namespace AdminAssistant.Infra.DAL
+namespace AdminAssistant.Infra.DAL;
+
+public class DALMappingProfile_Should
 {
-    public class DALMappingProfile_Should
+    private readonly IConfigurationProvider _configuration;
+    private readonly IMapper _mapper;
+
+    public DALMappingProfile_Should()
     {
-        private readonly IConfigurationProvider _configuration;
-        private readonly IMapper _mapper;
+        _configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
 
-        public DALMappingProfile_Should()
-        {
-            _configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
+        _mapper = _configuration.CreateMapper();
+    }
 
-            _mapper = _configuration.CreateMapper();
-        }
+    [Fact]
+    [Trait("Category", "Unit")]
+    [SuppressMessage("Style", "IDE0022:Use expression body for methods", Justification = "One line test")]
+    public void HaveValidConfiguration()
+    {
+        // Arrange
 
-        [Fact]
-        [Trait("Category", "Unit")]
-        [SuppressMessage("Style", "IDE0022:Use expression body for methods", Justification = "One line test")]
-        public void HaveValidConfiguration()
-        {
-            // Arrange
+        // Act
+        _configuration.AssertConfigurationIsValid();
 
-            // Act
-            _configuration.AssertConfigurationIsValid();
+        // Assert
+    }
 
-            // Assert
-        }
+    [Theory]
+    [Trait("Category", "Unit")]
+    [InlineData(typeof(BankEntity), typeof(Bank))]
+    [InlineData(typeof(BankAccountEntity), typeof(BankAccount))]
+    [InlineData(typeof(BankAccountTypeEntity), typeof(BankAccountType))]
+    [InlineData(typeof(BankAccountTransactionEntity), typeof(BankAccountTransaction))]
+    [InlineData(typeof(Bank), typeof(BankEntity))]
+    [InlineData(typeof(BankAccount), typeof(BankAccountEntity))]
+    [InlineData(typeof(BankAccountType), typeof(BankAccountTypeEntity))]
+    [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionEntity))]
+    public void ShouldSupportAccountsSchemaMappingFromSourceToDestination(Type source, Type destination)
+    {
+        // Arrange
+        var instance = Activator.CreateInstance(source);
 
-        [Theory]
-        [Trait("Category", "Unit")]
-        [InlineData(typeof(BankEntity), typeof(Bank))]
-        [InlineData(typeof(BankAccountEntity), typeof(BankAccount))]
-        [InlineData(typeof(BankAccountTypeEntity), typeof(BankAccountType))]
-        [InlineData(typeof(BankAccountTransactionEntity), typeof(BankAccountTransaction))]
-        [InlineData(typeof(Bank), typeof(BankEntity))]
-        [InlineData(typeof(BankAccount), typeof(BankAccountEntity))]
-        [InlineData(typeof(BankAccountType), typeof(BankAccountTypeEntity))]
-        [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionEntity))]
-        public void ShouldSupportAccountsSchemaMappingFromSourceToDestination(Type source, Type destination)
-        {
-            // Arrange
-            var instance = Activator.CreateInstance(source);
+        // Act
+        var result = _mapper.Map(instance, source, destination);
 
-            // Act
-            var result = _mapper.Map(instance, source, destination);
+        // Assert
+        result.Should().NotBeNull();
+    }
 
-            // Assert
-            result.Should().NotBeNull();
-        }
+    [Theory]
+    [Trait("Category", "Unit")]
+    [InlineData(typeof(DocumentEntity), typeof(Document))]
+    [InlineData(typeof(Document), typeof(DocumentEntity))]
+    public void ShouldSupportDocumentsSchemaMappingFromSourceToDestination(Type source, Type destination)
+    {
+        // Arrange
+        var instance = Activator.CreateInstance(source);
 
-        [Theory]
-        [Trait("Category", "Unit")]
-        [InlineData(typeof(DocumentEntity), typeof(Document))]
-        [InlineData(typeof(Document), typeof(DocumentEntity))]
-        public void ShouldSupportDocumentsSchemaMappingFromSourceToDestination(Type source, Type destination)
-        {
-            // Arrange
-            var instance = Activator.CreateInstance(source);
+        // Act
+        var result = _mapper.Map(instance, source, destination);
 
-            // Act
-            var result = _mapper.Map(instance, source, destination);
+        // Assert
+        result.Should().NotBeNull();
+    }
 
-            // Assert
-            result.Should().NotBeNull();
-        }
+    [Theory]
+    [Trait("Category", "Unit")]
+    [InlineData(typeof(CurrencyEntity), typeof(Currency))]
+    [InlineData(typeof(Currency), typeof(CurrencyEntity))]
+    public void ShouldSupportCoreSchemaMappingFromSourceToDestination(Type source, Type destination)
+    {
+        // Arrange
+        var instance = Activator.CreateInstance(source);
 
-        [Theory]
-        [Trait("Category", "Unit")]
-        [InlineData(typeof(CurrencyEntity), typeof(Currency))]
-        [InlineData(typeof(Currency), typeof(CurrencyEntity))]
-        public void ShouldSupportCoreSchemaMappingFromSourceToDestination(Type source, Type destination)
-        {
-            // Arrange
-            var instance = Activator.CreateInstance(source);
+        // Act
+        var result = _mapper.Map(instance, source, destination);
 
-            // Act
-            var result = _mapper.Map(instance, source, destination);
-
-            // Assert
-            result.Should().NotBeNull();
-        }
+        // Assert
+        result.Should().NotBeNull();
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

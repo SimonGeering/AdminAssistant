@@ -1,8 +1,7 @@
-namespace AdminAssistant.UI.Modules.TasksModule
+namespace AdminAssistant.UI.Modules.TasksModule;
+
+public interface ITasksViewModel : IViewModelBase
 {
-    public interface ITasksViewModel : IViewModelBase
-    {
-        string HeaderText { get; }
-        string SubHeaderText { get; }
-    }
+    string HeaderText { get; }
+    string SubHeaderText { get; }
 }

@@ -5,26 +5,24 @@ using AdminAssistant.Infra.Providers;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Infra.DAL.Modules.AccountsModule
+namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
+
+internal class BankAccountTransactionRepository : RepositoryBase, IBankAccountTransactionRepository
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class BankAccountTransactionRepository : RepositoryBase, IBankAccountTransactionRepository
+    public BankAccountTransactionRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
+        : base(dbContext, mapper, dateTimeProvider, userContextProvider)
     {
-        public BankAccountTransactionRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
-            : base(dbContext, mapper, dateTimeProvider, userContextProvider)
-        {
-        }
+    }
 
-        public async Task<BankAccountTransaction> GetAsync(int id)
-        {
-            var data = await DbContext.BankAccountTransactions.FirstOrDefaultAsync(x => x.BankAccountTransactionID == id).ConfigureAwait(false);
-            return Mapper.Map<BankAccountTransaction>(data);
-        }
+    public async Task<BankAccountTransaction> GetAsync(int id)
+    {
+        var data = await DbContext.BankAccountTransactions.FirstOrDefaultAsync(x => x.BankAccountTransactionID == id).ConfigureAwait(false);
+        return Mapper.Map<BankAccountTransaction>(data);
+    }
 
-        public async Task<List<BankAccountTransaction>> GetListAsync(int parentID)
-        {
-            var data = await DbContext.BankAccountTransactions.Where(x => x.BankAccountID == parentID).ToListAsync().ConfigureAwait(false);
-            return Mapper.Map<List<BankAccountTransaction>>(data);
-        }
+    public async Task<List<BankAccountTransaction>> GetListAsync(int parentID)
+    {
+        var data = await DbContext.BankAccountTransactions.Where(x => x.BankAccountID == parentID).ToListAsync().ConfigureAwait(false);
+        return Mapper.Map<List<BankAccountTransaction>>(data);
     }
 }

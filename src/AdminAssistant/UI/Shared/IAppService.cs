@@ -1,10 +1,9 @@
-namespace AdminAssistant.UI.Shared
+namespace AdminAssistant.UI.Shared;
+
+public interface IAppService
 {
-    public interface IAppService
-    {
-        ModeSelectionItem GetDefaultMode();
-        ModuleSelectionItem GetDefaultModule();
-        List<ModeSelectionItem> GetModes();
-        List<ModuleSelectionItem> GetModules();
-    }
+    ModeSelectionItem GetDefaultMode();
+    ModuleSelectionItem GetDefaultModule();
+    List<ModeSelectionItem> GetModes();
+    List<ModuleSelectionItem> GetModules();
 }

@@ -9,46 +9,45 @@ using AdminAssistant.DomainModel.Modules.MailModule;
 using AdminAssistant.DomainModel.Modules.TasksModule;
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.UI.Shared.WebAPIClient.v1
+namespace AdminAssistant.UI.Shared.WebAPIClient.v1;
+
+public class MappingProfile : MappingProfileBase
 {
-    public class MappingProfile : MappingProfileBase
+    public MappingProfile()
+        : base(typeof(MappingProfile).Assembly)
     {
-        public MappingProfile()
-            : base(typeof(MappingProfile).Assembly)
-        {
-            // Accounts Module ...
-            CreateMap<BankResponseDto, Bank>();
-            CreateMap<BankAccountResponseDto, BankAccount>();
-            CreateMap<BankAccountInfoResponseDto, BankAccountInfo>();
-            CreateMap<BankAccountTypeResponseDto, BankAccountType>();
-            CreateMap<BankAccountTransactionResponseDto, BankAccountTransaction>();
-            CreateMap<BankAccount, BankAccountCreateRequestDto>()
-                .ForMember(x => x.Balance, opt => opt.Ignore());
-            CreateMap<BankAccount, BankAccountUpdateRequestDto>();
+        // Accounts Module ...
+        CreateMap<BankResponseDto, Bank>();
+        CreateMap<BankAccountResponseDto, BankAccount>();
+        CreateMap<BankAccountInfoResponseDto, BankAccountInfo>();
+        CreateMap<BankAccountTypeResponseDto, BankAccountType>();
+        CreateMap<BankAccountTransactionResponseDto, BankAccountTransaction>();
+        CreateMap<BankAccount, BankAccountCreateRequestDto>()
+            .ForMember(x => x.Balance, opt => opt.Ignore());
+        CreateMap<BankAccount, BankAccountUpdateRequestDto>();
 
-            // Asset Register Module ...
-            CreateMap<AssetResponseDto, Asset>();
+        // Asset Register Module ...
+        CreateMap<AssetResponseDto, Asset>();
 
-            // Budget Module ...
-            CreateMap<BudgetResponseDto, Budget>();
+        // Budget Module ...
+        CreateMap<BudgetResponseDto, Budget>();
 
-            // Calendar Module ...
-            CreateMap<ReminderResponseDto, Reminder>();
+        // Calendar Module ...
+        CreateMap<ReminderResponseDto, Reminder>();
 
-            // Contact Module ...
-            CreateMap<ContactResponseDto, Contact>();
+        // Contact Module ...
+        CreateMap<ContactResponseDto, Contact>();
 
-            // Core Module ...
-            CreateMap<CurrencyResponseDto, Currency>();
+        // Core Module ...
+        CreateMap<CurrencyResponseDto, Currency>();
 
-            // Documents Module ...
-            CreateMap<DocumentResponseDto, Document>();
+        // Documents Module ...
+        CreateMap<DocumentResponseDto, Document>();
 
-            // Mail Module ...
-            CreateMap<MailMessageResponseDto, MailMessage>();
+        // Mail Module ...
+        CreateMap<MailMessageResponseDto, MailMessage>();
 
-            // Tasks Module ...
-            CreateMap<TaskListResponseDto, TaskList>();
-        }
+        // Tasks Module ...
+        CreateMap<TaskListResponseDto, TaskList>();
     }
 }

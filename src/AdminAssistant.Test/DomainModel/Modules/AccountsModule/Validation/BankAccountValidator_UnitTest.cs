@@ -4,105 +4,104 @@ using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
+namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+
+public class BankAccountValidator_Should
 {
-    public class BankAccountValidator_Should
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_IsValid_GivenAValidBankAccount()
     {
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task Return_IsValid_GivenAValidBankAccount()
-        {
-            // Arrange
-            var services = new ServiceCollection();
-            services.AddAdminAssistantClientSideDomainModel();
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = Factory.BankAccount.WithTestData()
-                                     .WithBankAccountTypeID(20)
-                                     .WithCurrencyID(10)
-                                     .Build();
-            // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var bankAccount = Factory.BankAccount.WithTestData()
+                                 .WithBankAccountTypeID(20)
+                                 .WithCurrencyID(10)
+                                 .Build();
+        // Act
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 
-            // Assert
-            result.IsValid.Should().BeTrue();
-        }
+        // Assert
+        result.IsValid.Should().BeTrue();
+    }
 
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task Return_ValidationError_GivenABankAccountWithAnEmptyAccountName()
-        {
-            // Arrange
-            var services = new ServiceCollection();
-            services.AddAdminAssistantClientSideDomainModel();
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_ValidationError_GivenABankAccountWithAnEmptyAccountName()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = Factory.BankAccount.WithTestData()
-                                                 .WithAccountName(string.Empty)
-                                                 .Build();
-            // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var bankAccount = Factory.BankAccount.WithTestData()
+                                             .WithAccountName(string.Empty)
+                                             .Build();
+        // Act
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 
-            // Assert
-            result.IsValid.Should().BeFalse();
-            result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(BankAccount.AccountName));
-        }
+        // Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(BankAccount.AccountName));
+    }
 
 
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task Return_ValidationError_GivenABankAccount_WithAnAccountName_LongerThanMaxLength()
-        {
-            // Arrange
-            var services = new ServiceCollection();
-            services.AddAdminAssistantClientSideDomainModel();
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_ValidationError_GivenABankAccount_WithAnAccountName_LongerThanMaxLength()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = Factory.BankAccount.WithTestData()
-                                                 .WithAccountName(new string('x', BankAccount.AccountNameMaxLength + 1))
-                                                 .Build();
-            // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var bankAccount = Factory.BankAccount.WithTestData()
+                                             .WithAccountName(new string('x', BankAccount.AccountNameMaxLength + 1))
+                                             .Build();
+        // Act
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 
-            // Assert
-            result.IsValid.Should().BeFalse();
-            result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(BankAccount.AccountName));
-        }
+        // Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(BankAccount.AccountName));
+    }
 
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task Return_ValidationError_GivenABankAccountWithAMissingBankAccountTypeID()
-        {
-            // Arrange
-            var services = new ServiceCollection();
-            services.AddAdminAssistantClientSideDomainModel();
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_ValidationError_GivenABankAccountWithAMissingBankAccountTypeID()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = Factory.BankAccount.WithTestData()
-                                                 .WithBankAccountTypeID(Constants.UnknownRecordID)
-                                                 .Build();            
-            // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var bankAccount = Factory.BankAccount.WithTestData()
+                                             .WithBankAccountTypeID(Constants.UnknownRecordID)
+                                             .Build();
+        // Act
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 
-            // Assert
-            result.IsValid.Should().BeFalse();
-            result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccount.BankAccountTypeID));
-        }
+        // Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccount.BankAccountTypeID));
+    }
 
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task Return_ValidationError_GivenABankAccountWithAMissingCurrencyID()
-        {
-            // Arrange
-            var services = new ServiceCollection();
-            services.AddAdminAssistantClientSideDomainModel();
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_ValidationError_GivenABankAccountWithAMissingCurrencyID()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddAdminAssistantClientSideDomainModel();
 
-            var bankAccount = Factory.BankAccount.WithTestData()
-                                                 .WithCurrencyID(Constants.UnknownRecordID)
-                                                 .Build();
-            // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var bankAccount = Factory.BankAccount.WithTestData()
+                                             .WithCurrencyID(Constants.UnknownRecordID)
+                                             .Build();
+        // Act
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
 
-            // Assert
-            result.IsValid.Should().BeFalse();
-            result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccount.CurrencyID));
-        }
+        // Assert
+        result.IsValid.Should().BeFalse();
+        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccount.CurrencyID));
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

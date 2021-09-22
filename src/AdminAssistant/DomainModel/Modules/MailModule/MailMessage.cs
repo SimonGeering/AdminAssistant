@@ -1,14 +1,13 @@
 using AdminAssistant.Infra.DAL;
 
-namespace AdminAssistant.DomainModel.Modules.MailModule
+namespace AdminAssistant.DomainModel.Modules.MailModule;
+
+public record MailMessage : IDatabasePersistable
 {
-    public record MailMessage : IDatabasePersistable
-    {
-        public const int SubjectNameMaxLength = Constants.DescriptionMaxLength;
+    public const int SubjectNameMaxLength = Constants.DescriptionMaxLength;
 
-        public int MailMessageID { get; set; }
-        public string Subject { get; set; } = string.Empty;
+    public int MailMessageID { get; set; }
+    public string Subject { get; set; } = string.Empty;
 
-        public int PrimaryKey => MailMessageID;
-    }
+    public int PrimaryKey => MailMessageID;
 }
