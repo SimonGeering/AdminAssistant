@@ -1,11 +1,10 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
-namespace AdminAssistant.UI.Modules.AccountsModule
-{
-    public class EditBankAccountMessage
-    {
-        public EditBankAccountMessage(BankAccount bankAccount) => BankAccount = bankAccount;
+namespace AdminAssistant.UI.Modules.AccountsModule;
 
-        public BankAccount BankAccount { get; set; }
-    }
+public class EditBankAccountMessage
+{
+    public EditBankAccountMessage(BankAccount bankAccount) => BankAccount = bankAccount;
+
+    public BankAccount BankAccount { get; set; }
 }

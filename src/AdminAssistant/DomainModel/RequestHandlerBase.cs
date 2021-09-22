@@ -1,15 +1,14 @@
 using AdminAssistant.Infra.Providers;
 using MediatR;
 
-namespace AdminAssistant.DomainModel
+namespace AdminAssistant.DomainModel;
+
+public abstract class RequestHandlerBase<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
+    where TRequest : IRequest<TResponse>
 {
-    public abstract class RequestHandlerBase<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>
-        where TRequest : IRequest<TResponse>
-    {
-        protected ILoggingProvider Log { get; }
+    protected ILoggingProvider Log { get; }
 
-        public RequestHandlerBase(ILoggingProvider loggingProvider) => Log = loggingProvider;
+    public RequestHandlerBase(ILoggingProvider loggingProvider) => Log = loggingProvider;
 
-        public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
-    }
+    public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
 }

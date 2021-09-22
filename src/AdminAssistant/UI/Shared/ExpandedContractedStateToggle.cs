@@ -1,8 +1,7 @@
-namespace AdminAssistant.UI.Shared
+namespace AdminAssistant.UI.Shared;
+
+public enum ExpandedContractedStateToggle
 {
-    public enum ExpandedContractedStateToggle
-    {
-        Expanded,
-        Contracted,
-    }
+    Expanded,
+    Contracted,
 }

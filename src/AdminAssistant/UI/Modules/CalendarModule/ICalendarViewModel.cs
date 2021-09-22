@@ -1,8 +1,7 @@
-namespace AdminAssistant.UI.Modules.CalendarModule
+namespace AdminAssistant.UI.Modules.CalendarModule;
+
+public interface ICalendarViewModel : IViewModelBase
 {
-    public interface ICalendarViewModel : IViewModelBase
-    {
-        string HeaderText { get; }
-        string SubHeaderText { get; }
-    }
+    string HeaderText { get; }
+    string SubHeaderText { get; }
 }

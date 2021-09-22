@@ -5,40 +5,38 @@ using Ardalis.Result;
 using MediatR;
 using Ardalis.Result.FluentValidation;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
+namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+
+public record BankAccountCreateCommand(BankAccount BankAccount) : IRequest<Result<BankAccount>>;
+
+internal class BankAccountCreateHandler : RequestHandlerBase<BankAccountCreateCommand, Result<BankAccount>>
 {
-    public record BankAccountCreateCommand(BankAccount BankAccount) : IRequest<Result<BankAccount>>;
+    private readonly IBankAccountRepository bankAccountRepository;
+    private readonly IBankAccountValidator bankAccountValidator;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class BankAccountCreateHandler : RequestHandlerBase<BankAccountCreateCommand, Result<BankAccount>>
+    public BankAccountCreateHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository, IBankAccountValidator bankAccountValidator)
+        : base(loggingProvider)
     {
-        private readonly IBankAccountRepository bankAccountRepository;
-        private readonly IBankAccountValidator bankAccountValidator;
+        this.bankAccountRepository = bankAccountRepository;
+        this.bankAccountValidator = bankAccountValidator;
+    }
 
-        public BankAccountCreateHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository, IBankAccountValidator bankAccountValidator)
-            : base(loggingProvider)
+    public override async Task<Result<BankAccount>> Handle(BankAccountCreateCommand command, CancellationToken cancellationToken)
+    {
+        // Don't need this for now as the validator no longer needs extra context.
+        // Keep it here for reference of how to do this.
+        //
+        // var ctx = new FluentValidation.ValidationContext<BankAccount>(command.BankAccount);
+        //ctx.RootContextData[Constants.IsCreateCommandContext] = true;
+
+        var validationResult = await bankAccountValidator.ValidateAsync(command.BankAccount, cancellationToken).ConfigureAwait(false);
+
+        if (validationResult.IsValid == false)
         {
-            this.bankAccountRepository = bankAccountRepository;
-            this.bankAccountValidator = bankAccountValidator;
+            return Result<BankAccount>.Invalid(validationResult.AsErrors());
         }
 
-        public override async Task<Result<BankAccount>> Handle(BankAccountCreateCommand command, CancellationToken cancellationToken)
-        {
-            // Don't need this for now as the validator no longer needs extra context.
-            // Keep it here for reference of how to do this.
-            //
-            // var ctx = new FluentValidation.ValidationContext<BankAccount>(command.BankAccount);
-            //ctx.RootContextData[Constants.IsCreateCommandContext] = true;
-
-            var validationResult = await bankAccountValidator.ValidateAsync(command.BankAccount, cancellationToken).ConfigureAwait(false);
-
-            if (validationResult.IsValid == false)
-            {
-                return Result<BankAccount>.Invalid(validationResult.AsErrors());
-            }
-
-            var result = await bankAccountRepository.SaveAsync(command.BankAccount).ConfigureAwait(false);
-            return Result<BankAccount>.Success(result);
-        }
+        var result = await bankAccountRepository.SaveAsync(command.BankAccount).ConfigureAwait(false);
+        return Result<BankAccount>.Success(result);
     }
 }

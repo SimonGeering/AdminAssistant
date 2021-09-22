@@ -1,8 +1,7 @@
-namespace AdminAssistant.UI.Modules.AdminModule
+namespace AdminAssistant.UI.Modules.AdminModule;
+
+public interface IAdminViewModel : IViewModelBase
 {
-    public interface IAdminViewModel : IViewModelBase
-    {
-        string HeaderText { get; }
-        string SubHeaderText { get; }
-    }
+    string HeaderText { get; }
+    string SubHeaderText { get; }
 }

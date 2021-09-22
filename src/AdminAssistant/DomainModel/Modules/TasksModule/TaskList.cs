@@ -1,14 +1,13 @@
 using AdminAssistant.Infra.DAL;
 
-namespace AdminAssistant.DomainModel.Modules.TasksModule
+namespace AdminAssistant.DomainModel.Modules.TasksModule;
+
+public record TaskList : IDatabasePersistable
 {
-    public record TaskList : IDatabasePersistable
-    {
-        public const int TaskListNameMaxLength = Constants.NameMaxLength;
+    public const int TaskListNameMaxLength = Constants.NameMaxLength;
 
-        public int TaskListID { get; set; }
-        public string TaskListName { get; set; } = string.Empty;
+    public int TaskListID { get; set; }
+    public string TaskListName { get; set; } = string.Empty;
 
-        public int PrimaryKey => TaskListID;
-    }
+    public int PrimaryKey => TaskListID;
 }
