@@ -6,57 +6,55 @@ using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.Providers;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Infra.DAL.Modules.CoreModule
+namespace AdminAssistant.Infra.DAL.Modules.CoreModule;
+
+internal class CurrencyRepository : RepositoryBase, ICurrencyRepository
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class CurrencyRepository : RepositoryBase, ICurrencyRepository
+    public CurrencyRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
+        : base(dbContext, mapper, dateTimeProvider, userContextProvider)
     {
-        public CurrencyRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
-            : base(dbContext, mapper, dateTimeProvider, userContextProvider)
+    }
+
+    public async Task<Currency> SaveAsync(Currency domainObjectToSave)
+    {
+        var entity = Mapper.Map<CurrencyEntity>(domainObjectToSave);
+
+        if (base.IsNew(domainObjectToSave))
         {
+            DbContext.Currencies.Add(entity);
+        }
+        else
+        {
+            DbContext.Currencies.Update(entity);
         }
 
-        public async Task<Currency> SaveAsync(Currency domainObjectToSave)
-        {
-            var entity = Mapper.Map<CurrencyEntity>(domainObjectToSave);
+        await DbContext.SaveChangesAsync().ConfigureAwait(false);
 
-            if (base.IsNew(domainObjectToSave))
-            {                
-                DbContext.Currencies.Add(entity);
-            }
-            else
-            {
-                DbContext.Currencies.Update(entity);
-            }
+        return Mapper.Map<Currency>(entity);
+    }
 
-            await DbContext.SaveChangesAsync().ConfigureAwait(false);
+    public async Task DeleteAsync(int id)
+    {
+        var entity = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
 
-            return Mapper.Map<Currency>(entity);
-        }
+        // TODO: make this a custom domain exception and handle in controller.
+        if (entity == null || entity.CurrencyID != id)
+            throw new ArgumentException($"Record with ID {id} not found", nameof(id));
 
-        public async Task DeleteAsync(int id)
-        {
-            var entity = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
+        DbContext.Currencies.Remove(entity);
+        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        return;
+    }
 
-            // TODO: make this a custom domain exception and handle in controller.
-            if (entity == null || entity.CurrencyID != id)
-                throw new ArgumentException($"Record with ID {id} not found", nameof(id));
+    public async Task<Currency?> GetAsync(int id)
+    {
+        var data = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
+        return Mapper.Map<Currency>(data);
+    }
 
-            DbContext.Currencies.Remove(entity);
-            await DbContext.SaveChangesAsync().ConfigureAwait(false);
-            return;
-        }
-
-        public async Task<Currency?> GetAsync(int id)
-        {
-            var data = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
-            return Mapper.Map<Currency>(data);
-        }
-
-        public async Task<List<Currency>> GetListAsync()
-        {
-            var data = await DbContext.Currencies.ToListAsync().ConfigureAwait(false);
-            return Mapper.Map<List<Currency>>(data);
-        }
+    public async Task<List<Currency>> GetListAsync()
+    {
+        var data = await DbContext.Currencies.ToListAsync().ConfigureAwait(false);
+        return Mapper.Map<List<Currency>>(data);
     }
 }

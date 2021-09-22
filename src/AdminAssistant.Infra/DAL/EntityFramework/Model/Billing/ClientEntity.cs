@@ -7,9 +7,8 @@ Table "Billing.Client"
 }
 
 */
-namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Billing
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Billing;
+
+public class ClientEntity
 {
-    public class ClientEntity
-    {
-    }
 }

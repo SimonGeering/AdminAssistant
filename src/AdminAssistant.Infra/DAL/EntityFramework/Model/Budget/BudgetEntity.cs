@@ -9,15 +9,14 @@ Table "Budget.Budget"
 Ref: "Budget.Budget"."BudgetID" < "Budget.BudgetEntry"."BudgetID"
 
 */
-namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Budget
-{
-    public class BudgetEntity
-    {
-        public int BudgetID { get; internal set; }
-        public int AuditID { get; internal set; }
-        public int OwnerID { get; internal set; }
-        public string BudgetName { get; internal set; } = string.Empty;
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;
 
-        public Core.AuditEntity Audit { get; internal set; } = null!;
-    }
+public class BudgetEntity
+{
+    public int BudgetID { get; internal set; }
+    public int AuditID { get; internal set; }
+    public int OwnerID { get; internal set; }
+    public string BudgetName { get; internal set; } = string.Empty;
+
+    public Core.AuditEntity Audit { get; internal set; } = null!;
 }

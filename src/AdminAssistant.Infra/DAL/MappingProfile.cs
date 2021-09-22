@@ -1,12 +1,11 @@
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.Infra.DAL
+namespace AdminAssistant.Infra.DAL;
+
+public class MappingProfile : MappingProfileBase
 {
-    public class MappingProfile : MappingProfileBase
+    public MappingProfile()
+        : base(typeof(MappingProfile).Assembly)
     {
-        public MappingProfile()
-            : base(typeof(MappingProfile).Assembly)
-        {
-        }
     }
 }
