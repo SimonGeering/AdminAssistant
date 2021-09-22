@@ -1,35 +1,32 @@
-using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Infra.Providers;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
-namespace AdminAssistant.UI.Modules.AccountsModule
+namespace AdminAssistant.UI.Modules.AccountsModule;
+
+internal class BankAccountRightSidebarViewModel : ViewModelBase, IBankAccountRightSidebarViewModel
 {
-    [SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class BankAccountRightSidebarViewModel : ViewModelBase, IBankAccountRightSidebarViewModel
+    private readonly IMessenger _messenger;
+
+    public BankAccountRightSidebarViewModel(
+        ILoggingProvider log,
+        IMessenger messenger)
+        : base(log)
     {
-        private readonly IMessenger _messenger;
+        _messenger = messenger;
 
-        public BankAccountRightSidebarViewModel(
-            ILoggingProvider log,
-            IMessenger messenger)
-            : base(log)
-        {
-            _messenger = messenger;
+        AddBankAccount = new RelayCommand(execute: OnAddBankAccountButtonClick);
+    }
 
-            AddBankAccount = new RelayCommand(execute: OnAddBankAccountButtonClick);
-        }
+    public IRelayCommand AddBankAccount { get; }
 
-        public IRelayCommand AddBankAccount { get; }
-        
-        private void OnAddBankAccountButtonClick()
-        {
-            Log.Start();
+    private void OnAddBankAccountButtonClick()
+    {
+        Log.Start();
 
-            _messenger.Send(new EditBankAccountMessage(new BankAccount()));
-            
-            Log.Finish();
-        }
+        _messenger.Send(new EditBankAccountMessage(new BankAccount()));
+
+        Log.Finish();
     }
 }
