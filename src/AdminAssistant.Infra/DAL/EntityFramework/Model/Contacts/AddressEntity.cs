@@ -7,13 +7,12 @@ Table "Contacts.Address"
 Ref: "Contacts.Address"."AddressID" < "Contacts.ContactAddress"."AddressID"
 
 */
-namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts
-{
-    public class AddressEntity
-    {
-        public int AddressID { get; set; }
-        public int AuditID { get; internal set; }
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 
-        public Core.AuditEntity Audit { get; internal set; } = null!;
-    }
+public class AddressEntity
+{
+    public int AddressID { get; set; }
+    public int AuditID { get; internal set; }
+
+    public Core.AuditEntity Audit { get; internal set; } = null!;
 }

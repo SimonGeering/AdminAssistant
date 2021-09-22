@@ -11,56 +11,55 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.AccountsModule
+namespace AdminAssistant.WebAPI.v1.AccountsModule;
+
+public class BankAccountInfoController_BankAccountInfoGet_Should
 {
-    public class BankAccountInfoController_BankAccountInfoGet_Should
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_Status200OK_With_AListOfBankAccountInfo_Given_NoArguments()
     {
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task Return_Status200OK_With_AListOfBankAccountInfo_Given_NoArguments()
-        {
-            // Arrange
-            var bankAccountInfoList = new List<BankAccountInfo>()
+        // Arrange
+        var bankAccountInfoList = new List<BankAccountInfo>()
             {
                 Factory.BankAccountInfo.WithTestData(10).Build(),
                 Factory.BankAccountInfo.WithTestData(20).Build()
             };
-                        
-            var mockMediator = new Mock<IMediator>();
-            mockMediator.Setup(x => x.Send(It.IsAny<BankAccountInfoQuery>(), It.IsAny<CancellationToken>()))
-                        .Returns(Task.FromResult(Result<IEnumerable<BankAccountInfo>>.Success(bankAccountInfoList)));
 
-            var mockUserContextProvider = new Mock<IUserContextProvider>();
-            mockUserContextProvider.Setup(x => x.GetCurrentUser())
-                                   .Returns(new User() { UserID = 10, SignOn = "simongeering" });
+        var mockMediator = new Mock<IMediator>();
+        mockMediator.Setup(x => x.Send(It.IsAny<BankAccountInfoQuery>(), It.IsAny<CancellationToken>()))
+                    .Returns(Task.FromResult(Result<IEnumerable<BankAccountInfo>>.Success(bankAccountInfoList)));
 
-            var services = new ServiceCollection();
-            services.AddMockServerSideLogging();
-            services.AddAutoMapper(typeof(MappingProfile));
-            services.AddTransient((sp) => mockMediator.Object);
-            services.AddTransient((sp) => mockUserContextProvider.Object);
-            services.AddTransient<BankAccountInfoController>();
+        var mockUserContextProvider = new Mock<IUserContextProvider>();
+        mockUserContextProvider.Setup(x => x.GetCurrentUser())
+                               .Returns(new User() { UserID = 10, SignOn = "simongeering" });
 
-            // Act
-            var response = await services.BuildServiceProvider().GetRequiredService<BankAccountInfoController>().BankAccountInfoGet().ConfigureAwait(false);
+        var services = new ServiceCollection();
+        services.AddMockServerSideLogging();
+        services.AddAutoMapper(typeof(MappingProfile));
+        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient((sp) => mockUserContextProvider.Object);
+        services.AddTransient<BankAccountInfoController>();
 
-            // Assert
-            response.Value.Should().BeNull();
+        // Act
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountInfoController>().BankAccountInfoGet().ConfigureAwait(false);
 
-            response.Result.Should().NotBeNull();
-            var result = (OkObjectResult)response.Result!;
-            result.Value.Should().BeAssignableTo<IEnumerable<BankAccountInfoResponseDto>>();
+        // Assert
+        response.Value.Should().BeNull();
 
-            result.Value.Should().NotBeNull();
-            var value = ((IEnumerable<BankAccountInfoResponseDto>)result.Value!).ToArray();
-            value.Should().HaveCount(bankAccountInfoList.Count);
+        response.Result.Should().NotBeNull();
+        var result = (OkObjectResult)response.Result!;
+        result.Value.Should().BeAssignableTo<IEnumerable<BankAccountInfoResponseDto>>();
 
-            var expected = bankAccountInfoList.ToArray();
-            for (var index = 0; index < expected.Length; index++)
-            {
-                value[index].BankAccountID.Should().Be(expected[index].BankAccountID);
-                value[index].AccountName.Should().Be(expected[index].AccountName);
-            }
+        result.Value.Should().NotBeNull();
+        var value = ((IEnumerable<BankAccountInfoResponseDto>)result.Value!).ToArray();
+        value.Should().HaveCount(bankAccountInfoList.Count);
+
+        var expected = bankAccountInfoList.ToArray();
+        for (var index = 0; index < expected.Length; index++)
+        {
+            value[index].BankAccountID.Should().Be(expected[index].BankAccountID);
+            value[index].AccountName.Should().Be(expected[index].AccountName);
         }
     }
 }

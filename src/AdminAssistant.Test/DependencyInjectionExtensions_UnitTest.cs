@@ -6,91 +6,90 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Xunit;
 
-namespace AdminAssistant
+namespace AdminAssistant;
+
+public class ServiceCollection_Should
 {
-    public class ServiceCollection_Should
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task BeAbleToInstantiateAllRegisteredServerSideTypes()
     {
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task BeAbleToInstantiateAllRegisteredServerSideTypes()
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddMocksOfExternalServerSideDependencies();
+
+        services.AddAdminAssistantServerSideProviders();
+        services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+
+        var serviceProvider = services.BuildServiceProvider();
+
+        // Act
+        var result = new List<object>();
+
+        foreach (var serviceDescriptor in services)
         {
-            // Arrange
-            var services = new ServiceCollection();
-            services.AddMocksOfExternalServerSideDependencies();
+            Guard.Against.Null(serviceDescriptor.ServiceType, "serviceDescriptor.ServiceType");
+            Guard.Against.NullOrEmpty(serviceDescriptor.ServiceType.FullName, "serviceDescriptor.ServiceType.FullName");
 
-            services.AddAdminAssistantServerSideProviders();
-            services.AddAdminAssistantServerSideDomainModel();
-            services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString= "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
-
-            var serviceProvider = services.BuildServiceProvider();
-
-            // Act
-            var result = new List<object>();
-
-            foreach (var serviceDescriptor in services)
+            try
             {
-                Guard.Against.Null(serviceDescriptor.ServiceType, "serviceDescriptor.ServiceType");
-                Guard.Against.NullOrEmpty(serviceDescriptor.ServiceType.FullName, "serviceDescriptor.ServiceType.FullName");
+                if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture))
+                    continue;
 
-                try
-                {
-                    if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture))
-                        continue;
-
-                    var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
-                    instance.Should().NotBeNull();
-                    instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
-                    result.Add(instance);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Unable to instantiate '{serviceDescriptor.ServiceType.FullName}'", ex);
-                }
+                var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
+                instance.Should().NotBeNull();
+                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                result.Add(instance);
             }
-
-            // Assert
-            var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.Contains("MediatR", StringComparison.InvariantCulture) == false);
-            result.Should().HaveCount(expectedInstanceCountLessExclusions);
-            await Task.CompletedTask.ConfigureAwait(false);
+            catch (Exception ex)
+            {
+                throw new Exception($"Unable to instantiate '{serviceDescriptor.ServiceType.FullName}'", ex);
+            }
         }
 
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task BeAbleToInstantiateAllRegisteredClientSideTypes()
+        // Assert
+        var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.Contains("MediatR", StringComparison.InvariantCulture) == false);
+        result.Should().HaveCount(expectedInstanceCountLessExclusions);
+        await Task.CompletedTask.ConfigureAwait(false);
+    }
+
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task BeAbleToInstantiateAllRegisteredClientSideTypes()
+    {
+        // Arrange
+        var services = new ServiceCollection();
+        services.AddMocksOfExternalClientSideDependencies();
+        services.AddTransient((sp) => new Mock<UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient>().Object);
+
+        services.AddAdminAssistantClientSideProviders();
+        services.AddAdminAssistantClientSideDomainModel();
+        services.AddAdminAssistantUI();
+
+        var serviceProvider = services.BuildServiceProvider();
+
+        // Act
+        var result = new List<object>();
+
+        foreach (var serviceDescriptor in services)
         {
-            // Arrange
-            var services = new ServiceCollection();
-            services.AddMocksOfExternalClientSideDependencies();
-            services.AddTransient((sp) => new Mock<UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient>().Object);
-
-            services.AddAdminAssistantClientSideProviders();
-            services.AddAdminAssistantClientSideDomainModel();
-            services.AddAdminAssistantUI();
-
-            var serviceProvider = services.BuildServiceProvider();
-
-            // Act
-            var result = new List<object>();
-
-            foreach (var serviceDescriptor in services)
+            try
             {
-                try
-                {
-                    var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
-                    instance.Should().NotBeNull();
-                    instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
-                    result.Add(instance);
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Unable to instantiate '{serviceDescriptor.ServiceType.FullName}'", ex);
-                }
+                var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
+                instance.Should().NotBeNull();
+                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                result.Add(instance);
             }
-
-            // Assert
-            result.Should().HaveCount(services.Count);
-            await Task.CompletedTask.ConfigureAwait(false);
+            catch (Exception ex)
+            {
+                throw new Exception($"Unable to instantiate '{serviceDescriptor.ServiceType.FullName}'", ex);
+            }
         }
+
+        // Assert
+        result.Should().HaveCount(services.Count);
+        await Task.CompletedTask.ConfigureAwait(false);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

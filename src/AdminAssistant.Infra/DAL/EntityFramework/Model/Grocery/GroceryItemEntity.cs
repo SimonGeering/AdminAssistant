@@ -1,14 +1,13 @@
-namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery;
+
+public class GroceryItemEntity
 {
-    public class GroceryItemEntity
-    {
-        public int GroceryItemID { get; set; }
-        public int AuditID { get; set; }
-        public int OwnerID { get; internal set; }
+    public int GroceryItemID { get; set; }
+    public int AuditID { get; set; }
+    public int OwnerID { get; internal set; }
 
 
-        public string URI { get; set; } = string.Empty;
+    public string URI { get; set; } = string.Empty;
 
-        public Core.AuditEntity Audit { get; internal set; } = null!;
-    }
+    public Core.AuditEntity Audit { get; internal set; } = null!;
 }

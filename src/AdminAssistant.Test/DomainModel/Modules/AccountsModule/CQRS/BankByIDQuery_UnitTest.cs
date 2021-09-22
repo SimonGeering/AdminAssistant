@@ -7,56 +7,55 @@ using Microsoft.Extensions.DependencyInjection;
 using Moq;
 using Xunit;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
+namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+
+public class BankByIDQuery_Should
 {
-    public class BankByIDQuery_Should
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_NotFound_GivenANonExistentBankID()
     {
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task Return_NotFound_GivenANonExistentBankID()
-        {
-            // Arrange
-            var nonExistentBankID = Constants.UnknownRecordID;
+        // Arrange
+        var nonExistentBankID = Constants.UnknownRecordID;
 
-            var services = new ServiceCollection();
-            services.AddMockServerSideLogging();
-            services.AddAdminAssistantServerSideDomainModel();
+        var services = new ServiceCollection();
+        services.AddMockServerSideLogging();
+        services.AddAdminAssistantServerSideDomainModel();
 
-            var mockBankRepository = new Mock<IBankRepository>();
-            mockBankRepository.Setup(x => x.GetAsync(nonExistentBankID)).Returns(Task.FromResult<Bank?>(null!));
+        var mockBankRepository = new Mock<IBankRepository>();
+        mockBankRepository.Setup(x => x.GetAsync(nonExistentBankID)).Returns(Task.FromResult<Bank?>(null!));
 
-            services.AddTransient((sp) => mockBankRepository.Object);
+        services.AddTransient((sp) => mockBankRepository.Object);
 
-            // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(nonExistentBankID)).ConfigureAwait(false);
+        // Act
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(nonExistentBankID)).ConfigureAwait(false);
 
-            // Assert
-            result.Status.Should().Be(ResultStatus.NotFound);
-        }
+        // Assert
+        result.Status.Should().Be(ResultStatus.NotFound);
+    }
 
-        [Fact]
-        [Trait("Category", "Unit")]
-        public async Task Return_OkBank_GivenAnExistingBankID()
-        {
-            // Arrange
-            var bank = Factory.Bank.WithTestData(10).Build();
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_OkBank_GivenAnExistingBankID()
+    {
+        // Arrange
+        var bank = Factory.Bank.WithTestData(10).Build();
 
-            var services = new ServiceCollection();
-            services.AddMockServerSideLogging();
-            services.AddAdminAssistantServerSideDomainModel();
+        var services = new ServiceCollection();
+        services.AddMockServerSideLogging();
+        services.AddAdminAssistantServerSideDomainModel();
 
-            var mockBankRepository = new Mock<IBankRepository>();
-            mockBankRepository.Setup(x => x.GetAsync(bank.BankID)).Returns(Task.FromResult<Bank?>(bank));
+        var mockBankRepository = new Mock<IBankRepository>();
+        mockBankRepository.Setup(x => x.GetAsync(bank.BankID)).Returns(Task.FromResult<Bank?>(bank));
 
-            services.AddTransient((sp) => mockBankRepository.Object);
+        services.AddTransient((sp) => mockBankRepository.Object);
 
-            // Act
-            var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(bank.BankID)).ConfigureAwait(false);
+        // Act
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(bank.BankID)).ConfigureAwait(false);
 
-            // Assert
-            result.Status.Should().Be(ResultStatus.Ok);
-            result.Value.Should().Be(bank);
-        }
+        // Assert
+        result.Status.Should().Be(ResultStatus.Ok);
+        result.Value.Should().Be(bank);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

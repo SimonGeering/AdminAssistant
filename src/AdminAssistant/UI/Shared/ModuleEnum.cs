@@ -1,19 +1,18 @@
-namespace AdminAssistant.UI.Shared
+namespace AdminAssistant.UI.Shared;
+
+public enum ModuleEnum
 {
-    public enum ModuleEnum
-    {
-        Accounts,
-        AssetRegister,
-        Billing,
-        Budget,
-        Calendar,
-        Contacts,
-        Dashboard,
-        Documents,
-        Mail,
-        Reports,
-        Tasks,
-        //Notes,
-        //Groceries
-    }
+    Accounts,
+    AssetRegister,
+    Billing,
+    Budget,
+    Calendar,
+    Contacts,
+    Dashboard,
+    Documents,
+    Mail,
+    Reports,
+    Tasks,
+    //Notes,
+    //Groceries
 }

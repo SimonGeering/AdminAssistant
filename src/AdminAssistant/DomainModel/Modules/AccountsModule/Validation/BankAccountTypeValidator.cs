@@ -1,21 +1,18 @@
 using FluentValidation;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation
-{
-    public interface IBankAccountTypeValidator : IValidator<BankAccountType>
-    {
-    }
+namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class BankAccountTypeValidator : AbstractValidator<BankAccountType>, IBankAccountTypeValidator
+public interface IBankAccountTypeValidator : IValidator<BankAccountType>
+{
+}
+internal class BankAccountTypeValidator : AbstractValidator<BankAccountType>, IBankAccountTypeValidator
+{
+    public BankAccountTypeValidator()
     {
-        public BankAccountTypeValidator()
-        {
-            RuleFor(x => x.Description)
-                .NotEmpty();
-            RuleFor(x => x.Description)
-                .MaximumLength(BankAccountType.DescriptionMaxLength);
-        }
+        RuleFor(x => x.Description)
+            .NotEmpty();
+        RuleFor(x => x.Description)
+            .MaximumLength(BankAccountType.DescriptionMaxLength);
     }
 }
 

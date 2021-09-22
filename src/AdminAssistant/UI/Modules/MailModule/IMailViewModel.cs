@@ -1,8 +1,7 @@
-namespace AdminAssistant.UI.Modules.MailModule
+namespace AdminAssistant.UI.Modules.MailModule;
+
+public interface IMailViewModel : IViewModelBase
 {
-    public interface IMailViewModel : IViewModelBase
-    {
-        string HeaderText { get; }
-        string SubHeaderText { get; }
-    }
+    string HeaderText { get; }
+    string SubHeaderText { get; }
 }

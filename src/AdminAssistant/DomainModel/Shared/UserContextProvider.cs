@@ -1,15 +1,12 @@
-namespace AdminAssistant.DomainModel.Shared
-{
-    public interface IUserContextProvider
-    {
-        User GetCurrentUser();
-    }
+namespace AdminAssistant.DomainModel.Shared;
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Build", "CA1812", Justification = "Compiler dosen't understand dependency injection")]
-    internal class UserContextProvider : IUserContextProvider
-    {
-        // TODO: Implement IUserContextProvider.GetCurrentUser;
-        // TODO: Hard coded user ID.
-        public User GetCurrentUser() => new() { UserID = 10, SignOn = "simongeering" };
-    }
+public interface IUserContextProvider
+{
+    User GetCurrentUser();
+}
+internal class UserContextProvider : IUserContextProvider
+{
+    // TODO: Implement IUserContextProvider.GetCurrentUser;
+    // TODO: Hard coded user ID.
+    public User GetCurrentUser() => new() { UserID = 10, SignOn = "simongeering" };
 }

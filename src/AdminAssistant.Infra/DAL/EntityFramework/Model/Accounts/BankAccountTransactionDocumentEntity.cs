@@ -9,9 +9,8 @@ Table "Accounts.BankAccountTransactionDocument"
 Ref: "Accounts.BankAccountTransaction"."BankAccountTransactionID" < "Accounts.BankAccountTransactionDocument"."BankAccountTransactionDocumentID"
 
 */
-namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
+
+public class BankAccountTransactionDocumentEntity
 {
-    public class BankAccountTransactionDocumentEntity
-    {
-    }
 }

@@ -1,12 +1,11 @@
 using AdminAssistant.Framework.TypeMapping;
 
-namespace AdminAssistant.WebAPI.v1
+namespace AdminAssistant.WebAPI.v1;
+
+public class MappingProfile : MappingProfileBase
 {
-    public class MappingProfile : MappingProfileBase
+    public MappingProfile()
+        : base(typeof(MappingProfile).Assembly)
     {
-        public MappingProfile()
-            : base(typeof(MappingProfile).Assembly)
-        {
-        }
     }
 }

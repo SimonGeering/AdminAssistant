@@ -1,16 +1,15 @@
 using AdminAssistant.Infra.Providers;
 
-namespace AdminAssistant.UI.Modules.DashboardModule
+namespace AdminAssistant.UI.Modules.DashboardModule;
+
+internal class DashboardViewModel : ViewModelBase, IDashboardViewModel
 {
-    internal class DashboardViewModel : ViewModelBase, IDashboardViewModel
+    public DashboardViewModel(ILoggingProvider loggingProvider)
+        : base(loggingProvider)
     {
-        public DashboardViewModel(ILoggingProvider loggingProvider)
-            : base(loggingProvider)
-        {
-        }
-
-        public string HeaderText => "Dashboard";
-
-        public string SubHeaderText => string.Empty;
     }
+
+    public string HeaderText => "Dashboard";
+
+    public string SubHeaderText => string.Empty;
 }

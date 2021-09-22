@@ -1,20 +1,19 @@
-namespace AdminAssistant.UI.Shared
+namespace AdminAssistant.UI.Shared;
+
+public interface IMainWindowViewModel : IViewModelBase
 {
-    public interface IMainWindowViewModel : IViewModelBase
-    {
-        SidebarStateSettings Sidebar { get; }
+    SidebarStateSettings Sidebar { get; }
 
-        List<ModeSelectionItem> Modes { get; }
-        ModeSelectionItem ActiveMode { get; }
+    List<ModeSelectionItem> Modes { get; }
+    ModeSelectionItem ActiveMode { get; }
 
-        List<ModuleSelectionItem> Modules { get; }
-        ModuleSelectionItem ActiveModule { get; }
-        string FooterText { get; }
+    List<ModuleSelectionItem> Modules { get; }
+    ModuleSelectionItem ActiveModule { get; }
+    string FooterText { get; }
 
-        void OnSideBarControlButtonClick();
+    void OnSideBarControlButtonClick();
 
-        void OnSelectedModeChanged(ModeSelectionItem mode);
-        void OnSelectedModuleChanged(ModuleSelectionItem selectedModule);
+    void OnSelectedModeChanged(ModeSelectionItem mode);
+    void OnSelectedModuleChanged(ModuleSelectionItem selectedModule);
 
-    }
 }

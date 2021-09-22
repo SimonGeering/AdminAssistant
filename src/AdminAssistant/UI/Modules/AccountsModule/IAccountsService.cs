@@ -1,11 +1,10 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 
-namespace AdminAssistant.UI.Modules.AccountsModule
+namespace AdminAssistant.UI.Modules.AccountsModule;
+
+public interface IAccountsService
 {
-    public interface IAccountsService
-    {
-        Task<List<BankAccountType>> LoadBankAccountTypesLookupDataAsync();
-        Task<BankAccount> CreateBankAccountAsync(BankAccount model);
-        Task<BankAccount> UpdateBankAccountAsync(BankAccount model);
-    }
+    Task<List<BankAccountType>> LoadBankAccountTypesLookupDataAsync();
+    Task<BankAccount> CreateBankAccountAsync(BankAccount model);
+    Task<BankAccount> UpdateBankAccountAsync(BankAccount model);
 }

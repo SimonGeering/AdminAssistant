@@ -1,12 +1,11 @@
-namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core
-{
-    public class UserProfilePermissionEntity
-    {
-        public int UserProfilePermissionID { get; set; }
-        public int UserProfileID { get; set; }
-        public int PermissionID { get; set; }
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 
-        public UserProfileEntity UserProfile { get; set; } = null!;
-        public PermissionEntity Permission { get; internal set; } = null!;
-    }
+public class UserProfilePermissionEntity
+{
+    public int UserProfilePermissionID { get; set; }
+    public int UserProfileID { get; set; }
+    public int PermissionID { get; set; }
+
+    public UserProfileEntity UserProfile { get; set; } = null!;
+    public PermissionEntity Permission { get; internal set; } = null!;
 }

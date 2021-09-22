@@ -7,12 +7,11 @@ Table "Contacts.ContactAddress"
   "ContactID" INT
 }
 */
-namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
+
+public class ContactAddressEntity
 {
-    public class ContactAddressEntity
-    {
-        public int ContactAddressID { get; set; }
-        public int AddressID { get; set; }
-        public int ContactID { get; internal set; }
-    }
+    public int ContactAddressID { get; set; }
+    public int AddressID { get; set; }
+    public int ContactID { get; internal set; }
 }

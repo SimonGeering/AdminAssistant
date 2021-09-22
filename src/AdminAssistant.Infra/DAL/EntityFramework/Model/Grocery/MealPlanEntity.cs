@@ -1,11 +1,10 @@
-namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery
-{
-    public class MealPlanEntity
-    {
-        public int MealPlanID { get; set; }
-        public int AuditID { get; set; }
-        public int OwnerID { get; internal set; }
+namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery;
 
-        public Core.AuditEntity Audit { get; internal set; } = null!;
-    }
+public class MealPlanEntity
+{
+    public int MealPlanID { get; set; }
+    public int AuditID { get; set; }
+    public int OwnerID { get; internal set; }
+
+    public Core.AuditEntity Audit { get; internal set; } = null!;
 }
