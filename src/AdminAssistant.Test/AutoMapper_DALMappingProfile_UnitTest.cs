@@ -1,11 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using System.Diagnostics.CodeAnalysis;
-using AutoMapper;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
-using FluentAssertions;
-using Xunit;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;

@@ -2,13 +2,7 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.CalendarModule;
 using AdminAssistant.DomainModel.Modules.CalendarModule.CQRS;
-using Ardalis.Result;
-using FluentAssertions;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.CalendarModule;
 

@@ -18,9 +18,6 @@ using AdminAssistant.WebAPI.v1.CoreModule;
 using AdminAssistant.WebAPI.v1.DocumentsModule;
 using AdminAssistant.WebAPI.v1.MailModule;
 using AdminAssistant.WebAPI.v1.TasksModule;
-using AutoMapper;
-using FluentAssertions;
-using Xunit;
 
 namespace AdminAssistant.WebAPI.v1;
 

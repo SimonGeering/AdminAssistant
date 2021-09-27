@@ -2,14 +2,7 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
-using Ardalis.Result;
-using AutoMapper;
-using FluentAssertions;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.CoreModule;
 

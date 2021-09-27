@@ -1,11 +1,5 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using Ardalis.Result;
-using FluentAssertions;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 using ObjectCloner.Extensions; // https://github.com/marcelltoth/ObjectCloner
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;

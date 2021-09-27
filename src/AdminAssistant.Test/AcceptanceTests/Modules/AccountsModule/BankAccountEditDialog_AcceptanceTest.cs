@@ -3,10 +3,7 @@
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.UI.Modules.AccountsModule;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Messaging;
-using Xunit;
 using static AdminAssistant.TestConstants;
 
 namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule;

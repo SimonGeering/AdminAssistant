@@ -1,10 +1,6 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.DomainModel.Shared;
 using Ardalis.GuardClauses;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
 namespace AdminAssistant;
 

@@ -3,9 +3,6 @@
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
 

@@ -4,9 +4,6 @@ using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
 
 namespace AdminAssistant.WebAPI.v1.CoreModule;
 

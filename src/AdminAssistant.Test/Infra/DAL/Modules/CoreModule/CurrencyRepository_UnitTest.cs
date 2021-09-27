@@ -5,12 +5,6 @@ using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.Providers;
-using AutoMapper;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using MockQueryable.Moq;
-using Moq;
-using Xunit;
 
 namespace AdminAssistant.Infra.DAL.Modules.CoreModule;
 

@@ -9,9 +9,6 @@ using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.DomainModel.Modules.MailModule;
 using AdminAssistant.DomainModel.Modules.TasksModule;
-using AutoMapper;
-using FluentAssertions;
-using Xunit;
 
 namespace AdminAssistant.UI.Shared.WebAPIClient.v1;
 
