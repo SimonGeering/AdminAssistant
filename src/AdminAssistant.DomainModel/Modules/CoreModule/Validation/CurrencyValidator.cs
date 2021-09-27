@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace AdminAssistant.DomainModel.Modules.CoreModule.Validation;
 
 internal class CurrencyValidator : AbstractValidator<Currency>, ICurrencyValidator

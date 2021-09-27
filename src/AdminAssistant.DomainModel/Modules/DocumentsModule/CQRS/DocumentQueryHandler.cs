@@ -1,6 +1,5 @@
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 using AdminAssistant.Infra.Providers;
-using Ardalis.Result;
 
 namespace AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
 

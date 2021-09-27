@@ -1,7 +1,5 @@
-using System.Diagnostics;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.Providers;
-using Ardalis.Result;
 
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 

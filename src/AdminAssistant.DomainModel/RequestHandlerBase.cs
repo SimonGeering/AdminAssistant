@@ -1,5 +1,4 @@
 using AdminAssistant.Infra.Providers;
-using MediatR;
 
 namespace AdminAssistant.DomainModel;
 

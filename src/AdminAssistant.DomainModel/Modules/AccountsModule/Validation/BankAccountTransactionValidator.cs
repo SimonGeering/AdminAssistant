@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 
 internal class BankAccountTransactionValidator : AbstractValidator<BankAccountTransaction>, IBankAccountTransactionValidator

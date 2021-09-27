@@ -1,8 +1,6 @@
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
+using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.Providers;
-using Ardalis.Result;
-using Ardalis.Result.FluentValidation;
 
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 

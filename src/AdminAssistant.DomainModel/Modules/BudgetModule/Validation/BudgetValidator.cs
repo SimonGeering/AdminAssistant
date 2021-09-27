@@ -1,5 +1,3 @@
-using FluentValidation;
-
 namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
 
 internal class BudgetValidator : AbstractValidator<Budget>, IBudgetValidator
