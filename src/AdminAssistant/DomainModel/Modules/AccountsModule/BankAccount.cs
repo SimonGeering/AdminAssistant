@@ -1,5 +1,3 @@
-using AdminAssistant.Infra.DAL;
-
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
 public record BankAccount : IDatabasePersistable
