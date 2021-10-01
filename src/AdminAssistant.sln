@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Serve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.DomainModel", "AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj", "{37E3A777-7802-411D-8738-9C55B6A5288E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.WinForms", "AdminAssistant.WinForms\AdminAssistant.WinForms.csproj", "{9D43396A-E997-4584-99E0-1ACC1542ED52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.WPF", "AdminAssistant.WPF\AdminAssistant.WPF.csproj", "{EB43D867-C6E8-4F8D-94A9-9BCE92505330}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,10 @@ Global
 		{37E3A777-7802-411D-8738-9C55B6A5288E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37E3A777-7802-411D-8738-9C55B6A5288E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37E3A777-7802-411D-8738-9C55B6A5288E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9D43396A-E997-4584-99E0-1ACC1542ED52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9D43396A-E997-4584-99E0-1ACC1542ED52}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9D43396A-E997-4584-99E0-1ACC1542ED52}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9D43396A-E997-4584-99E0-1ACC1542ED52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB43D867-C6E8-4F8D-94A9-9BCE92505330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB43D867-C6E8-4F8D-94A9-9BCE92505330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB43D867-C6E8-4F8D-94A9-9BCE92505330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB43D867-C6E8-4F8D-94A9-9BCE92505330}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
