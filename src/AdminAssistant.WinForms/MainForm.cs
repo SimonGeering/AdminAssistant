@@ -1,26 +1,32 @@
-using AccountsForm = AdminAssistant.WinForms.Modules.AccountsModule.AccountsForm;
+using AdminAssistant.UI.Shared;
+using AccountsComponent = AdminAssistant.WinForms.Modules.AccountsModule.AccountsComponent;
 
 namespace AdminAssistant.WinForms;
 
 
 public partial class MainForm : Syncfusion.WinForms.Controls.SfForm
 {
-    private readonly AccountsForm _accountsForm;
+    private readonly IMainWindowViewModel _mainWindowViewModel;
+    private readonly AccountsComponent _acccountsComponent;
 
-    public MainForm(AccountsForm accountsForm)
+    public MainForm(
+        IMainWindowViewModel mainWindowViewModel,
+        AccountsComponent acccountsComponent)
     {
-        _accountsForm = accountsForm;
+        _mainWindowViewModel = mainWindowViewModel;
+        _acccountsComponent = acccountsComponent;
 
         InitializeComponent();
 
         SuspendLayout();
 
-        ThemeName = Program.ThemeName;
-        IsMdiContainer = true;
-        Text = "Admin Assistant";
+        //this.comboDropDown1.DataBindings.Add()
 
-        _accountsForm.MdiParent = this;
-        _accountsForm.Show();
+        Controls.Add(acccountsComponent);
+        acccountsComponent.Dock = DockStyle.Fill;
+
+        //IsMdiContainer = true;
+        Text = "Admin Assistant";
 
         ResumeLayout(false);
     }
