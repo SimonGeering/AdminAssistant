@@ -58,7 +58,7 @@ namespace AdminAssistant.WPF
 
             using (var scope = host.Services.CreateScope())
             {
-                App.Current.Resources.Add("ViewModelLocator", new ViewModelLocator(scope.ServiceProvider));
+                App.Current.Resources.Add("ViewModelLocator", new UI.ViewModelLocator(scope.ServiceProvider));
                 App.Current.MainWindow = scope.ServiceProvider.GetRequiredService<MainWindow>();
                 App.Current.MainWindow.Show();
             }

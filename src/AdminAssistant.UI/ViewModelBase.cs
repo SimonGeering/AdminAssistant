@@ -4,6 +4,7 @@ using Microsoft.Toolkit.Mvvm.Input;
 
 namespace AdminAssistant.UI;
 
+// See https://docs.microsoft.com/en-us/windows/communitytoolkit/mvvm/introduction
 internal abstract class ViewModelBase : ObservableObject, IViewModelBase
 {
     [Obsolete("Replaced with OnLoadedAsync")]

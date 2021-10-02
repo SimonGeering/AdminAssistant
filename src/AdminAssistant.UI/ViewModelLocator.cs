@@ -1,4 +1,3 @@
-using System;
 using AdminAssistant.UI.Modules.AccountsModule;
 using AdminAssistant.UI.Modules.AdminModule;
 using AdminAssistant.UI.Modules.AssetRegisterModule;
@@ -14,7 +13,7 @@ using AdminAssistant.UI.Modules.TasksModule;
 using AdminAssistant.UI.Shared;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdminAssistant.WPF
+namespace AdminAssistant.UI
 {
     public class ViewModelLocator
     {
