@@ -22,6 +22,11 @@
   --cl-boarderColorDark: #444444;
 }
 
+.e-bigger {
+  /* Touchscreen support (https://blazor.syncfusion.com/documentation/appearance/size-modes) */
+  font-size: x-large;
+}
+
 /****************************************
     BLAZOR ERROR UI
 *****************************************/
