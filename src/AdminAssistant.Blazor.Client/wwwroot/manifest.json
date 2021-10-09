@@ -1,0 +1,21 @@
+{
+  "name": "Admin Assistant",
+  "short_name": "Admin Assistant",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#201f1f",
+  "theme_color": "#282727",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}
