@@ -1,9 +1,13 @@
+/****************************************
+    GLOBAL STYLES
+*****************************************/
 :root {
   --font-family-sans-serif: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
   --font-size-base: 0.875rem;
   --h1-font-size: 2.5rem;
   --h2-font-size: 2rem;
   --h3-font-size: 1.5rem;
+
   --cl-fontSize: 12px;
   --cl-padding-small: 4px;
   --cl-padding: 8px;
@@ -15,8 +19,12 @@
   --cl-foreColor: #f2f5f7;
   --cl-boarderColorLight: #DDDDDD;
   --cl-boarderColor: #444444;
-  --cl-boarderColorDark: #444444; }
+  --cl-boarderColorDark: #444444;
+}
 
+/****************************************
+    BLAZOR ERROR UI
+*****************************************/
 #blazor-error-ui {
   background: lightyellow;
   bottom: 0;
@@ -26,10 +34,12 @@
   padding: 0.6rem 1.25rem 0.7rem 1.25rem;
   position: fixed;
   width: 100%;
-  z-index: 1000; }
+  z-index: 1000;
+}
 
 #blazor-error-ui .dismiss {
   cursor: pointer;
   position: absolute;
   right: 0.75rem;
-  top: 0.5rem; }
+  top: 0.5rem;
+}
