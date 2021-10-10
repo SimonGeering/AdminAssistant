@@ -3,6 +3,7 @@ namespace AdminAssistant.UI.Shared;
 public enum ModuleEnum
 {
     Accounts,
+    Admin,
     AssetRegister,
     Billing,
     Budget,
@@ -10,9 +11,10 @@ public enum ModuleEnum
     Contacts,
     Dashboard,
     Documents,
+    Groceries,
+    Notes,
     Mail,
+    Meals,
     Reports,
-    Tasks,
-    //Notes,
-    //Groceries
+    Tasks
 }
