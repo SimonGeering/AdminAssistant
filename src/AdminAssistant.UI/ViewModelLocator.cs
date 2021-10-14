@@ -13,57 +13,56 @@ using AdminAssistant.UI.Modules.TasksModule;
 using AdminAssistant.UI.Shared;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AdminAssistant.UI
+namespace AdminAssistant.WPF;
+
+public class ViewModelLocator
 {
-    public class ViewModelLocator
-    {
-        private readonly IServiceProvider _serviceProvider;
+    private readonly IServiceProvider _serviceProvider;
 
-        public ViewModelLocator(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
+    public ViewModelLocator(IServiceProvider serviceProvider) => _serviceProvider = serviceProvider;
 
-        // Add Accounts UI ...
-        public IAccountsViewModel AccountsViewModel => _serviceProvider.GetRequiredService<IAccountsViewModel>();
+    // Add Accounts UI ...
+    public IAccountsViewModel AccountsViewModel => _serviceProvider.GetRequiredService<IAccountsViewModel>();
 
-        public IBankAccountEditDialogViewModel BankAccountEditDialogViewModel => _serviceProvider.GetRequiredService<IBankAccountEditDialogViewModel>();
+    public IBankAccountEditDialogViewModel BankAccountEditDialogViewModel => _serviceProvider.GetRequiredService<IBankAccountEditDialogViewModel>();
 
-        public IBankAccountBalanceListViewModel BankAccountBalanceListViewModel => _serviceProvider.GetRequiredService<IBankAccountBalanceListViewModel>();
-        public IBankAccountRightSidebarViewModel BankAccountRightSidebarViewModel => _serviceProvider.GetRequiredService<IBankAccountRightSidebarViewModel>();
-        public IBankAccountTransactionListViewModel BankAccountTransactionListViewModel => _serviceProvider.GetRequiredService<IBankAccountTransactionListViewModel>();
+    public IBankAccountBalanceListViewModel BankAccountBalanceListViewModel => _serviceProvider.GetRequiredService<IBankAccountBalanceListViewModel>();
+    public IBankAccountRightSidebarViewModel BankAccountRightSidebarViewModel => _serviceProvider.GetRequiredService<IBankAccountRightSidebarViewModel>();
+    public IBankAccountTransactionListViewModel BankAccountTransactionListViewModel => _serviceProvider.GetRequiredService<IBankAccountTransactionListViewModel>();
 
-        // Add Admin UI ...
-        public IAdminViewModel AdminViewModel => _serviceProvider.GetRequiredService<IAdminViewModel>();
+    // Add Admin UI ...
+    public IAdminViewModel AdminViewModel => _serviceProvider.GetRequiredService<IAdminViewModel>();
 
-        // Add Asset Register UI ...
-        public IAssetRegisterViewModel AssetRegisterViewModel => _serviceProvider.GetRequiredService<IAssetRegisterViewModel>();
+    // Add Asset Register UI ...
+    public IAssetRegisterViewModel AssetRegisterViewModel => _serviceProvider.GetRequiredService<IAssetRegisterViewModel>();
 
-        // Add Billing UI ...
-        public IBillingViewModel BillingViewModel => _serviceProvider.GetRequiredService<IBillingViewModel>();
+    // Add Billing UI ...
+    public IBillingViewModel BillingViewModel => _serviceProvider.GetRequiredService<IBillingViewModel>();
 
-        // Add Budget UI ...
-        public IBudgetViewModel BudgetViewModel => _serviceProvider.GetRequiredService<IBudgetViewModel>();
+    // Add Budget UI ...
+    public IBudgetViewModel BudgetViewModel => _serviceProvider.GetRequiredService<IBudgetViewModel>();
 
-        // Add Calendar UI ...
-        public ICalendarViewModel CalendarViewModel => _serviceProvider.GetRequiredService<ICalendarViewModel>();
+    // Add Calendar UI ...
+    public ICalendarViewModel CalendarViewModel => _serviceProvider.GetRequiredService<ICalendarViewModel>();
 
-        // Add Contacts UI ...
-        public IContactsViewModel ContactsViewModel => _serviceProvider.GetRequiredService<IContactsViewModel>();
+    // Add Contacts UI ...
+    public IContactsViewModel ContactsViewModel => _serviceProvider.GetRequiredService<IContactsViewModel>();
 
-        // Add Dashboard UI ...
-        public IDashboardViewModel DashboardViewModel => _serviceProvider.GetRequiredService<IDashboardViewModel>();
+    // Add Dashboard UI ...
+    public IDashboardViewModel DashboardViewModel => _serviceProvider.GetRequiredService<IDashboardViewModel>();
 
-        // Add Documents UI ...
-        public IDocumentsViewModel DocumentsViewModel => _serviceProvider.GetRequiredService<IDocumentsViewModel>();
+    // Add Documents UI ...
+    public IDocumentsViewModel DocumentsViewModel => _serviceProvider.GetRequiredService<IDocumentsViewModel>();
 
-        // Add Mail UI ...
-        public IMailViewModel MailViewModel => _serviceProvider.GetRequiredService<IMailViewModel>();
+    // Add Mail UI ...
+    public IMailViewModel MailViewModel => _serviceProvider.GetRequiredService<IMailViewModel>();
 
-        // Add Reports UI ...
-        public IReportsViewModel ReportsViewModel => _serviceProvider.GetRequiredService<IReportsViewModel>();
+    // Add Reports UI ...
+    public IReportsViewModel ReportsViewModel => _serviceProvider.GetRequiredService<IReportsViewModel>();
 
-        // Add Tasks UI ...
-        public ITasksViewModel TasksViewModel => _serviceProvider.GetRequiredService<ITasksViewModel>();
+    // Add Tasks UI ...
+    public ITasksViewModel TasksViewModel => _serviceProvider.GetRequiredService<ITasksViewModel>();
 
-        // Add Shared UI ...
-        public IMainWindowViewModel MainWindowViewModel => _serviceProvider.GetRequiredService<IMainWindowViewModel>();
-    }
+    // Add Shared UI ...
+    public IMainWindowViewModel MainWindowViewModel => _serviceProvider.GetRequiredService<IMainWindowViewModel>();
 }
