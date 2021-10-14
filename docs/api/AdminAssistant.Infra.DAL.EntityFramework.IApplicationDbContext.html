@@ -1,0 +1,627 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IApplicationDbContext
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IApplicationDbContext
+   ">
+    <meta name="generator" content="docfx 2.58.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext">
+  
+  
+  <h1 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext" class="text-break">Interface IApplicationDbContext
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.html">AdminAssistant.Infra.DAL.EntityFramework</a></h6>
+  <h6><strong>Assembly</strong>: AdminAssistant.Infra.dll</h6>
+  <h5 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IApplicationDbContext : IDisposable</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_AuditTrail.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.AuditTrail%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L203">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_AuditTrail_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.AuditTrail*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_AuditTrail" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.AuditTrail">AuditTrail</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;AuditEntity&gt; AuditTrail { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Core.AuditEntity.html">AuditEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_BankAccounts.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.BankAccounts%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L216">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_BankAccounts_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.BankAccounts*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_BankAccounts" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.BankAccounts">BankAccounts</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;BankAccountEntity&gt; BankAccounts { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountEntity.html">BankAccountEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_BankAccountTransactions.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.BankAccountTransactions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L217">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_BankAccountTransactions_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.BankAccountTransactions*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_BankAccountTransactions" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.BankAccountTransactions">BankAccountTransactions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;BankAccountTransactionEntity&gt; BankAccountTransactions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTransactionEntity.html">BankAccountTransactionEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_BankAccountTypes.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.BankAccountTypes%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L218">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_BankAccountTypes_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.BankAccountTypes*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_BankAccountTypes" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.BankAccountTypes">BankAccountTypes</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;BankAccountTypeEntity&gt; BankAccountTypes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTypeEntity.html">BankAccountTypeEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Banks.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Banks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L215">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Banks_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Banks*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Banks" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Banks">Banks</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;BankEntity&gt; Banks { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankEntity.html">BankEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Company.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Company%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L204">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Company_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Company*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Company" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Company">Company</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;CompanyEntity&gt; Company { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CompanyEntity.html">CompanyEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_ConnectionString.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.ConnectionString%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L227">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_ConnectionString_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.ConnectionString*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_ConnectionString" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.ConnectionString">ConnectionString</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">string ConnectionString { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Currencies.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Currencies%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L209">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Currencies_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Currencies*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Currencies" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Currencies">Currencies</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;CurrencyEntity&gt; Currencies { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CurrencyEntity.html">CurrencyEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Documents.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Documents%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L221">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Documents_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Documents*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Documents" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Documents">Documents</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;DocumentEntity&gt; Documents { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Documents.DocumentEntity.html">DocumentEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Owners.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Owners%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L206">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Owners_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Owners*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Owners" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Owners">Owners</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;OwnerEntity&gt; Owners { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Core.OwnerEntity.html">OwnerEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Permissions.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Permissions%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L211">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Permissions_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Permissions*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Permissions" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Permissions">Permissions</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;PermissionEntity&gt; Permissions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PermissionEntity.html">PermissionEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_PersonalDetails.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.PersonalDetails%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L205">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_PersonalDetails_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.PersonalDetails*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_PersonalDetails" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.PersonalDetails">PersonalDetails</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;PersonalDetailsEntity&gt; PersonalDetails { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PersonalDetailsEntity.html">PersonalDetailsEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Settings.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Settings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L212">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Settings_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Settings*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Settings" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Settings">Settings</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;SettingEntity&gt; Settings { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Core.SettingEntity.html">SettingEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_UserProfiles.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.UserProfiles%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L208">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_UserProfiles_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.UserProfiles*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_UserProfiles" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.UserProfiles">UserProfiles</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">DbSet&lt;UserProfileEntity&gt; UserProfiles { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.EntityFrameworkCore.DbSet</span>&lt;<a class="xref" href="AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfileEntity.html">UserProfileEntity</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_EnsureDatabaseIsCreated.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.EnsureDatabaseIsCreated%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L228">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_EnsureDatabaseIsCreated_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.EnsureDatabaseIsCreated*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_EnsureDatabaseIsCreated" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.EnsureDatabaseIsCreated">EnsureDatabaseIsCreated()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void EnsureDatabaseIsCreated()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Migrate.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Migrate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L229">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Migrate_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Migrate*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_Migrate" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.Migrate">Migrate()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Migrate()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_SaveChangesAsync_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.SaveChangesAsync(CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L224">View Source</a>
+  </span>
+  <a id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_SaveChangesAsync_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.SaveChangesAsync*"></a>
+  <h4 id="AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext_SaveChangesAsync_CancellationToken_" data-uid="AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.SaveChangesAsync(CancellationToken)">SaveChangesAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;int&gt; SaveChangesAsync(CancellationToken cancellationToken = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_Infra_DAL_EntityFramework_IApplicationDbContext.md&amp;value=---%0Auid%3A%20AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.Infra/DAL/EntityFramework/ApplicationDbContext .cs/#L199" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
