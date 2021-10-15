@@ -1,12 +1,5 @@
 | [Issues](https://github.com/SimonGeering/AdminAssistant/milestone/2) | [Project Plan](https://github.com/SimonGeering/AdminAssistant/projects/2) | 
 
-1. [Overview](#overview)(TODO)  
-  1.1 [Use Case Diagram](#Use-Case-Diagram)(TODO)  
-2. [User Stories](#User-Stories)(TODO)  
-3. [UI Design](#UI-Design)(TODO)  
-  3.1 [Screen Mockups](#Screen-Mockups)(TODO)  
-4. [Database Schema](#Database-Schema)(WIP)  
-
 ***
 
 # Overview
@@ -25,7 +18,7 @@ TODO
 - [ ] Manage Bank Account Types
 
 - [ ] Manage Bank Accounts
-  - [x] [Pick a Bank Account Type](#Pick-a-Bank-Account-Type) - See [Issue #76](https://github.com/SimonGeering/AdminAssistant/issues/76)
+  - [x] [Pick a Bank Account Type](##Pick a Bank Account Type) - See [Issue #76](https://github.com/SimonGeering/AdminAssistant/issues/76)
   - [ ] Create Bank Account - See [Issue #31](https://github.com/SimonGeering/AdminAssistant/issues/31)
   - [ ] Reconcile Bank Account - See [Issue #72](https://github.com/SimonGeering/AdminAssistant/issues/72)
   - [ ] Summary account - See [Issue #70](https://github.com/SimonGeering/AdminAssistant/issues/70)
@@ -45,7 +38,7 @@ Feature: Pick a Bank Account Type
 
 # UI Design
 
-a - [Example Screen Name](#Example-Screen-Name)  
+a - [Example Screen Name](###Example Screen Name)  
 
 ## Screen Mockups
 

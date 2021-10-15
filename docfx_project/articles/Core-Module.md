@@ -1,12 +1,5 @@
 | [Issues](https://github.com/SimonGeering/AdminAssistant/milestone/14) | [Project Plan](https://github.com/SimonGeering/AdminAssistant/projects/1) | 
 
-1. [Overview](#overview)(TODO)  
-  1.1 [Use Case Diagram](#Use-Case-Diagram)(TODO)  
-2. [User Stories](#User-Stories)(TODO)  
-3. [UI Design](#UI-Design)(TODO)  
-  3.1 [Screen Mockups](#Screen-Mockups)(TODO)  
-4. [Database Schema](#Database-Schema)(WIP)  
-
 ***
 
 # Overview
@@ -32,7 +25,7 @@ Feature: Pick a currency
 
 # UI Design
 
-a - [Example Screen Name](#Example-Screen-Name)
+a - [Example Screen Name](###Example Screen Name)
 
 ## Screen Mockups
 
@@ -45,7 +38,7 @@ TODO
 See <https://dbdiagram.io/d/5f5240d688d052352cb5fcf9> or click the thumbnail below:  
 
 [[[/images/Core-Module/CoreModule_EntityRelationshipDiagram_V1o0o0.png|Database Entity Relationship Diagram for the Admin Assistant Core Module]]](https://raw.githubusercontent.com/wiki/SimonGeering/AdminAssistant/images/Core-Module/CoreModule_EntityRelationshipDiagram_V1o0o0.png)
-_Fig 1. Database Entity Relationship Diagram for the Admin Assistant Core Module - (Click for larger size)_
+_Fig 1. Database Entity Relationship Diagram for the Admn Assistant Core Module - (Click for larger size)_
 
 ***
 WIP Samples and other junk below here

@@ -1,14 +1,5 @@
 | [Issues](https://github.com/SimonGeering/AdminAssistant/milestone/5) | [Project Plan](https://github.com/SimonGeering/AdminAssistant/projects/10) | 
 
-1. [Overview](#overview)(TODO)  
-  1.1 [Use Case Diagram](#Use-Case-Diagram)(TODO)  
-2. [User Stories](#User-Stories)(TODO)  
-3. [UI Design](#UI-Design)(TODO)  
-  3.1 [Screen Mockups](#Screen-Mockups)(TODO)  
-4. [Database Schema](#Database-Schema)(TODO)  
-4.1 [Overview: Entity Relationship Diagram](#Entity-Relationship-Diagram)(TODO)  
-4.2 [Detailed: Entity Relationship Model](#Entity-Relationship-Model)(TODO)  
-
 ***
 
 # Overview

@@ -1,12 +1,5 @@
 | [Issues](https://github.com/SimonGeering/AdminAssistant/milestone/12) | [Project Plan](https://github.com/SimonGeering/AdminAssistant/projects/4) | 
 
-1. [Overview](#overview)(TODO)  
-  1.1 [Use Case Diagram](#Use-Case-Diagram)(TODO)  
-2. [User Stories](#User-Stories)(TODO)  
-3. [UI Design](#UI-Design)(TODO)  
-  3.1 [Screen Mockups](#Screen-Mockups)(TODO)  
-4. [Database Schema](#Database-Schema)(WIP)  
-
 ***
 
 # Overview
@@ -34,7 +27,7 @@ Feature: Feature name
 
 # UI Design
 
-a - [Example Screen Name](#Example-Screen-Name)  
+a - [Example Screen Name](###Example Screen Name)  
 
 ## Screen Mockups
 
