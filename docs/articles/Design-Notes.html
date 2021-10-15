@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace AdminAssistant
-   </title>
+    <title>Overview </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace AdminAssistant
-   ">
+    <meta name="title" content="Overview ">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -68,18 +66,32 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="AdminAssistant">
-  
-  <h1 id="AdminAssistant" data-uid="AdminAssistant" class="text-break">Namespace AdminAssistant
-  </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
-  </h3>
-      <h4><a class="xref" href="AdminAssistant.Constants.html">Constants</a></h4>
-      <section><p>Global Constants.</p>
-</section>
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="overview">Overview</h1>
+
+<p>This document is intended to act as an aid-memoir for the reasoning behind design decisions made during the development of the system.</p>
+<p>The decisions noted may or may not be related and maybe at different levels of scope and granularity to one another. The key point is that the thought process and reasoning are being captured somewhere.</p>
+<h2 id="list-of-decisions">List of decisions</h2>
+<h3 id="implement-unit-tests-for-the-dal-in-addition-to-integration-and-acceptance-tests">Implement unit tests for the DAL in addition to integration and acceptance tests.</h3>
+<ul>
+<li><p>While the code covered by these unit tests would be included in both the Server Side integration tests and the functional acceptance tests, both those sets of tests require external infrastructure.</p>
+</li>
+<li><p>The unit tests, by definition, have no external dependencies and so can be run as part of the CI/CD pipeline, increasing test scenario coverage at that crucial time.</p>
+</li>
+<li><p>The unit tests cover a smaller area of code, so while functional acceptance tests will tell us that the application is not fit for purpose, it will be the unit tests that will help to precisely pinpoint why and where.</p>
+</li>
+</ul>
+<h3 id="centralising-all-interfaces-within-adminassistant-assembly">Centralising all interfaces within AdminAssistant assembly</h3>
+<ul>
+<li><p>This helps reduce dependency coupling when changing a single unit of functionality, since the only things that need to change are:</p>
+<ul>
+<li>The assembly containing the unit of code being modified or added.</li>
+<li>The test assembly containing the Unit Test for that code.</li>
+<li>Core AdminAssistant assembly containing the interfaces for the dependencies of that code, and any POCOs used in that interface.</li>
+</ul>
+<p>As a result, the compiler will spend less time compiling after each change and so shorten the TDD feedback loop.</p>
+</li>
+</ul>
 </article>
           </div>
           
@@ -87,6 +99,9 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/docfx_project/articles/Design-Notes.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
