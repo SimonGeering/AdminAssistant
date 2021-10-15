@@ -11,10 +11,9 @@ The following diagram gives an overview of the Admin Assistant system architectu
 ![Admin Assistant System Architecture Diagram](/images/Architecture/System-Architecture-Diagram_V1o0o0.png)
 _Fig 1. System Architecture Diagram for the Admin Assistant Application - (Click for larger size)_
 
-
 ## Component Dependency Diagram
 
 The following diagram shows the relationships between the various components of the Admin Assistant system.  
 
-[[[/images/Architecture/Component-Diagram_V1o0o0.png|Admin Assistant UML Component Diagram]]](https://raw.githubusercontent.com/wiki/SimonGeering/AdminAssistant/images/Architecture/Component-Diagram_V1o0o0.png)  
+[[[../images/Architecture/Component-Diagram_V1o0o0.png|Admin Assistant UML Component Diagram]]](https://simongeering.github.io/AdminAssistant/images/Architecture/Component-Diagram_V1o0o0.png)  
 _Fig 2. UML Component Diagram for the Admin Assistant Application - (Click for larger size)_
