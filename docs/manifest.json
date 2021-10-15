@@ -4373,24 +4373,15 @@
       "version": ""
     },
     {
-      "type": "Conceptual",
-      "source_relative_path": "index.md",
-      "output": {
-        ".html": {
-          "relative_path": "index.html",
-          "hash": "AHS3Pai5DgVukmy/nq/0OPCB9bHGE6ezZUPMfwYRcbc="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "/vTjXUq0ll6ccF0hFHtrQNsusFXF1l0z9aMRa8C4w/I="
+          "hash": "RCEg/L9K8Zz4/JPtAUuruHtrdi+bAT4HpeLCAHzL41Y="
         }
       },
       "is_incremental": false,
@@ -4409,8 +4400,8 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 17,
-          "skipped_file_count": 17
+          "total_file_count": 16,
+          "skipped_file_count": 16
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
