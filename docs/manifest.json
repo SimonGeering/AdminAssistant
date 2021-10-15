@@ -4080,7 +4080,7 @@
           "hash": "jjFs+HenBWRZfCVi5kWUSNgSPnD6722dnYNbD8bHKqs="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -4181,18 +4181,6 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "articles/Home.md",
-      "output": {
-        ".html": {
-          "relative_path": "articles/Home.html",
-          "hash": "5MJcSdA14tDwc0avCRl5yYgatkThzSFC1vNeXbGZ844="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "articles/Mail-Module.md",
       "output": {
         ".html": {
@@ -4241,23 +4229,11 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "articles/_Sidebar.md",
-      "output": {
-        ".html": {
-          "relative_path": "articles/_Sidebar.html",
-          "hash": "h+Bj32uiiog6x2u5ttFXICfKDQWKYPuXkO24iY9PqUw="
-        }
-      },
-      "is_incremental": true,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
       "source_relative_path": "articles/intro.md",
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "jk/8OSy7i346EdWkpM37c5dbMo3QZJZ6mWnXL9eheJI="
+          "hash": "d2/w0cBYIN9uklP+1/sIq8PqLVAxYjYCvmKRUMmoTFo="
         }
       },
       "is_incremental": true,
@@ -4269,7 +4245,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "yeIBLQEE2Sy2nqgrSLR2FBoZmntUZI7NAa45rRzwcVA="
+          "hash": "zotFLmWphEpEWCa9f0x6kP55d6THHnkJE01reh3H7dI="
         }
       },
       "is_incremental": false,
@@ -4433,8 +4409,8 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 19,
-          "skipped_file_count": 18
+          "total_file_count": 17,
+          "skipped_file_count": 17
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
