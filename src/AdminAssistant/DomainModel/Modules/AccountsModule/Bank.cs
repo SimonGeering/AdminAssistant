@@ -7,5 +7,6 @@ public record Bank : IDatabasePersistable
     public int BankID { get; init; } = Constants.UnknownRecordID;
     public string BankName { get; init; } = string.Empty;
 
+    ///<inheritdoc/>
     public int PrimaryKey => BankID;
 }

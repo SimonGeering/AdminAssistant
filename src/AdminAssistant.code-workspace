@@ -86,7 +86,13 @@
     "coverage-gutters.showLineCoverage": false,
     "trailing-spaces.syntaxIgnore": ["markdown"],
     "npm.enableScriptExplorer": true,
-    "browser-preview.startUrl": "http://127.0.0.1:4000/AdminAssistant/"
+    "browser-preview.startUrl": "http://127.0.0.1:4000/AdminAssistant/",
+    "markdownlint.config": {
+      "MD028": false,
+      "MD025": {
+        "front_matter_title": ""
+      }
+    }
   },
   "extensions": {
     "recommendations": [
