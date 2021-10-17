@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Overview </title>
+    <title> </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Overview ">
+    <meta name="title" content=" ">
     <meta name="generator" content="docfx 2.58.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -68,51 +68,123 @@
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
 
-<p>| <a href="https://github.com/SimonGeering/AdminAssistant/milestone/2">Issues</a> | <a href="https://github.com/SimonGeering/AdminAssistant/projects/2">Project Plan</a> |</p>
 <hr>
-<h1 id="overview">Overview</h1>
-<p>TODO</p>
-<h2 id="use-case-diagram">Use Case Diagram</h2>
-<p>TODO</p>
-<h1 id="user-stories">User Stories</h1>
-<ul>
-<li><p>[ ] Manage Banks</p>
-<ul>
-<li>[ ] Create Bank - See <a href="https://github.com/SimonGeering/AdminAssistant/issues/73">Issue #73</a></li>
-</ul>
-</li>
-<li><p>[ ] Manage Bank Account Types</p>
-</li>
-<li><p>[ ] Manage Bank Accounts</p>
-<ul>
-<li>[x] [Pick a Bank Account Type](##Pick a Bank Account Type) - See <a href="https://github.com/SimonGeering/AdminAssistant/issues/76">Issue #76</a></li>
-<li>[ ] Create Bank Account - See <a href="https://github.com/SimonGeering/AdminAssistant/issues/31">Issue #31</a></li>
-<li>[ ] Reconcile Bank Account - See <a href="https://github.com/SimonGeering/AdminAssistant/issues/72">Issue #72</a></li>
-<li>[ ] Summary account - See <a href="https://github.com/SimonGeering/AdminAssistant/issues/70">Issue #70</a></li>
-</ul>
-</li>
-<li><p>[ ] Manage Bank Account Transactions</p>
-<ul>
-<li>[ ] Create Bank Account Transaction - See <a href="https://github.com/SimonGeering/AdminAssistant/issues/71">Issue #71</a></li>
-<li>[ ] Get Account Transactions List - See <a href="https://github.com/SimonGeering/AdminAssistant/issues/97">Issue #97</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="pick-a-bank-account-type">Pick a Bank Account Type</h2>
-<pre><code class="lang-Gherkin">Feature: Pick a Bank Account Type
-# As a User
-# I want to pick a bank account type from a list of available supported bank account types.
-# So that as I work with the bank account it behaves as I would expect.
+<p>WIP Samples and other junk below here</p>
+<hr>
+<p>Issue task template</p>
+<pre><code class="lang-text">### Tasks
+
+**Client Side**
+
+- [ ] UX Design
+- [ ] Blazor UI Prototype
+- [ ] WPF UI Prototype
+- [ ] Acceptance Test
+- [ ] Blazor UI implementation
+- [ ] WPF UI implementation
+- [ ] UI View Model &amp; Unit Test
+- [ ] UI Service &amp; Unit Test
+- [ ] REST API client, TypeMapping &amp; UnitTest
+
+**Server Side**
+- [ ] REST API Integration Test
+- [x] REST API Controler, TypeMapping &amp; Unit Test inc
+- [ ] Domain MediatR Query &amp; Unit Test
+- [ ] Domain Validator &amp; Unit Test
+- [ ] DAL Repository, Specification &amp; Unit Test
+- [ ] DAL EF Schema Definition, TypeMapping
 </code></pre>
-<h1 id="ui-design">UI Design</h1>
-<p>a - [Example Screen Name](###Example Screen Name)</p>
-<h2 id="screen-mockups">Screen Mockups</h2>
-<h3 id="example-screen-name">Example Screen Name</h3>
-<p>TODO</p>
-<h1 id="database-schema">Database Schema</h1>
-<p>See <a href="https://dbdiagram.io/d/5f52424c88d052352cb5fd4a">https://dbdiagram.io/d/5f52424c88d052352cb5fd4a</a> or click the thumbnail below:</p>
-<p><a href="https://simongeering.github.io/AdminAssistant/images/Accounts-Module/AccountsModule_EntityRelationshipDiagram_V1o0o0.png"><img src="../images/Accounts-Module/AccountsModule_EntityRelationshipDiagram_V1o0o0.png" alt="Database Entity Relationship Diagram for the Admin Assistant Accounts Module"></a><br>
-<em>Fig 1. Database Entity Relationship Diagram for the Admin Assistant Accounts Module - (Click for larger size)</em></p>
+<p>TODO: Turn into issues</p>
+<ul>
+<li>[ ] Security Auth by roles</li>
+</ul>
+<p>User:</p>
+<ul>
+<li>[x] Get a list of currencies
+<ul>
+<li>[ ] Optionally excluding obsolete</li>
+</ul>
+</li>
+<li>[ ] Get currency by ID</li>
+</ul>
+<p>Admin:</p>
+<ul>
+<li>[ ] Create a new currency</li>
+<li>[ ] Update an existing currency, inc marking as obsolete</li>
+<li>[ ]  Delete a currency (assuming it is not in use)</li>
+<li>[ ] Security Auth by roles</li>
+</ul>
+<p>User:</p>
+<ul>
+<li>[x] Get a list of banks
+<ul>
+<li>[ ] Optionally excluding obsolete</li>
+</ul>
+</li>
+<li>[x] Get bank by ID</li>
+</ul>
+<p>Admin:</p>
+<ul>
+<li>[ ] Create a new bank</li>
+<li>[ ] Update an existing bank, inc marking as obsolete</li>
+<li>[ ] Delete a bank (assuming it is not in use)</li>
+</ul>
+<p>Users:</p>
+<ul>
+<li>[ ] Create a new transaction in a bank account</li>
+<li>[ ] Edit an existing transaction in a bank account</li>
+<li>[ ] Split a transaction on a given date between various credits and debits</li>
+</ul>
+<p>Bank Account Balance Calculation</p>
+<ul>
+<li>Since the last accounting period</li>
+<li>Since the last reconciliation</li>
+<li>Since the last statement</li>
+</ul>
+<p>Transaction date Vs book date</p>
+<ul>
+<li>[ ] Security Auth by roles</li>
+</ul>
+<p>User:</p>
+<ul>
+<li>[ ] Create a new bank account</li>
+</ul>
+<p>Owner:</p>
+<ul>
+<li>[ ] Get a list of owned bank accounts
+<ul>
+<li>[ ] Optionally excluding closed</li>
+</ul>
+</li>
+<li>[ ] Get owned bank account by ID</li>
+<li>[ ] Update an existing owned bank account</li>
+<li>[ ] Close an existing owned bank account</li>
+<li>[ ] Delete an owned bank account (assuming it is not in use)</li>
+</ul>
+<p>Admin:</p>
+<ul>
+<li>None.</li>
+</ul>
+<p>User:</p>
+<ul>
+<li>[ ] Create a new bank account</li>
+</ul>
+<p>Owner:</p>
+<ul>
+<li>[ ] Get a list of owned bank accounts
+<ul>
+<li>[ ] Optionally excluding closed</li>
+</ul>
+</li>
+<li>[ ] Get owned bank account by ID</li>
+<li>[ ] Update an existing owned bank account</li>
+<li>[ ] Close an existing owned bank account</li>
+<li>[ ] Delete an owned bank account (assuming it is not in use)</li>
+</ul>
+<p>Admin:</p>
+<ul>
+<li>None.</li>
+</ul>
 </article>
           </div>
           
@@ -121,7 +193,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/docfx_project/articles/Accounts-Module.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/docfx_project/articles/wip.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
