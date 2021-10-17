@@ -50,5 +50,5 @@ TODO
 
 See <https://dbdiagram.io/d/5f52424c88d052352cb5fd4a> or click the thumbnail below:  
 
-[[[/images/Accounts-Module/AccountsModule_EntityRelationshipDiagram_V1o0o0.png|Database Entity Relationship Diagram for the Admin Assistant Accounts Module]]](https://raw.githubusercontent.com/wiki/SimonGeering/AdminAssistant/images/Accounts-Module/AccountsModule_EntityRelationshipDiagram_V1o0o0.png)
+[![Database Entity Relationship Diagram for the Admin Assistant Accounts Module](../images/Accounts-Module/AccountsModule_EntityRelationshipDiagram_V1o0o0.png)](https://simongeering.github.io/AdminAssistant/images/Accounts-Module/AccountsModule_EntityRelationshipDiagram_V1o0o0.png)  
 _Fig 1. Database Entity Relationship Diagram for the Admin Assistant Accounts Module - (Click for larger size)_

@@ -39,7 +39,7 @@ Feature: Feature name
 
 # UI Design
 
-a - [Example Screen Name](#Example-Screen-Name)
+a - [Example Screen Name](###Example Screen Name)
 
 ## Screen Mockups
 
@@ -51,5 +51,5 @@ TODO
 
 See <https://dbdiagram.io/d/5f52468088d052352cb5fdef> or click the thumbnail below:  
 
-[[[/images/Documents-Module/DocumentsModule_EntityRelationshipDiagram_V1o0o0.png|Database Entity Relationship Diagram for the Admin Assistant Documents Module]]](https://raw.githubusercontent.com/wiki/SimonGeering/AdminAssistant/images/Documents-Module/DocumentsModule_EntityRelationshipDiagram_V1o0o0.png)
+[![Database Entity Relationship Diagram for the Admin Assistant Documents Module](../images/Documents-Module/DocumentsModule_EntityRelationshipDiagram_V1o0o0.png)](https://simongeering.github.io/AdminAssistant/images/Documents-Module/DocumentsModule_EntityRelationshipDiagram_V1o0o0.png)  
 _Fig 1. Database Entity Relationship Diagram for the Admin Assistant Documents Module - (Click for larger size)_  

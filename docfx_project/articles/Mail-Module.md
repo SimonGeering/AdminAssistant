@@ -27,7 +27,7 @@ Feature: Feature name
 
 # UI Design
 
-a - [Example Screen Name](#Example-Screen-Name)
+a - [Example Screen Name](###Example Screen Name)
 
 ## Screen Mockups
 

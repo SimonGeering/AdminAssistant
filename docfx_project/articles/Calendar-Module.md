@@ -27,7 +27,7 @@ Feature: Feature name
 
 # UI Design
 
-a - [Example Screen Name](#Example-Screen-Name)  
+a - [Example Screen Name](###Example Screen Name)  
 
 ## Screen Mockups
 
@@ -39,5 +39,5 @@ TODO
 
 See <https://dbdiagram.io/d/5f5243d788d052352cb5fd81> or click the thumbnail below:  
 
-[[[/images/Calendar-Module/CalendarModule_EntityRelationshipDiagram_V1o0o0.png|Database Entity Relationship Diagram for the Admin Assistant Calendar Module]]](https://raw.githubusercontent.com/wiki/SimonGeering/AdminAssistant/images/Calendar-Module/CalendarModule_EntityRelationshipDiagram_V1o0o0.png)
+[![Database Entity Relationship Diagram for the Admin Assistant Calendar Module](../images/Calendar-Module/CalendarModule_EntityRelationshipDiagram_V1o0o0.png)](https://simongeering.github.io/AdminAssistant/images/Calendar-Module/CalendarModule_EntityRelationshipDiagram_V1o0o0.png)  
 _Fig 1. Database Entity Relationship Diagram for the Admin Assistant Calendar Module - (Click for larger size)_

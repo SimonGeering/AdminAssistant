@@ -62,5 +62,5 @@ TODO
 
 See <https://dbdiagram.io/d/5f52464488d052352cb5fde5> or click the thumbnail below:  
 
-[[[/images/Budget-Module/BudgetModule_EntityRelationshipDiagram_V1o0o0.png|Database Entity Relationship Diagram for the Admin Assistant Budget Module]]](https://raw.githubusercontent.com/wiki/SimonGeering/AdminAssistant/images/Budget-Module/BudgetModule_EntityRelationshipDiagram_V1o0o0.png)
+[![Database Entity Relationship Diagram for the Admin Assistant Budget Module](../images/Budget-Module/BudgetModule_EntityRelationshipDiagram_V1o0o0.png)](https://simongeering.github.io/AdminAssistant/images/Budget-Module/BudgetModule_EntityRelationshipDiagram_V1o0o0.png)  
 _Fig 1. Database Entity Relationship Diagram for the Admin Assistant Budget Module - (Click for larger size)_

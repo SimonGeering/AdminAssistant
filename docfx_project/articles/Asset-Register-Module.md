@@ -39,5 +39,5 @@ TODO
 
 See <https://dbdiagram.io/d/5f5245dd88d052352cb5fdd1> or click the thumbnail below:  
 
-[[[/images/Asset-Register-Module/AssetsRegisterModule_EntityRelationshipDiagram_V1o0o0.png|Database Entity Relationship Diagram for the Admin Assistant Asset-Register Module]]](https://raw.githubusercontent.com/wiki/SimonGeering/AdminAssistant/images/Asset-Register-Module/AssetsRegisterModule_EntityRelationshipDiagram_V1o0o0.png)
+[![Database Entity Relationship Diagram for the Admin Assistant Asset-Register Module](../images/Asset-Register-Module/AssetsRegisterModule_EntityRelationshipDiagram_V1o0o0.png)](https://simongeering.github.io/AdminAssistant/images/Asset-Register-Module/AssetsRegisterModule_EntityRelationshipDiagram_V1o0o0.png)  
 _Fig 1. Database Entity Relationship Diagram for the Admin Assistant Asset Register Module - (Click for larger size)_
