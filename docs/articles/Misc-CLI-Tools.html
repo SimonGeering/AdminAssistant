@@ -71,21 +71,50 @@
 
 <p>Notes on the use of various CLI tools utilised by the project.</p>
 <p>Assume starting from src folder.</p>
-<h2 id="entity-framework-cli-commands">Entity framework CLI commands</h2>
-<p>EF migrations are kept in DAL to allow adding other Apps in future with a common DB.</p>
-<pre><code class="lang-dos">dotnet ef database update --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor/Server/AdminAssistant.Blazor.Server.csproj&quot; --no-build
-
-dotnet ef migrations add Initial --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor/Server/AdminAssistant.Blazor.Server.csproj&quot; --output-dir &quot;./DAL/EntityFramework/Migrations&quot; --no-build
-
-dotnet ef migrations list --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor/Server/AdminAssistant.Blazor.Server.csproj&quot; --no-build
-
-dotnet ef migrations remove --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor/Server/AdminAssistant.Blazor.Server.csproj&quot; --no-build
-</code></pre>
 <h2 id="install-global-tools">Install Global tools</h2>
 <pre><code class="lang-dos">dotnet tool list --global
 dotnet tool uninstall --global dotnet-ef
 dotnet tool install dotnet-ef --global --version 3.1.6 --interactive
 dotnet tool update --global dotnet-ef --version 5.0.0-preview.8.20407.4 
+</code></pre>
+<h2 id="entity-framework-cli-commands">Entity framework CLI commands</h2>
+<p>EF migrations are kept in DAL to allow adding other Apps in future with a common DB.</p>
+<h3 id="update-database-to-latest-migration">Update Database To Latest Migration</h3>
+<pre><code class="lang-dos">dotnet ef database update --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj&quot; --no-build
+</code></pre>
+<h3 id="add-initial-database-migration">Add 'Initial' Database Migration</h3>
+<pre><code class="lang-dos">dotnet ef migrations add Initial --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj&quot; --output-dir &quot;./DAL/EntityFramework/Migrations&quot; --no-build
+</code></pre>
+<h3 id="list-database-migrations">List Database Migrations</h3>
+<pre><code class="lang-dos">dotnet ef migrations list --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj&quot; --no-build
+</code></pre>
+<h3 id="remove-latest-migration">Remove Latest Migration</h3>
+<pre><code class="lang-dos">dotnet ef migrations remove --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj&quot; --no-build
+</code></pre>
+<h2 id="docx-documentation-site">Docx Documentation Site</h2>
+<p>Assumes DocFx is available in the 'PATH'</p>
+<h3 id="build-documentation">Build Documentation</h3>
+<p>Compiles markdown documentation from <code>../docfx_project</code> and outputs to <code>../docs/</code> as html static site.</p>
+<pre><code class="lang-dos">docfx ../docfx_project/docfx.json --build
+</code></pre>
+<h3 id="debug">Debug</h3>
+<p>Compiles markdown documentation from <code>../docfx_project</code> and hosts on local webpack dev server.</p>
+<pre><code class="lang-dos">docfx ../docfx_project/docfx.json --serve
+</code></pre>
+<h2 id="run-tests">Run Tests</h2>
+<h3 id="full-test-suite--">Full Test Suite -</h3>
+<p>Standalone</p>
+<pre><code class="lang-dos">dotnet test ./AdminAssistant.Test/AdminAssistant.Test.csproj
+</code></pre>
+<p>With Watch</p>
+<pre><code class="lang-dos">dotnet watch test ./AdminAssistant.Test/AdminAssistant.Test.csproj
+</code></pre>
+<h3 id="unit-tests-only">Unit Tests Only</h3>
+<p>Standalone</p>
+<pre><code class="lang-dos">dotnet test ./AdminAssistant.Test/AdminAssistant.Test.csproj --filter Category=Unit 
+</code></pre>
+<p>With Watch</p>
+<pre><code class="lang-dos">dotnet watch test ./AdminAssistant.Test/AdminAssistant.Test.csproj --filter Category=Unit 
 </code></pre>
 </article>
           </div>
