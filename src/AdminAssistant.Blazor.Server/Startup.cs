@@ -1,6 +1,7 @@
 using AdminAssistant.DomainModel.Shared;
 using Ardalis.GuardClauses;
 using FluentValidation.AspNetCore;
+using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
@@ -52,11 +53,11 @@ public class Startup
 
         services.AddSwaggerGen(c =>
         {
-                // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
-                // https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters - examples for getting swagger to do what you want
+            // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
+            // https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters - examples for getting swagger to do what you want
 
-                // Skip documenting any controller without a Group name from the ApiExplorerSettings attribute ...
-                c.DocInclusionPredicate((_, api) => string.IsNullOrWhiteSpace(api.GroupName) == false);
+            // Skip documenting any controller without a Group name from the ApiExplorerSettings attribute ...
+            c.DocInclusionPredicate((_, api) => string.IsNullOrWhiteSpace(api.GroupName) == false);
             c.TagActionsBy(api =>
             {
                     // Group by Group name from the ApiExplorerSettings attribute ...
@@ -64,11 +65,12 @@ public class Startup
                     return new string[] { api.GroupName };
             });
             c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
-                c.AddFluentValidationRules(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
+            //c.AddFluentValidationRules();
 
-                // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
-                c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
-            });
+            // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
+            c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
+        });
+        services.AddFluentValidationRulesToSwagger(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
         services.AddSwaggerGenNewtonsoftSupport();
 
         services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
