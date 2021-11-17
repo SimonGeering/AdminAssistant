@@ -31,9 +31,9 @@
   <ItemGroup>
     <PackageReference Include="Blazor.Extensions.Logging" Version="3.1.0-rc1-020501" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.4" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0-rc.2.21480.10" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0-rc.2.21480.10" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0-rc.2.21480.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     <PackageReference Include="Syncfusion.Blazor" Version="19.2.0.57" />
     <PackageReference Include="Syncfusion.Blazor.Themes" Version="19.2.0.57" />
   </ItemGroup>
