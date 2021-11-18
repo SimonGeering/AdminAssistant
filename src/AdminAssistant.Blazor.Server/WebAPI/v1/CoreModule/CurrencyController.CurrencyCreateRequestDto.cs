@@ -7,8 +7,6 @@ namespace AdminAssistant.WebAPI.v1.CoreModule
     [SwaggerSchema(Required = new[] { "Symbol", "DecimalFormat" })]
     public record CurrencyCreateRequestDto : IMapTo<Currency>
     {
-        [SwaggerSchema("The Currency identifier.", ReadOnly = true)]
-        public int CurrencyID { get; init; }
         public string Symbol { get; init; } = string.Empty;
         public string DecimalFormat { get; init; } = string.Empty;
 
