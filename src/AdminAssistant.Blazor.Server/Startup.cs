@@ -107,15 +107,47 @@ public class Startup
         });
 
         app.UseHttpsRedirection();
-        app.UseBlazorFrameworkFiles();
-        app.UseStaticFiles();
-        app.UseRouting();
-        app.UseHealthChecks("/api/health");
-        app.UseEndpoints(endpoints =>
+        //app.UseBlazorFrameworkFiles();
+        //app.UseStaticFiles();
+        //app.UseRouting();
+        //app.UseHealthChecks("/api/health");
+
+        //explicitly only use blazor when the path doesn't start with api
+        app.MapWhen(ctx => !ctx.Request.Path.StartsWithSegments("/api"), blazor =>
         {
-            endpoints.MapRazorPages();
-            endpoints.MapControllers();
-            endpoints.MapFallbackToFile("index.html");
+            blazor.UseBlazorFrameworkFiles();
+            blazor.UseStaticFiles();
+
+            blazor.UseRouting();
+            blazor.UseEndpoints(endpoints =>
+            {
+                endpoints.MapFallbackToFile("index.html");
+            });
         });
+
+        //explicitly map api endpoints only when path starts with api
+        app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api"), api =>
+        {
+            //if you are not using a blazor app, you can move these files out of this closure
+            api.UseStaticFiles();
+            api.UseRouting();
+            api.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+            });
+        });
+
+        //app.UseEndpoints(endpoints =>
+        //{
+        //    endpoints.MapRazorPages();
+        //    endpoints.MapControllers();
+        //    endpoints.Map("api/{**slug}", (context) =>
+        //    {
+        //        context.Response.StatusCode = StatusCodes.Status404NotFound;
+        //        return Task.CompletedTask;
+        //    });
+        //    endpoints.MapFallbackToFile("index.html");
+        //});
     }
 }
