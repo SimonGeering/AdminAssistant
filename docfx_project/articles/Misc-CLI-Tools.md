@@ -9,8 +9,8 @@ Assume starting from src folder.
 ``` dos
 dotnet tool list --global
 dotnet tool uninstall --global dotnet-ef
-dotnet tool install dotnet-ef --global --version 3.1.6 --interactive
-dotnet tool update --global dotnet-ef --version 5.0.0-preview.8.20407.4 
+dotnet tool install dotnet-ef --global --version 6.0.0 --interactive
+dotnet tool update --global dotnet-ef --version 6.0.0 
 ```
 
 ## Entity framework CLI commands
