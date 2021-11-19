@@ -519,10 +519,6 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
     public partial class CurrencyCreateRequestDto 
     {
-        /// <summary>The Currency identifier.</summary>
-        [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? CurrencyID { get; set; }= default!;
-    
         [Newtonsoft.Json.JsonProperty("symbol", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Symbol { get; set; }= default!;
     
