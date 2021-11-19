@@ -30,6 +30,36 @@ public class Currency_Post_Should : IntegrationTestBase
 }
 
 [Collection("SequentialDBBackedTests")]
+public class Currency_Put_Should : IntegrationTestBase
+{
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task Return_ANewlyUpdatedCurrency_Given_AValidExistingCurrency()
+    {
+        // Arrange
+        await ResetDatabaseAsync().ConfigureAwait(false);
+
+        var dal = Container.GetRequiredService<ICurrencyRepository>();
+        var aud = await dal.SaveAsync(new Currency() { DecimalFormat = CoreSchema.DefaultCurrencyDecimalFormat, Symbol = "AUD" }).ConfigureAwait(false);
+
+        var request = new UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto()
+        {
+            CurrencyID = aud.CurrencyID,
+            DecimalFormat = "0.0",
+            Symbol = aud.Symbol
+        };
+
+        // Act
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PutCurrencyAsync(request).ConfigureAwait(false);
+
+        // Assert
+        response.CurrencyID.Should().Be(request.CurrencyID);
+        response.DecimalFormat.Should().Be(request.DecimalFormat);
+        response.Symbol.Should().Be(request.Symbol);
+    }
+}
+
+[Collection("SequentialDBBackedTests")]
 public class Currency_GetById_Should : IntegrationTestBase
 {
     [Fact]
