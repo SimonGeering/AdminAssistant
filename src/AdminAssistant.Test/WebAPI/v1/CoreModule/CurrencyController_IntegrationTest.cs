@@ -8,6 +8,28 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 namespace AdminAssistant.WebAPI.v1.CoreModule;
 
 [Collection("SequentialDBBackedTests")]
+public class Currency_Post_Should : IntegrationTestBase
+{
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task Return_ANewlyCreatedCurrency_Given_AValidCurrency()
+    {
+        // Arrange
+        await ResetDatabaseAsync().ConfigureAwait(false);
+
+        var request = new UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto() { DecimalFormat = "0.00", Symbol = "Moo" };
+
+        // Act
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PostCurrencyAsync(request).ConfigureAwait(false);
+
+        // Assert
+        response.CurrencyID.Should().BeGreaterThan(0);
+        response.DecimalFormat.Should().Be(request.DecimalFormat);
+        response.Symbol.Should().Be(request.Symbol);
+    }
+}
+
+[Collection("SequentialDBBackedTests")]
 public class Currency_GetById_Should : IntegrationTestBase
 {
     [Fact]
