@@ -72,10 +72,10 @@ public class BankController_Put_Should
         var container = services.BuildServiceProvider();
 
         var mapper = container.GetRequiredService<IMapper>();
-        var currencyRequest = mapper.Map<BankUpdateRequestDto>(bank);
+        var bankRequest = mapper.Map<BankUpdateRequestDto>(bank);
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(currencyRequest).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(bankRequest).ConfigureAwait(false);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundObjectResult>();
