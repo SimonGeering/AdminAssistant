@@ -1,7 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
 public class BankQuery_Should
 {

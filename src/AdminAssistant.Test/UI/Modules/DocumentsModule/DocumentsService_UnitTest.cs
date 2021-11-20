@@ -1,8 +1,9 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
+using AdminAssistant.UI.Modules.DocumentsModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
-namespace AdminAssistant.UI.Modules.DocumentsModule;
+namespace AdminAssistant.Test.UI.Modules.DocumentsModule;
 
 public class DocumentsService_GetDocumentListAsync
 {

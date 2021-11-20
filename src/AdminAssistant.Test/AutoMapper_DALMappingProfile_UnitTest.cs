@@ -6,8 +6,9 @@ using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
+using AdminAssistant.Infra.DAL;
 
-namespace AdminAssistant.Infra.DAL;
+namespace AdminAssistant.Test.Infra.DAL;
 
 public class DALMappingProfile_Should
 {

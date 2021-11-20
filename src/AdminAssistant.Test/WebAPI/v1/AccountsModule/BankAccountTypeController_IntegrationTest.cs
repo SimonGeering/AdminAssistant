@@ -2,7 +2,7 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
-namespace AdminAssistant.WebAPI.v1.AccountsModule;
+namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
 public class BankAccountType_Get_Should : IntegrationTestBase

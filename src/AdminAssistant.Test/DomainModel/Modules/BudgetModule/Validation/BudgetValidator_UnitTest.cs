@@ -1,6 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
-namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.BudgetModule;
+using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
+
+namespace AdminAssistant.Test.DomainModel.Modules.BudgetModule.Validation;
 
 public class BudgetValidator_Should
 {

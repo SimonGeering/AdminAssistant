@@ -2,9 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.ContactsModule;
 using AdminAssistant.DomainModel.Modules.ContactsModule.CQRS;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.ContactsModule;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.WebAPI.v1.ContactsModule;
+namespace AdminAssistant.Test.WebAPI.v1.ContactsModule;
 
 public class ContactController_GetContacts
 {

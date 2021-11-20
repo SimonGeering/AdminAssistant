@@ -3,7 +3,7 @@
 //using AdminAssistant.Framework.Providers;
 //using AdminAssistant.WebAPI.Client.v1;
 
-//namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
+//namespace AdminAssistant.Test.UI.Modules.AccountsModule.BankAccountEditDialog
 //{
 //    public class BankAccountEditDialogViewModel_Should
 //    {

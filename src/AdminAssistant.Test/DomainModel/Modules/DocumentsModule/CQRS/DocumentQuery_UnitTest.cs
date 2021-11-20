@@ -1,7 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.DocumentsModule;
+using AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 
-namespace AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
+namespace AdminAssistant.Test.DomainModel.Modules.DocumentsModule.CQRS;
 
 public class DocumentQuery_Should
 {

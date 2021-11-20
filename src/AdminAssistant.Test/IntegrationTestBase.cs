@@ -14,7 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace AdminAssistant;
+namespace AdminAssistant.Test;
 
 [Collection("SequentialDBBackedTests")]
 public abstract class IntegrationTestBase : IDisposable
@@ -35,7 +35,7 @@ public abstract class IntegrationTestBase : IDisposable
                 logging.AddDebug();
 
                 logging.AddFilter("Default", LogLevel.Information)
-                        .AddFilter(Infra.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Debug)
+                        .AddFilter(ILoggingProvider.ServerSideLogCategory, LogLevel.Debug)
                         .AddFilter("Microsoft", LogLevel.Warning)
                         .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else

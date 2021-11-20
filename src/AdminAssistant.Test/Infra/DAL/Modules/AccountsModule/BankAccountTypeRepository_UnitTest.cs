@@ -2,11 +2,13 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Infra.DAL;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Infra.Providers;
 
-namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
+namespace AdminAssistant.Test.Infra.DAL.Modules.AccountsModule;
 
 public class BankAccountTypeRepository_GetListAsync
 {

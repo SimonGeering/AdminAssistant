@@ -1,8 +1,9 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.DomainModel.Modules.CoreModule;
+using AdminAssistant.UI.Modules.CoreModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
-namespace AdminAssistant.UI.Modules.CoreModule;
+namespace AdminAssistant.Test.UI.Modules.CoreModule;
 
 public class CoreService_GetCurrencyListAsync
 {

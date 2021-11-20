@@ -4,7 +4,7 @@ using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
-namespace AdminAssistant.WebAPI.v1.AccountsModule;
+namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
 public class Bank_Get_Should : IntegrationTestBase

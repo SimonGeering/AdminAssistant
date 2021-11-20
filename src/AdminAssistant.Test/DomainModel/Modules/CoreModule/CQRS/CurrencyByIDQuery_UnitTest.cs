@@ -1,7 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.CoreModule;
+using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 
-namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
+namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.CQRS;
 
 public class CurrencyByIDQuery_Should
 {

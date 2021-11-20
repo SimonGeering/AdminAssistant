@@ -5,7 +5,7 @@ using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
-namespace AdminAssistant.WebAPI.v1.CoreModule;
+namespace AdminAssistant.Test.WebAPI.v1.CoreModule;
 
 [Collection("SequentialDBBackedTests")]
 public class Currency_Post_Should : IntegrationTestBase
@@ -17,7 +17,7 @@ public class Currency_Post_Should : IntegrationTestBase
         // Arrange
         await ResetDatabaseAsync().ConfigureAwait(false);
 
-        var request = new UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto() { DecimalFormat = "0.00", Symbol = "Moo" };
+        var request = new CurrencyCreateRequestDto() { DecimalFormat = "0.00", Symbol = "Moo" };
 
         // Act
         var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PostCurrencyAsync(request).ConfigureAwait(false);
@@ -42,7 +42,7 @@ public class Currency_Put_Should : IntegrationTestBase
         var dal = Container.GetRequiredService<ICurrencyRepository>();
         var aud = await dal.SaveAsync(new Currency() { DecimalFormat = CoreSchema.DefaultCurrencyDecimalFormat, Symbol = "AUD" }).ConfigureAwait(false);
 
-        var request = new UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto()
+        var request = new CurrencyUpdateRequestDto()
         {
             CurrencyID = aud.CurrencyID,
             DecimalFormat = "0.0",

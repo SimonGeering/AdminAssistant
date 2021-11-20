@@ -1,11 +1,13 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.AccountsModule;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.WebAPI.v1.AccountsModule;
+namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 public class BankAccountInfoController_BankAccountInfoGet_Should
 {

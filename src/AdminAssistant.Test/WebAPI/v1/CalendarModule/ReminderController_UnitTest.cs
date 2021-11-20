@@ -2,9 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.CalendarModule;
 using AdminAssistant.DomainModel.Modules.CalendarModule.CQRS;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.CalendarModule;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.WebAPI.v1.CalendarModule;
+namespace AdminAssistant.Test.WebAPI.v1.CalendarModule;
 
 public class ReminderController_Get
 {

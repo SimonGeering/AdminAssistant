@@ -1,7 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
 public class BankAccountTransactionsByBankAccountIDQuery_Should
 {
@@ -22,11 +25,11 @@ public class BankAccountTransactionsByBankAccountIDQuery_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var bankAccountID = 9;
-        var mockBankAccoountTransactionRepository = new Mock<IBankAccountTransactionRepository>();
-        mockBankAccoountTransactionRepository.Setup(x => x.GetListAsync(bankAccountID))
+        var mockBankAccountTransactionRepository = new Mock<IBankAccountTransactionRepository>();
+        mockBankAccountTransactionRepository.Setup(x => x.GetListAsync(bankAccountID))
             .Returns(Task.FromResult<List<BankAccountTransaction>>(bankAccountTransactionList));
 
-        services.AddTransient((sp) => mockBankAccoountTransactionRepository.Object);
+        services.AddTransient((sp) => mockBankAccountTransactionRepository.Object);
         var query = new BankAccountTransactionsByBankAccountIDQuery(bankAccountID);
 
         // Act

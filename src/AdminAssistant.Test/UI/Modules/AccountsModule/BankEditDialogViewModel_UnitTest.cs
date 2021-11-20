@@ -1,7 +1,7 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using System.Diagnostics.CodeAnalysis;
 
-namespace AdminAssistant.UI.Modules.AccountsModule;
+namespace AdminAssistant.Test.UI.Modules.AccountsModule;
 
 public class BankEditDialogViewModel_Should
 {

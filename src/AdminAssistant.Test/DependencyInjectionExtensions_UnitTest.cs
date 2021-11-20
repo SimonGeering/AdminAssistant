@@ -1,8 +1,9 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
 
-namespace AdminAssistant;
+namespace AdminAssistant.Test;
 
 public class ServiceCollection_Should
 {
@@ -57,7 +58,7 @@ public class ServiceCollection_Should
         // Arrange
         var services = new ServiceCollection();
         services.AddMocksOfExternalClientSideDependencies();
-        services.AddTransient((sp) => new Mock<UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient>().Object);
+        services.AddTransient((sp) => new Mock<IAdminAssistantWebAPIClient>().Object);
 
         services.AddAdminAssistantClientSideProviders();
         services.AddAdminAssistantClientSideDomainModel();

@@ -4,9 +4,9 @@ using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.UI.Modules.AccountsModule;
 using Microsoft.Toolkit.Mvvm.Messaging;
-using static AdminAssistant.TestConstants;
+using static AdminAssistant.Test.TestConstants;
 
-namespace AdminAssistant.AcceptanceTests.Modules.AccountsModule;
+namespace AdminAssistant.Test.UI.Modules.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
 public class BankAccountEditDialog_Should : AcceptanceTestBase

@@ -1,6 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+
+namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.Validation;
 
 public class BankAccountValidator_Should
 {

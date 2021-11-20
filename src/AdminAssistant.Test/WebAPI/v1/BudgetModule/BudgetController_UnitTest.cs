@@ -2,9 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.BudgetModule;
 using AdminAssistant.DomainModel.Modules.BudgetModule.CQRS;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.BudgetModule;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.WebAPI.v1.BudgetModule;
+namespace AdminAssistant.Test.WebAPI.v1.BudgetModule;
 
 public class BudgetController_UnitTest_Should
 {

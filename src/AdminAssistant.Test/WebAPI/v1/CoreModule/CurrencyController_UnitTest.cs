@@ -2,9 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.CoreModule;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.WebAPI.v1.CoreModule;
+namespace AdminAssistant.Test.WebAPI.v1.CoreModule;
 
 public class CurrencyController_Put_Should
 {

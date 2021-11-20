@@ -2,9 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.AccountsModule;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.WebAPI.v1.AccountsModule;
+namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 public class BankController_Put_Should
 {

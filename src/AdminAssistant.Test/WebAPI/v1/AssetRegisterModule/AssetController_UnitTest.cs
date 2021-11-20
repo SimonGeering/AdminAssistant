@@ -2,9 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AssetRegisterModule;
 using AdminAssistant.DomainModel.Modules.AssetRegisterModule.CQRS;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.AssetRegisterModule;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AdminAssistant.WebAPI.v1.AssetRegisterModule;
+namespace AdminAssistant.Test.WebAPI.v1.AssetRegisterModule;
 
 public class AssetController_GetAssets
 {
