@@ -454,10 +454,6 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
     public partial class BankCreateRequestDto 
     {
-        /// <summary>The Bank identifier.</summary>
-        [Newtonsoft.Json.JsonProperty("bankID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? BankID { get; set; }= default!;
-    
         [Newtonsoft.Json.JsonProperty("bankName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? BankName { get; set; }= default!;
     

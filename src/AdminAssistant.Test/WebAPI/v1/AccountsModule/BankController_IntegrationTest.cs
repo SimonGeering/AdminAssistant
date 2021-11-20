@@ -1,10 +1,31 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
+
+[Collection("SequentialDBBackedTests")]
+public class Bank_Post_Should : IntegrationTestBase
+{
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task Return_ANewlyCreatedBank_Given_AValidBank()
+    {
+        // Arrange
+        await ResetDatabaseAsync().ConfigureAwait(false);
+
+        var request = new BankCreateRequestDto() { BankName = "Acme Bank" };
+
+        // Act
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PostBankAsync(request).ConfigureAwait(false);
+
+        // Assert
+        response.BankID.Should().BeGreaterThan(0);
+        response.BankName.Should().Be(request.BankName);
+    }
+}
 
 [Collection("SequentialDBBackedTests")]
 public class Bank_Get_Should : IntegrationTestBase
