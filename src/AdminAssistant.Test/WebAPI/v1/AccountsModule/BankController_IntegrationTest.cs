@@ -28,6 +28,34 @@ public class Bank_Post_Should : IntegrationTestBase
 }
 
 [Collection("SequentialDBBackedTests")]
+public class Bank_Put_Should : IntegrationTestBase
+{
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task Return_ANewlyUpdatedBank_Given_AValidExistingBank()
+    {
+        // Arrange
+        await ResetDatabaseAsync().ConfigureAwait(false);
+
+        var dal = Container.GetRequiredService<IBankRepository>();
+        var acmeBank = await dal.SaveAsync(new Bank() { BankName = "Acme Bank" }).ConfigureAwait(false);
+
+        var request = new BankUpdateRequestDto()
+        {
+            BankID = acmeBank.BankID,
+            BankName = "Acme UK Bank"
+        };
+
+        // Act
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PutBankAsync(request).ConfigureAwait(false);
+
+        // Assert
+        response.BankID.Should().Be(request.BankID);
+        response.BankName.Should().Be(request.BankName);
+    }
+}
+
+[Collection("SequentialDBBackedTests")]
 public class Bank_Get_Should : IntegrationTestBase
 {
     [Fact]
