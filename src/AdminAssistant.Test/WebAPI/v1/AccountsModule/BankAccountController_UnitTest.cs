@@ -17,6 +17,60 @@ public class BankAccountController_BankAccountPost_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
+    public async Task Return_Status201CreatedAtRoute_Given_AValidBank()
+    {
+        // Arrange
+        var bankAccount = Factory.BankAccount.WithTestData(10).Build();
+
+        var services = new ServiceCollection();
+        services.AddMockServerSideLogging();
+        services.AddAutoMapper(typeof(MappingProfile));
+
+        var mockMediator = new Mock<IMediator>();
+        mockMediator.Setup(x => x.Send(It.IsAny<BankAccountCreateCommand>(), It.IsAny<CancellationToken>()))
+                    .Returns(Task.FromResult(Result<BankAccount>.Success(bankAccount)));
+
+        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient<BankAccountController>();
+
+        var container = services.BuildServiceProvider();
+
+        var bankAccountRequest = new BankAccountCreateRequestDto()
+        {
+            BankAccountTypeID = bankAccount.BankAccountTypeID,
+            CurrencyID = bankAccount.CurrencyID,
+            AccountName = bankAccount.AccountName,
+            IsBudgeted = bankAccount.IsBudgeted,
+            OpeningBalance = bankAccount.OpeningBalance,
+            CurrentBalance = bankAccount.CurrentBalance,
+            OpenedOn = bankAccount.OpenedOn
+        };
+
+        // Act
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest).ConfigureAwait(false);
+
+        // Assert
+        response.Value.Should().BeNull();
+        response.Result.Should().NotBeNull();
+        response.Result.Should().BeOfType<CreatedAtRouteResult>();
+
+        var result = (CreatedAtRouteResult)response.Result!;
+        result.Value.Should().NotBeNull();
+        result.Value.Should().BeAssignableTo<BankAccountResponseDto>();
+
+        var value = (BankAccountResponseDto)result.Value!;
+        value.BankAccountID.Should().Be(bankAccount.BankAccountID);
+        value.BankAccountTypeID.Should().Be(bankAccount.BankAccountTypeID);
+        value.CurrencyID.Should().Be(bankAccount.CurrencyID);
+        value.AccountName.Should().Be(bankAccount.AccountName);
+        value.IsBudgeted.Should().Be(bankAccount.IsBudgeted);
+        value.OpeningBalance.Should().Be(bankAccount.OpeningBalance);
+        value.CurrentBalance.Should().Be(bankAccount.CurrentBalance);
+        value.OpenedOn.Should().Be(bankAccount.OpenedOn);
+    }
+
+[Fact]
+    [Trait("Category", "Unit")]
     public async Task Return_Status422UnprocessableEntity_Given_AnInvalidBankAccount()
     {
         // Arrange

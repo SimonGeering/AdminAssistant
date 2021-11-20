@@ -151,7 +151,6 @@ public class BankController_BankPost_Should
 
         var container = services.BuildServiceProvider();
 
-        var mapper = container.GetRequiredService<IMapper>();
         var bankRequest = new BankCreateRequestDto()
         {
             BankName = bank.BankName
