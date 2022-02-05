@@ -71,8 +71,8 @@
       "**/*.map",
       "**/docs/js/*mermaid*"
     ],
-    "terminal.integrated.shell.linux": "/opt/microsoft/powershell/6/pwsh",
-    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\6\\pwsh.exe",
+    "terminal.integrated.shell.linux": "/opt/microsoft/powershell/7/pwsh",
+    "terminal.integrated.shell.windows": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
     "editor.fontFamily": "'Fira Code','FiraCode NF','Consolas','monospace'",
     "editor.fontWeight": "400",
     "editor.fontSize": 12,
