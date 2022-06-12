@@ -1,40 +1,43 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using Ardalis.Result;
-using FluentAssertions;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
 public class BankAccountTransactionsByBankAccountIDQuery_Should
 {
-    //[Fact(Skip = "TODO")]
-    //[Trait("Category", "Unit")]
-    //public async Task Return_BankAccountTransactionsList()
-    //{
-    //    //// Arrange
-    //    //var bankList = new List<Bank>() { Factory.Bank.WithTestData(20).Build() };
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_BankAccountTransactionsList()
+    {
+        // Arrange
+        var bankAccountTransactionList = new List<BankAccountTransaction>()
+        {
+            Factory.BankAccountTransaction.WithTestData(10).Build(),
+            Factory.BankAccountTransaction.WithTestData(20).Build(),
+            Factory.BankAccountTransaction.WithTestData(30).Build()
+        };
 
-    //    var services = new ServiceCollection();
-    //    //services.AddMockServerSideLogging();
-    //    //services.AddAdminAssistantServerSideDomainModel();
+        var services = new ServiceCollection();
+        services.AddMockServerSideLogging();
+        services.AddAdminAssistantServerSideDomainModel();
 
-    //    //var mockBankRepository = new Mock<IBankRepository>();
-    //    //mockBankRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult<List<Bank>>(bankList));
+        var bankAccountID = 9;
+        var mockBankAccountTransactionRepository = new Mock<IBankAccountTransactionRepository>();
+        mockBankAccountTransactionRepository.Setup(x => x.GetListAsync(bankAccountID))
+            .Returns(Task.FromResult<List<BankAccountTransaction>>(bankAccountTransactionList));
 
-    //    //services.AddTransient((sp) => mockBankRepository.Object);
+        services.AddTransient((sp) => mockBankAccountTransactionRepository.Object);
+        var query = new BankAccountTransactionsByBankAccountIDQuery(bankAccountID);
 
-    //    // Act
-    //    var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(null!).ConfigureAwait(false);
+        // Act
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(query).ConfigureAwait(false);
 
-    //    //// Assert
-    //    //result.Status.Should().Be(ResultStatus.Ok);
-    //    //result.Value.Should().BeEquivalentTo(bankList);            
-    //}
+        // Assert
+        result.Status.Should().Be(ResultStatus.Ok);
+        result.Value.Should().BeEquivalentTo(bankAccountTransactionList);            
+    }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

@@ -1,10 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using FluentAssertions;
-using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
 
-namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.BudgetModule;
+using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
+
+namespace AdminAssistant.Test.DomainModel.Modules.BudgetModule.Validation;
 
 public class BudgetValidator_Should
 {

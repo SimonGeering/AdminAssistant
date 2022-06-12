@@ -1,5 +1,3 @@
-using AdminAssistant.Infra.DAL;
-
 namespace AdminAssistant.DomainModel.Modules.CalendarModule;
 
 public record Reminder : IDatabasePersistable

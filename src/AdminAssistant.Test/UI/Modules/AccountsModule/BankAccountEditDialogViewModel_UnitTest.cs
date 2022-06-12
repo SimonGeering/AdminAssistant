@@ -1,15 +1,9 @@
 //#pragma warning disable CA1707 // Identifiers should not contain underscores
-//using FluentAssertions;
-//using Microsoft.Extensions.DependencyInjection;
-//using System.Threading.Tasks;
-//using Xunit;
 //using AdminAssistant.DomainModel.Modules.AccountsModule;
 //using AdminAssistant.Framework.Providers;
-//using Moq;
-//using System.Threading;
 //using AdminAssistant.WebAPI.Client.v1;
 
-//namespace AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialog
+//namespace AdminAssistant.Test.UI.Modules.AccountsModule.BankAccountEditDialog
 //{
 //    public class BankAccountEditDialogViewModel_Should
 //    {

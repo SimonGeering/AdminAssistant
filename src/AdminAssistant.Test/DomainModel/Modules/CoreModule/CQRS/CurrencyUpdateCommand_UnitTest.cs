@@ -1,13 +1,9 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
-using Ardalis.Result;
-using FluentAssertions;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
-namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
+namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.CQRS;
 
 public class BankUpdateCommand_Should
 {

@@ -1,9 +1,7 @@
 using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.Providers;
-using AutoMapper;
 using Microsoft.Extensions.Logging;
-using Moq;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

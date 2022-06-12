@@ -1,0 +1,4466 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Source/GitHub/SimonGeering/AdminAssistant/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Blazor.Client.Shared.AdminAssistantComponentBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Blazor.Client.Shared.AdminAssistantComponentBase-1.html",
+          "hash": "3wEQ19/at75Yxm1FbYSF56hfF7RUzOCkUFUOfp+50Lo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Blazor.Client.Shared.AdminAssistantLayoutComponentBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Blazor.Client.Shared.AdminAssistantLayoutComponentBase-1.html",
+          "hash": "NOau/OF6EUu036DVC2VrStJ12bW3ShSRQFKarOWAAU0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Blazor.Client.Shared.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Blazor.Client.Shared.html",
+          "hash": "o3Co4eIkO3yNocRP2SSc3PBcNJ+GabEngJcpOhXU8yM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Blazor.Server.Startup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Blazor.Server.Startup.html",
+          "hash": "LGJVZz6JAxIt2M+CHl830Uoel+8SpHdnz1Le2TSFz2E="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Blazor.Server.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Blazor.Server.html",
+          "hash": "i1R7a6xzIfiBrfdI0XTDnGvxTosHQGrggpAgRjRpInI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Constants.html",
+          "hash": "2qPZlBX02IRf9OGOZkiqT6mS3Jp6OQFKiBhymjBvpVQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Factory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Factory.html",
+          "hash": "FSAEAd/TCn6+UkGfdKemIPYxo0oR66vvxrjz1fSVrII="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Bank.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Bank.html",
+          "hash": "UesEDBU225kkZGmogBjml/BCp58hPHcdFxJ5NLIDC5Q="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.BankAccount.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.BankAccount.html",
+          "hash": "BG5YyRuoM6oCsVksvmJFOUBizXogEC22uVh8tOhxXIQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.BankAccountInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.BankAccountInfo.html",
+          "hash": "1ciQjwax67qzq990kcngonyWSAKsY82IxKUsDiM41eI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.BankAccountTransaction.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.BankAccountTransaction.html",
+          "hash": "22X3947CobGdur6EEoqAOCsZLbpah1fG+LvIbA5cRvg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.BankAccountType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.BankAccountType.html",
+          "hash": "CTF2BBLTvibUh3nXqzEAFZpXSAYJIfZEV1E8PjDtJMM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankAccountBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankAccountBuilder.html",
+          "hash": "dQuBHGFKFMSlaRUM1PDGmZ2qWJGn+r931msPCJdRIRM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankAccountInfoBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankAccountInfoBuilder.html",
+          "hash": "wb5uXuw4Dsb2hRIJKQ12xNB+hSORsTOGaiNyrwFdJII="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankAccountTransactionBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankAccountTransactionBuilder.html",
+          "hash": "TH/uUEkaxw1JfOMtgexpLIgzXcj8YeCMXDCSf7u20cA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankAccountTypeBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankAccountTypeBuilder.html",
+          "hash": "wXPMyrUKBclOQEzQRXaTrJ9OX59+C5MER4rSlFFyoBk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.IBankBuilder.html",
+          "hash": "/rkhz+SsSAyTdUAN3GskFUVpQBXgRzUyF7j/zRQDIs4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Builders.html",
+          "hash": "ReN34ulCepDyzruvtl6qkBgwPqSzxAeyq/reMPHACis="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountByIDQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountByIDQuery.html",
+          "hash": "sGKcKdBBPAIRCCz3FT2UdNgQvWXgM7AKcL40qgfQmX0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountCreateCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountCreateCommand.html",
+          "hash": "xN8ARr/XZgy1QmM9S4oWAoR2J9tu+xWoKMQ4xUprLLQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountInfoQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountInfoQuery.html",
+          "hash": "PY9xfT4Dgw71dVAyuepbOwuLGrxco+Z2eQMOwChwXZA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountTransactionsByBankAccountIDQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountTransactionsByBankAccountIDQuery.html",
+          "hash": "5ERSFkNGAgNCGJNEYDqDse+DgI1eu0d5iPBZYD8ILAQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountTypesQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountTypesQuery.html",
+          "hash": "Wf9egAMsqNr8GWhc1XDWumFkUUR9u8zgvMlHZWeeQZ8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountUpdateCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankAccountUpdateCommand.html",
+          "hash": "XpKhlUR+LdJWwF0SzUkZ09iuFy1vW9f87H7203T2a0g="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankByIDQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankByIDQuery.html",
+          "hash": "43pEIERRSqkKetm8iFrn2TymmJFpWnG9YepfVR4eJU4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankCreateCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankCreateCommand.html",
+          "hash": "CYbK0KRwggdRT8Fgk32W7v/BLELUBUHgHWLKu91VnDM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankQuery.html",
+          "hash": "bc7aaO79BZ8lRIRgXMe4g2B6Lts4QcLwdXOvKEdQgY4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankUpdateCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.BankUpdateCommand.html",
+          "hash": "288YDeC45P/MvBC783WzUThRT4jgRQ9DTUGJHDMv6hg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.CQRS.html",
+          "hash": "q7N/8/bEovSEGj47Z4T6E8/5vdVazehKZ5Yua/qwZTg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.IBankAccountTransactionValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.IBankAccountTransactionValidator.html",
+          "hash": "nsgToOawYZjOIzEXIH4KPSwFrPCFggwNc/XM8iGmjus="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.IBankAccountTypeValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.IBankAccountTypeValidator.html",
+          "hash": "FK1+X9BgZE7jcgxT/8zjZ7VSvj8Iw8SukavK2jCZ6B4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.IBankAccountValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.IBankAccountValidator.html",
+          "hash": "05r6C0myTc9aNcj1EgYrHv3qvXUTx+rkkAfaKudYrkI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.IBankValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.IBankValidator.html",
+          "hash": "SlqmA7QWF9rCwN4do2yGK1YLB2vXS/U64vsnIH5lcp4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.Validation.html",
+          "hash": "RWBYOixW3jN4F+dz+6rpSA9q2C9kPIlAYlT9b+ApJfY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AccountsModule.html",
+          "hash": "JCoDuttrWKri5ekraDpvcPFcXZ6VmqwXbQMpJTHQlqo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.Asset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.Asset.html",
+          "hash": "Li8u8rcJwQJCeXxaiRxXj6w4OprkO26EkCxUHw2pYww="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders.IAssetBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders.IAssetBuilder.html",
+          "hash": "+/C+CHAzzHrMTRhhxbyxHgtE4ijG9ed2Kr/FuuCVHto="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders.html",
+          "hash": "vIhCYhxZcQ7f8MD/BCnUxyN/erByPJtcB82MK7Ai7+M="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.CQRS.AssetQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.CQRS.AssetQuery.html",
+          "hash": "D1CN47YKOYQM4iIeZRisFFF+47laU62A4xGKCmztBrs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.CQRS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.CQRS.html",
+          "hash": "sMeNHZ9u4hcpalfvOzDs6SJblIx6nfpCljMbxYwaF+M="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.AssetRegisterModule.html",
+          "hash": "o+iohoQZVZVw7O3kIC6benjv7pLoTh9Fx7sRnft1cdM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Budget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Budget.html",
+          "hash": "nxgRz2AdhjbRC33euscQXT0nCi4SlzOkd5vVdi2/5mc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Builders.IBudgetBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Builders.IBudgetBuilder.html",
+          "hash": "lf9KB5HVJ6i/kj2SiukebN5qPHLvnSCRf81OThLngH0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Builders.html",
+          "hash": "YZr8QwNeuj4YVmXsH/7TiQAzX0V3fsEmhHxoDobM6SQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.CQRS.BudgetQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.CQRS.BudgetQuery.html",
+          "hash": "+vby8o7EzDD8GxDAZAWA4BSFeCdvsheCYCUJF912O3Y="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.CQRS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.CQRS.html",
+          "hash": "ksPRo4QjZ4OdBZNZBHEVLGHCt0oVWFCKZt5QFhLL9/I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Validation.IBudgetValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Validation.IBudgetValidator.html",
+          "hash": "UqgIUyJoFnSJEIh+R9u6iIe8OPdIyw15ZuRkcZE8Bx8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Validation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.Validation.html",
+          "hash": "C4ZD8FtWqTWKD+euVt3KwxjiAhKDEpuoLz/SbtfB6ps="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.BudgetModule.html",
+          "hash": "lG8JKF1g+5XdejAohc/jR6KnuDM6I6wHYRSkdHUtYvY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.Builders.IReminderBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.Builders.IReminderBuilder.html",
+          "hash": "JziFpJgvTSofY4mB24iATR6hv0KtS5si9Lr8BZmEM60="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.Builders.html",
+          "hash": "gTWV3/m9T2L5QWJWKLpkcnoOI0UCgypMv2c3YaeNeAA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.CQRS.ReminderQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.CQRS.ReminderQuery.html",
+          "hash": "82/cm/TSPQq92TDe2jLgerWo060GbWp+cEJXIesyGqs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.CQRS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.CQRS.html",
+          "hash": "jrrksu4QGC8oGEAcedhiEpuVKcGAHVBwppH7SW0stKI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.Reminder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.Reminder.html",
+          "hash": "L1AQysgoxKFEe8RxHC5opslICpw9fpVJdAquDID+8g0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CalendarModule.html",
+          "hash": "wIAug9phrFOtUgf6T4qcXpciQL/jRdu2meUsRYGhwWQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.Builders.IContactBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.Builders.IContactBuilder.html",
+          "hash": "WIUat5a77iUmO6lGlam+uCiqA+SgKyH72YqElt4zOtk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.Builders.html",
+          "hash": "6e2KMN+eU/FTd52v6lw5jrpWQqYhD5m/IdpGsIlGkSk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.CQRS.ContactQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.CQRS.ContactQuery.html",
+          "hash": "XZbUYt0Hw3XrD4MBm/pZwySWMxUutyKtBcD4CgddAUA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.CQRS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.CQRS.html",
+          "hash": "ljsoW0JjM5rEla+OwPt1MZwFkL+CQJ+S3bbi3nbeDPo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.Contact.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.Contact.html",
+          "hash": "kdPHFl/rnxBq164COUxzHGSSBZM0XAPSq+Skny8U3hg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.ContactsModule.html",
+          "hash": "YYyMf7z7wMH/K6MjzpVABquNredjMo8IBl+RV1tIv60="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Builders.ICurrencyBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Builders.ICurrencyBuilder.html",
+          "hash": "N1tZpJwUyL2sYq3b8HHcMhHfAdoXPjPNaQSiN5UnyUc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Builders.html",
+          "hash": "9Aod1FeFZk0FCCXkW7iEvz5zq5+sIEl1dPEjxiJy7bg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.CurrenciesQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.CurrenciesQuery.html",
+          "hash": "fTY+8dI46M8xpIqE9mMYSHkNwtZjmp25RYVKRTz9LA0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.CurrencyByIDQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.CurrencyByIDQuery.html",
+          "hash": "fIHwlub0ZkKF+jrQIsoMYZjZecYRqpwHVue0gqADQwE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.CurrencyCreateCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.CurrencyCreateCommand.html",
+          "hash": "YMx+nK7UgZd4hzZKGo0X0DOWOZ8QK+jc/47ET099mGg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.CurrencyUpdateCommand.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.CurrencyUpdateCommand.html",
+          "hash": "AEmShSzMDXc3giqb0EL6nIOn6R/1fMXnqNkSjBtsuz4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.CQRS.html",
+          "hash": "F8y4kxW+NwZa3t+zX+aSH9L+5Vh3t9NCigc3b52JmIs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Company.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Company.html",
+          "hash": "pGVGFERrlIwHf7jrBRgGIILe2cX8cna4MRUhcuAlHBg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Currency.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Currency.html",
+          "hash": "ZmGtIa90v8M05T+wzALqLXMJpPwstx80qBGbr1uviqY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Validation.ICurrencyValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Validation.ICurrencyValidator.html",
+          "hash": "/Vv4RQ29WL6Q2svBrLHBe5e/s9wc4X9eba0On8VMCHE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Validation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.Validation.html",
+          "hash": "cuGKXxu44g9/QU39RV6tS/0DvhuHenuOQ+JtkU8YTDc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.CoreModule.html",
+          "hash": "feOgrBDi6mkrFe8mBHnw3p27EoPNTaGONQJoK/Pu9G0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.Builders.IDocumentBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.Builders.IDocumentBuilder.html",
+          "hash": "y+/ZLUIoHFaiPitDbkOVVjNMO6ME2wPmdGUrOxSwO6k="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.Builders.html",
+          "hash": "I6mKEKvE9WxjPGQcqEDybo7wjlVuTdlOAJgeFZg3u84="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS.DocumentQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS.DocumentQuery.html",
+          "hash": "goM7un3DCof5Kaoko0RLbpmRXHAen3wIywdLw+EIAE0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS.html",
+          "hash": "oC9SPyov5py/i2KMJ+25yEnSXM3NVWOeSiPD0mVU+zg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.Document.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.Document.html",
+          "hash": "jA9uyLFtqdZ5FJdrVkdBqyZEqbJrnxQ5c0uWwb0S4Q8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.DocumentsModule.html",
+          "hash": "BM6PD8q9bUoEz3ydUbCzGW93xnFha7jXvyvsUfzAC+4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.Builders.IMailMessageBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.Builders.IMailMessageBuilder.html",
+          "hash": "5s4AesL3ePOZTCenzuToyQi0jlrBd2cL3n+zQrALIlQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.Builders.html",
+          "hash": "JWz7w/WoqL7EotFxfGTm7WxdLrCzgT5F/jSKveWxp9c="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.CQRS.MailMessageQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.CQRS.MailMessageQuery.html",
+          "hash": "suqGapSPcT3gCmjvKRrQEs1nu33PVk5+L8141sXSiEQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.CQRS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.CQRS.html",
+          "hash": "D7IVrbDE/lx0i2rAyiDSlHQ4koY+Ph9iq+u/Aby5bqM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.MailMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.MailMessage.html",
+          "hash": "Es3og3MRJK0Ak24uUsyfxxC+1kVvndR/+0eQCVuq37g="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.MailModule.html",
+          "hash": "8sRtNVI7CMeHcoV6wnSqvYu3C9YxuLqvNv2NZPycQmk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.Builders.ITaskListBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.Builders.ITaskListBuilder.html",
+          "hash": "eJDK7Z/qoAxSNBj13kXM3rzIQ9OPpZtGPzSi19zYFps="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.Builders.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.Builders.html",
+          "hash": "DXkPXFp+nmhPvUBuD6FMtxI2ax06Bk5goQMvefci/bk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.CQRS.TaskListQuery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.CQRS.TaskListQuery.html",
+          "hash": "PZFDcXoemHesogPCCRS+EnOXDzhKqXlM9xAwGcxJT9k="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.CQRS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.CQRS.html",
+          "hash": "AtiP4sSS7WQfcD33yNcVFBPvKR+f/HNId0l9SvQ2NYE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.TaskList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.TaskList.html",
+          "hash": "j8URzRTdHwgd7H12kCd5eC6SHaveIl5WecZ29XOlkzI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Modules.TasksModule.html",
+          "hash": "n9RVtoytkcunnpIuizQOjPtMWkYlahI8DLgzxMAmuZc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.RequestHandlerBase-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.RequestHandlerBase-2.html",
+          "hash": "//u3RxsKi31eVWWW1V85TQwkUgt291KLYg2BR1q20yk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Shared.ConfigurationSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Shared.ConfigurationSettings.html",
+          "hash": "qyON3O4bLqR5fuJjE1Q32cJk+IFGmZ55e0nE/NF+UJY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Shared.DatabaseProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Shared.DatabaseProvider.html",
+          "hash": "wL9Y5MRvAWZdl5txIWal0X9m8PW6X2nIieFarzleE2I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Shared.IUserContextProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Shared.IUserContextProvider.html",
+          "hash": "Dw+abiRlHLFqmn7UZQNFdwDGDTi/6QxT7RB884FN3wo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Shared.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Shared.User.html",
+          "hash": "jMGVBaZbfXsuxrrydbW+qSUchu1o4igMfrORySdd8j8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.Shared.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.Shared.html",
+          "hash": "EbMX+YkRUYacXZeuTpznMifKse8dFhBninwuAMsEhwg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.DomainModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.DomainModel.html",
+          "hash": "Et1LNGI2dD2WJRZpBv54mm7f55dRQ4/HmQgZIW5QrUU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Framework.TypeMapping.IMapFrom-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Framework.TypeMapping.IMapFrom-1.html",
+          "hash": "aL1bRV0g8pADSD2u0kjvCSPF8d5XKI+a5Q5oOJYZC7A="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Framework.TypeMapping.IMapTo-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Framework.TypeMapping.IMapTo-1.html",
+          "hash": "OplzeJHJFU3rkRzbLSurbA/dkjtdM/nCf1SQiJrOIN0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Framework.TypeMapping.MappingProfileBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Framework.TypeMapping.MappingProfileBase.html",
+          "hash": "CcGUkWIsaatGRof7ZpgONjc8nt9AgbKkBLBeDpLGihw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Framework.TypeMapping.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Framework.TypeMapping.html",
+          "hash": "hOj7n5PtoIjkZ9aKa4JmoTRC8Kf9gGawm6WctWRfim4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.ApplicationDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.ApplicationDbContext.html",
+          "hash": "OPQ7AjPqH4eMCwcGfi+9OfgOafptseOXWpBerx0+0nA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.IApplicationDbContext.html",
+          "hash": "MOO9fYRszArFsIddg94G3UTrk6efCYOj4Y0HsXcPNlE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Migrations.Initial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Migrations.Initial.html",
+          "hash": "ZoA7huI7V5wjEJBlkqI5XKSrJEabf4T6syLz3Mn9za8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Migrations.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Migrations.html",
+          "hash": "/N1NDoqEHkXhT782DszOkBTX9TxCrfIt9OAWWc3XW8A="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountEntity.html",
+          "hash": "WxCVeekfAETqSzA6vFgrrTS9ANHInfnwsGP06xeiCIE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountStatementEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountStatementEntity.html",
+          "hash": "63TFyvlQHuOb1lXfFv1bDMm+iUUqg0xJ6XDzqGypblo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTransactionDocumentEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTransactionDocumentEntity.html",
+          "hash": "1ijPNBtJVlzHu8QmMb36hsugzbCS1eRTX/C8e65rRCg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTransactionEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTransactionEntity.html",
+          "hash": "hOlvBjA0DjhxNqF5BcaKd8nu6O0OkXZaGnBfaF3mrbo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTransactionTypeEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTransactionTypeEntity.html",
+          "hash": "wTlX8l5lQ0oHjdM41dmo0qaBiFqAAWZ8/56Uac3Sro4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTypeEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankAccountTypeEntity.html",
+          "hash": "Y3NrLSELcLVR8aqb2KNryyycXnjzarvNL0CFW+nbNT8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankEntity.html",
+          "hash": "/5JaSxGxRqqjveXsh+pnpR6w/itkarJDRVN38JOOi+s="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.PayeeEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.PayeeEntity.html",
+          "hash": "G420ho023RZ+ietxeWz2PMh68+hNsBgfkyT2J/DONrU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.html",
+          "hash": "e7sLp5kD9GJ0iA+1bn4OjEe2oO0tA+MnsEiyNOEYzVQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.AccountsSchema.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.AccountsSchema.html",
+          "hash": "A0y5CGo6EhUy1IiyLo0npKsiTTLcblQv8Oleo8gXUXM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister.AssetEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister.AssetEntity.html",
+          "hash": "PCJWzk8hwjQoQuzuXEroRj1zVZA6VO6+6xCpYkFddYk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister.ManufacturerEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister.ManufacturerEntity.html",
+          "hash": "9kobKew0TgFtHijctX8TnipwGOBK3cxpT9XyC5c4Qbw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister.html",
+          "hash": "C2K6t/2W8WtURPnfRa6hUgVl0WOdlV2GJTXBSiuxhlE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Billing.ClientEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Billing.ClientEntity.html",
+          "hash": "Yu2Iz09SuJ0OZW8RKV7BDt7gM4S4jprdOdbhhoIJ2es="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Billing.InvoiceEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Billing.InvoiceEntity.html",
+          "hash": "R1X98sE1Cjqg4/sHImCQ57qOo6aBIKjc01FmW226GkM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Billing.SupplierEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Billing.SupplierEntity.html",
+          "hash": "rH7ENnKbEf+ltNNzepCOJN5lqjUg2K3WbIkuEBrrvRQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Billing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Billing.html",
+          "hash": "EyTJBTzXuXcCzgcfoGrLkcUz9+WKdH7LgpMCCs/7Ous="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Budget.BudgetEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Budget.BudgetEntity.html",
+          "hash": "6DqvYwmMq6PZUXKpTo3F78b/TrzEiH/qARgwGoRW8/s="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Budget.BudgetEntryEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Budget.BudgetEntryEntity.html",
+          "hash": "RPpQ6xlb4DJQ3hE+0obm8F3A/K86lxEiYNZCiiES+Wc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Budget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Budget.html",
+          "hash": "9PXvmXY+kSlhvhrFaQqsROxGoPeuOkyCrll0dXVAZpg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Calendar.AppointmentEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Calendar.AppointmentEntity.html",
+          "hash": "tlmvVATSQXfJzqx6oebEMEUgdyyV5xxppLRjeayDvpU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Calendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Calendar.html",
+          "hash": "4a9WpQfcg5d3tdbPLyZ5qUC1kUuKTeJtkgHBPqzwIyE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.AddressEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.AddressEntity.html",
+          "hash": "NwNXXksyYJVP71KYvjn0UOksL62y9Ib67Kz/Uv1aQI4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.ContactAddressEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.ContactAddressEntity.html",
+          "hash": "evLvifkjCmi+L2pEdk2CS6BDT31kdaXGHTWc+C3ueyg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.ContactEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.ContactEntity.html",
+          "hash": "om4aGWs1ss4YKplJt1lZrjqxMAjHI0/kTlebfYiTBzE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts.html",
+          "hash": "D2HfGRhrlx2FZ8FbUxCo15BrR6029dMx4fHTv7De9S8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.AuditEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.AuditEntity.html",
+          "hash": "DOVayGDp6cY2TUHHk8cacNFgUxpHOjcfRyp8yNZqPWw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CompanyEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CompanyEntity.html",
+          "hash": "RYYNn7cGzcWTNX+/DYP+hqyJe74/w6qdiv9A1740QUg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CoreSchema.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CoreSchema.html",
+          "hash": "1KjIhIl22pdMFinzSVtJ9uPb2wUF/kCWkb6LMtWvCYY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CurrencyEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.CurrencyEntity.html",
+          "hash": "Z2RYtleWGbVppxEsO+on9UGR2msYdDzbUT1eu51EFBs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.OwnerEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.OwnerEntity.html",
+          "hash": "qB/R/3WUTNZIg2cP6WujrKp/RZNF20bvIYHXiw/Ia14="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PermissionEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PermissionEntity.html",
+          "hash": "x/AARMUvLPJB8bhbRgJsZt5S21S2WEkcl0gKHly9mx8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PersonalDetailsEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.PersonalDetailsEntity.html",
+          "hash": "fATGFo4vaT6CxV5ii5ODOsYjYDmGTYgj+yAQLi1jqxE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.SettingEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.SettingEntity.html",
+          "hash": "do8FH7SkkzH7VHnKzNXwzgc1AxWIfJ6t8ce05DX3rX8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfileEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfileEntity.html",
+          "hash": "Z60VUyc9DuENQAPqRq6hupMp2W1JBt9Phb2uTRJ7W9A="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfilePermissionEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfilePermissionEntity.html",
+          "hash": "fHzv4r2XtVtoQZQqHtB3j4dYoU3P1DIlB925l69n1E8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfileSettingEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.UserProfileSettingEntity.html",
+          "hash": "THTb96GahxEJiA/lLfxOSGxO9yyf+AujGojz9W9YGgQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Core.html",
+          "hash": "03pruLX4f1QSMxzk6JlgN6lrkL9XdJTedoJWcTs3S5c="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Documents.DocumentEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Documents.DocumentEntity.html",
+          "hash": "bCSdrwCTM9q2ic/hKna/deKgnYn64W4xAZ3q3m2ex5w="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Documents.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Documents.html",
+          "hash": "dekOlgmdgndkuTrHk/hGlZ9AKJJkZKKvKCGcXOZZ+5I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery.GroceryItemEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery.GroceryItemEntity.html",
+          "hash": "/sGa1RxX1UStMpa0o5xT6VjhFfs9bSGeP/aavEJ9ocs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery.MealPlanEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery.MealPlanEntity.html",
+          "hash": "CTUWfBNGWE0cvM1fJ0lgobRlCxt70P7aJZlkdKdfg0o="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery.html",
+          "hash": "fSonMS99bLcvhyo01dyUphYosxMOUKunTgaxlxZL6hI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Tasks.TaskEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Tasks.TaskEntity.html",
+          "hash": "lerAzwIknGONv/kOK4rdrgFQ9CNt6DGfePS2ZzkLoTs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Tasks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.Tasks.html",
+          "hash": "Sodi6/YQNpi5RTY/ZjXXgIgZ5B1Gf6/2WhSlfLgmN7g="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.Model.html",
+          "hash": "qDMMRCzoxOFYliEJIbNmHUvsjoLI+fuRJqxMqf6F3SE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.EntityFramework.html",
+          "hash": "oK+7JGl+gJbcmJTgwH+UkaUcdwWoWpCrzXSDXhXozA4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.IDatabasePersistable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.IDatabasePersistable.html",
+          "hash": "s1Qehs7/y7+uvmNYrjxVFGwNnvBD+l+49HQjhFRdf/E="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.IReadOnlyChildRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.IReadOnlyChildRepository-1.html",
+          "hash": "qTegWmVE4/MgcqoLmaP65yTz9in4z9bcbaC4Sb3npWs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.IReadOnlyRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.IReadOnlyRepository-1.html",
+          "hash": "d8nL3ukNfk9WOo1uvcQlLcuaZOFymIHao6UzOik7UyU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.IRepository-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.IRepository-1.html",
+          "hash": "580TpphnoNLnMxysPa81JCXTb6F8UOmaBHA1WMeqryM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.MappingProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.MappingProfile.html",
+          "hash": "ALW8wcUtt3e+472QLa7hAevB/07mh3nVQ6JJhyMH7kg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankAccountInfoRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankAccountInfoRepository.html",
+          "hash": "c7JgxODPWv9J9Ywwp4EZwuS8I0IMO8QXxG5vMiE7Fhw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankAccountRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankAccountRepository.html",
+          "hash": "qVX3Jde3XgFVVZi+OM1An1PmGZ+rZ4MyoaTYBpW3dCI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankAccountTransactionRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankAccountTransactionRepository.html",
+          "hash": "S/Aw0rA7gUTXHhOFNMjv1luwDakKnyY5BhVFWJffnc4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankAccountTypeRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankAccountTypeRepository.html",
+          "hash": "DaNew+2snjSxnEArBaYEdJr3qmdx2UG15Lv6Qx8k7rk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.IBankRepository.html",
+          "hash": "tf/R/IaQSRTlIXk5oMYnrSgip3Wx/gFhuLVrW0WGVCI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.AccountsModule.html",
+          "hash": "yBXYf0PUXQpdoD9nqKDjy21OfB6XTrR/UYF1Sz+IPd4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.CoreModule.ICurrencyRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.CoreModule.ICurrencyRepository.html",
+          "hash": "sfdCAQm5+RJJ6X0dRoVuzgI5ZsbgrLH5U7psTsguz2Y="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.CoreModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.CoreModule.html",
+          "hash": "meyFWKGMcXtwMCZK98RSnDPrijbGqniaIR+F6ANi44Q="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.DocumentsModule.IDocumentRepository.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.DocumentsModule.IDocumentRepository.html",
+          "hash": "7wdAerySOrV3dm1mITS9u7zYUkMRNJbbj9m+a0FZC9Y="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.Modules.DocumentsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.Modules.DocumentsModule.html",
+          "hash": "JVhJoz1dYRd9PTfhFNr/lFN+YnvOKfgGeebkxuP7OaM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.DAL.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.DAL.html",
+          "hash": "a9RHHilQzJS+PI8NjAlgr8HeigfmuQeRytFhbav1uNs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.Providers.IDateTimeProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.Providers.IDateTimeProvider.html",
+          "hash": "takxORij478qd9VEr4J8oNEpjqp3n/nd4e8z1YNjV7s="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.Providers.ILoggingProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.Providers.ILoggingProvider.html",
+          "hash": "hLMigQpQP0FnSOvQiy/O7qqQQzo6cJIrPkw5tIoeMXw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.Infra.Providers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.Infra.Providers.html",
+          "hash": "8G+GH4m827v5GbxlnSNiEcxB54y024+WLlPaiaR/ZtI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.IViewModelBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.IViewModelBase.html",
+          "hash": "WJ1U/Hilgi383a68smIioytO3kgoqrUbpG+5CUNkY/M="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.EditBankAccountMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.EditBankAccountMessage.html",
+          "hash": "Aih5moAP//8QZag8Os4+kqCf6AnKIMXlBt8zgKiQigM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IAccountsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IAccountsService.html",
+          "hash": "ahRFxHh+pcdiIkbksQuTn6Jt2QAjkUQrYyBqkq5EyKw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IAccountsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IAccountsViewModel.html",
+          "hash": "9FFizLxn1M9EWzbS4fvZqymnBYT1fDkJrgQqn+aiGGo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IBankAccountBalanceListViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IBankAccountBalanceListViewModel.html",
+          "hash": "9VmBA4F1jEEp2akUVxJay8mcyEIZZFRxIgC2uJKWL8Q="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IBankAccountEditDialogViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IBankAccountEditDialogViewModel.html",
+          "hash": "wdj5SokIhUYuAzHvAo7X4rfGNX+sKVaf501LKUwmuHQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IBankAccountRightSidebarViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IBankAccountRightSidebarViewModel.html",
+          "hash": "ZyWynb/bsdh9rHXexF3V+G5MnvOrpGul0ZrtZVodVNI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IBankAccountTransactionListViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.IBankAccountTransactionListViewModel.html",
+          "hash": "ZvyVDAXlI85dQ7y7BYtPWSEZGq2XHMf2VPjhe9mmMhI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AccountsModule.html",
+          "hash": "qq+qxmvevSjYl7R1LX00b/yy+miGnCkE0DZMT7kvuvY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AdminModule.IAdminViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AdminModule.IAdminViewModel.html",
+          "hash": "GenCFxo7b2BAAGRvgNc0Sp64Wvjc0URPTqFbZ1JwjkQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AdminModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AdminModule.html",
+          "hash": "1coV5IhZc8UrfkjhnNsfCgbqeAN9XQpLDO2EVjoLb58="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AssetRegisterModule.IAssetRegisterViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AssetRegisterModule.IAssetRegisterViewModel.html",
+          "hash": "V/kSS3s+SamFdDWUOrNoQ2hziBX/GMiG7jW8c5XlIWg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.AssetRegisterModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.AssetRegisterModule.html",
+          "hash": "GxNWs4j7Ot+dMz5LqR1RBzg0bIgGyp1C9Zowo6eOOPI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.BillingModule.IBillingViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.BillingModule.IBillingViewModel.html",
+          "hash": "efWKkE+hZGN0ooXG5R4MGrHFqFqIRSlQ6RXnbjb7o0k="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.BillingModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.BillingModule.html",
+          "hash": "ZSp5CAcZ4Lx54CRPmrOQrnYOXsVW4Ngkl8YiKlbmDXU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.BudgetModule.IBudgetViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.BudgetModule.IBudgetViewModel.html",
+          "hash": "vgSeH94P6F2jP7xG5Cy4bbAvz2A+5Ksy7S+lAonBeXU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.BudgetModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.BudgetModule.html",
+          "hash": "AcRhlEZoV375VL/6TZOxntAIxn9dnkOlATCAajoER8s="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.CalendarModule.ICalendarViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.CalendarModule.ICalendarViewModel.html",
+          "hash": "uaHMwKWXAQjbpW1CvL7WUSd6V5iHXMbaGe8gEzWnIg4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.CalendarModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.CalendarModule.html",
+          "hash": "HJScfC5XsYvzKPHtwiYWphE7jy9FixEAlsarRQtiQ9c="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.ContactsModule.IContactsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.ContactsModule.IContactsViewModel.html",
+          "hash": "p3k3KPe++sdMEAr2Ve+mi9bLdhNlZfqBQC1SdKWJr8g="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.ContactsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.ContactsModule.html",
+          "hash": "wKY2PLQ1VZU7idtohu6VRWTefTs8czInQQKo1dfSiZg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.CoreModule.ICoreService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.CoreModule.ICoreService.html",
+          "hash": "jcjo3leDAWVBR++POnJX9MIssSZW9IY3gpAht9OpT7E="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.CoreModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.CoreModule.html",
+          "hash": "n2GteYFT+p9P/giwwJq/5OUJ1e1HXR4nkw+15XRQC8c="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.DashboardModule.IDashboardViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.DashboardModule.IDashboardViewModel.html",
+          "hash": "w7isUpoap9UVPHfWwM9r+9UVZluicFpM2cLkiZjsY5c="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.DashboardModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.DashboardModule.html",
+          "hash": "ViJQXxqj+FDrdQnZ/k6W1CP6Co+FQy8Z9qQe1OMxpcU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.DocumentsModule.IDocumentsService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.DocumentsModule.IDocumentsService.html",
+          "hash": "ScoMgr+Ca51UbQb0wie/5Y7zpGcgWOPWYGL8y4oxKlc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.DocumentsModule.IDocumentsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.DocumentsModule.IDocumentsViewModel.html",
+          "hash": "uZqKlT2pJT21I+M0jaa+v21RHLnmVY/yUfF8hM14PwE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.DocumentsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.DocumentsModule.html",
+          "hash": "IOQmj+eLThbva5gZ3quN2tmcyqDNXtMVC4Vn9AkLgFI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.MailModule.IMailViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.MailModule.IMailViewModel.html",
+          "hash": "Yiu2RObSsc9LB9zQIVar2MtIG/nUMhjO5OMh5W42f8g="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.MailModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.MailModule.html",
+          "hash": "gE+GtP/Ao/+8jKvPsDD6ol0AR7RuFcTDtxTsZFy+0P0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.ReportsModule.IReportsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.ReportsModule.IReportsViewModel.html",
+          "hash": "5PuXCttl/ZPeomu2nBXCPGHYSrY5mH2bDBJc7ZYkVlw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.ReportsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.ReportsModule.html",
+          "hash": "K4bJCZP3gIizIaVH8W8O8YVl+dp07ES/JvlU6iA+F98="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.TasksModule.ITasksViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.TasksModule.ITasksViewModel.html",
+          "hash": "f66Qb7d/4jukXcH5s5pJZbzOb+Amt3UwKyX7p40iXkE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Modules.TasksModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Modules.TasksModule.html",
+          "hash": "BYm8jRyI2nRFRwmr8MwqX7w/LlNag/oyazPCnaPPV+U="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.ExpandedContractedStateToggle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.ExpandedContractedStateToggle.html",
+          "hash": "dF7b6zHgbnrv4j1VsDijRJWx2y3cfoCs5AKQ38w4xyk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.IAppService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.IAppService.html",
+          "hash": "SP8K/ht+3oVzo5Ios2EqoSHdYdIWmArHrt+ZN2TK+L0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.IMainWindowViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.IMainWindowViewModel.html",
+          "hash": "JJu8WaJKghzJEfYcmdc3U8dvp+XxXRIWIP8Kaj4afUg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.ModeEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.ModeEnum.html",
+          "hash": "zL2zVQWqPTMCrGYJZU/ooinBy0h0NCN7aQ8TiNXdLZY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.ModeSelectionChangedMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.ModeSelectionChangedMessage.html",
+          "hash": "26WVBNuSssxBJ9d/Mby9xGis1I1O6kotsW582tKrPuk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.ModeSelectionItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.ModeSelectionItem.html",
+          "hash": "YX64M5puqwxOF0T2o82nHwR8U7UzSTkQ723hapCZSXE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.ModuleEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.ModuleEnum.html",
+          "hash": "ffQfD2gSbGl60UNo+1Y+8LMLSeHVXrcge3ehrO6Fw0M="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.ModuleSelectionChangedMessage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.ModuleSelectionChangedMessage.html",
+          "hash": "zeGKsWt6R+lZHkiAEWagLhhjrq+KVw3nlGrr+lyfIdg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.ModuleSelectionItem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.ModuleSelectionItem.html",
+          "hash": "rYY6GpZ2Hm0Hsj73x/tqH+EDOpzjFa1KVZENdDTNxVg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.SidebarStateSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.SidebarStateSettings.html",
+          "hash": "AkL0xubIszNrGpzU+m7jUcD66fLixEQspW2MtjW60Y0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.AdminAssistantWebAPIClient.ObjectResponseResult-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.AdminAssistantWebAPIClient.ObjectResponseResult-1.html",
+          "hash": "MbHTsBlbIK4Rs6HNGq/NQNG0CJtk7P8w/iNj4I1913I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.AdminAssistantWebAPIClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.AdminAssistantWebAPIClient.html",
+          "hash": "aQLUiV4YPk4oQMMSs0fAEQb5Sb/FwJeOqQ0JbjCxGj4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException-1.html",
+          "hash": "4Lhiv7CIjxBFXpwcRG4cDvObPBZ5YACwEUgJFZV97hc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html",
+          "hash": "hX+HutFWEUTXkQAWzrF4PWTtZHw6Xvql6o+zNPYeqz4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.AssetResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.AssetResponseDto.html",
+          "hash": "MjArkhmNYwo3bGMyI1nW8J8G2mJW3d9BgCaSEp55a3Y="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountCreateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountCreateRequestDto.html",
+          "hash": "jUnms0jexvgxQJBbqhCKxkFmY5XALKbGRkq4uSlkyHw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountInfoResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountInfoResponseDto.html",
+          "hash": "s26wDORkILtaDwerI7JRbJUNmXvDsgCvIzRZb/PSkmI="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountResponseDto.html",
+          "hash": "keDh4PJ0a/Gh67dCg5no6p9mejA3vJ9CKBqhQjc1HBY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountTransactionResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountTransactionResponseDto.html",
+          "hash": "f1Bd6ISchRL51vuui3ex+OA1wRl/lpMnkDjVj16cRGg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountTypeResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountTypeResponseDto.html",
+          "hash": "gY3QBcn8fuTTJvcl6LzmcF6p+o856fhjThZF6mto78I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountUpdateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountUpdateRequestDto.html",
+          "hash": "CYZ/1Lt9K8gptOte2d9LV6APzEKuc1Rq+malHj58WXE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankCreateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankCreateRequestDto.html",
+          "hash": "9TtgNx3t8FucrTPBmjTd2UsyegnHSrZI6pUnF3KUwMY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.html",
+          "hash": "yH4bdMTn6b2hzJMhQR5depWl2wF5MncxkyajRkMf4Ow="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankUpdateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BankUpdateRequestDto.html",
+          "hash": "VN0f+h/0dTz1dal031VN4iWgD6RICG5PMNSKYCOyaRU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BudgetResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.BudgetResponseDto.html",
+          "hash": "L5ZjABbXWPWTtgqMerJ9+311OKZBIAA6iCU5thLxiq8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ContactResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ContactResponseDto.html",
+          "hash": "vCBPefpFWKMzlszTsTvDB8R9MibdFgFQiUyAPM89dGk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto.html",
+          "hash": "SPouhn8OTOJ/sk7e6Q2P4IXdCp8AEbjiidNu93zI3EQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.html",
+          "hash": "xSyKBih0XeND0ti2zcjo3+HEjDn7b9BNRM2uJJnohe8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto.html",
+          "hash": "G3gv1nuU3WZVoMAKjM4lpRu51UXm5saCWDZIomj83Cg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.DocumentResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.DocumentResponseDto.html",
+          "hash": "iisogPuMgfeV5Pzm7pv9OA5s9C05azrSC87lBjBn+CU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.html",
+          "hash": "Om9yAiG7WgiVoE+b63SCLfrlM1gGlVF1rj/pqXIm/OU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.MailMessageResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.MailMessageResponseDto.html",
+          "hash": "dWGHLvivBwnliSsyTnceKsqqgN96aKUyTugJ0q2K4iY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.MappingProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.MappingProfile.html",
+          "hash": "okW7Y+qlBqTVkvirksbtDDxIZYIdbbRGKKWHM9tqdFU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ProblemDetails.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ProblemDetails.html",
+          "hash": "0/AsBl9/83eoAo1sm8/7N/v+8JqNHQ61MBiqrxcOK7k="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ReminderResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.ReminderResponseDto.html",
+          "hash": "wEDiOG6EPefEGbm7BxXrj9pas5zozQFrdsp8JFVXffs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.TaskListResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.TaskListResponseDto.html",
+          "hash": "o6ZXkB5Kqgos78CbXriDjHSI5xd/5zv7dhGTbvWA7kw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.WebAPIClient.v1.html",
+          "hash": "CALTQ/p8rScQ05ZOvZgY2+MOVWG/quIZ2Acgy8ijZCQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.Shared.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.Shared.html",
+          "hash": "4C2WfGtZsY3JJzpUyzR7hryLRHU5PKDdSpD+Nq+3rvU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.UI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.UI.html",
+          "hash": "enUP5zWN8FOvhr//nu6kt2CbyShJA1zyLFlJp+AqNCo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.App.html",
+          "hash": "Aulpo8sNwfahF12Poxl1btPP3IOmN72pPDHpCofUsns="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.MainWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.MainWindow.html",
+          "hash": "DoKvDqVW3TdGzl54qiyKipqrRuS0/+Y01x//2RXvou4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.AccountsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.AccountsComponent.html",
+          "hash": "IqfQ8nLMJVwTVdc4pH4E894h2EUq/FvmbcED/oNWyQ4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.BankAccountBalanceListComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.BankAccountBalanceListComponent.html",
+          "hash": "ZFNwy43jHbIBVbQ9U+G71mLOcIiAklQiOLq+Rhxjcyk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.BankAccountEditDialog.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.BankAccountEditDialog.html",
+          "hash": "HHYrSnSMapDf8EjbRCoOLiO8iurO1bAm2Qn8HQuBoOY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.BankAccountRightSidebarComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.BankAccountRightSidebarComponent.html",
+          "hash": "uM10bapap1fr0KEHx9idW4l7fifN7StDDm7jyOfgDVw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.BankAccountTransactionListComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.BankAccountTransactionListComponent.html",
+          "hash": "hQ+L+mCQJpsAARUNUEGBk5rA6lYzmHgXjmB9Eo/Cbs4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.AccountsModule.html",
+          "hash": "8BIQJvp/9Ub3wL4fpd+cuDjmu2jSjCqvNamZTcsBAeA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.Admin.AdminComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.Admin.AdminComponent.html",
+          "hash": "NW0AZWQVFt5+j/KgJ4/yDhxiWnoRKM7n9GDFrctpR3I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.Admin.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.Admin.html",
+          "hash": "cIwN9AJMT4GrkJ0pdDlSCy/4per11N5fB9htO+GJTE0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.AssetRegisterModule.AssetRegisterComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.AssetRegisterModule.AssetRegisterComponent.html",
+          "hash": "1vEuq2jYhuUGPw+QGZ8hGFSf53oi2GnLNL3H53hRqWE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.AssetRegisterModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.AssetRegisterModule.html",
+          "hash": "yfN3pyBVNPXOsNBGeZeaMJuz7vgPSJZYU0DRd0Ep6Pk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.BillingModule.BillingComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.BillingModule.BillingComponent.html",
+          "hash": "OiDjGkyV1KoOzjfL7MGlGroluU1xI16+/0MsOnN514E="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.BillingModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.BillingModule.html",
+          "hash": "SoFMVjdL2M8F5yMRQiNGBYL5Wc8s+KVgz7vkJ9cRzlE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.BudgetModule.BudgetComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.BudgetModule.BudgetComponent.html",
+          "hash": "Mtk8RIlyWzwauPjbA47Gcmj9RC9nKT4FuJWpkQ48694="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.BudgetModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.BudgetModule.html",
+          "hash": "CsfNE95k3k5NTel8U2PXy5r4Kr72cynK6T511t5nMvc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.CalendarModule.CalendarComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.CalendarModule.CalendarComponent.html",
+          "hash": "zXZpjnkZHUrNNrXGJVzl3eU/iG9ioB4XZ5IpSitA4U4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.CalendarModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.CalendarModule.html",
+          "hash": "hRMrBfs8o759+kvSioUkRnwdOQPbrtUQ9I2t2MIG3ZU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.ContactsModule.ContactsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.ContactsModule.ContactsComponent.html",
+          "hash": "HGAnMnTX7vJaUNQ2TnDWr1XA+RWI7rDwveETR9jkyDQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.ContactsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.ContactsModule.html",
+          "hash": "qNa8pWBEM9vt0HfzoWJLn6L3O/9nrd6R3h1Rst/Pel8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.DashboardModule.DashboardComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.DashboardModule.DashboardComponent.html",
+          "hash": "9ArSPPEfU+VO0EiywxvquLykqNoslQkvOErJNsN+2j0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.DashboardModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.DashboardModule.html",
+          "hash": "V6M3bG8OXcQg+MHyN3UKEMScImo58fkv6A85R2uKS+M="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.DocumentsModule.DocumentsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.DocumentsModule.DocumentsComponent.html",
+          "hash": "UbKnN44TMPEyoBwMtV0UX4pExNsO2LFyYI15WRMlcgo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.DocumentsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.DocumentsModule.html",
+          "hash": "Die1F1FeSNiY/NBn0o18q5pezro+iFAzrgxw6DB0ijY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.MailModule.MailComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.MailModule.MailComponent.html",
+          "hash": "WgK9p5zPhtBVYsSUHOvChgNeRtD6vvHyzoIp4W/B35Y="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.MailModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.MailModule.html",
+          "hash": "ScWUAAko0b1yyhza/eoF4+i0YaGzGFTr+c5JCI+8yk4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.ReportsModule.ReportsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.ReportsModule.ReportsComponent.html",
+          "hash": "jQ3xN3w73EksR73THQ1hV0BmbkCQWX7jm4y7xaochH0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.ReportsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.ReportsModule.html",
+          "hash": "zZO/RUrpMinbgPnq0oeA/Ke0+pwsy55KSWljhW+QVO4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.TasksModule.TasksComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.TasksModule.TasksComponent.html",
+          "hash": "6JP+DuZaUOYy6QxWOJiWJ+0S2xP3n7OCzbpagYcNpBY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Modules.TasksModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Modules.TasksModule.html",
+          "hash": "rPJjRPyr/qY+X0rufK5kRq564r5PKgtKG8BeSepCZto="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Shared.ModeEnumExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Shared.ModeEnumExtensions.html",
+          "hash": "Qw5DG23l/w9NtDVD6AdjQ1LNKF4z7UNNkNAUUU8Hfe0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Shared.ModeEnumToIconImageConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Shared.ModeEnumToIconImageConverter.html",
+          "hash": "Xlis3Kks6YACGGbKmHo1r04RnKPLElvpMefKpK2aa2c="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Shared.ModeImageExtension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Shared.ModeImageExtension.html",
+          "hash": "I+v+QfYgM0ByNk3YIGPqHcMg3emjP9/J2/ppiakrUKs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Shared.ModeSelectionItemToIconImageConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Shared.ModeSelectionItemToIconImageConverter.html",
+          "hash": "D8kJp3fEJK+jhL6LOM/rWdm7WRL/FiKkGkgXv7Z25gk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Shared.ModuleEnumExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Shared.ModuleEnumExtensions.html",
+          "hash": "ghEhKenf2j9UNqUg2E9IUpH4vZ8WM078veCHAshfjpk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Shared.ModuleEnumToIconImageConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Shared.ModuleEnumToIconImageConverter.html",
+          "hash": "CRkrv/sKrxOyalBPRH3PLA42DwPWYVZfEM2lrv3ihUs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Shared.ModuleImageExtension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Shared.ModuleImageExtension.html",
+          "hash": "2TrAhoQyeZp4Zmie6YKo2cu9Qqa5UbOl/IRT9WoyBPY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.Shared.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.Shared.html",
+          "hash": "bfd/hSYtlUAETU+PLtqMk8eLQ3WvYOBOyrsb43qo+Zc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.ViewModelLocator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.ViewModelLocator.html",
+          "hash": "L6Ult+5pA3JDoqnAWSWJ+BKSlna9Dye1G3I6yukDNBo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WPF.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WPF.html",
+          "hash": "F4V/ROYf0cAbPD7LmgQTCPdKeh+0eR4j0HWE1uXwDbE="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.WebAPIControllerBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.WebAPIControllerBase.html",
+          "hash": "S3GnHfKYCVeXE98bHdfQK1xhrilJO83lPyTob7Z5Zqg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountController.html",
+          "hash": "IhszwPn1svzaxp8tAzAc6JTuMN/Ye/pcFvgObDwyW/Y="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountCreateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountCreateRequestDto.html",
+          "hash": "koStA49J3OKLAWyy6DIHCljCU1OgkaaO/hSjicD1H/w="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountInfoController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountInfoController.html",
+          "hash": "TToomrGWrd3oNJWYBLvRLX8BVCWlffDpudaXhx2TRTk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountInfoResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountInfoResponseDto.html",
+          "hash": "DP56WQBW/uS4nVcPlCZy2nvK4AwUZ/iCQWxB0mW8Rqo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountResponseDto.html",
+          "hash": "YC7VypVmVvfv/R4nrtk5lkvk4RAEhSausARNHa8pfFA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountTransactionResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountTransactionResponseDto.html",
+          "hash": "zPSkKtOcIHxBC/EEOpv6ku4ytFj7z19gPMw4OxVLeXw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountTypeController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountTypeController.html",
+          "hash": "dRy0UmYT+BREQWp60aql3vkx7XwbmadONfIQdGQ+Tus="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountTypeResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountTypeResponseDto.html",
+          "hash": "wtFqRUiw4bvsfF91Vt6c32xeYjnbxjGCut0CP2aLdhs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountUpdateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankAccountUpdateRequestDto.html",
+          "hash": "tLDj1AI+aMEe9EtCCNhSpsLIjYt6VZOlDDoq10EFlYU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankController.html",
+          "hash": "18IynfCKg4lJYhTw0w1gJAFUuiHcyDOF5v/4WkAZDRY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankCreateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankCreateRequestDto.html",
+          "hash": "ced59fGgknZnKUVSvK5fBxQ3pfBij5/7F0K5/vI+9RQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankResponseDto.html",
+          "hash": "76bX2wjibNTmeX0tCzxEcBgo+onbvrXAecdR8EODWOY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankUpdateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.BankUpdateRequestDto.html",
+          "hash": "6BgmFt/c7msTPb5ESf3r6YtQPvCb0RShT5zL3VvBmmU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AccountsModule.html",
+          "hash": "i/9HDGxkeZvjYy/hVrNhV3jy3xTemTti5BTaIhjg4Kk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AssetRegisterModule.AssetController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AssetRegisterModule.AssetController.html",
+          "hash": "h9sm0211Uv47TJW0b8ubb+tLp/QJVLDJhFiGCeDp9t4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AssetRegisterModule.AssetResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AssetRegisterModule.AssetResponseDto.html",
+          "hash": "y9tbWt/cFcrq/PbRdtOH3VnJZcv7YOO/gJwIUK0Lyfg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.AssetRegisterModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.AssetRegisterModule.html",
+          "hash": "KPLweysBOKM6ajkO2/RZXaUjuusxTC0Xd6qBOmhRrW4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.BudgetModule.BudgetController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.BudgetModule.BudgetController.html",
+          "hash": "ISy+LnSvAYZUAf3fpONAmrTBbzCPgaZbfK5nFJS8eqg="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.BudgetModule.BudgetResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.BudgetModule.BudgetResponseDto.html",
+          "hash": "yi+E8AD2+o9k8WR8LzIhyep8Rp7ZBT5O9C+sTTz+Fqk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.BudgetModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.BudgetModule.html",
+          "hash": "CtKgCXFHgpxl3skMW1EdAnJy8Ysas8yvwPw1veSffSw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.CalendarModule.ReminderController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.CalendarModule.ReminderController.html",
+          "hash": "mMlIg5S+Fb0dp1OVV5EqyYMDleI212uvt4TLkM6Nigw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.CalendarModule.ReminderResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.CalendarModule.ReminderResponseDto.html",
+          "hash": "wKXF31xORK9+qeopMFthZgwO3CH1Z15LYtSgBudnHn4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.CalendarModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.CalendarModule.html",
+          "hash": "rS2Z9Ea7PuO+OFbe+tLAeJzhJcoMfdhYn+6Pb5di38I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.ContactsModule.ContactController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.ContactsModule.ContactController.html",
+          "hash": "meBdHZ40D7JlIou5n+NVkcVk96KVQ2MuE8ZfCEkTMH8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.ContactsModule.ContactResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.ContactsModule.ContactResponseDto.html",
+          "hash": "oK0aAWeYfyTx1jXpjDNKbSFEENSuUBHMWs12VWWXlt8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.ContactsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.ContactsModule.html",
+          "hash": "GSzNTCkxWKhAg6qtdPkoOH+4ktunDWTSi4KT15OAX3A="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.CurrencyController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.CurrencyController.html",
+          "hash": "+0DlB637a0mb1PAMDyOPDXLDwBNIANcMq3w1esUvDcw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.CurrencyCreateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.CurrencyCreateRequestDto.html",
+          "hash": "2mQIMEj7szAtXafgymkeONxvE8RtbMRIsIdz16o99n4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.CurrencyResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.CurrencyResponseDto.html",
+          "hash": "VBYERFgXGs3tjulh3MJdvjvcreBPqJHqA04zbgcmv/Y="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.CurrencyUpdateRequestDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.CurrencyUpdateRequestDto.html",
+          "hash": "6S9YlX+BuKlw4YdRs0hpipVJ98Z5G/wp9215FcUXZ+w="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.CoreModule.html",
+          "hash": "oYnvDvOuDKe5DE7ljL+qUsFU8oBMWrE2MONBqffPbnc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.DocumentsModule.DocumentController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.DocumentsModule.DocumentController.html",
+          "hash": "EzBFkAYkza9Szcb2ecSKPg8Rezq82Dj+LAUuvZNMnME="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.DocumentsModule.DocumentResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.DocumentsModule.DocumentResponseDto.html",
+          "hash": "8+MtipD2Es0i9FTqHy3yOdU+oabmUu8JKIC/Kaghy5c="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.DocumentsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.DocumentsModule.html",
+          "hash": "DubAnFUKpFIAoB8O7eETmjOhUoksa64sEWZlCWOBTZo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.MailModule.MailMessageController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.MailModule.MailMessageController.html",
+          "hash": "6ib/tDAJSNUknvx/tl0/NU4wXDAJkx8jHF3zXJxs9A4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.MailModule.MailMessageResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.MailModule.MailMessageResponseDto.html",
+          "hash": "01szyXcZUpsAc/D4Ac/VN3u0NdOhRLeKWEmtXXo8/TM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.MailModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.MailModule.html",
+          "hash": "gQkW0CFiapNu/SafoWzuzZwmzoCVjJGCb1qeiR7nTqA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.MappingProfile.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.MappingProfile.html",
+          "hash": "c2TbyMZZXx6RQm0sMeX41oGzCRgjmCa1EDSN5OB/9f4="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.TasksModule.TaskListController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.TasksModule.TaskListController.html",
+          "hash": "YvysphUhbN6fN3ndluhmf3Q4LAxKfw9h0hl/qNFXIPc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.TasksModule.TaskListResponseDto.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.TasksModule.TaskListResponseDto.html",
+          "hash": "PTTJmAtn2rI3HKm22vNAUS7PStHRv2o9Z2+zo3E1L/M="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.TasksModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.TasksModule.html",
+          "hash": "uINYh2gZGdeSHkU74Xv2YI7P0yrs2r+T49XKq7icCbA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.v1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.v1.html",
+          "hash": "3OSn6YsQdIA91p73mvngshpn5RL6o1ZJtVGc7JYfsns="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WebAPI.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WebAPI.html",
+          "hash": "z+axgnuJ/9lL3aKe0xuBCvxNFCbtKOWqqegmJNvV58Q="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WinForms.MainForm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WinForms.MainForm.html",
+          "hash": "6YLV4CcGcEZwKmlIS01k6TNNEfNjo86PRP+H4jHRJug="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WinForms.Modules.AccountsModule.AccountsComponent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WinForms.Modules.AccountsModule.AccountsComponent.html",
+          "hash": "DFB2ujEymHrT9M+53A3UiMr2v4frAP9dFgSdReGPVvY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WinForms.Modules.AccountsModule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WinForms.Modules.AccountsModule.html",
+          "hash": "983F5mhLAZ0NoAVwQdM76RoeVN/Kq7G3BREGzDqImJY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.WinForms.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.WinForms.html",
+          "hash": "pKC+DpcSvlUaUurB3qXiUCDE2XaxodgKItVrHT/Txmc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/AdminAssistant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/AdminAssistant.html",
+          "hash": "xexlSbKqbqcUPEUFqlBXXfd/EDO+DS21QKGNLGW0WHk="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.DependencyInjectionExtensions.html",
+          "hash": "EoZu96ef+vn3LRTy2k7MOnB/X5T06fGqi62VdRaGlfw="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Microsoft.Extensions.DependencyInjection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.Extensions.DependencyInjection.html",
+          "hash": "87c+0ttOQjOwVE3MznnMkFQLNwD5mxL2r4th3K/Li7k="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "Zx5k9tmI18TUIK1/x3Iuyi8KRMOl66D0+7q56Z+wbWU="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "bNdKwrUlwNc+Iklu3F8wco+/GytZhLpxoAaxCaCrL34="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Accounts-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Accounts-Module.html",
+          "hash": "KKTeremGoIE/3HGSJvawSd3XqIrCdBKJD6r4yddlN6w="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Architecture.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Architecture.html",
+          "hash": "jjFs+HenBWRZfCVi5kWUSNgSPnD6722dnYNbD8bHKqs="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Asset-Register-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Asset-Register-Module.html",
+          "hash": "6pYh/kgbIvpMrSiCCRH/fiS4ZPf4UJpjz/9XKadVyKc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Budget-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Budget-Module.html",
+          "hash": "2mdVSiG9CvBNHge7/HQmTEyGCwKfYgVvgvdpxAZfOaM="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Calendar-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Calendar-Module.html",
+          "hash": "AdYvHDnyWcs7Jmgm069qbE5bePwPeUNpPkbz4GWMhzY="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Contacts-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Contacts-Module.html",
+          "hash": "bBoWS2nUTZzg2Z99kfJEUzbzV/SSxwmQ9glq9WZW+B0="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Core-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Core-Module.html",
+          "hash": "S6sLUw+2BA/vRuwSUqi5QD6b7J1Q6eq6z0eqqlGwIzc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Dashboard-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Dashboard-Module.html",
+          "hash": "Bw3chHdkgoRTMKa5cmS5xTRxEKmfJAd8p6ow/OQBEwA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Design-Notes.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Design-Notes.html",
+          "hash": "yvZQnx7co6v7L3LXmUbvBdmrwE/XV8Da6Sh2aUEOF8k="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Documents-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Documents-Module.html",
+          "hash": "TGKwxpB8CUcBNHMOsB+Ub4usm03h+5Jnriq5KXL4Np8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Mail-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Mail-Module.html",
+          "hash": "MUYJEoJEyfjcs/ISNWM9GDCQilGp4YZrFHuNE6+h42I="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Misc-CLI-Tools.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Misc-CLI-Tools.html",
+          "hash": "JuKs6T+UEACI26K7j6uVD9LXXTeOvKuc1arbjn1Y1eA="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Reports-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Reports-Module.html",
+          "hash": "gDre/4xhm6DMwIf5UJMH+JmesCprqtXfjKsMWb1id7s="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/Tasks-Module.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/Tasks-Module.html",
+          "hash": "2wz0V/0HpvZVrAKljoiAgD+5XdnNxrTjNzxhyTiuwM8="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "d2/w0cBYIN9uklP+1/sIq8PqLVAxYjYCvmKRUMmoTFo="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "zotFLmWphEpEWCa9f0x6kP55d6THHnkJE01reh3H7dI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/wip.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/wip.html",
+          "hash": "ftmDBz1U7YMQaoP2dQYf810NsL2Ao6kkvBMQOaJ3ysQ="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Accounts-Module/AccountsModule_EntityRelationshipDiagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Accounts-Module/AccountsModule_EntityRelationshipDiagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Architecture/Component-Diagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Architecture/Component-Diagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Architecture/System-Architecture-Diagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Architecture/System-Architecture-Diagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Asset-Register-Module/AssetsRegisterModule_EntityRelationshipDiagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Asset-Register-Module/AssetsRegisterModule_EntityRelationshipDiagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Budget-Module/BudgetModule_EntityRelationshipDiagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Budget-Module/BudgetModule_EntityRelationshipDiagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Calendar-Module/CalendarModule_EntityRelationshipDiagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Calendar-Module/CalendarModule_EntityRelationshipDiagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Contacts-Module/ContactsModule_EntityRelationshipDiagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Contacts-Module/ContactsModule_EntityRelationshipDiagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Core-Module/CoreModule_EntityRelationshipDiagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Core-Module/CoreModule_EntityRelationshipDiagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Documents-Module/DocumentsModule_EntityRelationshipDiagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Documents-Module/DocumentsModule_EntityRelationshipDiagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Food-Module/Food_Module.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Food-Module/Food_Module.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Tasks-Module/TasksModule_EntityRelationshipDiagram_V1o0o0.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Tasks-Module/TasksModule_EntityRelationshipDiagram_V1o0o0.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "AHS3Pai5DgVukmy/nq/0OPCB9bHGE6ezZUPMfwYRcbc="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "5FDK2nno+gQOMmJi+Xuohjaf0/3c6ee75yvmdakdevs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 18,
+          "skipped_file_count": 18
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 336,
+          "skipped_file_count": 336
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

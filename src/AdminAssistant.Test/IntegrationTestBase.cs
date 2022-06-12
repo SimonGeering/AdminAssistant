@@ -11,12 +11,10 @@ using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Xunit;
 
-namespace AdminAssistant;
+namespace AdminAssistant.Test;
 
 [Collection("SequentialDBBackedTests")]
 public abstract class IntegrationTestBase : IDisposable
@@ -37,7 +35,7 @@ public abstract class IntegrationTestBase : IDisposable
                 logging.AddDebug();
 
                 logging.AddFilter("Default", LogLevel.Information)
-                        .AddFilter(Infra.Providers.ILoggingProvider.ServerSideLogCategory, LogLevel.Debug)
+                        .AddFilter(ILoggingProvider.ServerSideLogCategory, LogLevel.Debug)
                         .AddFilter("Microsoft", LogLevel.Warning)
                         .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else
@@ -94,8 +92,12 @@ public abstract class IntegrationTestBase : IDisposable
     }
 
     protected IServiceProvider Container { get; }
+    protected List<BankAccountTypeEntity> BankAccountTypes { get; private set; } = new List<BankAccountTypeEntity>();
+    protected List<CurrencyEntity> Currencies { get; private set; } = new List<CurrencyEntity>();
+    protected UserProfileEntity UserProfile { get; private set; } = new UserProfileEntity();
+    protected OwnerEntity CompanyOwner { get; private set; } = new OwnerEntity();
+    protected OwnerEntity PersonalOwner { get; private set; } = new OwnerEntity();
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "Keep local variables to allow future cascade and keep consistent code pattern")]
     protected async Task ResetDatabaseAsync()
     {
         await _checkpoint.Reset(_connectionString).ConfigureAwait(false);
@@ -104,11 +106,11 @@ public abstract class IntegrationTestBase : IDisposable
         var dbContext = Container.GetRequiredService<IApplicationDbContext>();
         var dateTimeProvider = Container.GetRequiredService<IDateTimeProvider>();
 
-        var testBankAccountTypes = await SeedBankAccountTypeTestData(dbContext);
-        var testCurrencies = await SeedCurrencyTestData(dbContext);
-        var testUserProfile = await SeedUserProfileTestData(dbContext, dateTimeProvider).ConfigureAwait(false);
-        var testCompanyOwner = await SeedCompanyOwnerTestData(dbContext, dateTimeProvider, testUserProfile).ConfigureAwait(false);
-        var testPersonalOwner = await SeedPersonalOwnerTestData(dbContext, dateTimeProvider, testUserProfile).ConfigureAwait(false);
+        BankAccountTypes = await SeedBankAccountTypeTestData(dbContext);
+        Currencies = await SeedCurrencyTestData(dbContext);
+        UserProfile = await SeedUserProfileTestData(dbContext, dateTimeProvider).ConfigureAwait(false);
+        CompanyOwner = await SeedCompanyOwnerTestData(dbContext, dateTimeProvider, UserProfile).ConfigureAwait(false);
+        PersonalOwner = await SeedPersonalOwnerTestData(dbContext, dateTimeProvider, UserProfile).ConfigureAwait(false);
     }
 
     protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
@@ -157,7 +159,7 @@ public abstract class IntegrationTestBase : IDisposable
         {
             Company = new CompanyEntity()
             {
-                Name = "ACME Corp",
+                Name = "ACME Corporation",
                 CompanyNumber = "12345678910",
                 VATNumber = "zz1224324543",
                 DateOfIncorporation = DateTime.Today,
@@ -191,7 +193,7 @@ public abstract class IntegrationTestBase : IDisposable
     #region IDisposable
 
     private bool disposedValue;
-
+    
     protected virtual void Dispose(bool disposing)
     {
         if (!disposedValue)

@@ -3,11 +3,8 @@
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.DocumentsModule;
+namespace AdminAssistant.Test.WebAPI.v1.DocumentsModule;
 
 [Collection("SequentialDBBackedTests")]
 public class Document_Get_Should : IntegrationTestBase

@@ -2,15 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.TasksModule;
 using AdminAssistant.DomainModel.Modules.TasksModule.CQRS;
-using Ardalis.Result;
-using FluentAssertions;
-using MediatR;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.TasksModule;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.TasksModule.TaskListControllerUnitTest;
+namespace AdminAssistant.Test.WebAPI.v1.TasksModule.TaskListControllerUnitTest;
 
 public class GetTaskLists
 {

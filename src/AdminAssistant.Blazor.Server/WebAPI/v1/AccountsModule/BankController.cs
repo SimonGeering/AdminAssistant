@@ -68,7 +68,7 @@ public class BankController : WebAPIControllerBase
         return Log.Finish(CreatedAtRoute(nameof(BankGetById), new { bankID = response.BankID }, response));
     }
 
-    [HttpGet("{bankID}")]
+    [HttpGet("{bankID}", Name = nameof(BankGetById))]
     [SwaggerOperation("Gets the Bank with the given ID.", OperationId = "GetBankById")]
     [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the Bank requested.", type: typeof(BankResponseDto))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankID does not exist.")]

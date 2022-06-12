@@ -9,11 +9,9 @@ using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.DomainModel.Modules.MailModule;
 using AdminAssistant.DomainModel.Modules.TasksModule;
-using AutoMapper;
-using FluentAssertions;
-using Xunit;
+using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
-namespace AdminAssistant.UI.Shared.WebAPIClient.v1;
+namespace AdminAssistant.Test.UI.Shared.WebAPIClient.v1;
 
 public class WebAPIClientMappingProfile_Should
 {

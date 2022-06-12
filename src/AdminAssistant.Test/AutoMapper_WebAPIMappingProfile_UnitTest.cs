@@ -9,6 +9,7 @@ using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.DomainModel.Modules.MailModule;
 using AdminAssistant.DomainModel.Modules.TasksModule;
+using AdminAssistant.WebAPI.v1;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using AdminAssistant.WebAPI.v1.AssetRegisterModule;
 using AdminAssistant.WebAPI.v1.BudgetModule;
@@ -18,11 +19,8 @@ using AdminAssistant.WebAPI.v1.CoreModule;
 using AdminAssistant.WebAPI.v1.DocumentsModule;
 using AdminAssistant.WebAPI.v1.MailModule;
 using AdminAssistant.WebAPI.v1.TasksModule;
-using AutoMapper;
-using FluentAssertions;
-using Xunit;
 
-namespace AdminAssistant.WebAPI.v1;
+namespace AdminAssistant.Test.WebAPI.v1;
 
 public class WebAPIMappingProfile_Should
 {

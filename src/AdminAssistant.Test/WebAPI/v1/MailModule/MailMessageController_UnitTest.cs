@@ -2,15 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.MailModule;
 using AdminAssistant.DomainModel.Modules.MailModule.CQRS;
-using Ardalis.Result;
-using FluentAssertions;
-using MediatR;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.MailModule;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.MailModule;
+namespace AdminAssistant.Test.WebAPI.v1.MailModule;
 
 public class MailMessageController_GetMailMessages
 {
