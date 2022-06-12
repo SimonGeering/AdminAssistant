@@ -1,7 +1,9 @@
 using AdminAssistant.DomainModel.Shared;
 using Ardalis.GuardClauses;
 using FluentValidation.AspNetCore;
+using HealthChecks.UI.Client;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
@@ -12,6 +14,7 @@ namespace AdminAssistant.Blazor.Server;
 public class Startup
 {
     // TODO: Make version a constant shared with WebAPI Assemblies
+    const string HealthCheckAPI = "/api/health";
     private const string WebAPIVersion = "v1";
     private string WebAPITitle => $"Admin Assistant WebAPI {WebAPIVersion}.";
 
@@ -50,6 +53,13 @@ public class Startup
           .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>());
 
         services.AddHealthChecks();
+
+        services.AddHealthChecksUI(setupSettings: setup =>
+        {
+            // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+            setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
+
+        }).AddInMemoryStorage();
 
         services.AddSwaggerGen(c =>
         {
@@ -108,22 +118,30 @@ public class Startup
 
         app.UseHttpsRedirection();
 
-        app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api") == false, blazor =>
+        app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api") == false, app =>
         {
-            blazor.UseBlazorFrameworkFiles();
-            blazor.UseStaticFiles();
-            blazor.UseRouting();
-            blazor.UseEndpoints(cfg => cfg.MapFallbackToFile("index.html"));
+            app.UseBlazorFrameworkFiles();
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseEndpoints(config =>
+            {
+                config.MapFallbackToFile("index.html");
+                config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+            });
         });
         app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api"), api =>
         {
             api.UseStaticFiles();
             api.UseRouting();
-            app.UseHealthChecks("/api/health");
-            api.UseEndpoints(endpoints =>
+            api.UseEndpoints(config =>
             {
-                endpoints.MapRazorPages();
-                endpoints.MapControllers();
+                config.MapRazorPages();
+                config.MapControllers();
+                config.MapHealthChecks(HealthCheckAPI, new HealthCheckOptions
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
             });
         });
     }
