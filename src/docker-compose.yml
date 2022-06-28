@@ -1,0 +1,8 @@
+version: '3.7'
+
+services:
+  adminassistant.blazor.server:
+    image: ${DOCKER_REGISTRY-}adminassistantblazorserver
+    build:
+      context: .
+      dockerfile: AdminAssistant.Blazor.Server/Dockerfile
