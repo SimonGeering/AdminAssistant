@@ -27,8 +27,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.DomainModel"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.WPF", "AdminAssistant.WPF\AdminAssistant.WPF.csproj", "{EB43D867-C6E8-4F8D-94A9-9BCE92505330}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.WinForms", "AdminAssistant.WinForms\AdminAssistant.WinForms.csproj", "{FB52E7CE-9B45-4110-A8C8-751116B8CC58}"
-EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{55BC370B-95FE-464E-A679-4D1537D375A2}"
 EndProject
 Global
@@ -69,10 +67,6 @@ Global
 		{EB43D867-C6E8-4F8D-94A9-9BCE92505330}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB43D867-C6E8-4F8D-94A9-9BCE92505330}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB43D867-C6E8-4F8D-94A9-9BCE92505330}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FB52E7CE-9B45-4110-A8C8-751116B8CC58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FB52E7CE-9B45-4110-A8C8-751116B8CC58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FB52E7CE-9B45-4110-A8C8-751116B8CC58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FB52E7CE-9B45-4110-A8C8-751116B8CC58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{55BC370B-95FE-464E-A679-4D1537D375A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{55BC370B-95FE-464E-A679-4D1537D375A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55BC370B-95FE-464E-A679-4D1537D375A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
