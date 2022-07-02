@@ -368,3 +368,4 @@ MigrationBackup/
 /src/global.json
 /ux
 /src/AdminAssistant.Blazor.Client/wwwroot/appsettings.json
+/src/development.env

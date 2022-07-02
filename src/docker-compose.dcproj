@@ -9,6 +9,7 @@
     <DockerServiceName>adminassistant.blazor.server</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="development.env" />
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>
