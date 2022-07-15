@@ -10,7 +10,7 @@ services:
     ports:
       - "1433:1433"
     env_file:
-      - development.env
+      - dev.env
   adminassistant.blazor.server:
     container_name: adminassistant_blazorserver
     image: ${DOCKER_REGISTRY-}adminassistant/blazorserver
