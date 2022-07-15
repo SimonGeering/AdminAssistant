@@ -114,7 +114,8 @@
       "shardulm94.trailing-spaces",
       "pflannery.vscode-versionlens",
       "visualstudioexptteam.vscodeintellicode",
-      "vscode-icons-team.vscode-icons"
+      "vscode-icons-team.vscode-icons",
+      "ms-azuretools.vscode-docker"
     ],
     "unwantedRecommendations": [
       "ms-azuretools.vscode-docker",

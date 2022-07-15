@@ -22,6 +22,12 @@ public record BankAccount : IDatabasePersistable
     /// The unique identifier of the <see cref="CoreModule.Currency"/> for this <see cref="BankAccount"/>./>
     /// </summary>
     public int CurrencyID { get; init; }
+
+    /// <summary>
+    /// The unique identifier of the owner of this <see cref="BankAccount"/>./>
+    /// </summary>
+    public int OwnerID { get; init; }
+
     public string AccountName { get; init; } = string.Empty;
     public bool IsBudgeted { get; init; }
     public int OpeningBalance { get; init; }

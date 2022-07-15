@@ -1,4 +1,3 @@
-using System;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.TypeMapping;
 
@@ -19,5 +18,9 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
         public int OpeningBalance { get; init; }
         public int CurrentBalance { get; init; }
         public DateTime OpenedOn { get; init; }
+
+        public void MapTo(AutoMapper.Profile profile)
+            => profile.CreateMap<BankAccountUpdateRequestDto, BankAccount>()
+                      .ForMember(x => x.OwnerID, opt => opt.Ignore());
     }
 }

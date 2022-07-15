@@ -24,6 +24,7 @@ public class BankAccount_Get_Should : IntegrationTestBase
         {
             BankAccountTypeID = BankAccountTypes.First().BankAccountTypeID,
             CurrencyID = Currencies.First().CurrencyID,
+            OwnerID = PersonalOwner.OwnerID,
             AccountName = "Acme Bank PLC",
             
         }).ConfigureAwait(false);
