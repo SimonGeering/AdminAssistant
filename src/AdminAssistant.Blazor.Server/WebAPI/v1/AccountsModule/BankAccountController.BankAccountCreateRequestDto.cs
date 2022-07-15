@@ -21,6 +21,7 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
 
         public void MapTo(AutoMapper.Profile profile)
             => profile.CreateMap<BankAccountCreateRequestDto, BankAccount>()
-                      .ForMember(x => x.BankAccountID, opt => opt.Ignore());
+                      .ForMember(x => x.BankAccountID, opt => opt.Ignore())
+                      .ForMember(x => x.OwnerID, opt => opt.Ignore());
     }
 }

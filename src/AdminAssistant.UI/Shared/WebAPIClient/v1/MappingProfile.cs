@@ -18,7 +18,8 @@ public class MappingProfile : MappingProfileBase
     {
         // Accounts Module ...
         CreateMap<BankResponseDto, Bank>();
-        CreateMap<BankAccountResponseDto, BankAccount>();
+        CreateMap<BankAccountResponseDto, BankAccount>()
+            .ForMember(x => x.OwnerID, opt => opt.Ignore());
         CreateMap<BankAccountInfoResponseDto, BankAccountInfo>();
         CreateMap<BankAccountTypeResponseDto, BankAccountType>();
         CreateMap<BankAccountTransactionResponseDto, BankAccountTransaction>();
