@@ -11,11 +11,257 @@ services:
       - "1433:1433"
     env_file:
       - dev.env
+    networks:
+      - backend
+
   adminassistant.blazor.server:
-    container_name: adminassistant_blazorserver
-    image: ${DOCKER_REGISTRY-}adminassistant/blazorserver
+    container_name: AdminAssistant.Blazor.Server
+    image: ${DOCKER_REGISTRY-}adminassistantblazorserver
     build:
       context: .
       dockerfile: AdminAssistant.Blazor.Server/Dockerfile
     depends_on:
+      - adminassistant.accounts.api
+      - adminassistant.admin.api
+      - adminassistant.assetregister.api
+      - adminassistant.billing.api
+      - adminassistant.budget.api
+      - adminassistant.calendar.api
+      - adminassistant.contacts.api
+      - adminassistant.core.api
+      - adminassistant.dashboard.api
+      - adminassistant.documents.api
+      - adminassistant.groceries.api
+      - adminassistant.mail.api
+      - adminassistant.meals.api
+      - adminassistant.notes.api
+      - adminassistant.reports.api
+      - adminassistant.tasks.api
       - adminassistant.sqlserver
+    networks:
+      - service-layer
+      - public-facing
+
+  adminassistant.healthmonitor:
+    container_name: AdminAssistant.HealthMonitor
+    image: ${DOCKER_REGISTRY-}adminassistanthealthmonitor
+    build:
+      context: .
+      dockerfile: AdminAssistant.HealthMonitor/Dockerfile
+    depends_on:
+      - adminassistant.accounts.api
+      - adminassistant.admin.api
+      - adminassistant.assetregister.api
+      - adminassistant.billing.api
+      - adminassistant.budget.api
+      - adminassistant.calendar.api
+      - adminassistant.contacts.api
+      - adminassistant.core.api
+      - adminassistant.dashboard.api
+      - adminassistant.documents.api
+      - adminassistant.groceries.api
+      - adminassistant.mail.api
+      - adminassistant.meals.api
+      - adminassistant.notes.api
+      - adminassistant.reports.api
+      - adminassistant.tasks.api
+    networks:
+      - service-layer
+      - public-facing
+
+  adminassistant.accounts.api:
+    container_name: AdminAssistant.Accounts.API
+    image: ${DOCKER_REGISTRY-}adminassistantaccountsapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Accounts.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.admin.api:
+    container_name: AdminAssistant.Admin.API
+    image: ${DOCKER_REGISTRY-}adminassistantadminapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Admin.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.assetregister.api:
+    container_name: AdminAssistant.AssetRegister.API
+    image: ${DOCKER_REGISTRY-}adminassistantassetregisterapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.AssetRegister.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.billing.api:
+    container_name: AdminAssistant.Billing.API
+    image: ${DOCKER_REGISTRY-}adminassistantbillingapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Billing.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.budget.api:
+    container_name: AdminAssistant.Budget.API
+    image: ${DOCKER_REGISTRY-}adminassistantbudgetapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Budget.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.calendar.api:
+    container_name: AdminAssistant.Calendar.API
+    image: ${DOCKER_REGISTRY-}adminassistantcalendarapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Calendar.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.contacts.api:
+    container_name: AdminAssistant.Contacts.API
+    image: ${DOCKER_REGISTRY-}adminassistantcontactsapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Contacts.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.core.api:
+    container_name: AdminAssistant.Core.API
+    image: ${DOCKER_REGISTRY-}adminassistantcoreapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Core.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.dashboard.api:
+    container_name: AdminAssistant.Dashboard.API
+    image: ${DOCKER_REGISTRY-}adminassistantdashboardapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Dashboard.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.documents.api:
+    container_name: AdminAssistant.Documents.API
+    image: ${DOCKER_REGISTRY-}adminassistantdocumentsapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Documents.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.groceries.api:
+    container_name: AdminAssistant.Groceries.API
+    image: ${DOCKER_REGISTRY-}adminassistantgroceriesapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Groceries.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.mail.api:
+    container_name: AdminAssistant.Mail.API
+    image: ${DOCKER_REGISTRY-}adminassistantmailapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Mail.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.meals.api:
+    container_name: AdminAssistant.Meals.API
+    image: ${DOCKER_REGISTRY-}adminassistantmealsapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Meals.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.notes.api:
+    container_name: AdminAssistant.Notes.API
+    image: ${DOCKER_REGISTRY-}adminassistantnotesapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Notes.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.reports.api:
+    container_name: AdminAssistant.Reports.API
+    image: ${DOCKER_REGISTRY-}adminassistantreportsapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Reports.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+  adminassistant.tasks.api:
+    container_name: AdminAssistant.Tasks.API
+    image: ${DOCKER_REGISTRY-}adminassistanttasksapi
+    build:
+      context: .
+      dockerfile: Services/AdminAssistant.Tasks.API/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+    networks:
+      - backend
+      - service-layer
+
+networks:  
+  backend:
+  service-layer:
+  public-facing:

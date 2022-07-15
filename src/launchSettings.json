@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "None",
+      "composeLaunchServiceName": "adminassistant.healthmonitor",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "adminassistant.accounts.api": "StartDebugging",
+        "adminassistant.blazor.server": "StartDebugging",
+        "adminassistant.healthmonitor": "StartDebugging",
+        "adminassistant.sqlserver": "StartWithoutDebugging"
+      }
+    }
+  }
+}
