@@ -1,0 +1,20 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.accounts.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/accounts/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:443"
+  }
+}

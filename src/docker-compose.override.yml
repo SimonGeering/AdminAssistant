@@ -21,12 +21,22 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
+  adminassistant.gateway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443
+    ports:
+      - "127.0.0.1:443:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
   adminassistant.accounts.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5101:80"
+      - "127.0.0.1:5101:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -34,9 +44,9 @@ services:
   adminassistant.admin.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5102:80"
+      - "127.0.0.1:5102:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -44,9 +54,9 @@ services:
   adminassistant.assetregister.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5103:80"
+      - "127.0.0.1:5103:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -54,9 +64,9 @@ services:
   adminassistant.billing.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5104:80"
+      - "127.0.0.1:5104:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -64,9 +74,9 @@ services:
   adminassistant.budget.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5105:80"
+      - "127.0.0.1:5105:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -74,9 +84,9 @@ services:
   adminassistant.calendar.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5106:80"
+      - "127.0.0.1:5106:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -84,9 +94,9 @@ services:
   adminassistant.contacts.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5107:80"
+      - "127.0.0.1:5107:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -94,9 +104,9 @@ services:
   adminassistant.core.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5108:80"
+      - "127.0.0.1:5108:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -104,9 +114,9 @@ services:
   adminassistant.dashboard.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5109:80"
+      - "127.0.0.1:5109:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -114,9 +124,9 @@ services:
   adminassistant.documents.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5110:80"
+      - "127.0.0.1:5110:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -124,9 +134,9 @@ services:
   adminassistant.groceries.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5111:80"
+      - "127.0.0.1:5111:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -134,9 +144,9 @@ services:
   adminassistant.mail.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5112:80"
+      - "127.0.0.1:5112:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -144,9 +154,9 @@ services:
   adminassistant.meals.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5113:80"
+      - "127.0.0.1:5113:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -154,9 +164,9 @@ services:
   adminassistant.notes.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5114:80"
+      - "127.0.0.1:5114:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -164,9 +174,9 @@ services:
   adminassistant.reports.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5115:80"
+      - "127.0.0.1:5115:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
@@ -174,9 +184,9 @@ services:
   adminassistant.tasks.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_URLS=https://+:443
     ports:
-      - "127.0.0.1:5116:80"
+      - "127.0.0.1:5116:443" # Debug Only - allow bypassing the API Gateway for Swagger & direct debugging.
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

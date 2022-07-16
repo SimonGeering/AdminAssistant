@@ -5,12 +5,12 @@ version: '3.7'
 #
 services:
   adminassistant.sqlserver:
-    container_name: adminassistant_sqlserver
+    container_name: AdminAssistant.SQLServer
     image:  mcr.microsoft.com/mssql/server:2019-latest
     ports:
       - "1433:1433"
     env_file:
-      - dev.env
+      - adminassistant.sqlserver.dev.env
     networks:
       - backend
 
@@ -21,23 +21,7 @@ services:
       context: .
       dockerfile: AdminAssistant.Blazor.Server/Dockerfile
     depends_on:
-      - adminassistant.accounts.api
-      - adminassistant.admin.api
-      - adminassistant.assetregister.api
-      - adminassistant.billing.api
-      - adminassistant.budget.api
-      - adminassistant.calendar.api
-      - adminassistant.contacts.api
-      - adminassistant.core.api
-      - adminassistant.dashboard.api
-      - adminassistant.documents.api
-      - adminassistant.groceries.api
-      - adminassistant.mail.api
-      - adminassistant.meals.api
-      - adminassistant.notes.api
-      - adminassistant.reports.api
-      - adminassistant.tasks.api
-      - adminassistant.sqlserver
+      - adminassistant.gateway
     networks:
       - service-layer
       - public-facing
@@ -48,6 +32,18 @@ services:
     build:
       context: .
       dockerfile: AdminAssistant.HealthMonitor/Dockerfile
+    depends_on:
+      - adminassistant.gateway
+    networks:
+      - service-layer
+      - public-facing
+
+  adminassistant.gateway:
+    container_name: AdminAssistant.Gateway
+    image: ${DOCKER_REGISTRY-}adminassistantgateway
+    build:
+      context: .
+      dockerfile: AdminAssistant.Gateway/Dockerfile
     depends_on:
       - adminassistant.accounts.api
       - adminassistant.admin.api
