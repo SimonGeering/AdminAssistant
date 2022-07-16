@@ -9,7 +9,6 @@ builder.Services.AddHealthChecksUI(setupSettings: setup =>
     });
 
     // Main API Gateway Access
-    //setup.AddHealthCheckEndpoint("(Gateway)", "https://adminassistant.gateway:443/api/health");
     setup.AddHealthCheckEndpoint("(Gateway) Accounts API", "https://adminassistant.gateway:443/api/accounts/health");
     setup.AddHealthCheckEndpoint("(Gateway) Admin API", "https://adminassistant.gateway:443/api/admin/health");
     setup.AddHealthCheckEndpoint("(Gateway) AssetRegister API", "https://adminassistant.gateway:443/api/assetregister/health");
