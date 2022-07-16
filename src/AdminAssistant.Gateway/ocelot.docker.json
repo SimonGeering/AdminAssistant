@@ -1,5 +1,47 @@
 {
   "Routes": [
+    //// Blazor Server
+    //{
+    //  "DownstreamPathTemplate": "/{url}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "adminassistant.blazor.server",
+    //      "Port": 443
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/{url}",
+    //  "UpstreamHttpMethod": [ "Get" ]
+    //},
+    //// Health Monitor
+    //{
+    //  "DownstreamPathTemplate": "/{url}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "adminassistant.healthmonitor",
+    //      "Port": 443
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/healthmonitor/{url}",
+    //  "UpstreamHttpMethod": [ "Get" ],
+    //  "DangerousAcceptAnyServerCertificateValidator": true
+    //},
+    //// Gateway
+    //{
+    //  "DownstreamPathTemplate": "/api/health",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "adminassistant.gateway",
+    //      "Port": 443
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/api/health",
+    //  "UpstreamHttpMethod": [ "Get" ],
+    //  "DangerousAcceptAnyServerCertificateValidator": true
+    //},
+    // Accounts API
     {
       "DownstreamPathTemplate": "/{url}",
       "DownstreamScheme": "https",
@@ -12,7 +54,217 @@
       "UpstreamPathTemplate": "/api/accounts/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
-    }
+    },
+    // Admin API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.admin.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/admin/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // AssetRegister API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.assetregister.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/assetregister/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Billing API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.billing.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/billing/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Budget API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.budget.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/budget/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Calendar API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.calendar.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/calendar/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Contacts API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.contacts.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/contacts/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Core API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.core.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/core/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Dashboard API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.dashboard.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/dashboard/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Documents API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.documents.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/documents/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Groceries API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.groceries.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/groceries/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Mail API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.mail.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/mail/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Meals API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.meals.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/meals/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Notes API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.notes.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/notes/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Reports API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.reports.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/reports/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Tasks API
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.tasks.api",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/api/tasks/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    }  
   ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:443"

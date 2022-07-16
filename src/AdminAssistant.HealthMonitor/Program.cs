@@ -9,7 +9,23 @@ builder.Services.AddHealthChecksUI(setupSettings: setup =>
     });
 
     // Main API Gateway Access
+    //setup.AddHealthCheckEndpoint("(Gateway)", "https://adminassistant.gateway:443/api/health");
     setup.AddHealthCheckEndpoint("(Gateway) Accounts API", "https://adminassistant.gateway:443/api/accounts/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Admin API", "https://adminassistant.gateway:443/api/admin/health");
+    setup.AddHealthCheckEndpoint("(Gateway) AssetRegister API", "https://adminassistant.gateway:443/api/assetregister/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Billing API", "https://adminassistant.gateway:443/api/billing/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Budget API", "https://adminassistant.gateway:443/api/budget/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Calendar API", "https://adminassistant.gateway:443/api/calendar/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Contacts API", "https://adminassistant.gateway:443/api/contacts/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Core API", "https://adminassistant.gateway:443/api/core/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Dashboard API", "https://adminassistant.gateway:443/api/dashboard/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Documents API", "https://adminassistant.gateway:443/api/documents/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Groceries API", "https://adminassistant.gateway:443/api/groceries/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Mail API", "https://adminassistant.gateway:443/api/mail/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Meals API", "https://adminassistant.gateway:443/api/meals/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Notes API", "https://adminassistant.gateway:443/api/notes/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Reports API", "https://adminassistant.gateway:443/api/reports/health");
+    setup.AddHealthCheckEndpoint("(Gateway) Tasks API", "https://adminassistant.gateway:443/api/tasks/health");
 
     if (builder.Environment.IsDevelopment())
     {

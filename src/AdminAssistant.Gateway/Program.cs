@@ -11,12 +11,12 @@ builder.Configuration.AddJsonFile("ocelot.docker.json");
 builder.Services.AddHealthChecks();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOcelot();
+builder.Services.AddOcelot(); // https://ocelot.readthedocs.io/en/latest/index.html
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.MapHealthChecks("/health", new HealthCheckOptions
+app.MapHealthChecks("/api/health", new HealthCheckOptions
 {
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
