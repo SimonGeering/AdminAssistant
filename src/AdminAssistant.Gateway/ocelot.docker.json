@@ -1,46 +1,19 @@
 {
   "Routes": [
-    //// Blazor Server
-    //{
-    //  "DownstreamPathTemplate": "/{url}",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "adminassistant.blazor.server",
-    //      "Port": 443
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/{url}",
-    //  "UpstreamHttpMethod": [ "Get" ]
-    //},
-    //// Health Monitor
-    //{
-    //  "DownstreamPathTemplate": "/{url}",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "adminassistant.healthmonitor",
-    //      "Port": 443
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/healthmonitor/{url}",
-    //  "UpstreamHttpMethod": [ "Get" ],
-    //  "DangerousAcceptAnyServerCertificateValidator": true
-    //},
-    //// Gateway
-    //{
-    //  "DownstreamPathTemplate": "/api/health",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "adminassistant.gateway",
-    //      "Port": 443
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/api/health",
-    //  "UpstreamHttpMethod": [ "Get" ],
-    //  "DangerousAcceptAnyServerCertificateValidator": true
-    //},
+    // Blazor Server
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.blazor.server",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/{url}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
     // Accounts API
     {
       "DownstreamPathTemplate": "/{url}",
