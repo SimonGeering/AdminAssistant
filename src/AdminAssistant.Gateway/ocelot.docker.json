@@ -1,12 +1,12 @@
 {
   "Routes": [
-    // Blazor Server
+    // Weather Server
     {
       "DownstreamPathTemplate": "/{url}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "adminassistant.blazor.server",
+          "Host": "adminassistant.weather.server",
           "Port": 443
         }
       ],
@@ -14,6 +14,20 @@
       "UpstreamHttpMethod": [ "Get" ],
       "DangerousAcceptAnyServerCertificateValidator": true
     },
+    //// Blazor Server
+    //{
+    //  "DownstreamPathTemplate": "/{url}",
+    //  "DownstreamScheme": "https",
+    //  "DownstreamHostAndPorts": [
+    //    {
+    //      "Host": "adminassistant.blazor.server",
+    //      "Port": 443
+    //    }
+    //  ],
+    //  "UpstreamPathTemplate": "/{url}",
+    //  "UpstreamHttpMethod": [ "Get" ],
+    //  "DangerousAcceptAnyServerCertificateValidator": true
+    //},
     // Accounts API
     {
       "DownstreamPathTemplate": "/{url}",
@@ -237,7 +251,7 @@
       "UpstreamPathTemplate": "/api/tasks/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
-    }  
+    }
   ],
   "GlobalConfiguration": {
     "BaseUrl": "https://localhost:443"

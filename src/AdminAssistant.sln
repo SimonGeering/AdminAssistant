@@ -31,41 +31,45 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{378A0EAB-3154-4945-8864-02F6D356A8F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Accounts.API", "Services\AdminAssistant.Accounts.API\AdminAssistant.Accounts.API.csproj", "{34A5FFBD-D413-404A-87CB-7998E1A86604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Accounts.API", "Services\AdminAssistant.Accounts.API\AdminAssistant.Accounts.API.csproj", "{34A5FFBD-D413-404A-87CB-7998E1A86604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.HealthMonitor", "AdminAssistant.HealthMonitor\AdminAssistant.HealthMonitor.csproj", "{849A6E1E-72DA-4338-BDF3-1C7966DF738A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.HealthMonitor", "AdminAssistant.HealthMonitor\AdminAssistant.HealthMonitor.csproj", "{849A6E1E-72DA-4338-BDF3-1C7966DF738A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.AssetRegister.API", "Services\AdminAssistant.AssetRegister.API\AdminAssistant.AssetRegister.API.csproj", "{6F57B88A-3203-43C6-BE21-086F36CC5E85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Budget.API", "Services\AdminAssistant.Budget.API\AdminAssistant.Budget.API.csproj", "{4DCC315E-B2BD-4A7B-BA9D-708CC6B6435E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Budget.API", "Services\AdminAssistant.Budget.API\AdminAssistant.Budget.API.csproj", "{4DCC315E-B2BD-4A7B-BA9D-708CC6B6435E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Admin.API", "Services\AdminAssistant.Admin.API\AdminAssistant.Admin.API.csproj", "{AEB2CB82-BC77-4C7A-B039-6B69C33CEDDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Admin.API", "Services\AdminAssistant.Admin.API\AdminAssistant.Admin.API.csproj", "{AEB2CB82-BC77-4C7A-B039-6B69C33CEDDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Billing.API", "Services\AdminAssistant.Billing.API\AdminAssistant.Billing.API.csproj", "{5B5B2ED5-719E-42DA-8A93-0AC43CCF8D61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Billing.API", "Services\AdminAssistant.Billing.API\AdminAssistant.Billing.API.csproj", "{5B5B2ED5-719E-42DA-8A93-0AC43CCF8D61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Calendar.API", "Services\AdminAssistant.Calendar.API\AdminAssistant.Calendar.API.csproj", "{36DA2973-7352-4E97-B182-52AF64DD693B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Calendar.API", "Services\AdminAssistant.Calendar.API\AdminAssistant.Calendar.API.csproj", "{36DA2973-7352-4E97-B182-52AF64DD693B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Contacts.API", "Services\AdminAssistant.Contacts.API\AdminAssistant.Contacts.API.csproj", "{EE5CB48A-8394-42C3-98E5-C9471918E7A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Contacts.API", "Services\AdminAssistant.Contacts.API\AdminAssistant.Contacts.API.csproj", "{EE5CB48A-8394-42C3-98E5-C9471918E7A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Core.API", "Services\AdminAssistant.Core.API\AdminAssistant.Core.API.csproj", "{B0BA0942-D2E2-4F5A-8012-384F99905D6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Core.API", "Services\AdminAssistant.Core.API\AdminAssistant.Core.API.csproj", "{B0BA0942-D2E2-4F5A-8012-384F99905D6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Dashboard.API", "Services\AdminAssistant.Dashboard.API\AdminAssistant.Dashboard.API.csproj", "{D8CBB987-03E3-43BA-AF24-4A3039BFF049}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Dashboard.API", "Services\AdminAssistant.Dashboard.API\AdminAssistant.Dashboard.API.csproj", "{D8CBB987-03E3-43BA-AF24-4A3039BFF049}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Documents.API", "Services\AdminAssistant.Documents.API\AdminAssistant.Documents.API.csproj", "{536DFA4D-1CAF-4EDB-A47E-A00744158808}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Documents.API", "Services\AdminAssistant.Documents.API\AdminAssistant.Documents.API.csproj", "{536DFA4D-1CAF-4EDB-A47E-A00744158808}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Groceries.API", "Services\AdminAssistant.Groceries.API\AdminAssistant.Groceries.API.csproj", "{B387F800-2152-4D28-9CDD-6EEB4A593AA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Groceries.API", "Services\AdminAssistant.Groceries.API\AdminAssistant.Groceries.API.csproj", "{B387F800-2152-4D28-9CDD-6EEB4A593AA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Notes.API", "Services\AdminAssistant.Notes.API\AdminAssistant.Notes.API.csproj", "{DB4D6086-1093-4B4B-A860-D5523416EC0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Notes.API", "Services\AdminAssistant.Notes.API\AdminAssistant.Notes.API.csproj", "{DB4D6086-1093-4B4B-A860-D5523416EC0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Mail.API", "Services\AdminAssistant.Mail.API\AdminAssistant.Mail.API.csproj", "{04B09517-93F8-4E0C-8776-88FE31137648}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Mail.API", "Services\AdminAssistant.Mail.API\AdminAssistant.Mail.API.csproj", "{04B09517-93F8-4E0C-8776-88FE31137648}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Meals.API", "Services\AdminAssistant.Meals.API\AdminAssistant.Meals.API.csproj", "{7AB17AE8-DC3B-4207-84CB-B30B14A6BE3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Meals.API", "Services\AdminAssistant.Meals.API\AdminAssistant.Meals.API.csproj", "{7AB17AE8-DC3B-4207-84CB-B30B14A6BE3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Reports.API", "Services\AdminAssistant.Reports.API\AdminAssistant.Reports.API.csproj", "{529A137C-869E-4A0E-AA04-F583DB0821B6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Reports.API", "Services\AdminAssistant.Reports.API\AdminAssistant.Reports.API.csproj", "{529A137C-869E-4A0E-AA04-F583DB0821B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Tasks.API", "Services\AdminAssistant.Tasks.API\AdminAssistant.Tasks.API.csproj", "{E1773BB5-D8B3-4090-82A1-082A072F74D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Tasks.API", "Services\AdminAssistant.Tasks.API\AdminAssistant.Tasks.API.csproj", "{E1773BB5-D8B3-4090-82A1-082A072F74D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Gateway", "AdminAssistant.Gateway\AdminAssistant.Gateway.csproj", "{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Gateway", "AdminAssistant.Gateway\AdminAssistant.Gateway.csproj", "{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Weather.Server", "AdminAssistant.Weather\Server\AdminAssistant.Weather.Server.csproj", "{206DE777-A91B-4A31-BD66-FE5FA2453848}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Weather.Client", "AdminAssistant.Weather\Client\AdminAssistant.Weather.Client.csproj", "{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -181,6 +185,14 @@ Global
 		{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}.Release|Any CPU.Build.0 = Release|Any CPU
+		{206DE777-A91B-4A31-BD66-FE5FA2453848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{206DE777-A91B-4A31-BD66-FE5FA2453848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{206DE777-A91B-4A31-BD66-FE5FA2453848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{206DE777-A91B-4A31-BD66-FE5FA2453848}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

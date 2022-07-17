@@ -14,6 +14,18 @@ services:
     networks:
       - backend
 
+  adminassistant.weather.server:
+    container_name: AdminAssistant.Weather.Server
+    image: ${DOCKER_REGISTRY-}adminassistantweatherserver
+    build:
+      context: .
+      dockerfile: AdminAssistant.Weather/Server/Dockerfile
+    depends_on:
+      - adminassistant.gateway
+    networks:
+      - service-layer
+      - public-facing
+
   adminassistant.blazor.server:
     container_name: AdminAssistant.Blazor.Server
     image: ${DOCKER_REGISTRY-}adminassistantblazorserver

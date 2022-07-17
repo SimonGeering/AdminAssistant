@@ -1,6 +1,17 @@
 version: '3.7'
 
 services:
+
+  adminassistant.weather.server:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443
+    ports:
+      - "127.0.0.1:6001:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
   adminassistant.blazor.server:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
