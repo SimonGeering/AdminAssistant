@@ -67,9 +67,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Tasks.API", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Gateway", "AdminAssistant.Gateway\AdminAssistant.Gateway.csproj", "{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Weather.Server", "AdminAssistant.Weather\Server\AdminAssistant.Weather.Server.csproj", "{206DE777-A91B-4A31-BD66-FE5FA2453848}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Weather.Server", "AdminAssistant.Weather\Server\AdminAssistant.Weather.Server.csproj", "{206DE777-A91B-4A31-BD66-FE5FA2453848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Weather.Client", "AdminAssistant.Weather\Client\AdminAssistant.Weather.Client.csproj", "{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Weather.Client", "AdminAssistant.Weather\Client\AdminAssistant.Weather.Client.csproj", "{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
