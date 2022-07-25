@@ -60,39 +60,33 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
+app.MapPut("/v1/currency",
+    async ([SwaggerParameter("The Currency for which updates are to be persisted.", Required = true)]
+           CurrencyUpdateRequestDto currencyUpdateRequest, IMapper mapper, IMediator mediator, ILoggingProvider log) =>
+    {
+        log.Start();
 
-//    [HttpPut]
-//    [SwaggerOperation("Update an existing Currency.", OperationId = "PutCurrency")]
-//    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated CurrencyResponseDto", type: typeof(CurrencyResponseDto))]
-//    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the CurrencyID of the given currencyUpdateRequest does not exist.")]
-//    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given currencyUpdateRequest is invalid.")]
-//    public async Task<ActionResult<CurrencyResponseDto>> CurrencyPut([FromBody, SwaggerParameter("The Currency for which updates are to be persisted.", Required = true)] CurrencyUpdateRequestDto currencyUpdateRequest)
-//    {
-//        Log.Start();
+        var currency = mapper.Map<Currency>(currencyUpdateRequest);
+        var result = await mediator.Send(new CurrencyUpdateCommand(currency)).ConfigureAwait(false);
 
-//        var currency = Mapper.Map<Currency>(currencyUpdateRequest);
-//        var result = await Mediator.Send(new CurrencyUpdateCommand(currency)).ConfigureAwait(false);
+        if (result.Status == ResultStatus.NotFound)
+            return log.Finish(Results.NotFound());
 
-//        if (result.Status == ResultStatus.NotFound)
-//        {
-//            result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
-//            return Log.Finish(NotFound(ModelState));
-//        }
+        if (result.Status == ResultStatus.Invalid)
+            return log.Finish(Results.ValidationProblem(result.ValidationErrors.ToErrorDetails())); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
 
-//        if (result.Status == ResultStatus.Invalid)
-//        {
-//            result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
-//            return Log.Finish(UnprocessableEntity(ModelState));
-//        }
-
-//        var response = Mapper.Map<CurrencyResponseDto>(result.Value);
-//        return Log.Finish(Ok(response));
-//    }
+        var response = mapper.Map<CurrencyResponseDto>(result.Value);
+        return log.Finish(Results.Ok(response));
+    })
+    .WithName("PutCurrency")
+    .WithMetadata(new SwaggerOperationAttribute(summary: "Update an existing Currency."))
+    .WithMetadata(new SwaggerResponseAttribute(StatusCodes.Status200OK, "Ok - returns the updated CurrencyResponseDto", type: typeof(CurrencyResponseDto)))
+    .WithMetadata(new SwaggerResponseAttribute(StatusCodes.Status404NotFound, "NotFound - When the CurrencyID of the given currencyUpdateRequest does not exist."))
+    .WithMetadata(new SwaggerResponseAttribute(StatusCodes.Status400BadRequest, "BadRequest - When the given currencyUpdateRequest is invalid."));
 
 app.MapPost("/v1/currency",
     async ([SwaggerParameter("The details of the Currency to be created.", Required = true)]
-           CurrencyCreateRequestDto currencyCreateRequest,
-           IMapper mapper, IMediator mediator, ILoggingProvider log) =>
+           CurrencyCreateRequestDto currencyCreateRequest, IMapper mapper, IMediator mediator, ILoggingProvider log) =>
     {
         log.Start();
 
@@ -100,22 +94,15 @@ app.MapPost("/v1/currency",
         var result = await mediator.Send(new CurrencyCreateCommand(currency)).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.Invalid)
-        {
-            var errorDetails = new Dictionary<string, string[]>();
+            return log.Finish(Results.ValidationProblem(result.ValidationErrors.ToErrorDetails())); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
 
-            result.ValidationErrors.ForEach((err)
-                => errorDetails.Add(err.Identifier, new[] { err.ErrorMessage }));
-
-            return log.Finish(Results.ValidationProblem(errorDetails)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
-        }
         var response = mapper.Map<CurrencyResponseDto>(result.Value);
         return log.Finish(Results.CreatedAtRoute("CurrencyGetById", new { currencyID = response.CurrencyID }, response));
-
     })
     .WithName("PostCurrency")
     .WithMetadata(new SwaggerOperationAttribute(summary: "Creates a new Currency."))
     .WithMetadata(new SwaggerResponseAttribute(StatusCodes.Status201Created, "Created - returns the created currency with its assigned newly ID.", type: typeof(CurrencyResponseDto)))
-    .WithMetadata(new SwaggerResponseAttribute(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given currencyCreateRequest is invalid.", type: typeof(CurrencyResponseDto)));
+    .WithMetadata(new SwaggerResponseAttribute(StatusCodes.Status400BadRequest, "BadRequest - When the given currencyCreateRequest is invalid.", type: typeof(CurrencyResponseDto)));
 
 app.MapGet("/v1/currency/{currencyID}",
     async ([SwaggerParameter("The ID of the Currency to be returned.", Required = true)]
