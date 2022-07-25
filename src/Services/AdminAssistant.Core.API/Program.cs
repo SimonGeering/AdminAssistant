@@ -3,14 +3,12 @@ using AdminAssistant.Core.API;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 using AdminAssistant.DomainModel.Shared;
-using AdminAssistant.Framework.TypeMapping;
 using AdminAssistant.Infra.Providers;
 using Ardalis.Result;
 using AutoMapper;
 using HealthChecks.UI.Client;
 using MediatR;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Annotations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -91,29 +89,37 @@ app.MapGet("/weatherforecast", () =>
 //        return Log.Finish(Ok(response));
 //    }
 
-//    [HttpPost]
-//    [SwaggerOperation("Creates a new Currency.", OperationId = "PostCurrency")]
-//    [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created currency with its assigned newly ID.", type: typeof(CurrencyResponseDto))]
-//    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given currencyCreateRequest is invalid.")]
-//    public async Task<ActionResult<CurrencyResponseDto>> CurrencyPost([FromBody, SwaggerParameter("The details of the Currency to be created.", Required = true)] CurrencyCreateRequestDto currencyCreateRequest)
-//    {
-//        Log.Start();
+app.MapPost("/v1/currency",
+    async ([SwaggerParameter("The details of the Currency to be created.", Required = true)]
+           CurrencyCreateRequestDto currencyCreateRequest,
+           IMapper mapper, IMediator mediator, ILoggingProvider log) =>
+    {
+        log.Start();
 
-//        var currency = Mapper.Map<Currency>(currencyCreateRequest);
-//        var result = await Mediator.Send(new CurrencyCreateCommand(currency)).ConfigureAwait(false);
+        var currency = mapper.Map<Currency>(currencyCreateRequest);
+        var result = await mediator.Send(new CurrencyCreateCommand(currency)).ConfigureAwait(false);
 
-//        if (result.Status == ResultStatus.Invalid)
-//        {
-//            result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
-//            return Log.Finish(UnprocessableEntity(ModelState)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
-//        }
+        if (result.Status == ResultStatus.Invalid)
+        {
+            var errorDetails = new Dictionary<string, string[]>();
 
-//        var response = Mapper.Map<CurrencyResponseDto>(result.Value);
-//        return Log.Finish(CreatedAtRoute(nameof(CurrencyGetById), new { currencyID = response.CurrencyID }, response));
-//    }
+            result.ValidationErrors.ForEach((err)
+                => errorDetails.Add(err.Identifier, new[] { err.ErrorMessage }));
+
+            return log.Finish(Results.ValidationProblem(errorDetails)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
+        }
+        var response = mapper.Map<CurrencyResponseDto>(result.Value);
+        return log.Finish(Results.CreatedAtRoute("CurrencyGetById", new { currencyID = response.CurrencyID }, response));
+
+    })
+    .WithName("PostCurrency")
+    .WithMetadata(new SwaggerOperationAttribute(summary: "Creates a new Currency."))
+    .WithMetadata(new SwaggerResponseAttribute(StatusCodes.Status201Created, "Created - returns the created currency with its assigned newly ID.", type: typeof(CurrencyResponseDto)))
+    .WithMetadata(new SwaggerResponseAttribute(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given currencyCreateRequest is invalid.", type: typeof(CurrencyResponseDto)));
 
 app.MapGet("/v1/currency/{currencyID}",
-    async ([SwaggerParameter("The ID of the Currency to be returned.", Required = true)] int currencyID, IMapper mapper, IMediator mediator, ILoggingProvider log) =>
+    async ([SwaggerParameter("The ID of the Currency to be returned.", Required = true)]
+           int currencyID, IMapper mapper, IMediator mediator, ILoggingProvider log) =>
     {
         log.Start();
 
@@ -145,42 +151,3 @@ app.MapGet("/v1/currency",
     .WithMetadata(new SwaggerResponseAttribute(StatusCodes.Status200OK, "Ok - returns a list of CurrencyResponseDto", type: typeof(IEnumerable<CurrencyResponseDto>)));
 
 app.Run();
-
-namespace AdminAssistant.Core.API
-{
-
-    public class MappingProfile : MappingProfileBase
-    {
-        public MappingProfile()
-            : base(typeof(MappingProfile).Assembly)
-        {
-        }
-    }
-
-    [SwaggerSchema(Required = new[] { "Symbol", "DecimalFormat" })]
-    public record CurrencyCreateRequestDto : IMapTo<Currency>
-    {
-        public string Symbol { get; init; } = string.Empty;
-        public string DecimalFormat { get; init; } = string.Empty;
-
-        public void MapTo(AutoMapper.Profile profile)
-            => profile.CreateMap<CurrencyCreateRequestDto, Currency>()
-                      .ForMember(x => x.CurrencyID, opt => opt.Ignore());
-    }
-
-    public record CurrencyResponseDto : IMapFrom<Currency>
-    {
-        public int CurrencyID { get; init; }
-        public string Symbol { get; init; } = string.Empty;
-        public string DecimalFormat { get; init; } = string.Empty;
-    }
-
-    [SwaggerSchema(Required = new[] { "CurrencyID", "Symbol", "DecimalFormat" })]
-    public record CurrencyUpdateRequestDto : IMapTo<Currency>
-    {
-        [SwaggerSchema("The Currency identifier.", ReadOnly = true)]
-        public int CurrencyID { get; init; }
-        public string Symbol { get; init; } = string.Empty;
-        public string DecimalFormat { get; init; } = string.Empty;
-    }
-}
