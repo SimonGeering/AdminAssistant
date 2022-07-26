@@ -7,7 +7,6 @@ using MediatR;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.Core.API;
-
 public static class CurrencyEndpoint
 {
     public static void MapCurrencyEndpoint(this IEndpointRouteBuilder app)
