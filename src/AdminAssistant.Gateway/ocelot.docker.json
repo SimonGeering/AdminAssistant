@@ -1,33 +1,33 @@
 {
   "Routes": [
-    // Weather Server
+    // Blazor Server
     {
       "DownstreamPathTemplate": "/{url}",
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "adminassistant.weather.server",
+          "Host": "adminassistant.blazor.server",
           "Port": 443
         }
       ],
-      "UpstreamPathTemplate": "/{url}",
+      "UpstreamPathTemplate": "/{url}", // "https://localhost/
       "UpstreamHttpMethod": [ "Get" ],
       "DangerousAcceptAnyServerCertificateValidator": true
     },
-    //// Blazor Server
-    //{
-    //  "DownstreamPathTemplate": "/{url}",
-    //  "DownstreamScheme": "https",
-    //  "DownstreamHostAndPorts": [
-    //    {
-    //      "Host": "adminassistant.blazor.server",
-    //      "Port": 443
-    //    }
-    //  ],
-    //  "UpstreamPathTemplate": "/{url}",
-    //  "UpstreamHttpMethod": [ "Get" ],
-    //  "DangerousAcceptAnyServerCertificateValidator": true
-    //},
+    // Health Monitor
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.healthmonitor",
+          "Port": 443
+        }
+      ],
+      "UpstreamPathTemplate": "/health/{url}", // "https://localhost/health/healthchecks-ui#/healthchecks
+      "UpstreamHttpMethod": [ "Get" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
     // Accounts API
     {
       "DownstreamPathTemplate": "/{url}",
