@@ -54,13 +54,6 @@ public class Startup
 
         services.AddHealthChecks();
 
-        services.AddHealthChecksUI(setupSettings: setup =>
-        {
-            // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-            setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
-
-        }).AddInMemoryStorage();
-
         services.AddSwaggerGen(c =>
         {
             // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
@@ -123,11 +116,7 @@ public class Startup
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseEndpoints(config =>
-            {
-                config.MapFallbackToFile("index.html");
-                config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-            });
+            app.UseEndpoints(config => config.MapFallbackToFile("index.html"));
         });
         app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api"), api =>
         {
