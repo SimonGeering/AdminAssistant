@@ -2,14 +2,33 @@
   "profiles": {
     "Docker Compose": {
       "commandName": "DockerCompose",
-      "composeLaunchAction": "None",
-      "composeLaunchServiceName": "adminassistant.healthmonitor",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "adminassistant.gateway",
+      "composeLaunchUrl": "https://localhost",
       "commandVersion": "1.0",
       "serviceActions": {
         "adminassistant.accounts.api": "StartDebugging",
         "adminassistant.blazor.server": "StartDebugging",
         "adminassistant.healthmonitor": "StartDebugging",
-        "adminassistant.sqlserver": "StartWithoutDebugging"
+        "adminassistant.sqlserver": "StartWithoutDebugging",
+        "adminassistant.admin.api": "StartDebugging",
+        "adminassistant.assetregister.api": "StartDebugging",
+        "adminassistant.billing.api": "StartDebugging",
+        "adminassistant.budget.api": "StartDebugging",
+        "adminassistant.calendar.api": "StartDebugging",
+        "adminassistant.contacts.api": "StartDebugging",
+        "adminassistant.core.api": "StartDebugging",
+        "adminassistant.dashboard.api": "StartDebugging",
+        "adminassistant.documents.api": "StartDebugging",
+        "adminassistant.elasticsearch": "StartWithoutDebugging",
+        "adminassistant.gateway": "StartDebugging",
+        "adminassistant.groceries.api": "StartDebugging",
+        "adminassistant.kibana": "StartWithoutDebugging",
+        "adminassistant.mail.api": "StartDebugging",
+        "adminassistant.meals.api": "StartDebugging",
+        "adminassistant.notes.api": "StartDebugging",
+        "adminassistant.reports.api": "StartDebugging",
+        "adminassistant.tasks.api": "StartDebugging"
       }
     }
   }

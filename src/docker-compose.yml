@@ -5,22 +5,6 @@ version: '3.7'
 #
 services:
 
-  adminassistant.elasticsearch:
-    container_name: AdminAssistant.ElasticSearch
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.2
-    networks:
-      - elastic
-      - service-layer
-
-  adminassistant.kibana:
-    container_name: AdminAssistant.Kibana
-    image: docker.elastic.co/kibana/kibana:8.3.2
-    networks:
-      - elastic
-      - public-facing
-    depends_on:
-      - adminassistant.elasticsearch
-
   adminassistant.sqlserver:
     container_name: AdminAssistant.SQLServer
     image:  mcr.microsoft.com/mssql/server:2019-latest
@@ -277,4 +261,3 @@ networks:
   backend:
   service-layer:
   public-facing:
-  elastic:
