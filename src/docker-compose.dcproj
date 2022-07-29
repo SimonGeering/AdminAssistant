@@ -6,7 +6,7 @@
     <ProjectGuid>55bc370b-95fe-464e-a679-4d1537d375a2</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/</DockerServiceUrl>
-    <DockerServiceName>adminassistant.blazor.server</DockerServiceName>
+    <DockerServiceName>adminassistant.healthmonitor</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include=".env" />

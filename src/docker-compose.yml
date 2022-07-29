@@ -4,27 +4,30 @@ version: '3.7'
 # https://docs.docker.com/compose/compose-file/build/
 #
 services:
+
+  adminassistant.elasticsearch:
+    container_name: AdminAssistant.ElasticSearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.2
+    networks:
+      - elastic
+      - service-layer
+
+  adminassistant.kibana:
+    container_name: AdminAssistant.Kibana
+    image: docker.elastic.co/kibana/kibana:8.3.2
+    networks:
+      - elastic
+      - public-facing
+    depends_on:
+      - adminassistant.elasticsearch
+
   adminassistant.sqlserver:
     container_name: AdminAssistant.SQLServer
     image:  mcr.microsoft.com/mssql/server:2019-latest
-    ports:
-      - "1433:1433"
     env_file:
       - adminassistant.sqlserver.dev.env
     networks:
       - backend
-
-  adminassistant.weather.server:
-    container_name: AdminAssistant.Weather.Server
-    image: ${DOCKER_REGISTRY-}adminassistantweatherserver
-    build:
-      context: .
-      dockerfile: AdminAssistant.Weather/Server/Dockerfile
-    depends_on:
-      - adminassistant.gateway
-    networks:
-      - service-layer
-      - public-facing
 
   adminassistant.blazor.server:
     container_name: AdminAssistant.Blazor.Server
@@ -57,6 +60,7 @@ services:
       context: .
       dockerfile: AdminAssistant.Gateway/Dockerfile
     depends_on:
+      - adminassistant.kibana
       - adminassistant.accounts.api
       - adminassistant.admin.api
       - adminassistant.assetregister.api
@@ -273,3 +277,4 @@ networks:
   backend:
   service-layer:
   public-facing:
+  elastic:

@@ -67,10 +67,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Tasks.API", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Gateway", "AdminAssistant.Gateway\AdminAssistant.Gateway.csproj", "{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Weather.Server", "AdminAssistant.Weather\Server\AdminAssistant.Weather.Server.csproj", "{206DE777-A91B-4A31-BD66-FE5FA2453848}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Weather.Client", "AdminAssistant.Weather\Client\AdminAssistant.Weather.Client.csproj", "{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -185,14 +181,6 @@ Global
 		{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6E48542-4F6D-4D8E-AA5B-E14BD23D5246}.Release|Any CPU.Build.0 = Release|Any CPU
-		{206DE777-A91B-4A31-BD66-FE5FA2453848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{206DE777-A91B-4A31-BD66-FE5FA2453848}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{206DE777-A91B-4A31-BD66-FE5FA2453848}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{206DE777-A91B-4A31-BD66-FE5FA2453848}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2DBAA3A6-E6F9-4556-8295-8312AAFAE42C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
