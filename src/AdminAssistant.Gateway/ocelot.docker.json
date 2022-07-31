@@ -1,5 +1,41 @@
 {
   "Routes": [
+
+    // Ops - http://localhost:16686/search
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.ops.jaeger",
+          "Port": 16686
+        }
+      ],
+      "DownstreamHeaderTransform": {
+        "Referrer": "http://example.com, http://localhost:16686",
+        "Host": "example.com, localhost:16686",
+        "Origin": "http://example.com, http://localhost:16686"
+      },
+      "Priority": 10,
+      "UpstreamPathTemplate": "/jaeger/{url}", // "http://localhost/jaeger/search
+      "UpstreamHttpMethod": [ "Get" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
+    // Ops - Health Monitor
+    {
+      "DownstreamPathTemplate": "/{url}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "adminassistant.healthmonitor",
+          "Port": 443
+        }
+      ],
+      "Priority": 10,
+      "UpstreamPathTemplate": "/health/{url}", // "https://localhost/health/healthchecks-ui#/healthchecks
+      "UpstreamHttpMethod": [ "Get" ],
+      "DangerousAcceptAnyServerCertificateValidator": true
+    },
     // Blazor Server
     {
       "DownstreamPathTemplate": "/{url}",
@@ -10,21 +46,8 @@
           "Port": 443
         }
       ],
+      "Priority": 5,
       "UpstreamPathTemplate": "/{url}", // "https://localhost/
-      "UpstreamHttpMethod": [ "Get" ],
-      "DangerousAcceptAnyServerCertificateValidator": true
-    },
-    // Health Monitor
-    {
-      "DownstreamPathTemplate": "/{url}",
-      "DownstreamScheme": "https",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "adminassistant.healthmonitor",
-          "Port": 443
-        }
-      ],
-      "UpstreamPathTemplate": "/health/{url}", // "https://localhost/health/healthchecks-ui#/healthchecks
       "UpstreamHttpMethod": [ "Get" ],
       "DangerousAcceptAnyServerCertificateValidator": true
     },
@@ -38,6 +61,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/accounts/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -52,6 +76,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/admin/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -66,6 +91,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/assetregister/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -80,6 +106,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/billing/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -94,6 +121,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/budget/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -108,6 +136,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/calendar/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -122,6 +151,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/contacts/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -136,6 +166,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/core/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -150,6 +181,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/dashboard/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -164,6 +196,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/documents/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -178,6 +211,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/groceries/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -192,6 +226,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/mail/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -206,6 +241,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/meals/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -220,6 +256,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/notes/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -234,6 +271,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/reports/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true
@@ -248,6 +286,7 @@
           "Port": 443
         }
       ],
+      "Priority": 20,
       "UpstreamPathTemplate": "/api/tasks/{url}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
       "DangerousAcceptAnyServerCertificateValidator": true

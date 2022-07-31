@@ -5,11 +5,37 @@ version: '3.7'
 #
 services:
 
+  adminassistant.ops.opentelemetry.collector: # https://opentelemetry.io/docs/collector/
+    container_name: AdminAssistant.Ops.OpenTelemetry.Collector
+    image: otel/opentelemetry-collector
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    volumes:
+      - ./config/otel-collector-config.yaml:/etc/otel-collector-config.yaml    
+    depends_on:
+      - adminassistant.ops.prometheus
+      - adminassistant.ops.jaeger
+    networks:
+      - service-layer
+
+  adminassistant.ops.jaeger: # https://www.jaegertracing.io/docs/
+    container_name: AdminAssistant.Ops.OpenTelemetry.Jaeger
+    image: jaegertracing/all-in-one
+    networks:
+      - service-layer
+
+  adminassistant.ops.prometheus: # https://prometheus.io/docs/introduction/overview/
+    container_name: AdminAssistant.Ops.OpenTelemetry.Prometheus
+    image: prom/prometheus
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - service-layer
+
   adminassistant.sqlserver:
     container_name: AdminAssistant.SQLServer
     image:  mcr.microsoft.com/mssql/server:2019-latest
     env_file:
-      - adminassistant.sqlserver.dev.env
+      - ./env/adminassistant.sqlserver.dev.env
     networks:
       - backend
 
@@ -25,7 +51,7 @@ services:
       - service-layer
       - public-facing
 
-  adminassistant.healthmonitor:
+  adminassistant.healthmonitor: # https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks#HealthCheckUI
     container_name: AdminAssistant.HealthMonitor
     image: ${DOCKER_REGISTRY-}adminassistanthealthmonitor
     build:
@@ -37,14 +63,13 @@ services:
       - service-layer
       - public-facing
 
-  adminassistant.gateway:
+  adminassistant.gateway: # https://ocelot.readthedocs.io/en/latest/
     container_name: AdminAssistant.Gateway
     image: ${DOCKER_REGISTRY-}adminassistantgateway
     build:
       context: .
       dockerfile: AdminAssistant.Gateway/Dockerfile
     depends_on:
-      - adminassistant.kibana
       - adminassistant.accounts.api
       - adminassistant.admin.api
       - adminassistant.assetregister.api

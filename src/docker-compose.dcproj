@@ -9,14 +9,16 @@
     <DockerServiceName>adminassistant.gateway</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
-    <None Include=".env" />
-    <None Include=".env.template" />
-    <None Include="adminassistant.sqlserver.dev.env" />
-    <None Include="adminassistant.sqlserver.dev.env.template" />
+    <None Include="env\.env" />
+    <None Include="env\.env.template" />
+    <None Include="env\adminassistant.sqlserver.dev.env" />
+    <None Include="env\adminassistant.sqlserver.dev.env.template" />
+    <None Include="config\prometheus.yml" />
     <None Include="docker-compose.override.yml">
       <DependentUpon>docker-compose.yml</DependentUpon>
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+    <None Include="config\otel-collector-config.yaml" />
   </ItemGroup>
 </Project>

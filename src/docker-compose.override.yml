@@ -2,6 +2,25 @@ version: '3.7'
 
 services:
 
+  adminassistant.ops.opentelemetry.collector:
+    ports:
+      #- "127.0.0.1:1888:1888"   # pprof extension
+      - "127.0.0.1:8888:8888"   # Prometheus metrics exposed by the collector
+      - "127.0.0.1:8889:8889"   # Prometheus exporter metrics
+      - "127.0.0.1:13133:13133" # health_check extension
+      - "127.0.0.1:4317:4317"   # OTLP gRPC receiver
+      - "127.0.0.1:4318:4318"   # OTLP http receiver
+      #- "127.0.0.1:55679:55679" # zpages extension
+
+  adminassistant.ops.jaeger:
+    ports:
+      - "127.0.0.1:16686:16686"
+      - "127.0.0.1:14250:14250"
+
+  adminassistant.ops.prometheus:
+    ports:
+      - "127.0.0.1:9090:9090"
+
   adminassistant.sqlserver:
     ports:
       - "127.0.0.1:1433:1433"
