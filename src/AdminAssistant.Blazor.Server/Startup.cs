@@ -54,12 +54,13 @@ public class Startup
 
         services.AddHealthChecks();
 
-        services.AddHealthChecksUI(setupSettings: setup =>
-        {
-            // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-            setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
+        // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
+        //services.AddHealthChecksUI(setupSettings: setup =>
+        //{
+        //    // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+        //    setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
 
-        }).AddInMemoryStorage();
+        //}).AddInMemoryStorage();
 
         services.AddSwaggerGen(c =>
         {
@@ -126,7 +127,9 @@ public class Startup
             app.UseEndpoints(config =>
             {
                 config.MapFallbackToFile("index.html");
-                config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+
+                // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
+                // config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
             });
         });
         app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api"), api =>
@@ -137,11 +140,13 @@ public class Startup
             {
                 config.MapRazorPages();
                 config.MapControllers();
-                config.MapHealthChecks(HealthCheckAPI, new HealthCheckOptions
-                {
-                    Predicate = _ => true,
-                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                });
+
+                // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
+                //config.MapHealthChecks(HealthCheckAPI, new HealthCheckOptions
+                //{
+                //    Predicate = _ => true,
+                //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                //});
             });
         });
     }
