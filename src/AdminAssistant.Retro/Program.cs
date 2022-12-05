@@ -29,7 +29,7 @@ using var host = new HostBuilder()
                 .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else
         logging.AddFilter("Default", LogLevel.Warning)
-                .AddFilter(Infra.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Warning)
+                .AddFilter(AdminAssistant.Infra.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
                 .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
 
