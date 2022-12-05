@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.WPF", "Admin
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{55BC370B-95FE-464E-A679-4D1537D375A2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Retro", "AdminAssistant.Retro\AdminAssistant.Retro.csproj", "{E72BBBA7-8A75-47E2-BFF4-7460163616E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +73,10 @@ Global
 		{55BC370B-95FE-464E-A679-4D1537D375A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55BC370B-95FE-464E-A679-4D1537D375A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55BC370B-95FE-464E-A679-4D1537D375A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E72BBBA7-8A75-47E2-BFF4-7460163616E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E72BBBA7-8A75-47E2-BFF4-7460163616E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E72BBBA7-8A75-47E2-BFF4-7460163616E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E72BBBA7-8A75-47E2-BFF4-7460163616E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
