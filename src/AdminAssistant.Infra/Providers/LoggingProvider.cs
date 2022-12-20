@@ -23,7 +23,8 @@ internal abstract class LoggingProvider : ILoggingProvider
 {
     private readonly ILogger _logger;
 
-    public LoggingProvider(ILoggerFactory loggerFactory, string logCategoryName) => _logger = loggerFactory.CreateLogger(logCategoryName);
+    public LoggingProvider(ILoggerFactory loggerFactory, string logCategoryName)
+        => _logger = loggerFactory.CreateLogger(logCategoryName);
 
     public void LogDebug(EventId eventId, Exception exception, string message, params object[] args) => _logger.Log(LogLevel.Debug, eventId, exception, message, args);
     public void LogDebug(EventId eventId, string message, params object[] args) => _logger.Log(LogLevel.Debug, eventId, message, args);
@@ -61,7 +62,8 @@ internal abstract class LoggingProvider : ILoggingProvider
     public void Log(LogLevel logLevel, EventId eventId, Exception exception, string message, params object[] args) => _logger.Log(logLevel, eventId, exception, message, args);
     public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter) => _logger.Log(logLevel, eventId, state, exception, formatter);
 
-    public IDisposable BeginScope<TState>(TState state) => _logger.BeginScope(state);
+    public IDisposable BeginScope<TState>(TState state) where TState : notnull
+        => _logger.BeginScope(state);
     public IDisposable BeginScope(string messageFormat, params object[] args) => _logger.BeginScope(messageFormat, args);
 
     public void Start([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0) => _logger.LogDebug("Start {memberName}", memberName);

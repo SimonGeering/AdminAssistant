@@ -31,15 +31,18 @@ public class Startup
     // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services)
     {
-        var config = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+        var configSettings = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+
+        if (configSettings == null)
+            throw new NullReferenceException("Failed to load configuration settings");
 
         services.AddMvc(opts =>
         {
-                // Define MediaType limits ...
-                opts.Filters.Add(new ProducesAttribute("application/json")); // Response limit
-                opts.Filters.Add(new ConsumesAttribute("application/json")); // Request limit
-                opts.ReturnHttpNotAcceptable = true; // Force client to only request media types based on the above limits.
-            });
+            // Define MediaType limits ...
+            opts.Filters.Add(new ProducesAttribute("application/json")); // Response limit
+            opts.Filters.Add(new ConsumesAttribute("application/json")); // Request limit
+            opts.ReturnHttpNotAcceptable = true; // Force client to only request media types based on the above limits.
+        });
         services.AddResponseCompression(opts =>
         {
             opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
@@ -88,7 +91,7 @@ public class Startup
 
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
-        services.AddAdminAssistantServerSideInfra(config);
+        services.AddAdminAssistantServerSideInfra(configSettings);
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -124,6 +127,7 @@ public class Startup
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
             app.UseRouting();
+#pragma warning disable IDE0053 // Use expression body for lambda expressions
             app.UseEndpoints(config =>
             {
                 config.MapFallbackToFile("index.html");
@@ -131,6 +135,7 @@ public class Startup
                 // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
                 // config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
             });
+#pragma warning restore IDE0053 // Use expression body for lambda expressions
         });
         app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api"), api =>
         {
