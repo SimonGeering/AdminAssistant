@@ -34,7 +34,7 @@ public class ServiceCollection_Should
                 if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture))
                     continue;
 
-                var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
+                var instance = serviceProvider.GetRequiredService(serviceDescriptor.ServiceType);
                 instance.Should().NotBeNull();
                 instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);
@@ -73,7 +73,7 @@ public class ServiceCollection_Should
         {
             try
             {
-                var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
+                var instance = serviceProvider.GetRequiredService(serviceDescriptor.ServiceType);
                 instance.Should().NotBeNull();
                 instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);

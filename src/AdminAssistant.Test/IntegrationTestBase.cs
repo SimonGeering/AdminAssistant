@@ -47,18 +47,24 @@ public abstract class IntegrationTestBase : IDisposable
                     // TODO: Configure production logging.
 #endif
                 })
-            .ConfigureAppConfiguration((hostingContext, config) =>
+            .ConfigureAppConfiguration((hostingContext, configBuilder) =>
             {
-                config.AddUserSecrets(Assembly.GetExecutingAssembly());
+                configBuilder.AddUserSecrets(Assembly.GetExecutingAssembly());
 
-                    // Get config from UserSecrets so we can refer to it when setting up Test config setting overrides below ...
-                    var baseConfig = config.Build();
+                // Get config from UserSecrets so we can refer to it when setting up Test config setting overrides below ...
+                var baseConfig = configBuilder.Build();
 
-                    // Switch out the DB for a Test DB by convention - assumes a '_TestDB' suffix to prod DB name ...
-                    var connectionStringFromUserSecrets = baseConfig.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>().ConnectionString;
-                    // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
-                    var testConnectionString = connectionStringFromUserSecrets.Replace("Initial Catalog=AdminAssistant", "Initial Catalog=AdminAssistant_Test", StringComparison.InvariantCulture);
-                config.AddInMemoryCollection(new Dictionary<string, string>
+                // Switch out the DB for a Test DB by convention - assumes a '_TestDB' suffix to prod DB name ...
+                var configSettings = baseConfig.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+
+                if (configSettings == null)
+                    throw new NullReferenceException("Failed to load configuration settings");
+
+                var connectionStringFromUserSecrets = configSettings.ConnectionString;
+                // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
+                var testConnectionString = connectionStringFromUserSecrets.Replace("Initial Catalog=AdminAssistant", "Initial Catalog=AdminAssistant_Test", StringComparison.InvariantCulture);
+
+                configBuilder.AddInMemoryCollection(new Dictionary<string, string?>
                 {
                     [$"{nameof(ConfigurationSettings)}:{nameof(ConfigurationSettings.ConnectionString)}"] = testConnectionString
                 });
