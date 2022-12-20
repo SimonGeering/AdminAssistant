@@ -49,22 +49,11 @@ public static class DependencyInjectionExtensions
         });
         AddDALRepositories(services);
     }
-
-    public static void AddAdminAssistantClientSideProviders(this IServiceCollection services)
-    {
-        // TODO: For now take a hard dependency between client side UI projects and Infra, inc un-needed anciliairy dependencies.
-        // This can be resolved in furuture by splitting infra into multiple assemblies, but this is not worth doing
-        // until it gets bigger sure to implementation of other integrations.
-        services.AddTransient<ILoggingProvider, ClientSideLoggingProvider>();
-
-        AddSharedProviders(services);
-    }
-
+ 
     public static void AddAdminAssistantServerSideProviders(this IServiceCollection services)
     {
         services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
-
-        AddSharedProviders(services);
+        services.AddSharedProviders();
     }
 
     private static void AddDALRepositories(this IServiceCollection services)
@@ -94,8 +83,5 @@ public static class DependencyInjectionExtensions
     {
         services.AddTransient<ICurrencyRepository, CurrencyRepository>();
     }
-
-    private static void AddSharedProviders(this IServiceCollection services)
-        => services.AddTransient<IDateTimeProvider, DateTimeProvider>();
 }
 

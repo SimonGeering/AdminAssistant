@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj" />
     <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
   </ItemGroup>
 
