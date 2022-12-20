@@ -45,9 +45,8 @@ public abstract class LoggingProvider : ILoggingProvider
     public void Log(LogLevel logLevel, EventId eventId, Exception exception, string message, params object[] args) => _logger.Log(logLevel, eventId, exception, message, args);
     public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter) => _logger.Log(logLevel, eventId, state, exception, formatter);
 
-    public IDisposable BeginScope<TState>(TState state) where TState : notnull
-        => _logger.BeginScope(state);
-    public IDisposable BeginScope(string messageFormat, params object[] args) => _logger.BeginScope(messageFormat, args);
+    public IDisposable? BeginScope<TState>(TState state) where TState : notnull => _logger.BeginScope(state);
+    public IDisposable? BeginScope(string messageFormat, params object[] args) => _logger.BeginScope(messageFormat, args);
 
     public void Start([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0) => _logger.LogDebug("Start {memberName}", memberName);
     public void Start([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, string message = "", params object[] args) => _logger.LogDebug("Start {memberName}", memberName);
