@@ -34,7 +34,7 @@ public class ContactController_GetContacts
         services.AddTransient<ContactController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<ContactController>().GetContacts().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<ContactController>().GetContact().ConfigureAwait(false);
 
         // Assert
         response.Value.Should().BeNull();
