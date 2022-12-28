@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.DocumentsModule.Builders;
 
-internal class DocumentBuilder : IDocumentBuilder
+internal sealed class DocumentBuilder : IDocumentBuilder
 {
     private Document _document = new();
 

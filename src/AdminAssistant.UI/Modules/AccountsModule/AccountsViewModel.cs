@@ -3,7 +3,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-internal class AccountsViewModel : ViewModelBase, IAccountsViewModel
+internal sealed class AccountsViewModel : ViewModelBase, IAccountsViewModel
 {
     public AccountsViewModel(ILoggingProvider log) : base(log)
     {

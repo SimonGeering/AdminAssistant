@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AssetRegisterModule;
 
-public record Asset : IDatabasePersistable
+public sealed record Asset : IDatabasePersistable
 {
     public const int AssetNameMaxLength = Constants.NameMaxLength;
 

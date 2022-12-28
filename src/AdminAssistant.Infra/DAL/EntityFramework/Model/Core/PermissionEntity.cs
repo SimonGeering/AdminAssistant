@@ -1,6 +1,6 @@
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 
-public class PermissionEntity
+public sealed class PermissionEntity
 {
     public int PermissionID { get; set; }
 

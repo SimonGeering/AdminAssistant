@@ -1,6 +1,6 @@
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
-public class PayeeEntity
+public sealed class PayeeEntity
 {
     public int PayeeID { get; set; }
     public int AuditID { get; internal set; }

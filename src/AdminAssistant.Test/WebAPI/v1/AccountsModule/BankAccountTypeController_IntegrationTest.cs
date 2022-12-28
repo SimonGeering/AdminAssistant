@@ -5,7 +5,7 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
-public class BankAccountType_Get_Should : IntegrationTestBase
+public sealed class BankAccountType_Get_Should : IntegrationTestBase
 {
     [Fact]
     [Trait("Category", "Integration")]

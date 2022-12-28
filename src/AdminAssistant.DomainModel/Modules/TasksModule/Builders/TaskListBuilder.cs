@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.TasksModule.Builders;
 
-internal class TaskListBuilder : ITaskListBuilder
+internal sealed class TaskListBuilder : ITaskListBuilder
 {
     private TaskList _taskList = new();
 

@@ -9,7 +9,7 @@ using static AdminAssistant.Test.TestConstants;
 namespace AdminAssistant.Test.UI.Modules.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
-public class BankAccountEditDialog_Should : AcceptanceTestBase
+public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
 {
     [Fact]
     [Trait("Category", "Acceptance")]

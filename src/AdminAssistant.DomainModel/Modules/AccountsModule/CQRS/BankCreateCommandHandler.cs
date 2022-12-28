@@ -4,7 +4,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 
-internal class BankCreateCommandHandler : RequestHandlerBase<BankCreateCommand, Result<Bank>>
+internal sealed class BankCreateCommandHandler : RequestHandlerBase<BankCreateCommand, Result<Bank>>
 {
     private readonly IBankRepository bankRepository;
     private readonly IBankValidator bankValidator;

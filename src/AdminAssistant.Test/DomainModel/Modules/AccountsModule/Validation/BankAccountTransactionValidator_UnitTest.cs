@@ -7,7 +7,7 @@ using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.Validation;
 
-public class BankAccountTransactionValidator_Should
+public sealed class BankAccountTransactionValidator_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

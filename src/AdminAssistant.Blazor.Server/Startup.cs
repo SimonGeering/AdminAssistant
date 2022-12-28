@@ -11,7 +11,7 @@ using Swashbuckle.AspNetCore.Swagger;
 
 namespace AdminAssistant.Blazor.Server;
 
-public class Startup
+public sealed class Startup
 {
     // TODO: Make version a constant shared with WebAPI Assemblies
     const string HealthCheckAPI = "/api/health";

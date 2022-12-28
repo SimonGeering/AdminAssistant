@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders;
 
-internal class BankAccountTransactionBuilder : IBankAccountTransactionBuilder
+internal sealed class BankAccountTransactionBuilder : IBankAccountTransactionBuilder
 {
     private BankAccountTransaction _bankAccountTransaction = new();
 

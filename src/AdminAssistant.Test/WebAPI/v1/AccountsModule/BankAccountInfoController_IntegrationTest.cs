@@ -4,7 +4,7 @@
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
-public class BankAccountInfo_Get_Should : IntegrationTestBase
+public sealed class BankAccountInfo_Get_Should : IntegrationTestBase
 {
     //[Fact(Skip="WIP Unit test mapping domain to entity")]
     //[Trait("Category", "Integration")]

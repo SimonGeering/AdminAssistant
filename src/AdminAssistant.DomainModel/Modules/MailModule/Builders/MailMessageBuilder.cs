@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.MailModule.Builders;
 
-internal class MailMessageBuilder : IMailMessageBuilder
+internal sealed class MailMessageBuilder : IMailMessageBuilder
 {
     private MailMessage _mailMessage = new();
 

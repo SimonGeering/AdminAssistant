@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
-public record BankAccountTransaction : IDatabasePersistable
+public sealed record BankAccountTransaction : IDatabasePersistable
 {
     public const int DescriptionMaxLength = Constants.DescriptionMaxLength;
 

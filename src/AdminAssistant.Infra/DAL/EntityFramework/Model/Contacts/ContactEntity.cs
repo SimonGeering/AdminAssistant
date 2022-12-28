@@ -15,7 +15,7 @@ Ref: "Contacts.Contact"."ContactID" < "Accounts.PayeeContact"."ContactID"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 
-public class ContactEntity
+public sealed class ContactEntity
 {
     public int ContactID { get; set; }
     public int OwnerID { get; set; }

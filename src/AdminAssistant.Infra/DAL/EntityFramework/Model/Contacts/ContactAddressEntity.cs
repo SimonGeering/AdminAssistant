@@ -9,7 +9,7 @@ Table "Contacts.ContactAddress"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 
-public class ContactAddressEntity
+public sealed class ContactAddressEntity
 {
     public int ContactAddressID { get; set; }
     public int AddressID { get; set; }

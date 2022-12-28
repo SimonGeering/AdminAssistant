@@ -8,7 +8,7 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 namespace AdminAssistant.Test.WebAPI.v1.CoreModule;
 
 [Collection("SequentialDBBackedTests")]
-public class Currency_Post_Should : IntegrationTestBase
+public sealed class Currency_Post_Should : IntegrationTestBase
 {
     [Fact]
     [Trait("Category", "Integration")]
@@ -30,7 +30,7 @@ public class Currency_Post_Should : IntegrationTestBase
 }
 
 [Collection("SequentialDBBackedTests")]
-public class Currency_Put_Should : IntegrationTestBase
+public sealed class Currency_Put_Should : IntegrationTestBase
 {
     [Fact]
     [Trait("Category", "Integration")]

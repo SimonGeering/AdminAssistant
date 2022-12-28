@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.BudgetModule.Builders;
 
-internal class BudgetBuilder : IBudgetBuilder
+internal sealed class BudgetBuilder : IBudgetBuilder
 {
     private Budget _budget = new();
 

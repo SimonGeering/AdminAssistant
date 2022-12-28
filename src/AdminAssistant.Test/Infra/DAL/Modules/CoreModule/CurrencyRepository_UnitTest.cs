@@ -10,7 +10,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.Test.Infra.DAL.Modules.CoreModule;
 
-public class CurrencyRepository_GetListAsync
+public sealed class CurrencyRepository_GetListAsync
 {
     [Fact]
     [Trait("Category", "Unit")]

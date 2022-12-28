@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;
 
-internal class BudgetSchema
+internal static class BudgetSchema
 {
     private const string Name = "Budget";
 

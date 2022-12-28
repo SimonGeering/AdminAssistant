@@ -18,6 +18,6 @@ Table "Accounts.BankAccountStatement"
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
-public class BankAccountStatementEntity
+public sealed class BankAccountStatementEntity
 {
 }

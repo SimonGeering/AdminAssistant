@@ -6,7 +6,7 @@ using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
 
 namespace AdminAssistant.Test.DomainModel.Modules.BudgetModule.Validation;
 
-public class BudgetValidator_Should
+public sealed class BudgetValidator_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.CoreModule.Builders;
 
-internal class CurrencyBuilder : ICurrencyBuilder
+internal sealed class CurrencyBuilder : ICurrencyBuilder
 {
     private Currency _currency = new();
 

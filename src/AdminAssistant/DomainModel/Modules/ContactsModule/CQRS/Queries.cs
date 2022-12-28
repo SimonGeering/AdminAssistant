@@ -1,4 +1,4 @@
 namespace AdminAssistant.DomainModel.Modules.ContactsModule.CQRS
 {
-    public record ContactQuery : IRequest<Result<IEnumerable<Contact>>>;
+    public sealed record ContactQuery : IRequest<Result<IEnumerable<Contact>>>;
 }

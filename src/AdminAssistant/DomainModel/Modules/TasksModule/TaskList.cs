@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.TasksModule;
 
-public record TaskList : IDatabasePersistable
+public sealed record TaskList : IDatabasePersistable
 {
     public const int TaskListNameMaxLength = Constants.NameMaxLength;
 

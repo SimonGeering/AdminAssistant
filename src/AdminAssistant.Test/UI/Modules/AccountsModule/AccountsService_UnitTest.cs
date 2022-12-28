@@ -5,7 +5,7 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.UI.Modules.AccountsModule;
 
-public class AccountsService_UnitTest
+public sealed class AccountsService_UnitTest
 {
     [Fact]
     [Trait("Category", "Unit")]

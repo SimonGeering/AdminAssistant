@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery;
 
-internal class GrocerySchema
+internal static class GrocerySchema
 {
     private const string Name = "Grocery";
 

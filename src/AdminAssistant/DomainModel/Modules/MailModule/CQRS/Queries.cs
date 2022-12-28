@@ -1,4 +1,4 @@
 namespace AdminAssistant.DomainModel.Modules.MailModule.CQRS
 {
-    public record MailMessageQuery : IRequest<Result<IEnumerable<MailMessage>>>;
+    public sealed record MailMessageQuery : IRequest<Result<IEnumerable<MailMessage>>>;
 }

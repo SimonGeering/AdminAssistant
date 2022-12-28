@@ -12,7 +12,7 @@ Table "Assets.Asset"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister;
 
-public class AssetEntity
+public sealed class AssetEntity
 {
     public int AssetID { get; set; }
     public int AuditID { get; internal set; }

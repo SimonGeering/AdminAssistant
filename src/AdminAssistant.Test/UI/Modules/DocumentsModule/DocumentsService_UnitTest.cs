@@ -5,7 +5,7 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.UI.Modules.DocumentsModule;
 
-public class DocumentsService_GetDocumentListAsync
+public sealed class DocumentsService_GetDocumentListAsync
 {
     [Fact]
     [Trait("Category", "Unit")]

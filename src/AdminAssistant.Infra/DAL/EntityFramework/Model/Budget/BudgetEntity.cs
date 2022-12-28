@@ -11,7 +11,7 @@ Ref: "Budget.Budget"."BudgetID" < "Budget.BudgetEntry"."BudgetID"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;
 
-public class BudgetEntity
+public sealed class BudgetEntity
 {
     public int BudgetID { get; internal set; }
     public int AuditID { get; internal set; }

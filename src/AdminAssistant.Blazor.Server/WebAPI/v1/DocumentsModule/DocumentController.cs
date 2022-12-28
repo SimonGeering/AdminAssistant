@@ -10,7 +10,7 @@ namespace AdminAssistant.WebAPI.v1.DocumentsModule;
 [ApiController]
 [Route("api/v1/document-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Documents Module")]
-public class DocumentController : WebAPIControllerBase
+public sealed class DocumentController : WebAPIControllerBase
 {
     public DocumentController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
         : base(mapper, mediator, loggingProvider)

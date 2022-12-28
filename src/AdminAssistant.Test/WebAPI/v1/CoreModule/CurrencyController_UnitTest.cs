@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.CoreModule;
 
-public class CurrencyController_Put_Should
+public sealed class CurrencyController_Put_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -131,7 +131,7 @@ public class CurrencyController_Put_Should
     }
 }
 
-public class CurrencyController_CurrencyPost_Should
+public sealed class CurrencyController_CurrencyPost_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -224,7 +224,7 @@ public class CurrencyController_CurrencyPost_Should
     }
 }
 
-public class CurrencyController_CurrencyGetById_Should
+public sealed class CurrencyController_CurrencyGetById_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -286,7 +286,7 @@ public class CurrencyController_CurrencyGetById_Should
     }
 }
 
-public class CurrencyController_GetCurrency_Should
+public sealed class CurrencyController_GetCurrency_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

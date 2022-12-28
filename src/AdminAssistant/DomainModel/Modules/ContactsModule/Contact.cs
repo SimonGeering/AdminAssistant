@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.ContactsModule;
 
-public record Contact : IDatabasePersistable
+public sealed record Contact : IDatabasePersistable
 {
     public const int ContactFirstNameMaxLength = Constants.NameMaxLength;
     public const int ContactLastNameMaxLength = Constants.NameMaxLength;

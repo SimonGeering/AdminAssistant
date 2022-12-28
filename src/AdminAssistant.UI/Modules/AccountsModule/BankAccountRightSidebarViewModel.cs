@@ -5,7 +5,7 @@ using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-internal class BankAccountRightSidebarViewModel : ViewModelBase, IBankAccountRightSidebarViewModel
+internal sealed class BankAccountRightSidebarViewModel : ViewModelBase, IBankAccountRightSidebarViewModel
 {
     private readonly IMessenger _messenger;
 
