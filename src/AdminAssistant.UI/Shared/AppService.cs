@@ -1,6 +1,6 @@
 namespace AdminAssistant.UI.Shared;
 
-internal class AppService : IAppService
+internal sealed class AppService : IAppService
 {
     private const ModeEnum DefaultMode = ModeEnum.Company;
     private const ModuleEnum DefaultModule = ModuleEnum.Dashboard;

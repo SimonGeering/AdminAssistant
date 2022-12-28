@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.ContactsModule.Builders;
 
-internal class ContactBuilder : IContactBuilder
+internal sealed class ContactBuilder : IContactBuilder
 {
     private Contact _contact = new();
 

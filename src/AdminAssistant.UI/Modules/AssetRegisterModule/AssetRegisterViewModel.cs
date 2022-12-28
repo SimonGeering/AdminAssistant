@@ -2,7 +2,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.AssetRegisterModule;
 
-internal class AssetRegisterViewModel : ViewModelBase, IAssetRegisterViewModel
+internal sealed class AssetRegisterViewModel : ViewModelBase, IAssetRegisterViewModel
 {
     public AssetRegisterViewModel(ILoggingProvider loggingProvider)
         : base(loggingProvider)

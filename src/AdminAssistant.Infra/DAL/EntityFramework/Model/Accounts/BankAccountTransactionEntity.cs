@@ -3,7 +3,7 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
-public class BankAccountTransactionEntity : IMapFrom<BankAccountTransaction>, IMapTo<BankAccountTransaction>
+public sealed class BankAccountTransactionEntity : IMapFrom<BankAccountTransaction>, IMapTo<BankAccountTransaction>
 {
     public int BankAccountTransactionID { get; set; }
     public int BankAccountID { get; set; }

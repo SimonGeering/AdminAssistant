@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
-public class BankAccountInfoController_BankAccountInfoGet_Should
+public sealed class BankAccountInfoController_BankAccountInfoGet_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

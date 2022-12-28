@@ -1,6 +1,6 @@
 namespace AdminAssistant.UI.Shared;
 
-public class SidebarStateSettings
+public sealed class SidebarStateSettings
 {
     public SidebarStateSettings(ExpandedContractedStateToggle state, string icon, string styleClass, bool showContent)
     {

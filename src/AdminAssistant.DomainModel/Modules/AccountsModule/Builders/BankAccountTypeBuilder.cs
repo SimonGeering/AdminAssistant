@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders;
 
-internal class BankAccountTypeBuilder : IBankAccountTypeBuilder
+internal sealed class BankAccountTypeBuilder : IBankAccountTypeBuilder
 {
     private BankAccountType _bankAccountType = new();
     public static BankAccountType Default(IBankAccountTypeBuilder builder) => builder.Build();

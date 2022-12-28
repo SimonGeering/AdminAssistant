@@ -3,7 +3,7 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 
-public class DocumentEntity : IMapFrom<Document>, IMapTo<Document>
+public sealed class DocumentEntity : IMapFrom<Document>, IMapTo<Document>
 {
     public int DocumentID { get; set; }
     public int AuditID { get; internal set; }

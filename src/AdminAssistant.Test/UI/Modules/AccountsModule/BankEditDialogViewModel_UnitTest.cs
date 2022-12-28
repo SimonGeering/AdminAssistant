@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace AdminAssistant.Test.UI.Modules.AccountsModule;
 
-public class BankEditDialogViewModel_Should
+public sealed class BankEditDialogViewModel_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

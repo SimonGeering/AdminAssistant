@@ -1,7 +1,7 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS
 {
-    public record BankAccountCreateCommand(BankAccount BankAccount) : IRequest<Result<BankAccount>>;
-    public record BankAccountUpdateCommand(BankAccount BankAccount) : IRequest<Result<BankAccount>>;
-    public record BankCreateCommand(Bank Bank) : IRequest<Result<Bank>>;
-    public record BankUpdateCommand(Bank Bank) : IRequest<Result<Bank>>;
+    public sealed record BankAccountCreateCommand(BankAccount BankAccount) : IRequest<Result<BankAccount>>;
+    public sealed record BankAccountUpdateCommand(BankAccount BankAccount) : IRequest<Result<BankAccount>>;
+    public sealed record BankCreateCommand(Bank Bank) : IRequest<Result<Bank>>;
+    public sealed record BankUpdateCommand(Bank Bank) : IRequest<Result<Bank>>;
 }

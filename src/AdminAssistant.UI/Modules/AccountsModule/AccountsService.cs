@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-internal class AccountsService : ServiceBase, IAccountsService
+internal sealed class AccountsService : ServiceBase, IAccountsService
 {
     public AccountsService(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
         : base(adminAssistantWebAPIClient, mapper, log)

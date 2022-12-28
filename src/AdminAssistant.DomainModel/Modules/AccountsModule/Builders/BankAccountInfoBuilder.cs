@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders;
 
-internal class BankAccountInfoBuilder : IBankAccountInfoBuilder
+internal sealed class BankAccountInfoBuilder : IBankAccountInfoBuilder
 {
     private BankAccountInfo _bankAccountInfo = new();
 

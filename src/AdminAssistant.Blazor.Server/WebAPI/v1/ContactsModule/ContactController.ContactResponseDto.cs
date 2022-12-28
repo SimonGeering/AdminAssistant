@@ -3,7 +3,7 @@ using AdminAssistant.Framework.TypeMapping;
 
 namespace AdminAssistant.WebAPI.v1.ContactsModule;
 
-public record ContactResponseDto : IMapFrom<Contact>
+public sealed record ContactResponseDto : IMapFrom<Contact>
 {
     public int ContactID { get; init; }
     public string FirstName { get; init; } = string.Empty;

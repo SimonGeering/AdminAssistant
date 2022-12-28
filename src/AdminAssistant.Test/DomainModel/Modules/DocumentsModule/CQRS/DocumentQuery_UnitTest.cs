@@ -6,7 +6,7 @@ using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 
 namespace AdminAssistant.Test.DomainModel.Modules.DocumentsModule.CQRS;
 
-public class DocumentQuery_Should
+public sealed class DocumentQuery_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

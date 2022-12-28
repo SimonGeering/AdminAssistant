@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.ContactsModule;
 
-public class ContactController_GetContacts
+public sealed class ContactController_GetContacts
 {
     [Fact]
     [Trait("Category", "Unit")]

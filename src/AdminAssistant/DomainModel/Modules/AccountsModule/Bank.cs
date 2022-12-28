@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
-public record Bank : IDatabasePersistable
+public sealed record Bank : IDatabasePersistable
 {
     public const int BankNameMaxLength = Constants.NameMaxLength;
 

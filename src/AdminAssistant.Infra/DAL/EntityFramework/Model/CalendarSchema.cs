@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model;
 
-internal class CalendarSchema
+internal static class CalendarSchema
 {
     [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
     private const string Name = "Calendar";

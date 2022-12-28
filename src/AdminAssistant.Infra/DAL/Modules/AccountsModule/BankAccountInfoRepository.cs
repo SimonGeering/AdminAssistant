@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
 
-internal class BankAccountInfoRepository : RepositoryBase, IBankAccountInfoRepository
+internal sealed class BankAccountInfoRepository : RepositoryBase, IBankAccountInfoRepository
 {
     public BankAccountInfoRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
         : base(dbContext, mapper, dateTimeProvider, userContextProvider)

@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 
-internal class BankAccountValidator : AbstractValidator<BankAccount>, IBankAccountValidator
+internal sealed class BankAccountValidator : AbstractValidator<BankAccount>, IBankAccountValidator
 {
     //private bool BankAccountBeingCreated(CustomContext context) => context.ParentContext.RootContextData.ContainsKey(Constants.IsCreateCommandContext);
 

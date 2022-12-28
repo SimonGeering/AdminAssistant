@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.CalendarModule;
 
-public class ReminderController_Get
+public sealed class ReminderController_Get
 {
     [Fact]
     [Trait("Category", "Unit")]

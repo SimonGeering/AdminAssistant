@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders;
 
-internal class AssetBuilder : IAssetBuilder
+internal sealed class AssetBuilder : IAssetBuilder
 {
     private Asset _asset = new();
 

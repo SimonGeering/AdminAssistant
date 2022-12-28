@@ -5,7 +5,7 @@ using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
-public class BankAccountUpdateCommand_Should
+public sealed class BankAccountUpdateCommand_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

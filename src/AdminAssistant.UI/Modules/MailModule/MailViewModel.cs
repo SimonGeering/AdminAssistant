@@ -2,7 +2,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.MailModule;
 
-internal class MailViewModel : ViewModelBase, IMailViewModel
+internal sealed class MailViewModel : ViewModelBase, IMailViewModel
 {
     public MailViewModel(ILoggingProvider loggingProvider)
         : base(loggingProvider)

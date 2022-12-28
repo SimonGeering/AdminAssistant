@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.MailModule;
 
-public record MailMessage : IDatabasePersistable
+public sealed record MailMessage : IDatabasePersistable
 {
     public const int SubjectNameMaxLength = Constants.DescriptionMaxLength;
 

@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Shared;
 
-public record User
+public sealed record User
 {
     public const int SignOnMaxLength = 50;
 

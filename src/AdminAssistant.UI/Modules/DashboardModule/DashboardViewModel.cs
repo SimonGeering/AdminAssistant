@@ -2,7 +2,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.DashboardModule;
 
-internal class DashboardViewModel : ViewModelBase, IDashboardViewModel
+internal sealed class DashboardViewModel : ViewModelBase, IDashboardViewModel
 {
     public DashboardViewModel(ILoggingProvider loggingProvider)
         : base(loggingProvider)

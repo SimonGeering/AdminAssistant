@@ -10,7 +10,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.Test.Infra.DAL.Modules.AccountsModule;
 
-public class BankAccountTypeRepository_GetListAsync
+public sealed class BankAccountTypeRepository_GetListAsync
 {
     [Fact]
     [Trait("Category", "Unit")]

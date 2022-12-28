@@ -2,7 +2,7 @@ using AdminAssistant.DomainModel.Modules.AccountsModule;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-public class EditBankAccountMessage
+public sealed class EditBankAccountMessage
 {
     public EditBankAccountMessage(BankAccount bankAccount) => BankAccount = bankAccount;
 

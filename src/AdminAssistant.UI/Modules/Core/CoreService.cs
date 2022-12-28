@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.Infra.Providers;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
@@ -6,7 +5,7 @@ using AutoMapper;
 
 namespace AdminAssistant.UI.Modules.CoreModule;
 
-internal class CoreService : ServiceBase, ICoreService
+internal sealed class CoreService : ServiceBase, ICoreService
 {
     public CoreService(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
         : base(adminAssistantWebAPIClient, mapper, log)

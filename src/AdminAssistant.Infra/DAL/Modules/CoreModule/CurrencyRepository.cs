@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.CoreModule;
 
-internal class CurrencyRepository : RepositoryBase, ICurrencyRepository
+internal sealed class CurrencyRepository : RepositoryBase, ICurrencyRepository
 {
     public CurrencyRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
         : base(dbContext, mapper, dateTimeProvider, userContextProvider)
