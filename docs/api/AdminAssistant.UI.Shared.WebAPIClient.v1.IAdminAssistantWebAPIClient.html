@@ -1,0 +1,2750 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Interface IAdminAssistantWebAPIClient
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Interface IAdminAssistantWebAPIClient
+   ">
+    <meta name="generator" content="docfx 2.58.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient">
+  
+  
+  <h1 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient" class="text-break">Interface IAdminAssistantWebAPIClient
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.html">AdminAssistant.UI.Shared.WebAPIClient.v1</a></h6>
+  <h6><strong>Assembly</strong>: AdminAssistant.UI.dll</h6>
+  <h5 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IAdminAssistantWebAPIClient</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetAssetAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetAssetAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L142">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetAssetAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetAssetAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetAssetAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetAssetAsync">GetAssetAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all assets</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;AssetResponseDto&gt;&gt; GetAssetAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.AssetResponseDto.html">AssetResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of AssetResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetAssetAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetAssetAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L148">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetAssetAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetAssetAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetAssetAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetAssetAsync(System.Threading.CancellationToken)">GetAssetAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all assets</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;AssetResponseDto&gt;&gt; GetAssetAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.AssetResponseDto.html">AssetResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of AssetResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountByIdAsync_System_Int32_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountByIdAsync(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L49">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountByIdAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountByIdAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountByIdAsync_System_Int32_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountByIdAsync(System.Int32)">GetBankAccountByIdAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the BankAccountResponseDto with the given ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankAccountResponseDto&gt; GetBankAccountByIdAsync(int bankAccountID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bankAccountID</span></td>
+        <td><p>The ID of the BankAccount to be returned.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountResponseDto.html">BankAccountResponseDto</a>&gt;</td>
+        <td><p>OK - returns the BankAccount requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountByIdAsync_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountByIdAsync(System.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L56">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountByIdAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountByIdAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountByIdAsync_System_Int32_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountByIdAsync(System.Int32,System.Threading.CancellationToken)">GetBankAccountByIdAsync(Int32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the BankAccountResponseDto with the given ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankAccountResponseDto&gt; GetBankAccountByIdAsync(int bankAccountID, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bankAccountID</span></td>
+        <td><p>The ID of the BankAccount to be returned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountResponseDto.html">BankAccountResponseDto</a>&gt;</td>
+        <td><p>OK - returns the BankAccount requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountInfoAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountInfoAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L74">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountInfoAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountInfoAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountInfoAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountInfoAsync">GetBankAccountInfoAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists the summary info for all the available BankAccounts owned by the logged in user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BankAccountInfoResponseDto&gt;&gt; GetBankAccountInfoAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountInfoResponseDto.html">BankAccountInfoResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of BankAccountInfoResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountInfoAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountInfoAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L80">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountInfoAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountInfoAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountInfoAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountInfoAsync(System.Threading.CancellationToken)">GetBankAccountInfoAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists the summary info for all the available BankAccounts owned by the logged in user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BankAccountInfoResponseDto&gt;&gt; GetBankAccountInfoAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountInfoResponseDto.html">BankAccountInfoResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of BankAccountInfoResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTransactionByBankAccountIDAsync_System_Int32_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTransactionByBankAccountIDAsync(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L62">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTransactionByBankAccountIDAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTransactionByBankAccountIDAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTransactionByBankAccountIDAsync_System_Int32_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTransactionByBankAccountIDAsync(System.Int32)">GetBankAccountTransactionByBankAccountIDAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Get the transactions since the last bank account statement for the BankAccount with the given ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BankAccountTransactionResponseDto&gt;&gt; GetBankAccountTransactionByBankAccountIDAsync(int bankAccountID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bankAccountID</span></td>
+        <td><p>The ID of the BankAccount.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountTransactionResponseDto.html">BankAccountTransactionResponseDto</a>&gt;&gt;</td>
+        <td><p>OK - returns a list of BankAccountTransactionResponseDto.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTransactionByBankAccountIDAsync_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTransactionByBankAccountIDAsync(System.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L69">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTransactionByBankAccountIDAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTransactionByBankAccountIDAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTransactionByBankAccountIDAsync_System_Int32_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTransactionByBankAccountIDAsync(System.Int32,System.Threading.CancellationToken)">GetBankAccountTransactionByBankAccountIDAsync(Int32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Get the transactions since the last bank account statement for the BankAccount with the given ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BankAccountTransactionResponseDto&gt;&gt; GetBankAccountTransactionByBankAccountIDAsync(int bankAccountID, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bankAccountID</span></td>
+        <td><p>The ID of the BankAccount.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountTransactionResponseDto.html">BankAccountTransactionResponseDto</a>&gt;&gt;</td>
+        <td><p>OK - returns a list of BankAccountTransactionResponseDto.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTypeAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTypeAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L85">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTypeAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTypeAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTypeAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTypeAsync">GetBankAccountTypeAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BankAccountTypeResponseDto&gt;&gt; GetBankAccountTypeAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountTypeResponseDto.html">BankAccountTypeResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of BankAccountTypeResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTypeAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTypeAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L91">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTypeAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTypeAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAccountTypeAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAccountTypeAsync(System.Threading.CancellationToken)">GetBankAccountTypeAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BankAccountTypeResponseDto&gt;&gt; GetBankAccountTypeAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountTypeResponseDto.html">BankAccountTypeResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of BankAccountTypeResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L118">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAsync">GetBankAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all banks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BankResponseDto&gt;&gt; GetBankAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.html">BankResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of BankResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L124">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankAsync(System.Threading.CancellationToken)">GetBankAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all banks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BankResponseDto&gt;&gt; GetBankAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.html">BankResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of BankResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankByIdAsync_System_Int32_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankByIdAsync(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L130">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankByIdAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankByIdAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankByIdAsync_System_Int32_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankByIdAsync(System.Int32)">GetBankByIdAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the Bank with the given ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankResponseDto&gt; GetBankByIdAsync(int bankID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bankID</span></td>
+        <td><p>The ID of the Bank to be returned.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.html">BankResponseDto</a>&gt;</td>
+        <td><p>OK - returns the Bank requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankByIdAsync_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankByIdAsync(System.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L137">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankByIdAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankByIdAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBankByIdAsync_System_Int32_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBankByIdAsync(System.Int32,System.Threading.CancellationToken)">GetBankByIdAsync(Int32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the Bank with the given ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankResponseDto&gt; GetBankByIdAsync(int bankID, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bankID</span></td>
+        <td><p>The ID of the Bank to be returned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.html">BankResponseDto</a>&gt;</td>
+        <td><p>OK - returns the Bank requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBudgetAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBudgetAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L153">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBudgetAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBudgetAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBudgetAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBudgetAsync">GetBudgetAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all budgets.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BudgetResponseDto&gt;&gt; GetBudgetAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BudgetResponseDto.html">BudgetResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of BudgetResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBudgetAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBudgetAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L159">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBudgetAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBudgetAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetBudgetAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetBudgetAsync(System.Threading.CancellationToken)">GetBudgetAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all budgets.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;BudgetResponseDto&gt;&gt; GetBudgetAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BudgetResponseDto.html">BudgetResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of BudgetResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetContactAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetContactAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L175">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetContactAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetContactAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetContactAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetContactAsync">GetContactAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all contacts</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;ContactResponseDto&gt;&gt; GetContactAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ContactResponseDto.html">ContactResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of ContactResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetContactAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetContactAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L181">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetContactAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetContactAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetContactAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetContactAsync(System.Threading.CancellationToken)">GetContactAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all contacts</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;ContactResponseDto&gt;&gt; GetContactAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ContactResponseDto.html">ContactResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of ContactResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L208">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyAsync">GetCurrencyAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all currencies supported by the API wherever a CurrencyID can be provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;CurrencyResponseDto&gt;&gt; GetCurrencyAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.html">CurrencyResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of CurrencyResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L214">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyAsync(System.Threading.CancellationToken)">GetCurrencyAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all currencies supported by the API wherever a CurrencyID can be provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;CurrencyResponseDto&gt;&gt; GetCurrencyAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.html">CurrencyResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of CurrencyResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyByIdAsync_System_Int32_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyByIdAsync(System.Int32)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L220">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyByIdAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyByIdAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyByIdAsync_System_Int32_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyByIdAsync(System.Int32)">GetCurrencyByIdAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the Currency with the given ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;CurrencyResponseDto&gt; GetCurrencyByIdAsync(int currencyID)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">currencyID</span></td>
+        <td><p>The ID of the Currency to be returned.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.html">CurrencyResponseDto</a>&gt;</td>
+        <td><p>OK - returns the Bank requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyByIdAsync_System_Int32_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyByIdAsync(System.Int32%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L227">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyByIdAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyByIdAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetCurrencyByIdAsync_System_Int32_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetCurrencyByIdAsync(System.Int32,System.Threading.CancellationToken)">GetCurrencyByIdAsync(Int32, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets the Currency with the given ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;CurrencyResponseDto&gt; GetCurrencyByIdAsync(int currencyID, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">currencyID</span></td>
+        <td><p>The ID of the Currency to be returned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.html">CurrencyResponseDto</a>&gt;</td>
+        <td><p>OK - returns the Bank requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetDocumentAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetDocumentAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L232">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetDocumentAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetDocumentAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetDocumentAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetDocumentAsync">GetDocumentAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all documents.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;DocumentResponseDto&gt;&gt; GetDocumentAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.DocumentResponseDto.html">DocumentResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of DocumentResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetDocumentAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetDocumentAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L238">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetDocumentAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetDocumentAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetDocumentAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetDocumentAsync(System.Threading.CancellationToken)">GetDocumentAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all documents.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;DocumentResponseDto&gt;&gt; GetDocumentAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.DocumentResponseDto.html">DocumentResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of DocumentResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetMailMessageAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetMailMessageAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L243">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetMailMessageAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetMailMessageAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetMailMessageAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetMailMessageAsync">GetMailMessageAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all mail messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;MailMessageResponseDto&gt;&gt; GetMailMessageAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.MailMessageResponseDto.html">MailMessageResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of MailMessageResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetMailMessageAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetMailMessageAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L249">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetMailMessageAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetMailMessageAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetMailMessageAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetMailMessageAsync(System.Threading.CancellationToken)">GetMailMessageAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all mail messages</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;MailMessageResponseDto&gt;&gt; GetMailMessageAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.MailMessageResponseDto.html">MailMessageResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of MailMessageResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetReminderAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetReminderAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L164">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetReminderAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetReminderAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetReminderAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetReminderAsync">GetReminderAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all reminders.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;ReminderResponseDto&gt;&gt; GetReminderAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ReminderResponseDto.html">ReminderResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of ReminderResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetReminderAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetReminderAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L170">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetReminderAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetReminderAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetReminderAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetReminderAsync(System.Threading.CancellationToken)">GetReminderAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all reminders.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;ReminderResponseDto&gt;&gt; GetReminderAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ReminderResponseDto.html">ReminderResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of ReminderResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetTaskListAsync.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetTaskListAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L254">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetTaskListAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetTaskListAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetTaskListAsync" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetTaskListAsync">GetTaskListAsync()</h4>
+  <div class="markdown level1 summary"><p>Lists all task lists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;TaskListResponseDto&gt;&gt; GetTaskListAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.TaskListResponseDto.html">TaskListResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of TaskListResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetTaskListAsync_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetTaskListAsync(System.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L260">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetTaskListAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetTaskListAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_GetTaskListAsync_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.GetTaskListAsync(System.Threading.CancellationToken)">GetTaskListAsync(CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Lists all task lists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICollection&lt;TaskListResponseDto&gt;&gt; GetTaskListAsync(CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.ICollection</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.TaskListResponseDto.html">TaskListResponseDto</a>&gt;&gt;</td>
+        <td><p>Ok - returns a list of TaskListResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAccountAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankAccountCreateRequestDto_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAccountAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountCreateRequestDto)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L37">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAccountAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAccountAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAccountAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankAccountCreateRequestDto_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAccountAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountCreateRequestDto)">PostBankAccountAsync(BankAccountCreateRequestDto)</h4>
+  <div class="markdown level1 summary"><p>Creates a new BankAccount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankAccountResponseDto&gt; PostBankAccountAsync(BankAccountCreateRequestDto body)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountCreateRequestDto.html">BankAccountCreateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountResponseDto.html">BankAccountResponseDto</a>&gt;</td>
+        <td><p>Created - returns the created bank account with its assigned newly ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAccountAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankAccountCreateRequestDto_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAccountAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountCreateRequestDto%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L43">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAccountAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAccountAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAccountAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankAccountCreateRequestDto_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAccountAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountCreateRequestDto,System.Threading.CancellationToken)">PostBankAccountAsync(BankAccountCreateRequestDto, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a new BankAccount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankAccountResponseDto&gt; PostBankAccountAsync(BankAccountCreateRequestDto body, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountCreateRequestDto.html">BankAccountCreateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountResponseDto.html">BankAccountResponseDto</a>&gt;</td>
+        <td><p>Created - returns the created bank account with its assigned newly ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankCreateRequestDto_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankCreateRequestDto)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L107">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankCreateRequestDto_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankCreateRequestDto)">PostBankAsync(BankCreateRequestDto)</h4>
+  <div class="markdown level1 summary"><p>Creates a new Bank.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankResponseDto&gt; PostBankAsync(BankCreateRequestDto body)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankCreateRequestDto.html">BankCreateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.html">BankResponseDto</a>&gt;</td>
+        <td><p>Created - returns the created bank with its assigned newly ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankCreateRequestDto_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankCreateRequestDto%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L113">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostBankAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankCreateRequestDto_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostBankAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankCreateRequestDto,System.Threading.CancellationToken)">PostBankAsync(BankCreateRequestDto, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a new Bank.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankResponseDto&gt; PostBankAsync(BankCreateRequestDto body, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankCreateRequestDto.html">BankCreateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.html">BankResponseDto</a>&gt;</td>
+        <td><p>Created - returns the created bank with its assigned newly ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostCurrencyAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_CurrencyCreateRequestDto_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostCurrencyAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L197">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostCurrencyAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostCurrencyAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostCurrencyAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_CurrencyCreateRequestDto_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostCurrencyAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto)">PostCurrencyAsync(CurrencyCreateRequestDto)</h4>
+  <div class="markdown level1 summary"><p>Creates a new Currency.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;CurrencyResponseDto&gt; PostCurrencyAsync(CurrencyCreateRequestDto body)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto.html">CurrencyCreateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.html">CurrencyResponseDto</a>&gt;</td>
+        <td><p>Created - returns the created currency with its assigned newly ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostCurrencyAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_CurrencyCreateRequestDto_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostCurrencyAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L203">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostCurrencyAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostCurrencyAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PostCurrencyAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_CurrencyCreateRequestDto_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PostCurrencyAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto,System.Threading.CancellationToken)">PostCurrencyAsync(CurrencyCreateRequestDto, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a new Currency.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;CurrencyResponseDto&gt; PostCurrencyAsync(CurrencyCreateRequestDto body, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyCreateRequestDto.html">CurrencyCreateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.html">CurrencyResponseDto</a>&gt;</td>
+        <td><p>Created - returns the created currency with its assigned newly ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAccountAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankAccountUpdateRequestDto_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAccountAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountUpdateRequestDto)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L26">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAccountAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAccountAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAccountAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankAccountUpdateRequestDto_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAccountAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountUpdateRequestDto)">PutBankAccountAsync(BankAccountUpdateRequestDto)</h4>
+  <div class="markdown level1 summary"><p>Update an existing BankAccount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankAccountResponseDto&gt; PutBankAccountAsync(BankAccountUpdateRequestDto body)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountUpdateRequestDto.html">BankAccountUpdateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountResponseDto.html">BankAccountResponseDto</a>&gt;</td>
+        <td><p>Ok - returns the updated BankAccountResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAccountAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankAccountUpdateRequestDto_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAccountAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountUpdateRequestDto%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L32">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAccountAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAccountAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAccountAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankAccountUpdateRequestDto_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAccountAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountUpdateRequestDto,System.Threading.CancellationToken)">PutBankAccountAsync(BankAccountUpdateRequestDto, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Update an existing BankAccount.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankAccountResponseDto&gt; PutBankAccountAsync(BankAccountUpdateRequestDto body, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountUpdateRequestDto.html">BankAccountUpdateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankAccountResponseDto.html">BankAccountResponseDto</a>&gt;</td>
+        <td><p>Ok - returns the updated BankAccountResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankUpdateRequestDto_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankUpdateRequestDto)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L96">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankUpdateRequestDto_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankUpdateRequestDto)">PutBankAsync(BankUpdateRequestDto)</h4>
+  <div class="markdown level1 summary"><p>Update an existing Bank.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankResponseDto&gt; PutBankAsync(BankUpdateRequestDto body)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankUpdateRequestDto.html">BankUpdateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.html">BankResponseDto</a>&gt;</td>
+        <td><p>Ok - returns the updated BankResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankUpdateRequestDto_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankUpdateRequestDto%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L102">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutBankAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_BankUpdateRequestDto_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutBankAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.BankUpdateRequestDto,System.Threading.CancellationToken)">PutBankAsync(BankUpdateRequestDto, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Update an existing Bank.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;BankResponseDto&gt; PutBankAsync(BankUpdateRequestDto body, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankUpdateRequestDto.html">BankUpdateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.BankResponseDto.html">BankResponseDto</a>&gt;</td>
+        <td><p>Ok - returns the updated BankResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutCurrencyAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_CurrencyUpdateRequestDto_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutCurrencyAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L186">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutCurrencyAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutCurrencyAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutCurrencyAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_CurrencyUpdateRequestDto_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutCurrencyAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto)">PutCurrencyAsync(CurrencyUpdateRequestDto)</h4>
+  <div class="markdown level1 summary"><p>Update an existing Currency.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;CurrencyResponseDto&gt; PutCurrencyAsync(CurrencyUpdateRequestDto body)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto.html">CurrencyUpdateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.html">CurrencyResponseDto</a>&gt;</td>
+        <td><p>Ok - returns the updated CurrencyResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutCurrencyAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_CurrencyUpdateRequestDto_System_Threading_CancellationToken_.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutCurrencyAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto%2CSystem.Threading.CancellationToken)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L192">View Source</a>
+  </span>
+  <a id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutCurrencyAsync_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutCurrencyAsync*"></a>
+  <h4 id="AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient_PutCurrencyAsync_AdminAssistant_UI_Shared_WebAPIClient_v1_CurrencyUpdateRequestDto_System_Threading_CancellationToken_" data-uid="AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient.PutCurrencyAsync(AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto,System.Threading.CancellationToken)">PutCurrencyAsync(CurrencyUpdateRequestDto, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Update an existing Currency.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;CurrencyResponseDto&gt; PutCurrencyAsync(CurrencyUpdateRequestDto body, CancellationToken cancellationToken)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyUpdateRequestDto.html">CurrencyUpdateRequestDto</a></td>
+        <td><span class="parametername">body</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>A cancellation token that can be used by other objects or threads to receive notice of cancellation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.CurrencyResponseDto.html">CurrencyResponseDto</a>&gt;</td>
+        <td><p>Ok - returns the updated CurrencyResponseDto</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="AdminAssistant.UI.Shared.WebAPIClient.v1.ApiException.html">ApiException</a></td>
+        <td><p>A server side error occurred.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/SimonGeering/AdminAssistant/new/simon/apiSpec/new?filename=AdminAssistant_UI_Shared_WebAPIClient_v1_IAdminAssistantWebAPIClient.md&amp;value=---%0Auid%3A%20AdminAssistant.UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/src/AdminAssistant.UI/Shared/WebAPIClient/v1/IAdminAssistantWebAPIClientCodeGen.cs/#L20" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

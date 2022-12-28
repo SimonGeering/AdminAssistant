@@ -2,15 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using Ardalis.Result;
-using FluentAssertions;
-using MediatR;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.AccountsModule;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.AccountsModule;
+namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 public class BankAccountTypeController_BankAccountTypeGet_Should
 {

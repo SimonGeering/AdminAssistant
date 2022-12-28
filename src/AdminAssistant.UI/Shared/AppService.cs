@@ -22,12 +22,16 @@ internal class AppService : IAppService
         GetModuleItem(ModuleEnum.Calendar),
         GetModuleItem(ModuleEnum.Contacts),
         GetModuleItem(ModuleEnum.Tasks),
+        GetModuleItem(ModuleEnum.Notes),
         GetModuleItem(ModuleEnum.Accounts),
         GetModuleItem(ModuleEnum.AssetRegister),
+        GetModuleItem(ModuleEnum.Groceries),
+        GetModuleItem(ModuleEnum.Meals),
         GetModuleItem(ModuleEnum.Billing),
         GetModuleItem(ModuleEnum.Budget),
         GetModuleItem(ModuleEnum.Documents),
         GetModuleItem(ModuleEnum.Reports),
+        GetModuleItem(ModuleEnum.Admin)
     };
 
     public ModuleSelectionItem GetDefaultModule() => GetModuleItem(DefaultModule);
@@ -71,6 +75,10 @@ internal class AppService : IAppService
         ModuleEnum.Documents => "Documents",
         ModuleEnum.Reports => "Reports",
         ModuleEnum.Dashboard => "Dashboard",
+        ModuleEnum.Admin => "Admin",
+        ModuleEnum.Groceries => "Groceries",
+        ModuleEnum.Meals => "Meals",
+        ModuleEnum.Notes => "Notes",
         _ => throw new ArgumentOutOfRangeException(nameof(module))
     };
 
@@ -80,6 +88,10 @@ internal class AppService : IAppService
         ModuleEnum.Calendar => "fa fa-calendar",
         ModuleEnum.Contacts => "fa fa-user",
         ModuleEnum.Tasks => "fa fa-flag-o",
+        ModuleEnum.Notes => "fa fa-sticky-note-o ",
+        ModuleEnum.Admin => "fa fa-wrench",
+        ModuleEnum.Groceries => "fa fa-shopping-basket",
+        ModuleEnum.Meals => "fa fa-cutlery",
         ModuleEnum.Accounts => "fa fa-gbp",
         ModuleEnum.AssetRegister => "fa fa-diamond",
         ModuleEnum.Billing => "fa fa-bullseye",

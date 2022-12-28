@@ -1,4 +1,4 @@
-namespace AdminAssistant;
+namespace AdminAssistant.Test;
 
 public static class TestConstants
 {

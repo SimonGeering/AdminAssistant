@@ -1,12 +1,9 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
-namespace AdminAssistant;
+namespace AdminAssistant.Test;
 
 public class ServiceCollection_Should
 {
@@ -37,7 +34,7 @@ public class ServiceCollection_Should
                 if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture))
                     continue;
 
-                var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
+                var instance = serviceProvider.GetRequiredService(serviceDescriptor.ServiceType);
                 instance.Should().NotBeNull();
                 instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);
@@ -61,7 +58,7 @@ public class ServiceCollection_Should
         // Arrange
         var services = new ServiceCollection();
         services.AddMocksOfExternalClientSideDependencies();
-        services.AddTransient((sp) => new Mock<UI.Shared.WebAPIClient.v1.IAdminAssistantWebAPIClient>().Object);
+        services.AddTransient((sp) => new Mock<IAdminAssistantWebAPIClient>().Object);
 
         services.AddAdminAssistantClientSideProviders();
         services.AddAdminAssistantClientSideDomainModel();
@@ -76,7 +73,7 @@ public class ServiceCollection_Should
         {
             try
             {
-                var instance = serviceProvider.GetService(serviceDescriptor.ServiceType);
+                var instance = serviceProvider.GetRequiredService(serviceDescriptor.ServiceType);
                 instance.Should().NotBeNull();
                 instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);

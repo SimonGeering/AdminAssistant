@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>CLI Tools </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="CLI Tools ">
+    <meta name="generator" content="docfx 2.58.4.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="cli-tools">CLI Tools</h1>
+
+<p>Notes on the use of various CLI tools utilised by the project.</p>
+<p>Assume starting from src folder.</p>
+<h2 id="install-global-tools">Install Global tools</h2>
+<pre><code class="lang-dos">dotnet tool list --global
+dotnet tool uninstall --global dotnet-ef
+dotnet tool install dotnet-ef --global --version 3.1.6 --interactive
+dotnet tool update --global dotnet-ef --version 5.0.0-preview.8.20407.4 
+</code></pre>
+<h2 id="entity-framework-cli-commands">Entity framework CLI commands</h2>
+<p>EF migrations are kept in DAL to allow adding other Apps in future with a common DB.</p>
+<h3 id="update-database-to-latest-migration">Update Database To Latest Migration</h3>
+<pre><code class="lang-dos">dotnet ef database update --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj&quot; --no-build
+</code></pre>
+<h3 id="add-initial-database-migration">Add 'Initial' Database Migration</h3>
+<pre><code class="lang-dos">dotnet ef migrations add Initial --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj&quot; --output-dir &quot;./DAL/EntityFramework/Migrations&quot; --no-build
+</code></pre>
+<h3 id="list-database-migrations">List Database Migrations</h3>
+<pre><code class="lang-dos">dotnet ef migrations list --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj&quot; --no-build
+</code></pre>
+<h3 id="remove-latest-migration">Remove Latest Migration</h3>
+<pre><code class="lang-dos">dotnet ef migrations remove --context applicationdbcontext --project &quot;./AdminAssistant.Infra/AdminAssistant.Infra.csproj&quot; --startup-project &quot;./AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj&quot; --no-build
+</code></pre>
+<h2 id="docx-documentation-site">Docx Documentation Site</h2>
+<p>Assumes DocFx is available in the 'PATH'</p>
+<h3 id="build-documentation">Build Documentation</h3>
+<p>Compiles markdown documentation from <code>../docfx_project</code> and outputs to <code>../docs/</code> as html static site.</p>
+<pre><code class="lang-dos">docfx ../docfx_project/docfx.json --build
+</code></pre>
+<h3 id="debug">Debug</h3>
+<p>Compiles markdown documentation from <code>../docfx_project</code> and hosts on local webpack dev server.</p>
+<pre><code class="lang-dos">docfx ../docfx_project/docfx.json --serve
+</code></pre>
+<h2 id="run-tests">Run Tests</h2>
+<h3 id="full-test-suite--">Full Test Suite -</h3>
+<p>Standalone</p>
+<pre><code class="lang-dos">dotnet test ./AdminAssistant.Test/AdminAssistant.Test.csproj
+</code></pre>
+<p>With Watch</p>
+<pre><code class="lang-dos">dotnet watch test ./AdminAssistant.Test/AdminAssistant.Test.csproj
+</code></pre>
+<h3 id="unit-tests-only">Unit Tests Only</h3>
+<p>Standalone</p>
+<pre><code class="lang-dos">dotnet test ./AdminAssistant.Test/AdminAssistant.Test.csproj --filter Category=Unit 
+</code></pre>
+<p>With Watch</p>
+<pre><code class="lang-dos">dotnet watch test ./AdminAssistant.Test/AdminAssistant.Test.csproj --filter Category=Unit 
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/SimonGeering/AdminAssistant/blob/simon/docfx_project/articles/Misc-CLI-Tools.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

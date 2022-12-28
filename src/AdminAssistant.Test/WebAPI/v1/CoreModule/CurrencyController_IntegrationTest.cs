@@ -4,11 +4,60 @@ using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
-using FluentAssertions;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.CoreModule;
+namespace AdminAssistant.Test.WebAPI.v1.CoreModule;
+
+[Collection("SequentialDBBackedTests")]
+public class Currency_Post_Should : IntegrationTestBase
+{
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task Return_ANewlyCreatedCurrency_Given_AValidCurrency()
+    {
+        // Arrange
+        await ResetDatabaseAsync().ConfigureAwait(false);
+
+        var request = new CurrencyCreateRequestDto() { DecimalFormat = "0.00", Symbol = "Moo" };
+
+        // Act
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PostCurrencyAsync(request).ConfigureAwait(false);
+
+        // Assert
+        response.CurrencyID.Should().BeGreaterThan(0);
+        response.DecimalFormat.Should().Be(request.DecimalFormat);
+        response.Symbol.Should().Be(request.Symbol);
+    }
+}
+
+[Collection("SequentialDBBackedTests")]
+public class Currency_Put_Should : IntegrationTestBase
+{
+    [Fact]
+    [Trait("Category", "Integration")]
+    public async Task Return_ANewlyUpdatedCurrency_Given_AValidExistingCurrency()
+    {
+        // Arrange
+        await ResetDatabaseAsync().ConfigureAwait(false);
+
+        var dal = Container.GetRequiredService<ICurrencyRepository>();
+        var aud = await dal.SaveAsync(new Currency() { DecimalFormat = CoreSchema.DefaultCurrencyDecimalFormat, Symbol = "AUD" }).ConfigureAwait(false);
+
+        var request = new CurrencyUpdateRequestDto()
+        {
+            CurrencyID = aud.CurrencyID,
+            DecimalFormat = "0.0",
+            Symbol = aud.Symbol
+        };
+
+        // Act
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PutCurrencyAsync(request).ConfigureAwait(false);
+
+        // Assert
+        response.CurrencyID.Should().Be(request.CurrencyID);
+        response.DecimalFormat.Should().Be(request.DecimalFormat);
+        response.Symbol.Should().Be(request.Symbol);
+    }
+}
 
 [Collection("SequentialDBBackedTests")]
 public class Currency_GetById_Should : IntegrationTestBase

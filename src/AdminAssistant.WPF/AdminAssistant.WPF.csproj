@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>AdminAssistant.WPF</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU</Platforms>
+    <AssemblyName>AdminAssistant.WPF</AssemblyName>
+    <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>AdminAssistant.WPF.docs.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>1701;1702;NU1605</NoWarn>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>AdminAssistant.WPF.docs.xml</DocumentationFile>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>1701;1702;NU1605</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AdminAssistant.WPF.docs.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.3.4" />
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+    <PackageReference Include="Syncfusion.SfBusyIndicator.WPF" Version="19.3.0.54" />
+    <PackageReference Include="Syncfusion.SfInput.WPF" Version="19.3.0.54" />
+    <PackageReference Include="Syncfusion.SfSkinManager.WPF" Version="19.3.0.54" />
+    <PackageReference Include="Syncfusion.Shared.WPF" Version="19.3.0.54" />
+    <PackageReference Include="Syncfusion.SfTreeView.WPF" Version="19.3.0.54" />
+    <PackageReference Include="Syncfusion.Themes.Office2019Black.WPF" Version="19.3.0.54" />
+    <PackageReference Include="Syncfusion.Themes.Office2019Colorful.WPF" Version="19.3.0.54" />
+    <PackageReference Include="Syncfusion.Themes.Office365.WPF" Version="19.3.0.54" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+    <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+  </ItemGroup>
+
+</Project>

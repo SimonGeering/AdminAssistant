@@ -7,8 +7,6 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule
     [SwaggerSchema(Required = new[] { "BankName" })]
     public record BankCreateRequestDto : IMapTo<Bank>
     {
-        [SwaggerSchema("The Bank identifier.", ReadOnly = true)]
-        public int BankID { get; init; }
         public string BankName { get; init; } = string.Empty;
 
         public void MapTo(AutoMapper.Profile profile)

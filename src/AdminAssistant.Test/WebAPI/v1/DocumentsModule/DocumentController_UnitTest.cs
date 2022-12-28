@@ -2,15 +2,11 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
-using Ardalis.Result;
-using FluentAssertions;
-using MediatR;
+using AdminAssistant.WebAPI.v1;
+using AdminAssistant.WebAPI.v1.DocumentsModule;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using Xunit;
 
-namespace AdminAssistant.WebAPI.v1.DocumentsModule;
+namespace AdminAssistant.Test.WebAPI.v1.DocumentsModule;
 
 public class DocumentController_UnitTest_Should
 {
@@ -34,7 +30,7 @@ public class DocumentController_UnitTest_Should
                     .Returns(Task.FromResult(Result<IEnumerable<Document>>.Success(documents)));
 
         services.AddTransient((sp) => mockMediator.Object);
-        services.AddTransient<DocumentController>();
+        services.AddTransient<AdminAssistant.WebAPI.v1.DocumentsModule.DocumentController>();
 
         // Act
         var response = await services.BuildServiceProvider().GetRequiredService<DocumentController>().GetDocuments().ConfigureAwait(false);

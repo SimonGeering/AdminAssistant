@@ -68,7 +68,7 @@ public class CurrencyController : WebAPIControllerBase
         return Log.Finish(CreatedAtRoute(nameof(CurrencyGetById), new { currencyID = response.CurrencyID }, response));
     }
 
-    [HttpGet("{currencyID}")]
+    [HttpGet("{currencyID}", Name = nameof(CurrencyGetById))]
     [SwaggerOperation("Gets the Currency with the given ID.", OperationId = "GetCurrencyById")]
     [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the Currency requested.", type: typeof(CurrencyResponseDto))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given CurrencyID does not exist.")]

@@ -1,10 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using FluentAssertions;
-using FluentValidation;
-using Microsoft.Extensions.DependencyInjection;
-using Xunit;
 
-namespace AdminAssistant.DomainModel.Modules.CoreModule.Validation;
+using AdminAssistant.DomainModel;
+using AdminAssistant.DomainModel.Modules.CoreModule;
+using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
+
+namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.Validation;
 
 public class CurrencyValidator_Should
 {

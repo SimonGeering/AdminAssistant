@@ -1,0 +1,30 @@
+- name: Architecture
+  href: Architecture.md
+- name: Design Decisions
+  href: Design-Notes.md
+- name: CLI Tools
+  href: Misc-CLI-Tools.md
+- name: Individual Modules
+  items:
+  - name: Dashboard
+    href: Dashboard-Module.md
+  - name: Accounts
+    href: Accounts-Module.md
+  - name: Asset Register
+    href: Asset-Register-Module.md
+  - name: Budget
+    href: Budget-Module.md
+  - name: Mail
+    href: Mail-Module.md
+  - name: Calendar
+    href: Calendar-Module.md
+  - name: Contacts
+    href: Contacts-Module.md
+  - name: Tasks
+    href: Tasks-Module.md
+  - name: Documents
+    href: Documents-Module.md
+  - name: Reports
+    href: Reports-Module.md
+  - name: Core
+    href: Core-Module.md
