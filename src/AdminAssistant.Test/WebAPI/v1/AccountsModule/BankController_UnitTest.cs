@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
-public class BankController_Put_Should
+public sealed class BankController_Put_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

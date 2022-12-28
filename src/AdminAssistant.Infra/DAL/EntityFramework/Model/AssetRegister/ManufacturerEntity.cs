@@ -10,6 +10,6 @@ Ref: "Assets.Manufacturer"."ManufacturerID" < "Assets.Asset"."ManufacturerID"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister;
 
-public class ManufacturerEntity
+public sealed class ManufacturerEntity
 {
 }

@@ -2,7 +2,7 @@ using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 
-public class OwnerEntity
+public sealed class OwnerEntity
 {
     public int OwnerID { get; set; }
     public int? CompanyID { get; set; }

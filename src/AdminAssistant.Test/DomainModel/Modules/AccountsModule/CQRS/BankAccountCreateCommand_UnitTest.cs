@@ -6,7 +6,7 @@ using ObjectCloner.Extensions; // https://github.com/marcelltoth/ObjectCloner
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
-public class BankAccountCreateCommand_Should
+public sealed class BankAccountCreateCommand_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

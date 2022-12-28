@@ -10,7 +10,7 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
-public class BankAccount_Get_Should : IntegrationTestBase
+public sealed class BankAccount_Get_Should : IntegrationTestBase
 {
     [Fact(Skip = "WIP while we work out FK changes.")]
     [Trait("Category", "Integration")]

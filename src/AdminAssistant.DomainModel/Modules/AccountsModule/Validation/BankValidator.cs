@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 
-internal class BankValidator : AbstractValidator<Bank>, IBankValidator
+internal sealed class BankValidator : AbstractValidator<Bank>, IBankValidator
 {
     public BankValidator()
     {

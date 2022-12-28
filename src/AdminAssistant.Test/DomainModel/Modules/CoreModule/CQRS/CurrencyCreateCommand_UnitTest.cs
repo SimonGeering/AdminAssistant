@@ -6,7 +6,7 @@ using ObjectCloner.Extensions; // https://github.com/marcelltoth/ObjectCloner
 
 namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.CQRS;
 
-public class CurrencyCreateCommand_Should
+public sealed class CurrencyCreateCommand_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

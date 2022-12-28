@@ -7,7 +7,7 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
-public class Bank_Post_Should : IntegrationTestBase
+public sealed class Bank_Post_Should : IntegrationTestBase
 {
     [Fact]
     [Trait("Category", "Integration")]
@@ -28,7 +28,7 @@ public class Bank_Post_Should : IntegrationTestBase
 }
 
 [Collection("SequentialDBBackedTests")]
-public class Bank_Put_Should : IntegrationTestBase
+public sealed class Bank_Put_Should : IntegrationTestBase
 {
     [Fact]
     [Trait("Category", "Integration")]

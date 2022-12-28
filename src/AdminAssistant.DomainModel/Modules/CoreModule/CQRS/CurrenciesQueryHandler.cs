@@ -3,7 +3,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 
-internal class CurrenciesQueryHandler : RequestHandlerBase<CurrenciesQuery, Result<IEnumerable<Currency>>>
+internal sealed class CurrenciesQueryHandler : RequestHandlerBase<CurrenciesQuery, Result<IEnumerable<Currency>>>
 {
     private readonly ICurrencyRepository _currencyRepository;
 

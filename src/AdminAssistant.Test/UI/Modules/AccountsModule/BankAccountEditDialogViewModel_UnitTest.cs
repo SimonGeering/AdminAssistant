@@ -5,7 +5,7 @@
 
 //namespace AdminAssistant.Test.UI.Modules.AccountsModule.BankAccountEditDialog
 //{
-//    public class BankAccountEditDialogViewModel_Should
+//    public sealed class BankAccountEditDialogViewModel_Should
 //    {
 //        [Fact]
 //        [Trait("Category", "Unit")]

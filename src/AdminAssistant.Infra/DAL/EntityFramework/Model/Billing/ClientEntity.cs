@@ -9,6 +9,6 @@ Table "Billing.Client"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Billing;
 
-public class ClientEntity
+public sealed class ClientEntity
 {
 }

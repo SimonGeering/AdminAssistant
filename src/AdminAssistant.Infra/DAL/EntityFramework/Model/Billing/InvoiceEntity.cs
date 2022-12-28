@@ -9,6 +9,6 @@ Table "Billing.InvoiceEntity"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Billing;
 
-public class InvoiceEntity
+public sealed class InvoiceEntity
 {
 }

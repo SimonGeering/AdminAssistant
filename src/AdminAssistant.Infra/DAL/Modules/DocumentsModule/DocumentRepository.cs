@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 
-internal class DocumentRepository : RepositoryBase, IDocumentRepository
+internal sealed class DocumentRepository : RepositoryBase, IDocumentRepository
 {
     public DocumentRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
         : base(dbContext, mapper, dateTimeProvider, userContextProvider)

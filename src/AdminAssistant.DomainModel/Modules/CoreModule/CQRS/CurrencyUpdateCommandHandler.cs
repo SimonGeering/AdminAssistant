@@ -4,7 +4,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 
-internal class CurrencyUpdateCommandHandler : RequestHandlerBase<CurrencyUpdateCommand, Result<Currency>>
+internal sealed class CurrencyUpdateCommandHandler : RequestHandlerBase<CurrencyUpdateCommand, Result<Currency>>
 {
     private readonly ICurrencyRepository _currencyRepository;
     private readonly ICurrencyValidator _currencyValidator;

@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.CoreModule;
 
-public record Currency : IDatabasePersistable
+public sealed record Currency : IDatabasePersistable
 {
     public const int SymbolMaxLength = 3;
     public const int DecimalFormatMaxLength = 5;

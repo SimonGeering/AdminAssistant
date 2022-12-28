@@ -3,7 +3,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
 
-internal class DocumentQueryHandler : RequestHandlerBase<DocumentQuery, Result<IEnumerable<Document>>>
+internal sealed class DocumentQueryHandler : RequestHandlerBase<DocumentQuery, Result<IEnumerable<Document>>>
 {
     private readonly IDocumentRepository _repository;
 

@@ -11,7 +11,7 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule;
 [ApiController]
 [Route("api/v1/accounts-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Accounts Module")]
-public class BankAccountInfoController : WebAPIControllerBase
+public sealed class BankAccountInfoController : WebAPIControllerBase
 {
     private readonly IUserContextProvider _userContextProvider;
 

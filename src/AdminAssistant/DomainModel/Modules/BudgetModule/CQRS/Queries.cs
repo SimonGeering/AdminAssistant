@@ -1,4 +1,4 @@
 namespace AdminAssistant.DomainModel.Modules.BudgetModule.CQRS
 {
-    public record BudgetQuery : IRequest<Result<IEnumerable<Budget>>>;
+    public sealed record BudgetQuery : IRequest<Result<IEnumerable<Budget>>>;
 }

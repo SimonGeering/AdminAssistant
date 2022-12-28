@@ -3,32 +3,31 @@ using System.Windows.Media;
 using AdminAssistant.UI.Shared;
 using MahApps.Metro.IconPacks;
 
-namespace AdminAssistant.WPF.Shared
+namespace AdminAssistant.WPF.Shared;
+
+[MarkupExtensionReturnType(typeof(ImageSource))]
+public sealed class ModeImageExtension : FontAwesomeImageExtension
 {
-    [MarkupExtensionReturnType(typeof(ImageSource))]
-    public class ModeImageExtension : FontAwesomeImageExtension
+    private ModeEnum mode;
+
+    [ConstructorArgument("mode")]
+    public ModeEnum Mode
     {
-        private ModeEnum mode;
-
-        [ConstructorArgument("mode")]
-        public ModeEnum Mode
+        get => mode;
+        set
         {
-            get => mode;
-            set
-            {
-                base.Kind = value.ToPackIconFontAwesomeKind();
-                mode = value;
-            }
+            base.Kind = value.ToPackIconFontAwesomeKind();
+            mode = value;
         }
+    }
 
-        public ModeImageExtension()
-            : base()
-        {
-        }
+    public ModeImageExtension()
+        : base()
+    {
+    }
 
-        public ModeImageExtension(ModeEnum mode)
-            : base(mode.ToPackIconFontAwesomeKind())
-        {
-        }
+    public ModeImageExtension(ModeEnum mode)
+        : base(mode.ToPackIconFontAwesomeKind())
+    {
     }
 }

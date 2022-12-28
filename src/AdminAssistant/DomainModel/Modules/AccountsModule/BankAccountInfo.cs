@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
-public record BankAccountInfo : IDatabasePersistable
+public sealed record BankAccountInfo : IDatabasePersistable
 {
     public int BankAccountID { get; init; }
     public string AccountName { get; init; } = string.Empty;

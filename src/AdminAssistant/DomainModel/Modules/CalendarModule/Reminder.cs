@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.CalendarModule;
 
-public record Reminder : IDatabasePersistable
+public sealed record Reminder : IDatabasePersistable
 {
     public const int ReminderNameMaxLength = Constants.NameMaxLength;
 

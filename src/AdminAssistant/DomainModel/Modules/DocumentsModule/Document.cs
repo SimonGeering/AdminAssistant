@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.DocumentsModule;
 
-public record Document : IDatabasePersistable
+public sealed record Document : IDatabasePersistable
 {
     public const int FileNameMaxLength = 255;
 

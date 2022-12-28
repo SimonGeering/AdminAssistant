@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AdminAssistant.WPF;
 
-public class ViewModelLocator
+public sealed class ViewModelLocator
 {
     private readonly IServiceProvider _serviceProvider;
 

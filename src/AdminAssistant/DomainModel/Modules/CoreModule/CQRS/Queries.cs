@@ -1,6 +1,5 @@
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS
 {
-    public record CurrenciesQuery : IRequest<Result<IEnumerable<Currency>>>;
-    public record CurrencyByIDQuery(int CurrencyID) : IRequest<Result<Currency>>;
-
+    public sealed record CurrenciesQuery : IRequest<Result<IEnumerable<Currency>>>;
+    public sealed record CurrencyByIDQuery(int CurrencyID) : IRequest<Result<Currency>>;
 }

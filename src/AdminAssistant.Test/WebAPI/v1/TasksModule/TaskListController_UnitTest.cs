@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.TasksModule.TaskListControllerUnitTest;
 
-public class GetTaskLists
+public sealed class GetTaskLists
 {
     [Fact]
     [Trait("Category", "Unit")]

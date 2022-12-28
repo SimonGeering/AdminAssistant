@@ -11,7 +11,7 @@ Table "Budget.BudgetEntry"
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;
 
-public class BudgetEntryEntity
+public sealed class BudgetEntryEntity
 {
     public int BudgetEntryID { get; internal set; }
     public int BudgetID { get; internal set; }

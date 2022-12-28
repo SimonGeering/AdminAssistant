@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.BudgetModule;
 
-public class BudgetController_UnitTest_Should
+public sealed class BudgetController_UnitTest_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

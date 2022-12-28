@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.BudgetModule;
 
-public record Budget : IDatabasePersistable
+public sealed record Budget : IDatabasePersistable
 {
     public const int BudgetNameMaxLength = Constants.NameMaxLength;
 

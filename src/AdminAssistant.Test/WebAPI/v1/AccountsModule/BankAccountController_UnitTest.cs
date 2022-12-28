@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
-public class BankAccountController_Put_Should
+public sealed class BankAccountController_Put_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -140,7 +140,7 @@ public class BankAccountController_Put_Should
     }
 }
 
-public class BankAccountController_BankAccountPost_Should
+public sealed class BankAccountController_BankAccountPost_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -242,7 +242,7 @@ public class BankAccountController_BankAccountPost_Should
     }
 }
 
-public class BankAccountController_BankAccountGetById_Should
+public sealed class BankAccountController_BankAccountGetById_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
