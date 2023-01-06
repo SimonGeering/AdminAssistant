@@ -115,7 +115,8 @@
       "pflannery.vscode-versionlens",
       "visualstudioexptteam.vscodeintellicode",
       "vscode-icons-team.vscode-icons",
-      "ms-azuretools.vscode-docker"
+      "ms-azuretools.vscode-docker",
+      "systemticks.c4-dsl-extension"
     ],
     "unwantedRecommendations": [
       "ms-azuretools.vscode-docker",
