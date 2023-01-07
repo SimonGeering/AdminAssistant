@@ -1,9 +1,7 @@
-using System.Windows;
-using FluentValidation;
+using AdminAssistant.Retro.Modules.AccountsModule;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Terminal.Gui;
 
 using var host = new HostBuilder()
     .ConfigureServices((hostContext, services) =>
@@ -15,6 +13,7 @@ using var host = new HostBuilder()
         services.AddAdminAssistantClientSideProviders();
         services.AddAdminAssistantClientSideDomainModel();
         services.AddAdminAssistantUI();
+        services.AddAdminAssistantRetroUIElements();
     })
     .ConfigureLogging(logging =>
     {
@@ -62,6 +61,10 @@ using (var scope = host.Services.CreateScope())
         new MenuBarItem ("_File", new MenuItem []
         {
             new MenuItem ("_Quit", "", () => Quit()),
+        }),
+        new MenuBarItem ("_Accounts", new MenuItem []
+        {
+            new MenuItem ("_BankAccountEdit", "", () => AccountsBankAccountEdit(scope)),
         })
     });
     Top.Add(menu);
@@ -84,3 +87,8 @@ using (var scope = host.Services.CreateScope())
 }
 
 static void Quit() => Application.RequestStop();
+static void AccountsBankAccountEdit(IServiceScope scope)
+{
+    var bankAccountEditDialog = scope.ServiceProvider.GetRequiredService<BankAccountEditDialog>();
+    Application.Run(bankAccountEditDialog);
+}
