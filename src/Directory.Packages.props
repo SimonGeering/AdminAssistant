@@ -3,9 +3,7 @@
     <!--See: https://devblogs.microsoft.com/nuget/introducing-central-package-management/-->
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
-  
   <ItemGroup>
-
     <!--Shared / Common-->
     <PackageVersion Include="Ardalis.GuardClauses" Version="3.2.0" />
     <PackageVersion Include="AutoMapper" Version="12.0.0" />
@@ -18,22 +16,19 @@
     <PackageVersion Include="Microsoft.Extensions.Http" Version="7.0.0" />
     <PackageVersion Include="Microsoft.Toolkit.Mvvm" Version="7.1.1" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.1" />
-
     <!--AdminAssistant-->
     <PackageVersion Include="Ardalis.Result" Version="3.1.2" />
     <PackageVersion Include="Ardalis.Result.FluentValidation" Version="3.0.2" />
     <PackageVersion Include="MediatR" Version="9.0.0" />
-    <PackageVersion Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />    
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />    
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />    
-
+    <PackageVersion Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     <!--AdminAssistant.Blazor.Client-->
     <PackageVersion Include="Blazor.Extensions.Logging" Version="3.1.0-rc1-020501" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.1" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.1" PrivateAssets="all" />
     <PackageVersion Include="Syncfusion.Blazor" Version="19.3.0.54" />
     <PackageVersion Include="Syncfusion.Blazor.Themes" Version="19.3.0.54" />
-
     <!--AdminAssistant.Blazor.Server-->
     <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="6.0.5" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.5" />
@@ -51,21 +46,16 @@
     <PackageVersion Include="Microsoft.AspNetCore.JsonPatch" Version="7.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="7.0.0" />
     <PackageVersion Include="System.Net.Http.Json" Version="7.0.0" />
-
     <!--AdminAssistant.DomainModel-->
     <!--No project specific packages-->
-
     <!--AdminAssistant.Infra-->
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.1" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.1" />
-
     <!--AdminAssistant.Infra.ClientSide-->
     <!--No project specific packages-->
-    
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="ReactiveUI" Version="18.3.1" />
-    <PackageVersion Include="Terminal.Gui" Version="1.7.1" />
-    
+    <PackageVersion Include="Terminal.Gui" Version="1.9.0" />
     <!--AdminAssistant.Test-->
     <PackageVersion Include="FluentAssertions" Version="6.8.0" />
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="7.0.1" />
@@ -79,10 +69,8 @@
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.4.5" />
     <PackageVersion Include="coverlet.collector" Version="3.2.0" />
     <PackageVersion Include="Xunit.SkippableFact" Version="1.4.13" />
-    
     <!--AdminAssistant.UI-->
     <!--No project specific packages-->
-
     <!--AdminAssistant.WPF-->
     <PackageVersion Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />
     <PackageVersion Include="Syncfusion.SfBusyIndicator.WPF" Version="19.3.0.54" />
@@ -93,7 +81,5 @@
     <PackageVersion Include="Syncfusion.Themes.Office2019Black.WPF" Version="19.3.0.54" />
     <PackageVersion Include="Syncfusion.Themes.Office2019Colorful.WPF" Version="19.3.0.54" />
     <PackageVersion Include="Syncfusion.Themes.Office365.WPF" Version="19.3.0.54" />
-    
   </ItemGroup>
-  
 </Project>
