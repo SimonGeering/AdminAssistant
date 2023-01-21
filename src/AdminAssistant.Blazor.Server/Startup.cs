@@ -57,13 +57,13 @@ public sealed class Startup
 
         services.AddHealthChecks();
 
-        // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
-        //services.AddHealthChecksUI(setupSettings: setup =>
-        //{
-        //    // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-        //    setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
-
-        //}).AddInMemoryStorage();
+        services.AddHealthChecksUI(setupSettings: setup =>
+        {
+            // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+            setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
+            setup.SetEvaluationTimeInSeconds(5); // Configures the UI to poll for healthchecks updates every 5 seconds
+            setup.MaximumHistoryEntriesPerEndpoint(50);
+        }).AddInMemoryStorage();
 
         services.AddSwaggerGen(c =>
         {
@@ -131,9 +131,7 @@ public sealed class Startup
             app.UseEndpoints(config =>
             {
                 config.MapFallbackToFile("index.html");
-
-                // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
-                // config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+                config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
             });
 #pragma warning restore IDE0053 // Use expression body for lambda expressions
         });
@@ -145,13 +143,11 @@ public sealed class Startup
             {
                 config.MapRazorPages();
                 config.MapControllers();
-
-                // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
-                //config.MapHealthChecks(HealthCheckAPI, new HealthCheckOptions
-                //{
-                //    Predicate = _ => true,
-                //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                //});
+                config.MapHealthChecks(HealthCheckAPI, new HealthCheckOptions
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
             });
         });
     }

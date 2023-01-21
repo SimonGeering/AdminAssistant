@@ -30,8 +30,8 @@
     <PackageVersion Include="Syncfusion.Blazor" Version="19.3.0.54" />
     <PackageVersion Include="Syncfusion.Blazor.Themes" Version="19.3.0.54" />
     <!--AdminAssistant.Blazor.Server-->
-    <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="6.0.5" />
-    <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.5" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="7.0.0-rc2.7" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="7.0.0-rc2.7" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="6.0.5" />
     <PackageVersion Include="FluentValidation.AspNetCore" Version="10.3.4" />
     <PackageVersion Include="MicroElements.Swashbuckle.FluentValidation" Version="5.4.0" />
