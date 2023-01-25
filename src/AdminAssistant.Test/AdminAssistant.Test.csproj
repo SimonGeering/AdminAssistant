@@ -51,6 +51,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="Moq" />
     <PackageReference Include="MockQueryable.Moq" />
+    <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="ObjectCloner.Extensions" />
     <PackageReference Include="Respawn" />
     <PackageReference Include="xunit" />
