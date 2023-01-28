@@ -1,3 +1,4 @@
+using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.UI.Modules.AccountsModule;
 using AdminAssistant.UI.Modules.AdminModule;
 using AdminAssistant.UI.Modules.AssetRegisterModule;
@@ -13,19 +14,20 @@ using AdminAssistant.UI.Modules.ReportsModule;
 using AdminAssistant.UI.Modules.TasksModule;
 using AdminAssistant.UI.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjectionExtensions
 {
-    public static void AddAdminAssistantWebAPIClient(this IServiceCollection services, System.Uri baseAddress)
+    public static void AddAdminAssistantWebAPIClient(this IServiceCollection services, Uri baseAddress)
     {
         services.AddHttpClient<IAdminAssistantWebAPIClient, AdminAssistantWebAPIClient>(AdminAssistant.Constants.AdminAssistantWebAPIClient, (httpClient) => httpClient.BaseAddress = baseAddress);
         services.AddAutoMapper(typeof(MappingProfile));
     }
 
-    public static void AddAdminAssistantUI(this IServiceCollection services)
+    public static void AddAdminAssistantUI(this IServiceCollection services, FontAwesomeVersionEnum fontAwesomeVersionEnum = FontAwesomeVersionEnum.V4o7o0)
     {
         // Add MVVM Toolkit registrations ...
         services.AddSingleton<IMessenger, StrongReferenceMessenger>();
@@ -78,7 +80,8 @@ public static class DependencyInjectionExtensions
         services.AddSingleton<ITasksViewModel, TasksViewModel>();
 
         // Add Shared UI ...
-        services.AddTransient<IAppService, AppService>();
+        services.AddTransient<IAppService, AppService>((serviceProvider) => new AppService(fontAwesomeVersionEnum));
+
         services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
     }
 }

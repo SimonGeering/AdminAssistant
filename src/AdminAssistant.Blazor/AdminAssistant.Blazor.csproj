@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>AdminAssistant.Blazor</RootNamespace>
+        <LangVersion>latest</LangVersion>
+        <Platforms>AnyCPU</Platforms>
+        <AssemblyName>AdminAssistant.Blazor</AssemblyName>
+        <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DocumentationFile>AdminAssistant.Blazor.docs.xml</DocumentationFile>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <NoWarn>1701;1702;NU1605</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DocumentationFile>AdminAssistant.Blazor.docs.xml</DocumentationFile>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <NoWarn>1701;1702;NU1605</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="AdminAssistant.Blazor.docs.xml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\.editorconfig" Link=".editorconfig" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Blazorise.Bootstrap5" />
+        <PackageReference Include="Blazorise.Icons.FontAwesome" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+        <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    </ItemGroup>
+    
+</Project>

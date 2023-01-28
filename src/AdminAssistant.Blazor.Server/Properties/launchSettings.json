@@ -1,6 +1,6 @@
 {
   "profiles": {
-    "App - AdminAssistant.Blazor.Server": {
+    "App": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "https://localhost:5001",
@@ -10,7 +10,7 @@
       "inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
     },
-    "Swagger - AdminAssistant.Blazor.Server": {
+    "Swagger": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "https://localhost:5001/api/docs/index.html",

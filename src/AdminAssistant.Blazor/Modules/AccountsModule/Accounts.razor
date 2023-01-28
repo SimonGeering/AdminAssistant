@@ -1,0 +1,31 @@
+@page "/accounts"
+@inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.IAccountsViewModel>
+
+<div class="cl-accounts">
+  <div class="cl-moduleBody">
+    <div class="e-main-content">
+      <div class="cl-moduleHeader">
+        <h5>@this.vm.HeaderText</h5>
+        <span>@this.vm.SubHeaderText</span>
+      </div>
+    </div>
+@*
+    <SfSplitter Width="100%" Height="100%">
+      <SplitterPanes>
+
+        <SplitterPane>
+          <ContentTemplate>
+            <BankAccountTransactionListComponent></BankAccountTransactionListComponent>
+          </ContentTemplate>
+        </SplitterPane>
+
+        <SplitterPane>
+          <ContentTemplate>
+            <BankAccountRightSidebarComponent></BankAccountRightSidebarComponent>
+          </ContentTemplate>
+        </SplitterPane>
+
+      </SplitterPanes>
+    </SfSplitter>*@
+  </div>
+</div>

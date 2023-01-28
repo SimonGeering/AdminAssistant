@@ -1,0 +1,50 @@
+@inherits AdminAssistantLayoutComponentBase<AdminAssistant.UI.Shared.IMainWindowViewModel>
+
+<Layout Sider>
+    <LayoutSider>
+        <LayoutSiderContent>
+            <Bar Mode="BarMode.VerticalInline"
+                 CollapseMode="BarCollapseMode.Small"
+                 Breakpoint="Breakpoint.Desktop"
+                 NavigationBreakpoint="Breakpoint.Tablet">
+                <BarBrand>
+                    <BarItem>
+                        <BarLink To="/">
+                            <BarIcon IconName="IconName.Home" />
+                            Admin Assistant
+                        </BarLink>
+                    </BarItem>
+                </BarBrand>
+                <BarToggler />
+                <BarMenu>
+                    <BarStart>
+                        @foreach (var item in this.vm.Modules)
+                        {
+                            <BarItem>
+                                <BarLink To="@item.Route" Title="@item.Label">
+                                    <BarIcon IconName="@(@item.Icon)" /> @item.Label
+                                </BarLink>
+                            </BarItem>
+                        }
+                    </BarStart>
+                </BarMenu>
+            </Bar>
+
+        </LayoutSiderContent>
+    </LayoutSider>
+    <Layout>
+        <LayoutHeader Fixed>
+            <h1>Admin Assistant - @this.vm.ActiveModule.Label</h1>
+
+            <Bar>
+
+            </Bar>
+        </LayoutHeader>
+        <LayoutContent>
+            @Body
+        </LayoutContent>
+        <LayoutFooter Fixed>
+            <div>@this.vm.FooterText</div>
+        </LayoutFooter>
+    </Layout>
+</Layout>

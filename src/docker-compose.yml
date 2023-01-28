@@ -11,11 +11,20 @@ services:
       - "1433:1433"
     env_file:
       - dev.env
+
   adminassistant.blazor.server:
     container_name: adminassistant_blazorserver
     image: ${DOCKER_REGISTRY-}adminassistant/blazorserver
     build:
       context: .
       dockerfile: AdminAssistant.Blazor.Server/Dockerfile
+    depends_on:
+      - adminassistant.sqlserver
+
+  adminassistant.blazor:
+    image: ${DOCKER_REGISTRY-}adminassistantblazor
+    build:
+      context: .
+      dockerfile: AdminAssistant.Blazor/Dockerfile
     depends_on:
       - adminassistant.sqlserver
