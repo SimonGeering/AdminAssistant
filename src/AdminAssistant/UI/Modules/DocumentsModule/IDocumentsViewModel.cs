@@ -1,7 +1,5 @@
 namespace AdminAssistant.UI.Modules.DocumentsModule;
 
-public interface IDocumentsViewModel : IViewModelBase
+public interface IDocumentsViewModel : IModuleViewModelBase
 {
-    string HeaderText { get; }
-    string SubHeaderText { get; }
 }

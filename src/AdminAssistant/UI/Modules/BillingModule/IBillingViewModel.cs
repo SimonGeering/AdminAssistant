@@ -1,7 +1,5 @@
 namespace AdminAssistant.UI.Modules.BillingModule;
 
-public interface IBillingViewModel : IViewModelBase
+public interface IBillingViewModel : IModuleViewModelBase
 {
-    string HeaderText { get; }
-    string SubHeaderText { get; }
 }

@@ -1,7 +1,5 @@
 namespace AdminAssistant.UI.Modules.TasksModule;
 
-public interface ITasksViewModel : IViewModelBase
+public interface ITasksViewModel : IModuleViewModelBase
 {
-    string HeaderText { get; }
-    string SubHeaderText { get; }
 }

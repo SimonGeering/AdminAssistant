@@ -1,7 +1,5 @@
 namespace AdminAssistant.UI.Modules.BudgetModule;
 
-public interface IBudgetViewModel : IViewModelBase
+public interface IBudgetViewModel : IModuleViewModelBase
 {
-    string HeaderText { get; }
-    string SubHeaderText { get; }
 }
