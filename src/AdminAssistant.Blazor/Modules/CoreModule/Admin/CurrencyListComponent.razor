@@ -1,6 +1,54 @@
 @page "/admin/currency"
-<h3>Currency</h3>
-
-@code {
-
-}
+@inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.CoreModule.Admin.ICurrencyListViewModel>
+<Card>
+    <CardHeader>Currency Selection List</CardHeader>
+    <CardBody>
+        <CardTitle>Manage the list of currencies available to pick from when working with money throughout the application.</CardTitle>
+        <Table Bordered="true" Striped="true" Responsive="true">
+            <TableHeader ThemeContrast="ThemeContrast.Light">
+                <TableRow>
+                    <TableHeaderCell>ID</TableHeaderCell>
+                    <TableHeaderCell>Symbol</TableHeaderCell>
+                    <TableHeaderCell>Decimal Format</TableHeaderCell>
+                    <TableHeaderCell>&nbsp;</TableHeaderCell>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                @foreach (var currency in this.vm.Currencies)
+                {
+                    <TableRow>
+                        <TableRowHeader>@currency.CurrencyID</TableRowHeader>
+                        <TableRowCell>@currency.Symbol</TableRowCell>
+                        <TableRowCell>@currency.DecimalFormat</TableRowCell>
+                        <TableRowCell>
+                            <Button Color="Color.Primary" Size="Size.Small">
+                                <Icon Name="IconName.Edit" />
+                                Edit
+                            </Button>
+                            <Button Color="Color.Danger" Size="Size.Small">
+                                <Icon Name="IconName.Delete" />
+                                Delete
+                            </Button>
+                        </TableRowCell>
+                    </TableRow>
+                }
+            </TableBody>
+            <TableFooter>
+                <TableRow>
+                    <TableHeaderCell ColumnSpan="4">
+                        <div Flex="Flex.JustifyContent.End">
+                            <Button Color="Color.Primary" Size="Size.Small">
+                                <Icon Name="IconName.Add" />
+                                Add
+                            </Button>
+                            <Button Color="Color.Success" Size="Size.Small">
+                                <Icon Name="IconName.Redo" />
+                                Refresh
+                            </Button>
+                        </div>
+                    </TableHeaderCell>
+                </TableRow>
+            </TableFooter>
+        </Table>
+    </CardBody>
+</Card>
