@@ -1,28 +1,22 @@
 @page "/admin"
+@inherits AdminAssistantModuleComponentBase<AdminAssistant.UI.Modules.AdminModule.IAdminViewModel>
 
 @using AdminAssistant.Blazor.Modules.AccountsModule.Admin
 @using AdminAssistant.Blazor.Modules.CoreModule.Admin
 
-<div class="admin">
-  <h3>Admin</h3>
-@*  <SfTab CssClass="BlazorTab">
-    <TabItems>
-      <TabItem>
-        <ChildContent>
-          <TabHeader Text="Banks" />
-        </ChildContent>
-        <ContentTemplate>
-          <BankListComponent></BankListComponent>
-        </ContentTemplate>
-      </TabItem>
-      <TabItem>
-        <ChildContent>
-          <TabHeader Text="Currencies" />
-        </ChildContent>
-        <ContentTemplate>
-          <CurrencyListComponent></CurrencyListComponent>
-        </ContentTemplate>
-      </TabItem>
-    </TabItems>
-  </SfTab>*@
-</div>
+<h5>@vm.HeaderText</h5>
+
+<Tabs TabPosition="TabPosition.Start" Pills="true" RenderMode="TabsRenderMode.LazyLoad">
+    <Items>
+        <Tab Name="Banks">Banks</Tab>
+        <Tab Name="Currency">Currencies</Tab>
+    </Items>
+    <Content>
+        <TabPanel Name="Banks">
+            <BankListComponent />
+        </TabPanel>
+        <TabPanel Name="Currency">
+            <CurrencyListComponent />
+        </TabPanel>
+    </Content>
+</Tabs>
