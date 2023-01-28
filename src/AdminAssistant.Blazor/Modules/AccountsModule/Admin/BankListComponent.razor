@@ -1,5 +1,51 @@
-﻿<h3>BankListComponent</h3>
-
-@code {
-
-}
+@inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.Admin.IBankListViewModel>
+<Card>
+    <CardHeader>Bank Selection List</CardHeader>
+    <CardBody>
+        <CardTitle>Manage the list of banks available to pick from when creating a bank account.</CardTitle>
+        <Table Bordered="true" Striped="true" Responsive="true">
+            <TableHeader ThemeContrast="ThemeContrast.Light">
+                <TableRow>
+                    <TableHeaderCell>ID</TableHeaderCell>
+                    <TableHeaderCell>Name</TableHeaderCell>
+                    <TableHeaderCell>&nbsp;</TableHeaderCell>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                @foreach (var bank in this.vm.Banks)
+                {
+                <TableRow>
+                    <TableRowHeader>@bank.BankID</TableRowHeader>
+                    <TableRowCell>@bank.BankName</TableRowCell>
+                    <TableRowCell>
+                        <Button Color="Color.Primary" Size="Size.Small">
+                            <Icon Name="IconName.Edit" />
+                            Edit
+                        </Button>
+                        <Button Color="Color.Danger" Size="Size.Small">
+                            <Icon Name="IconName.Delete" />
+                            Delete
+                        </Button>
+                    </TableRowCell>
+                </TableRow>
+                }
+            </TableBody>
+            <TableFooter>
+                <TableRow>
+                    <TableHeaderCell ColumnSpan="3">
+                        <div Flex="Flex.JustifyContent.End">
+                            <Button Color="Color.Primary" Size="Size.Small">
+                                <Icon Name="IconName.Add" />
+                                Add
+                            </Button>
+                            <Button Color="Color.Success" Size="Size.Small">
+                                <Icon Name="IconName.Redo" />
+                                Refresh
+                            </Button>
+                        </div>
+                    </TableHeaderCell>
+                </TableRow>
+            </TableFooter>
+        </Table>
+    </CardBody>
+</Card>
