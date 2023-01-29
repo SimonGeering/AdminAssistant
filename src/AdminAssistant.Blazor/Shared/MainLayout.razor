@@ -29,16 +29,24 @@
                     </BarStart>
                 </BarMenu>
             </Bar>
-
         </LayoutSiderContent>
     </LayoutSider>
     <Layout>
         <LayoutHeader Fixed>
             <Container Fluid="true">
-                <h2>Admin Assistant</h2>
+                <Bar Breakpoint="Breakpoint.Desktop">
+                    <BarBrand>
+                        Admin Assistant
+                    </BarBrand>
+                    <BarMenu>
+                        <BarEnd>
+                            <BarItem>
+                                <ThemeToggle />
+                            </BarItem>
+                        </BarEnd>
+                    </BarMenu>
+                </Bar>
             </Container>
-            <Bar>
-            </Bar>
         </LayoutHeader>
         <LayoutContent>
             <Container Fluid="true">
