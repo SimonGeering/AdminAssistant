@@ -44,6 +44,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
   </ItemGroup>
 

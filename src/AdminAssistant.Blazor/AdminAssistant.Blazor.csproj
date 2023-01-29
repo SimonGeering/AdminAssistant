@@ -38,6 +38,7 @@
     <ItemGroup>
         <PackageReference Include="Blazorise.Bootstrap5" />
         <PackageReference Include="Blazorise.Icons.FontAwesome" />
+        <PackageReference Include="Blazorise.LoadingIndicator" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
     </ItemGroup>
 

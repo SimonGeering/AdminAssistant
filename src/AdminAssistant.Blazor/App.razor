@@ -1,5 +1,6 @@
 @using AdminAssistant.Blazor.Shared;
-<Blazorise.ThemeProvider Theme="@theme">
+
+<Blazorise.ThemeProvider Theme="@Themes.Dark">
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -13,11 +14,3 @@
         </NotFound>
     </Router>
 </Blazorise.ThemeProvider>
-
-@code {
-    private Theme theme = new Theme
-    {
-        // theme settings
-        IsRounded = false
-    };
-}

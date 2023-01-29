@@ -1,20 +1,22 @@
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.UI.Modules.AccountsModule;
+using AdminAssistant.UI.Modules.AccountsModule.Admin;
 using AdminAssistant.UI.Modules.AdminModule;
 using AdminAssistant.UI.Modules.AssetRegisterModule;
 using AdminAssistant.UI.Modules.BillingModule;
 using AdminAssistant.UI.Modules.BudgetModule;
 using AdminAssistant.UI.Modules.CalendarModule;
 using AdminAssistant.UI.Modules.ContactsModule;
+using AdminAssistant.UI.Modules.Core.Admin;
 using AdminAssistant.UI.Modules.CoreModule;
+using AdminAssistant.UI.Modules.CoreModule.Admin;
 using AdminAssistant.UI.Modules.DashboardModule;
 using AdminAssistant.UI.Modules.DocumentsModule;
 using AdminAssistant.UI.Modules.MailModule;
+using AdminAssistant.UI.Modules.NotesModule;
 using AdminAssistant.UI.Modules.ReportsModule;
 using AdminAssistant.UI.Modules.TasksModule;
 using AdminAssistant.UI.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -42,6 +44,8 @@ public static class DependencyInjectionExtensions
 
         services.AddTransient<IAccountsService, AccountsService>();
 
+        services.AddSingleton<IBankListViewModel, BankListViewModel>();
+
         // Add Admin UI ...
         services.AddSingleton<IAdminViewModel, AdminViewModel>();
 
@@ -63,6 +67,8 @@ public static class DependencyInjectionExtensions
         // Add Core UI ...
         services.AddTransient<ICoreService, CoreService>();
 
+        services.AddSingleton<ICurrencyListViewModel, CurrencyListViewModel>();
+
         // Add Dashboard UI ...
         services.AddSingleton<IDashboardViewModel, DashboardViewModel>();
 
@@ -75,6 +81,9 @@ public static class DependencyInjectionExtensions
 
         // Add Reports UI ...
         services.AddSingleton<IReportsViewModel, ReportsViewModel>();
+
+        // Add Notes UI ...
+        services.AddSingleton<INotesViewModel, NotesViewModel>();
 
         // Add Tasks UI ...
         services.AddSingleton<ITasksViewModel, TasksViewModel>();

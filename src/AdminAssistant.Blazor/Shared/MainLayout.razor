@@ -11,7 +11,7 @@
                     <BarItem>
                         <BarLink To="/">
                             <BarIcon IconName="IconName.Home" />
-                            Admin Assistant
+                            Home
                         </BarLink>
                     </BarItem>
                 </BarBrand>
@@ -34,14 +34,16 @@
     </LayoutSider>
     <Layout>
         <LayoutHeader Fixed>
-            <h1>Admin Assistant - @this.vm.ActiveModule.Label</h1>
-
+            <Container Fluid="true">
+                <h2>Admin Assistant</h2>
+            </Container>
             <Bar>
-
             </Bar>
         </LayoutHeader>
         <LayoutContent>
-            @Body
+            <Container Fluid="true">
+                @Body
+            </Container>
         </LayoutContent>
         <LayoutFooter Fixed>
             <div>@this.vm.FooterText</div>
