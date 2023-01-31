@@ -1,28 +1,15 @@
 @page "/admin"
+@inherits AdminAssistantModuleComponentBase<AdminAssistant.UI.Modules.AdminModule.IAdminViewModel>
 
-@using AdminAssistant.Blazor.Client.Modules.AccountsModule.Admin
-@using AdminAssistant.Blazor.Client.Modules.CoreModule.Admin
+<PageTitle>@vm.HeaderText</PageTitle>
+<MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
+<MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
 
-<div class="admin">
-  <h3>Admin</h3>
-  <SfTab CssClass="BlazorTab">
-    <TabItems>
-      <TabItem>
-        <ChildContent>
-          <TabHeader Text="Banks" />
-        </ChildContent>
-        <ContentTemplate>
-          <BankListComponent></BankListComponent>
-        </ContentTemplate>
-      </TabItem>
-      <TabItem>
-        <ChildContent>
-          <TabHeader Text="Currencies" />
-        </ChildContent>
-        <ContentTemplate>
-          <CurrencyListComponent></CurrencyListComponent>
-        </ContentTemplate>
-      </TabItem>
-    </TabItems>
-  </SfTab>
-</div>
+<MudTabs PanelClass="pa-4" Position="Position.Left" Outlined="true" Rounded="true" Border="true">
+    <MudTabPanel Text="Banks">
+        <AdminAssistant.Blazor.Client.Modules.AccountsModule.Admin.BankListComponent />
+    </MudTabPanel>
+    <MudTabPanel Text="Currency">
+        <AdminAssistant.Blazor.Client.Modules.CoreModule.Admin.CurrencyListComponent />
+    </MudTabPanel>
+</MudTabs>

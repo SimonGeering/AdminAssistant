@@ -1,5 +1,25 @@
-﻿<h3>BankListComponent</h3>
+﻿@inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.Admin.IBankListViewModel>
 
-@code {
-
-}
+<MudStack>
+    <MudText Typo="Typo.subtitle1">Bank Selection List</MudText>
+    <MudText Typo="Typo.subtitle2">Manage the list of banks available to pick from when creating a bank account.</MudText>
+    <MudTable Items="@this.vm.Banks" Striped="true" Dense="true">
+        <HeaderContent>
+            <MudTh>ID</MudTh>
+            <MudTh>Name</MudTh>
+            <MudTh>&nbsp;</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID">@context.BankID</MudTd>
+            <MudTd DataLabel="Name">@context.BankName</MudTd>
+            <MudTd>
+                <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Edit" Color="Color.Info">Edit</MudButton>
+                <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
+            </MudTd>
+        </RowTemplate>
+        <FooterContent>
+            <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Refresh" Color="Color.Tertiary">Refresh</MudButton>
+            <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
+        </FooterContent>
+    </MudTable>
+</MudStack>
