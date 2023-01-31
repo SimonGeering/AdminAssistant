@@ -36,9 +36,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Blazorise.Bootstrap5" />
-        <PackageReference Include="Blazorise.Icons.FontAwesome" />
-        <PackageReference Include="Blazorise.LoadingIndicator" />
+        <PackageReference Include="MudBlazor" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
     </ItemGroup>
 
@@ -47,5 +45,5 @@
         <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
         <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
     </ItemGroup>
-    
+
 </Project>

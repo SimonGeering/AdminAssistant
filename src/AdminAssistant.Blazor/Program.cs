@@ -1,8 +1,6 @@
 using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.Providers;
-using Blazorise;
-using Blazorise.Bootstrap5;
-using Blazorise.Icons.FontAwesome;
+using MudBlazor.Services;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.Extensions.Configuration;
@@ -11,10 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-builder.Services
-    .AddBlazorise(options => options.Immediate = true)
-    .AddBootstrap5Providers()
-    .AddFontAwesomeIcons();
+builder.Services.AddMudServices();
 
 builder.Services.AddAdminAssistantWebAPIClient(new Uri("https://localhost/"));
 builder.Services.AddLogging(logging =>

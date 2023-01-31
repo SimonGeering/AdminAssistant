@@ -1,22 +1,13 @@
 @page "/admin"
 @inherits AdminAssistantModuleComponentBase<AdminAssistant.UI.Modules.AdminModule.IAdminViewModel>
 
-@using AdminAssistant.Blazor.Modules.AccountsModule.Admin
-@using AdminAssistant.Blazor.Modules.CoreModule.Admin
+<MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
 
-<h5>@vm.HeaderText</h5>
-
-<Tabs TabPosition="TabPosition.Start" Pills="true" RenderMode="TabsRenderMode.LazyLoad">
-    <Items>
-        <Tab Name="Banks">Banks</Tab>
-        <Tab Name="Currency">Currencies</Tab>
-    </Items>
-    <Content>
-        <TabPanel Name="Banks">
-            <BankListComponent />
-        </TabPanel>
-        <TabPanel Name="Currency">
-            <CurrencyListComponent />
-        </TabPanel>
-    </Content>
-</Tabs>
+<MudTabs Position="Position.Left" Outlined="true" Rounded="true" Border="true" ApplyEffectsToContainer="true">
+    <MudTabPanel Text="Banks">
+        <AdminAssistant.Blazor.Modules.AccountsModule.Admin.BankListComponent />
+    </MudTabPanel>
+    <MudTabPanel Text="Currency">
+        <CurrencyListComponent />
+    </MudTabPanel>
+</MudTabs>

@@ -1,60 +1,90 @@
 @inherits AdminAssistantLayoutComponentBase<AdminAssistant.UI.Shared.IMainWindowViewModel>
 
-<Layout Sider>
-    <LayoutSider>
-        <LayoutSiderContent>
-            <Bar Mode="BarMode.VerticalInline"
-                 CollapseMode="BarCollapseMode.Small"
-                 Breakpoint="Breakpoint.Desktop"
-                 NavigationBreakpoint="Breakpoint.Tablet">
-                <BarBrand>
-                    <BarItem>
-                        <BarLink To="/">
-                            <BarIcon IconName="IconName.Home" />
-                            Home
-                        </BarLink>
-                    </BarItem>
-                </BarBrand>
-                <BarToggler />
-                <BarMenu>
-                    <BarStart>
-                        @foreach (var item in this.vm.Modules)
-                        {
-                            <BarItem>
-                                <BarLink To="@item.Route" Title="@item.Label">
-                                    <BarIcon IconName="@(@item.Icon)" /> @item.Label
-                                </BarLink>
-                            </BarItem>
-                        }
-                    </BarStart>
-                </BarMenu>
-            </Bar>
-        </LayoutSiderContent>
-    </LayoutSider>
-    <Layout>
-        <LayoutHeader Fixed>
-            <Container Fluid="true">
-                <Bar Breakpoint="Breakpoint.Desktop">
-                    <BarBrand>
-                        Admin Assistant
-                    </BarBrand>
-                    <BarMenu>
-                        <BarEnd>
-                            <BarItem>
-                                <ThemeToggle />
-                            </BarItem>
-                        </BarEnd>
-                    </BarMenu>
-                </Bar>
-            </Container>
-        </LayoutHeader>
-        <LayoutContent>
-            <Container Fluid="true">
-                @Body
-            </Container>
-        </LayoutContent>
-        <LayoutFooter Fixed>
-            <div>@this.vm.FooterText</div>
-        </LayoutFooter>
-    </Layout>
-</Layout>
+<MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+<MudLayout>
+    <MudAppBar Elevation="1" Dense="@_isDense">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => this.OnDrawerToggleClick())" />
+        <MudText Typo="Typo.h5">Admin Assistant</MudText>
+        <MudSpacer />
+        <MudMenu Icon="@Icons.Material.Filled.Settings" Color="@_appBarItemColor" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+            <MudMenuItem><MudSwitch T="bool" Checked="_isDarkMode" CheckedChanged="OnIsDarkModeChanged" Color="Color.Primary" Label="Toggle Light/Dark Mode"/></MudMenuItem>
+            <MudMenuItem><MudSwitch T="bool" Checked="_isDense" CheckedChanged="OnIsDenseChanged" Color="Color.Primary" Label="Toggle Dense Spacing"/></MudMenuItem>
+        </MudMenu>
+        <MudAvatar Size="@_avatarSize" Color="@_appBarItemColor">SG</MudAvatar>
+    </MudAppBar>
+    <MudDrawer @bind-Open="@_drawerOpen" Width="140px" Variant="@DrawerVariant.Mini" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <MudNavMenu Dense="@_isDense">
+            @foreach (var item in this.vm.Modules)
+            {
+                <MudNavLink Href="@item.Route" Match="NavLinkMatch.All" Icon="@item.Icon">@item.Label</MudNavLink>
+            }
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer class="pa-4">
+            @Body
+        </MudContainer>
+        @* <MudGrid Justify="Justify.Center">
+            <MudItem xs="12">
+                <div class="content" px="4" style="padding-bottom:60px">@Body</div>
+            </MudItem>
+        </MudGrid> *@
+    </MudMainContent>
+    @* <MudAppBar Elevation="1" Style="top: auto; bottom: 0" Dense="true" Fixed="true" Color="Color.Dark">
+        <MudGrid Justify="Justify.Center">
+            <MudText Style="font-size:small">@this.vm.FooterText</MudText>
+        </MudGrid>
+    </MudAppBar> *@
+</MudLayout>
+
+@code {
+    // TODO: move to VM
+    private Size _avatarSize = Size.Small;
+    private Color _appBarItemColor = Color.Primary;
+    private MudTheme _theme = new(); // TODO: Save theme preferences https://www.thomasclaudiushuber.com/2021/04/19/store-data-of-your-blazor-app-in-the-local-storage-and-in-the-session-storage/
+    private MudThemeProvider _mudThemeProvider = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            OnIsDarkModeChanged(isDarkMode);
+            StateHasChanged();
+        }
+    }
+
+    private bool _drawerOpen = true;
+    private void OnDrawerToggleClick() => _drawerOpen = !_drawerOpen;
+
+    private bool _isDarkMode;
+    private void OnIsDarkModeChanged(bool isDarkMode)
+    {
+        if (isDarkMode)
+        {
+            _appBarItemColor = Color.Primary;
+        }
+        else
+        {
+            _appBarItemColor = Color.Tertiary;
+        }
+        _isDarkMode = isDarkMode;
+    }
+
+    private bool _isDense = false;
+    private void OnIsDenseChanged(bool isDense)
+    {
+        if (isDense)
+        {
+            _avatarSize = Size.Small;
+        }
+        else
+        {
+            _avatarSize = Size.Small;
+        }
+        _isDense = isDense;
+    }
+}

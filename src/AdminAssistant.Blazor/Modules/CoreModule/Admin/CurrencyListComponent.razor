@@ -1,10 +1,12 @@
 @page "/admin/currency"
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.CoreModule.Admin.ICurrencyListViewModel>
-<Card>
-    <CardHeader>Currency Selection List</CardHeader>
-    <CardBody>
-        <CardTitle>Manage the list of currencies available to pick from when working with money throughout the application.</CardTitle>
-        <Table Bordered="true" Striped="true" Responsive="true">
+<MudCard>
+    <MudCardHeader>Currency Selection List</MudCardHeader>
+    <MudCardContent>
+        <MudText Typo="Typo.subtitle2">
+            Manage the list of currencies available to pick from when working with money throughout the application.
+        </MudText>
+        @* <Table Bordered="true" Striped="true" Responsive="true">
             <TableHeader ThemeContrast="ThemeContrast.Light">
                 <TableRow>
                     <TableHeaderCell>ID</TableHeaderCell>
@@ -49,6 +51,6 @@
                     </TableHeaderCell>
                 </TableRow>
             </TableFooter>
-        </Table>
-    </CardBody>
-</Card>
+        </Table> *@
+    </MudCardContent>
+</MudCard>
