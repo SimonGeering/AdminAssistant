@@ -57,13 +57,13 @@ public sealed class Startup
 
         services.AddHealthChecks();
 
-        services.AddHealthChecksUI(setupSettings: setup =>
-        {
-            // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-            setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
-            setup.SetEvaluationTimeInSeconds(5); // Configures the UI to poll for healthchecks updates every 5 seconds
-            setup.MaximumHistoryEntriesPerEndpoint(50);
-        }).AddInMemoryStorage();
+        //services.AddHealthChecksUI(setupSettings: setup =>
+        //{
+        //    // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+        //    setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
+        //    setup.SetEvaluationTimeInSeconds(5); // Configures the UI to poll for healthchecks updates every 5 seconds
+        //    setup.MaximumHistoryEntriesPerEndpoint(50);
+        //}).AddInMemoryStorage();
 
         services.AddSwaggerGen(c =>
         {
@@ -104,6 +104,13 @@ public sealed class Startup
             app.UseDeveloperExceptionPage();
             app.UseWebAssemblyDebugging();
         }
+        else
+        {
+            // TODO: put the error page back but without bootstrap.
+            app.UseExceptionHandler("/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+        }    
 
         // Add OpenAPI/Swagger middleware ...
 

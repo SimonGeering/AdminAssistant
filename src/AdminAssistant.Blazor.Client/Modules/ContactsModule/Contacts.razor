@@ -1,5 +1,9 @@
 @page "/contacts"
-<h3>Contacts</h3>
+@inherits AdminAssistantModuleComponentBase<AdminAssistant.UI.Modules.ContactsModule.IContactsViewModel>
+
+<PageTitle>@vm.HeaderText</PageTitle>
+<MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
+<MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
 
 @code {
 

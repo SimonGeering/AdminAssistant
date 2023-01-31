@@ -2,6 +2,50 @@
 @using AdminAssistant.DomainModel.Modules.AccountsModule;
 @using AdminAssistant.DomainModel.Modules.CoreModule;
 
+<MudDialog>
+    <DialogContent>
+        <div class="d-flex flex-column py-1">
+            <MudButton OnClick="ChangeTitle">Change Title</MudButton>
+            <MudButton OnClick="ToggleCloseButton">Toggle Close Button</MudButton>
+            <MudButton OnClick="ToggleFullWidth">Toggle Full Width</MudButton>
+            <MudButton OnClick="ToggleHeader">Toggle Header</MudButton>
+        </div>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Color="Color.Primary" OnClick="Close">Ok</MudButton>
+    </DialogActions>
+</MudDialog>
+
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    void Close() => MudDialog.Close(DialogResult.Ok(true));
+
+    void ChangeTitle()
+    {
+        MudDialog.SetTitle("Current time is: " + DateTime.Now);
+    }
+
+    void ToggleCloseButton()
+    {
+        MudDialog.Options.CloseButton = !(MudDialog.Options.CloseButton ?? false);
+        MudDialog.SetOptions(MudDialog.Options);
+    }
+
+    void ToggleFullWidth()
+    {
+        MudDialog.Options.FullWidth = !(MudDialog.Options.FullWidth ?? true);
+        MudDialog.SetOptions(MudDialog.Options);
+    }
+
+    void ToggleHeader()
+    {
+        MudDialog.Options.NoHeader = !(MudDialog.Options.NoHeader ?? false);
+        MudDialog.SetOptions(MudDialog.Options);
+    }
+}
+
+@*
 <SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true" ShowCloseIcon="true">
     <DialogTemplates>
         <Header><div id="Accounts_BankAccountEditDialog_Title">@this.vm.HeaderText</div></Header>
@@ -33,8 +77,8 @@
                     <SfDropDownList @bind-Value="@this.vm.CurrencyID" OnChange="@(_ => this.vm.OnCurrencyChanged())" TValue="int" TItem="Currency" PopupHeight="230px" Placeholder="Currency" DataSource="@this.vm.Currencies">
                         <DropDownListFieldSettings Text="Symbol" Value="CurrencyID" />
                     </SfDropDownList>
-                    @*<div class="cl-label">Opening balance</div>
-                        <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>*@
+                    <div class="cl-label">Opening balance</div>
+                        <div class="ui-inputgroup"><span class="ui-inputgroup-addon">$</span><input pInputText type="number" class="cl-opening-balance" [(ngModel)]="NewAccount.Balance"></div>
                 </div>
             </div>
         </Content>
@@ -44,4 +88,4 @@
         <DialogButton OnClick="@(_ => this.vm.Cancel.ExecuteAsync(null))" Disabled="@(!this.vm.Cancel.CanExecute(null))" Content="Discard" IconCss="fa fa-lg fa-trash-o" />
         <DialogButton OnClick="@(_ => this.vm.Save.ExecuteAsync(null))" Disabled="@(!this.vm.Save.CanExecute(null))" Content="Save" IconCss="fa fa-lg fa-floppy-o" IsPrimary="true" />
     </DialogButtons>
-</SfDialog>
+</SfDialog>*@

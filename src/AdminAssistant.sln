@@ -34,8 +34,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Retro", "Adm
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Infra.ClientSide", "AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj", "{CA7C589A-4830-495B-9B96-B2E9D01E78F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Blazor", "AdminAssistant.Blazor\AdminAssistant.Blazor.csproj", "{13CD4E3C-D6B0-4F9A-82EB-B8F638E1C6F9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,10 +84,6 @@ Global
 		{CA7C589A-4830-495B-9B96-B2E9D01E78F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA7C589A-4830-495B-9B96-B2E9D01E78F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA7C589A-4830-495B-9B96-B2E9D01E78F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13CD4E3C-D6B0-4F9A-82EB-B8F638E1C6F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13CD4E3C-D6B0-4F9A-82EB-B8F638E1C6F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13CD4E3C-D6B0-4F9A-82EB-B8F638E1C6F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13CD4E3C-D6B0-4F9A-82EB-B8F638E1C6F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

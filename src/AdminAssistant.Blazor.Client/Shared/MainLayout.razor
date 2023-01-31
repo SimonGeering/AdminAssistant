@@ -2,47 +2,93 @@
 @inject NavigationManager NavigationManager
 @using AdminAssistant.UI.Shared;
 
-@*<div id="wrapper">*@
-  <div class="col-lg-12 col-sm-12 col-md-12">
-    <div class="header-section dock-menu" id="header">
-      <ul class="header-list">
-        <li id="hamburger" class="icon-menu icon list" @onclick="@this.vm.OnSideBarControlButtonClick"></li>
-        <li><input type="text" placeholder="Search..." class="search-icon list"></li>
-        <li class="right-header list">
-          @*<div class="horizontal-menu">
-            <SfMenu CssClass="dock-menu" Items="@AccountMenuItems" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Horizontal"></SfMenu>
-          </div>*@
-        </li>
-        <li class="right-header list support">Support</li>
-        <li class="right-header list tour">Tour</li>
-      </ul>
-    </div>
-    <SfSidebar HtmlAttributes="@(new Dictionary<string, object>() { { "class", "sidebar-menu" } })" Target=".main-content" Width="220px" DockSize="50px" EnableDock="true" @bind-IsOpen="this.vm.Sidebar.ShowContent">
-      <ChildContent>
-        <div class="main-menu">
-          <p class="main-menu-header">Admin Assistant</p>
-          <SfDropDownButton Content="@this.vm.ActiveMode.Label" IconCss="@(this.vm.ActiveMode.Icon)" CssClass="e-vertical">
-            <DropDownMenuItems>
-              @foreach (var mode in this.vm.Modes)
-              {
-                <DropDownMenuItem Text="@(mode.Label)" IconCss="@(mode.Icon)" />
-              }
-            </DropDownMenuItems>
-          </SfDropDownButton>
-          <div>
-            <SfMenu CssClass="dock-menu" Items="this.vm.Modules" Orientation="@Syncfusion.Blazor.Navigations.Orientation.Vertical">
-              <MenuFieldSettings ItemId="@(nameof(ModuleSelectionItem.ID))" Text="@(nameof(ModuleSelectionItem.Label))" Url="@(nameof(ModuleSelectionItem.Route))" IconCss="@(nameof(ModuleSelectionItem.Icon))" />
-            </SfMenu>
-          </div>
-        </div>
-      </ChildContent>
-    </SfSidebar>
+<MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-    <div class="main-content" id="maintext">
-      <div class="content">
-        @Body
-      </div>
-    </div>
+<MudLayout>
+    <MudAppBar Elevation="1" Dense="@_isDense">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => this.OnDrawerToggleClick())" />
+        <MudText Typo="Typo.h5">Admin Assistant</MudText>
+        <MudSpacer />
+        <MudMenu Icon="@Icons.Material.Filled.Settings" Color="@_appBarItemColor" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+            <MudStack Class="pl-2">
+                <MudSwitch T="bool" Checked="_isDarkMode" CheckedChanged="OnIsDarkModeChanged" Color="Color.Primary" Label="Toggle Light/Dark Mode" />
+                <MudSwitch T="bool" Checked="_isDense" CheckedChanged="OnIsDenseChanged" Color="Color.Primary" Label="Toggle Dense Spacing" />
+            </MudStack>
+        </MudMenu>
+        <MudAvatar Size="@_avatarSize" Color="@_appBarItemColor">SG</MudAvatar>
+    </MudAppBar>
+    <MudDrawer @bind-Open="@_drawerOpen" Width="140px" Variant="@DrawerVariant.Mini" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <MudNavMenu Dense="@_isDense">
+            @foreach (var item in this.vm.Modules)
+            {
+                <MudNavLink Href="@item.Route" Match="NavLinkMatch.All" Icon="@item.Icon">@item.Label</MudNavLink>
+            }
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer class="pa-4">
+            @Body
+        </MudContainer>
+        @* <MudGrid Justify="Justify.Center">
+            <MudItem xs="12">
+                <div class="content" px="4" style="padding-bottom:60px">@Body</div>
+            </MudItem>
+        </MudGrid> *@
+    </MudMainContent>
+    @* <MudAppBar Elevation="1" Style="top: auto; bottom: 0" Dense="true" Fixed="true" Color="Color.Dark">
+        <MudGrid Justify="Justify.Center">
+            <MudText Style="font-size:small">@this.vm.FooterText</MudText>
+        </MudGrid>
+    </MudAppBar> *@
+</MudLayout>
 
-  </div>
-@*</div>*@
+@code {
+    // TODO: move to VM
+    private Size _avatarSize = Size.Small;
+    private Color _appBarItemColor = Color.Primary;
+    private MudTheme _theme = new(); // TODO: Save theme preferences https://www.thomasclaudiushuber.com/2021/04/19/store-data-of-your-blazor-app-in-the-local-storage-and-in-the-session-storage/
+    private MudThemeProvider _mudThemeProvider = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            OnIsDarkModeChanged(isDarkMode);
+            StateHasChanged();
+        }
+    }
+
+    private bool _drawerOpen = true;
+    private void OnDrawerToggleClick() => _drawerOpen = !_drawerOpen;
+
+    private bool _isDarkMode;
+    private void OnIsDarkModeChanged(bool isDarkMode)
+    {
+        if (isDarkMode)
+        {
+            _appBarItemColor = Color.Primary;
+        }
+        else
+        {
+            _appBarItemColor = Color.Tertiary;
+        }
+        _isDarkMode = isDarkMode;
+    }
+
+    private bool _isDense = false;
+    private void OnIsDenseChanged(bool isDense)
+    {
+        if (isDense)
+        {
+            _avatarSize = Size.Small;
+        }
+        else
+        {
+            _avatarSize = Size.Small;
+        }
+        _isDense = isDense;
+    }
+}
