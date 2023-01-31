@@ -3,8 +3,8 @@
 @using AdminAssistant.UI.Shared;
 
 <MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
-<MudDialogProvider/>
-<MudSnackbarProvider/>
+<MudDialogProvider />
+<MudSnackbarProvider />
 
 <MudLayout>
     <MudAppBar Elevation="1" Dense="@_isDense">
@@ -12,8 +12,10 @@
         <MudText Typo="Typo.h5">Admin Assistant</MudText>
         <MudSpacer />
         <MudMenu Icon="@Icons.Material.Filled.Settings" Color="@_appBarItemColor" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
-            <MudMenuItem><MudSwitch T="bool" Checked="_isDarkMode" CheckedChanged="OnIsDarkModeChanged" Color="Color.Primary" Label="Toggle Light/Dark Mode"/></MudMenuItem>
-            <MudMenuItem><MudSwitch T="bool" Checked="_isDense" CheckedChanged="OnIsDenseChanged" Color="Color.Primary" Label="Toggle Dense Spacing"/></MudMenuItem>
+            <MudStack Class="pl-2">
+                <MudSwitch T="bool" Checked="_isDarkMode" CheckedChanged="OnIsDarkModeChanged" Color="Color.Primary" Label="Toggle Light/Dark Mode" />
+                <MudSwitch T="bool" Checked="_isDense" CheckedChanged="OnIsDenseChanged" Color="Color.Primary" Label="Toggle Dense Spacing" />
+            </MudStack>
         </MudMenu>
         <MudAvatar Size="@_avatarSize" Color="@_appBarItemColor">SG</MudAvatar>
     </MudAppBar>

@@ -5,9 +5,12 @@ using MudBlazor.Services;
 using Blazor.Extensions.Logging;
 using FluentValidation;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.AspNetCore.Components.Web;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("app");
+builder.RootComponents.Add<HeadOutlet>("head::after");
+
 builder.Services.AddMudServices();
 
 builder.Services.AddAdminAssistantWebAPIClient(new Uri(builder.HostEnvironment.BaseAddress));
