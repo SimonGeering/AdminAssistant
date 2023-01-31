@@ -1,56 +1,27 @@
-@page "/admin/currency"
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.CoreModule.Admin.ICurrencyListViewModel>
-<MudCard>
-    <MudCardHeader>Currency Selection List</MudCardHeader>
-    <MudCardContent>
-        <MudText Typo="Typo.subtitle2">
-            Manage the list of currencies available to pick from when working with money throughout the application.
-        </MudText>
-        @* <Table Bordered="true" Striped="true" Responsive="true">
-            <TableHeader ThemeContrast="ThemeContrast.Light">
-                <TableRow>
-                    <TableHeaderCell>ID</TableHeaderCell>
-                    <TableHeaderCell>Symbol</TableHeaderCell>
-                    <TableHeaderCell>Decimal Format</TableHeaderCell>
-                    <TableHeaderCell>&nbsp;</TableHeaderCell>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                @foreach (var currency in this.vm.Currencies)
-                {
-                    <TableRow>
-                        <TableRowHeader>@currency.CurrencyID</TableRowHeader>
-                        <TableRowCell>@currency.Symbol</TableRowCell>
-                        <TableRowCell>@currency.DecimalFormat</TableRowCell>
-                        <TableRowCell>
-                            <Button Color="Color.Primary" Size="Size.Small">
-                                <Icon Name="IconName.Edit" />
-                                Edit
-                            </Button>
-                            <Button Color="Color.Danger" Size="Size.Small">
-                                <Icon Name="IconName.Delete" />
-                                Delete
-                            </Button>
-                        </TableRowCell>
-                    </TableRow>
-                }
-            </TableBody>
-            <TableFooter>
-                <TableRow>
-                    <TableHeaderCell ColumnSpan="4">
-                        <div Flex="Flex.JustifyContent.End">
-                            <Button Color="Color.Primary" Size="Size.Small">
-                                <Icon Name="IconName.Add" />
-                                Add
-                            </Button>
-                            <Button Color="Color.Success" Size="Size.Small">
-                                <Icon Name="IconName.Redo" />
-                                Refresh
-                            </Button>
-                        </div>
-                    </TableHeaderCell>
-                </TableRow>
-            </TableFooter>
-        </Table> *@
-    </MudCardContent>
-</MudCard>
+
+<MudStack>
+    <MudText Typo="Typo.subtitle1">Currency Selection List</MudText>
+    <MudText Typo="Typo.subtitle2">Manage the list of currencies available to pick from when working with money throughout the application.</MudText>
+    <MudTable Items="@this.vm.Currencies" Striped="true" Dense="true">
+        <HeaderContent>
+            <MudTh>ID</MudTh>
+            <MudTh>Symbol</MudTh>
+            <MudTh>Decimal Format</MudTh>
+            <MudTh>&nbsp;</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID">@context.CurrencyID</MudTd>
+            <MudTd DataLabel="Symbol">@context.Symbol</MudTd>
+            <MudTd DataLabel="Decimal Format">@context.DecimalFormat</MudTd>
+            <MudTd>
+                <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Edit" Color="Color.Info">Edit</MudButton>
+                <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
+            </MudTd>
+        </RowTemplate>
+        <FooterContent>
+            <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Refresh" Color="Color.Tertiary">Refresh</MudButton>
+            <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
+        </FooterContent>
+    </MudTable>
+</MudStack>

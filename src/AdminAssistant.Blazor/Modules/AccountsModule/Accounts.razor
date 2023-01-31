@@ -1,31 +1,16 @@
 @page "/accounts"
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.IAccountsViewModel>
 
-<div class="cl-accounts">
-  <div class="cl-moduleBody">
-    <div class="e-main-content">
-      <div class="cl-moduleHeader">
-        <h5>@this.vm.HeaderText</h5>
-        <span>@this.vm.SubHeaderText</span>
-      </div>
-    </div>
-@*
-    <SfSplitter Width="100%" Height="100%">
-      <SplitterPanes>
+<PageTitle>@vm.HeaderText</PageTitle>
+<MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
+<MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
 
-        <SplitterPane>
-          <ContentTemplate>
-            <BankAccountTransactionListComponent></BankAccountTransactionListComponent>
-          </ContentTemplate>
-        </SplitterPane>
-
-        <SplitterPane>
-          <ContentTemplate>
-            <BankAccountRightSidebarComponent></BankAccountRightSidebarComponent>
-          </ContentTemplate>
-        </SplitterPane>
-
-      </SplitterPanes>
-    </SfSplitter>*@
-  </div>
+<div class="d-flex flex-grow-1 gap-4">
+    <MudPaper Class="flex-none d-flex py-8 mud-theme-primary" Width="70%" Elevation="0">
+        <BankAccountTransactionListComponent></BankAccountTransactionListComponent>
+    </MudPaper>
+    <MudDivider Vertical="true" FlexItem="true" />
+    <MudPaper Class="flex-auto d-flex py-8 mud-theme-tertiary" Width="30%" Elevation="0">
+        <BankAccountRightSidebarComponent></BankAccountRightSidebarComponent>
+    </MudPaper>
 </div>

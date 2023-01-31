@@ -1,6 +1,7 @@
 @page "/calendar"
-<h3>Calendar</h3>
+@using BlazorScheduler
+@inherits AdminAssistantModuleComponentBase<AdminAssistant.UI.Modules.CalendarModule.ICalendarViewModel>
 
-@code {
-
-}
+<PageTitle>@vm.HeaderText</PageTitle>
+<MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
+<MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
