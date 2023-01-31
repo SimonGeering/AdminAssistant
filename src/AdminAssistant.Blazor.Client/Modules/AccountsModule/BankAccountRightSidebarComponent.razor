@@ -1,7 +1,16 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.IBankAccountRightSidebarViewModel>
+@inject IDialogService Dialog
 
 <h3>BankAccountRightSidebar</h3>
 
-<MudButton @onclick="@(_ => this.vm.AddBankAccount.Execute(null))" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add Account</MudButton>
+@*<MudButton @onclick="@(_ => this.vm.AddBankAccount.Execute(null))" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add Account</MudButton>*@
+<MudButton OnClick="@(_ => OpenBankAccountEditDialog())" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add Account</MudButton>
 
-@* <BankAccountEditDialogComponent /> *@
+@code {
+
+    private void OpenBankAccountEditDialog()
+    {
+        var dialogOptions = new DialogOptions() { CloseButton = true };
+        Dialog.Show<BankAccountEditDialogComponent>("Custom Options Dialog", dialogOptions);
+    }
+}
