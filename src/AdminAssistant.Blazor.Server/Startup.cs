@@ -43,6 +43,7 @@ public sealed class Startup
             opts.Filters.Add(new ConsumesAttribute("application/json")); // Request limit
             opts.ReturnHttpNotAcceptable = true; // Force client to only request media types based on the above limits.
         });
+
         services.AddResponseCompression(opts =>
         {
             opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
@@ -97,8 +98,6 @@ public sealed class Startup
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.UseResponseCompression();
-
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
@@ -106,11 +105,14 @@ public sealed class Startup
         }
         else
         {
+            app.UseResponseCompression();
+
             // TODO: put the error page back but without bootstrap.
             app.UseExceptionHandler("/Error");
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
-        }    
+            app.UseHttpsRedirection();
+        }
 
         // Add OpenAPI/Swagger middleware ...
 
@@ -126,8 +128,6 @@ public sealed class Startup
             c.RoutePrefix = "api/docs";
             c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
         });
-
-        app.UseHttpsRedirection();
 
         app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api") == false, app =>
         {
