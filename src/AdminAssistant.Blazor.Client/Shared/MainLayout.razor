@@ -1,6 +1,5 @@
 @inherits AdminAssistantLayoutComponentBase<AdminAssistant.UI.Shared.IMainWindowViewModel>
 @inject NavigationManager NavigationManager
-@using AdminAssistant.UI.Shared;
 
 <MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
 <MudDialogProvider />
@@ -31,17 +30,7 @@
         <MudContainer class="pa-4">
             @Body
         </MudContainer>
-        @* <MudGrid Justify="Justify.Center">
-            <MudItem xs="12">
-                <div class="content" px="4" style="padding-bottom:60px">@Body</div>
-            </MudItem>
-        </MudGrid> *@
     </MudMainContent>
-    @* <MudAppBar Elevation="1" Style="top: auto; bottom: 0" Dense="true" Fixed="true" Color="Color.Dark">
-        <MudGrid Justify="Justify.Center">
-            <MudText Style="font-size:small">@this.vm.FooterText</MudText>
-        </MudGrid>
-    </MudAppBar> *@
 </MudLayout>
 
 @code {

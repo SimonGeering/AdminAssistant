@@ -40,6 +40,6 @@ builder.Services.AddValidatorsFromAssemblyContaining<IDatabasePersistable>();
 
 builder.Services.AddAdminAssistantClientSideProviders();
 builder.Services.AddAdminAssistantClientSideDomainModel();
-builder.Services.AddAdminAssistantUI();
+builder.Services.AddAdminAssistantUI(AdminAssistant.UI.Shared.FontAwesomeVersionEnum.V4o7o0);
 
 await builder.Build().RunAsync();

@@ -5,12 +5,12 @@
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
 <MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
 
-<div class="d-flex flex-grow-1 gap-4">
-    <MudPaper Class="flex-none d-flex py-8" Width="70%" Elevation="0">
+<div class="d-flex flex-grow-1">
+    <div Class="flex-grow-1 pr-2">
         <BankAccountTransactionListComponent />
-    </MudPaper>
+    </div>
     <MudDivider Vertical="true" FlexItem="true" />
-    <MudPaper Class="flex-auto d-flex py-8" Width="30%" Elevation="0">
+    <div Class="flex-none pl-2">
         <BankAccountRightSidebarComponent />
-    </MudPaper>
+    </div>
 </div>
