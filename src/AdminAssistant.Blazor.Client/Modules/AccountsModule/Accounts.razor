@@ -2,15 +2,32 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.IAccountsViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
-<MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
-<MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
 
-<div class="d-flex flex-grow-1">
-    <div Class="flex-grow-1 pr-2">
-        <BankAccountTransactionListComponent />
-    </div>
-    <MudDivider Vertical="true" FlexItem="true" />
-    <div Class="flex-none pl-2">
-        <BankAccountRightSidebarComponent />
-    </div>
-</div>
+<MudDrawerContainer Class="mud-height-full">
+    <MudDrawer @bind-Open="@_drawerOpen" Width="300px"
+    ClipMode="DrawerClipMode.Always" Anchor="Anchor.End" Elevation="0" Variant="@DrawerVariant.Mini">
+        <MudStack Row="true">
+            <MudIconButton OnClick="@OnDrawerToggleClick" Icon="@_drawerControlIcon" />
+        </MudStack>
+        <MudContainer class="@_showDrawContent">
+            <BankAccountRightSidebarComponent />
+        </MudContainer>
+    </MudDrawer>
+    <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
+    <MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
+    <BankAccountTransactionListComponent />
+</MudDrawerContainer>
+
+@code {
+
+    private string _drawerControlIcon = @Icons.Material.Outlined.ArrowCircleRight;
+    private string _showDrawContent = "visible";
+    private bool _drawerOpen = true;
+
+    private void OnDrawerToggleClick()
+    {
+        _drawerOpen = !_drawerOpen;
+        _showDrawContent = _drawerOpen ? "visible" : "invisible";
+        _drawerControlIcon = _drawerOpen ? @Icons.Material.Outlined.ArrowCircleRight : @Icons.Material.Outlined.ArrowCircleLeft;
+    }
+}

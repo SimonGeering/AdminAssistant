@@ -7,7 +7,7 @@
 
 <MudLayout>
     <MudAppBar Elevation="1" Dense="@_isDense">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => this.OnDrawerToggleClick())" />
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Edge="Edge.Start" OnClick="@((e) => this.OnDrawerToggleClick())" />
         <MudText Typo="Typo.h5">Admin Assistant</MudText>
         <MudSpacer />
         <MudMenu Icon="@Icons.Material.Filled.Settings" Color="@_appBarItemColor" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
@@ -27,9 +27,7 @@
         </MudNavMenu>
     </MudDrawer>
     <MudMainContent>
-        <MudContainer class="pa-4">
-            @Body
-        </MudContainer>
+        @Body
     </MudMainContent>
 </MudLayout>
 

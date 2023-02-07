@@ -2,37 +2,43 @@
 @inject IDialogService Dialog
 @using AdminAssistant.DomainModel.Modules.AccountsModule;
 
-<MudStack>
-    <MudExpansionPanels MultiExpansion="true">
+<MudExpansionPanels MultiExpansion="true">
 
-        <MudExpansionPanel Text="Budgeted Accounts">
-            <MudTable Items="@_budgetedAccounts" Striped="true" Dense="true" Elevation="0">
-                <RowTemplate>
-                    <MudTd DataLabel="ID">@context.AccountName</MudTd>
-                    <MudTd DataLabel="Name">@context.CurrentBalance</MudTd>
-                </RowTemplate>
-                <FooterContent>
-                    <MudButton OnClick="@(_ => OpenBankAccountEditDialog())" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
-                </FooterContent>
-            </MudTable>
-        </MudExpansionPanel>
+    <MudExpansionPanel Text="Budgeted Accounts" IsInitiallyExpanded="true">
+        <MudTable Items="@_budgetedAccounts" Striped="true" Dense="true" Elevation="0">
+            <ColGroup>
+                <col style="width: 100%;" />
+                <col style="width: auto;" />
+            </ColGroup>
+            <RowTemplate>
+                <MudTd DataLabel="AccountName">@context.AccountName</MudTd>
+                <MudTd DataLabel="CurrentBalance">@context.CurrentBalance</MudTd>
+            </RowTemplate>
+            <FooterContent>
+                <MudButton OnClick="@(_ => OpenBankAccountEditDialog())" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
+            </FooterContent>
+        </MudTable>
+    </MudExpansionPanel>
 
-        <MudExpansionPanel Text="Off Budget Accounts">
-            <MudTable Items="@_offBudgetAccounts" Striped="true" Dense="true" Elevation="0">
-                <RowTemplate>
-                    <MudTd DataLabel="ID">@context.AccountName</MudTd>
-                    <MudTd DataLabel="Name">@context.CurrentBalance</MudTd>
-                </RowTemplate>
-                <FooterContent>
-                    <MudButton OnClick="@(_ => OpenBankAccountEditDialog())" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
-                </FooterContent>
-            </MudTable>
-        </MudExpansionPanel>
+    <MudExpansionPanel Text="Off Budget Accounts" IsInitiallyExpanded="true">
+        <MudTable Items="@_offBudgetAccounts" Striped="true" Dense="true" Elevation="0">
+            <ColGroup>
+                <col style="width: auto;" />
+                <col style="width: auto;" />
+            </ColGroup>
+            <RowTemplate>
+                <MudTd DataLabel="AccountName">@context.AccountName</MudTd>
+                <MudTd DataLabel="CurrentBalance">@context.CurrentBalance</MudTd>
+            </RowTemplate>
+            <FooterContent>
+                <MudButton OnClick="@(_ => OpenBankAccountEditDialog())" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
+            </FooterContent>
+        </MudTable>
+    </MudExpansionPanel>
 
-    </MudExpansionPanels>
+</MudExpansionPanels>
 
-    @*<MudButton @onclick="@(_ => this.vm.AddBankAccount.Execute(null))" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add Account</MudButton>*@
-</MudStack>
+@*<MudButton @onclick="@(_ => this.vm.AddBankAccount.Execute(null))" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add Account</MudButton>*@
 
 @code {
 
@@ -53,5 +59,4 @@
         var dialogOptions = new DialogOptions() { CloseButton = true };
         Dialog.Show<BankAccountEditDialogComponent>("Custom Options Dialog", dialogOptions);
     }
-
 }

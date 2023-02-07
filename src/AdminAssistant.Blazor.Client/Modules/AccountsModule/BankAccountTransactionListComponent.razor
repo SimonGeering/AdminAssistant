@@ -1,12 +1,22 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.IBankAccountTransactionListViewModel>
 @using AdminAssistant.DomainModel.Modules.AccountsModule;
 
-<MudTable Items="@_transactions" FixedHeader="true" FixedFooter="true" Bordered="true" Dense="true">
+<MudTable Items="@_transactions" FixedHeader="true" FixedFooter="true"
+          Bordered="true" Dense="true" HorizontalScrollbar="true">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Barclays Current Account</MudText>
         <MudSpacer />
         <MudTextField @bind-Value="_searchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
     </ToolBarContent>
+    <ColGroup>
+        <col style="width: auto;" />
+        <col style="width: 40%;" />
+        <col style="width: *;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col />
+    </ColGroup>
     <HeaderContent>
         <MudTh>Date</MudTh>
         <MudTh>Payee</MudTh>
@@ -24,13 +34,17 @@
         <MudTd DataLabel="Debit">@context.Debit</MudTd>
         <MudTd DataLabel="Balance">@context.Balance</MudTd>
         <MudTd>
-            <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Edit" Color="Color.Info">Edit</MudButton>
-            <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
+            <MudStack Row="true">
+                <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Edit" Color="Color.Info">Edit</MudButton>
+                <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
+            </MudStack>
         </MudTd>
     </RowTemplate>
     <FooterContent>
-        <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Refresh" Color="Color.Tertiary">Refresh</MudButton>
-        <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
+        <MudStack Row="true">
+            <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Refresh" Color="Color.Tertiary">Refresh</MudButton>
+            <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
+        </MudStack>
     </FooterContent>
 </MudTable>
 

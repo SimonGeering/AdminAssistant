@@ -6,6 +6,15 @@
 <MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
 
 <MudTabs PanelClass="pa-4" Position="Position.Left" Outlined="true" Rounded="true" Border="true">
+    <MudTabPanel Text="Tools">
+        <MudStack>
+            <MudLink Href="/healthchecks-ui#/healthchecks" Target="_blank">Health Check UI</MudLink>
+            <MudLink Href="/api/health" Target="_blank">API Extended Health Check</MudLink>
+            <MudDivider />
+            <MudLink Href="/api/docs/index.html" Target="_blank">Swagger UI</MudLink>
+            <MudLink Href="/swagger/v1/swagger.json" Target="_blank">Raw Swagger Json</MudLink>
+        </MudStack>
+    </MudTabPanel>
     <MudTabPanel Text="Banks">
         <AdminAssistant.Blazor.Client.Modules.AccountsModule.Admin.BankListComponent />
     </MudTabPanel>
