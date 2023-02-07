@@ -20,11 +20,3 @@ services:
       dockerfile: AdminAssistant.Blazor.Server/Dockerfile
     depends_on:
       - adminassistant.sqlserver
-
-  adminassistant.blazor:
-    image: ${DOCKER_REGISTRY-}adminassistantblazor
-    build:
-      context: .
-      dockerfile: AdminAssistant.Blazor/Dockerfile
-    depends_on:
-      - adminassistant.sqlserver
