@@ -14,7 +14,6 @@ namespace AdminAssistant.Blazor.Server;
 public sealed class Startup
 {
     // TODO: Make version a constant shared with WebAPI Assemblies
-    const string HealthCheckAPI = "/api/health";
     private const string WebAPIVersion = "v1";
     private string WebAPITitle => $"Admin Assistant WebAPI {WebAPIVersion}.";
 
@@ -58,13 +57,13 @@ public sealed class Startup
 
         services.AddHealthChecks();
 
-        //services.AddHealthChecksUI(setupSettings: setup =>
-        //{
-        //    // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-        //    setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
-        //    setup.SetEvaluationTimeInSeconds(5); // Configures the UI to poll for healthchecks updates every 5 seconds
-        //    setup.MaximumHistoryEntriesPerEndpoint(50);
-        //}).AddInMemoryStorage();
+        services.AddHealthChecksUI(setupSettings: setup =>
+        {
+           // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+           setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", _env.IsDevelopment() ? "http://localhost:5000/api/health" : "/api/health");
+           setup.SetEvaluationTimeInSeconds(45); // Configures the UI to poll for health-checks updates every 5 seconds
+           setup.MaximumHistoryEntriesPerEndpoint(50);
+        }).AddInMemoryStorage();
 
         services.AddSwaggerGen(c =>
         {
@@ -150,7 +149,7 @@ public sealed class Startup
             {
                 config.MapRazorPages();
                 config.MapControllers();
-                config.MapHealthChecks(HealthCheckAPI, new HealthCheckOptions
+                config.MapHealthChecks("/api/health", new HealthCheckOptions
                 {
                     Predicate = _ => true,
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
