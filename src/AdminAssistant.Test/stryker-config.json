@@ -1,0 +1,16 @@
+{
+    "stryker-config":
+    {
+        "solution": "../AdminAssistant.sln",
+        "project": "AdminAssistant.Blazor.Server.csproj",
+        "test-case-filter": "Category=Unit",
+        "reporters": [
+            "progress",
+            "html"
+        ],
+        "ignore-methods": [
+            "*ConfigureAwait",
+            "Log.Start"
+        ]
+    }
+}
