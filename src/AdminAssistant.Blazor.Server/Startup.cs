@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Diagnostics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 namespace AdminAssistant.Blazor.Server;
 
@@ -88,6 +91,19 @@ public sealed class Startup
         services.AddSwaggerGenNewtonsoftSupport();
 
         services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
+
+        services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+        {
+            var serviceName = "AdminAssistant.BlazorServer";
+            tracerProviderBuilder
+                .AddConsoleExporter()
+                .AddSource(serviceName)
+                .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                        .AddService(serviceName: serviceName, serviceVersion: "V1.0.0"))
+                .AddHttpClientInstrumentation()
+                .AddAspNetCoreInstrumentation()
+                .AddSqlClientInstrumentation();
+        });
 
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
