@@ -11,28 +11,22 @@
     <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <DocumentationFile>AdminAssistant.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>AdminAssistant.docs.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Remove="AdminAssistant.docs.xml" />
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Infra\DAL\Modules\Accounts\**" />
     <EmbeddedResource Remove="Infra\DAL\Modules\Accounts\**" />
     <None Remove="Infra\DAL\Modules\Accounts\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="AdminAssistant.docs.xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -64,10 +58,6 @@
     <Folder Include="DomainModel\Modules\DashboardModule\" />
     <Folder Include="DomainModel\Modules\ReportsModule\" />
     <Folder Include="Infra\Providers\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
 </Project>

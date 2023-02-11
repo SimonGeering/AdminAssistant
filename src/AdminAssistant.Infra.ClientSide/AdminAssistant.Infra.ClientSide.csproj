@@ -11,26 +11,16 @@
     <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <DocumentationFile>AdminAssistant.Infra.ClientSide.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>AdminAssistant.Infra.ClientSide.docs.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="AdminAssistant.Infra.ClientSide.docs.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+    <SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <ItemGroup>

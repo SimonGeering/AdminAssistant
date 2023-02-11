@@ -14,30 +14,19 @@
     <AnalysisLevel>latest</AnalysisLevel>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <PropertyGroup>
     <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="AdminAssistant.Test.docs.xml" />
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Remove="lcov.info" />
     <Compile Remove="DomainModel\Modules\Core\**" />
     <EmbeddedResource Remove="DomainModel\Modules\Core\**" />
     <None Remove="DomainModel\Modules\Core\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="AdminAssistant.Accounts.Test.docs.xml" />
-    <None Remove="AdminAssistant.Test.docs.xml" />
-    <None Remove="lcov.info" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
