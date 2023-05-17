@@ -44,6 +44,7 @@
             "Ardalis",
             "blazor",
             "Bootswatch",
+            "CQRS",
             "Emoji",
             "geering",
             "markdownlint",
@@ -71,6 +72,10 @@
             "**/*.map",
             "**/docs/js/*mermaid*"
         ],
+        "sonarlint.connectedMode.project": {
+            "connectionId": "simongeering",
+            "projectKey": "SimonGeering_AdminAssistant"
+        },
         // updated 2023-02-01 09:11
         // https://github.com/antfu/vscode-file-nesting-config
         "explorer.fileNesting.enabled": true,
