@@ -23,7 +23,6 @@ stages:
   - job: PRBuild
     pool: # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops
       vmImage: 'windows-latest' # Need windows to get code coverage report - https://github.com/actions/virtual-environments/tree/master/images/win
-      #name: Self-Hosted
     steps:
     # Set-up build environment ...
     - task: UseDotNet@2
@@ -40,6 +39,14 @@ stages:
         projects: 'src/AdminAssistant.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
+    # Sonar Cloud Prepare
+    - task: SonarCloudPrepare@1
+      inputs:
+        SonarCloud: 'SonarCube'
+        organization: 'simongeering'
+        scannerMode: 'MSBuild'
+        projectKey: 'SimonGeering_AdminAssistant'
+        projectName: 'AdminAssistant'
     # Build ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet build'
@@ -56,3 +63,8 @@ stages:
         testRunTitle: 'Unit Tests'
         arguments: '--configuration Release --no-build --collect "Code coverage"'
         #arguments: '--configuration Release --filter Category=Unit --no-build'
+    # Sonar Cloud Analyze and Publish
+    - task: SonarCloudAnalyze@1
+    - task: SonarCloudPublish@1
+      inputs:
+        pollingTimeoutSec: '300'
