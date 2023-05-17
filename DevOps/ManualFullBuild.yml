@@ -51,8 +51,7 @@ stages:
         command: 'test'
         projects: 'src/AdminAssistant.sln'
         testRunTitle: 'Unit Tests'
-        arguments: '--configuration Release --no-build --collect "Code coverage"'
-        #arguments: '--configuration Release --filter Category=Unit --no-build'
+        arguments: '--configuration Release --no-build --collect "Code coverage" --filter "Category=Unit"'
     # Sonar Cloud Analyze and Publish
     - task: SonarCloudAnalyze@1
     - task: SonarCloudPublish@1
