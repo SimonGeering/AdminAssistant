@@ -1,0 +1,48 @@
+name: $(BuildID)
+
+pr: none # Disable PR builds
+trigger: none # Disable CI Builds
+
+resources:
+- repo: self
+  clean: true
+
+stages:
+- stage: ManualFullBuild
+  jobs:
+  - job: ManualFullBuild
+    pool: # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops
+      vmImage: 'windows-latest' # Need windows to get code coverage report - https://github.com/actions/virtual-environments/tree/master/images/win
+      #name: Self-Hosted
+    steps:
+    # Set-up build environment ...
+    - task: UseDotNet@2
+      displayName: 'Ensure CI uses correct sdk Version'
+      inputs:
+        packageType: 'sdk'
+        version: '7.0.x'
+        includePreviewVersions: false
+    # Restore dependencies ...
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet restore'
+      inputs:
+        command: 'restore'
+        projects: 'src/AdminAssistant.sln'
+        feedsToUse: 'config'
+        nugetConfigPath: 'DevOps/NuGet.config'
+    # Build ...
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet build'
+      inputs:
+        command: 'build'
+        projects: 'src/AdminAssistant.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.NonXamarin.sln
+        arguments: '--configuration Release --no-restore'
+    # Run Unit Tests ...
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet test'
+      inputs:
+        command: 'test'
+        projects: 'src/AdminAssistant.sln'
+        testRunTitle: 'Unit Tests'
+        arguments: '--configuration Release --no-build'
+        #arguments: '--configuration Release --filter Category=Unit --no-build'
