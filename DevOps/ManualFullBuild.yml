@@ -13,7 +13,6 @@ stages:
   - job: ManualFullBuild
     pool: # https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops
       vmImage: 'windows-latest' # Need windows to get code coverage report - https://github.com/actions/virtual-environments/tree/master/images/win
-      #name: Self-Hosted
     steps:
     # Set-up build environment ...
     - task: UseDotNet@2
@@ -30,15 +29,6 @@ stages:
         projects: 'src/AdminAssistant.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
-    # - task: SonarCloudPrepare@1
-    #   inputs:
-    #     SonarCloud: 'SonarCube'
-    #     organization: 'simongeering'
-    #     scannerMode: 'CLI'
-    #     configMode: 'manual'
-    #     cliProjectKey: 'SimonGeering_AdminAssistant'
-    #     cliProjectName: 'AdminAssistant'
-    #     cliSources: 'src'
     # Sonar Cloud Prepare
     - task: SonarCloudPrepare@1
       inputs:
@@ -52,7 +42,7 @@ stages:
       displayName: 'dotnet build'
       inputs:
         command: 'build'
-        projects: 'src/AdminAssistant.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.NonXamarin.sln
+        projects: 'src/AdminAssistant.sln'
         arguments: '--configuration Release --no-restore'
     # Run Unit Tests ...
     - task: DotNetCoreCLI@2

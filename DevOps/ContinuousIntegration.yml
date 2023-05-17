@@ -53,7 +53,7 @@ stages:
       displayName: 'dotnet build'
       inputs:
         command: 'build'
-        projects: 'src/AdminAssistant.sln' # For now this will do to exclude Xamarin projects. May later need an AdminAssistant.NonXamarin.sln
+        projects: 'src/AdminAssistant.sln'
         arguments: '--configuration Release --no-restore'
     # Run Unit Tests ...
     - task: DotNetCoreCLI@2
