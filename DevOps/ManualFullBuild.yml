@@ -30,6 +30,24 @@ stages:
         projects: 'src/AdminAssistant.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
+    # - task: SonarCloudPrepare@1
+    #   inputs:
+    #     SonarCloud: 'SonarCube'
+    #     organization: 'simongeering'
+    #     scannerMode: 'CLI'
+    #     configMode: 'manual'
+    #     cliProjectKey: 'SimonGeering_AdminAssistant'
+    #     cliProjectName: 'AdminAssistant'
+    #     cliSources: 'src'
+    # Sonar Cloud Prepare
+    - task: SonarCloudPrepare@1
+      inputs:
+        SonarCloud: 'SonarCube'
+        organization: 'simongeering'
+        scannerMode: 'CLI'
+        configMode: 'MSBuild'
+        projectKey: 'SimonGeering_AdminAssistant'
+        projectName: 'AdminAssistant'
     # Build ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet build'
@@ -46,19 +64,8 @@ stages:
         testRunTitle: 'Unit Tests'
         arguments: '--configuration Release --no-build --collect "Code coverage"'
         #arguments: '--configuration Release --filter Category=Unit --no-build'
-    # Sonar Cloud
-    - task: SonarCloudPrepare@1
-      inputs:
-        SonarCloud: 'SonarCube'
-        organization: 'simongeering'
-        scannerMode: 'CLI'
-        configMode: 'manual'
-        cliProjectKey: 'SimonGeering_AdminAssistant'
-        cliProjectName: 'projectName: ''AdminAssistant'''
-        cliSources: 'src'
-
+    # Sonar Cloud Analyze and Publish
     - task: SonarCloudAnalyze@1
-
     - task: SonarCloudPublish@1
       inputs:
         pollingTimeoutSec: '300'
