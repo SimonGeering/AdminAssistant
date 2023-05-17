@@ -1,6 +1,6 @@
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Grocery;
 
-public class GroceryItemEntity
+public sealed class GroceryItemEntity
 {
     public int GroceryItemID { get; set; }
     public int AuditID { get; set; }

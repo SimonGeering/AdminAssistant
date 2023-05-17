@@ -1,5 +1,5 @@
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
-public class BankAccountTransactionTypeEntity
+public sealed class BankAccountTransactionTypeEntity
 {
 }

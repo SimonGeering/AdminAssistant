@@ -4,7 +4,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-internal class BankAccountTransactionListViewModel : ViewModelBase, IBankAccountTransactionListViewModel
+internal sealed class BankAccountTransactionListViewModel : ViewModelBase, IBankAccountTransactionListViewModel
 {
     public BankAccountTransactionListViewModel(ILoggingProvider log)
         : base(log)

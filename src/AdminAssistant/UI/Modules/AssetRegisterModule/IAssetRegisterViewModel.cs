@@ -1,7 +1,5 @@
 namespace AdminAssistant.UI.Modules.AssetRegisterModule;
 
-public interface IAssetRegisterViewModel : IViewModelBase
+public interface IAssetRegisterViewModel : IModuleViewModelBase
 {
-    string HeaderText { get; }
-    string SubHeaderText { get; }
 }

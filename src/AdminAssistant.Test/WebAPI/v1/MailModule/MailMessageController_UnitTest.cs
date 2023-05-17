@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.MailModule;
 
-public class MailMessageController_GetMailMessages
+public sealed class MailMessageController_GetMailMessages
 {
     [Fact]
     [Trait("Category", "Unit")]

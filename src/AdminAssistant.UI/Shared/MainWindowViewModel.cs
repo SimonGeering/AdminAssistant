@@ -3,7 +3,7 @@ using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace AdminAssistant.UI.Shared;
 
-internal class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
+internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
 {
     private const string SelectedModuleStyle = "active";
 

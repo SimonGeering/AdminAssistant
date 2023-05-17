@@ -1,6 +1,6 @@
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 
-public class CompanyEntity
+public sealed class CompanyEntity
 {
     public int CompanyID { get; set; }
     public int AuditID { get; internal set; }

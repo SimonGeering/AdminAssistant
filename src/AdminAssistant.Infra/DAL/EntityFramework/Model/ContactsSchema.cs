@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model;
 
-internal class ContactsSchema
+internal static class ContactsSchema
 {
     private const string Name = "Contacts";
 

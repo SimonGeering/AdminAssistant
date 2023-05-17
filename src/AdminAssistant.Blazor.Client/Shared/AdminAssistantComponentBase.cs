@@ -1,6 +1,5 @@
 using AdminAssistant.UI;
 using Microsoft.AspNetCore.Components;
-using Syncfusion.Blazor.Spinner;
 
 namespace AdminAssistant.Blazor.Client.Shared;
 
@@ -12,7 +11,7 @@ public abstract class AdminAssistantComponentBase<TViewModel> : ComponentBase
     protected TViewModel vm { get; set; }
 #pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 
-    protected SfSpinner SfSpinner { get; set; } = new();
+    // protected SfSpinner SfSpinner { get; set; } = new();
 
     protected override void OnInitialized()
     {
@@ -22,10 +21,10 @@ public abstract class AdminAssistantComponentBase<TViewModel> : ComponentBase
                 //if (this.SfSpinner is null)
                 //    throw new System.NullReferenceException("Loading spinner reference not set on component base");
 
-                if (isBusy)
-                SfSpinner.ShowAsync();
-            else
-                SfSpinner.HideAsync();
+            //     if (isBusy)
+            //     SfSpinner.ShowAsync();
+            // else
+            //     SfSpinner.HideAsync();
         };
         base.OnInitialized();
     }

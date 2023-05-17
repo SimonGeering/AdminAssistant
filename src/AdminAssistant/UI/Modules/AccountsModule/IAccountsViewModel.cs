@@ -2,10 +2,7 @@ using AdminAssistant.DomainModel.Modules.AccountsModule;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-public interface IAccountsViewModel : IViewModelBase
+public interface IAccountsViewModel : IModuleViewModelBase
 {
-    string HeaderText { get; }
-    string SubHeaderText { get; }
-
     BankAccount? SelectedBankAccount { get; }
 }

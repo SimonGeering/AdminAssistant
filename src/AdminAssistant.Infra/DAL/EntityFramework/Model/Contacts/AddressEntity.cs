@@ -9,7 +9,7 @@ Ref: "Contacts.Address"."AddressID" < "Contacts.ContactAddress"."AddressID"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 
-public class AddressEntity
+public sealed class AddressEntity
 {
     public int AddressID { get; set; }
     public int AuditID { get; internal set; }

@@ -11,6 +11,6 @@ Ref: "Accounts.BankAccountTransaction"."BankAccountTransactionID" < "Accounts.Ba
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
-public class BankAccountTransactionDocumentEntity
+public sealed class BankAccountTransactionDocumentEntity
 {
 }

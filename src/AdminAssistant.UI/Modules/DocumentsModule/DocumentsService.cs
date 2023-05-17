@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace AdminAssistant.UI.Modules.DocumentsModule;
 
-internal class DocumentsService : ServiceBase, IDocumentsService
+internal sealed class DocumentsService : ServiceBase, IDocumentsService
 {
     public DocumentsService(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
         : base(adminAssistantWebAPIClient, mapper, log)

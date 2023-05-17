@@ -6,7 +6,7 @@ using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
-public class BankAccountInfoQuery_Should
+public sealed class BankAccountInfoQuery_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

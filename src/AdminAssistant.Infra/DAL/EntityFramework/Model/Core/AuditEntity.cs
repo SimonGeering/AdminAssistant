@@ -4,7 +4,7 @@ using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 
-public class AuditEntity
+public sealed class AuditEntity
 {
     public int AuditID { get; set; }
     public bool IsArchived { get; set; }

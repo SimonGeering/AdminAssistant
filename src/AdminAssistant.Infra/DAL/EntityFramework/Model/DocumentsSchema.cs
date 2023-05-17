@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model;
 
-internal class DocumentsSchema
+internal static class DocumentsSchema
 {
     private const string Name = "Documents";
 

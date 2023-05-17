@@ -3,7 +3,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 
-internal class BankQueryHandler : RequestHandlerBase<BankQuery, Result<IEnumerable<Bank>>>
+internal sealed class BankQueryHandler : RequestHandlerBase<BankQuery, Result<IEnumerable<Bank>>>
 {
     private readonly IBankRepository _bankRepository;
 

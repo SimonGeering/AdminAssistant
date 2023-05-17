@@ -1,12 +1,17 @@
 namespace AdminAssistant.UI.Shared;
 
-internal class AppService : IAppService
+internal sealed class AppService : IAppService
 {
     private const ModeEnum DefaultMode = ModeEnum.Company;
     private const ModuleEnum DefaultModule = ModuleEnum.Dashboard;
 
+    private readonly FontAwesomeVersionEnum _fontAwesomeVersion;
+
     //        private int OwnerID { get; set; } = 10; // TODO: switch to owner details later.
-    //
+
+    public AppService(FontAwesomeVersionEnum fontAwesomeVersion)
+        => _fontAwesomeVersion = fontAwesomeVersion;
+
     public ModeSelectionItem GetDefaultMode() => GetModeItem(DefaultMode);
 
     public List<ModeSelectionItem> GetModes() => new()
@@ -25,8 +30,6 @@ internal class AppService : IAppService
         GetModuleItem(ModuleEnum.Notes),
         GetModuleItem(ModuleEnum.Accounts),
         GetModuleItem(ModuleEnum.AssetRegister),
-        GetModuleItem(ModuleEnum.Groceries),
-        GetModuleItem(ModuleEnum.Meals),
         GetModuleItem(ModuleEnum.Billing),
         GetModuleItem(ModuleEnum.Budget),
         GetModuleItem(ModuleEnum.Documents),
@@ -55,10 +58,13 @@ internal class AppService : IAppService
         return new ModuleSelectionItem(module, tag: label, label: label, icon: GetIconForModule(module));
     }
 
-    private string GetIconForMode(ModeEnum mode) => mode switch
+    private string GetIconForMode(ModeEnum mode) => (_fontAwesomeVersion, mode) switch
     {
-        ModeEnum.Company => "fa fa-building-o",
-        ModeEnum.Personal => "fa fa-male",
+        (FontAwesomeVersionEnum.V4o7o0, ModeEnum.Company) => "fa fa-building-o",
+        (FontAwesomeVersionEnum.V4o7o0, ModeEnum.Personal) => "fa fa-male",
+
+        (FontAwesomeVersionEnum.V5o15o4, ModeEnum.Company) => "far fa-building",
+        (FontAwesomeVersionEnum.V5o15o4, ModeEnum.Personal) => "fas fa-male",
         _ => throw new ArgumentOutOfRangeException(nameof(mode))
     };
 
@@ -76,29 +82,40 @@ internal class AppService : IAppService
         ModuleEnum.Reports => "Reports",
         ModuleEnum.Dashboard => "Dashboard",
         ModuleEnum.Admin => "Admin",
-        ModuleEnum.Groceries => "Groceries",
-        ModuleEnum.Meals => "Meals",
         ModuleEnum.Notes => "Notes",
         _ => throw new ArgumentOutOfRangeException(nameof(module))
     };
 
-    private string GetIconForModule(ModuleEnum module) => module switch
+    private string GetIconForModule(ModuleEnum module) => (_fontAwesomeVersion, module) switch
     {
-        ModuleEnum.Mail => "fa fa-envelope",
-        ModuleEnum.Calendar => "fa fa-calendar",
-        ModuleEnum.Contacts => "fa fa-user",
-        ModuleEnum.Tasks => "fa fa-flag-o",
-        ModuleEnum.Notes => "fa fa-sticky-note-o ",
-        ModuleEnum.Admin => "fa fa-wrench",
-        ModuleEnum.Groceries => "fa fa-shopping-basket",
-        ModuleEnum.Meals => "fa fa-cutlery",
-        ModuleEnum.Accounts => "fa fa-gbp",
-        ModuleEnum.AssetRegister => "fa fa-diamond",
-        ModuleEnum.Billing => "fa fa-bullseye",
-        ModuleEnum.Budget => "fa fa-line-chart",
-        ModuleEnum.Documents => "fa fa-file-text-o",
-        ModuleEnum.Reports => "fa fa-bar-chart-o",
-        ModuleEnum.Dashboard => "fa fa-dashboard",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Mail) => "fa fa-envelope",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Calendar) => "fa fa-calendar",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Contacts) => "fa fa-user",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Tasks) => "fa fa-flag-o",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Notes) => "fa fa-sticky-note-o ",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Admin) => "fa fa-wrench",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Accounts) => "fa fa-gbp",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.AssetRegister) => "fa fa-diamond",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Billing) => "fa fa-bullseye",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Budget) => "fa fa-line-chart",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Documents) => "fa fa-file-text-o",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Reports) => "fa fa-bar-chart-o",
+        (FontAwesomeVersionEnum.V4o7o0, ModuleEnum.Dashboard) => "fa fa-dashboard",
+
+        // https://fontawesome.com/v5/search?o=r&m=free&f=classic
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Mail) => "far fa-envelope",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Calendar) => "fas fa-calendar-alt",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Contacts) => "fas fa-user-friends",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Tasks) => "far fa-flag",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Notes) => "far fa-sticky-note",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Admin) => "fas fa-wrench",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Accounts) => "fas fa-pound-sign",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.AssetRegister) => "far fa-gem",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Billing) => "fas fa-bullseye",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Budget) => "fas fa-chart-line",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Documents) => "far fa-file-alt",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Reports) => "fas fa-chart-bar",
+        (FontAwesomeVersionEnum.V5o15o4, ModuleEnum.Dashboard) => "fas fa-tachometer-alt",
         _ => throw new ArgumentOutOfRangeException(nameof(module))
     };
 }

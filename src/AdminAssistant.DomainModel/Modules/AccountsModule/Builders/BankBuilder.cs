@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders;
 
-internal class BankBuilder : IBankBuilder
+internal sealed class BankBuilder : IBankBuilder
 {
     private Bank _bank = new();
 

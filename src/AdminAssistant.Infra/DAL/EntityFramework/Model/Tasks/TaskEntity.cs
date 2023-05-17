@@ -8,6 +8,6 @@ Table "Tasks.Task"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Tasks;
 
-public class TaskEntity
+public sealed class TaskEntity
 {
 }

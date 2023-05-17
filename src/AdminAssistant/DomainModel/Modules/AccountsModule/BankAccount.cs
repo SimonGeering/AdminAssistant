@@ -4,7 +4,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 /// A financial account held at a given <see cref="Bank"/>.
 /// </summary>
 /// <seealso cref="IDatabasePersistable"/>
-public record BankAccount : IDatabasePersistable
+public sealed record BankAccount : IDatabasePersistable
 {
     public const int AccountNameMaxLength = Constants.NameMaxLength;
 

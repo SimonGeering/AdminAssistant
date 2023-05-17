@@ -11,10 +11,8 @@ public enum ModuleEnum
     Contacts,
     Dashboard,
     Documents,
-    Groceries,
     Notes,
     Mail,
-    Meals,
     Reports,
     Tasks
 }

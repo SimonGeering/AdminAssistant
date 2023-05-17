@@ -5,7 +5,7 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.UI.Modules.CoreModule;
 
-public class CoreService_GetCurrencyListAsync
+public sealed class CoreService_GetCurrencyListAsync
 {
     [Fact]
     [Trait("Category", "Unit")]

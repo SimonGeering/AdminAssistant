@@ -1,6 +1,6 @@
 namespace AdminAssistant.UI.Shared;
 
-public class ModuleSelectionItem
+public sealed class ModuleSelectionItem
 {
     public ModuleSelectionItem(ModuleEnum module, string tag, string label, string icon)
     {

@@ -8,13 +8,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
+using System.Diagnostics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
 namespace AdminAssistant.Blazor.Server;
 
-public class Startup
+public sealed class Startup
 {
     // TODO: Make version a constant shared with WebAPI Assemblies
-    const string HealthCheckAPI = "/api/health";
     private const string WebAPIVersion = "v1";
     private string WebAPITitle => $"Admin Assistant WebAPI {WebAPIVersion}.";
 
@@ -43,6 +45,7 @@ public class Startup
             opts.Filters.Add(new ConsumesAttribute("application/json")); // Request limit
             opts.ReturnHttpNotAcceptable = true; // Force client to only request media types based on the above limits.
         });
+
         services.AddResponseCompression(opts =>
         {
             opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" });
@@ -57,13 +60,13 @@ public class Startup
 
         services.AddHealthChecks();
 
-        // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
-        //services.AddHealthChecksUI(setupSettings: setup =>
-        //{
-        //    // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-        //    setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", HealthCheckAPI);
-
-        //}).AddInMemoryStorage();
+        services.AddHealthChecksUI(setupSettings: setup =>
+        {
+           // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+           setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", _env.IsDevelopment() ? "http://localhost:5000/api/health" : "/api/health");
+           setup.SetEvaluationTimeInSeconds(45); // Configures the UI to poll for health-checks updates every 5 seconds
+           setup.MaximumHistoryEntriesPerEndpoint(50);
+        }).AddInMemoryStorage();
 
         services.AddSwaggerGen(c =>
         {
@@ -89,6 +92,19 @@ public class Startup
 
         services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
 
+        services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+        {
+            var serviceName = "AdminAssistant.BlazorServer";
+            tracerProviderBuilder
+                .AddConsoleExporter()
+                .AddSource(serviceName)
+                .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                        .AddService(serviceName: serviceName, serviceVersion: "V1.0.0"))
+                .AddHttpClientInstrumentation()
+                .AddAspNetCoreInstrumentation()
+                .AddSqlClientInstrumentation();
+        });
+
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
         services.AddAdminAssistantServerSideInfra(configSettings);
@@ -97,12 +113,20 @@ public class Startup
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        app.UseResponseCompression();
-
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
             app.UseWebAssemblyDebugging();
+        }
+        else
+        {
+            app.UseResponseCompression();
+
+            // TODO: put the error page back but without bootstrap.
+            app.UseExceptionHandler("/Error");
+            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+            app.UseHsts();
+            app.UseHttpsRedirection();
         }
 
         // Add OpenAPI/Swagger middleware ...
@@ -120,8 +144,6 @@ public class Startup
             c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
         });
 
-        app.UseHttpsRedirection();
-
         app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api") == false, app =>
         {
             app.UseBlazorFrameworkFiles();
@@ -131,9 +153,7 @@ public class Startup
             app.UseEndpoints(config =>
             {
                 config.MapFallbackToFile("index.html");
-
-                // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
-                // config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+                config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
             });
 #pragma warning restore IDE0053 // Use expression body for lambda expressions
         });
@@ -145,13 +165,11 @@ public class Startup
             {
                 config.MapRazorPages();
                 config.MapControllers();
-
-                // Remove until .net 7 EF support added see https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks/issues/1555
-                //config.MapHealthChecks(HealthCheckAPI, new HealthCheckOptions
-                //{
-                //    Predicate = _ => true,
-                //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                //});
+                config.MapHealthChecks("/api/health", new HealthCheckOptions
+                {
+                    Predicate = _ => true,
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
             });
         });
     }

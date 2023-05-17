@@ -2,7 +2,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.TasksModule;
 
-internal class TasksViewModel : ViewModelBase, ITasksViewModel
+internal sealed class TasksViewModel : ViewModelBase, ITasksViewModel
 {
     public TasksViewModel(ILoggingProvider loggingProvider)
         : base(loggingProvider)

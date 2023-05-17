@@ -6,7 +6,7 @@ using AdminAssistant.Infra.DAL.Modules.CoreModule;
 
 namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.CQRS;
 
-public class CurrenciesQuery_Should
+public sealed class CurrenciesQuery_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

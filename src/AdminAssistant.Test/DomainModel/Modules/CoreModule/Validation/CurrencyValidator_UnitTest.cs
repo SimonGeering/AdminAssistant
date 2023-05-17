@@ -6,7 +6,7 @@ using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
 
 namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.Validation;
 
-public class CurrencyValidator_Should
+public sealed class CurrencyValidator_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

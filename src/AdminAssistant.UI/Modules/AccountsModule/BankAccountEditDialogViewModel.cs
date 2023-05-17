@@ -12,7 +12,7 @@ using AdminAssistant.DomainModel.Modules.CoreModule;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-internal class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel
+internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccountEditDialogViewModel
 {
     private readonly IBankAccountValidator _bankAccountValidator;
     private readonly IAccountsService _accountsService;

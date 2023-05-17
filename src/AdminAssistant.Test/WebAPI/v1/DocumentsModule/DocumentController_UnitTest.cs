@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.DocumentsModule;
 
-public class DocumentController_UnitTest_Should
+public sealed class DocumentController_UnitTest_Should
 {
     [Fact]
     [Trait("Category", "Unit")]

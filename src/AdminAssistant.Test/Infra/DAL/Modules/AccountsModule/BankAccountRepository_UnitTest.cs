@@ -10,7 +10,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.Test.Infra.DAL.Modules.AccountsModule;
 
-public class BankAccountRepository_UnitTest
+public sealed class BankAccountRepository_UnitTest
 {
     [Fact]
     [Trait("Category", "Unit")]

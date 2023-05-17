@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.Test.WebAPI.v1.AssetRegisterModule;
 
-public class AssetController_GetAssets
+public sealed class AssetController_GetAssets
 {
     [Fact]
     [Trait("Category", "Unit")]

@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 		..\docs\cli.md = ..\docs\cli.md
 		..\docs\database.dbml = ..\docs\database.dbml
+		Directory.Packages.props = Directory.Packages.props
 		..\tools.ps1 = ..\tools.ps1
 	EndProjectSection
 EndProject
@@ -31,7 +32,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Retro", "AdminAssistant.Retro\AdminAssistant.Retro.csproj", "{E72BBBA7-8A75-47E2-BFF4-7460163616E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Infra.ClientSide", "AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj", "{CA7C589A-4830-495B-9B96-B2E9D01E78F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Infra.ClientSide", "AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj", "{CA7C589A-4830-495B-9B96-B2E9D01E78F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

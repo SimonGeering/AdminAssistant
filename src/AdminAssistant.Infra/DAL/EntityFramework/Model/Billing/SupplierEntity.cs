@@ -9,6 +9,6 @@ Table "Billing.SupplierEntity"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Billing;
 
-public class SupplierEntity
+public sealed class SupplierEntity
 {
 }

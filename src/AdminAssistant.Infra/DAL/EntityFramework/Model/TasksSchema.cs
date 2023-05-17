@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model;
 
-internal class TasksSchema
+internal static class TasksSchema
 {
     [SuppressMessage("Performance", "CA1823:Avoid unused private fields", Justification = "WIP")]
     [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]

@@ -10,7 +10,7 @@ namespace AdminAssistant.WebAPI.v1.CalendarModule;
 [ApiController]
 [Route("api/v1/calendar-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Calendar Module")]
-public class ReminderController : WebAPIControllerBase
+public sealed class ReminderController : WebAPIControllerBase
 {
     public ReminderController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
         : base(mapper, mediator, loggingProvider)

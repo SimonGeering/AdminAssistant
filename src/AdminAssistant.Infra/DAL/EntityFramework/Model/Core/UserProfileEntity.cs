@@ -1,6 +1,6 @@
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 
-public class UserProfileEntity
+public sealed class UserProfileEntity
 {
     public int UserProfileID { get; set; }
     public int AuditID { get; internal set; }

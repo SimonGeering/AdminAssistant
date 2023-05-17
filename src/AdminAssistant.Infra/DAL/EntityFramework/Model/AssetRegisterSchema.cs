@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model;
 
-internal class AssetRegisterSchema
+internal static class AssetRegisterSchema
 {
     private const string Name = "Accounts";
 

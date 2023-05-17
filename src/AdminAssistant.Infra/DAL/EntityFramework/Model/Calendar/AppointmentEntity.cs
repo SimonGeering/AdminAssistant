@@ -9,6 +9,6 @@ Table "Calendar.Appointment"
 */
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Calendar;
 
-public class AppointmentEntity
+public sealed class AppointmentEntity
 {
 }

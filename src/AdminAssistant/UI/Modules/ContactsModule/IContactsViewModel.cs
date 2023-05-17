@@ -1,7 +1,5 @@
 namespace AdminAssistant.UI.Modules.ContactsModule;
 
-public interface IContactsViewModel : IViewModelBase
+public interface IContactsViewModel : IModuleViewModelBase
 {
-    string HeaderText { get; }
-    string SubHeaderText { get; }
 }

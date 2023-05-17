@@ -1,7 +1,5 @@
 namespace AdminAssistant.UI.Modules.DashboardModule;
 
-public interface IDashboardViewModel : IViewModelBase
+public interface IDashboardViewModel : IModuleViewModelBase
 {
-    string HeaderText { get; }
-    string SubHeaderText { get; }
 }

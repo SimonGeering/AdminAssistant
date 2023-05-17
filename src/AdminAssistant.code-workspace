@@ -1,128 +1,302 @@
 {
-	"folders": [
-		{
-			"path": "../"
-		}
-	],
-	"settings": {
-    "omnisharp.loggingLevel": "warning",
-    "omnisharp.enableEditorConfigSupport": true,
-		"omnisharp.enableRoslynAnalyzers": true,
-    "files.associations": {
-      "*/DevOps/.yml": "azure-pipelines"
+    "folders": [
+        {
+            "path": "../"
+        }
+    ],
+    "settings": {
+        "omnisharp.loggingLevel": "warning",
+        "omnisharp.enableEditorConfigSupport": true,
+        "omnisharp.enableRoslynAnalyzers": true,
+        "files.associations": {
+            "*/DevOps/.yml": "azure-pipelines"
+        },
+        "files.exclude": {
+            "**/docs/_site/": true,
+            "**/docs/.jekyll-cache/": true,
+            "**/bin/": true,
+            "**/obj/": true,
+            "**/.cr/": true,
+            "**/.vs/": true,
+            "**/node_modules/": true,
+            "**/*.csproj.user": true,
+            "**/*.docs.xml": true,
+            "**/lcov.info": true,
+            "**/AdminAssistant.db": true,
+            "**/AdminAssistant.mdf": true,
+            "**/AdminAssistant.ldf": true,
+        },
+        "cSpell.language": "en-GB",
+        "cSpell.enableCompoundWords": true,
+        "cSpell.ignorePaths": [
+            "**/package.json",
+            "**/package-lock.json",
+            "**/launchSettings.json",
+            "**/node_modules/**",
+            "**/vscode-extension/**",
+            "**/.git/objects/**",
+            ".vscode",
+            "**/AdminAssistant.code-workspace"
+        ],
+        "cSpell.words": [
+            "Admin",
+            "Apps",
+            "Ardalis",
+            "blazor",
+            "Bootswatch",
+            "CQRS",
+            "Emoji",
+            "geering",
+            "markdownlint",
+            "MediatR",
+            "nuget",
+            "pwsh",
+            "setvariable",
+            "Setup",
+            "Syncfusion",
+            "titlebar",
+            "vsts",
+            "Xunit",
+            "webassembly"
+        ],
+        "todo-tree.filtering.excludeGlobs": [
+            "**/vendor/**",
+            "**/node_modules/**",
+            "**/dist/**",
+            "**/bower_components/**",
+            "**/build/**",
+            "**/.vscode/**",
+            "**/.github/**",
+            "**/_output/**",
+            "**/*.min.*",
+            "**/*.map",
+            "**/docs/js/*mermaid*"
+        ],
+        "sonarlint.connectedMode.project": {
+            "connectionId": "simongeering",
+            "projectKey": "SimonGeering_AdminAssistant"
+        },
+        // updated 2023-02-01 09:11
+        // https://github.com/antfu/vscode-file-nesting-config
+        "explorer.fileNesting.enabled": true,
+        "explorer.fileNesting.expand": false,
+        "explorer.fileNesting.patterns": {
+            "tsconfig.json": "tsconfig.*.json",
+            "*.asax": "$(capture).*.cs, $(capture).*.vb",
+            "*.ascx": "$(capture).*.cs, $(capture).*.vb",
+            "*.ashx": "$(capture).*.cs, $(capture).*.vb",
+            "*.aspx": "$(capture).*.cs, $(capture).*.vb",
+            "*.cs": "$(capture).*.cs",
+            "*.cshtml": "$(capture).cshtml.cs",
+            "*.csproj": "*.config, *proj.user, appsettings.*, bundleconfig.json",
+            "*.css": "$(capture).css.map, $(capture).*.css",
+            "*.js": "$(capture).js.map, $(capture).*.js, $(capture)_*.js",
+            "*.master": "$(capture).*.cs, $(capture).*.vb",
+            "*.pubxml": "$(capture).pubxml.user",
+            "*.resx": "$(capture).*.resx, $(capture).designer.cs, $(capture).designer.vb",
+            "*.ts": "$(capture).js, $(capture).d.ts.map, $(capture).*.ts, $(capture)_*.js, $(capture)_*.ts",
+            "*.xaml": "$(capture).xaml.cs",
+            ".env": "*.env, .env.*, .envrc, env.d.ts",
+            ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*",
+            "I*.cs": "$(capture).cs",
+            "dockerfile": ".dockerignore, docker-compose.*, dockerfile*",
+            "package.json": ".browserslist*, .circleci*, .commitlint*, .cz-config.js, .czrc, .dlint.json, .dprint.json, .editorconfig, .eslint*, .firebase*, .flowconfig, .github*, .gitlab*, .gitpod*, .huskyrc*, .jslint*, .lintstagedrc*, .markdownlint*, .node-version, .nodemon*, .npm*, .nvmrc, .pm2*, .pnp.*, .pnpm*, .prettier*, .releaserc*, .sentry*, .stackblitz*, .styleci*, .stylelint*, .tazerc*, .textlint*, .tool-versions, .travis*, .versionrc*, .vscode*, .watchman*, .xo-config*, .yamllint*, .yarnrc*, Procfile, apollo.config.*, appveyor*, azure-pipelines*, bower.json, build.config.*, commitlint*, crowdin*, dangerfile*, dlint.json, dprint.json, firebase.json, grunt*, gulp*, jenkins*, lerna*, lint-staged*, nest-cli.*, netlify*, nodemon*, nx.*, package-lock.json, package.nls*.json, phpcs.xml, pm2.*, pnpm*, prettier*, pullapprove*, pyrightconfig.json, release-tasks.sh, renovate*, rollup.config.*, stylelint*, tslint*, tsup.config.*, turbo*, typedoc*, unlighthouse*, vercel*, vetur.config.*, webpack*, workspace.json, xo.config.*, yarn*",
+            "readme*": "authors, backers*, changelog*, citation*, code_of_conduct*, codeowners, contributing*, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors*",
+            "shims.d.ts": "*.d.ts",
+            "*Controller.cs": "${capture}Controller.*.cs"
+        },
+        "editor.bracketPairColorization.enabled": true,
+        "editor.guides.bracketPairs": "active",
+        "editor.fontFamily": "'Fira Code','FiraCode NF','Consolas','monospace'",
+        "editor.fontWeight": "400",
+        "editor.fontSize": 12,
+        "terminal.integrated.fontFamily": "'Fira Code','FiraCode NF','Consolas','monospace'",
+        "terminal.integrated.fontWeight": "400",
+        "terminal.integrated.fontSize": 12,
+        "editor.fontLigatures": true,
+        "workbench.colorCustomizations": {
+            "gitlens.trailingLineForegroundColor": "#bbbaba"
+        },
+        "dotnet-test-explorer.testProjectPath": "**/*Test.csproj",
+        "coverage-gutters.showGutterCoverage": true,
+        "coverage-gutters.showLineCoverage": false,
+        "trailing-spaces.syntaxIgnore": [
+            "markdown"
+        ],
+        "markdownlint.config": {
+            "MD028": false,
+            "MD025": {
+                "front_matter_title": ""
+            }
+        }
     },
-    "files.exclude": {
-      "**/docs/_site/": true,
-      "**/docs/.jekyll-cache/": true,
-			"**/bin/": true,
-      "**/obj/": true,
-      "**/.cr/": true,
-      "**/.vs/": true,
-      "**/node_modules/": true,
-      "**/*.csproj.user": true,
-      "**/*.docs.xml": true,
-      "**/lcov.info": true,
-      "**/AdminAssistant.db": true,
-      "**/AdminAssistant.mdf": true,
-      "**/AdminAssistant.ldf": true,
+    "extensions": {
+        "recommendations": [
+            "formulahendry.dotnet-test-explorer",
+            "hbenl.vscode-test-explorer",
+            "ms-dotnettools.csharp",
+            "ms-dotnettools.blazorwasm-companion",
+            "ms-mssql.mssql",
+            "k--kato.docomment",
+            "streetsidesoftware.code-spell-checker",
+            "ryanluker.vscode-coverage-gutters",
+            "editorconfig.editorconfig",
+            "rexebin.f12-open-file",
+            "donjayamanne.githistory",
+            "eamodio.gitlens",
+            "yzhang.markdown-all-in-one",
+            "davidanson.vscode-markdownlint",
+            "christian-kohler.path-intellisense",
+            "wayou.vscode-todo-highlight",
+            "gruntfuggly.todo-tree",
+            "shardulm94.trailing-spaces",
+            "pflannery.vscode-versionlens",
+            "visualstudioexptteam.vscodeintellicode",
+            "vscode-icons-team.vscode-icons",
+            "ms-azuretools.vscode-docker",
+            "systemticks.c4-dsl-extension"
+        ],
+        "unwantedRecommendations": [
+            "ms-azuretools.vscode-docker",
+            "ms-kubernetes-tools.vscode-kubernetes-tools",
+            "googlecloudtools.cloudcode",
+            "github.vscode-pull-request-github",
+            "mindaro.mindaro"
+        ]
     },
-    "cSpell.language": "en-GB",
-    "cSpell.enableCompoundWords": true,
-    "cSpell.ignorePaths": [
-      "**/package.json",
-      "**/package-lock.json",
-      "**/launchSettings.json",
-      "**/node_modules/**",
-      "**/vscode-extension/**",
-      "**/.git/objects/**",
-      ".vscode",
-      "**/AdminAssistant.code-workspace"
-    ],
-    "cSpell.words": [
-      "Admin",
-      "Apps",
-      "Ardalis",
-      "blazor",
-      "Bootswatch",
-      "Emoji",
-      "geering",
-      "markdownlint",
-      "MediatR",
-      "nuget",
-      "pwsh",
-      "setvariable",
-      "Setup",
-      "Syncfusion",
-      "titlebar",
-      "vsts",
-      "Xunit",
-      "webassembly"
-    ],
-    "todo-tree.filtering.excludeGlobs": [
-      "**/vendor/**",
-      "**/node_modules/**",
-      "**/dist/**",
-      "**/bower_components/**",
-      "**/build/**",
-      "**/.vscode/**",
-      "**/.github/**",
-      "**/_output/**",
-      "**/*.min.*",
-      "**/*.map",
-      "**/docs/js/*mermaid*"
-    ],
-    "editor.bracketPairColorization.enabled": true,
-    "editor.guides.bracketPairs":"active",
-    "editor.fontFamily": "'Fira Code','FiraCode NF','Consolas','monospace'",
-    "editor.fontWeight": "400",
-    "editor.fontSize": 12,
-    "terminal.integrated.fontFamily": "'Fira Code','FiraCode NF','Consolas','monospace'",
-    "terminal.integrated.fontWeight": "400",
-    "terminal.integrated.fontSize": 12,
-    "editor.fontLigatures": true,
-    "workbench.colorCustomizations": { "gitlens.trailingLineForegroundColor": "#bbbaba" },
-    "dotnet-test-explorer.testProjectPath": "**/*Test.csproj",
-    "coverage-gutters.showGutterCoverage": true,
-    "coverage-gutters.showLineCoverage": false,
-    "trailing-spaces.syntaxIgnore": ["markdown"],
-    "markdownlint.config": {
-      "MD028": false,
-      "MD025": {
-        "front_matter_title": ""
-      }
+    "launch": {
+        // Use IntelliSense to find out which attributes exist for C# debugging
+        // Use hover for the description of the existing attributes
+        // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "name": ".NET Core Launch (web)",
+                "type": "coreclr",
+                "request": "launch",
+                "preLaunchTask": "build",
+                // If you have changed target frameworks, make sure to update the program path.
+                "program": "${workspaceFolder}/src/AdminAssistant.Blazor/Server/bin/x64/Debug/netcoreapp3.1/AdminAssistant.Blazor.Server.dll",
+                "args": [],
+                "cwd": "${workspaceFolder}/src/AdminAssistant.Blazor/Server",
+                "stopAtEntry": false,
+                // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
+                "serverReadyAction": {
+                    "action": "openExternally",
+                    "pattern": "^\\s*Now listening on:\\s+(https?://\\S+)"
+                },
+                "env": {
+                    "ASPNETCORE_ENVIRONMENT": "Development"
+                },
+                "sourceFileMap": {
+                    "/Views": "${workspaceFolder}/Views"
+                }
+            },
+            {
+                "name": ".NET Core Attach",
+                "type": "coreclr",
+                "request": "attach",
+                "processId": "${command:pickProcess}"
+            }
+        ]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "build",
+                "command": "dotnet",
+                "type": "process",
+                "args": [
+                    "build",
+                    "${workspaceFolder}/src/AdminAssistant.Blazor/Server/AdminAssistant.Blazor.Server.csproj",
+                    "/property:GenerateFullPaths=true",
+                    "/consoleloggerparameters:NoSummary",
+                    "--configuration=x64"
+                ],
+                "problemMatcher": "$msCompile"
+            },
+            {
+                "label": "publish",
+                "command": "dotnet",
+                "type": "process",
+                "args": [
+                    "publish",
+                    "${workspaceFolder}/src/AdminAssistant.Blazor/Server/AdminAssistant.Blazor.Server.csproj",
+                    "/property:GenerateFullPaths=true",
+                    "/consoleloggerparameters:NoSummary",
+                    "--configuration=x64"
+                ],
+                "problemMatcher": "$msCompile"
+            },
+            {
+                "label": "watch",
+                "command": "dotnet",
+                "type": "process",
+                "args": [
+                    "watch",
+                    "run",
+                    "${workspaceFolder}/src/AdminAssistant.Blazor/Server/AdminAssistant.Blazor.Server.csproj",
+                    "/property:GenerateFullPaths=true",
+                    "/consoleloggerparameters:NoSummary",
+                    "--configuration=x64"
+                ],
+                "problemMatcher": "$msCompile"
+            },
+            {
+                "label": "test",
+                "command": "dotnet",
+                "type": "process",
+                "args": [
+                    "test",
+                    "${workspaceFolder}\\src\\AdminAssistant.Test\\AdminAssistant.Test.csproj",
+                    "--configuration=x64"
+                ],
+                "problemMatcher": "$msCompile",
+                "group": {
+                    "kind": "test",
+                    "isDefault": true
+                }
+            },
+            {
+                "label": "test with coverage",
+                "command": "dotnet",
+                "type": "process",
+                "args": [
+                    "test",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=${workspaceFolder}\\src\\AdminAssistant.Test\\lcov.info",
+                    "${workspaceFolder}\\src\\AdminAssistant.Test\\AdminAssistant.Test.csproj",
+                    "--configuration=x64"
+                ],
+                "problemMatcher": "$msCompile",
+                "group": {
+                    "kind": "test",
+                    "isDefault": true
+                }
+            },
+            {
+                "label": "watch test with coverage",
+                "command": "dotnet",
+                "type": "process",
+                "args": [
+                    "watch",
+                    "--project",
+                    "${workspaceFolder}\\src\\AdminAssistant.Test",
+                    "test",
+                    "/p:CollectCoverage=true",
+                    "/p:CoverletOutputFormat=lcov",
+                    "/p:CoverletOutput=${workspaceFolder}\\src\\AdminAssistant.Test\\lcov.info",
+                    "${workspaceFolder}\\src\\AdminAssistant.Test\\AdminAssistant.Test.csproj",
+                    "--configuration=x64"
+                ],
+                "problemMatcher": "$msCompile",
+                "group": {
+                    "kind": "test",
+                    "isDefault": true
+                }
+            },
+        ]
     }
-  },
-  "extensions": {
-    "recommendations": [
-      "formulahendry.dotnet-test-explorer",
-      "hbenl.vscode-test-explorer",
-      "ms-dotnettools.csharp",
-      "ms-dotnettools.blazorwasm-companion",
-      "ms-mssql.mssql",
-      "k--kato.docomment",
-      "streetsidesoftware.code-spell-checker",
-      "ryanluker.vscode-coverage-gutters",
-      "editorconfig.editorconfig",
-      "rexebin.f12-open-file",
-      "donjayamanne.githistory",
-      "eamodio.gitlens",
-      "yzhang.markdown-all-in-one",
-      "davidanson.vscode-markdownlint",
-      "christian-kohler.path-intellisense",
-      "wayou.vscode-todo-highlight",
-      "gruntfuggly.todo-tree",
-      "shardulm94.trailing-spaces",
-      "pflannery.vscode-versionlens",
-      "visualstudioexptteam.vscodeintellicode",
-      "vscode-icons-team.vscode-icons",
-      "ms-azuretools.vscode-docker"
-    ],
-    "unwantedRecommendations": [
-      "ms-azuretools.vscode-docker",
-      "ms-kubernetes-tools.vscode-kubernetes-tools",
-      "googlecloudtools.cloudcode",
-      "github.vscode-pull-request-github",
-      "mindaro.mindaro"
-    ]
-  }
 }
