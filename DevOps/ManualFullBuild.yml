@@ -44,8 +44,7 @@ stages:
       inputs:
         SonarCloud: 'SonarCube'
         organization: 'simongeering'
-        scannerMode: 'CLI'
-        configMode: 'MSBuild'
+        scannerMode: 'MSBuild'
         projectKey: 'SimonGeering_AdminAssistant'
         projectName: 'AdminAssistant'
     # Build ...
