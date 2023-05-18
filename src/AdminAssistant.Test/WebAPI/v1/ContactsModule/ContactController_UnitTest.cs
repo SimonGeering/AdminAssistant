@@ -56,10 +56,10 @@ public sealed class ContactController_GetContacts
         //}
     }
 
-    [Fact]
-    [Trait("Category", "Unit")]
-    public async Task Returns_Status200OK_With_ASingleContact_Given_AValidContactID()
-    {
+    // [Fact]
+    // [Trait("Category", "Unit")]
+    // public async Task Returns_Status200OK_With_ASingleContact_Given_AValidContactID()
+    // {
         //// Arrange
         //var contacts = new List<Contact>()
         //{
@@ -87,6 +87,6 @@ public sealed class ContactController_GetContacts
 
         //var result = (OkObjectResult)response.Result!;
         //result.Value.Should().BeAssignableTo<ContactResponseDto>();
-    }
+    //}
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

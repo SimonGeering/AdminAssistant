@@ -15,9 +15,9 @@ internal sealed class DocumentRepository : RepositoryBase, IDocumentRepository
     {
     }
 
-    public async Task<Document?> GetAsync(int documentID)
+    public async Task<Document?> GetAsync(int id)
     {
-        var data = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == documentID).ConfigureAwait(false);
+        var data = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == id).ConfigureAwait(false);
         return Mapper.Map<Document>(data);
     }
 
@@ -51,13 +51,13 @@ internal sealed class DocumentRepository : RepositoryBase, IDocumentRepository
         return Mapper.Map<Document>(entity);
     }
 
-    public async Task DeleteAsync(int documentID)
+    public async Task DeleteAsync(int id)
     {
-        var entity = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == documentID).ConfigureAwait(false);
+        var entity = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == id).ConfigureAwait(false);
 
         // TODO: make this a custom domain exception and handle in controller.
-        if (entity == null || entity.DocumentID != documentID)
-            throw new ArgumentException($"Record with ID {documentID} not found", nameof(documentID));
+        if (entity == null || entity.DocumentID != id)
+            throw new ArgumentException($"Record with ID {id} not found", nameof(id));
 
         DbContext.Documents.Remove(entity);
         await DbContext.SaveChangesAsync().ConfigureAwait(false);

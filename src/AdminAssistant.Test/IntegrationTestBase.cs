@@ -55,11 +55,7 @@ public abstract class IntegrationTestBase : IDisposable
                 var baseConfig = configBuilder.Build();
 
                 // Switch out the DB for a Test DB by convention - assumes a '_TestDB' suffix to prod DB name ...
-                var configSettings = baseConfig.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
-
-                if (configSettings == null)
-                    throw new NullReferenceException("Failed to load configuration settings");
-
+                var configSettings = baseConfig.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>() ?? throw new NullReferenceException("Failed to load configuration settings");
                 var connectionStringFromUserSecrets = configSettings.ConnectionString;
                 // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
                 var testConnectionString = connectionStringFromUserSecrets.Replace("Initial Catalog=AdminAssistant", "Initial Catalog=AdminAssistant_Test", StringComparison.InvariantCulture);
@@ -83,7 +79,7 @@ public abstract class IntegrationTestBase : IDisposable
 
         _checkpoint = new Respawn.Checkpoint
         {
-            // Ignore system tables and anything that was populated by the EF seed data... 
+            // Ignore system tables and anything that was populated by the EF seed data...
             TablesToIgnore = new[]
             {
                     "sysdiagrams",
@@ -121,7 +117,7 @@ public abstract class IntegrationTestBase : IDisposable
 
     protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
     {
-            // Register the WebAPIClient using the test httpClient ... 
+            // Register the WebAPIClient using the test httpClient ...
             services.AddTransient<IAdminAssistantWebAPIClient>((sp) =>
         {
             Guard.Against.Null(_httpClient.BaseAddress, "httpClient.BaseAddress");
@@ -199,7 +195,7 @@ public abstract class IntegrationTestBase : IDisposable
     #region IDisposable
 
     private bool disposedValue;
-    
+
     protected virtual void Dispose(bool disposing)
     {
         if (!disposedValue)

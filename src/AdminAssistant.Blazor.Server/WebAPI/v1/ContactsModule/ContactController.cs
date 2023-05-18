@@ -65,7 +65,7 @@ public sealed class ContactController : WebAPIControllerBase
         }
 
         var response = Mapper.Map<ContactResponseDto>(result.Value);
-        return Log.Finish(CreatedAtRoute(nameof(ContactGetById), new { ContactID = response.ContactID }, response));
+        return Log.Finish(CreatedAtRoute(nameof(ContactGetById), new { response.ContactID }, response));
     }
 
     [HttpGet("{contactID}", Name = nameof(ContactGetById))]

@@ -35,8 +35,7 @@ public sealed class Startup
     {
         var configSettings = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
 
-        if (configSettings == null)
-            throw new NullReferenceException("Failed to load configuration settings");
+        Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
 
         services.AddMvc(opts =>
         {

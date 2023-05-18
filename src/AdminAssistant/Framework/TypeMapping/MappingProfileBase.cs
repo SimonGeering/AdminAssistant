@@ -1,3 +1,4 @@
+using Ardalis.GuardClauses;
 using AutoMapper;
 using System.Reflection;
 
@@ -21,21 +22,13 @@ public abstract class MappingProfileBase : Profile
 
         foreach (var type in mapFromTypes)
         {
-            var instance = Activator.CreateInstance(type);
-
-            if (instance is null)
-                throw new ArgumentException("Unable to load type mapping from assembly", nameof(assembly));
-
+            var instance = Activator.CreateInstance(type) ?? throw new ArgumentException("Unable to load type mapping from assembly", nameof(assembly));
             MethodInfo? methodInfo;
 
             if (type.GetMethod("MapFrom") is null)
             {
-                var mapfromInterface = type.GetInterface("IMapFrom`1");
-
-                if (mapfromInterface is null)
-                    throw new NullReferenceException($"Unable to load type mapping IMapFrom interface from type '{type.FullName}'");
-
-                methodInfo = mapfromInterface.GetMethod("MapFrom");
+                var mapFromInterface = type.GetInterface("IMapFrom`1") ?? throw new NullReferenceException($"Unable to load type mapping IMapFrom interface from type '{type.FullName}'");
+                methodInfo = mapFromInterface.GetMethod("MapFrom");
             }
             else
             {
@@ -57,21 +50,13 @@ public abstract class MappingProfileBase : Profile
 
         foreach (var type in mapToTypes)
         {
-            var instance = Activator.CreateInstance(type);
-
-            if (instance is null)
-                throw new ArgumentException("Unable to load type mapping from assembly", nameof(assembly));
-
+            var instance = Activator.CreateInstance(type) ?? throw new ArgumentException("Unable to load type mapping from assembly", nameof(assembly));
             MethodInfo? methodInfo;
 
             if (type.GetMethod("MapTo") is null)
             {
-                var maptoInterface = type.GetInterface("IMapTo`1");
-
-                if (maptoInterface is null)
-                    throw new NullReferenceException($"Unable to load type mapping IMapTo interface from type '{type.FullName}'");
-
-                methodInfo = maptoInterface.GetMethod("MapTo");
+                var mapToInterface = type.GetInterface("IMapTo`1") ?? throw new NullReferenceException($"Unable to load type mapping IMapTo interface from type '{type.FullName}'");
+                methodInfo = mapToInterface.GetMethod("MapTo");
             }
             else
             {

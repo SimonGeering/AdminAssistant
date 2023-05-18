@@ -15,9 +15,9 @@ internal sealed class BankRepository : RepositoryBase, IBankRepository
     {
     }
 
-    public async Task<Bank?> GetAsync(int bankID)
+    public async Task<Bank?> GetAsync(int id)
     {
-        var data = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == bankID).ConfigureAwait(false);
+        var data = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id).ConfigureAwait(false);
         return Mapper.Map<Bank>(data);
     }
 
