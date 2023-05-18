@@ -104,7 +104,7 @@ public sealed class BankAccountRepository_UnitTest
         var newBankAccountToSave = Factory.BankAccount.WithAccountName("TestNewBankAccountToSave").Build();
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().SaveAsync(newBankAccountToSave).ConfigureAwait(false);
+        await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().SaveAsync(newBankAccountToSave).ConfigureAwait(false);
 
         // Assert
         mockBankAccounts.Verify(x => x.Add(It.Is<BankAccountEntity>((arg) => IsValidForInsert(arg))), Times.Once());

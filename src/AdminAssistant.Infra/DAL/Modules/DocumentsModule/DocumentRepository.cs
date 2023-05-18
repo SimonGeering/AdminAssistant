@@ -61,6 +61,5 @@ internal sealed class DocumentRepository : RepositoryBase, IDocumentRepository
 
         DbContext.Documents.Remove(entity);
         await DbContext.SaveChangesAsync().ConfigureAwait(false);
-        return;
     }
 }

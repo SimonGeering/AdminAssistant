@@ -24,7 +24,7 @@ public abstract class IntegrationTestBase : IDisposable
     private readonly string _connectionString;
     private readonly HttpClient _httpClient;
 
-    public IntegrationTestBase()
+    protected IntegrationTestBase()
     {
         var hostBuilder = Host.CreateDefaultBuilder()
             .ConfigureLogging(logging =>
@@ -82,10 +82,10 @@ public abstract class IntegrationTestBase : IDisposable
             // Ignore system tables and anything that was populated by the EF seed data...
             TablesToIgnore = new[]
             {
-                    "sysdiagrams",
-                    "__EFMigrationsHistory",
-                    "tblObjectType"
-                },
+                "sysdiagrams",
+                "__EFMigrationsHistory",
+                "tblObjectType"
+            },
             WithReseed = true
         };
 

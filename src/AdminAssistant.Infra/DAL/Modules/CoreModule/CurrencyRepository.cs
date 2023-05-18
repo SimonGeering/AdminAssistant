@@ -43,7 +43,6 @@ internal sealed class CurrencyRepository : RepositoryBase, ICurrencyRepository
 
         DbContext.Currencies.Remove(entity);
         await DbContext.SaveChangesAsync().ConfigureAwait(false);
-        return;
     }
 
     public async Task<Currency?> GetAsync(int id)

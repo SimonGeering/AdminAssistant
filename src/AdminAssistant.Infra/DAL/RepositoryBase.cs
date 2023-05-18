@@ -12,7 +12,7 @@ internal abstract class RepositoryBase
     protected IDateTimeProvider DateTimeProvider { get; }
     protected IUserContextProvider UserContextProvider { get; }
 
-    public RepositoryBase(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
+    protected RepositoryBase(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
     {
         DbContext = dbContext;
         Mapper = mapper;

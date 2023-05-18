@@ -51,6 +51,5 @@ internal sealed class BankRepository : RepositoryBase, IBankRepository
 
         DbContext.Banks.Remove(entity);
         await DbContext.SaveChangesAsync().ConfigureAwait(false);
-        return;
     }
 }
