@@ -14,12 +14,19 @@
   <PropertyGroup>
     <DocumentationFile>AdminAssistant.DomainModel.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>1701;1702;NU1605</NoWarn>
+    <NoWarn>$(NoWarn);1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="AdminAssistant.DomainModel.docs.xml" />
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

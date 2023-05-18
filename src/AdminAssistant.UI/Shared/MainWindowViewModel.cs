@@ -8,7 +8,6 @@ internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
     private const string SelectedModuleStyle = "active";
 
     private readonly IMessenger _messenger;
-    private readonly IAppService _appService;
 
     private readonly SidebarStateSettings _contractedSidebarState;
     private readonly SidebarStateSettings _expandedSidebarState;
@@ -21,8 +20,6 @@ internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
         _messenger = messenger;
         _messenger.RegisterAll(this);
 
-        _appService = appService;
-
         _activeMode = appService.GetDefaultMode();
         _activeModule = appService.GetDefaultModule();
 
@@ -32,11 +29,11 @@ internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
         _expandedSidebarState = new SidebarStateSettings(ExpandedContractedStateToggle.Expanded, "fa fa-lg fa-angle-double-left", "cl-navbar-expanded", true);
         Sidebar = _expandedSidebarState;
 
-        Modes = _appService.GetModes();
-        ActiveMode = _appService.GetDefaultMode();
+        Modes = appService.GetModes();
+        ActiveMode = appService.GetDefaultMode();
 
-        Modules = _appService.GetModules();
-        ActiveModule = _appService.GetDefaultModule();
+        Modules = appService.GetModules();
+        ActiveModule = appService.GetDefaultModule();
         ActiveModule.StyleClass = SelectedModuleStyle;
 
         Log.Finish();

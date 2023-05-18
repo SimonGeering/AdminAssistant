@@ -13,7 +13,7 @@ internal sealed class BankAccountValidator : AbstractValidator<BankAccount>, IBa
         //
         //this.RuleFor(x => x.BankAccountID)
         //    .Custom((bankAccountID, context) =>
-        //    { 
+        //    {
         //        if (BankAccountBeingCreated(context))
         //        {
         //            if (bankAccountID != Constants.NewRecordID)

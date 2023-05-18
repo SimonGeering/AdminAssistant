@@ -1,4 +1,3 @@
-using Ardalis.GuardClauses;
 using AutoMapper;
 using System.Reflection;
 
@@ -8,7 +7,7 @@ public abstract class MappingProfileBase : Profile
 {
     /// <summary>Based on 'https://github.com/jasontaylordev/CleanArchitecture/blob/master/src/Application/Common/Mappings/IMapFrom.cs'</summary>
     /// <param name="assembly"></param>
-    public MappingProfileBase(Assembly assembly)
+    protected MappingProfileBase(Assembly assembly)
     {
         ApplyIMapFromMappings(assembly);
         ApplyIMapToMappings(assembly);

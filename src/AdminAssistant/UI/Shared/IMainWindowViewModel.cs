@@ -13,7 +13,6 @@ public interface IMainWindowViewModel : IViewModelBase
 
     void OnSideBarControlButtonClick();
 
-    void OnSelectedModeChanged(ModeSelectionItem mode);
+    void OnSelectedModeChanged(ModeSelectionItem selectedMode);
     void OnSelectedModuleChanged(ModuleSelectionItem selectedModule);
-
 }

@@ -13,6 +13,7 @@
   <PropertyGroup>
     <DocumentationFile>AdminAssistant.UI.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>$(NoWarn)</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,6 +30,13 @@
     <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Ardalis.GuardClauses" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

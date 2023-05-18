@@ -7,7 +7,7 @@ namespace AdminAssistant.WebAPI;
 
 public abstract class WebAPIControllerBase : ControllerBase
 {
-    public WebAPIControllerBase(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
+    protected WebAPIControllerBase(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
     {
         Mapper = mapper;
         Mediator = mediator;

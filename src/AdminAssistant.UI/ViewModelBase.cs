@@ -32,7 +32,7 @@ internal abstract class ViewModelBase : ObservableObject, IViewModelBase
 
     public virtual async Task OnLoadedAsync() => await Task.CompletedTask.ConfigureAwait(false);
 
-    public ViewModelBase(ILoggingProvider log)
+    protected ViewModelBase(ILoggingProvider log)
     {
         Log = log;
         Loaded = new AsyncRelayCommand(execute: OnLoadedAsync);

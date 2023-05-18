@@ -14,7 +14,7 @@
   <PropertyGroup>
     <DocumentationFile>AdminAssistant.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>1701;1702;NU1605</NoWarn>
+    <NoWarn>$(NoWarn);1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,6 +42,13 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" />
     <PackageReference Include="Newtonsoft.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

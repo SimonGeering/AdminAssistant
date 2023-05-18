@@ -15,7 +15,7 @@
   <PropertyGroup>
     <DocumentationFile>AdminAssistant.Blazor.Client.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>1591;1701;1702;NU1605</NoWarn>
+    <NoWarn>$(NoWarn);1591;1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,6 +32,13 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" PrivateAssets="all" />
     <PackageReference Include="Microsoft.Extensions.Http" />
     <PackageReference Include="MudBlazor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

@@ -136,8 +136,6 @@ public sealed class Startup
         // Serves the Swagger UI 3 web ui to view the OpenAPI/Swagger documents by default on `/swagger`
         app.UseSwaggerUI(c =>
         {
-            var config = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
-
             c.SwaggerEndpoint("/swagger/v1/swagger.json", WebAPITitle);
             c.RoutePrefix = "api/docs";
             c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);

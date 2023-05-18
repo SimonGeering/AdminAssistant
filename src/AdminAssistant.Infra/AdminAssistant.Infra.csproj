@@ -14,7 +14,7 @@
   <PropertyGroup>
     <DocumentationFile>AdminAssistant.Infra.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>1701;1702;NU1605</NoWarn>
+    <NoWarn>$(NoWarn);1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +30,13 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
     <PackageReference Include="Microsoft.Graph" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

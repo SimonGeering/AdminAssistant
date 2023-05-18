@@ -18,7 +18,7 @@
   <PropertyGroup>
     <DocumentationFile>AdminAssistant.Blazor.Server.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>1701;1702;NU1605</NoWarn>
+    <NoWarn>$(NoWarn);1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -53,6 +53,13 @@
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
     <PackageReference Include="System.Net.Http.Json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

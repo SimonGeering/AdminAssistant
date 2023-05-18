@@ -10,7 +10,6 @@ public sealed class ModuleSelectionItem
         Icon = icon;
         Route = $"/{module.ToString().ToLowerInvariant()}";
         StyleClass = string.Empty;
-        return;
     }
     public string ID => Module.ToString();
     public ModuleEnum Module { get; set; }

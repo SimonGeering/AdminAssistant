@@ -5,5 +5,5 @@ public interface IBankAccountTransactionBuilder
     BankAccountTransaction Build();
     IBankAccountTransactionBuilder WithTestData(int bankAccountTransactionID = Constants.UnknownRecordID);
     IBankAccountTransactionBuilder WithBankAccountID(int bankAccountID);
-    IBankAccountTransactionBuilder WithDescription(string empty);
+    IBankAccountTransactionBuilder WithDescription(string description);
 }

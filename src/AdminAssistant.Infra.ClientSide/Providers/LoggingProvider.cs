@@ -6,7 +6,7 @@ public abstract class LoggingProvider : ILoggingProvider
 {
     private readonly ILogger _logger;
 
-    public LoggingProvider(ILoggerFactory loggerFactory, string logCategoryName)
+    protected LoggingProvider(ILoggerFactory loggerFactory, string logCategoryName)
         => _logger = loggerFactory.CreateLogger(logCategoryName);
 
     public void LogDebug(EventId eventId, Exception exception, string message, params object[] args) => _logger.Log(LogLevel.Debug, eventId, exception, message, args);

@@ -8,11 +8,11 @@ internal sealed class BankAccountInfoBuilder : IBankAccountInfoBuilder
 
     public BankAccountInfo Build() => _bankAccountInfo;
 
-    public IBankAccountInfoBuilder WithTestData(int bankAccountID = 0)
+    public IBankAccountInfoBuilder WithTestData(int bankAccountInfoID = 0)
     {
         _bankAccountInfo = _bankAccountInfo with
         {
-            BankAccountID = bankAccountID,
+            BankAccountID = bankAccountInfoID,
             AccountName = "A valid account name",
             CurrentBalance = 0,
             Symbol = "GBP",

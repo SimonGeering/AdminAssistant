@@ -7,7 +7,7 @@ public abstract class DomainEntity<TId>
 
     public TId Id { get; private init; }
 
-    public DomainEntity(TId id) => Id = id;
+    protected DomainEntity(TId id) => Id = id;
 
     public static bool operator == (DomainEntity<TId> left, DomainEntity<TId> right)
         => left is not null && right is not null && left.Equals(right);

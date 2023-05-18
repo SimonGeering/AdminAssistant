@@ -10,6 +10,7 @@ using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.Test.Infra.DAL;
 
+[SuppressMessage("csharp", "Rename class 'DALMappingProfile_Should' to match pascal case naming rules, consider using 'DalMappingProfile_Should'.", Justification = "WIP")]
 public class DALMappingProfile_Should
 {
     private readonly IConfigurationProvider _configuration;

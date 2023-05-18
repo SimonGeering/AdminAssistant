@@ -10,7 +10,7 @@ internal abstract class ServiceBase
     protected IMapper Mapper { get; }
     protected ILoggingProvider Log { get; }
 
-    public ServiceBase(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
+    protected ServiceBase(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
     {
         AdminAssistantWebAPIClient = adminAssistantWebAPIClient;
         Log = log;

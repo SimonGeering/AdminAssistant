@@ -25,9 +25,9 @@ public static class DependencyInjectionExtensions
             if (Enum.TryParse(configurationSettings.DatabaseProvider, out DatabaseProvider databaseProvider) == false)
                 throw new Exception("Unable to load 'DatabaseProvider' configuration setting.");
 
-                // This does not use GetConnectionString as KeyVault does not make the distinction.
-                // All secrets are key value pairs, here the key is the DB provider ...
-                var connectionString = configurationSettings.ConnectionString;
+            // This does not use GetConnectionString as KeyVault does not make the distinction.
+            // All secrets are key value pairs, here the key is the DB provider ...
+            var connectionString = configurationSettings.ConnectionString;
 
             if (string.IsNullOrEmpty(connectionString))
                 throw new Exception("Configuration failed to load");
@@ -49,7 +49,7 @@ public static class DependencyInjectionExtensions
         });
         AddDALRepositories(services);
     }
- 
+
     public static void AddAdminAssistantServerSideProviders(this IServiceCollection services)
     {
         services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();

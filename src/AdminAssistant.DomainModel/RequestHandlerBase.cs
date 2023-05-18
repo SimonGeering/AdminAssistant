@@ -7,7 +7,7 @@ internal abstract class RequestHandlerBase<TRequest, TResponse> : IRequestHandle
 {
     protected ILoggingProvider Log { get; }
 
-    public RequestHandlerBase(ILoggingProvider loggingProvider) => Log = loggingProvider;
+    protected RequestHandlerBase(ILoggingProvider loggingProvider) => Log = loggingProvider;
 
     public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
 }
