@@ -2,7 +2,7 @@ namespace AdminAssistant.UI.Shared;
 
 public sealed class ModuleSelectionItem
 {
-    public ModuleSelectionItem(ModuleEnum module, string tag, string label, string icon)
+    public ModuleSelectionItem(Module module, string tag, string label, string icon)
     {
         Module = module;
         Tag = tag;
@@ -12,7 +12,7 @@ public sealed class ModuleSelectionItem
         StyleClass = string.Empty;
     }
     public string ID => Module.ToString();
-    public ModuleEnum Module { get; set; }
+    public Module Module { get; set; }
     public string Tag { get; set; }
 
     public string Label { get; set; }

@@ -7,7 +7,7 @@ using MahApps.Metro.IconPacks.Converter;
 
 namespace AdminAssistant.WPF.Shared;
 
-public sealed class ModuleEnumToIconImageConverter : PackIconFontAwesomeKindToImageConverter, IValueConverter
+public sealed class ModuleToIconImageConverter : PackIconFontAwesomeKindToImageConverter, IValueConverter
 {
     /// <inheritdoc />
     [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Ok to just return DependencyProperty.UnsetValue if anything goes wrong.")]
@@ -15,11 +15,11 @@ public sealed class ModuleEnumToIconImageConverter : PackIconFontAwesomeKindToIm
     {
         try
         {
-            if ((value is ModuleEnum) == false)
+            if ((value is Module) == false)
                 return DependencyProperty.UnsetValue;
 
 
-            var enumValue = ((ModuleEnum)value).ToPackIconFontAwesomeKind();
+            var enumValue = ((Module)value).ToPackIconFontAwesomeKind();
             return base.Convert(enumValue, targetType, parameter, culture);
         }
         catch

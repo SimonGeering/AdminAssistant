@@ -29,7 +29,7 @@ public static class DependencyInjectionExtensions
         services.AddAutoMapper(typeof(MappingProfile));
     }
 
-    public static void AddAdminAssistantUI(this IServiceCollection services, FontAwesomeVersionEnum fontAwesomeVersionEnum = FontAwesomeVersionEnum.V4o7o0)
+    public static void AddAdminAssistantUI(this IServiceCollection services, FontAwesomeVersion fontAwesomeVersion = FontAwesomeVersion.V4o7o0)
     {
         // Add MVVM Toolkit registrations ...
         services.AddSingleton<IMessenger, StrongReferenceMessenger>();
@@ -89,7 +89,7 @@ public static class DependencyInjectionExtensions
         services.AddSingleton<ITasksViewModel, TasksViewModel>();
 
         // Add Shared UI ...
-        services.AddTransient<IAppService, AppService>((serviceProvider) => new AppService(fontAwesomeVersionEnum));
+        services.AddTransient<IAppService, AppService>((serviceProvider) => new AppService(fontAwesomeVersion));
 
         services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
     }

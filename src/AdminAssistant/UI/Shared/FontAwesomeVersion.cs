@@ -1,6 +1,6 @@
 namespace AdminAssistant.UI.Shared;
 
-public enum FontAwesomeVersionEnum
+public enum FontAwesomeVersion
 {
     V4o7o0,
     V5o15o4,

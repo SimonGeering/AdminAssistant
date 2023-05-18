@@ -1,6 +1,6 @@
 namespace AdminAssistant.UI.Shared;
 
-public enum ModuleEnum
+public enum Module
 {
     Accounts,
     Admin,

@@ -8,10 +8,10 @@ namespace AdminAssistant.WPF.Shared;
 [MarkupExtensionReturnType(typeof(ImageSource))]
 public sealed class ModeImageExtension : FontAwesomeImageExtension
 {
-    private ModeEnum mode;
+    private Mode mode;
 
     [ConstructorArgument("mode")]
-    public ModeEnum Mode
+    public Mode Mode
     {
         get => mode;
         set
@@ -26,7 +26,7 @@ public sealed class ModeImageExtension : FontAwesomeImageExtension
     {
     }
 
-    public ModeImageExtension(ModeEnum mode)
+    public ModeImageExtension(Mode mode)
         : base(mode.ToPackIconFontAwesomeKind())
     {
     }

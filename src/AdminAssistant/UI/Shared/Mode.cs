@@ -1,6 +1,6 @@
 namespace AdminAssistant.UI.Shared;
 
-public enum ModeEnum
+public enum Mode
 {
     Personal,
     Company,

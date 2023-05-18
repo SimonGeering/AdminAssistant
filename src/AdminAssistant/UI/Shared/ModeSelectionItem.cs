@@ -2,7 +2,7 @@ namespace AdminAssistant.UI.Shared;
 
 public sealed class ModeSelectionItem
 {
-    public ModeSelectionItem(ModeEnum mode, string tag, string label, string icon)
+    public ModeSelectionItem(Mode mode, string tag, string label, string icon)
     {
         Mode = mode;
         Tag = tag;
@@ -10,7 +10,7 @@ public sealed class ModeSelectionItem
         Icon = icon;
     }
 
-    public ModeEnum Mode { get; set; }
+    public Mode Mode { get; set; }
     public string Tag { get; set; }
     public string Label { get; set; }
     public string Icon { get; set; }
