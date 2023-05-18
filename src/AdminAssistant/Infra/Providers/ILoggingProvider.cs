@@ -15,12 +15,12 @@ public interface ILoggingProvider : ILogger
     public void Start([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0);
 
     /// <summary></summary>
+    /// <param name="message"></param>
     /// <param name="memberName"></param>
     /// <param name="sourceFilePath"></param>
     /// <param name="sourceLineNumber"></param>
-    /// <param name="message"></param>
     /// <param name="args"></param>
-    public void Start([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, string message = "", params object[] args);
+    public void Start(string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args);
 
     /// <summary></summary>
     /// <param name="memberName"></param>
@@ -28,7 +28,7 @@ public interface ILoggingProvider : ILogger
     /// <param name="sourceLineNumber"></param>
     /// <param name="message"></param>
     /// <param name="args"></param>
-    public void Finish([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, string message = "", params object[] args);
+    public void Finish(string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args);
 
     /// <summary></summary>
     /// <param name="memberName"></param>
@@ -39,13 +39,13 @@ public interface ILoggingProvider : ILogger
     /// <summary></summary>
     /// <typeparam name="TResult"></typeparam>
     /// <param name="result"></param>
+    /// <param name="message"></param>
     /// <param name="memberName"></param>
     /// <param name="sourceFilePath"></param>
     /// <param name="sourceLineNumber"></param>
-    /// <param name="message"></param>
     /// <param name="args"></param>
     /// <returns></returns>
-    public TResult Finish<TResult>(TResult result, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, string message = "", params object[] args);
+    public TResult Finish<TResult>(TResult result, string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args);
 
     /// <summary></summary>
     /// <typeparam name="TResult"></typeparam>

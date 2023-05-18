@@ -49,12 +49,12 @@ public abstract class LoggingProvider : ILoggingProvider
     public IDisposable? BeginScope(string messageFormat, params object[] args) => _logger.BeginScope(messageFormat, args);
 
     public void Start([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0) => _logger.LogDebug("Start {memberName}", memberName);
-    public void Start([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, string message = "", params object[] args) => _logger.LogDebug("Start {memberName}", memberName);
+    public void Start(string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args) => _logger.LogDebug("Start {memberName}", memberName);
 
     public void Finish([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0) => _logger.LogDebug("Finish {memberName}", memberName);
-    public void Finish([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, string message = "", params object[] args) => _logger.LogDebug("Finish {memberName}", memberName);
+    public void Finish(string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args) => _logger.LogDebug("Finish {memberName}", memberName);
 
-    public TResult Finish<TResult>(TResult result, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, string message = "", params object[] args)
+    public TResult Finish<TResult>(TResult result, string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args)
     {
         _logger.LogDebug("Finish {memberName}", memberName);
         return result;
