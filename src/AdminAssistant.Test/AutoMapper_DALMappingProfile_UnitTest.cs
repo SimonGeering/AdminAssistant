@@ -38,6 +38,7 @@ public class DALMappingProfile_Should
 
     [Theory]
     [Trait("Category", "Unit")]
+    // Accounts Schema
     [InlineData(typeof(BankEntity), typeof(Bank))]
     [InlineData(typeof(BankAccountEntity), typeof(BankAccount))]
     [InlineData(typeof(BankAccountTypeEntity), typeof(BankAccountType))]
@@ -46,39 +47,13 @@ public class DALMappingProfile_Should
     [InlineData(typeof(BankAccount), typeof(BankAccountEntity))]
     [InlineData(typeof(BankAccountType), typeof(BankAccountTypeEntity))]
     [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionEntity))]
-    public void ShouldSupportAccountsSchemaMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Documents Schema
     [InlineData(typeof(DocumentEntity), typeof(Document))]
     [InlineData(typeof(Document), typeof(DocumentEntity))]
-    public void ShouldSupportDocumentsSchemaMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Core Schema
     [InlineData(typeof(CurrencyEntity), typeof(Currency))]
     [InlineData(typeof(Currency), typeof(CurrencyEntity))]
-    public void ShouldSupportCoreSchemaMappingFromSourceToDestination(Type source, Type destination)
+    public void ShouldSupportSchemaMappingFromSourceToDestination(Type source, Type destination)
     {
         // Arrange
         var instance = Activator.CreateInstance(source);

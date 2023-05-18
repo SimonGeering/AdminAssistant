@@ -40,6 +40,7 @@ public class WebAPIClientMappingProfile_Should
 
     [Theory]
     [Trait("Category", "Unit")]
+    // Accounts Module
     [InlineData(typeof(BankResponseDto), typeof(Bank))]
     [InlineData(typeof(BankAccountResponseDto), typeof(BankAccount))]
     [InlineData(typeof(BankAccountInfoResponseDto), typeof(BankAccountInfo))]
@@ -47,127 +48,25 @@ public class WebAPIClientMappingProfile_Should
     [InlineData(typeof(BankAccountTransactionResponseDto), typeof(BankAccountTransaction))]
     [InlineData(typeof(BankAccount), typeof(BankAccountCreateRequestDto))]
     [InlineData(typeof(BankAccount), typeof(BankAccountUpdateRequestDto))]
-    public void ShouldSupportAccountsModuleMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Asset Module
     [InlineData(typeof(AssetResponseDto), typeof(Asset))]
-    public void ShouldSupportAssetModuleMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Budget Module
     [InlineData(typeof(BudgetResponseDto), typeof(Budget))]
-    public void ShouldSupportBudgetModuleMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Calendar Module
     [InlineData(typeof(ReminderResponseDto), typeof(Reminder))]
-    public void ShouldSupportCalendarModuleMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Contact Module
     [InlineData(typeof(ContactResponseDto), typeof(Contact))]
-    public void ShouldSupportContactsModuleMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Core Module
     [InlineData(typeof(CurrencyResponseDto), typeof(Currency))]
-    public void ShouldSupportCoreModuleMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Documents Module
     [InlineData(typeof(DocumentResponseDto), typeof(Document))]
-    public void ShouldSupportDocumentsModuleMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Mail Module
     [InlineData(typeof(MailMessageResponseDto), typeof(MailMessage))]
-    public void ShouldSupportMailModuleMappingFromSourceToDestination(Type source, Type destination)
-    {
-        // Arrange
-        var instance = Activator.CreateInstance(source);
-
-        // Act
-        var result = _mapper.Map(instance, source, destination);
-
-        // Assert
-        result.Should().NotBeNull();
-    }
-
-    [Theory]
-    [Trait("Category", "Unit")]
+    // Task Module
     [InlineData(typeof(TaskListResponseDto), typeof(TaskList))]
-    public void ShouldSupportTasksModuleMappingFromSourceToDestination(Type source, Type destination)
+    //  Module
+    //  Module
+    public void ShouldSupportMappingFromSourceToDestination(Type source, Type destination)
     {
         // Arrange
         var instance = Activator.CreateInstance(source);
