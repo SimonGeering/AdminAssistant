@@ -81,7 +81,6 @@ public sealed class Startup
                     return new string[] { api.GroupName };
             });
             c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
-            //c.AddFluentValidationRules();
 
             // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
             c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
