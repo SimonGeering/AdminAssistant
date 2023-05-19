@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--https://stackoverflow.com/questions/72616684/excluding-files-from-code-coverage-analysis-in-azure-devops-pipeline-->
 <RunSettings>
     <DataCollectionRunSettings>
         <DataCollectors>
             <DataCollector friendlyName="Code coverage">
                 <Configuration>
-                    <!-- https://learn.microsoft.com/en-us/visualstudio/test/customizing-code-coverage-analysis?view=vs-2022 -->
+                    <!--https://learn.microsoft.com/en-us/visualstudio/test/customizing-code-coverage-analysis?view=vs-2022-->
                     <ModulePaths>
                         <Include>
+                            <!--Exclude all assemblies except those starting AdminAssistant-->
                             <ModulePath>AdminAssistant.*</ModulePath>
                         </Include>
                     </ModulePaths>
