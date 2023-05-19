@@ -50,15 +50,9 @@ stages:
       inputs:
         command: 'test'
         projects: 'src/AdminAssistant.sln'
+        arguments: '--configuration Release --no-build --collect "Code coverage" --settings "src/AdminAssistant.Test/.runsettings" --filter "Category=Unit"'
+        publishTestResults: true
         testRunTitle: 'Unit Tests'
-        arguments: '--configuration Release --no-build --collect "XPlat Code Coverage" --filter "Category=Unit"'
-        #    arguments: '--configuration Release --no-build --collect "Code coverage" --filter "Category=Unit"'
-    # Publish code coverage report to the pipeline
-    - task: PublishCodeCoverageResults@1
-      displayName: 'Publish code coverage'
-      inputs:
-        codeCoverageTool: Cobertura
-        summaryFileLocation: $(Agent.TempDirectory)/*/coverage.cobertura.xml # using ** instead of * finds duplicate coverage files
     # Sonar Cloud Analyze and Publish
     - task: SonarCloudAnalyze@1
     - task: SonarCloudPublish@1

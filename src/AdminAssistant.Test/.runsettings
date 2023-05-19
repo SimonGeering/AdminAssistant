@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--https://stackoverflow.com/questions/72616684/excluding-files-from-code-coverage-analysis-in-azure-devops-pipeline-->
+<RunSettings>
+    <DataCollectionRunSettings>
+        <DataCollectors>
+            <DataCollector friendlyName="XPlat code coverage">
+                <Configuration>
+                    <ModulePaths>
+                        <Exclude>
+                            <ModulePath>.*FluentAssertions.*</ModulePath>
+                        </Exclude>
+                    </ModulePaths>
+                </Configuration>
+            </DataCollector>
+        </DataCollectors>
+    </DataCollectionRunSettings>
+</RunSettings>
