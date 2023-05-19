@@ -18,12 +18,6 @@ internal sealed class BankAccountCreateCommandHandler : RequestHandlerBase<BankA
 
     public override async Task<Result<BankAccount>> Handle(BankAccountCreateCommand command, CancellationToken cancellationToken)
     {
-        // Don't need this for now as the validator no longer needs extra context.
-        // Keep it here for reference of how to do this.
-        //
-        // var ctx = new FluentValidation.ValidationContext<BankAccount>(command.BankAccount);
-        //ctx.RootContextData[Constants.IsCreateCommandContext] = true;
-
         var validationResult = await bankAccountValidator.ValidateAsync(command.BankAccount, cancellationToken).ConfigureAwait(false);
 
         if (validationResult.IsValid == false)
