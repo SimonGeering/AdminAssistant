@@ -1,21 +1,33 @@
+using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.Framework.TypeMapping;
+
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
-public sealed class BankAccountStatementEntity
+public sealed class BankAccountStatementEntity : IMapFrom<BankAccountStatement>, IMapTo<BankAccountStatement>
 {
-    /*
-    Table "Accounts.BankAccountStatement"
-    {
-    "BankAccountStatementID" INT [pk]
-    "DocumentID" INT
-    "AuditID" INT
-    "StatementDate" DATETIME2
-    "IsReconciled" BIT
-    "StartDate" DATETIME2
-    "EndDate" DATETIME2
-    "OpeningBalance" INT
-    "ClosingBalance" INT
-    "TotalPaymentsIn" INT
-    "TotalPaymentsOut" INT
-    }
-    */
+    // Table "Accounts.BankAccountStatement"
+    public int BankAccountStatementID { get; set; } // PK
+    public int BankAccountID { get; set; }
+    public int DocumentID { get; set; }
+    public int AuditID { get; set; }
+    public int OwnerID { get; internal set; }
+
+    public DateTime StatementDate { get; set; }
+    public bool IsReconciled { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set; }
+    public int OpeningBalance { get; set; }
+    public int ClosingBalance { get; set; }
+    public int TotalPaymentsIn { get; set; }
+    public int TotalPaymentsOut { get; set; }
+
+    public Core.AuditEntity Audit { get; internal set; } = null!;
+    public Core.OwnerEntity Owner { get; internal set; } = null!;
+
+    public void MapFrom(AutoMapper.Profile profile) => profile
+        .CreateMap<BankAccountStatement, BankAccountStatementEntity>()
+        .ForMember(x => x.AuditID, opt => opt.Ignore())
+        .ForMember(x => x.Audit, opt => opt.Ignore())
+        .ForMember(x => x.OwnerID, opt => opt.Ignore())
+        .ForMember(x => x.Owner, opt => opt.Ignore());
 }
