@@ -3,12 +3,13 @@
 <RunSettings>
     <DataCollectionRunSettings>
         <DataCollectors>
-            <DataCollector friendlyName="XPlat code coverage">
+            <DataCollector friendlyName="Code coverage">
                 <Configuration>
+                    <!-- https://learn.microsoft.com/en-us/visualstudio/test/customizing-code-coverage-analysis?view=vs-2022 -->
                     <ModulePaths>
-                        <Exclude>
-                            <ModulePath>.*FluentAssertions.*</ModulePath>
-                        </Exclude>
+                        <Include>
+                            <ModulePath>AdminAssistant.*</ModulePath>
+                        </Include>
                     </ModulePaths>
                 </Configuration>
             </DataCollector>
