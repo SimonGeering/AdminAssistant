@@ -17,12 +17,4 @@ public sealed class DocumentEntity : IMapFrom<Document>, IMapTo<Document>
         .ForMember(x => x.OwnerID, opt => opt.Ignore())
         .ForMember(x => x.AuditID, opt => opt.Ignore())
         .ForMember(x => x.Audit, opt => opt.Ignore());
-
-    // TODO: Resolve mapping of properties from DocumentEntity to Document
-    //public void MapTo(AutoMapper.Profile profile) => profile
-    //    .CreateMap<DocumentEntity, Document>()
-    //    .ForMember(x => x.PayeeName, opt => opt.Ignore())
-    //    .ForMember(x => x.Symbol, opt => opt.Ignore())
-    //    .ForMember(x => x.DecimalFormat, opt => opt.Ignore())
-    //    .ForMember(x => x.Balance, opt => opt.Ignore());
 }

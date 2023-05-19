@@ -1,20 +1,10 @@
-/*
-Table "Assets.Asset" 
-{
-  "AssetID" INT [pk]
-  "ManufacturerID" INT [null]
-  "AuditID" INT [not null]
-  "OwnerID" INT [not null]
-  "PurchasePrice" INT
-  "DepreciatedValue" INT
-  "ReplacementCost" INT
-}
-*/
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.AssetRegister;
 
 public sealed class AssetEntity
 {
-    public int AssetID { get; set; }
+    // Table "Assets.Asset"
+    public int AssetID { get; set; } // PK
+    public int ManufacturerID { get; set; }
     public int AuditID { get; internal set; }
     public int OwnerID { get; internal set; }
     public int PurchasePrice { get; set; }
@@ -22,4 +12,5 @@ public sealed class AssetEntity
     public int ReplacementCost { get; set; }
 
     public Core.AuditEntity Audit { get; internal set; } = null!;
+    public Core.OwnerEntity Owner { get; internal set; } = null!;
 }
