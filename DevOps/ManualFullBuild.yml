@@ -29,7 +29,7 @@ stages:
         projects: 'src/AdminAssistant.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
-    # Sonar Cloud Prepare
+    # Sonar Cloud Prepare ...
     - task: SonarCloudPrepare@1
       inputs:
         SonarCloud: 'SonarCube'
@@ -53,7 +53,7 @@ stages:
         arguments: '--configuration Release --no-build --collect "Code coverage" --settings "src/AdminAssistant.Test/.runsettings" --filter "Category=Unit"'
         publishTestResults: true
         testRunTitle: 'Unit Tests'
-    # Sonar Cloud Analyze and Publish
+    # Sonar Cloud Analyze and Publish ...
     - task: SonarCloudAnalyze@1
     - task: SonarCloudPublish@1
       inputs:
