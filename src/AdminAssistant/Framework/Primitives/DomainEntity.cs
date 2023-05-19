@@ -1,6 +1,8 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace AdminAssistant.Framework.Primitives;
 public abstract class DomainEntity<TId>
-    : IEquatable<DomainEntity<TId>>, IDatabasePersistable
+    : IEqualityComparer<TId>, IEquatable<DomainEntity<TId>>, IDatabasePersistable
     where TId : Id
 {
     public int PrimaryKey => Id.Value;
@@ -40,6 +42,12 @@ public abstract class DomainEntity<TId>
         return other.Id == Id;
     }
 
+    public bool Equals(TId? x, TId? y)
+        => x is not null && x.Equals(y);
+
     public override int GetHashCode()
         => Id.GetHashCode();
+
+    public int GetHashCode([DisallowNull] TId obj)
+        => obj.GetHashCode();
 }
