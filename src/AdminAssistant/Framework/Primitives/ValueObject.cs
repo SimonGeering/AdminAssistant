@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 
 namespace AdminAssistant.Framework.Primitives;
+
 public abstract class ValueObject : IEqualityComparer<ValueObject>, IEquatable<ValueObject>
 {
     public abstract IEnumerable<object> GetAtomicValues();
