@@ -10,7 +10,7 @@ namespace AdminAssistant.WebAPI.v1.TasksModule;
 [ApiController]
 [Route("api/v1/tasks-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Tasks Module")]
-public sealed class TaskListController : WebAPIControllerBase
+public sealed class TaskListController : WebApiControllerBase
 {
     public TaskListController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
         : base(mapper, mediator, loggingProvider)

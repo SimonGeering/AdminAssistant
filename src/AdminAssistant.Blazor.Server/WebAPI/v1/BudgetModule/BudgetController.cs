@@ -10,7 +10,7 @@ namespace AdminAssistant.WebAPI.v1.BudgetModule;
 [ApiController]
 [Route("api/v1/budget-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Budget Module")]
-public sealed class BudgetController : WebAPIControllerBase
+public sealed class BudgetController : WebApiControllerBase
 {
     public BudgetController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
         : base(mapper, mediator, loggingProvider)

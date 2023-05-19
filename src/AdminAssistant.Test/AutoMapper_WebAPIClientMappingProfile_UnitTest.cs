@@ -13,12 +13,12 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.UI.Shared.WebAPIClient.v1;
 
-public class WebAPIClientMappingProfile_Should
+public class WebApiClientMappingProfile_Should
 {
     private readonly IConfigurationProvider _configuration;
     private readonly IMapper _mapper;
 
-    public WebAPIClientMappingProfile_Should()
+    public WebApiClientMappingProfile_Should()
     {
         _configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
 

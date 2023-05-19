@@ -12,7 +12,7 @@ namespace AdminAssistant.WebAPI.v1.CoreModule;
 [ApiController]
 [Route("api/v1/core-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Core Module")]
-public sealed class CurrencyController : WebAPIControllerBase
+public sealed class CurrencyController : WebApiControllerBase
 {
     public CurrencyController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
         : base(mapper, mediator, loggingProvider)

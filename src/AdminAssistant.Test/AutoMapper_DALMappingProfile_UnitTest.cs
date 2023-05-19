@@ -10,15 +10,14 @@ using AdminAssistant.Infra.DAL;
 
 namespace AdminAssistant.Test.Infra.DAL;
 
-public class DALMappingProfile_Should
+public class DalMappingProfile_Should
 {
     private readonly IConfigurationProvider _configuration;
     private readonly IMapper _mapper;
 
-    public DALMappingProfile_Should()
+    public DalMappingProfile_Should()
     {
         _configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
-
         _mapper = _configuration.CreateMapper();
     }
 

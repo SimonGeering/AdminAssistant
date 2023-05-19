@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AdminAssistant.WebAPI;
 
-public abstract class WebAPIControllerBase : ControllerBase
+public abstract class WebApiControllerBase : ControllerBase
 {
-    protected WebAPIControllerBase(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
+    protected WebApiControllerBase(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
     {
         Mapper = mapper;
         Mediator = mediator;

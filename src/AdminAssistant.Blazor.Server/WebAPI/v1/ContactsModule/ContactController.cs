@@ -12,7 +12,7 @@ namespace AdminAssistant.WebAPI.v1.ContactsModule;
 [ApiController]
 [Route("api/v1/contacts-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Contacts Module")]
-public sealed class ContactController : WebAPIControllerBase
+public sealed class ContactController : WebApiControllerBase
 {
     public ContactController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
         : base(mapper, mediator, loggingProvider)

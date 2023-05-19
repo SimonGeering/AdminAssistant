@@ -10,7 +10,7 @@ namespace AdminAssistant.WebAPI.v1.MailModule;
 [ApiController]
 [Route("api/v1/mail-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Mail Module")]
-public sealed class MailMessageController : WebAPIControllerBase
+public sealed class MailMessageController : WebApiControllerBase
 {
     public MailMessageController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
         : base(mapper, mediator, loggingProvider)

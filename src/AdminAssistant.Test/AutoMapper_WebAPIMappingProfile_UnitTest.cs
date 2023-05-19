@@ -22,12 +22,12 @@ using AdminAssistant.WebAPI.v1.TasksModule;
 
 namespace AdminAssistant.Test.WebAPI.v1;
 
-public class WebAPIMappingProfile_Should
+public class WebApiMappingProfile_Should
 {
     private readonly IConfigurationProvider _configuration;
     private readonly IMapper _mapper;
 
-    public WebAPIMappingProfile_Should()
+    public WebApiMappingProfile_Should()
     {
         _configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
         _mapper = _configuration.CreateMapper();
