@@ -9,8 +9,7 @@
                 "build",
                 "${workspaceFolder}/src/AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary",
-                "--configuration=x64"
+                "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -22,8 +21,7 @@
                 "publish",
                 "${workspaceFolder}/src/AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary",
-                "--configuration=x64"
+                "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -36,8 +34,7 @@
                 "run",
                 "${workspaceFolder}/src/AdminAssistant.Blazor.Server/AdminAssistant.Blazor.Server.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary",
-                "--configuration=x64"
+                "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -47,8 +44,7 @@
             "type": "process",
             "args": [
                 "test",
-                "${workspaceFolder}\\src\\AdminAssistant.Test\\AdminAssistant.Test.csproj",
-                "--configuration=x64"
+                "${workspaceFolder}\\src\\AdminAssistant.Test\\AdminAssistant.Test.csproj"
             ],
             "problemMatcher": "$msCompile",
             "group": {
@@ -65,8 +61,7 @@
                 "/p:CollectCoverage=true",
                 "/p:CoverletOutputFormat=lcov",
                 "/p:CoverletOutput=${workspaceFolder}\\src\\AdminAssistant.Test\\lcov.info",
-                "${workspaceFolder}\\src\\AdminAssistant.Test\\AdminAssistant.Test.csproj",
-                "--configuration=x64"
+                "${workspaceFolder}\\src\\AdminAssistant.Test\\AdminAssistant.Test.csproj"
             ],
             "problemMatcher": "$msCompile",
             "group": {
@@ -86,8 +81,7 @@
                 "/p:CollectCoverage=true",
                 "/p:CoverletOutputFormat=lcov",
                 "/p:CoverletOutput=${workspaceFolder}\\src\\AdminAssistant.Test\\lcov.info",
-                "${workspaceFolder}\\src\\AdminAssistant.Test\\AdminAssistant.Test.csproj",
-                "--configuration=x64"
+                "${workspaceFolder}\\src\\AdminAssistant.Test\\AdminAssistant.Test.csproj"
             ],
             "problemMatcher": "$msCompile",
             "group": {

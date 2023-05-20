@@ -10,7 +10,7 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/AdminAssistant.Blazor.Server/bin/x64/net7.0/AdminAssistant.Blazor.Server.dll",
+            "program": "${workspaceFolder}/src/AdminAssistant.Blazor.Server/bin/Debug/net7.0/AdminAssistant.Blazor.Server.dll",
             "args": [],
             "cwd": "${workspaceFolder}/src/AdminAssistant.Blazor.Server",
             "stopAtEntry": false,
