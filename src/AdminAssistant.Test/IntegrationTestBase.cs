@@ -216,12 +216,14 @@ public abstract class IntegrationTestBase : IDisposable
         }
     }
 
+#pragma warning disable S125 // Sections of code should not be commented out
     // override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
     //~IntegrationTestBase()
     //{
     //    // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
     //    Dispose(disposing: false);
     //}
+#pragma warning restore S125 // Sections of code should not be commented out
 
     public void Dispose()
     {

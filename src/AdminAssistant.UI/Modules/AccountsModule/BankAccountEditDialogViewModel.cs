@@ -212,6 +212,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
     }
 
     [SuppressMessage("Style", "IDE0059:Unnecessary assignment of a value", Justification = "WIP")]
+    [SuppressMessage("Minor Code Smell", "S1481:Unused local variables should be removed", Justification = "WIP")]
     private async Task OnSaveButtonClick()
     {
         Log.Start();
@@ -224,6 +225,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
 
             if (canSave)
             {
+#pragma warning disable S125 // Sections of code should not be commented out
                 if ((bankAccount as IDatabasePersistable).IsNew)
                 {
                     var savedBankAccountResult = await _accountsService.CreateBankAccountAsync(bankAccount).ConfigureAwait(true);
@@ -236,6 +238,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
                     // TODO: Notify OnBankAccountUpdated
                     // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
                 }
+#pragma warning restore S125 // Sections of code should not be commented out
                 ShowDialog = false;
             }
         }

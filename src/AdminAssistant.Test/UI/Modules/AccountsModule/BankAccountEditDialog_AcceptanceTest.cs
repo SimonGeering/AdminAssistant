@@ -70,6 +70,7 @@ public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
         savedBankAccounts.Should().BeEmpty();
     }
 
+    #pragma warning disable S125 // Sections of code should not be commented out
     //[Fact(Skip="WIP")]
     //[Trait("Category", "Integration")]
     //public async Task OnlyEnableSave_WhenNoValidationErrorsShown()
@@ -88,6 +89,7 @@ public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
     //    // Assert
     //    //vm.AccountNameValidationMessage
     //}
+    #pragma warning restore S125 // Sections of code should not be commented out
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
 #endif // quick and dirty fix for #85 category filtering breaking CI Unit Test run.

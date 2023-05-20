@@ -43,6 +43,7 @@ public sealed class DocumentController_UnitTest_Should
         var result = (OkObjectResult)response.Result!;
         result.Value.Should().BeAssignableTo<IEnumerable<DocumentResponseDto>>();
 
+        #pragma warning disable S125 // Sections of code should not be commented out
         //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();
         //value.Should().HaveCount(currencies.Count);
 
@@ -53,6 +54,7 @@ public sealed class DocumentController_UnitTest_Should
         //    value[i].Symbol.Should().Be(expected[i].Symbol);
         //    value[i].DecimalFormat.Should().Be(expected[i].DecimalFormat);
         //}
+        #pragma warning restore S125 // Sections of code should not be commented out
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

@@ -74,12 +74,13 @@ using (var scope = host.Services.CreateScope())
         new StatusItem(Key.CtrlMask | Key.Q, "~^Q~ Quit", () => Quit()),
     });
 
-    Win.Add(lblStatus = new Label("Len:")
+    lblStatus = new Label("Len:")
     {
         Y = Pos.Bottom(Win),
         Width = Dim.Fill(),
         TextAlignment = TextAlignment.Right
-    });
+    };
+    Win.Add(lblStatus);
     Top.Add(statusBar);
 
     Application.Run(Top); // Must explicit call Application.Shutdown method to shutdown.

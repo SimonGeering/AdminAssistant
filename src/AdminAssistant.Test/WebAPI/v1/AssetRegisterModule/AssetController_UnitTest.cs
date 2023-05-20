@@ -12,6 +12,7 @@ public sealed class AssetController_GetAssets
 {
     [Fact]
     [Trait("Category", "Unit")]
+    [SuppressMessage("Major Code Smell", "S125:Sections of code should not be commented out", Justification = "WIP")]
     public async Task Returns_Status200OK_With_AListOfAssets_Given_NoArguments()
     {
         // Arrange
@@ -54,5 +55,6 @@ public sealed class AssetController_GetAssets
         //    value[i].DecimalFormat.Should().Be(expected[i].DecimalFormat);
         //}
     }
+#pragma warning restore S125 // Sections of code should not be commented out
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

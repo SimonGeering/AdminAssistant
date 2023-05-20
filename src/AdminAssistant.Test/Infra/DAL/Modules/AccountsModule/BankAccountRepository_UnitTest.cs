@@ -1,4 +1,5 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Shared;
@@ -124,6 +125,7 @@ public sealed class BankAccountRepository_UnitTest
         return true;
     }
 
+    [SuppressMessage("Major Code Smell", "S1144:Unused private types or members should be removed", Justification = "WIP")]
     private bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
     {
         bankAccountToSave.BankAccountID.Should().NotBe(Constants.NewRecordID);

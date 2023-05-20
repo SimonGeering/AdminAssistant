@@ -304,6 +304,7 @@ public sealed class BankAccountController_BankAccountGetById_Should
 
 public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Should
 {
+    #pragma warning disable S125 // Sections of code should not be commented out
     //[Fact(Skip="WIP")]
     //[Trait("Category", "Unit")]
     //public async Task Return_Status200Ok_With_AListOfBankAccountTransaction_Given_AnExistingBankAccountID()
@@ -347,6 +348,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
     //        value[i].BankAccountID.Should().Be(expected[i].BankAccountID);
     //    }
     //}
+    #pragma warning restore S125 // Sections of code should not be commented out
 
     [Fact]
     [Trait("Category", "Unit")]
