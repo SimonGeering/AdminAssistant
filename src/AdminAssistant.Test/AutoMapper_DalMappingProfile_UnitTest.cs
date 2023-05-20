@@ -42,11 +42,13 @@ public class DalMappingProfile_Should
     [InlineData(typeof(BankAccountStatementEntity), typeof(BankAccountStatement))]
     [InlineData(typeof(BankAccountTypeEntity), typeof(BankAccountType))]
     [InlineData(typeof(BankAccountTransactionEntity), typeof(BankAccountTransaction))]
+    [InlineData(typeof(BankAccountTransactionTypeEntity), typeof(BankAccountTransactionType))]
     [InlineData(typeof(Bank), typeof(BankEntity))]
     [InlineData(typeof(BankAccount), typeof(BankAccountEntity))]
     [InlineData(typeof(BankAccountStatement), typeof(BankAccountStatementEntity))]
     [InlineData(typeof(BankAccountType), typeof(BankAccountTypeEntity))]
     [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionEntity))]
+    [InlineData(typeof(BankAccountTransactionType), typeof(BankAccountTransactionTypeEntity))]
     // Documents Schema
     [InlineData(typeof(DocumentEntity), typeof(Document))]
     [InlineData(typeof(Document), typeof(DocumentEntity))]
