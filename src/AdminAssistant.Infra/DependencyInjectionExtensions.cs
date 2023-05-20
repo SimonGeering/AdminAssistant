@@ -8,6 +8,7 @@ using MediatR;
 using AdminAssistant.Framework.MediatR;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
+using AdminAssistant.Framework.Configuration;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
 
@@ -23,14 +24,14 @@ public static class DependencyInjectionExtensions
         services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(optionsBuilder =>
         {
             if (Enum.TryParse(configurationSettings.DatabaseProvider, out DatabaseProvider databaseProvider) == false)
-                throw new Exception("Unable to load 'DatabaseProvider' configuration setting.");
+                throw new ConfigurationException("Unable to load 'DatabaseProvider' configuration setting.");
 
             // This does not use GetConnectionString as KeyVault does not make the distinction.
             // All secrets are key value pairs, here the key is the DB provider ...
             var connectionString = configurationSettings.ConnectionString;
 
             if (string.IsNullOrEmpty(connectionString))
-                throw new Exception("Configuration failed to load");
+                throw new ConfigurationException("Configuration failed to load");
 
             switch (databaseProvider)
             {
