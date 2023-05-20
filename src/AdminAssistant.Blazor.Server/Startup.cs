@@ -34,7 +34,6 @@ public sealed class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         var configSettings = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
-
         Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
 
         services.AddMvc(opts =>

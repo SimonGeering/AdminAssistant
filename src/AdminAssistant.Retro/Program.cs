@@ -1,4 +1,7 @@
+using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Retro.Modules.AccountsModule;
+using Ardalis.GuardClauses;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -6,7 +9,10 @@ using Microsoft.Extensions.Logging;
 using var host = new HostBuilder()
     .ConfigureServices((hostContext, services) =>
     {
-        services.AddAdminAssistantWebAPIClient(new Uri("https://localhost:5001"));
+        var configSettings = hostContext.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+        Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
+
+        services.AddAdminAssistantWebAPIClient(configSettings);
 
         services.AddValidatorsFromAssemblyContaining<AdminAssistant.Infra.DAL.IDatabasePersistable>();
 
