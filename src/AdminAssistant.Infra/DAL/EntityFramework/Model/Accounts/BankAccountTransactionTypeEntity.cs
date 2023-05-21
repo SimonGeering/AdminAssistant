@@ -5,11 +5,13 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
 public sealed class BankAccountTransactionTypeEntity : IMapFrom<BankAccountTransactionType>, IMapTo<BankAccountTransactionType>
 {
-    public int BankAccountTransactionTypeID { get; set; }
+    // Table "Accounts.BankAccountTransactionType"
+    public int BankAccountTransactionTypeID { get; set; } // PK
     public string Description { get; set; } = string.Empty;
     public bool AllowPersonal { get; set; }
     public bool AllowCompany { get; set; }
     public bool IsDeprecated { get; set; }
+    // Ref: "Accounts.BankAccountTransactionType"."BankAccountTransactionTypeID" < "Accounts.BankAccountTransaction"."BankAccountTransactionTypeID"
 
     public void MapFrom(AutoMapper.Profile profile) => profile
         .CreateMap<BankAccountTransactionType, BankAccountTransactionTypeEntity>()
