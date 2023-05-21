@@ -25,582 +25,594 @@ namespace AdminAssistant.UI.Shared.WebAPIClient.v1
         /// <returns>Ok - returns the updated BankAccountResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankAccountResponseDto> PutBankAccountAsync(BankAccountUpdateRequestDto? body);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Update an existing BankAccount.</summary>
         /// <returns>Ok - returns the updated BankAccountResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankAccountResponseDto> PutBankAccountAsync(BankAccountUpdateRequestDto? body, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Creates a new BankAccount.</summary>
         /// <returns>Created - returns the created bank account with its assigned newly ID.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankAccountResponseDto> PostBankAccountAsync(BankAccountCreateRequestDto? body);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Creates a new BankAccount.</summary>
         /// <returns>Created - returns the created bank account with its assigned newly ID.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankAccountResponseDto> PostBankAccountAsync(BankAccountCreateRequestDto? body, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Gets the BankAccountResponseDto with the given ID.</summary>
         /// <param name="bankAccountID">The ID of the BankAccount to be returned.</param>
         /// <returns>OK - returns the BankAccount requested.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankAccountResponseDto> GetBankAccountByIdAsync(int bankAccountID);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Gets the BankAccountResponseDto with the given ID.</summary>
         /// <param name="bankAccountID">The ID of the BankAccount to be returned.</param>
         /// <returns>OK - returns the BankAccount requested.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankAccountResponseDto> GetBankAccountByIdAsync(int bankAccountID, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Get the transactions since the last bank account statement for the BankAccount with the given ID.</summary>
         /// <param name="bankAccountID">The ID of the BankAccount.</param>
         /// <returns>OK - returns a list of BankAccountTransactionResponseDto.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BankAccountTransactionResponseDto>> GetBankAccountTransactionByBankAccountIDAsync(int bankAccountID);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Get the transactions since the last bank account statement for the BankAccount with the given ID.</summary>
         /// <param name="bankAccountID">The ID of the BankAccount.</param>
         /// <returns>OK - returns a list of BankAccountTransactionResponseDto.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BankAccountTransactionResponseDto>> GetBankAccountTransactionByBankAccountIDAsync(int bankAccountID, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists the summary info for all the available BankAccounts owned by the logged in user.</summary>
         /// <returns>Ok - returns a list of BankAccountInfoResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BankAccountInfoResponseDto>> GetBankAccountInfoAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists the summary info for all the available BankAccounts owned by the logged in user.</summary>
         /// <returns>Ok - returns a list of BankAccountInfoResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BankAccountInfoResponseDto>> GetBankAccountInfoAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.</summary>
         /// <returns>Ok - returns a list of BankAccountTypeResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BankAccountTypeResponseDto>> GetBankAccountTypeAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.</summary>
         /// <returns>Ok - returns a list of BankAccountTypeResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BankAccountTypeResponseDto>> GetBankAccountTypeAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Update an existing Bank.</summary>
         /// <returns>Ok - returns the updated BankResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankResponseDto> PutBankAsync(BankUpdateRequestDto? body);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Update an existing Bank.</summary>
         /// <returns>Ok - returns the updated BankResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankResponseDto> PutBankAsync(BankUpdateRequestDto? body, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Creates a new Bank.</summary>
         /// <returns>Created - returns the created bank with its assigned newly ID.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankResponseDto> PostBankAsync(BankCreateRequestDto? body);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Creates a new Bank.</summary>
         /// <returns>Created - returns the created bank with its assigned newly ID.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankResponseDto> PostBankAsync(BankCreateRequestDto? body, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all banks.</summary>
         /// <returns>Ok - returns a list of BankResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BankResponseDto>> GetBankAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all banks.</summary>
         /// <returns>Ok - returns a list of BankResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BankResponseDto>> GetBankAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Gets the Bank with the given ID.</summary>
         /// <param name="bankID">The ID of the Bank to be returned.</param>
         /// <returns>OK - returns the Bank requested.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankResponseDto> GetBankByIdAsync(int bankID);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Gets the Bank with the given ID.</summary>
         /// <param name="bankID">The ID of the Bank to be returned.</param>
         /// <returns>OK - returns the Bank requested.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<BankResponseDto> GetBankByIdAsync(int bankID, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all assets</summary>
         /// <returns>Ok - returns a list of AssetResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AssetResponseDto>> GetAssetAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all assets</summary>
         /// <returns>Ok - returns a list of AssetResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<AssetResponseDto>> GetAssetAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all budgets.</summary>
         /// <returns>Ok - returns a list of BudgetResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BudgetResponseDto>> GetBudgetAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all budgets.</summary>
         /// <returns>Ok - returns a list of BudgetResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<BudgetResponseDto>> GetBudgetAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all reminders.</summary>
         /// <returns>Ok - returns a list of ReminderResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ReminderResponseDto>> GetReminderAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all reminders.</summary>
         /// <returns>Ok - returns a list of ReminderResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ReminderResponseDto>> GetReminderAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all contacts</summary>
         /// <returns>Ok - returns a list of ContactResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ContactResponseDto>> GetContactAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all contacts</summary>
         /// <returns>Ok - returns a list of ContactResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<ContactResponseDto>> GetContactAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Update an existing Currency.</summary>
         /// <returns>Ok - returns the updated CurrencyResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<CurrencyResponseDto> PutCurrencyAsync(CurrencyUpdateRequestDto? body);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Update an existing Currency.</summary>
         /// <returns>Ok - returns the updated CurrencyResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<CurrencyResponseDto> PutCurrencyAsync(CurrencyUpdateRequestDto? body, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Creates a new Currency.</summary>
         /// <returns>Created - returns the created currency with its assigned newly ID.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<CurrencyResponseDto> PostCurrencyAsync(CurrencyCreateRequestDto? body);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Creates a new Currency.</summary>
         /// <returns>Created - returns the created currency with its assigned newly ID.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<CurrencyResponseDto> PostCurrencyAsync(CurrencyCreateRequestDto? body, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all currencies supported by the API wherever a CurrencyID can be provided.</summary>
         /// <returns>Ok - returns a list of CurrencyResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CurrencyResponseDto>> GetCurrencyAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all currencies supported by the API wherever a CurrencyID can be provided.</summary>
         /// <returns>Ok - returns a list of CurrencyResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<CurrencyResponseDto>> GetCurrencyAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Gets the Currency with the given ID.</summary>
         /// <param name="currencyID">The ID of the Currency to be returned.</param>
         /// <returns>OK - returns the Currency requested.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<CurrencyResponseDto> GetCurrencyByIdAsync(int currencyID);
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Gets the Currency with the given ID.</summary>
         /// <param name="currencyID">The ID of the Currency to be returned.</param>
         /// <returns>OK - returns the Currency requested.</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<CurrencyResponseDto> GetCurrencyByIdAsync(int currencyID, System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all documents.</summary>
         /// <returns>Ok - returns a list of DocumentResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<DocumentResponseDto>> GetDocumentAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all documents.</summary>
         /// <returns>Ok - returns a list of DocumentResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<DocumentResponseDto>> GetDocumentAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all mail messages</summary>
         /// <returns>Ok - returns a list of MailMessageResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<MailMessageResponseDto>> GetMailMessageAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all mail messages</summary>
         /// <returns>Ok - returns a list of MailMessageResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<MailMessageResponseDto>> GetMailMessageAsync(System.Threading.CancellationToken cancellationToken);
-    
+
         /// <summary>Lists all task lists.</summary>
         /// <returns>Ok - returns a list of TaskListResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskListResponseDto>> GetTaskListAsync();
-    
+
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <summary>Lists all task lists.</summary>
         /// <returns>Ok - returns a list of TaskListResponseDto</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
         System.Threading.Tasks.Task<System.Collections.Generic.ICollection<TaskListResponseDto>> GetTaskListAsync(System.Threading.CancellationToken cancellationToken);
-    
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class AssetResponseDto 
+    public partial class AssetResponseDto
     {
         [Newtonsoft.Json.JsonProperty("assetID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? AssetID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("assetName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? AssetName { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BankAccountCreateRequestDto 
+    public partial class BankAccountCreateRequestDto
     {
         /// <summary>The BankAccount identifier.</summary>
         [Newtonsoft.Json.JsonProperty("bankAccountTypeID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankAccountTypeID { get; set; }= default!;
-    
+
         /// <summary>The BankAccountType for this BankAccount.</summary>
         [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrencyID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("accountName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? AccountName { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("balance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? Balance { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("isBudgeted", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsBudgeted { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("openingBalance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? OpeningBalance { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("currentBalance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrentBalance { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("openedOn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTime? OpenedOn { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BankAccountInfoResponseDto 
+    public partial class BankAccountInfoResponseDto
     {
         [Newtonsoft.Json.JsonProperty("bankAccountID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankAccountID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("accountName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? AccountName { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("currentBalance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrentBalance { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("symbol", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Symbol { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("decimalFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? DecimalFormat { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("isBudgeted", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsBudgeted { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BankAccountResponseDto 
+    public partial class BankAccountResponseDto
     {
         /// <summary>The BankAccount identifier.</summary>
         [Newtonsoft.Json.JsonProperty("bankAccountID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankAccountID { get; set; }= default!;
-    
+
         /// <summary>The BankAccountType for this BankAccount.</summary>
         [Newtonsoft.Json.JsonProperty("bankAccountTypeID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankAccountTypeID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrencyID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("accountName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? AccountName { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("isBudgeted", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsBudgeted { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("openingBalance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? OpeningBalance { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("currentBalance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrentBalance { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("openedOn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTime? OpenedOn { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BankAccountTransactionResponseDto 
+    public partial class BankAccountTransactionResponseDto
     {
         [Newtonsoft.Json.JsonProperty("bankAccountTransactionID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankAccountTransactionID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("bankAccountID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankAccountID { get; set; }= default!;
-    
+
+        [Newtonsoft.Json.JsonProperty("bankAccountTransactionTypeID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? BankAccountTransactionTypeID { get; set; }= default!;
+
+        [Newtonsoft.Json.JsonProperty("bankAccountStatementID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? BankAccountStatementID { get; set; }= default!;
+
+        [Newtonsoft.Json.JsonProperty("bankAccountStatementNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? BankAccountStatementNumber { get; set; }= default!;
+
+        [Newtonsoft.Json.JsonProperty("isReconciled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public bool? IsReconciled { get; set; }= default!;
+
         [Newtonsoft.Json.JsonProperty("payeeID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? PayeeID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("payeeName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? PayeeName { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrencyID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("symbol", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Symbol { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("decimalFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? DecimalFormat { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("credit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? Credit { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("debit", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? Debit { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("balance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public double? Balance { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Description { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("notes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Notes { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("transactionDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? TransactionDate { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BankAccountTypeResponseDto 
+    public partial class BankAccountTypeResponseDto
     {
         [Newtonsoft.Json.JsonProperty("bankAccountTypeID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankAccountTypeID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Description { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BankAccountUpdateRequestDto 
+    public partial class BankAccountUpdateRequestDto
     {
         /// <summary>The BankAccount identifier.</summary>
         [Newtonsoft.Json.JsonProperty("bankAccountID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankAccountID { get; set; }= default!;
-    
+
         /// <summary>The BankAccountType for this BankAccount.</summary>
         [Newtonsoft.Json.JsonProperty("bankAccountTypeID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankAccountTypeID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrencyID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("accountName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? AccountName { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("isBudgeted", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsBudgeted { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("openingBalance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? OpeningBalance { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("currentBalance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrentBalance { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("openedOn", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.DateTime? OpenedOn { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BankCreateRequestDto 
+    public partial class BankCreateRequestDto
     {
         [Newtonsoft.Json.JsonProperty("bankName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? BankName { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BankResponseDto 
+    public partial class BankResponseDto
     {
         [Newtonsoft.Json.JsonProperty("bankID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("bankName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? BankName { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BankUpdateRequestDto 
+    public partial class BankUpdateRequestDto
     {
         /// <summary>The Bank identifier.</summary>
         [Newtonsoft.Json.JsonProperty("bankID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BankID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("bankName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? BankName { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class BudgetResponseDto 
+    public partial class BudgetResponseDto
     {
         [Newtonsoft.Json.JsonProperty("budgetID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? BudgetID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("budgetName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? BudgetName { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class ContactResponseDto 
+    public partial class ContactResponseDto
     {
         [Newtonsoft.Json.JsonProperty("contactID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? ContactID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("firstName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? FirstName { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("lastName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? LastName { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class CurrencyCreateRequestDto 
+    public partial class CurrencyCreateRequestDto
     {
         [Newtonsoft.Json.JsonProperty("symbol", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Symbol { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("decimalFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? DecimalFormat { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class CurrencyResponseDto 
+    public partial class CurrencyResponseDto
     {
         [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrencyID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("symbol", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Symbol { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("decimalFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? DecimalFormat { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class CurrencyUpdateRequestDto 
+    public partial class CurrencyUpdateRequestDto
     {
         /// <summary>The Currency identifier.</summary>
         [Newtonsoft.Json.JsonProperty("currencyID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? CurrencyID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("symbol", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Symbol { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("decimalFormat", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? DecimalFormat { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class DocumentResponseDto 
+    public partial class DocumentResponseDto
     {
         [Newtonsoft.Json.JsonProperty("documentID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? DocumentID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("fileName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? FileName { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class MailMessageResponseDto 
+    public partial class MailMessageResponseDto
     {
         [Newtonsoft.Json.JsonProperty("mailMessageID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? MailMessageID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("subject", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? Subject { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class ReminderResponseDto 
+    public partial class ReminderResponseDto
     {
         [Newtonsoft.Json.JsonProperty("reminderID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? ReminderID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("reminderName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? ReminderName { get; set; }= default!;
-    
-    
+
+
     }
-    
+
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "10.5.2.0 (Newtonsoft.Json v13.0.0.0)")]
-    public partial class TaskListResponseDto 
+    public partial class TaskListResponseDto
     {
         [Newtonsoft.Json.JsonProperty("taskListID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? TaskListID { get; set; }= default!;
-    
+
         [Newtonsoft.Json.JsonProperty("taskListName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string? TaskListName { get; set; }= default!;
-    
-    
+
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.14.4.0 (NJsonSchema v10.5.2.0 (Newtonsoft.Json v13.0.0.0))")]
