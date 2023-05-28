@@ -187,6 +187,7 @@ Ref: "Accounts.BankAccount"."BankAccountID" < "Accounts.BankAccountTransaction".
     [InlineData(typeof(BankAccountTransactionEntity), typeof(BankAccountTransaction))]
     [InlineData(typeof(BankAccountTransactionTypeEntity), typeof(BankAccountTransactionType))]
     [InlineData(typeof(PayeeEntity), typeof(Payee))]
+    [InlineData(typeof(PayeeContactEntity), typeof(PayeeContact))]
     [InlineData(typeof(Bank), typeof(BankEntity))]
     [InlineData(typeof(BankAccount), typeof(BankAccountEntity))]
     [InlineData(typeof(BankAccountStatement), typeof(BankAccountStatementEntity))]
@@ -194,6 +195,7 @@ Ref: "Accounts.BankAccount"."BankAccountID" < "Accounts.BankAccountTransaction".
     [InlineData(typeof(BankAccountTransaction), typeof(BankAccountTransactionEntity))]
     [InlineData(typeof(BankAccountTransactionType), typeof(BankAccountTransactionTypeEntity))]
     [InlineData(typeof(Payee), typeof(PayeeEntity))]
+    [InlineData(typeof(PayeeContact), typeof(PayeeContactEntity))]
     // Documents Schema
     [InlineData(typeof(DocumentEntity), typeof(Document))]
     [InlineData(typeof(Document), typeof(DocumentEntity))]
