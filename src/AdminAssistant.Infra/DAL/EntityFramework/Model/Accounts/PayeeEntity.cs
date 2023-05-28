@@ -1,6 +1,9 @@
+using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.Framework.TypeMapping;
+
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 
-public sealed class PayeeEntity
+public sealed class PayeeEntity : IMapFrom<Payee>, IMapTo<Payee>
 {
     // Table "Accounts.Payee"
     public int PayeeID { get; set; } // PK
