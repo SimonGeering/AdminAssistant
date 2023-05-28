@@ -18,6 +18,7 @@ public static class Factory
     public static IBankAccountInfoBuilder BankAccountInfo => new BankAccountInfoBuilder();
     public static IBankAccountTypeBuilder BankAccountType => new BankAccountTypeBuilder();
     public static IBankAccountTransactionBuilder BankAccountTransaction => new BankAccountTransactionBuilder();
+    public static IPayeeBuilder Payee => new PayeeBuilder();
 
     // Asset Register Module ...
     public static IAssetBuilder Asset => new AssetBuilder();

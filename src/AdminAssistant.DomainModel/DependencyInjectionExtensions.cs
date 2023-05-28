@@ -30,8 +30,9 @@ public static partial class DependencyInjectionExtensions
     {
         services.AddTransient<IBankAccountValidator, BankAccountValidator>();
         services.AddTransient<IBankAccountTransactionValidator, BankAccountTransactionValidator>();
-        services.AddTransient<IBankAccountTypeValidator, BankAccountTypeValidator>();            
+        services.AddTransient<IBankAccountTypeValidator, BankAccountTypeValidator>();
         services.AddTransient<IBankValidator, BankValidator>();
+        services.AddTransient<IPayeeValidator, PayeeValidator>();
     }
 
     private static void AddBudgetDomainModel(IServiceCollection services)
