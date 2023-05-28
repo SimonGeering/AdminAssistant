@@ -12,6 +12,11 @@ public sealed class PayeeEntity : IMapFrom<Payee>, IMapTo<Payee>
 
     public Core.AuditEntity Audit { get; internal set; } = null!;
 
+    public void MapFrom(AutoMapper.Profile profile) => profile
+        .CreateMap<Payee, PayeeEntity>()
+        .ForMember(x => x.AuditID, opt => opt.Ignore())
+        .ForMember(x => x.Audit, opt => opt.Ignore());
+
     // Ref: "Accounts.Payee"."PayeeID" < "Accounts.BankAccountTransaction"."PayeeID"
     // Ref: "Accounts.Payee"."PayeeID" < "Accounts.PayeeContact"."PayeeID"
 }
