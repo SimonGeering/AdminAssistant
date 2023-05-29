@@ -2,8 +2,8 @@ namespace AdminAssistant.DomainModel.Modules.ContactsModule;
 
 public sealed record Contact : IDatabasePersistable
 {
-    public const int ContactFirstNameMaxLength = Constants.NameMaxLength;
-    public const int ContactLastNameMaxLength = Constants.NameMaxLength;
+    public const int FirstNameMaxLength = Constants.NameMaxLength;
+    public const int LastNameMaxLength = Constants.NameMaxLength;
 
     public int ContactID { get; set; }
     public string FirstName { get; set; } = string.Empty;

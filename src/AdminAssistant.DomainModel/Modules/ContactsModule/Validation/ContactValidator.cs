@@ -5,13 +5,11 @@ internal sealed class ContactValidator : AbstractValidator<Contact>, IContactVal
     public ContactValidator()
     {
         RuleFor(x => x.FirstName)
-            .NotEmpty();
-        RuleFor(x => x.FirstName)
-            .MaximumLength(Contact.ContactFirstNameMaxLength);
+            .NotEmpty()
+            .MaximumLength(Contact.FirstNameMaxLength);
 
         RuleFor(x => x.LastName)
-            .NotEmpty();
-        RuleFor(x => x.LastName)
-            .MaximumLength(Contact.ContactLastNameMaxLength);
+            .NotEmpty()
+            .MaximumLength(Contact.LastNameMaxLength);
     }
 }
