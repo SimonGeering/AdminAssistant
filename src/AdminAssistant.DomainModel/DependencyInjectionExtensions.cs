@@ -1,6 +1,7 @@
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
+using AdminAssistant.DomainModel.Modules.ContactsModule.Validation;
 using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
 using AdminAssistant.DomainModel.Shared;
 
@@ -26,6 +27,7 @@ public static partial class DependencyInjectionExtensions
     {
         AddAccountsCommonDomainModel(services);
         AddBudgetCommonDomainModel(services);
+        AddContactsCommonDomainModel(services);
         AddCoreCommonDomainModel(services);
     }
 
@@ -40,6 +42,9 @@ public static partial class DependencyInjectionExtensions
 
     private static void AddBudgetCommonDomainModel(IServiceCollection services)
         => services.AddTransient<IBudgetValidator, BudgetValidator>();
+
+    private static void AddContactsCommonDomainModel(IServiceCollection services)
+    => services.AddTransient<IContactValidator, ContactValidator>();
 
     private static void AddCoreCommonDomainModel(IServiceCollection services)
         => services.AddTransient<ICurrencyValidator, CurrencyValidator>();
