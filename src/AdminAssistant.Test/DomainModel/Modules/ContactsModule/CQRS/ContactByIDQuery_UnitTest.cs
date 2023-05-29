@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
+#pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.ContactsModule;
 using AdminAssistant.DomainModel.Modules.ContactsModule.CQRS;
@@ -56,3 +55,4 @@ public sealed class ContactByIDQuery_Should
         result.Value.Should().Be(contact);
     }
 }
+#pragma warning restore CA1707 // Identifiers should not contain underscores
