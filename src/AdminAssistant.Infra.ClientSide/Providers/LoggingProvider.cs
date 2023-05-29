@@ -9,6 +9,8 @@ public abstract class LoggingProvider : ILoggingProvider
     protected LoggingProvider(ILoggerFactory loggerFactory, string logCategoryName)
         => _logger = loggerFactory.CreateLogger(logCategoryName);
 
+#pragma warning disable CA2254 // Template should be a static expression
+
     public void LogDebug(EventId eventId, Exception exception, string message, params object[] args) => _logger.Log(LogLevel.Debug, eventId, exception, message, args);
     public void LogDebug(EventId eventId, string message, params object[] args) => _logger.Log(LogLevel.Debug, eventId, message, args);
     public void LogDebug(Exception exception, string message, params object[] args) => _logger.Log(LogLevel.Debug, exception, message, args);
@@ -65,6 +67,7 @@ public abstract class LoggingProvider : ILoggingProvider
         return result;
     }
 
-    public bool IsEnabled(LogLevel logLevel) => _logger.IsEnabled(logLevel);
+#pragma warning restore CA2254 // Template should be a static expression
 
+    public bool IsEnabled(LogLevel logLevel) => _logger.IsEnabled(logLevel);
 }

@@ -2,9 +2,7 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
 using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
@@ -14,6 +12,7 @@ public sealed class BankAccount_Get_Should : IntegrationTestBase
 {
     [Fact(Skip = "WIP while we work out FK changes.")]
     [Trait("Category", "Integration")]
+    [SuppressMessage("Usage", "xUnit1004:Test methods should not be skipped", Justification = "WIP while we work out FK changes.")]
     public async Task Return_ABankAccount_Given_BankAccountID()
     {
         // Arrange

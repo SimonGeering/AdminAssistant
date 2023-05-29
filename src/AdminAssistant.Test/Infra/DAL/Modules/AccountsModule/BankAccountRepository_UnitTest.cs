@@ -125,7 +125,7 @@ public sealed class BankAccountRepository_UnitTest
         return true;
     }
 
-    [SuppressMessage("Major Code Smell", "S1144:Unused private types or members should be removed", Justification = "WIP")]
+    [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
     private bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
     {
         bankAccountToSave.BankAccountID.Should().NotBe(Constants.NewRecordID);

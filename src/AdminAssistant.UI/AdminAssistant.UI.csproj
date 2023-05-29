@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
+    <None Remove="AdminAssistant.Accounts.UI.docs.xml" />
     <None Remove="AdminAssistant.UI.docs.xml" />
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>

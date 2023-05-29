@@ -23,7 +23,7 @@ internal sealed class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<
         //Request
         var requestName = typeof(TRequest).Name;
 
-        _loggingProvider.LogInformation($"{requestName} Handling Started");
+        _loggingProvider.LogInformation("{requestName} Handling Started", requestName);
 
         foreach (var prop in request.GetType().GetProperties())
         {
@@ -37,13 +37,13 @@ internal sealed class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<
 
         if (result == null)
         {
-            _loggingProvider.LogInformation($"{requestName} Handling Completed");
+            _loggingProvider.LogInformation("{requestName} Handling Completed", requestName);
             return response;
         }
 
         var status = LogResultDetails(requestName, result);
 
-        _loggingProvider.LogInformation($"{requestName} Handling Completed - {status}");
+        _loggingProvider.LogInformation("{requestName} Handling Completed - {status}", requestName, status);
         return response;
     }
 
@@ -51,12 +51,12 @@ internal sealed class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<
     {
         if (result.Errors.Any())
         {
-            _loggingProvider.LogDebug($"{requestName} Handling - {result.Errors.Count()} Errors:");
+            _loggingProvider.LogDebug("{requestName} Handling - {result.Errors.Count()} Errors:", requestName, result.Errors.Count());
         }
 
         if (result.ValidationErrors.Any())
         {
-            _loggingProvider.LogDebug($"{requestName} Handling - {result.ValidationErrors.Count} Validation Errors:");
+            _loggingProvider.LogDebug("{requestName} Handling - {result.ValidationErrors.Count} Validation Errors:", requestName, result.ValidationErrors.Count);
         }
 
         return result.Status.ToString();
