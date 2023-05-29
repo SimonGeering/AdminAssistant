@@ -1,7 +1,6 @@
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
-using AdminAssistant.DomainModel.Modules.ContactsModule.CQRS;
 using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
 using AdminAssistant.DomainModel.Shared;
 
@@ -16,12 +15,11 @@ public static partial class DependencyInjectionExtensions
     {
         AddAdminAssistantCommonDomainModel(services);
 
-        // AddInfrastructureDomainModel ...
+        // Add Infrastructure DomainModel ...
         services.AddTransient<IUserContextProvider, UserContextProvider>();
 
-        // Set-up Add MediatR ...
-        services.AddMediatR(typeof(BankAccountByIDQuery), typeof(BankAccountByIDQueryHandler));
-        services.AddMediatR(typeof(ContactByIDQuery), typeof(ContactByIDQueryHandler));
+        // Set-up / Add MediatR based on an assembly marker type ...
+        services.AddMediatR(typeof(RequestHandlerBase<,>));
     }
 
     public static void AddAdminAssistantCommonDomainModel(this IServiceCollection services)
