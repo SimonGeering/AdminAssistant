@@ -1,6 +1,7 @@
 using AdminAssistant.Infra.DAL.EntityFramework.Model;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,9 @@ public interface IApplicationDbContext : IDisposable
     DbSet<BankAccountEntity> BankAccounts { get; set; }
     DbSet<BankAccountTransactionEntity> BankAccountTransactions { get; set; }
     DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; }
+
+    // Contacts ...
+    DbSet<ContactEntity> Contacts { get; set; }
 
     // Documents ...
     DbSet<DocumentEntity> Documents { get; set; }
@@ -64,6 +68,9 @@ public sealed class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<BankAccountEntity> BankAccounts { get; set; } = null!;
     public DbSet<BankAccountTransactionEntity> BankAccountTransactions { get; set; } = null!;
     public DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; } = null!;
+
+    // Contacts ...
+    public DbSet<ContactEntity> Contacts { get; set; } = null!;
 
     // Documents ...
     public DbSet<DocumentEntity> Documents { get; set; } = null!;

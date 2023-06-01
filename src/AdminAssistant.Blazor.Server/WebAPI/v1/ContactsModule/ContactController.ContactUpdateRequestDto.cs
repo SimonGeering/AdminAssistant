@@ -11,4 +11,10 @@ public sealed record ContactUpdateRequestDto : IMapTo<Contact>
     public int ContactID { get; init; }
     public string FirstName { get; init; } = string.Empty;
     public string LastName { get; init; } = string.Empty;
+
+    public void MapTo(AutoMapper.Profile profile) => profile
+        .CreateMap<ContactUpdateRequestDto, Contact>()
+        .ForMember(x => x.OwnerID, opt => opt.Ignore())
+        .ForMember(x => x.TitleID, opt => opt.Ignore())
+        .ForMember(x => x.DateOfBirth, opt => opt.Ignore());
 }

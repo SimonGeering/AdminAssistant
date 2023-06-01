@@ -6,6 +6,8 @@ using AdminAssistant.DomainModel.Modules.CoreModule;
 using AdminAssistant.DomainModel.Modules.DocumentsModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using AdminAssistant.Infra.DAL;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
+using AdminAssistant.DomainModel.Modules.ContactsModule;
 
 namespace AdminAssistant.Test.Infra.DAL;
 
@@ -198,6 +200,9 @@ public class DalMappingProfile_Should
     [InlineData(typeof(BankAccountTransactionType), typeof(BankAccountTransactionTypeEntity))]
     [InlineData(typeof(Payee), typeof(PayeeEntity))]
     [InlineData(typeof(PayeeContact), typeof(PayeeContactEntity))]
+    // Contacts Schema
+    [InlineData(typeof(ContactEntity), typeof(Contact))]
+    [InlineData(typeof(Contact), typeof(ContactEntity))]
     // Documents Schema
     [InlineData(typeof(DocumentEntity), typeof(Document))]
     [InlineData(typeof(Document), typeof(DocumentEntity))]

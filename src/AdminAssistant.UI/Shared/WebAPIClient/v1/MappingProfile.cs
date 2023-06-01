@@ -37,7 +37,10 @@ public sealed class MappingProfile : MappingProfileBase
         CreateMap<ReminderResponseDto, Reminder>();
 
         // Contact Module ...
-        CreateMap<ContactResponseDto, Contact>();
+        CreateMap<ContactResponseDto, Contact>()
+            .ForMember(x => x.OwnerID, opt => opt.Ignore())
+            .ForMember(x => x.TitleID, opt => opt.Ignore())
+            .ForMember(x => x.DateOfBirth, opt => opt.Ignore());
 
         // Core Module ...
         CreateMap<CurrencyResponseDto, Currency>();
