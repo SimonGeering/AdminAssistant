@@ -138,12 +138,16 @@
             "MD025": {
                 "front_matter_title": ""
             }
-        }
+        },
+        "dotnet.defaultSolution": "src\\AdminAssistant.sln"
     },
     "extensions": {
         "recommendations": [
-            "formulahendry.dotnet-test-explorer",
-            "hbenl.vscode-test-explorer",
+            "ms-dotnettools.csdevkit",
+            "ms-dotnettools.csharp",
+            "ms-dotnettools.vscodeintellicode-csharp",
+            "visualstudioexptteam.vscodeintellicode",
+            "visualstudioexptteam.vscodeintellicode-completions",
             "ms-dotnettools.blazorwasm-companion",
             "ms-mssql.mssql",
             "k--kato.docomment",
@@ -160,17 +164,14 @@
             "gruntfuggly.todo-tree",
             "shardulm94.trailing-spaces",
             "pflannery.vscode-versionlens",
-            "visualstudioexptteam.vscodeintellicode",
             "vscode-icons-team.vscode-icons",
             "ms-azuretools.vscode-docker",
-            "systemticks.c4-dsl-extension",
-            "sonarsource.sonarlint-vscode",
-            "ms-dotnettools.csharp",
-            "mikestead.dotenv",
-            "anseki.vscode-color"
+            "systemticks.c4-dsl-extension"
         ],
         "unwantedRecommendations": [
-            "ms-vscode.azurecli",
+            "spmeesseman.vscode-taskexplorer",
+            "hbenl.vscode-test-explorer",
+            "formulahendry.dotnet-test-explorer",
             "ms-azuretools.vscode-docker",
             "ms-kubernetes-tools.vscode-kubernetes-tools",
             "googlecloudtools.cloudcode",
