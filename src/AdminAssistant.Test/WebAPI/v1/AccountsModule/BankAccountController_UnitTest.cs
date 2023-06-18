@@ -17,14 +17,13 @@ public sealed class BankAccountController_Put_Should
         // Arrange
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
-        var services = new ServiceCollection();
-        services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
-
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountUpdateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(Result<BankAccount>.Success(bankAccount)));
 
+        var services = new ServiceCollection();
+        services.AddMockServerSideLogging();
+        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -70,13 +69,12 @@ public sealed class BankAccountController_Put_Should
         // Arrange
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
-        var services = new ServiceCollection();
-        services.AddMocksOfExternalServerSideDependencies();
-
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountUpdateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(Result<BankAccount>.NotFound()));
 
+        var services = new ServiceCollection();
+        services.AddMocksOfExternalServerSideDependencies();
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -105,13 +103,12 @@ public sealed class BankAccountController_Put_Should
             };
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
-        var services = new ServiceCollection();
-        services.AddMocksOfExternalServerSideDependencies();
-
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountUpdateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(Result<BankAccount>.Invalid(validationErrors)));
 
+        var services = new ServiceCollection();
+        services.AddMocksOfExternalServerSideDependencies();
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -149,14 +146,13 @@ public sealed class BankAccountController_BankAccountPost_Should
         // Arrange
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
-        var services = new ServiceCollection();
-        services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
-
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountCreateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(Result<BankAccount>.Success(bankAccount)));
 
+        var services = new ServiceCollection();
+        services.AddMockServerSideLogging();
+        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -208,13 +204,12 @@ public sealed class BankAccountController_BankAccountPost_Should
             };
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
-        var services = new ServiceCollection();
-        services.AddMocksOfExternalServerSideDependencies();
-
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountCreateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(Result<BankAccount>.Invalid(validationErrors)));
 
+        var services = new ServiceCollection();
+        services.AddMocksOfExternalServerSideDependencies();
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -251,14 +246,13 @@ public sealed class BankAccountController_BankAccountGetById_Should
         // Arrange
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
-        var services = new ServiceCollection();
-        services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
-
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountByIDQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(Result<BankAccount>.Success(bankAccount)));
 
+        var services = new ServiceCollection();
+        services.AddMockServerSideLogging();
+        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -283,13 +277,12 @@ public sealed class BankAccountController_BankAccountGetById_Should
     public async Task Return_Status404NotFound_Given_ANonExistentBankAccountID()
     {
         // Arrange
-        var services = new ServiceCollection();
-        services.AddMocksOfExternalServerSideDependencies();
-
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountByIDQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(Result<BankAccount>.NotFound()));
 
+        var services = new ServiceCollection();
+        services.AddMocksOfExternalServerSideDependencies();
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -304,64 +297,63 @@ public sealed class BankAccountController_BankAccountGetById_Should
 
 public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Should
 {
-    #pragma warning disable S125 // Sections of code should not be commented out
-    //[Fact(Skip="WIP")]
-    //[Trait("Category", "Unit")]
-    //public async Task Return_Status200Ok_With_AListOfBankAccountTransaction_Given_AnExistingBankAccountID()
-    //{
-    //    // Arrange
-    //    var bankAccountTransactionList = new List<BankAccountTransaction>()
-    //    {
-    //        Factory.BankAccountTransaction.WithTestData(10).Build(),
-    //        Factory.BankAccountTransaction.WithTestData(20).Build(),
-    //        Factory.BankAccountTransaction.WithTestData(30).Build()
-    //    };
+    [Fact]
+    [Trait("Category", "Unit")]
+    public async Task Return_Status200Ok_With_AListOfBankAccountTransaction_Given_AnExistingBankAccountID()
+    {
+        // Arrange
+        var bankAccountTransactionList = new List<BankAccountTransaction>()
+        {
+            Factory.BankAccountTransaction.WithTestData(10).Build(),
+            Factory.BankAccountTransaction.WithTestData(20).Build(),
+            Factory.BankAccountTransaction.WithTestData(30).Build()
+        };
 
-    //    var services = new ServiceCollection();
-    //    services.AddMockServerSideLogging();
-    //    services.AddAutoMapper(typeof(MappingProfile));
+        var mockMediator = new Mock<IMediator>();
+        mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTransactionsByBankAccountIDQuery>(), It.IsAny<CancellationToken>()))
+                    .Returns(Task.FromResult(Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList)));
 
-    //    var mockMediator = new Mock<IMediator>();
-    //    mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTransactionsByBankAccountIDQuery>(), It.IsAny<CancellationToken>()))
-    //                .Returns(Task.FromResult(Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList)));
+        var services = new ServiceCollection();
+        services.AddMockServerSideLogging();
+        services.AddAutoMapper(typeof(MappingProfile));
+        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient<BankAccountController>();
 
-    //    services.AddTransient((sp) => mockMediator.Object);
-    //    services.AddTransient<BankAccountController>();
+        var container = services.BuildServiceProvider();
 
-    //    var container = services.BuildServiceProvider();
+        // Act
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
 
-    //    // Act
-    //    var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
+        // Assert
+        response.Value.Should().BeNull();
 
-    //    // Assert
-    //    var result = (OkObjectResult)response.Result;
-    //    result.Value.Should().BeAssignableTo<IEnumerable<BankAccountTransactionResponseDto>>();
+        response.Result.Should().NotBeNull();
+        var result = (OkObjectResult)response.Result!;
+        result.Value.Should().BeAssignableTo<IEnumerable<BankAccountTransactionResponseDto>>();
 
-    //    var value = ((IEnumerable<BankAccountTransactionResponseDto>)result.Value).ToArray();
-    //    value.Should().HaveCount(bankAccountTransactionList.Count);
+        result.Value.Should().NotBeNull();
+        var value = ((IEnumerable<BankAccountTransactionResponseDto>)result.Value!).ToArray();
+        value.Should().HaveCount(bankAccountTransactionList.Count);
 
-    //    var expected = bankAccountTransactionList.ToArray();
-    //    for (int i = 0; i < expected.Length; i++)
-    //    {
-    //        // TODO: Switch this to use AutoMapper.
-    //        value[i].BankAccountTransactionID.Should().Be(expected[i].BankAccountTransactionID);
-    //        value[i].BankAccountID.Should().Be(expected[i].BankAccountID);
-    //    }
-    //}
-    #pragma warning restore S125 // Sections of code should not be commented out
+        var expected = bankAccountTransactionList.ToArray();
+        for (var index = 0; index < expected.Length; index++)
+        {
+            value[index].BankAccountTransactionID.Should().Be(expected[index].BankAccountTransactionID);
+            value[index].BankAccountID.Should().Be(expected[index].BankAccountID);
+        }
+    }
 
     [Fact]
     [Trait("Category", "Unit")]
     public async Task Return_Status404NotFound_Given_ANonExistentBankAccountID()
     {
         // Arrange
-        var services = new ServiceCollection();
-        services.AddMocksOfExternalServerSideDependencies();
-
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTransactionsByBankAccountIDQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(Task.FromResult(Result<IEnumerable<BankAccountTransaction>>.NotFound()));
 
+        var services = new ServiceCollection();
+        services.AddMocksOfExternalServerSideDependencies();
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
