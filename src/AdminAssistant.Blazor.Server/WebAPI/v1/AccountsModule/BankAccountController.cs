@@ -98,7 +98,7 @@ public sealed class BankAccountController : WebApiControllerBase
         if (result.Status == ResultStatus.NotFound)
             return Log.Finish(NotFound());
 
-        var response = Mapper.Map<BankAccountTransactionResponseDto>(result.Value);
+        var response = Mapper.Map<IEnumerable<BankAccountTransactionResponseDto>>(result.Value);
         return Log.Finish(Ok(response));
     }
 }
