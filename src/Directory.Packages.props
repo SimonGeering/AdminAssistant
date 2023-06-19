@@ -3,12 +3,10 @@
     <!--See: https://devblogs.microsoft.com/nuget/introducing-central-package-management/-->
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
-
   <PropertyGroup>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <NoWarn>S1135;S1125;1701;1702;NU1605</NoWarn>
   </PropertyGroup>
-
   <ItemGroup>
     <!--Shared / Common-->
     <PackageVersion Include="Ardalis.GuardClauses" Version="3.2.0" />
@@ -31,7 +29,7 @@
     <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
     <!--AdminAssistant.Blazor-->
-    <PackageVersion Include="MudBlazor" Version="6.1.8" />
+    <PackageVersion Include="MudBlazor" Version="6.4.1" />
     <!--AdminAssistant.Blazor.Client-->
     <PackageVersion Include="Blazor.Extensions.Logging" Version="3.1.0-rc1-020501" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.1" />
