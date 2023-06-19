@@ -44,6 +44,7 @@ public static class DependencyInjectionExtensions
         services.AddSingleton<IBankAccountBalanceListViewModel, BankAccountBalanceListViewModel>();
         services.AddSingleton<IBankAccountEditDialogViewModel, BankAccountEditDialogViewModel>();
         services.AddSingleton<IBankAccountRightSidebarViewModel, BankAccountRightSidebarViewModel>();
+        services.AddSingleton<IBankAccountStatementImportViewModel, BankAccountStatementImportViewModel>();
         services.AddSingleton<IBankAccountTransactionListViewModel, BankAccountTransactionListViewModel>();
 
         services.AddTransient<IAccountsService, AccountsService>();
