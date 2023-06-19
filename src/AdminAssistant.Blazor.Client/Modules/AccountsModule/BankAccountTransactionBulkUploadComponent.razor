@@ -1,0 +1,61 @@
+﻿@using System.ComponentModel;
+
+@page "/accounts/bulk-upload"
+@inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.IAccountsViewModel>
+
+<h3>Account Transaction Upload Module</h3>
+
+<MudFileUpload T="IBrowserFile" Accept=".pdf" FilesChanged="UploadStatement" MaximumFileCount="1">
+    <ButtonTemplate>
+        <MudButton HtmlTag="label"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   StartIcon="@Icons.Material.Filled.UploadFile"
+                   @Icons.Material.Filled.
+                   for="@context">
+            Select a PDF bank account statement to process.
+        </MudButton>
+    </ButtonTemplate>
+</MudFileUpload>
+
+@if (fileName != string.Empty)
+{
+    <MudList>
+        <MudListItem Icon="@Icons.Material.Filled.AttachFile">
+            @fileName <code>@fileSize bytes</code>
+        </MudListItem>
+    </MudList>
+}
+
+@if (embedSrc != string.Empty)
+{
+    <embed src="@embedSrc" style="width=100%" />
+}
+
+<!--
+    Embed PDF viewer
+    https://github.com/MudBlazor/MudBlazor/issues/1269
+    https://pdfobject.com/static/
+
+    PDF File reader
+    https://www.nuget.org/packages/PDFsharp/6.0.0-preview-2
+    https://github.com/empira/PDFsharp
+--->
+
+@code {
+
+    private string fileName = string.Empty;
+    private long fileSize = 0;
+    private string embedSrc = string.Empty;
+
+    private async Task UploadStatement(IBrowserFile browserFile)
+    {
+        fileName = browserFile.Name;
+        fileSize = browserFile.Size;
+
+        using var memoryStream = new MemoryStream();
+
+        await browserFile.OpenReadStream().CopyToAsync(memoryStream).ConfigureAwait(false);
+        embedSrc = $"data:{browserFile.ContentType};base64,{Convert.ToBase64String(memoryStream.ToArray())}";
+    }
+}

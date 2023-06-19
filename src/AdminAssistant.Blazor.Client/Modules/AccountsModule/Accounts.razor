@@ -13,7 +13,10 @@
             <BankAccountRightSidebarComponent />
         </MudContainer>
     </MudDrawer>
-    <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
+    <MudStack Row="true" Justify="Justify.SpaceBetween">
+        <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
+        <MudLink Href="/accounts/bulk-upload">Upload</MudLink>
+    </MudStack>
     <MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
     <BankAccountTransactionListComponent />
 </MudDrawerContainer>
