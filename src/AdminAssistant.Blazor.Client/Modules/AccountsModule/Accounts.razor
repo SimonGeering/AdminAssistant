@@ -15,7 +15,7 @@
     </MudDrawer>
     <MudStack Row="true" Justify="Justify.SpaceBetween">
         <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
-        <MudLink Href="/accounts/bulk-upload">Upload</MudLink>
+        <MudButton Href="/accounts/bulk-upload" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.FileUpload" Color="Color.Tertiary">Upload</MudButton>
     </MudStack>
     <MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
     <BankAccountTransactionListComponent />
