@@ -150,7 +150,6 @@
             "visualstudioexptteam.vscodeintellicode-completions",
             "ms-dotnettools.blazorwasm-companion",
             "ms-mssql.mssql",
-            "k--kato.docomment",
             "streetsidesoftware.code-spell-checker",
             "ryanluker.vscode-coverage-gutters",
             "editorconfig.editorconfig",
@@ -169,6 +168,7 @@
             "systemticks.c4-dsl-extension"
         ],
         "unwantedRecommendations": [
+            "ms-vscode.azurecli",
             "spmeesseman.vscode-taskexplorer",
             "hbenl.vscode-test-explorer",
             "formulahendry.dotnet-test-explorer",

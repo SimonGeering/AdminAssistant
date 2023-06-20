@@ -1,45 +1,44 @@
-﻿@page "/accounts/bulk-upload"
+@page "/accounts/bulk-upload"
 @inherits AdminAssistantComponentBase<AdminAssistant.UI.Modules.AccountsModule.IBankAccountStatementImportViewModel>
 
 <PageTitle>@vm.PageTitle</PageTitle>
 
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
-
 <MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
 
-<MudCard>
-    <MudCardContent>
-        <MudFileUpload T="IBrowserFile" Accept=".pdf" FilesChanged="UploadStatement" MaximumFileCount="1">
-            <ButtonTemplate>
-                <MudButton HtmlTag="label"
-                        Variant="Variant.Filled"
-                        Color="Color.Primary"
-                        StartIcon="@Icons.Material.Filled.UploadFile"
-                        for="@context">
-                    Please select a PDF bank account statement to import.
-                </MudButton>
-            </ButtonTemplate>
-        </MudFileUpload>
-    </MudCardContent>
-</MudCard>
+<MudPaper id="wrapper" class="d-flex flex-row pa" style="height: 80vh;">
 
-@if (vm.FileName != string.Empty)
-{
-    <MudList>
-        <MudListItem Icon="@Icons.Material.Filled.AttachFile">
-            @vm.FileName <code>@vm.FileSize bytes</code>
-        </MudListItem>
-    </MudList>
-}
+    <MudPaper id="col1" class="flex-grow-1 ml-4 mr-2 mud-theme-primary">
+        <MudStack Justify="Justify.SpaceBetween">
+            <MudFileUpload T="IBrowserFile" Accept=".pdf" FilesChanged="UploadStatement" MaximumFileCount="1">
+                <ButtonTemplate>
+                    <MudButton HtmlTag="label" Size="Size.Medium" Variant="Variant.Text"
+                               StartIcon="@Icons.Material.Filled.FileUpload"
+                               Color="Color.Tertiary" for="@context">
+                        Select statement.
+                    </MudButton>
+                </ButtonTemplate>
+            </MudFileUpload>
+            @if (vm.EmbeddedFileContentSrc != string.Empty)
+            {
+                <MudContainer>
+                    <MudIcon Icon="@Icons.Material.Filled.AttachFile" Size="Size.Small" /> @vm.FileName - <code>@vm.FileSize bytes</code>
+                </MudContainer>
+                <embed src="@vm.EmbeddedFileContentSrc" class="flex-grow-1" style="width:100%; height:60vh;" />
+            }
+        </MudStack>
+    </MudPaper>
 
-@if (vm.EmbeddedFileContentSrc != string.Empty)
-{
-<MudCard>
-    <MudCardContent>
-        <embed src="@vm.EmbeddedFileContentSrc" style="width=100%" />
-    </MudCardContent>
-</MudCard>
-}
+    <MudPaper id="col2" class="flex-grow-1 ml-2 mr-4 mud-theme-tertiary">
+
+        <MudText MultiLine="true">
+            This is a multiline text block.
+            Line 2.
+            Line 3.
+        </MudText>
+    </MudPaper>
+
+</MudPaper>
 
 @code {
 
