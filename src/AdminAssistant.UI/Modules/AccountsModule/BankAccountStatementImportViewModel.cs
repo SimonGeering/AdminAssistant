@@ -4,8 +4,15 @@ namespace AdminAssistant.UI.Modules.AccountsModule;
 
 internal sealed class BankAccountStatementImportViewModel : ViewModelBase, IBankAccountStatementImportViewModel
 {
-    public BankAccountStatementImportViewModel(ILoggingProvider log)
-        : base(log) => PageTitle = $"{HeaderText} - {SubHeaderText}";
+    private readonly IAccountsService _accountsService;
+
+    public BankAccountStatementImportViewModel(IAccountsService accountsService, ILoggingProvider log)
+        : base(log)
+    {
+        _accountsService = accountsService;
+
+        PageTitle = $"{HeaderText} - {SubHeaderText}";
+    }
 
     public string PageTitle { get; }
     public string HeaderText { get; } = "Accounts";
@@ -18,14 +25,14 @@ internal sealed class BankAccountStatementImportViewModel : ViewModelBase, IBank
     // https://pdfobject.com/static/
     public string EmbeddedFileContentSrc { get; private set; } = string.Empty;
 
-    public void ImportStatement (string contentType, string fileName, long fileSize, byte[] fileContent)
+    public async Task ImportStatementAsync (string contentType, string fileName, long fileSize, byte[] fileContent)
     {
         FileName = fileName;
         FileSize = fileSize;
         EmbeddedFileContentSrc = $"data:{contentType};base64,{Convert.ToBase64String(fileContent)}";
 
-        // PDF File reader
-        // https://www.nuget.org/packages/PDFsharp/6.0.0-preview-2
-        // https://github.com/empira/PDFsharp
+        var result = await _accountsService.ParseBankAccountStatementAsync(fileContent);
+
+        // TODO: Display the result in a grid.
     }
 }

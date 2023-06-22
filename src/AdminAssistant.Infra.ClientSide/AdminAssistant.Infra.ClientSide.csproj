@@ -28,6 +28,7 @@
     <PackageReference Include="AutoMapper" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" />
+    <PackageReference Include="PDFsharp" />
     <PackageReference Include="Polly.Extensions.Http" />
     <PackageReference Include="Polly" />
   </ItemGroup>

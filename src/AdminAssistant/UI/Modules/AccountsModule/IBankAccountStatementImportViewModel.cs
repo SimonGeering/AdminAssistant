@@ -6,5 +6,5 @@ public interface IBankAccountStatementImportViewModel : IModuleViewModelBase
     long FileSize { get; }
     string EmbeddedFileContentSrc { get; }
 
-    void ImportStatement (string contentType, string fileName, long fileSize, byte[] fileContent);
+    Task ImportStatementAsync (string contentType, string fileName, long fileSize, byte[] fileContent);
 }

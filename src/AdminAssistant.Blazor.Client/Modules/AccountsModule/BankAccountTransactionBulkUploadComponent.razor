@@ -48,7 +48,7 @@
         await browserFile.OpenReadStream().CopyToAsync(memoryStream).ConfigureAwait(false);
         byte[] fileBytes = memoryStream.ToArray();
 
-        vm.ImportStatement(browserFile.ContentType, browserFile.Name, browserFile.Size, fileBytes);
+        await vm.ImportStatementAsync(browserFile.ContentType, browserFile.Name, browserFile.Size, fileBytes);
     }
 }
 
