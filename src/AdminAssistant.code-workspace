@@ -139,7 +139,7 @@
                 "front_matter_title": ""
             }
         },
-        "dotnet.defaultSolution": "src\\AdminAssistant.sln"
+        "dotnet.defaultSolution": "src/AdminAssistant.sln"
     },
     "extensions": {
         "recommendations": [
