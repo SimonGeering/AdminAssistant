@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
 {
-    [DbContext(typeof(ApplicationDbContext))]
+    [DbContext(typeof(SqlServerApplicationDbContext))]
     [Migration("20201019144909_Initial")]
     partial class Initial
     {
@@ -372,7 +372,7 @@ namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
+                        .HasDefaultValueSql("GETUTCDATE()");
 
                     b.Property<string>("DeletedBy")
                         .IsRequired()
