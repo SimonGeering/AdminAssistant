@@ -32,9 +32,9 @@ public static class CoreSchema
         return new CurrencyEntity[] { GBP, EUR, USD };
     }
 
-    internal static void OnModelCreating(ModelBuilder modelBuilder)
+    internal static void OnModelCreating(ModelBuilder modelBuilder, DatabaseProvider databaseProvider)
     {
-        CoreSchema.Audit_OnModelCreating(modelBuilder);
+        CoreSchema.Audit_OnModelCreating(modelBuilder, databaseProvider);
         CoreSchema.Company_OnModelCreating(modelBuilder);
         CoreSchema.Currency_OnModelCreating(modelBuilder);
         CoreSchema.Owner_OnModelCreating(modelBuilder);
@@ -46,7 +46,7 @@ public static class CoreSchema
         CoreSchema.UserProfileSetting_OnModelCreating(modelBuilder);
     }
 
-    private static void Audit_OnModelCreating(ModelBuilder modelBuilder)
+    private static void Audit_OnModelCreating(ModelBuilder modelBuilder, DatabaseProvider databaseProvider)
     {
         modelBuilder.Entity<AuditEntity>().ToTable("Audit").Metadata.SetSchema(CoreSchema.Name);
         modelBuilder.Entity<AuditEntity>().HasKey(x => x.AuditID);
@@ -77,7 +77,19 @@ public static class CoreSchema
 
         modelBuilder.Entity<AuditEntity>().Property(x => x.IsArchived).IsRequired().HasDefaultValue(false);
         modelBuilder.Entity<AuditEntity>().Property(x => x.IsDeleted).IsRequired().HasDefaultValue(false);
-        modelBuilder.Entity<AuditEntity>().Property(x => x.CreatedOn).IsRequired().HasDefaultValueSql("GETDATE()");
+        switch (databaseProvider)
+        {
+            case DatabaseProvider.SQLServer:
+            case DatabaseProvider.SQLServerLocalDB:
+                modelBuilder.Entity<AuditEntity>().Property(x => x.CreatedOn).IsRequired().HasDefaultValueSql("GETUTCDATE()");
+                break;
+            case DatabaseProvider.SQLite:
+                modelBuilder.Entity<AuditEntity>().Property(x => x.CreatedOn).IsRequired().HasDefaultValueSql("datetime()");
+                break;
+            case DatabaseProvider.PostgresSQL:
+                modelBuilder.Entity<AuditEntity>().Property(x => x.CreatedOn).IsRequired().HasDefaultValueSql("NOW()");
+                break;
+        }
         modelBuilder.Entity<AuditEntity>().Property(x => x.CreatedBy).IsRequired().IsUnicode().HasMaxLength(Constants.UserSignOnMaxLength);
         modelBuilder.Entity<AuditEntity>().Property(x => x.UpdatedBy).IsRequired().IsUnicode().HasMaxLength(Constants.UserSignOnMaxLength).HasDefaultValue(default(string));
         modelBuilder.Entity<AuditEntity>().Property(x => x.ArchivedBy).IsRequired().IsUnicode().HasMaxLength(Constants.UserSignOnMaxLength).HasDefaultValue(default(string));

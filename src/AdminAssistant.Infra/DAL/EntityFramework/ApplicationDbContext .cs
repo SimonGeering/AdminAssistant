@@ -1,3 +1,4 @@
+using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework.Model;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;
@@ -45,12 +46,12 @@ public interface IApplicationDbContext : IDisposable
 
 // dotnet ef migrations add InitialCreate --startup-project ..\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.csproj
 // dotnet ef database update
-public sealed class ApplicationDbContext : DbContext, IApplicationDbContext
+public abstract class ApplicationDbContext : DbContext, IApplicationDbContext
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
+    private readonly DatabaseProvider _databaseProvider;
+
+    protected ApplicationDbContext(DbContextOptions options, DatabaseProvider databaseProvider)
+        : base(options) => _databaseProvider = databaseProvider;
 
     // Core ...
     public DbSet<AuditEntity> AuditTrail { get; set; } = null!;
@@ -82,7 +83,7 @@ public sealed class ApplicationDbContext : DbContext, IApplicationDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        CoreSchema.OnModelCreating(modelBuilder);
+        CoreSchema.OnModelCreating(modelBuilder, _databaseProvider);
 
         AccountsSchema.OnModelCreating(modelBuilder);
         AssetRegisterSchema.OnModelCreating(modelBuilder);

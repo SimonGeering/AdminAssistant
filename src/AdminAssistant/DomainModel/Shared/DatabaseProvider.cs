@@ -5,4 +5,5 @@ public enum DatabaseProvider
     SQLServer,
     SQLServerLocalDB,
     SQLite,
+    PostgresSQL
 }

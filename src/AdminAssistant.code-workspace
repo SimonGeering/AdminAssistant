@@ -165,7 +165,8 @@
             "pflannery.vscode-versionlens",
             "vscode-icons-team.vscode-icons",
             "ms-azuretools.vscode-docker",
-            "systemticks.c4-dsl-extension"
+            "systemticks.c4-dsl-extension",
+            "ms-ossdata.vscode-postgresql"
         ],
         "unwantedRecommendations": [
             "ms-vscode.azurecli",
