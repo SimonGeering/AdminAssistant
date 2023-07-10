@@ -1,7 +1,7 @@
 #pragma warning disable IDE0053 // Use expression body for lambda expressions
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
+namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations.SqlServer
 {
     public partial class Initial : Migration
     {

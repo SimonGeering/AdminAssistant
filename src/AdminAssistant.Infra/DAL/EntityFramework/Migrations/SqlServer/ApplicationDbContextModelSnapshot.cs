@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations
+namespace AdminAssistant.Infra.DAL.EntityFramework.Migrations.SqlServer
 {
     [DbContext(typeof(SqlServerApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
