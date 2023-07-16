@@ -56,15 +56,18 @@ public sealed class Startup
         services.AddControllers().AddNewtonsoftJson()
           .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>());
 
-        services.AddHealthChecks();
 
-        services.AddHealthChecksUI(setupSettings: setup =>
+        if (System.Diagnostics.Debugger.IsAttached == false)
         {
-           // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-           setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", _env.IsDevelopment() ? "http://localhost:5000/api/health" : "/api/health");
-           setup.SetEvaluationTimeInSeconds(45); // Configures the UI to poll for health-checks updates every 5 seconds
-           setup.MaximumHistoryEntriesPerEndpoint(50);
-        }).AddInMemoryStorage();
+            services.AddHealthChecks();
+            services.AddHealthChecksUI(setupSettings: setup =>
+            {
+                // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+                setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", _env.IsDevelopment() ? "http://localhost:5000/api/health" : "/api/health");
+                setup.SetEvaluationTimeInSeconds(45); // Configures the UI to poll for health-checks updates every 5 seconds
+                setup.MaximumHistoryEntriesPerEndpoint(50);
+            }).AddInMemoryStorage();
+        }
 
         services.AddSwaggerGen(c =>
         {
@@ -89,18 +92,21 @@ public sealed class Startup
 
         services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
 
-        services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+        if (System.Diagnostics.Debugger.IsAttached == false)
         {
-            var serviceName = "AdminAssistant.BlazorServer";
-            tracerProviderBuilder
-                .AddConsoleExporter()
-                .AddSource(serviceName)
-                .SetResourceBuilder(ResourceBuilder.CreateDefault()
-                        .AddService(serviceName: serviceName, serviceVersion: "V1.0.0"))
-                .AddHttpClientInstrumentation()
-                .AddAspNetCoreInstrumentation()
-                .AddSqlClientInstrumentation();
-        });
+            services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+            {
+                var serviceName = "AdminAssistant.BlazorServer";
+                tracerProviderBuilder
+                    .AddConsoleExporter()
+                    .AddSource(serviceName)
+                    .SetResourceBuilder(ResourceBuilder.CreateDefault()
+                            .AddService(serviceName: serviceName, serviceVersion: "V1.0.0"))
+                    .AddHttpClientInstrumentation()
+                    .AddAspNetCoreInstrumentation()
+                    .AddSqlClientInstrumentation();
+            });
+        }
 
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
@@ -144,13 +150,15 @@ public sealed class Startup
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
             app.UseRouting();
-#pragma warning disable IDE0053 // Use expression body for lambda expressions
             app.UseEndpoints(config =>
             {
                 config.MapFallbackToFile("index.html");
-                config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+
+                if (System.Diagnostics.Debugger.IsAttached == false)
+                {
+                    config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+                }
             });
-#pragma warning restore IDE0053 // Use expression body for lambda expressions
         });
         app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api"), api =>
         {
@@ -160,11 +168,15 @@ public sealed class Startup
             {
                 config.MapRazorPages();
                 config.MapControllers();
-                config.MapHealthChecks("/api/health", new HealthCheckOptions
+
+                if (System.Diagnostics.Debugger.IsAttached == false)
                 {
-                    Predicate = _ => true,
-                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                });
+                    config.MapHealthChecks("/api/health", new HealthCheckOptions
+                    {
+                        Predicate = _ => true,
+                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                    });
+                }
             });
         });
     }

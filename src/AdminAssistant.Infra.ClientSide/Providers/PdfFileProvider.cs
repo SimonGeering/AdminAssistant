@@ -1,5 +1,5 @@
 ﻿using PdfSharp.Fonts;
-using PdfSharp.Snippets.Font;
+//using PdfSharp.Snippets.Font;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.Content.Objects;
@@ -9,8 +9,8 @@ namespace AdminAssistant.Infra.Providers
 {
     public class PdfFileProvider : IPdfFileProvider
     {
-        public PdfFileProvider() // see https://docs.pdfsharp.net/General/Overview/Port-to-v6.0.html
-            => GlobalFontSettings.FontResolver = new FailsafeFontResolver();
+        //public PdfFileProvider() // see https://docs.pdfsharp.net/General/Overview/Port-to-v6.0.html
+        //    => GlobalFontSettings.FontResolver = new FailsafeFontResolver();
 
         public Task<IEnumerable<string>> ReadAllLinesAsync(byte[] fileContent)
         {
@@ -20,8 +20,10 @@ namespace AdminAssistant.Infra.Providers
 
             var result = new List<string>();
 
-            using var stream = new MemoryStream(fileContent);
-            using var pdfDocument = PdfReader.Open(stream);
+            //using var stream = new MemoryStream(fileContent);
+            var pdfFilePath = Path.Combine(Directory.GetCurrentDirectory(), "_TestData", "ConfidentialTestData", "BankAccountStatement.pdf");
+
+            using var pdfDocument = PdfReader.Open(pdfFilePath);
 
             foreach (var page in pdfDocument.Pages)
             {
