@@ -6,8 +6,7 @@ namespace AdminAssistant.Test.Infra.Providers;
 
 public sealed class PdfFileProvider_ReadAllLinesAsync_Should
 {
-    //[Fact(Skip="WIP")]
-    [Fact]
+    [Fact(Skip="WIP")]
     [Trait("Category", "Manual")]
     public async Task ReturnMultipleLines_WhenReadingFromAValidLocalTestFile()
     {

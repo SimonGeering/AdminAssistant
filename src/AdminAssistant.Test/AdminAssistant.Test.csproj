@@ -4,7 +4,6 @@
     <TargetFramework>net7.0</TargetFramework>
     <Product>Admin Assistant</Product>
     <IsPackable>false</IsPackable>
-    <RootNamespace>AdminAssistant</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>

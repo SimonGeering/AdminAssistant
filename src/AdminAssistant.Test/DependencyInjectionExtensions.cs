@@ -3,23 +3,25 @@ using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.Providers;
 using Microsoft.Extensions.Logging;
 
+// ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjectionExtensions
 {
     public static void AddMockDbContext(this IServiceCollection services, Mock<IApplicationDbContext> mockDbContext)
-        => services.AddTransient((sp) => mockDbContext.Object);
+        => services.AddTransient(_ => mockDbContext.Object);
 
     public static void AddMockUserContextProvider(this IServiceCollection services)
     {
-        var result = new User() { SignOn = "TestUser" };
+        var result = new User { SignOn = "TestUser" };
         services.AddMockUserContextProvider(result);
     }
-    public static void AddMockUserContextProvider(this IServiceCollection services, User user)
+
+    private static void AddMockUserContextProvider(this IServiceCollection services, User user)
     {
         var mockUserContext = new Mock<IUserContextProvider>();
         mockUserContext.Setup(x => x.GetCurrentUser()).Returns(user);
-        services.AddTransient((sp) => mockUserContext.Object);
+        services.AddTransient(_ => mockUserContext.Object);
     }
 
     public static void AddMockDateTimeProvider(this IServiceCollection services)
@@ -29,19 +31,19 @@ public static class DependencyInjectionExtensions
     {
         var mockUserContext = new Mock<IDateTimeProvider>();
         mockUserContext.Setup(x => x.UtcNow).Returns(dateTime);
-        services.AddTransient((sp) => mockUserContext.Object);
+        services.AddTransient(_ => mockUserContext.Object);
     }
 
     public static void AddMocksOfExternalServerSideDependencies(this IServiceCollection services)
     {
         services.AddMockServerSideLogging();
-        services.AddTransient((sp) => new Mock<IMapper>().Object);
+        services.AddTransient(_ => new Mock<IMapper>().Object);
     }
 
     public static void AddMocksOfExternalClientSideDependencies(this IServiceCollection services)
     {
         services.AddMockClientSideLogging();
-        services.AddTransient((sp) => new Mock<IMapper>().Object);
+        services.AddTransient(_ => new Mock<IMapper>().Object);
     }
 
     public static void AddMockServerSideLogging(this IServiceCollection services)
@@ -68,8 +70,7 @@ public static class DependencyInjectionExtensions
             .Returns(() => mockLogger.Object);
 
         services.AddTransient((sp) => mockLoggerFactory.Object);
-        // TODO: look at if this can be refactored to allow 
+        // TODO: look at if this can be refactored to allow
         services.AddTransient<ILoggingProvider, ServerSideLoggingProvider>();
     }
 }
-
