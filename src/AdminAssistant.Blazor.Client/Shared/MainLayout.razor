@@ -12,8 +12,8 @@
         <MudSpacer />
         <MudMenu Icon="@Icons.Material.Filled.Settings" Color="@_appBarItemColor" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
             <MudStack Class="pl-2">
-                <MudSwitch T="bool" Checked="_isDarkMode" CheckedChanged="OnIsDarkModeChanged" Color="Color.Primary" Label="Toggle Light/Dark Mode" />
-                <MudSwitch T="bool" Checked="_isDense" CheckedChanged="OnIsDenseChanged" Color="Color.Primary" Label="Toggle Dense Spacing" />
+                <MudSwitch T="bool" Checked="_isDarkMode" CheckedChanged="(e) => OnIsDarkModeChanged(e)" Color="Color.Primary" Label="Toggle Light/Dark Mode" />
+                <MudSwitch T="bool" Checked="_isDense" CheckedChanged="(e) => OnIsDenseChanged(e)" Color="Color.Primary" Label="Toggle Dense Spacing" />
             </MudStack>
         </MudMenu>
         <MudAvatar Size="@_avatarSize" Color="@_appBarItemColor">SG</MudAvatar>
@@ -52,9 +52,12 @@
     private void OnDrawerToggleClick() => _drawerOpen = !_drawerOpen;
 
     private bool _isDarkMode;
-    private void OnIsDarkModeChanged(bool isDarkMode)
+    private void OnIsDarkModeChanged(bool? isDarkMode)
     {
-        if (isDarkMode)
+        if (isDarkMode.HasValue == false)
+            return;
+
+        if (isDarkMode.Value)
         {
             _appBarItemColor = Color.Primary;
         }
@@ -62,13 +65,16 @@
         {
             _appBarItemColor = Color.Tertiary;
         }
-        _isDarkMode = isDarkMode;
+        _isDarkMode = isDarkMode.Value;
     }
 
     private bool _isDense = false;
-    private void OnIsDenseChanged(bool isDense)
+    private void OnIsDenseChanged(bool? isDense)
     {
-        if (isDense)
+        if (isDense.HasValue == false)
+            return;
+
+        if (isDense.Value)
         {
             _avatarSize = Size.Small;
         }
@@ -76,6 +82,6 @@
         {
             _avatarSize = Size.Small;
         }
-        _isDense = isDense;
+        _isDense = isDense.Value;
     }
 }
