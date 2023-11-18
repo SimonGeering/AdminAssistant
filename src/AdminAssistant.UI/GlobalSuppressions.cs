@@ -7,3 +7,4 @@ using System.Diagnostics.CodeAnalysis;
 
 [assembly: SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Readability", Scope = "member", Target = "~M:AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialogViewModel.GetValidationMessageForField(System.String,FluentValidation.Results.ValidationResult)~System.String")]
 [assembly: SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Readability", Scope = "member", Target = "~M:AdminAssistant.UI.Modules.AccountsModule.BankAccountEditDialogViewModel.GetValidationClassForField(System.String,FluentValidation.Results.ValidationResult)~System.String")]
+[assembly: SuppressMessage("Info Code Smell", "S1133:Deprecated code should be removed", Justification = "<Pending>", Scope = "member", Target = "~M:AdminAssistant.UI.ViewModelBase.OnInitializedAsync~System.Threading.Tasks.Task")]

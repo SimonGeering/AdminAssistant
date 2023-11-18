@@ -1,4 +1,5 @@
-﻿using PdfSharp.Fonts;
+#pragma warning disable S125 // Sections of code should not be commented out
+using PdfSharp.Fonts;
 //using PdfSharp.Snippets.Font;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Pdf;
@@ -72,3 +73,4 @@ namespace AdminAssistant.Infra.Providers
         }
     }
 }
+#pragma warning restore S125 // Sections of code should not be commented out
