@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Abstractions\AdminAssistant.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
