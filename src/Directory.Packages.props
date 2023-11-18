@@ -34,9 +34,11 @@
     <!--AdminAssistant.Blazor.Client-->
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
     <!--Legacy AdminAssistant.Blazor-->
+    <!--
     <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="7.0.0-rc2.7" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="7.0.0-rc2.7" />
     <PackageVersion Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="7.0.0-rc2.7" />
+    -->
     <PackageVersion Include="FluentValidation.AspNetCore" Version="10.3.4" />
     <PackageVersion Include="MicroElements.Swashbuckle.FluentValidation" Version="5.4.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.0" />
