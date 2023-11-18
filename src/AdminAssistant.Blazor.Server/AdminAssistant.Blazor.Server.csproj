@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <None Remove="AdminAssistant.Blazor.Server.docs.xml" />
-    <None Include="..\..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,9 +62,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
-    <ProjectReference Include="..\..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
-    <ProjectReference Include="..\AdminAssistant.Blazor.Client\AdminAssistant.Blazor.Client.csproj" />
+    <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />
   </ItemGroup>
 
   <ItemGroup>
