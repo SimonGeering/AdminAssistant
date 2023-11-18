@@ -19,8 +19,8 @@ namespace AdminAssistant.Test;
 [Collection("SequentialDBBackedTests")]
 public abstract class IntegrationTestBase : IDisposable
 {
+    private Respawn.Respawner? _respawner;
     private readonly IHost _testServer;
-    private readonly Respawn.Checkpoint _checkpoint;
     private readonly string _connectionString;
     private readonly HttpClient _httpClient;
 
@@ -77,18 +77,6 @@ public abstract class IntegrationTestBase : IDisposable
         // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
         _connectionString = _testServer.Services.GetRequiredService<IApplicationDbContext>().ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
 
-        _checkpoint = new Respawn.Checkpoint
-        {
-            // Ignore system tables and anything that was populated by the EF seed data...
-            TablesToIgnore = new[]
-            {
-                "sysdiagrams",
-                "__EFMigrationsHistory",
-                "tblObjectType"
-            },
-            WithReseed = true
-        };
-
         Container = _testServer.Services;
         _httpClient = _testServer.GetTestClient();
     }
@@ -102,7 +90,13 @@ public abstract class IntegrationTestBase : IDisposable
 
     protected async Task ResetDatabaseAsync()
     {
-        await _checkpoint.Reset(_connectionString).ConfigureAwait(false);
+        _respawner ??= await Respawn.Respawner.CreateAsync(_connectionString, new Respawn.RespawnerOptions
+        {
+            // Ignore system tables and anything that was populated by the EF seed data...
+            TablesToIgnore = ["sysdiagrams", "__EFMigrationsHistory", "tblObjectType"],
+            WithReseed = true
+        });        
+        await _respawner.ResetAsync(_connectionString).ConfigureAwait(false);
 
         // Test Seed data ...
         var dbContext = Container.GetRequiredService<IApplicationDbContext>();
@@ -117,8 +111,8 @@ public abstract class IntegrationTestBase : IDisposable
 
     protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
     {
-            // Register the WebAPIClient using the test httpClient ...
-            services.AddTransient<IAdminAssistantWebAPIClient>((sp) =>
+        // Register the WebAPIClient using the test httpClient ...
+        services.AddTransient<IAdminAssistantWebAPIClient>((sp) =>
         {
             Guard.Against.Null(_httpClient.BaseAddress, "httpClient.BaseAddress");
             return new AdminAssistantWebAPIClient(_httpClient) { BaseUrl = _httpClient.BaseAddress.ToString() };

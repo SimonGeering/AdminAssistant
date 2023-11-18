@@ -13,7 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\docs\cli.md = ..\docs\cli.md
 		..\docs\database.dbml = ..\docs\database.dbml
 		Directory.Packages.props = Directory.Packages.props
-		..\tools.ps1 = ..\tools.ps1
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Infra", "AdminAssistant.Infra\AdminAssistant.Infra.csproj", "{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}"
@@ -32,9 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Clien
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Server", "zzNet7\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj", "{C451E24C-7D1A-4612-8CC5-0C9EB242CC29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Blazor", "AdminAssistant.Blazor\AdminAssistant.Blazor\AdminAssistant.Blazor.csproj", "{C93C71FC-E5FE-4229-9C06-DCC46AC68AE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor", "AdminAssistant.Blazor\AdminAssistant.Blazor\AdminAssistant.Blazor.csproj", "{C93C71FC-E5FE-4229-9C06-DCC46AC68AE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Blazor.Client", "AdminAssistant.Blazor\AdminAssistant.Blazor.Client\AdminAssistant.Blazor.Client.csproj", "{6777E0DC-5593-4F0A-8DF4-76842FF3A4B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Client", "AdminAssistant.Blazor\AdminAssistant.Blazor.Client\AdminAssistant.Blazor.Client.csproj", "{6777E0DC-5593-4F0A-8DF4-76842FF3A4B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
