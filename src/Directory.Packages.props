@@ -5,7 +5,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PlatformTarget>AnyCPU</PlatformTarget>
-      <!--https://github.com/dotnet/aspnetcore/issues/50836-->
+    <!--https://github.com/dotnet/aspnetcore/issues/50836-->
     <NoWarn>S1135;S1125;1701;1702;1591;NU1605;CS1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
@@ -21,7 +21,7 @@
     <PackageVersion Include="Microsoft.Extensions.Http" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Toolkit.Mvvm" Version="7.1.1" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.0.0.68202" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.12.0.78982" />
     <!--AdminAssistant.Abstractions-->
     <PackageVersion Include="Ardalis.Result" Version="3.1.2" />
     <PackageVersion Include="Ardalis.Result.FluentValidation" Version="3.0.2" />
