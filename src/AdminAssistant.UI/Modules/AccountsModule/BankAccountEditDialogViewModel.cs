@@ -149,9 +149,9 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
         }
     }
 
-    public BindingList<BankAccountType> BankAccountTypes { get; } = new BindingList<BankAccountType>();
+    public BindingList<BankAccountType> BankAccountTypes { get; } = [];
 
-    public BindingList<Currency> Currencies { get; } = new BindingList<Currency>();
+    public BindingList<Currency> Currencies { get; } = [];
 
     private string headerText = string.Empty;
     public string HeaderText

@@ -12,7 +12,8 @@ using OpenTelemetry.Trace;
 
 namespace AdminAssistant.Blazor.Server;
 
-public sealed class Startup(IHostEnvironment env, IConfiguration configuration)
+//public sealed class Startup(IHostEnvironment env, IConfiguration configuration)
+public sealed class Startup(IConfiguration configuration)
 {
     // TODO: Make version a constant shared with WebAPI Assemblies
     private const string WebAPIVersion = "v1";

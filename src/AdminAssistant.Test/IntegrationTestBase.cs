@@ -82,8 +82,8 @@ public abstract class IntegrationTestBase : IDisposable
     }
 
     protected IServiceProvider Container { get; }
-    protected List<BankAccountTypeEntity> BankAccountTypes { get; private set; } = new List<BankAccountTypeEntity>();
-    protected List<CurrencyEntity> Currencies { get; private set; } = new List<CurrencyEntity>();
+    protected List<BankAccountTypeEntity> BankAccountTypes { get; private set; } = [];
+    protected List<CurrencyEntity> Currencies { get; private set; } = [];
     protected UserProfileEntity UserProfile { get; private set; } = new UserProfileEntity();
     protected OwnerEntity CompanyOwner { get; private set; } = new OwnerEntity();
     protected OwnerEntity PersonalOwner { get; private set; } = new OwnerEntity();
