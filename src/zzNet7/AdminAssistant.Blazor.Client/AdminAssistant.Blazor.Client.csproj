@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <None Remove="AdminAssistant.Blazor.Client.docs.xml" />
-    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <None Include="..\..\.editorconfig" Link=".editorconfig" />
     <Folder Include="Properties\" />
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
@@ -42,9 +42,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
-    <ProjectReference Include="..\AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj" />
-    <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    <ProjectReference Include="..\..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+    <ProjectReference Include="..\..\AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj" />
+    <ProjectReference Include="..\..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
   </ItemGroup>
 
 </Project>
