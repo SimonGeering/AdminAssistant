@@ -10,13 +10,9 @@ namespace AdminAssistant.WebAPI.v1.AssetRegisterModule;
 [ApiController]
 [Route("api/v1/assetregister-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Asset Register Module")]
-public sealed class AssetController : WebApiControllerBase
+public sealed class AssetController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
+    : WebApiControllerBase(mapper, mediator, loggingProvider)
 {
-    public AssetController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-        : base(mapper, mediator, loggingProvider)
-    {
-    }
-
     [HttpGet]
     [SwaggerOperation("Lists all assets", OperationId = "GetAsset")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of AssetResponseDto", type: typeof(IEnumerable<AssetResponseDto>))]

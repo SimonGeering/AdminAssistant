@@ -10,13 +10,9 @@ namespace AdminAssistant.WebAPI.v1.MailModule;
 [ApiController]
 [Route("api/v1/mail-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Mail Module")]
-public sealed class MailMessageController : WebApiControllerBase
+public sealed class MailMessageController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
+    : WebApiControllerBase(mapper, mediator, loggingProvider)
 {
-    public MailMessageController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-        : base(mapper, mediator, loggingProvider)
-    {
-    }
-
     [HttpGet]
     [SwaggerOperation("Lists all mail messages", OperationId = "GetMailMessage")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of MailMessageResponseDto", type: typeof(IEnumerable<MailMessageResponseDto>))]

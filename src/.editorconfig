@@ -401,3 +401,6 @@ csharp_style_allow_blank_lines_between_consecutive_braces_experimental = true:si
 csharp_style_allow_blank_line_after_colon_in_constructor_initializer_experimental = true:silent
 csharp_style_prefer_extended_property_pattern = true:suggestion
 csharp_style_prefer_not_pattern = true:suggestion
+
+# IDE0290: Use primary constructor
+dotnet_diagnostic.IDE0290.severity = warning

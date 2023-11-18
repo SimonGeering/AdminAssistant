@@ -3,16 +3,12 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 
-internal sealed class BankByIDQueryHandler : RequestHandlerBase<BankByIDQuery, Result<Bank>>
+internal sealed class BankByIDQueryHandler(IBankRepository bankRepository, ILoggingProvider loggingProvider)
+    : RequestHandlerBase<BankByIDQuery, Result<Bank>>(loggingProvider)
 {
-    private readonly IBankRepository _bankRepository;
-
-    public BankByIDQueryHandler(IBankRepository bankRepository, ILoggingProvider loggingProvider)
-        : base(loggingProvider) => _bankRepository = bankRepository;
-
     public override async Task<Result<Bank>> Handle(BankByIDQuery request, CancellationToken cancellationToken)
     {
-        var result = await _bankRepository.GetAsync(request.BankID).ConfigureAwait(false);
+        var result = await bankRepository.GetAsync(request.BankID).ConfigureAwait(false);
 
         if (result == null || result.BankID == Constants.UnknownRecordID)
             return Result<Bank>.NotFound();

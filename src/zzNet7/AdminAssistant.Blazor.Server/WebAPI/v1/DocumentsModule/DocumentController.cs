@@ -10,13 +10,9 @@ namespace AdminAssistant.WebAPI.v1.DocumentsModule;
 [ApiController]
 [Route("api/v1/document-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Documents Module")]
-public sealed class DocumentController : WebApiControllerBase
+public sealed class DocumentController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
+    : WebApiControllerBase(mapper, mediator, loggingProvider)
 {
-    public DocumentController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-        : base(mapper, mediator, loggingProvider)
-    {
-    }
-
     [HttpGet]
     [SwaggerOperation("Lists all documents.", OperationId = "GetDocument")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of DocumentResponseDto", type: typeof(IEnumerable<DocumentResponseDto>))]

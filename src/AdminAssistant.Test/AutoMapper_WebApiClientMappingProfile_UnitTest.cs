@@ -1,5 +1,4 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.DomainModel.Modules.AssetRegisterModule;
 using AdminAssistant.DomainModel.Modules.BudgetModule;
@@ -15,13 +14,12 @@ namespace AdminAssistant.Test.UI.Shared.WebAPIClient.v1;
 
 public class WebApiClientMappingProfile_Should
 {
-    private readonly IConfigurationProvider _configuration;
+    private readonly MapperConfiguration _configuration;
     private readonly IMapper _mapper;
 
     public WebApiClientMappingProfile_Should()
     {
         _configuration = new MapperConfiguration(cfg => cfg.AddProfile<MappingProfile>());
-
         _mapper = _configuration.CreateMapper();
     }
 

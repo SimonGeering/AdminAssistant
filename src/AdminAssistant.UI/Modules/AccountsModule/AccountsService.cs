@@ -5,13 +5,13 @@ using AutoMapper;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-internal sealed class AccountsService : ServiceBase, IAccountsService
+internal sealed class AccountsService(
+    IPdfFileProvider pdfFileProvider,
+    IAdminAssistantWebAPIClient adminAssistantWebAPIClient,
+    IMapper mapper,
+    ILoggingProvider log)
+    : ServiceBase(adminAssistantWebAPIClient, mapper, log), IAccountsService
 {
-    private readonly IPdfFileProvider _pdfFileProvider;
-
-    public AccountsService(IPdfFileProvider pdfFileProvider, IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
-        : base(adminAssistantWebAPIClient, mapper, log) => _pdfFileProvider = pdfFileProvider;
-
     public async Task<List<BankAccountType>> LoadBankAccountTypesLookupDataAsync()
     {
         Log.Start();
@@ -52,7 +52,7 @@ internal sealed class AccountsService : ServiceBase, IAccountsService
     {
         Log.Start();
 
-        var result = await _pdfFileProvider.ReadAllLinesAsync(fileContent);
+        var result = await pdfFileProvider.ReadAllLinesAsync(fileContent);
         return Log.Finish(result);
     }
 }

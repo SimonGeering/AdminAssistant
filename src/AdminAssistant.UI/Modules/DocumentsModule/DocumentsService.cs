@@ -5,13 +5,12 @@ using AutoMapper;
 
 namespace AdminAssistant.UI.Modules.DocumentsModule;
 
-internal sealed class DocumentsService : ServiceBase, IDocumentsService
+internal sealed class DocumentsService(
+    IAdminAssistantWebAPIClient adminAssistantWebAPIClient,
+    IMapper mapper,
+    ILoggingProvider log)
+    : ServiceBase(adminAssistantWebAPIClient, mapper, log), IDocumentsService
 {
-    public DocumentsService(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
-        : base(adminAssistantWebAPIClient, mapper, log)
-    {
-    }
-
     public async Task<List<Document>> GetDocumentListAsync()
     {
         Log.Start();

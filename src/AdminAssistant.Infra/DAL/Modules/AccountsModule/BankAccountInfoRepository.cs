@@ -7,12 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
 
-internal sealed class BankAccountInfoRepository : RepositoryBase, IBankAccountInfoRepository
+internal sealed class BankAccountInfoRepository(
+    IApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankAccountInfoRepository
 {
-    public BankAccountInfoRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
-        : base(dbContext, mapper, dateTimeProvider, userContextProvider)
-    {
-    }
 
     // TODO: Check this transform is being done in TSQL server side.
     public async Task<BankAccountInfo?> GetAsync(int id) => await DbContext.BankAccounts.Select(x => new BankAccountInfo

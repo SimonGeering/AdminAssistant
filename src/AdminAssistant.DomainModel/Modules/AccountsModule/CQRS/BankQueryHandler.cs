@@ -3,16 +3,12 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 
-internal sealed class BankQueryHandler : RequestHandlerBase<BankQuery, Result<IEnumerable<Bank>>>
+internal sealed class BankQueryHandler(IBankRepository bankRepository, ILoggingProvider loggingProvider)
+    : RequestHandlerBase<BankQuery, Result<IEnumerable<Bank>>>(loggingProvider)
 {
-    private readonly IBankRepository _bankRepository;
-
-    public BankQueryHandler(IBankRepository bankRepository, ILoggingProvider loggingProvider)
-        : base(loggingProvider) => _bankRepository = bankRepository;
-
     public override async Task<Result<IEnumerable<Bank>>> Handle(BankQuery request, CancellationToken cancellationToken)
     {
-        var result = await _bankRepository.GetListAsync().ConfigureAwait(false);
+        var result = await bankRepository.GetListAsync().ConfigureAwait(false);
 
         Trace.Assert(result.Count > 0, "Bank list was not populated.");
 

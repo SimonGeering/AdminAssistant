@@ -4,28 +4,22 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 
-internal sealed class BankUpdateCommandHandler : RequestHandlerBase<BankUpdateCommand, Result<Bank>>
+internal sealed class BankUpdateCommandHandler(
+    ILoggingProvider loggingProvider,
+    IBankRepository bankRepository,
+    IBankValidator bankValidator)
+    : RequestHandlerBase<BankUpdateCommand, Result<Bank>>(loggingProvider)
 {
-    private readonly IBankRepository _bankRepository;
-    private readonly IBankValidator _bankValidator;
-
-    public BankUpdateCommandHandler(ILoggingProvider loggingProvider, IBankRepository bankRepository, IBankValidator bankValidator)
-        : base(loggingProvider)
-    {
-        _bankRepository = bankRepository;
-        _bankValidator = bankValidator;
-    }
-
     public override async Task<Result<Bank>> Handle(BankUpdateCommand command, CancellationToken cancellationToken)
     {
-        var validationResult = await _bankValidator.ValidateAsync(command.Bank, cancellationToken).ConfigureAwait(false);
+        var validationResult = await bankValidator.ValidateAsync(command.Bank, cancellationToken).ConfigureAwait(false);
 
         if (validationResult.IsValid == false)
         {
             return Result<Bank>.Invalid(validationResult.AsErrors());
         }
 
-        var result = await _bankRepository.SaveAsync(command.Bank).ConfigureAwait(false);
+        var result = await bankRepository.SaveAsync(command.Bank).ConfigureAwait(false);
         return Result<Bank>.Success(result);
     }
 }

@@ -70,10 +70,10 @@ public sealed class ContactRepository_unitTest
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetAsync(contactList.First().ContactID).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetAsync(contactList[Constants.FirstItem].ContactID).ConfigureAwait(false);
 
         // Assert
-        result.Should().BeEquivalentTo(contactList.First());
+        result.Should().BeEquivalentTo(contactList[Constants.FirstItem]);
     }
 
     [Fact]

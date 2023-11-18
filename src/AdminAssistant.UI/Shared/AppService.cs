@@ -1,16 +1,9 @@
 namespace AdminAssistant.UI.Shared;
 
-internal sealed class AppService : IAppService
+internal sealed class AppService(FontAwesomeVersion fontAwesomeVersion) : IAppService
 {
     private const Mode DefaultMode = Mode.Company;
     private const Module DefaultModule = Module.Dashboard;
-
-    private readonly FontAwesomeVersion _fontAwesomeVersion;
-
-    //        private int OwnerID { get; set; } = 10; // TODO: switch to owner details later.
-
-    public AppService(FontAwesomeVersion fontAwesomeVersion)
-        => _fontAwesomeVersion = fontAwesomeVersion;
 
     public ModeSelectionItem GetDefaultMode() => GetModeItem(DefaultMode);
 
@@ -58,7 +51,7 @@ internal sealed class AppService : IAppService
         return new ModuleSelectionItem(module, tag: label, label: label, icon: GetIconForModule(module));
     }
 
-    private string GetIconForMode(Mode mode) => (_fontAwesomeVersion, mode) switch
+    private string GetIconForMode(Mode mode) => (fontAwesomeVersion, mode) switch
     {
         (FontAwesomeVersion.V4o7o0, Mode.Company) => "fa fa-building-o",
         (FontAwesomeVersion.V4o7o0, Mode.Personal) => "fa fa-male",
@@ -86,7 +79,7 @@ internal sealed class AppService : IAppService
         _ => throw new ArgumentOutOfRangeException(nameof(module))
     };
 
-    private string GetIconForModule(Module module) => (_fontAwesomeVersion, module) switch
+    private string GetIconForModule(Module module) => (fontAwesomeVersion, module) switch
     {
         (FontAwesomeVersion.V4o7o0, Module.Mail) => "fa fa-envelope",
         (FontAwesomeVersion.V4o7o0, Module.Calendar) => "fa fa-calendar",

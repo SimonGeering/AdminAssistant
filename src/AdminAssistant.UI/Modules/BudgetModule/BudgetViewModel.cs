@@ -2,14 +2,9 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.BudgetModule;
 
-internal sealed class BudgetViewModel : ViewModelBase, IBudgetViewModel
+internal sealed class BudgetViewModel(ILoggingProvider loggingProvider)
+    : ViewModelBase(loggingProvider), IBudgetViewModel
 {
-    public BudgetViewModel(ILoggingProvider loggingProvider)
-        : base(loggingProvider)
-    {
-    }
-
     public string HeaderText => "Budget";
-
     public string SubHeaderText => string.Empty;
 }

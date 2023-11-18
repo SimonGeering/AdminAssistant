@@ -3,16 +3,12 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 
-internal sealed class CurrencyByIDQueryHandler : RequestHandlerBase<CurrencyByIDQuery, Result<Currency>>
+internal sealed class CurrencyByIDQueryHandler(ICurrencyRepository currencyRepository, ILoggingProvider loggingProvider)
+    : RequestHandlerBase<CurrencyByIDQuery, Result<Currency>>(loggingProvider)
 {
-    private readonly ICurrencyRepository _currencyRepository;
-
-    public CurrencyByIDQueryHandler(ICurrencyRepository currencyRepository, ILoggingProvider loggingProvider)
-        : base(loggingProvider) => _currencyRepository = currencyRepository;
-
     public override async Task<Result<Currency>> Handle(CurrencyByIDQuery request, CancellationToken cancellationToken)
     {
-        var result = await _currencyRepository.GetAsync(request.CurrencyID).ConfigureAwait(false);
+        var result = await currencyRepository.GetAsync(request.CurrencyID).ConfigureAwait(false);
 
         if (result == null || result.CurrencyID == Constants.UnknownRecordID)
             return Result<Currency>.NotFound();

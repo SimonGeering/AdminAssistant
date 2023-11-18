@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 
-internal sealed class DocumentRepository : RepositoryBase, IDocumentRepository
+internal sealed class DocumentRepository(
+    IApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IDocumentRepository
 {
-    public DocumentRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
-        : base(dbContext, mapper, dateTimeProvider, userContextProvider)
-    {
-    }
-
     public async Task<Document?> GetAsync(int id)
     {
         var data = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == id).ConfigureAwait(false);

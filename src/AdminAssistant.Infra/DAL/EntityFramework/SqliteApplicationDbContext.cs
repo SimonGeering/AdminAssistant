@@ -2,10 +2,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework;
 
-public sealed class SqliteApplicationDbContext : ApplicationDbContext, IApplicationDbContext
+public sealed class SqliteApplicationDbContext(DbContextOptions<SqliteApplicationDbContext> options)
+    : ApplicationDbContext(options, DomainModel.Shared.DatabaseProvider.SQLite), IApplicationDbContext
 {
-    public SqliteApplicationDbContext(DbContextOptions<SqliteApplicationDbContext> options)
-        : base(options, DomainModel.Shared.DatabaseProvider.SQLite)
-    {
-    }
 }

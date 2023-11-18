@@ -5,13 +5,9 @@ using AutoMapper;
 
 namespace AdminAssistant.UI.Modules.CoreModule;
 
-internal sealed class CoreService : ServiceBase, ICoreService
+internal sealed class CoreService(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
+    : ServiceBase(adminAssistantWebAPIClient, mapper, log), ICoreService
 {
-    public CoreService(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
-        : base(adminAssistantWebAPIClient, mapper, log)
-    {
-    }
-
     public async Task<List<Currency>> GetCurrencyListAsync()
     {
         Log.Start();

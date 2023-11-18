@@ -1,3 +1,4 @@
+#pragma warning disable IDE0090 // Use 'new(...)'
 using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Retro.Modules.AccountsModule;
 using Ardalis.GuardClauses;
@@ -99,3 +100,4 @@ static void AccountsBankAccountEdit(IServiceScope scope)
     var bankAccountEditDialog = scope.ServiceProvider.GetRequiredService<BankAccountEditDialog>();
     Application.Run(bankAccountEditDialog);
 }
+#pragma warning restore IDE0090 // Use 'new(...)'

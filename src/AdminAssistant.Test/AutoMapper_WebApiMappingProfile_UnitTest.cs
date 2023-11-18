@@ -23,7 +23,7 @@ namespace AdminAssistant.Test.WebAPI.v1;
 
 public class WebApiMappingProfile_Should
 {
-    private readonly IConfigurationProvider _configuration;
+    private readonly MapperConfiguration _configuration;
     private readonly IMapper _mapper;
 
     public WebApiMappingProfile_Should()

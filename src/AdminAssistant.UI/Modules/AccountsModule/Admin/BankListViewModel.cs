@@ -10,11 +10,10 @@ internal sealed class BankListViewModel : ViewModelBase, IBankListViewModel
     public IEnumerable<Bank> Banks => _banks.AsEnumerable();
 
     public BankListViewModel(ILoggingProvider log) : base(log)
-        => _banks = new List<Bank>()
-        {
+        => _banks = [
             // TODO: Test data for mocking UI design bound to VM
             new Bank() { BankID = 1, BankName = "Barclays Bank plc" },
             new Bank() { BankID = 2, BankName = "HSBC Bank (UK) Limited" },
             new Bank() { BankID = 3, BankName = "Santander UK Plc" }
-        };
+        ];
 }

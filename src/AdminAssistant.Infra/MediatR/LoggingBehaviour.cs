@@ -10,12 +10,9 @@ namespace AdminAssistant.Framework.MediatR;
 /// <typeparam name="TRequest"></typeparam>
 /// <typeparam name="TResponse"></typeparam>
 /// <remarks>See "https://www.codewithmukesh.com/blog/mediatr-pipeline-behaviour/"</remarks>
-internal sealed class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
+internal sealed class LoggingBehaviour<TRequest, TResponse>(ILoggingProvider loggingProvider)
+    : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {
-    private readonly ILoggingProvider _loggingProvider;
-
-    public LoggingBehaviour(ILoggingProvider loggingProvider) => _loggingProvider = loggingProvider;
-
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {
         Guard.Against.Null(request, nameof(request));
@@ -23,11 +20,11 @@ internal sealed class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<
         //Request
         var requestName = typeof(TRequest).Name;
 
-        _loggingProvider.LogInformation("{requestName} Handling Started", requestName);
+        loggingProvider.LogInformation("{requestName} Handling Started", requestName);
 
         foreach (var prop in request.GetType().GetProperties())
         {
-            _loggingProvider.LogDebug("{Property} : {@Value}", prop.Name, prop.GetValue(request, null));
+            loggingProvider.LogDebug("{Property} : {@Value}", prop.Name, prop.GetValue(request, null));
         }
 
         var response = await next().ConfigureAwait(false);
@@ -37,13 +34,13 @@ internal sealed class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<
 
         if (result == null)
         {
-            _loggingProvider.LogInformation("{requestName} Handling Completed", requestName);
+            loggingProvider.LogInformation("{requestName} Handling Completed", requestName);
             return response;
         }
 
         var status = LogResultDetails(requestName, result);
 
-        _loggingProvider.LogInformation("{requestName} Handling Completed - {status}", requestName, status);
+        loggingProvider.LogInformation("{requestName} Handling Completed - {status}", requestName, status);
         return response;
     }
 
@@ -51,12 +48,12 @@ internal sealed class LoggingBehaviour<TRequest, TResponse> : IPipelineBehavior<
     {
         if (result.Errors.Any())
         {
-            _loggingProvider.LogDebug("{requestName} Handling - {result.Errors.Count()} Errors:", requestName, result.Errors.Count());
+            loggingProvider.LogDebug("{requestName} Handling - {result.Errors.Count()} Errors:", requestName, result.Errors.Count());
         }
 
-        if (result.ValidationErrors.Any())
+        if (result.ValidationErrors.Count == 0)
         {
-            _loggingProvider.LogDebug("{requestName} Handling - {result.ValidationErrors.Count} Validation Errors:", requestName, result.ValidationErrors.Count);
+            loggingProvider.LogDebug("{requestName} Handling - {result.ValidationErrors.Count} Validation Errors:", requestName, result.ValidationErrors.Count);
         }
 
         return result.Status.ToString();

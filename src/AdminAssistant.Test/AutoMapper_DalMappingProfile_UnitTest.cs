@@ -13,7 +13,7 @@ namespace AdminAssistant.Test.Infra.DAL;
 
 public class DalMappingProfile_Should
 {
-    private readonly IConfigurationProvider _configuration;
+    private readonly MapperConfiguration _configuration;
     private readonly IMapper _mapper;
 
     public DalMappingProfile_Should()

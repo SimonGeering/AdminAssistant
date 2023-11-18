@@ -70,10 +70,10 @@ public sealed class BankAccountRepository_UnitTest
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetAsync(bankAccountList.First().BankAccountID).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetAsync(bankAccountList[Constants.FirstItem].BankAccountID).ConfigureAwait(false);
 
         // Assert
-        result.Should().BeEquivalentTo(bankAccountList.First());
+        result.Should().BeEquivalentTo(bankAccountList[Constants.FirstItem]);
     }
 
     [Fact]
