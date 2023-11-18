@@ -6,6 +6,12 @@ namespace AdminAssistant;
 public static class Constants
 {
     /// <summary>
+    /// Represents the index of the first item in an array. 
+    /// </summary>
+    /// <remarks>Used to implement https://rules.sonarsource.com/csharp/RSPEC-6608/</remarks>
+    public const int FirstItem = 0;
+
+    /// <summary>
     /// The default value for a RecordID.
     /// </summary>
     public const int UnknownRecordID = default;

@@ -98,8 +98,8 @@ public sealed class BankAccountController_Put_Should
         // Arrange
         var validationErrors = new List<ValidationError>()
             {
-                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
-                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+                new() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
             };
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
@@ -199,8 +199,8 @@ public sealed class BankAccountController_BankAccountPost_Should
         // Arrange
         var validationErrors = new List<ValidationError>()
             {
-                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
-                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+                new() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
             };
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
@@ -322,7 +322,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         var container = services.BuildServiceProvider();
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList[Constants.FirstItem].BankAccountID).ConfigureAwait(false);
 
         // Assert
         response.Value.Should().BeNull();

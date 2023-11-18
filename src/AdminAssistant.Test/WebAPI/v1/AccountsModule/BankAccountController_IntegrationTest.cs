@@ -21,8 +21,8 @@ public sealed class BankAccount_Get_Should : IntegrationTestBase
         var dal = Container.GetRequiredService<IBankAccountRepository>();
         await dal.SaveAsync(new BankAccount()
         {
-            BankAccountTypeID = BankAccountTypes.First().BankAccountTypeID,
-            CurrencyID = Currencies.First().CurrencyID,
+            BankAccountTypeID = BankAccountTypes[Constants.FirstItem].BankAccountTypeID,
+            CurrencyID = Currencies[Constants.FirstItem].CurrencyID,
             OwnerID = PersonalOwner.OwnerID,
             AccountName = "Acme Bank PLC",
             

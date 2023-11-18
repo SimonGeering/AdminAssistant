@@ -73,10 +73,10 @@ public class BankAccountTypeRepository_GetAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetAsync(bankAccountTypeList.First().BankAccountTypeID).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetAsync(bankAccountTypeList[Constants.FirstItem].BankAccountTypeID).ConfigureAwait(false);
 
         // Assert
-        result.Should().BeEquivalentTo(bankAccountTypeList.First());
+        result.Should().BeEquivalentTo(bankAccountTypeList[Constants.FirstItem]);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
