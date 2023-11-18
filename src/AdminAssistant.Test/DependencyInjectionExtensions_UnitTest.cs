@@ -26,8 +26,8 @@ public class ServiceCollection_Should
 
         foreach (var serviceDescriptor in services)
         {
-            Guard.Against.Null(serviceDescriptor.ServiceType, "serviceDescriptor.ServiceType");
-            Guard.Against.NullOrEmpty(serviceDescriptor.ServiceType.FullName, "serviceDescriptor.ServiceType.FullName");
+            Guard.Against.Null(serviceDescriptor.ServiceType);
+            Guard.Against.NullOrEmpty(serviceDescriptor.ServiceType.FullName);
 
             try
             {

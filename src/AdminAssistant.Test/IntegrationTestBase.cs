@@ -114,7 +114,7 @@ public abstract class IntegrationTestBase : IDisposable
         // Register the WebAPIClient using the test httpClient ...
         services.AddTransient<IAdminAssistantWebAPIClient>((sp) =>
         {
-            Guard.Against.Null(_httpClient.BaseAddress, "httpClient.BaseAddress");
+            Guard.Against.Null(_httpClient.BaseAddress);
             return new AdminAssistantWebAPIClient(_httpClient) { BaseUrl = _httpClient.BaseAddress.ToString() };
         });
         services.AddAutoMapper(typeof(MappingProfile));

@@ -15,7 +15,7 @@ internal sealed class LoggingBehaviour<TRequest, TResponse>(ILoggingProvider log
 {
     public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
     {
-        Guard.Against.Null(request, nameof(request));
+        Guard.Against.Null(request);
 
         //Request
         var requestName = typeof(TRequest).Name;
