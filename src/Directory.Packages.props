@@ -19,7 +19,7 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.Toolkit.Mvvm" Version="7.1.1" />
+    <PackageVersion Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.12.0.78982" />
     <!--AdminAssistant.Abstractions-->
