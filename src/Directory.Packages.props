@@ -25,7 +25,7 @@
     <!--AdminAssistant.Abstractions-->
     <PackageVersion Include="Ardalis.Result" Version="7.2.0" />
     <PackageVersion Include="Ardalis.Result.FluentValidation" Version="7.2.0" />
-    <PackageVersion Include="MediatR" Version="9.0.0" />
+    <PackageVersion Include="MediatR" Version="12.2.0" />
     <PackageVersion Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />

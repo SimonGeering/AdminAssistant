@@ -13,7 +13,7 @@ namespace AdminAssistant.Framework.MediatR;
 internal sealed class LoggingBehaviour<TRequest, TResponse>(ILoggingProvider loggingProvider)
     : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {
-    public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
     {
         Guard.Against.Null(request);
 
@@ -30,9 +30,7 @@ internal sealed class LoggingBehaviour<TRequest, TResponse>(ILoggingProvider log
         var response = await next().ConfigureAwait(false);
 
         //Response
-        var result = response as IResult;
-
-        if (result == null)
+        if (response is not IResult result)
         {
             loggingProvider.LogInformation("{requestName} Handling Completed", requestName);
             return response;

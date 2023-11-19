@@ -20,7 +20,7 @@ public static partial class DependencyInjectionExtensions
         services.AddTransient<IUserContextProvider, UserContextProvider>();
 
         // Set-up / Add MediatR based on an assembly marker type ...
-        services.AddMediatR(typeof(RequestHandlerBase<,>));
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(RequestHandlerBase<,>).Assembly));
     }
 
     public static void AddAdminAssistantCommonDomainModel(this IServiceCollection services)
