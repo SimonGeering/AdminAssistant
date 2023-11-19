@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
+using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
@@ -86,7 +87,7 @@ public sealed class Startup(IConfiguration configuration)
 
         if (System.Diagnostics.Debugger.IsAttached == false)
         {
-            services.AddOpenTelemetryTracing(tracerProviderBuilder =>
+            services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
             {
                 var serviceName = "AdminAssistant.BlazorServer";
                 tracerProviderBuilder
@@ -97,7 +98,8 @@ public sealed class Startup(IConfiguration configuration)
                     .AddHttpClientInstrumentation()
                     .AddAspNetCoreInstrumentation()
                     .AddSqlClientInstrumentation();
-            });
+
+            }).StartWithHost();
         }
 
         services.AddAdminAssistantServerSideProviders();
