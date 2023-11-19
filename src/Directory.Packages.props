@@ -76,6 +76,7 @@
     <PackageVersion Include="ReactiveUI" Version="19.5.1" />
     <PackageVersion Include="Terminal.Gui" Version="1.14.1" />
     <!--AdminAssistant.Test-->
+    <PackageVersion Include="coverlet.collector" Version="6.0.0" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
@@ -87,9 +88,9 @@
     <PackageVersion Include="NSubstitute.Analyzers.CSharp" Version="1.0.16" />
     <PackageVersion Include="ObjectCloner.Extensions" Version="2.0.1" />
     <PackageVersion Include="Respawn" Version="6.1.0" />
+    <PackageVersion Include="TngTech.ArchUnitNET.xUnit" Version="0.10.6" />
     <PackageVersion Include="xunit" Version="2.6.2" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.4" />
-    <PackageVersion Include="coverlet.collector" Version="6.0.0" />
     <PackageVersion Include="Xunit.SkippableFact" Version="1.4.13" />
     <!--AdminAssistant.UI-->
     <!--No project specific packages-->
