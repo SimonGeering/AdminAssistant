@@ -37,7 +37,7 @@ public sealed class ContactRepository_unitTest
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetListAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetListAsync();
 
         // Assert
         result.Should().HaveCount(contactList.Count);
@@ -70,7 +70,7 @@ public sealed class ContactRepository_unitTest
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetAsync(contactList[Constants.FirstItem].ContactID).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetAsync(contactList[Constants.FirstItem].ContactID);
 
         // Assert
         result.Should().BeEquivalentTo(contactList[Constants.FirstItem]);
@@ -106,7 +106,7 @@ public sealed class ContactRepository_unitTest
                                               .Build();
 
         // Act
-        await services.BuildServiceProvider().GetRequiredService<IContactRepository>().SaveAsync(newContactToSave).ConfigureAwait(false);
+        await services.BuildServiceProvider().GetRequiredService<IContactRepository>().SaveAsync(newContactToSave);
 
         // Assert
         mockContacts.Verify(x => x.Add(It.Is<ContactEntity>((arg) => IsValidForInsert(arg))), Times.Once());

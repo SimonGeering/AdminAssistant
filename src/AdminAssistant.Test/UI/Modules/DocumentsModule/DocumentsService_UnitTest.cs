@@ -29,7 +29,7 @@ public sealed class DocumentsService_GetDocumentListAsync
         services.AddTransient((sp) => mockWebAPIClient.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IDocumentsService>().GetDocumentListAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IDocumentsService>().GetDocumentListAsync();
 
         // Assert
         result.Should().BeEquivalentTo(new List<Document>()

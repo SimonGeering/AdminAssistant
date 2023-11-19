@@ -21,7 +21,7 @@ public sealed class BankAccountValidator_Should
                                  .WithCurrencyID(10)
                                  .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -39,7 +39,7 @@ public sealed class BankAccountValidator_Should
                                              .WithAccountName(string.Empty)
                                              .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -59,7 +59,7 @@ public sealed class BankAccountValidator_Should
                                              .WithAccountName(new string('x', BankAccount.AccountNameMaxLength + 1))
                                              .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -78,7 +78,7 @@ public sealed class BankAccountValidator_Should
                                              .WithBankAccountTypeID(Constants.UnknownRecordID)
                                              .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -97,7 +97,7 @@ public sealed class BankAccountValidator_Should
                                              .WithCurrencyID(Constants.UnknownRecordID)
                                              .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
         result.IsValid.Should().BeFalse();

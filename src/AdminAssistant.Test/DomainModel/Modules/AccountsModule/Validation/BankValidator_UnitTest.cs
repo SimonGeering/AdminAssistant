@@ -19,7 +19,7 @@ public sealed class BankValidator_Should
         var bank = Factory.Bank.WithTestData(20)
                           .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankValidator>().ValidateAsync(bank).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankValidator>().ValidateAsync(bank);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -37,7 +37,7 @@ public sealed class BankValidator_Should
                           .WithBankName(string.Empty)
                           .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankValidator>().ValidateAsync(bank).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankValidator>().ValidateAsync(bank);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -56,7 +56,7 @@ public sealed class BankValidator_Should
                           .WithBankName(new string('x', Bank.BankNameMaxLength + 1))
                           .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankValidator>().ValidateAsync(bank).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankValidator>().ValidateAsync(bank);
 
         // Assert
         result.IsValid.Should().BeFalse();

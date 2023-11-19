@@ -12,10 +12,10 @@ public sealed class BankAccountType_Get_Should : IntegrationTestBase
     public async Task Return_AllBankAccountTypes_Given_NoParameters()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountTypeAsync().ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountTypeAsync();
 
         // Assert
         response.Should().HaveCount(2);

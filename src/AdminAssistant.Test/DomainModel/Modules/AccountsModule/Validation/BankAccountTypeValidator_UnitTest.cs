@@ -19,7 +19,7 @@ public sealed class BankAccountTypeValidator_Should
         var bankAccountType = Factory.BankAccountType.WithTestData(20)
                                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -37,7 +37,7 @@ public sealed class BankAccountTypeValidator_Should
                                                      .WithDescription(string.Empty)
                                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -56,7 +56,7 @@ public sealed class BankAccountTypeValidator_Should
                                                      .WithDescription(new string('x', BankAccountType.DescriptionMaxLength + 1))
                                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType);
 
         // Assert
         result.IsValid.Should().BeFalse();

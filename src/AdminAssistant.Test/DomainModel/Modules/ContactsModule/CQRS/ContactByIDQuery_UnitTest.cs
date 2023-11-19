@@ -25,7 +25,7 @@ public sealed class ContactByIDQuery_Should
         services.AddTransient((sp) => mockContactRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(nonExistentContactID)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(nonExistentContactID));
 
         // Assert
         result.Status.Should().Be(ResultStatus.NotFound);
@@ -48,7 +48,7 @@ public sealed class ContactByIDQuery_Should
         services.AddTransient((sp) => mockContactRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(contact.ContactID)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(contact.ContactID));
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

@@ -33,7 +33,7 @@ public sealed class DocumentController_UnitTest_Should
         services.AddTransient<AdminAssistant.WebAPI.v1.DocumentsModule.DocumentController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<DocumentController>().GetDocuments().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<DocumentController>().GetDocuments();
 
         // Assert
         response.Value.Should().BeNull();

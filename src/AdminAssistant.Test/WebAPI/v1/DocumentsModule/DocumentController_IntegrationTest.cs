@@ -14,14 +14,14 @@ public sealed class Document_Get_Should : IntegrationTestBase
     public async Task Return_AllDocuments_Given_NoParameters()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IDocumentRepository>();
-        await dal.SaveAsync(new Document() { FileName = "TestFileName.txt" }).ConfigureAwait(false);
-        await dal.SaveAsync(new Document() { FileName = "TestFileTwo.pdf" }).ConfigureAwait(false);
+        await dal.SaveAsync(new Document() { FileName = "TestFileName.txt" });
+        await dal.SaveAsync(new Document() { FileName = "TestFileTwo.pdf" });
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetDocumentAsync().ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetDocumentAsync();
 
         // Assert
         response.Should().HaveCount(2);

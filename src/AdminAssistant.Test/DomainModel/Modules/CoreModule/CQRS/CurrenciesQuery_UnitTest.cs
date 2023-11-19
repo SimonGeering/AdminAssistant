@@ -29,7 +29,7 @@ public sealed class CurrenciesQuery_Should
         services.AddTransient((sp) => mockRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrenciesQuery()).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrenciesQuery());
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

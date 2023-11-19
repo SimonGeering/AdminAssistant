@@ -31,7 +31,7 @@ public sealed class BankCreateCommand_Should
         services.AddTransient((sp) => mockBankRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankCreateCommand(bank)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankCreateCommand(bank));
 
         // Assert
         result.Should().NotBeNull();
@@ -55,7 +55,7 @@ public sealed class BankCreateCommand_Should
                                .WithBankName(string.Empty)
                                .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankCreateCommand(bank)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankCreateCommand(bank));
 
         // Assert
         result.Should().NotBeNull();

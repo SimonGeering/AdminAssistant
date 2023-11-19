@@ -16,7 +16,7 @@ public sealed class BankAccount_Get_Should : IntegrationTestBase
     public async Task Return_ABankAccount_Given_BankAccountID()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankAccountRepository>();
         await dal.SaveAsync(new BankAccount()
@@ -26,11 +26,11 @@ public sealed class BankAccount_Get_Should : IntegrationTestBase
             OwnerID = PersonalOwner.OwnerID,
             AccountName = "Acme Bank PLC",
             
-        }).ConfigureAwait(false);
-        var acmeBuildingSocietyAccount = await dal.SaveAsync(new BankAccount() { AccountName = "Acme Building Society Account" }).ConfigureAwait(false);
+        });
+        var acmeBuildingSocietyAccount = await dal.SaveAsync(new BankAccount() { AccountName = "Acme Building Society Account" });
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountByIdAsync(acmeBuildingSocietyAccount.BankAccountID).ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountByIdAsync(acmeBuildingSocietyAccount.BankAccountID);
 
         // Assert
         response.BankAccountID.Should().Be(acmeBuildingSocietyAccount.BankAccountID);

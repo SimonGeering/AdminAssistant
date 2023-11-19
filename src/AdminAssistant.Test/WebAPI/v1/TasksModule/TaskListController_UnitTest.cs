@@ -33,7 +33,7 @@ public sealed class GetTaskLists
         services.AddTransient<TaskListController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<TaskListController>().GetTaskLists().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<TaskListController>().GetTaskLists();
 
         // Assert
         response.Value.Should().BeNull();

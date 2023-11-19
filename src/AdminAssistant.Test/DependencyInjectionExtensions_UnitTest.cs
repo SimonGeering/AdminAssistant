@@ -48,7 +48,7 @@ public class ServiceCollection_Should
         // Assert
         var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.Contains("MediatR", StringComparison.InvariantCulture) == false);
         result.Should().HaveCount(expectedInstanceCountLessExclusions);
-        await Task.CompletedTask.ConfigureAwait(false);
+        await Task.CompletedTask;
     }
 
     [Fact]
@@ -86,7 +86,7 @@ public class ServiceCollection_Should
 
         // Assert
         result.Should().HaveCount(services.Count);
-        await Task.CompletedTask.ConfigureAwait(false);
+        await Task.CompletedTask;
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

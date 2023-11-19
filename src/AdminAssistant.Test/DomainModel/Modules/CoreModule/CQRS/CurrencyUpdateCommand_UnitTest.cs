@@ -25,7 +25,7 @@ public sealed class BankUpdateCommand_Should
         services.AddTransient((sp) => mockRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency));
 
         // Assert
         result.Should().NotBeNull();
@@ -49,7 +49,7 @@ public sealed class BankUpdateCommand_Should
                                        .WithoutASymbol()
                                        .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency));
 
         // Assert
         result.Should().NotBeNull();

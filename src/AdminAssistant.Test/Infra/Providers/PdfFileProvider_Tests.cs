@@ -19,7 +19,7 @@ public sealed class PdfFileProvider_ReadAllLinesAsync_Should
         var fileContent = await File.ReadAllBytesAsync(pdfFilePath);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IPdfFileProvider>().ReadAllLinesAsync(fileContent).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IPdfFileProvider>().ReadAllLinesAsync(fileContent);
 
         // Assert
         result.Should().NotBeEmpty();
