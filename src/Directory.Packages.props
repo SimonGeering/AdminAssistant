@@ -68,9 +68,9 @@
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.0" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-rc.2" />
     <!--AdminAssistant.Infra.ClientSide-->
-    <PackageVersion Include="Microsoft.Extensions.Http.Polly" Version="7.0.2" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Polly" Version="8.0.0" />
     <PackageVersion Include="Polly.Extensions.Http" Version="3.0.0" />
-    <PackageVersion Include="Polly" Version="7.2.3" />
+    <PackageVersion Include="Polly" Version="7.2.4" />
     <PackageVersion Include="PDFsharp" Version="6.0.0-preview-2" />
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="ReactiveUI" Version="18.3.1" />
