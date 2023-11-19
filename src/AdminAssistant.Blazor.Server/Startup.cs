@@ -1,5 +1,6 @@
 using AdminAssistant.DomainModel.Shared;
 using Ardalis.GuardClauses;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 //using HealthChecks.UI.Client;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
@@ -43,8 +44,10 @@ public sealed class Startup(IConfiguration configuration)
         // TODO: investigate https://damienbod.com/2021/03/08/securing-blazor-web-assembly-using-cookies/
         services.AddHttpContextAccessor();
 
-        services.AddControllers().AddNewtonsoftJson()
-          .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>());
+        services.AddControllers().AddNewtonsoftJson();
+        services.AddFluentValidationAutoValidation()
+            .AddFluentValidationClientsideAdapters()
+            .AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
 
         if (System.Diagnostics.Debugger.IsAttached == false)
         {
