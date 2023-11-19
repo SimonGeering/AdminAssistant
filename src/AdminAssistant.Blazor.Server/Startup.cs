@@ -87,19 +87,19 @@ public sealed class Startup(IConfiguration configuration)
 
         if (System.Diagnostics.Debugger.IsAttached == false)
         {
-            services.AddOpenTelemetry().WithTracing(tracerProviderBuilder =>
-            {
-                var serviceName = "AdminAssistant.BlazorServer";
-                tracerProviderBuilder
-                    .AddConsoleExporter()
-                    .AddSource(serviceName)
-                    .SetResourceBuilder(ResourceBuilder.CreateDefault()
-                            .AddService(serviceName: serviceName, serviceVersion: "V1.0.0"))
-                    .AddHttpClientInstrumentation()
-                    .AddAspNetCoreInstrumentation()
-                    .AddSqlClientInstrumentation();
-
-            }).StartWithHost();
+            services.AddOpenTelemetry()
+                .WithTracing(tracerProviderBuilder =>
+                {
+                    var serviceName = "AdminAssistant.BlazorServer";
+                    tracerProviderBuilder
+                        .AddSource(serviceName)
+                        .ConfigureResource(resource =>
+                            resource.AddService(serviceName: serviceName, serviceVersion: "V1.0.0"))
+                        .AddHttpClientInstrumentation()
+                        .AddAspNetCoreInstrumentation()
+                        .AddSqlClientInstrumentation()
+                        .AddConsoleExporter();
+                });
         }
 
         services.AddAdminAssistantServerSideProviders();

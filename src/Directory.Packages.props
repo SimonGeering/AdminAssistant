@@ -51,8 +51,8 @@
     <PackageVersion Include="Microsoft.AspNetCore.JsonPatch" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="8.0.0" />
     <PackageVersion Include="System.Net.Http.Json" Version="8.0.0" />
-    <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.3.2" />
-    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.4.0-rc.3" />
+    <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.6.0" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.6.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc9.12" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc9.12" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.0.0-rc9.12" />
