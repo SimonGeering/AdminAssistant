@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="TngTech.ArchUnitNET.xUnit" />
     <PackageReference Include="Ardalis.GuardClauses" />
     <PackageReference Include="FluentAssertions" />
     <PackageReference Include="FluentValidation" />
