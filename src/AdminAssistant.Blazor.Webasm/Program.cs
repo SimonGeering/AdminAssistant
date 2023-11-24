@@ -2,7 +2,6 @@ using AdminAssistant.Blazor.Client;
 using AdminAssistant.Infra.DAL;
 using AdminAssistant.Infra.Providers;
 using MudBlazor.Services;
-using Blazor.Extensions.Logging;
 using FluentValidation;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Components.Web;
@@ -18,8 +17,6 @@ builder.Services.AddLogging(logging =>
 {
     // NB Configuration must be done in code as no other option is currently supported client side.
     // See: https://github.com/BlazorExtensions/Logging
-    logging.ClearProviders();
-    logging.AddBrowserConsole();
 #if DEBUG
     logging.AddFilter("Default", LogLevel.Information)
             .AddFilter(ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)

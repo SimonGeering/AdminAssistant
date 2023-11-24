@@ -58,7 +58,6 @@
     <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.0.0-rc9.12" />
     <!--Legacy AdminAssistant.Blazor.Client-->
     <PackageVersion Include="MudBlazor" Version="6.4.1" />
-    <PackageVersion Include="Blazor.Extensions.Logging" Version="2.0.4" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
     <!--AdminAssistant.DomainModel-->
     <!--No project specific packages-->
@@ -95,7 +94,8 @@
     <!--AdminAssistant.UI-->
     <!--No project specific packages-->
     <!--AdminAssistant.WPF-->
-    <!--<PackageVersion Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />
+    <!--
+    <PackageVersion Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />
     <PackageVersion Include="Syncfusion.SfBusyIndicator.WPF" Version="19.3.0.54" />
     <PackageVersion Include="Syncfusion.SfInput.WPF" Version="19.3.0.54" />
     <PackageVersion Include="Syncfusion.SfSkinManager.WPF" Version="19.3.0.54" />
@@ -103,6 +103,7 @@
     <PackageVersion Include="Syncfusion.SfTreeView.WPF" Version="19.3.0.54" />
     <PackageVersion Include="Syncfusion.Themes.Office2019Black.WPF" Version="19.3.0.54" />
     <PackageVersion Include="Syncfusion.Themes.Office2019Colorful.WPF" Version="19.3.0.54" />
-    <PackageVersion Include="Syncfusion.Themes.Office365.WPF" Version="19.3.0.54" />-->
+    <PackageVersion Include="Syncfusion.Themes.Office365.WPF" Version="19.3.0.54" />
+    -->
   </ItemGroup>
 </Project>
