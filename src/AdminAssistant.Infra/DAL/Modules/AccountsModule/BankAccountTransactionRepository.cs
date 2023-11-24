@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
 
-internal sealed class BankAccountTransactionRepository : RepositoryBase, IBankAccountTransactionRepository
+internal sealed class BankAccountTransactionRepository(
+    IApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankAccountTransactionRepository
 {
-    public BankAccountTransactionRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
-        : base(dbContext, mapper, dateTimeProvider, userContextProvider)
-    {
-    }
-
     public async Task<BankAccountTransaction> GetAsync(int id)
     {
         var data = await DbContext.BankAccountTransactions.FirstOrDefaultAsync(x => x.BankAccountTransactionID == id).ConfigureAwait(false);

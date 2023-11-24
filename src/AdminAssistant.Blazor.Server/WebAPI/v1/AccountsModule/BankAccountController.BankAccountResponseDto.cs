@@ -1,6 +1,5 @@
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using AdminAssistant.Framework.TypeMapping;
-
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1.AccountsModule;

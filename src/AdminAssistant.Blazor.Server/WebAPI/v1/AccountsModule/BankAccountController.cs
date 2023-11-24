@@ -12,13 +12,9 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule;
 [ApiController]
 [Route("api/v1/accounts-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Accounts Module")]
-public sealed class BankAccountController : WebApiControllerBase
+public sealed class BankAccountController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
+    : WebApiControllerBase(mapper, mediator, loggingProvider)
 {
-    public BankAccountController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-        : base(mapper, mediator, loggingProvider)
-    {
-    }
-
     [HttpPut]
     [SwaggerOperation("Update an existing BankAccount.", OperationId = "PutBankAccount")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated BankAccountResponseDto", type: typeof(BankAccountResponseDto))]

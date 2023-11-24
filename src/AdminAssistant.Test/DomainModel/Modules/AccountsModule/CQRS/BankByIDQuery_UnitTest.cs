@@ -25,7 +25,7 @@ public sealed class BankByIDQuery_Should
         services.AddTransient((sp) => mockBankRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(nonExistentBankID)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(nonExistentBankID));
 
         // Assert
         result.Status.Should().Be(ResultStatus.NotFound);
@@ -48,7 +48,7 @@ public sealed class BankByIDQuery_Should
         services.AddTransient((sp) => mockBankRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(bank.BankID)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(bank.BankID));
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

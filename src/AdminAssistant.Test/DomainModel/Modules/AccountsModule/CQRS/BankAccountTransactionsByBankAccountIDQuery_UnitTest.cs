@@ -33,7 +33,7 @@ public sealed class BankAccountTransactionsByBankAccountIDQuery_Should
         var query = new BankAccountTransactionsByBankAccountIDQuery(bankAccountID);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(query).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(query);
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

@@ -16,10 +16,10 @@ public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
     public async Task ShowAnNewBankAccount_WhenOpenedForCreate()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var vm = Container.GetRequiredService<IBankAccountEditDialogViewModel>();
-        await vm.OnInitializedAsync().ConfigureAwait(false);
+        await vm.OnInitializedAsync();
 
         var messenger = Container.GetRequiredService<IMessenger>();
 
@@ -44,7 +44,7 @@ public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
         vm.HeaderText.Should().Be(IBankAccountEditDialogViewModel.NewBankAccountHeader);
         vm.ShowDialog.Should().BeTrue();
 
-        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
+        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync();
         savedBankAccounts.Should().BeEmpty();
     }
 
@@ -52,10 +52,10 @@ public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
     [Trait("Category", "Acceptance")]
     public async Task CloseWithoutSaving_WhenCancelButtonIsClicked()
     {
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var vm = Container.GetRequiredService<IBankAccountEditDialogViewModel>();
-        await vm.OnInitializedAsync().ConfigureAwait(false);
+        await vm.OnInitializedAsync();
 
         var messenger = Container.GetRequiredService<IMessenger>();
         messenger.Send(new EditBankAccountMessage(new BankAccount()));
@@ -66,7 +66,7 @@ public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
         // Assert
         vm.ShowDialog.Should().BeFalse();
 
-        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
+        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync();
         savedBankAccounts.Should().BeEmpty();
     }
 

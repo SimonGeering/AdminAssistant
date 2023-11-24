@@ -19,7 +19,7 @@ public sealed class PayeeValidator_Should
         var payee = Factory.Payee.WithTestData(20)
                           .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IPayeeValidator>().ValidateAsync(payee).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IPayeeValidator>().ValidateAsync(payee);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -37,7 +37,7 @@ public sealed class PayeeValidator_Should
                           .WithName(string.Empty)
                           .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IPayeeValidator>().ValidateAsync(payee).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IPayeeValidator>().ValidateAsync(payee);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -55,7 +55,7 @@ public sealed class PayeeValidator_Should
                           .WithName(new string('X', Payee.NameMaxLength + 1))
                           .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IPayeeValidator>().ValidateAsync(payee).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IPayeeValidator>().ValidateAsync(payee);
 
         // Assert
         result.IsValid.Should().BeFalse();

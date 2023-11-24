@@ -31,7 +31,7 @@ public sealed class AccountsService_UnitTest
         services.AddTransient(_ => mockWebAPIClient.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IAccountsService>().LoadBankAccountTypesLookupDataAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IAccountsService>().LoadBankAccountTypesLookupDataAsync();
 
         // Assert
         result.Should().BeEquivalentTo(new List<BankAccountType>()

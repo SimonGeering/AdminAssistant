@@ -37,7 +37,7 @@ public sealed class CurrencyRepository_GetListAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetListAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetListAsync();
 
         // Assert
         result.Should().HaveCount(currencyList.Count);
@@ -73,10 +73,10 @@ public class CurrencyRepository_GetAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetAsync(currencyList.First().CurrencyID).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetAsync(currencyList[Constants.FirstItem].CurrencyID);
 
         // Assert
-        result.Should().BeEquivalentTo(currencyList.First());
+        result.Should().BeEquivalentTo(currencyList[Constants.FirstItem]);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

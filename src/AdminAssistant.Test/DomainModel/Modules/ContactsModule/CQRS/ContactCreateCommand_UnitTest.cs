@@ -31,7 +31,7 @@ public sealed class ContactCreateCommand_Should
         services.AddTransient((sp) => mockContactRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactCreateCommand(contact)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactCreateCommand(contact));
 
         // Assert
         result.Should().NotBeNull();
@@ -55,7 +55,7 @@ public sealed class ContactCreateCommand_Should
                                      .WithFirstName(string.Empty)
                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactCreateCommand(contact)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactCreateCommand(contact));
 
         // Assert
         result.Should().NotBeNull();

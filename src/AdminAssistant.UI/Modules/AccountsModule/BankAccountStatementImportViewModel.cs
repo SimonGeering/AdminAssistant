@@ -31,7 +31,7 @@ internal sealed class BankAccountStatementImportViewModel : ViewModelBase, IBank
         FileSize = fileSize;
         EmbeddedFileContentSrc = $"data:{contentType};base64,{Convert.ToBase64String(fileContent)}";
 
-        var result = await _accountsService.ParseBankAccountStatementAsync(fileContent);
+        await _accountsService.ParseBankAccountStatementAsync(fileContent);
 
         // TODO: Display the result in a grid.
     }

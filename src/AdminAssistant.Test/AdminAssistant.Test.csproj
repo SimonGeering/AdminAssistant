@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Product>Admin Assistant</Product>
     <IsPackable>false</IsPackable>
     <Nullable>enable</Nullable>
@@ -29,6 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="TngTech.ArchUnitNET.xUnit" />
     <PackageReference Include="Ardalis.GuardClauses" />
     <PackageReference Include="FluentAssertions" />
     <PackageReference Include="FluentValidation" />
@@ -68,8 +69,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant.Blazor.Client\AdminAssistant.Blazor.Client.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />
     <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
+    <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
     <ProjectReference Include="..\AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj" />
     <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />

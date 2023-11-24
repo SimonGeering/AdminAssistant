@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Product>Admin Assistant</Product>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Abstractions\AdminAssistant.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>

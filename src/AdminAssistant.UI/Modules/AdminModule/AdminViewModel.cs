@@ -2,14 +2,9 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.AdminModule;
 
-internal sealed class AdminViewModel : ViewModelBase, IAdminViewModel
+internal sealed class AdminViewModel(ILoggingProvider loggingProvider)
+    : ViewModelBase(loggingProvider), IAdminViewModel
 {
-    public AdminViewModel(ILoggingProvider loggingProvider)
-        : base(loggingProvider)
-    {
-    }
-
     public string HeaderText => "Admin";
-
     public string SubHeaderText => string.Empty;
 }

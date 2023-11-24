@@ -20,7 +20,7 @@ public sealed class ContactValidator_Should
         var contact = Factory.Contact.WithTestData(20)
                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -38,7 +38,7 @@ public sealed class ContactValidator_Should
                                      .WithFirstName(string.Empty)
                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -57,7 +57,7 @@ public sealed class ContactValidator_Should
                                      .WithFirstName(new string('x', Contact.FirstNameMaxLength + 1))
                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -76,7 +76,7 @@ public sealed class ContactValidator_Should
                                      .WithLastName(string.Empty)
                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -95,7 +95,7 @@ public sealed class ContactValidator_Should
                                      .WithLastName(new string('x', Contact.LastNameMaxLength + 1))
                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
         result.IsValid.Should().BeFalse();

@@ -25,7 +25,7 @@ public sealed class BankAccountUpdateCommand_Should
         services.AddTransient((sp) => mockBankAccountRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount));
 
         // Assert
         result.Should().NotBeNull();
@@ -49,7 +49,7 @@ public sealed class BankAccountUpdateCommand_Should
                                              .WithAccountName(string.Empty)
                                              .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount));
 
         // Assert
         result.Should().NotBeNull();

@@ -19,7 +19,7 @@ public sealed class BudgetValidator_Should
         var budget = Factory.Budget.WithTestData().Build();
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -37,7 +37,7 @@ public sealed class BudgetValidator_Should
                                    .WithBudgetName(string.Empty)
                                    .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -56,7 +56,7 @@ public sealed class BudgetValidator_Should
                                    .WithBudgetName(new string('x', Budget.BudgetNameMaxLength + 1))
                                    .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget);
 
         // Assert
         result.IsValid.Should().BeFalse();

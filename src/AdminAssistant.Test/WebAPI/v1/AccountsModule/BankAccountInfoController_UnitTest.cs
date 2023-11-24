@@ -38,7 +38,7 @@ public sealed class BankAccountInfoController_BankAccountInfoGet_Should
         services.AddTransient<BankAccountInfoController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountInfoController>().BankAccountInfoGet().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountInfoController>().BankAccountInfoGet();
 
         // Assert
         response.Value.Should().BeNull();

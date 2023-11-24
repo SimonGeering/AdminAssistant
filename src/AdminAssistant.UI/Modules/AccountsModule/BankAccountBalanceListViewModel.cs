@@ -2,9 +2,7 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-internal sealed class BankAccountBalanceListViewModel : ViewModelBase, IBankAccountBalanceListViewModel
+internal sealed class BankAccountBalanceListViewModel(ILoggingProvider log)
+    : ViewModelBase(log), IBankAccountBalanceListViewModel
 {
-    public BankAccountBalanceListViewModel(ILoggingProvider log) : base(log)
-    {
-    }
 }

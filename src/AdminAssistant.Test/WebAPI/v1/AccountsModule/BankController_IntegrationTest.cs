@@ -14,12 +14,12 @@ public sealed class Bank_Post_Should : IntegrationTestBase
     public async Task Return_ANewlyCreatedBank_Given_AValidBank()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var request = new BankCreateRequestDto() { BankName = "Acme Bank" };
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PostBankAsync(request).ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PostBankAsync(request);
 
         // Assert
         response.BankID.Should().BeGreaterThan(0);
@@ -35,10 +35,10 @@ public sealed class Bank_Put_Should : IntegrationTestBase
     public async Task Return_ANewlyUpdatedBank_Given_AValidExistingBank()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankRepository>();
-        var acmeBank = await dal.SaveAsync(new Bank() { BankName = "Acme Bank" }).ConfigureAwait(false);
+        var acmeBank = await dal.SaveAsync(new Bank() { BankName = "Acme Bank" });
 
         var request = new BankUpdateRequestDto()
         {
@@ -47,7 +47,7 @@ public sealed class Bank_Put_Should : IntegrationTestBase
         };
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PutBankAsync(request).ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PutBankAsync(request);
 
         // Assert
         response.BankID.Should().Be(request.BankID);
@@ -63,14 +63,14 @@ public class Bank_Get_Should : IntegrationTestBase
     public async Task Return_ABank_Given_BankID()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankRepository>();
-        await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }).ConfigureAwait(false);
-        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
+        await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" });
+        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" });
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID).ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID);
 
         // Assert
         response.BankID.Should().Be(acmeBuildingSociety.BankID);
@@ -82,14 +82,14 @@ public class Bank_Get_Should : IntegrationTestBase
     public async Task Return_AllBanks_Given_NoParameters()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankRepository>();
-        var acmeBankPLC = await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }).ConfigureAwait(false);
-        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
+        var acmeBankPLC = await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" });
+        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" });
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAsync().ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAsync();
 
         // Assert
         response.Should().ContainSingle(x => x.BankID == acmeBankPLC.BankID && x.BankName == acmeBankPLC.BankName);

@@ -3,16 +3,12 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
 
-internal sealed class DocumentQueryHandler : RequestHandlerBase<DocumentQuery, Result<IEnumerable<Document>>>
+internal sealed class DocumentQueryHandler(IDocumentRepository repository, ILoggingProvider loggingProvider)
+    : RequestHandlerBase<DocumentQuery, Result<IEnumerable<Document>>>(loggingProvider)
 {
-    private readonly IDocumentRepository _repository;
-
-    public DocumentQueryHandler(IDocumentRepository repository, ILoggingProvider loggingProvider)
-        : base(loggingProvider) => _repository = repository;
-
     public override async Task<Result<IEnumerable<Document>>> Handle(DocumentQuery request, CancellationToken cancellationToken)
     {
-        var result = await _repository.GetListAsync().ConfigureAwait(false);
+        var result = await repository.GetListAsync().ConfigureAwait(false);
         return Result<IEnumerable<Document>>.Success(result);
     }
 }

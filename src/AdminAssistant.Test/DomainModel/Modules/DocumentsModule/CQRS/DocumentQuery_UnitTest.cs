@@ -29,7 +29,7 @@ public sealed class DocumentQuery_Should
         services.AddTransient((sp) => mockRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new DocumentQuery()).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new DocumentQuery());
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

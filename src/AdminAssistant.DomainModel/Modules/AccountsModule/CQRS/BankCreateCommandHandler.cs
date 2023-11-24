@@ -4,18 +4,12 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 
-internal sealed class BankCreateCommandHandler : RequestHandlerBase<BankCreateCommand, Result<Bank>>
+internal sealed class BankCreateCommandHandler(
+    ILoggingProvider loggingProvider,
+    IBankRepository bankRepository,
+    IBankValidator bankValidator)
+    : RequestHandlerBase<BankCreateCommand, Result<Bank>>(loggingProvider)
 {
-    private readonly IBankRepository bankRepository;
-    private readonly IBankValidator bankValidator;
-
-    public BankCreateCommandHandler(ILoggingProvider loggingProvider, IBankRepository bankRepository, IBankValidator bankValidator)
-        : base(loggingProvider)
-    {
-        this.bankRepository = bankRepository;
-        this.bankValidator = bankValidator;
-    }
-
     public override async Task<Result<Bank>> Handle(BankCreateCommand command, CancellationToken cancellationToken)
     {
         var validationResult = await bankValidator.ValidateAsync(command.Bank, cancellationToken).ConfigureAwait(false);

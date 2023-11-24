@@ -12,13 +12,9 @@ namespace AdminAssistant.WebAPI.v1.ContactsModule;
 [ApiController]
 [Route("api/v1/contacts-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Contacts Module")]
-public sealed class ContactController : WebApiControllerBase
+public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
+    : WebApiControllerBase(mapper, mediator, loggingProvider)
 {
-    public ContactController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-        : base(mapper, mediator, loggingProvider)
-    {
-    }
-
     [HttpPut]
     [SwaggerOperation("Update an existing Contact.", OperationId = "PutContact")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated ContactResponseDto", type: typeof(ContactResponseDto))]

@@ -40,7 +40,7 @@ public sealed class BankAccountController_Put_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest);
 
         // Assert
         response.Value.Should().BeNull();
@@ -84,7 +84,7 @@ public sealed class BankAccountController_Put_Should
         var bankAccountRequest = mapper.Map<BankAccountUpdateRequestDto>(bankAccount);
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundObjectResult>();
@@ -98,8 +98,8 @@ public sealed class BankAccountController_Put_Should
         // Arrange
         var validationErrors = new List<ValidationError>()
             {
-                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
-                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+                new() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
             };
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
@@ -118,7 +118,7 @@ public sealed class BankAccountController_Put_Should
         var bankAccountRequest = mapper.Map<BankAccountUpdateRequestDto>(bankAccount);
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest);
 
         // Assert
         response.Value.Should().BeNull();
@@ -170,7 +170,7 @@ public sealed class BankAccountController_BankAccountPost_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest);
 
         // Assert
         response.Value.Should().BeNull();
@@ -199,8 +199,8 @@ public sealed class BankAccountController_BankAccountPost_Should
         // Arrange
         var validationErrors = new List<ValidationError>()
             {
-                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
-                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+                new() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
             };
         var bankAccount = Factory.BankAccount.WithTestData(10).Build();
 
@@ -219,7 +219,7 @@ public sealed class BankAccountController_BankAccountPost_Should
         var bankAccountRequest = mapper.Map<BankAccountCreateRequestDto>(bankAccount);
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest);
 
         // Assert
         response.Result.Should().NotBeNull();
@@ -257,7 +257,7 @@ public sealed class BankAccountController_BankAccountGetById_Should
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID);
 
         // Assert
         response.Value.Should().BeNull();
@@ -287,7 +287,7 @@ public sealed class BankAccountController_BankAccountGetById_Should
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(10).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(10);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundResult>();
@@ -322,7 +322,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         var container = services.BuildServiceProvider();
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList.First().BankAccountID).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList[Constants.FirstItem].BankAccountID);
 
         // Assert
         response.Value.Should().BeNull();
@@ -358,7 +358,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(Constants.UnknownRecordID).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(Constants.UnknownRecordID);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundResult>();

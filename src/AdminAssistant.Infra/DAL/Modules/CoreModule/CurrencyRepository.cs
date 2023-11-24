@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.CoreModule;
 
-internal sealed class CurrencyRepository : RepositoryBase, ICurrencyRepository
+internal sealed class CurrencyRepository(
+    IApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), ICurrencyRepository
 {
-    public CurrencyRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
-        : base(dbContext, mapper, dateTimeProvider, userContextProvider)
-    {
-    }
-
     public async Task<Currency> SaveAsync(Currency domainObjectToSave)
     {
         var entity = Mapper.Map<CurrencyEntity>(domainObjectToSave);

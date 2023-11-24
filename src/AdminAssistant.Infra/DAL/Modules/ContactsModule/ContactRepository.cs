@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.ContactsModule;
 
-internal sealed class ContactRepository : RepositoryBase, IContactRepository
+internal sealed class ContactRepository(
+    IApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IContactRepository
 {
-    public ContactRepository(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
-        : base(dbContext, mapper, dateTimeProvider, userContextProvider)
-    {
-    }
-
     public async Task<Contact?> GetAsync(int id)
     {
         var data = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id).ConfigureAwait(false);

@@ -30,7 +30,7 @@ public sealed class CoreService_GetCurrencyListAsync
         services.AddTransient((sp) => mockWebAPIClient.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICoreService>().GetCurrencyListAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICoreService>().GetCurrencyListAsync();
 
         // Assert
         result.Should().BeEquivalentTo(new List<Currency>()

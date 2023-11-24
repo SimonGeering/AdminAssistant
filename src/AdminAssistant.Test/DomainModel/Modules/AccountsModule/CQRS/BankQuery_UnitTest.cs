@@ -25,7 +25,7 @@ public sealed class BankQuery_Should
         services.AddTransient((sp) => mockBankRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankQuery()).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankQuery());
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

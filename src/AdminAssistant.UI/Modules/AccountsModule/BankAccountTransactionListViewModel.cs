@@ -4,14 +4,10 @@ using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.UI.Modules.AccountsModule;
 
-internal sealed class BankAccountTransactionListViewModel : ViewModelBase, IBankAccountTransactionListViewModel
+internal sealed class BankAccountTransactionListViewModel(ILoggingProvider log)
+    : ViewModelBase(log), IBankAccountTransactionListViewModel
 {
-    public BankAccountTransactionListViewModel(ILoggingProvider log)
-        : base(log)
-    {
-
-    }
     public bool ShowAccountEditDialog { get; }
     public BankAccount? SelectedBankAccount { get; }
-    public BindingList<BankAccountTransaction> Transactions { get; } = new BindingList<BankAccountTransaction>();
+    public BindingList<BankAccountTransaction> Transactions { get; } = [];
 }

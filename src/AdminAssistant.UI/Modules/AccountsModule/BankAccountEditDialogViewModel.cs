@@ -149,9 +149,9 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
         }
     }
 
-    public BindingList<BankAccountType> BankAccountTypes { get; } = new BindingList<BankAccountType>();
+    public BindingList<BankAccountType> BankAccountTypes { get; } = [];
 
-    public BindingList<Currency> Currencies { get; } = new BindingList<Currency>();
+    public BindingList<Currency> Currencies { get; } = [];
 
     private string headerText = string.Empty;
     public string HeaderText
@@ -295,7 +295,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
         if (result.IsValid)
             return ValidationMessage.None;
 
-        if (result.Errors.Any(x => x.PropertyName == fieldName) == false)
+        if (result.Errors.Exists(x => x.PropertyName == fieldName) == false)
             return ValidationMessage.None;
 
         return result.Errors.Single(x => x.PropertyName == fieldName).ErrorMessage;
@@ -306,7 +306,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
         if (result.IsValid)
             return ValidationCssClass.None;
 
-        if (result.Errors.Any(x => x.PropertyName == fieldName) == false)
+        if (result.Errors.Exists(x => x.PropertyName == fieldName) == false)
             return ValidationMessage.None;
 
         return GetValidationClassForSeverity(result.Errors.Single(x => x.PropertyName == fieldName).Severity);

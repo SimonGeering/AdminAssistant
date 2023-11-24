@@ -25,7 +25,7 @@ public sealed class CurrencyByIDQuery_Should
         services.AddTransient((sp) => mockCurrencyRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(nonExistentCurrencyID)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(nonExistentCurrencyID));
 
         // Assert
         result.Status.Should().Be(ResultStatus.NotFound);
@@ -48,7 +48,7 @@ public sealed class CurrencyByIDQuery_Should
         services.AddTransient((sp) => mockCurrencyRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(currency.CurrencyID)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(currency.CurrencyID));
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

@@ -1,39 +1,31 @@
 using AdminAssistant.DomainModel.Shared;
 using Ardalis.GuardClauses;
+using FluentValidation;
 using FluentValidation.AspNetCore;
-using HealthChecks.UI.Client;
+//using HealthChecks.UI.Client;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
-using System.Diagnostics;
+using OpenTelemetry;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
 namespace AdminAssistant.Blazor.Server;
 
-public sealed class Startup
+//public sealed class Startup(IHostEnvironment env, IConfiguration configuration)
+public sealed class Startup(IConfiguration configuration)
 {
     // TODO: Make version a constant shared with WebAPI Assemblies
     private const string WebAPIVersion = "v1";
     private string WebAPITitle => $"Admin Assistant WebAPI {WebAPIVersion}.";
 
-    private readonly IHostEnvironment _env;
-    private readonly IConfiguration _configuration;
-
-    public Startup(IHostEnvironment env, IConfiguration configuration)
-    {
-        _env = env;
-        _configuration = configuration;
-    }
-
     // This method gets called by the runtime. Use this method to add services to the container.
     // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
     public void ConfigureServices(IServiceCollection services)
     {
-        var configSettings = _configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+        var configSettings = configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
         Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
 
         services.AddMvc(opts =>
@@ -53,20 +45,21 @@ public sealed class Startup
         // TODO: investigate https://damienbod.com/2021/03/08/securing-blazor-web-assembly-using-cookies/
         services.AddHttpContextAccessor();
 
-        services.AddControllers().AddNewtonsoftJson()
-          .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>());
-
+        services.AddControllers().AddNewtonsoftJson();
+        services.AddFluentValidationAutoValidation()
+            .AddFluentValidationClientsideAdapters()
+            .AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
 
         if (System.Diagnostics.Debugger.IsAttached == false)
         {
             services.AddHealthChecks();
-            services.AddHealthChecksUI(setupSettings: setup =>
-            {
-                // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
-                setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", _env.IsDevelopment() ? "http://localhost:5000/api/health" : "/api/health");
-                setup.SetEvaluationTimeInSeconds(45); // Configures the UI to poll for health-checks updates every 5 seconds
-                setup.MaximumHistoryEntriesPerEndpoint(50);
-            }).AddInMemoryStorage();
+            //services.AddHealthChecksUI(setupSettings: setup =>
+            //{
+            //    // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+            //    setup.AddHealthCheckEndpoint("Blazor BackEnd Web API", _env.IsDevelopment() ? "http://localhost:5000/api/health" : "/api/health");
+            //    setup.SetEvaluationTimeInSeconds(45); // Configures the UI to poll for health-checks updates every 5 seconds
+            //    setup.MaximumHistoryEntriesPerEndpoint(50);
+            //}).AddInMemoryStorage();
         }
 
         services.AddSwaggerGen(c =>
@@ -94,18 +87,19 @@ public sealed class Startup
 
         if (System.Diagnostics.Debugger.IsAttached == false)
         {
-            services.AddOpenTelemetryTracing(tracerProviderBuilder =>
-            {
-                var serviceName = "AdminAssistant.BlazorServer";
-                tracerProviderBuilder
-                    .AddConsoleExporter()
-                    .AddSource(serviceName)
-                    .SetResourceBuilder(ResourceBuilder.CreateDefault()
-                            .AddService(serviceName: serviceName, serviceVersion: "V1.0.0"))
-                    .AddHttpClientInstrumentation()
-                    .AddAspNetCoreInstrumentation()
-                    .AddSqlClientInstrumentation();
-            });
+            services.AddOpenTelemetry()
+                .WithTracing(tracerProviderBuilder =>
+                {
+                    var serviceName = "AdminAssistant.BlazorServer";
+                    tracerProviderBuilder
+                        .AddSource(serviceName)
+                        .ConfigureResource(resource =>
+                            resource.AddService(serviceName: serviceName, serviceVersion: "V1.0.0"))
+                        .AddHttpClientInstrumentation()
+                        .AddAspNetCoreInstrumentation()
+                        .AddSqlClientInstrumentation()
+                        .AddConsoleExporter();
+                });
         }
 
         services.AddAdminAssistantServerSideProviders();
@@ -156,7 +150,7 @@ public sealed class Startup
 
                 if (System.Diagnostics.Debugger.IsAttached == false)
                 {
-                    config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
+                    //config.MapHealthChecksUI(); // https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
                 }
             });
         });
@@ -171,11 +165,12 @@ public sealed class Startup
 
                 if (System.Diagnostics.Debugger.IsAttached == false)
                 {
-                    config.MapHealthChecks("/api/health", new HealthCheckOptions
-                    {
-                        Predicate = _ => true,
-                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-                    });
+                    config.MapHealthChecks("/api/health");
+                    //config.MapHealthChecks("/api/health", new HealthCheckOptions
+                    //{
+                    //    Predicate = _ => true,
+                    //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                    //});
                 }
             });
         });

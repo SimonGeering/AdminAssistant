@@ -12,13 +12,9 @@ namespace AdminAssistant.WebAPI.v1.CoreModule;
 [ApiController]
 [Route("api/v1/core-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Core Module")]
-public sealed class CurrencyController : WebApiControllerBase
+public sealed class CurrencyController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
+    : WebApiControllerBase(mapper, mediator, loggingProvider)
 {
-    public CurrencyController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-        : base(mapper, mediator, loggingProvider)
-    {
-    }
-
     [HttpPut]
     [SwaggerOperation("Update an existing Currency.", OperationId = "PutCurrency")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated CurrencyResponseDto", type: typeof(CurrencyResponseDto))]

@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <AssemblyName>AdminAssistant.Blazor.Client</AssemblyName>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>AdminAssistant.Blazor.Webasm</AssemblyName>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>AdminAssistant.Blazor.Client</RootNamespace>
@@ -13,20 +13,19 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DocumentationFile>AdminAssistant.Blazor.Client.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Blazor.Webasm.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <NoWarn>$(NoWarn);1591;1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.Blazor.Client.docs.xml" />
+    <None Remove="AdminAssistant.Blazor.Webasm.docs.xml" />
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <Folder Include="Properties\" />
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blazor.Extensions.Logging" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" PrivateAssets="all" />
