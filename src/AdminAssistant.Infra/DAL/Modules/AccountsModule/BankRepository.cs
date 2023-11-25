@@ -15,19 +15,19 @@ internal sealed class BankRepository(
     IUserContextProvider userContextProvider)
     : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankRepository
 {
-    public async Task<Bank?> GetAsync(int id)
+    public async Task<Bank?> GetAsync(int id, CancellationToken cancellationToken)
     {
-        var data = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id).ConfigureAwait(false);
+        var data = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id, cancellationToken).ConfigureAwait(false);
         return Mapper.Map<Bank>(data);
     }
 
-    public async Task<List<Bank>> GetListAsync()
+    public async Task<List<Bank>> GetListAsync(CancellationToken cancellationToken)
     {
-        var data = await DbContext.Banks.ToListAsync().ConfigureAwait(false);
+        var data = await DbContext.Banks.ToListAsync(cancellationToken).ConfigureAwait(false);
         return Mapper.Map<List<Bank>>(data);
     }
 
-    public async Task<Bank> SaveAsync(Bank domainObjectToSave)
+    public async Task<Bank> SaveAsync(Bank domainObjectToSave, CancellationToken cancellationToken)
     {
         var entity = Mapper.Map<BankEntity>(domainObjectToSave);
 
@@ -36,20 +36,20 @@ internal sealed class BankRepository(
         else
             DbContext.Banks.Update(entity);
 
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
         return Mapper.Map<Bank>(entity);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
     {
-        var entity = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id).ConfigureAwait(false);
+        var entity = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id, cancellationToken).ConfigureAwait(false);
 
         // TODO: make this a custom domain exception and handle in controller.
         if (entity == null || entity.BankID != id)
             throw new ArgumentException($"Record with ID {id} not found", nameof(id));
 
         DbContext.Banks.Remove(entity);
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 }

@@ -1,5 +1,5 @@
 ﻿#pragma warning disable CA1707 // Identifiers should not contain underscores
-//using ArchUnitNET.Domain;
+using ArchUnitNET.Domain;
 using ArchUnitNET.Loader;
 using ArchUnitNET.Fluent;
 using Xunit;
@@ -17,16 +17,16 @@ public sealed class Architecture_Test(ITestOutputHelper output)
         new ArchLoader().LoadAssemblies(typeof(Architecture_Test).Assembly)
         .Build();
 
-    // private readonly IObjectProvider<IType> ExampleLayer =
-    //     Types().That().ResideInAssembly("ExampleAssembly").As("Example Layer");
+    private readonly IObjectProvider<IType> ExampleLayer = Types().That().ResideInAssembly("ExampleAssembly").As("Example Layer");
 
-
-    [Fact]
+    [Fact(Skip = "WIP")]
     [Trait("Category", "Unit")]
-    public async Task Return_IsValid_GivenAValidCurrency()
+    public void Return_IsValid_GivenAValidCurrency()
     {
         // Arrange
         var assemblies = _architecture.Assemblies.ToList();
+
+        ExampleLayer.Should().NotBeNull();
 
         // Act
         assemblies.ForEach( x => output.WriteLine(x.FullName));

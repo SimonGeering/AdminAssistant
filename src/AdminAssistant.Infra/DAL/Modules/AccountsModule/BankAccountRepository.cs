@@ -15,13 +15,13 @@ internal sealed class BankAccountRepository(
     IUserContextProvider userContextProvider)
     : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankAccountRepository
 {
-    public async Task<List<BankAccountTransaction>> GetBankAccountTransactionListAsync(int bankAccountID)
+    public async Task<List<BankAccountTransaction>> GetBankAccountTransactionListAsync(int bankAccountID, CancellationToken cancellationToken)
     {
-        var source = await DbContext.BankAccountTransactions.Where(x => x.BankAccountID == bankAccountID).ToListAsync().ConfigureAwait(false);
+        var source = await DbContext.BankAccountTransactions.Where(x => x.BankAccountID == bankAccountID).ToListAsync(cancellationToken).ConfigureAwait(false);
         return Mapper.Map<List<BankAccountTransaction>>(source);
     }
 
-    public async Task<BankAccount> SaveAsync(BankAccount domainObjectToSave)
+    public async Task<BankAccount> SaveAsync(BankAccount domainObjectToSave, CancellationToken cancellationToken)
     {
         var entity = Mapper.Map<BankAccountEntity>(domainObjectToSave);
 
@@ -36,39 +36,39 @@ internal sealed class BankAccountRepository(
         }
         else
         {
-            entity.Audit = DbContext.AuditTrail.Single(x => x.AuditID == entity.AuditID);
+            entity.Audit = await DbContext.AuditTrail.SingleAsync(x => x.AuditID == entity.AuditID, cancellationToken);
             entity.Audit.UpdatedBy = UserContextProvider.GetCurrentUser().SignOn;
             entity.Audit.UpdatedOn = DateTimeProvider.UtcNow;
 
             DbContext.BankAccounts.Update(entity);
         }
 
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
         return Mapper.Map<BankAccount>(entity);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
     {
-        var entity = await DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == id).ConfigureAwait(false);
+        var entity = await DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == id, cancellationToken).ConfigureAwait(false);
 
         // TODO: make this a custom domain exception and handle in controller.
         if (entity == null || entity.BankAccountID != id)
             throw new ArgumentException($"Record with ID {id} not found", nameof(id));
 
         DbContext.BankAccounts.Remove(entity);
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task<BankAccount?> GetAsync(int id)
+    public async Task<BankAccount?> GetAsync(int id, CancellationToken cancellationToken)
     {
-        var data = await DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == id).ConfigureAwait(false);
+        var data = await DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == id, cancellationToken).ConfigureAwait(false);
         return Mapper.Map<BankAccount?>(data);
     }
 
-    public async Task<List<BankAccount>> GetListAsync()
+    public async Task<List<BankAccount>> GetListAsync(CancellationToken cancellationToken)
     {
-        var data = await DbContext.BankAccounts.ToListAsync().ConfigureAwait(false);
+        var data = await DbContext.BankAccounts.ToListAsync(cancellationToken).ConfigureAwait(false);
         return Mapper.Map<List<BankAccount>>(data);
     }
 }

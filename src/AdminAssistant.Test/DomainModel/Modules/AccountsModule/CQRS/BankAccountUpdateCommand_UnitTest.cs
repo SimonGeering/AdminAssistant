@@ -19,7 +19,7 @@ public sealed class BankAccountUpdateCommand_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockBankAccountRepository = new Mock<IBankAccountRepository>();
-        mockBankAccountRepository.Setup(x => x.SaveAsync(bankAccount))
+        mockBankAccountRepository.Setup(x => x.SaveAsync(bankAccount, It.IsAny<CancellationToken>()))
                                  .Returns(Task.FromResult(bankAccount));
 
         services.AddTransient((sp) => mockBankAccountRepository.Object);

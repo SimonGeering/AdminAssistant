@@ -40,7 +40,7 @@ public sealed class Currency_Put_Should : IntegrationTestBase
         await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<ICurrencyRepository>();
-        var aud = await dal.SaveAsync(new Currency() { DecimalFormat = CoreSchema.DefaultCurrencyDecimalFormat, Symbol = "AUD" });
+        var aud = await dal.SaveAsync(new Currency() { DecimalFormat = CoreSchema.DefaultCurrencyDecimalFormat, Symbol = "AUD" }, default);
 
         var request = new CurrencyUpdateRequestDto()
         {
@@ -70,7 +70,7 @@ public class Currency_GetById_Should : IntegrationTestBase
         await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<ICurrencyRepository>();
-        var aud = await dal.SaveAsync(new Currency() { DecimalFormat = CoreSchema.DefaultCurrencyDecimalFormat, Symbol = "AUD" });
+        var aud = await dal.SaveAsync(new Currency() { DecimalFormat = CoreSchema.DefaultCurrencyDecimalFormat, Symbol = "AUD" }, default);
 
         // Act
         var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetCurrencyByIdAsync(aud.CurrencyID);

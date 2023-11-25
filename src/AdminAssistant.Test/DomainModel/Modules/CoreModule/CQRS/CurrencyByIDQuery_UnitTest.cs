@@ -20,7 +20,8 @@ public sealed class CurrencyByIDQuery_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockCurrencyRepository = new Mock<ICurrencyRepository>();
-        mockCurrencyRepository.Setup(x => x.GetAsync(nonExistentCurrencyID)).Returns(Task.FromResult<Currency?>(null!));
+        mockCurrencyRepository.Setup(x => x.GetAsync(nonExistentCurrencyID, It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult<Currency?>(null!));
 
         services.AddTransient((sp) => mockCurrencyRepository.Object);
 
@@ -43,7 +44,8 @@ public sealed class CurrencyByIDQuery_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockCurrencyRepository = new Mock<ICurrencyRepository>();
-        mockCurrencyRepository.Setup(x => x.GetAsync(currency.CurrencyID)).Returns(Task.FromResult<Currency?>(currency));
+        mockCurrencyRepository.Setup(x => x.GetAsync(currency.CurrencyID, It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult<Currency?>(currency));
 
         services.AddTransient((sp) => mockCurrencyRepository.Object);
 

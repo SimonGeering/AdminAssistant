@@ -19,7 +19,7 @@ public sealed class ContactUpdateCommand_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockContactRepository = new Mock<IContactRepository>();
-        mockContactRepository.Setup(x => x.SaveAsync(contact))
+        mockContactRepository.Setup(x => x.SaveAsync(contact, It.IsAny<CancellationToken>()))
                              .Returns(Task.FromResult(contact));
 
         services.AddTransient((sp) => mockContactRepository.Object);

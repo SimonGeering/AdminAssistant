@@ -37,7 +37,7 @@ public sealed class CurrencyRepository_GetListAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetListAsync();
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetListAsync(default);
 
         // Assert
         result.Should().HaveCount(currencyList.Count);
@@ -73,7 +73,7 @@ public class CurrencyRepository_GetAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetAsync(currencyList[Constants.FirstItem].CurrencyID);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetAsync(currencyList[Constants.FirstItem].CurrencyID, default);
 
         // Assert
         result.Should().BeEquivalentTo(currencyList[Constants.FirstItem]);

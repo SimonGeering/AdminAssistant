@@ -19,7 +19,7 @@ internal sealed class ContactUpdateCommandHandler(
             return Result<Contact>.Invalid(validationResult.AsErrors());
         }
 
-        var result = await contactRepository.SaveAsync(command.Contact).ConfigureAwait(false);
+        var result = await contactRepository.SaveAsync(command.Contact, cancellationToken).ConfigureAwait(false);
         return Result<Contact>.Success(result);
     }
 }

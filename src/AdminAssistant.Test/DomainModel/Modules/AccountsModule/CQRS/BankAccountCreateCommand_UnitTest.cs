@@ -20,7 +20,7 @@ public sealed class BankAccountCreateCommand_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockBankAccountRepository = new Mock<IBankAccountRepository>();
-        mockBankAccountRepository.Setup(x => x.SaveAsync(bankAccount))
+        mockBankAccountRepository.Setup(x => x.SaveAsync(bankAccount, It.IsAny<CancellationToken>()))
             .Returns(() =>
             {
                 var result = bankAccount.DeepClone();

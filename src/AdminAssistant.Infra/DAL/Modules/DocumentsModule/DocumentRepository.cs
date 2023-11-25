@@ -15,19 +15,19 @@ internal sealed class DocumentRepository(
     IUserContextProvider userContextProvider)
     : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IDocumentRepository
 {
-    public async Task<Document?> GetAsync(int id)
+    public async Task<Document?> GetAsync(int id, CancellationToken cancellationToken)
     {
-        var data = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == id).ConfigureAwait(false);
+        var data = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == id, cancellationToken).ConfigureAwait(false);
         return Mapper.Map<Document>(data);
     }
 
-    public async Task<List<Document>> GetListAsync()
+    public async Task<List<Document>> GetListAsync(CancellationToken cancellationToken)
     {
-        var data = await DbContext.Documents.ToListAsync().ConfigureAwait(false);
+        var data = await DbContext.Documents.ToListAsync(cancellationToken).ConfigureAwait(false);
         return Mapper.Map<List<Document>>(data);
     }
 
-    public async Task<Document> SaveAsync(Document domainObjectToSave)
+    public async Task<Document> SaveAsync(Document domainObjectToSave, CancellationToken cancellationToken)
     {
         var entity = Mapper.Map<DocumentEntity>(domainObjectToSave);
 
@@ -46,20 +46,20 @@ internal sealed class DocumentRepository(
             DbContext.Documents.Update(entity);
         }
 
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
         return Mapper.Map<Document>(entity);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
     {
-        var entity = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == id).ConfigureAwait(false);
+        var entity = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == id, cancellationToken).ConfigureAwait(false);
 
         // TODO: make this a custom domain exception and handle in controller.
         if (entity == null || entity.DocumentID != id)
             throw new ArgumentException($"Record with ID {id} not found", nameof(id));
 
         DbContext.Documents.Remove(entity);
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 }

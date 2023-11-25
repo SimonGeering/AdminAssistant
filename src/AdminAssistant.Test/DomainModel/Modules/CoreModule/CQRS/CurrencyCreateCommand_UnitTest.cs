@@ -20,7 +20,7 @@ public sealed class CurrencyCreateCommand_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockCurrencyRepository = new Mock<ICurrencyRepository>();
-        mockCurrencyRepository.Setup(x => x.SaveAsync(currency))
+        mockCurrencyRepository.Setup(x => x.SaveAsync(currency, It.IsAny<CancellationToken>()))
             .Returns(() =>
             {
                 var result = currency.DeepClone();

@@ -10,7 +10,7 @@ internal sealed class BankAccountTypesQueryHandler(
 {
     public override async Task<Result<IEnumerable<BankAccountType>>> Handle(BankAccountTypesQuery request, CancellationToken cancellationToken)
     {
-        var result = await bankAccountTypeRepository.GetListAsync().ConfigureAwait(false);
+        var result = await bankAccountTypeRepository.GetListAsync(cancellationToken).ConfigureAwait(false);
 
         Trace.Assert(result.Count > 0, "BankAccountType list was not populated.");
 

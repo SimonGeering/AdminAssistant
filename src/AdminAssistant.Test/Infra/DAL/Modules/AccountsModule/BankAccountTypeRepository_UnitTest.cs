@@ -37,7 +37,7 @@ public sealed class BankAccountTypeRepository_GetListAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetListAsync();
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetListAsync(default);
 
         // Assert
         result.Should().HaveCount(bankAccountTypeList.Count);
@@ -73,7 +73,7 @@ public class BankAccountTypeRepository_GetAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetAsync(bankAccountTypeList[Constants.FirstItem].BankAccountTypeID);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetAsync(bankAccountTypeList[Constants.FirstItem].BankAccountTypeID, default);
 
         // Assert
         result.Should().BeEquivalentTo(bankAccountTypeList[Constants.FirstItem]);

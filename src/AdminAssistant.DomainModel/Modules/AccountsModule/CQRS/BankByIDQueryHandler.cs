@@ -8,7 +8,7 @@ internal sealed class BankByIDQueryHandler(IBankRepository bankRepository, ILogg
 {
     public override async Task<Result<Bank>> Handle(BankByIDQuery request, CancellationToken cancellationToken)
     {
-        var result = await bankRepository.GetAsync(request.BankID).ConfigureAwait(false);
+        var result = await bankRepository.GetAsync(request.BankID, cancellationToken).ConfigureAwait(false);
 
         if (result == null || result.BankID == Constants.UnknownRecordID)
             return Result<Bank>.NotFound();

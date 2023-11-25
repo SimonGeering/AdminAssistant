@@ -26,7 +26,7 @@ public sealed class BankAccountTransactionsByBankAccountIDQuery_Should
 
         var bankAccountID = 9;
         var mockBankAccountTransactionRepository = new Mock<IBankAccountTransactionRepository>();
-        mockBankAccountTransactionRepository.Setup(x => x.GetListAsync(bankAccountID))
+        mockBankAccountTransactionRepository.Setup(x => x.GetListAsync(bankAccountID, It.IsAny<CancellationToken>()))
             .Returns(Task.FromResult<List<BankAccountTransaction>>(bankAccountTransactionList));
 
         services.AddTransient((sp) => mockBankAccountTransactionRepository.Object);
@@ -37,7 +37,7 @@ public sealed class BankAccountTransactionsByBankAccountIDQuery_Should
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().BeEquivalentTo(bankAccountTransactionList);            
+        result.Value.Should().BeEquivalentTo(bankAccountTransactionList);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

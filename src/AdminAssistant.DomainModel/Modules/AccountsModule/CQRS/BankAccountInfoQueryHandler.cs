@@ -11,7 +11,7 @@ internal sealed class BankAccountInfoQueryHandler(
     public override async Task<Result<IEnumerable<BankAccountInfo>>> Handle(BankAccountInfoQuery request, CancellationToken cancellationToken)
     {
         // TODO: implement owned entities - pass in request.OwnerID
-        var bankAccountInfoList = await bankAccountInfoRepository.GetListAsync().ConfigureAwait(false);
+        var bankAccountInfoList = await bankAccountInfoRepository.GetListAsync(cancellationToken).ConfigureAwait(false);
         return Result<IEnumerable<BankAccountInfo>>.Success(bankAccountInfoList);
     }
 }

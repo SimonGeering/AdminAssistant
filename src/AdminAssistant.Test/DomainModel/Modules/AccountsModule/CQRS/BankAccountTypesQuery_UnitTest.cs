@@ -24,7 +24,8 @@ public sealed class BankAccountTypesQuery_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockRepository = new Mock<IBankAccountTypeRepository>();
-        mockRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(bankAccountTypes));
+        mockRepository.Setup(x => x.GetListAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(bankAccountTypes));
 
         services.AddTransient((sp) => mockRepository.Object);
 

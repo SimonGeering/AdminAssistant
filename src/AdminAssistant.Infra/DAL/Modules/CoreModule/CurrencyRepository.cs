@@ -15,7 +15,7 @@ internal sealed class CurrencyRepository(
     IUserContextProvider userContextProvider)
     : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), ICurrencyRepository
 {
-    public async Task<Currency> SaveAsync(Currency domainObjectToSave)
+    public async Task<Currency> SaveAsync(Currency domainObjectToSave, CancellationToken cancellationToken)
     {
         var entity = Mapper.Map<CurrencyEntity>(domainObjectToSave);
 
@@ -28,32 +28,32 @@ internal sealed class CurrencyRepository(
             DbContext.Currencies.Update(entity);
         }
 
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
         return Mapper.Map<Currency>(entity);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
     {
-        var entity = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
+        var entity = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id, cancellationToken).ConfigureAwait(false);
 
         // TODO: make this a custom domain exception and handle in controller.
         if (entity == null || entity.CurrencyID != id)
             throw new ArgumentException($"Record with ID {id} not found", nameof(id));
 
         DbContext.Currencies.Remove(entity);
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task<Currency?> GetAsync(int id)
+    public async Task<Currency?> GetAsync(int id, CancellationToken cancellationToken)
     {
-        var data = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id).ConfigureAwait(false);
+        var data = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id, cancellationToken).ConfigureAwait(false);
         return Mapper.Map<Currency>(data);
     }
 
-    public async Task<List<Currency>> GetListAsync()
+    public async Task<List<Currency>> GetListAsync(CancellationToken cancellationToken)
     {
-        var data = await DbContext.Currencies.ToListAsync().ConfigureAwait(false);
+        var data = await DbContext.Currencies.ToListAsync(cancellationToken).ConfigureAwait(false);
         return Mapper.Map<List<Currency>>(data);
     }
 }

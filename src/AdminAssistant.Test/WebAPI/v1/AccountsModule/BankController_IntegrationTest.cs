@@ -38,7 +38,7 @@ public sealed class Bank_Put_Should : IntegrationTestBase
         await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankRepository>();
-        var acmeBank = await dal.SaveAsync(new Bank() { BankName = "Acme Bank" });
+        var acmeBank = await dal.SaveAsync(new Bank() { BankName = "Acme Bank" }, default);
 
         var request = new BankUpdateRequestDto()
         {
@@ -66,8 +66,8 @@ public class Bank_Get_Should : IntegrationTestBase
         await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankRepository>();
-        await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" });
-        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" });
+        await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }, default);
+        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }, default);
 
         // Act
         var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID);
@@ -85,8 +85,8 @@ public class Bank_Get_Should : IntegrationTestBase
         await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankRepository>();
-        var acmeBankPLC = await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" });
-        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" });
+        var acmeBankPLC = await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }, default);
+        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }, default);
 
         // Act
         var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAsync();

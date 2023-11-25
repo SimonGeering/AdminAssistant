@@ -25,9 +25,8 @@ public sealed class BankAccount_Get_Should : IntegrationTestBase
             CurrencyID = Currencies[Constants.FirstItem].CurrencyID,
             OwnerID = PersonalOwner.OwnerID,
             AccountName = "Acme Bank PLC",
-            
-        });
-        var acmeBuildingSocietyAccount = await dal.SaveAsync(new BankAccount() { AccountName = "Acme Building Society Account" });
+        }, default);
+        var acmeBuildingSocietyAccount = await dal.SaveAsync(new BankAccount() { AccountName = "Acme Building Society Account" }, default);
 
         // Act
         var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountByIdAsync(acmeBuildingSocietyAccount.BankAccountID);

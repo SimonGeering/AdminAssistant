@@ -19,7 +19,7 @@ internal sealed class CurrencyUpdateCommandHandler(
             return Result<Currency>.Invalid(validationResult.AsErrors());
         }
 
-        var result = await currencyRepository.SaveAsync(command.Currency).ConfigureAwait(false);
+        var result = await currencyRepository.SaveAsync(command.Currency, cancellationToken).ConfigureAwait(false);
         return Result<Currency>.Success(result);
     }
 }

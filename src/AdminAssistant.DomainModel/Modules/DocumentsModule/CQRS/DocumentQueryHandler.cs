@@ -8,7 +8,7 @@ internal sealed class DocumentQueryHandler(IDocumentRepository repository, ILogg
 {
     public override async Task<Result<IEnumerable<Document>>> Handle(DocumentQuery request, CancellationToken cancellationToken)
     {
-        var result = await repository.GetListAsync().ConfigureAwait(false);
+        var result = await repository.GetListAsync(cancellationToken).ConfigureAwait(false);
         return Result<IEnumerable<Document>>.Success(result);
     }
 }

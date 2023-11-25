@@ -37,7 +37,7 @@ public sealed class BankAccountRepository_UnitTest
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync();
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync(default);
 
         // Assert
         result.Should().HaveCount(bankAccountList.Count);
@@ -70,7 +70,7 @@ public sealed class BankAccountRepository_UnitTest
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetAsync(bankAccountList[Constants.FirstItem].BankAccountID);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetAsync(bankAccountList[Constants.FirstItem].BankAccountID, default);
 
         // Assert
         result.Should().BeEquivalentTo(bankAccountList[Constants.FirstItem]);
@@ -104,7 +104,7 @@ public sealed class BankAccountRepository_UnitTest
         var newBankAccountToSave = Factory.BankAccount.WithAccountName("TestNewBankAccountToSave").Build();
 
         // Act
-        await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().SaveAsync(newBankAccountToSave);
+        await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().SaveAsync(newBankAccountToSave, default);
 
         // Assert
         mockBankAccounts.Verify(x => x.Add(It.Is<BankAccountEntity>((arg) => IsValidForInsert(arg))), Times.Once());

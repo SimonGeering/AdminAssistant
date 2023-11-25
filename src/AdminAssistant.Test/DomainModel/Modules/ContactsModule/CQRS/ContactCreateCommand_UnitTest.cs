@@ -20,7 +20,7 @@ public sealed class ContactCreateCommand_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockContactRepository = new Mock<IContactRepository>();
-        mockContactRepository.Setup(x => x.SaveAsync(contact))
+        mockContactRepository.Setup(x => x.SaveAsync(contact, It.IsAny<CancellationToken>()))
             .Returns(() =>
             {
                 var result = contact.DeepClone();

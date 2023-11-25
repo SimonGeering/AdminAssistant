@@ -19,7 +19,7 @@ internal sealed class BankAccountCreateCommandHandler(
             return Result<BankAccount>.Invalid(validationResult.AsErrors());
         }
 
-        var result = await bankAccountRepository.SaveAsync(command.BankAccount).ConfigureAwait(false);
+        var result = await bankAccountRepository.SaveAsync(command.BankAccount, cancellationToken).ConfigureAwait(false);
         return Result<BankAccount>.Success(result);
     }
 }

@@ -17,8 +17,8 @@ public sealed class Document_Get_Should : IntegrationTestBase
         await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IDocumentRepository>();
-        await dal.SaveAsync(new Document() { FileName = "TestFileName.txt" });
-        await dal.SaveAsync(new Document() { FileName = "TestFileTwo.pdf" });
+        await dal.SaveAsync(new Document() { FileName = "TestFileName.txt" }, default);
+        await dal.SaveAsync(new Document() { FileName = "TestFileTwo.pdf" }, default);
 
         // Act
         var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetDocumentAsync();

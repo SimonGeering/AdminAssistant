@@ -19,7 +19,7 @@ public sealed class BankUpdateCommand_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockRepository = new Mock<ICurrencyRepository>();
-        mockRepository.Setup(x => x.SaveAsync(currency))
+        mockRepository.Setup(x => x.SaveAsync(currency, It.IsAny<CancellationToken>()))
                       .Returns(Task.FromResult(currency));
 
         services.AddTransient((sp) => mockRepository.Object);

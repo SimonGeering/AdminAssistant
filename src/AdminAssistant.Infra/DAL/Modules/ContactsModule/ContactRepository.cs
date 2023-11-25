@@ -15,19 +15,19 @@ internal sealed class ContactRepository(
     IUserContextProvider userContextProvider)
     : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IContactRepository
 {
-    public async Task<Contact?> GetAsync(int id)
+    public async Task<Contact?> GetAsync(int id, CancellationToken cancellationToken)
     {
-        var data = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id).ConfigureAwait(false);
+        var data = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id, cancellationToken).ConfigureAwait(false);
         return Mapper.Map<Contact>(data);
     }
 
-    public async Task<List<Contact>> GetListAsync()
+    public async Task<List<Contact>> GetListAsync(CancellationToken cancellationToken)
     {
-        var data = await DbContext.Contacts.ToListAsync().ConfigureAwait(false);
+        var data = await DbContext.Contacts.ToListAsync(cancellationToken).ConfigureAwait(false);
         return Mapper.Map<List<Contact>>(data);
     }
 
-    public async Task<Contact> SaveAsync(Contact domainObjectToSave)
+    public async Task<Contact> SaveAsync(Contact domainObjectToSave, CancellationToken cancellationToken)
     {
         var entity = Mapper.Map<ContactEntity>(domainObjectToSave);
 
@@ -42,27 +42,27 @@ internal sealed class ContactRepository(
         }
         else
         {
-            entity.Audit = DbContext.AuditTrail.Single(x => x.AuditID == entity.AuditID);
+            entity.Audit = await DbContext.AuditTrail.SingleAsync(x => x.AuditID == entity.AuditID, cancellationToken);
             entity.Audit.UpdatedBy = UserContextProvider.GetCurrentUser().SignOn;
             entity.Audit.UpdatedOn = DateTimeProvider.UtcNow;
 
             DbContext.Contacts.Update(entity);
         }
 
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
         return Mapper.Map<Contact>(entity);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
     {
-        var entity = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id).ConfigureAwait(false);
+        var entity = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id, cancellationToken).ConfigureAwait(false);
 
         // TODO: make this a custom domain exception and handle in controller.
         if (entity == null || entity.ContactID != id)
             throw new ArgumentException($"Record with ID {id} not found", nameof(id));
 
         DbContext.Contacts.Remove(entity);
-        await DbContext.SaveChangesAsync().ConfigureAwait(false);
+        await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 }

@@ -20,7 +20,8 @@ public sealed class ContactByIDQuery_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockContactRepository = new Mock<IContactRepository>();
-        mockContactRepository.Setup(x => x.GetAsync(nonExistentContactID)).Returns(Task.FromResult<Contact?>(null!));
+        mockContactRepository.Setup(x => x.GetAsync(nonExistentContactID, It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult<Contact?>(null!));
 
         services.AddTransient((sp) => mockContactRepository.Object);
 
@@ -43,7 +44,8 @@ public sealed class ContactByIDQuery_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockContactRepository = new Mock<IContactRepository>();
-        mockContactRepository.Setup(x => x.GetAsync(contact.ContactID)).Returns(Task.FromResult<Contact?>(contact));
+        mockContactRepository.Setup(x => x.GetAsync(contact.ContactID, It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult<Contact?>(contact));
 
         services.AddTransient((sp) => mockContactRepository.Object);
 

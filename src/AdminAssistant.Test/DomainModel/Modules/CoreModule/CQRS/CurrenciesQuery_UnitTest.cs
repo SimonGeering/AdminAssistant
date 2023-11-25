@@ -24,7 +24,8 @@ public sealed class CurrenciesQuery_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockRepository = new Mock<ICurrencyRepository>();
-        mockRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(currencyList));
+        mockRepository.Setup(x => x.GetListAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(currencyList));
 
         services.AddTransient((sp) => mockRepository.Object);
 

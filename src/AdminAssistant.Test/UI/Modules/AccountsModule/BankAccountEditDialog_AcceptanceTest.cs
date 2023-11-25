@@ -44,7 +44,7 @@ public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
         vm.HeaderText.Should().Be(IBankAccountEditDialogViewModel.NewBankAccountHeader);
         vm.ShowDialog.Should().BeTrue();
 
-        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync();
+        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync(default);
         savedBankAccounts.Should().BeEmpty();
     }
 
@@ -66,7 +66,7 @@ public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
         // Assert
         vm.ShowDialog.Should().BeFalse();
 
-        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync();
+        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync(default);
         savedBankAccounts.Should().BeEmpty();
     }
 

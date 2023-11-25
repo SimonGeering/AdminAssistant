@@ -8,7 +8,7 @@ internal sealed class CurrenciesQueryHandler(ICurrencyRepository currencyReposit
 {
     public override async Task<Result<IEnumerable<Currency>>> Handle(CurrenciesQuery request, CancellationToken cancellationToken)
     {
-        var result = await currencyRepository.GetListAsync().ConfigureAwait(false);
+        var result = await currencyRepository.GetListAsync(cancellationToken).ConfigureAwait(false);
 
         Trace.Assert(result.Count > 0, "Currency list was not populated.");
 

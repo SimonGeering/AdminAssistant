@@ -24,7 +24,8 @@ public sealed class DocumentQuery_Should
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockRepository = new Mock<IDocumentRepository>();
-        mockRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(documentList));
+        mockRepository.Setup(x => x.GetListAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(documentList));
 
         services.AddTransient((sp) => mockRepository.Object);
 

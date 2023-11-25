@@ -10,7 +10,7 @@ internal sealed class BankAccountTransactionsByBankAccountIDQueryHandler(
 {
     public override async Task<Result<IEnumerable<BankAccountTransaction>>> Handle(BankAccountTransactionsByBankAccountIDQuery request, CancellationToken cancellationToken)
     {
-        var bankAccountTransactionList = await bankAccountTransactionRepository.GetListAsync(request.BankAccountID).ConfigureAwait(false);
+        var bankAccountTransactionList = await bankAccountTransactionRepository.GetListAsync(request.BankAccountID, cancellationToken).ConfigureAwait(false);
 
         if (bankAccountTransactionList == null || bankAccountTransactionList.Count == 0)
             return Result<IEnumerable<BankAccountTransaction>>.NotFound();
