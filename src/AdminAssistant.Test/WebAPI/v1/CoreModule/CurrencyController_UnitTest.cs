@@ -37,7 +37,7 @@ public sealed class CurrencyController_Put_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -77,7 +77,7 @@ public sealed class CurrencyController_Put_Should
         var currencyRequest = mapper.Map<CurrencyUpdateRequestDto>(currency);
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundObjectResult>();
@@ -112,7 +112,7 @@ public sealed class CurrencyController_Put_Should
         var currencyRequest = mapper.Map<CurrencyUpdateRequestDto>(currency);
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -159,7 +159,7 @@ public sealed class CurrencyController_CurrencyPost_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -204,7 +204,7 @@ public sealed class CurrencyController_CurrencyPost_Should
         var currencyRequest = mapper.Map<CurrencyCreateRequestDto>(currency);
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -245,7 +245,7 @@ public sealed class CurrencyController_CurrencyGetById_Should
         services.AddTransient<CurrencyController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(currency.CurrencyID);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(currency.CurrencyID, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -278,7 +278,7 @@ public sealed class CurrencyController_CurrencyGetById_Should
         services.AddTransient<CurrencyController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(10);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(10, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundResult>();
@@ -311,7 +311,7 @@ public sealed class CurrencyController_GetCurrency_Should
         services.AddTransient<CurrencyController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().GetCurrency();
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().GetCurrency(default);
 
         // Assert
         response.Value.Should().BeNull();
