@@ -56,7 +56,7 @@
     <!--Legacy AdminAssistant.Blazor.Client-->
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
-    <PackageVersion Include="MudBlazor" Version="6.4.1" />
+    <PackageVersion Include="MudBlazor" Version="6.11.1" />
     <!--AdminAssistant.DomainModel-->
     <!--No project specific packages-->
     <!--AdminAssistant.Infra-->
