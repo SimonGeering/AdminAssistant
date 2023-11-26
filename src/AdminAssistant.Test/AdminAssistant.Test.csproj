@@ -40,13 +40,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="Moq" />
     <PackageReference Include="MockQueryable.Moq" />
-    <PackageReference Include="MockQueryable.NSubstitute" />
     <PackageReference Include="Newtonsoft.Json" />
-    <PackageReference Include="NSubstitute" />
-    <PackageReference Include="NSubstitute.Analyzers.CSharp">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="ObjectCloner.Extensions" />
     <PackageReference Include="Respawn" />
     <PackageReference Include="xunit" />

@@ -5,7 +5,6 @@ global using System.Diagnostics.CodeAnalysis;
 global using MediatR;
 global using MockQueryable.Moq;
 global using Moq;
-global using NSubstitute;
 global using Xunit;
 
 global using IMapper = AutoMapper.IMapper;
