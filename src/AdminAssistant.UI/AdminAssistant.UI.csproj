@@ -28,7 +28,6 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <PackageReference Include="Microsoft.Extensions.Http" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
-    <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Ardalis.GuardClauses" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" />
   </ItemGroup>

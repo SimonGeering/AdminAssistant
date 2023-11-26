@@ -4,7 +4,7 @@
   "documentGenerator": {
     "fromDocument": {
       "json": "",
-      "url": "https://localhost:5001/swagger/v1/swagger.json",
+      "url": "./swagger.json",
       "output": null,
       "newLineBehavior": "Auto"
     }
@@ -88,10 +88,6 @@
       "generateOptionalPropertiesAsNullable": false,
       "generateNullableReferenceTypes": true,
       "templateDirectory": null,
-      "typeNameGeneratorType": null,
-      "propertyNameGeneratorType": null,
-      "enumNameGeneratorType": null,
-      "checksumCacheEnabled": false,
       "serviceHost": null,
       "serviceSchemes": [
         "https"

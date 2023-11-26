@@ -45,7 +45,7 @@ public sealed class Startup(IConfiguration configuration)
         // TODO: investigate https://damienbod.com/2021/03/08/securing-blazor-web-assembly-using-cookies/
         services.AddHttpContextAccessor();
 
-        services.AddControllers().AddNewtonsoftJson();
+        services.AddControllers();
         services.AddFluentValidationAutoValidation()
             .AddFluentValidationClientsideAdapters()
             .AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
@@ -81,7 +81,6 @@ public sealed class Startup(IConfiguration configuration)
             c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
         });
         services.AddFluentValidationRulesToSwagger(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
-        services.AddSwaggerGenNewtonsoftSupport();
 
         services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
 

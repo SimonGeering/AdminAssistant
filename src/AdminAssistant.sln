@@ -30,8 +30,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Serve
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Webasm", "AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj", "{8E0EA277-046E-46CA-B275-B75B1B5616F3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Infra.WebAPIClient", "AdminAssistant.Infra.WebAPIClient\AdminAssistant.Infra.WebAPIClient.csproj", "{25A678DE-9AD5-4BBA-A14F-7BBC014AEF7C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,10 +72,6 @@ Global
 		{8E0EA277-046E-46CA-B275-B75B1B5616F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E0EA277-046E-46CA-B275-B75B1B5616F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E0EA277-046E-46CA-B275-B75B1B5616F3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25A678DE-9AD5-4BBA-A14F-7BBC014AEF7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25A678DE-9AD5-4BBA-A14F-7BBC014AEF7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25A678DE-9AD5-4BBA-A14F-7BBC014AEF7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25A678DE-9AD5-4BBA-A14F-7BBC014AEF7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
