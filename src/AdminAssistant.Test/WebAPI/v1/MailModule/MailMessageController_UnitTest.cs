@@ -33,7 +33,7 @@ public sealed class MailMessageController_GetMailMessages
         services.AddTransient<MailMessageController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<MailMessageController>().GetMailMessages();
+        var response = await services.BuildServiceProvider().GetRequiredService<MailMessageController>().GetMailMessages(default);
 
         // Assert
         response.Value.Should().BeNull();

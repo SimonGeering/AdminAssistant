@@ -20,12 +20,12 @@ public sealed class BankAccountController(IMapper mapper, IMediator mediator, IL
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated BankAccountResponseDto", type: typeof(BankAccountResponseDto))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the BankAccountID of the given bankAccountUpdateRequest does not exist.")]
     [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountUpdateRequest is invalid.")]
-    public async Task<ActionResult<BankAccountResponseDto>> BankAccountPut([FromBody, SwaggerParameter("The BankAccount for which updates are to be persisted.", Required = true)] BankAccountUpdateRequestDto bankAccountUpdateRequest)
+    public async Task<ActionResult<BankAccountResponseDto>> BankAccountPut([FromBody, SwaggerParameter("The BankAccount for which updates are to be persisted.", Required = true)] BankAccountUpdateRequestDto bankAccountUpdateRequest, CancellationToken cancellationToken)
     {
         Log.Start();
 
         var bankAccount = Mapper.Map<BankAccount>(bankAccountUpdateRequest);
-        var result = await Mediator.Send(new BankAccountUpdateCommand(bankAccount)).ConfigureAwait(false);
+        var result = await Mediator.Send(new BankAccountUpdateCommand(bankAccount), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
         {
@@ -47,12 +47,12 @@ public sealed class BankAccountController(IMapper mapper, IMediator mediator, IL
     [SwaggerOperation("Creates a new BankAccount.", OperationId = "PostBankAccount")]
     [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created bank account with its assigned newly ID.", type: typeof(BankAccountResponseDto))]
     [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountCreateRequest is invalid.")]
-    public async Task<ActionResult<BankAccountResponseDto>> BankAccountPost([FromBody, SwaggerParameter("The details of the BankAccount to be created.", Required = true)] BankAccountCreateRequestDto bankAccountCreateRequest)
+    public async Task<ActionResult<BankAccountResponseDto>> BankAccountPost([FromBody, SwaggerParameter("The details of the BankAccount to be created.", Required = true)] BankAccountCreateRequestDto bankAccountCreateRequest, CancellationToken cancellationToken)
     {
         Log.Start();
 
         var bankAccount = Mapper.Map<BankAccount>(bankAccountCreateRequest);
-        var result = await Mediator.Send(new BankAccountCreateCommand(bankAccount)).ConfigureAwait(false);
+        var result = await Mediator.Send(new BankAccountCreateCommand(bankAccount), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.Invalid)
         {
@@ -68,11 +68,11 @@ public sealed class BankAccountController(IMapper mapper, IMediator mediator, IL
     [SwaggerOperation("Gets the BankAccountResponseDto with the given ID.", OperationId = "GetBankAccountById")]
     [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the BankAccount requested.", type: typeof(BankAccountResponseDto))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
-    public async Task<ActionResult<BankAccountResponseDto>> BankAccountGetById([SwaggerParameter("The ID of the BankAccount to be returned.", Required = true)] int bankAccountID)
+    public async Task<ActionResult<BankAccountResponseDto>> BankAccountGetById([SwaggerParameter("The ID of the BankAccount to be returned.", Required = true)] int bankAccountID, CancellationToken cancellationToken)
     {
         Log.Start();
 
-        var result = await Mediator.Send(new BankAccountByIDQuery(bankAccountID)).ConfigureAwait(false);
+        var result = await Mediator.Send(new BankAccountByIDQuery(bankAccountID), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
             return Log.Finish(NotFound());
@@ -85,11 +85,11 @@ public sealed class BankAccountController(IMapper mapper, IMediator mediator, IL
     [SwaggerOperation("Get the transactions since the last bank account statement for the BankAccount with the given ID.", OperationId = "GetBankAccountTransactionByBankAccountID")]
     [SwaggerResponse(StatusCodes.Status200OK, "OK - returns a list of BankAccountTransactionResponseDto.", type: typeof(IEnumerable<BankAccountTransactionResponseDto>))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
-    public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> BankAccountTransactionsGetByBankAccountID([SwaggerParameter("The ID of the BankAccount.", Required = true)] int bankAccountID)
+    public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> BankAccountTransactionsGetByBankAccountID([SwaggerParameter("The ID of the BankAccount.", Required = true)] int bankAccountID, CancellationToken cancellationToken)
     {
         Log.Start();
 
-        var result = await Mediator.Send(new BankAccountTransactionsByBankAccountIDQuery(bankAccountID)).ConfigureAwait(false);
+        var result = await Mediator.Send(new BankAccountTransactionsByBankAccountIDQuery(bankAccountID), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
             return Log.Finish(NotFound());

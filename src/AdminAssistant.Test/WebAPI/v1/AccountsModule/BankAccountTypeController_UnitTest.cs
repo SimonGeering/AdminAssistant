@@ -33,7 +33,7 @@ public sealed class BankAccountTypeController_BankAccountTypeGet_Should
         services.AddTransient<BankAccountTypeController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountTypeController>().BankAccountTypeGet();
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountTypeController>().BankAccountTypeGet(default);
 
         // Assert
         response.Value.Should().BeNull();

@@ -33,7 +33,7 @@ public sealed class ReminderController_Get
         services.AddTransient<ReminderController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<ReminderController>().GetReminders();
+        var response = await services.BuildServiceProvider().GetRequiredService<ReminderController>().GetReminders(default);
 
         // Assert
         response.Value.Should().BeNull();

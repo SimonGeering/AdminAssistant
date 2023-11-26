@@ -16,11 +16,11 @@ public sealed class BankAccountTypeController(IMapper mapper, IMediator mediator
     [HttpGet]
     [SwaggerOperation("Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.", OperationId = "GetBankAccountType")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankAccountTypeResponseDto", type: typeof(IEnumerable<BankAccountTypeResponseDto>))]
-    public async Task<ActionResult<IEnumerable<BankAccountTypeResponseDto>>> BankAccountTypeGet()
+    public async Task<ActionResult<IEnumerable<BankAccountTypeResponseDto>>> BankAccountTypeGet(CancellationToken cancellationToken)
     {
         Log.Start();
 
-        var result = await Mediator.Send(new BankAccountTypesQuery()).ConfigureAwait(false);
+        var result = await Mediator.Send(new BankAccountTypesQuery(), cancellationToken).ConfigureAwait(false);
         var response = Mapper.Map<IEnumerable<BankAccountTypeResponseDto>>(result.Value);
 
         return Log.Finish(Ok(response));

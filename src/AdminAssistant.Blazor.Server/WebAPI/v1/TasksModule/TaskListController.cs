@@ -16,11 +16,11 @@ public sealed class TaskListController(IMapper mapper, IMediator mediator, ILogg
     [HttpGet]
     [SwaggerOperation("Lists all task lists.", OperationId = "GetTaskList")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of TaskListResponseDto", type: typeof(IEnumerable<TaskListResponseDto>))]
-    public async Task<ActionResult<IEnumerable<TaskListResponseDto>>> GetTaskLists()
+    public async Task<ActionResult<IEnumerable<TaskListResponseDto>>> GetTaskLists(CancellationToken cancellationToken)
     {
         Log.Start();
 
-        var result = await Mediator.Send(new TaskListQuery()).ConfigureAwait(false);
+        var result = await Mediator.Send(new TaskListQuery(), cancellationToken).ConfigureAwait(false);
         var response = Mapper.Map<IEnumerable<TaskListResponseDto>>(result.Value);
 
         return Log.Finish(Ok(response));

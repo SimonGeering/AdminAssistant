@@ -16,11 +16,11 @@ public sealed class MailMessageController(IMapper mapper, IMediator mediator, IL
     [HttpGet]
     [SwaggerOperation("Lists all mail messages", OperationId = "GetMailMessage")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of MailMessageResponseDto", type: typeof(IEnumerable<MailMessageResponseDto>))]
-    public async Task<ActionResult<IEnumerable<MailMessageResponseDto>>> GetMailMessages()
+    public async Task<ActionResult<IEnumerable<MailMessageResponseDto>>> GetMailMessages(CancellationToken cancellationToken)
     {
         Log.Start();
 
-        var result = await Mediator.Send(new MailMessageQuery()).ConfigureAwait(false);
+        var result = await Mediator.Send(new MailMessageQuery(), cancellationToken).ConfigureAwait(false);
         var response = Mapper.Map<IEnumerable<MailMessageResponseDto>>(result.Value);
 
         return Log.Finish(Ok(response));

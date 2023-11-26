@@ -16,11 +16,11 @@ public sealed class AssetController(IMapper mapper, IMediator mediator, ILogging
     [HttpGet]
     [SwaggerOperation("Lists all assets", OperationId = "GetAsset")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of AssetResponseDto", type: typeof(IEnumerable<AssetResponseDto>))]
-    public async Task<ActionResult<IEnumerable<AssetResponseDto>>> GetAssets()
+    public async Task<ActionResult<IEnumerable<AssetResponseDto>>> GetAssets(CancellationToken cancellationToken)
     {
         Log.Start();
 
-        var result = await Mediator.Send(new AssetQuery()).ConfigureAwait(false);
+        var result = await Mediator.Send(new AssetQuery(), cancellationToken).ConfigureAwait(false);
         var response = Mapper.Map<IEnumerable<AssetResponseDto>>(result.Value);
 
         return Log.Finish(Ok(response));

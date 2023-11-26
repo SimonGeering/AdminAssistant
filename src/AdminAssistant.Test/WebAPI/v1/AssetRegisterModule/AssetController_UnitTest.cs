@@ -34,7 +34,7 @@ public sealed class AssetController_GetAssets
         services.AddTransient<AssetController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<AssetController>().GetAssets();
+        var response = await services.BuildServiceProvider().GetRequiredService<AssetController>().GetAssets(default);
 
         // Assert
         response.Value.Should().BeNull();

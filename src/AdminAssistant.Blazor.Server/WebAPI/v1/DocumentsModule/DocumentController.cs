@@ -16,11 +16,11 @@ public sealed class DocumentController(IMapper mapper, IMediator mediator, ILogg
     [HttpGet]
     [SwaggerOperation("Lists all documents.", OperationId = "GetDocument")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of DocumentResponseDto", type: typeof(IEnumerable<DocumentResponseDto>))]
-    public async Task<ActionResult<IEnumerable<DocumentResponseDto>>> GetDocuments()
+    public async Task<ActionResult<IEnumerable<DocumentResponseDto>>> GetDocuments(CancellationToken cancellationToken)
     {
         Log.Start();
 
-        var result = await Mediator.Send(new DocumentQuery()).ConfigureAwait(false);
+        var result = await Mediator.Send(new DocumentQuery(), cancellationToken).ConfigureAwait(false);
         var response = Mapper.Map<IEnumerable<DocumentResponseDto>>(result.Value);
 
         return Log.Finish(Ok(response));

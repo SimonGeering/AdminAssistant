@@ -36,7 +36,7 @@ public sealed class BankController_Put_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest);
+        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -75,7 +75,7 @@ public sealed class BankController_Put_Should
         var bankRequest = mapper.Map<BankUpdateRequestDto>(bank);
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(bankRequest);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(bankRequest, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundObjectResult>();
@@ -110,7 +110,7 @@ public sealed class BankController_Put_Should
         var bankRequest = mapper.Map<BankUpdateRequestDto>(bank);
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest);
+        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -157,7 +157,7 @@ public class BankController_BankPost_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest);
+        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -201,7 +201,7 @@ public class BankController_BankPost_Should
         var bankRequest = mapper.Map<BankCreateRequestDto>(bank);
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest);
+        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -241,7 +241,7 @@ public class BankController_BankGetById_Should
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -273,7 +273,7 @@ public class BankController_BankGetById_Should
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(10);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(10, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundResult>();
@@ -306,7 +306,7 @@ public class BankController_BankGet_Should
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet();
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet(default);
 
         // Assert
         response.Value.Should().BeNull();

@@ -21,7 +21,7 @@ public sealed class Document_Get_Should : IntegrationTestBase
         await dal.SaveAsync(new Document() { FileName = "TestFileTwo.pdf" }, default);
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetDocumentAsync();
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetDocumentAsync(default);
 
         // Assert
         response.Should().HaveCount(2);

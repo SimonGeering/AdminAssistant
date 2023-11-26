@@ -40,7 +40,7 @@ public sealed class BankAccountController_Put_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -84,7 +84,7 @@ public sealed class BankAccountController_Put_Should
         var bankAccountRequest = mapper.Map<BankAccountUpdateRequestDto>(bankAccount);
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundObjectResult>();
@@ -118,7 +118,7 @@ public sealed class BankAccountController_Put_Should
         var bankAccountRequest = mapper.Map<BankAccountUpdateRequestDto>(bankAccount);
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -170,7 +170,7 @@ public sealed class BankAccountController_BankAccountPost_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -219,7 +219,7 @@ public sealed class BankAccountController_BankAccountPost_Should
         var bankAccountRequest = mapper.Map<BankAccountCreateRequestDto>(bankAccount);
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest, default);
 
         // Assert
         response.Result.Should().NotBeNull();
@@ -257,7 +257,7 @@ public sealed class BankAccountController_BankAccountGetById_Should
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -287,7 +287,7 @@ public sealed class BankAccountController_BankAccountGetById_Should
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(10);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(10, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundResult>();
@@ -322,7 +322,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         var container = services.BuildServiceProvider();
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList[Constants.FirstItem].BankAccountID);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList[Constants.FirstItem].BankAccountID, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -358,7 +358,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(Constants.UnknownRecordID);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(Constants.UnknownRecordID, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundResult>();

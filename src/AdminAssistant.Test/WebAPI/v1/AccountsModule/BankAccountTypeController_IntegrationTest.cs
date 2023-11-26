@@ -15,7 +15,7 @@ public sealed class BankAccountType_Get_Should : IntegrationTestBase
         await ResetDatabaseAsync();
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountTypeAsync();
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountTypeAsync(default);
 
         // Assert
         response.Should().HaveCount(2);

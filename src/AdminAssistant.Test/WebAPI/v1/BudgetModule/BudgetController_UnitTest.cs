@@ -33,7 +33,7 @@ public sealed class BudgetController_UnitTest_Should
         services.AddTransient<BudgetController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BudgetController>().GetBudgets();
+        var response = await services.BuildServiceProvider().GetRequiredService<BudgetController>().GetBudgets(default);
 
         // Assert
         response.Value.Should().BeNull();

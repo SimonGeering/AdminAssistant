@@ -20,12 +20,12 @@ public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggi
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated ContactResponseDto", type: typeof(ContactResponseDto))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the ContactID of the given ContactUpdateRequest does not exist.")]
     [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given ContactUpdateRequest is invalid.")]
-    public async Task<ActionResult<ContactResponseDto>> ContactPut([FromBody, SwaggerParameter("The Contact for which updates are to be persisted.", Required = true)] ContactUpdateRequestDto ContactUpdateRequest)
+    public async Task<ActionResult<ContactResponseDto>> ContactPut([FromBody, SwaggerParameter("The Contact for which updates are to be persisted.", Required = true)] ContactUpdateRequestDto ContactUpdateRequest, CancellationToken cancellationToken)
     {
         Log.Start();
 
         var contact = Mapper.Map<Contact>(ContactUpdateRequest);
-        var result = await Mediator.Send(new ContactUpdateCommand(contact)).ConfigureAwait(false);
+        var result = await Mediator.Send(new ContactUpdateCommand(contact), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
         {
@@ -47,12 +47,12 @@ public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggi
     [SwaggerOperation("Creates a new Contact.", OperationId = "PostContact")]
     [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created Contact with its assigned newly ID.", type: typeof(ContactResponseDto))]
     [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given ContactCreateRequest is invalid.")]
-    public async Task<ActionResult<ContactResponseDto>> ContactPost([FromBody, SwaggerParameter("The details of the Contact to be created.", Required = true)] ContactCreateRequestDto ContactCreateRequest)
+    public async Task<ActionResult<ContactResponseDto>> ContactPost([FromBody, SwaggerParameter("The details of the Contact to be created.", Required = true)] ContactCreateRequestDto ContactCreateRequest, CancellationToken cancellationToken)
     {
         Log.Start();
 
         var contact = Mapper.Map<Contact>(ContactCreateRequest);
-        var result = await Mediator.Send(new ContactCreateCommand(contact)).ConfigureAwait(false);
+        var result = await Mediator.Send(new ContactCreateCommand(contact), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.Invalid)
         {
@@ -68,11 +68,11 @@ public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggi
     [SwaggerOperation("Gets the Contact with the given ID.", OperationId = "GetContactById")]
     [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the Contact requested.", type: typeof(ContactResponseDto))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given ContactID does not exist.")]
-    public async Task<ActionResult<ContactResponseDto>> ContactGetById([SwaggerParameter("The ID of the Contact to be returned.", Required = true)] int contactId)
+    public async Task<ActionResult<ContactResponseDto>> ContactGetById([SwaggerParameter("The ID of the Contact to be returned.", Required = true)] int contactId, CancellationToken cancellationToken)
     {
         Log.Start();
 
-        var result = await Mediator.Send(new ContactByIDQuery(contactId)).ConfigureAwait(false);
+        var result = await Mediator.Send(new ContactByIDQuery(contactId), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
             return Log.Finish(NotFound());
@@ -84,11 +84,11 @@ public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggi
     [HttpGet]
     [SwaggerOperation("Lists all contacts", OperationId = "GetContact")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of ContactResponseDto", type: typeof(IEnumerable<ContactResponseDto>))]
-    public async Task<ActionResult<IEnumerable<ContactResponseDto>>> GetContact()
+    public async Task<ActionResult<IEnumerable<ContactResponseDto>>> GetContact(CancellationToken cancellationToken)
     {
         Log.Start();
 
-        var result = await Mediator.Send(new ContactQuery()).ConfigureAwait(false);
+        var result = await Mediator.Send(new ContactQuery(), cancellationToken).ConfigureAwait(false);
         var response = Mapper.Map<IEnumerable<ContactResponseDto>>(result.Value);
 
         return Log.Finish(Ok(response));
