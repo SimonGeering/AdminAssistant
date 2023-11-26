@@ -69,6 +69,8 @@
     <PackageVersion Include="Polly.Extensions.Http" Version="3.0.0" />
     <PackageVersion Include="Polly" Version="8.2.0" />
     <PackageVersion Include="PDFsharp" Version="6.0.0" />
+    <!--AdminAssistant.Infra.WebApiClient-->
+    <PackageVersion Include="NSwag.MSBuild" Version="14.0.0-preview010" />
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="ReactiveUI" Version="19.5.1" />
     <PackageVersion Include="Terminal.Gui" Version="1.14.1" />
