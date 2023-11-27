@@ -1,16 +1,10 @@
 <Project>
-  <PropertyGroup>
-    <!--See: https://devblogs.microsoft.com/nuget/introducing-central-package-management/-->
-    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <!--https://github.com/dotnet/aspnetcore/issues/50836-->
-    <NoWarn>S1135;S1125;1701;1702;1591;NU1605;CS1591</NoWarn>
-  </PropertyGroup>
   <ItemGroup>
     <!--Shared / Common-->
+    <PackageVersion Include="Ardalis.Extensions" Version="0.9.4" />
     <PackageVersion Include="Ardalis.GuardClauses" Version="4.2.0" />
+    <PackageVersion Include="Ardalis.SharedKernel" Version="1.4.0" />
+    <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0" />
     <PackageVersion Include="AutoMapper" Version="12.0.1" />
     <PackageVersion Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageVersion Include="FluentValidation" Version="11.8.1" />

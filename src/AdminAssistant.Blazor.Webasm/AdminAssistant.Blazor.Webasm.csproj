@@ -1,21 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>AdminAssistant.Blazor.Webasm</AssemblyName>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>AdminAssistant.Blazor.Client</RootNamespace>
-    <LangVersion>latest</LangVersion>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisLevel>latest</AnalysisLevel>
     <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <DocumentationFile>AdminAssistant.Blazor.Webasm.docs.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>$(NoWarn);1591;1701;1702;NU1605</NoWarn>
+    <NoWarn>$(NoWarn);1591;</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

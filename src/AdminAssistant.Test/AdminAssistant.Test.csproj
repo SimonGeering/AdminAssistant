@@ -1,21 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Product>Admin Assistant</Product>
     <IsPackable>false</IsPackable>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>latest</LangVersion>
-    <Platforms>AnyCPU</Platforms>
     <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisLevel>latest</AnalysisLevel>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <NoWarn>$(NoWarn);1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
