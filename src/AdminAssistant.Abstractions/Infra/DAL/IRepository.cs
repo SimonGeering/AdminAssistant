@@ -1,8 +1,9 @@
 namespace AdminAssistant.Infra.DAL;
 
-public interface IRepository<TDomainModel> : IReadOnlyRepository<TDomainModel>
+public interface IRepository<TDomainModel, TId> : IReadOnlyRepository<TDomainModel, TId>
     where TDomainModel : IDatabasePersistable
+    where TId : Id
 {
     Task<TDomainModel> SaveAsync(TDomainModel domainObjectToSave, CancellationToken cancellationToken);
-    Task DeleteAsync(int id, CancellationToken cancellationToken);
+    Task DeleteAsync(TId id, CancellationToken cancellationToken);
 }

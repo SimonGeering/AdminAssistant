@@ -4,9 +4,9 @@ public sealed record Document : IDatabasePersistable
 {
     public const int FileNameMaxLength = 255;
 
-    public int DocumentID { get; set; }
+    public DocumentId DocumentID { get; set; } = DocumentId.Default;
 
     public string FileName { get; set; } = string.Empty;
 
-    public int PrimaryKey => DocumentID;
+    public int PrimaryKey => DocumentID.Value;
 }

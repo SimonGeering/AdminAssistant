@@ -1,6 +1,6 @@
 namespace AdminAssistant.DomainModel.Modules.CoreModule;
 
-public sealed class CurrencyId : Id
+public sealed record CurrencyId(int Value) : Id(Value)
 {
-    public CurrencyId(int value) : base(value) { }
+    public static CurrencyId Default => new(Constants.UnknownRecordID);
 }

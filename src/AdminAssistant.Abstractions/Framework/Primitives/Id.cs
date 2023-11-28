@@ -1,16 +1,7 @@
 namespace AdminAssistant.Framework.Primitives;
 
-public abstract class Id : ValueObject
+public abstract record Id(int Value)
 {
-    protected Id()
-        => Value = Constants.NewRecordID;
-    protected Id(int value)
-        => Value = value;
-
-    public int Value { get; }
-
-    public override IEnumerable<object> GetAtomicValues()
-    {
-        yield return Value;
-    }
+    public bool IsUnknownRecordID => Value == Constants.UnknownRecordID;
+    public bool IsNewRecordID => Value == Constants.NewRecordID;
 }

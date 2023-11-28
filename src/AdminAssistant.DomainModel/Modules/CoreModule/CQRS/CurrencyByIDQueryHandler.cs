@@ -10,7 +10,7 @@ internal sealed class CurrencyByIDQueryHandler(ICurrencyRepository currencyRepos
     {
         var result = await currencyRepository.GetAsync(request.CurrencyID, cancellationToken).ConfigureAwait(false);
 
-        if (result == null || result.CurrencyID == Constants.UnknownRecordID)
+        if (result == null || result.CurrencyID.IsUnknownRecordID)
             return Result<Currency>.NotFound();
 
         return Result<Currency>.Success(result);

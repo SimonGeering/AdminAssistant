@@ -26,7 +26,7 @@ internal sealed class CurrencyBuilder : ICurrencyBuilder
     {
         _currency = _currency with
         {
-            CurrencyID = currencyID,
+            CurrencyID = new CurrencyId(currencyID),
             Symbol = "GBP",
             DecimalFormat = "2.2-2",
         };

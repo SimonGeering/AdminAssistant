@@ -33,21 +33,21 @@ internal sealed class CurrencyRepository(
         return Mapper.Map<Currency>(entity);
     }
 
-    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
+    public async Task DeleteAsync(CurrencyId id, CancellationToken cancellationToken)
     {
-        var entity = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id, cancellationToken).ConfigureAwait(false);
+        var entity = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id.Value, cancellationToken).ConfigureAwait(false);
 
         // TODO: make this a custom domain exception and handle in controller.
-        if (entity == null || entity.CurrencyID != id)
-            throw new ArgumentException($"Record with ID {id} not found", nameof(id));
+        if (entity == null || entity.CurrencyID != id.Value)
+            throw new ArgumentException($"Record with ID {id.Value} not found", nameof(id));
 
         DbContext.Currencies.Remove(entity);
         await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task<Currency?> GetAsync(int id, CancellationToken cancellationToken)
+    public async Task<Currency?> GetAsync(CurrencyId id, CancellationToken cancellationToken)
     {
-        var data = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id, cancellationToken).ConfigureAwait(false);
+        var data = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id.Value, cancellationToken).ConfigureAwait(false);
         return Mapper.Map<Currency>(data);
     }
 
