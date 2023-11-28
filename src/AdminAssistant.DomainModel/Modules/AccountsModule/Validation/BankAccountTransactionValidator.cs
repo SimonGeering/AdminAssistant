@@ -9,6 +9,6 @@ internal sealed class BankAccountTransactionValidator : AbstractValidator<BankAc
             .MaximumLength(BankAccountTransaction.DescriptionMaxLength);
 
         RuleFor(x => x.BankAccountID)
-            .NotEqual(Constants.UnknownRecordID);
+            .NotEqual(BankAccountId.Default);
     }
 }

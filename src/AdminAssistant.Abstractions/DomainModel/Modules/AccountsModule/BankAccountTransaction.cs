@@ -1,3 +1,5 @@
+using AdminAssistant.DomainModel.Modules.CoreModule;
+
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
 public sealed record BankAccountTransaction : IDatabasePersistable
@@ -5,16 +7,16 @@ public sealed record BankAccountTransaction : IDatabasePersistable
     public const int DescriptionMaxLength = Constants.DescriptionMaxLength;
 
     public BankAccountTransactionId BankAccountTransactionID { get; init; } = BankAccountTransactionId.Default;
-    public int BankAccountID { get; init; }
-    public int BankAccountTransactionTypeID { get; init; }
-    public int BankAccountStatementID { get; init; }
+    public BankAccountId BankAccountID { get; init; } = BankAccountId.Default;
+    public BankAccountTransactionTypeId BankAccountTransactionTypeID { get; init; } = BankAccountTransactionTypeId.Default;
+    public BankAccountStatementId BankAccountStatementID { get; init; } = BankAccountStatementId.Default;
     public int BankAccountStatementNumber { get; init; }
     public bool IsReconciled { get; init; }
 
-    public int PayeeID { get; init; }
+    public PayeeId PayeeID { get; init; } = PayeeId.Default;
     public string PayeeName { get; init; } = string.Empty;
 
-    public int CurrencyID { get; init; }
+    public CurrencyId CurrencyID { get; init; } = CurrencyId.Default;
     public string Symbol { get; init; } = string.Empty;
     public string DecimalFormat { get; init; } = string.Empty;
 

@@ -322,7 +322,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         var container = services.BuildServiceProvider();
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList[Constants.FirstItem].BankAccountID, default);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList[Constants.FirstItem].BankAccountID.Value, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -339,7 +339,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         for (var index = 0; index < expected.Length; index++)
         {
             value[index].BankAccountTransactionID.Should().Be(expected[index].BankAccountTransactionID.Value);
-            value[index].BankAccountID.Should().Be(expected[index].BankAccountID);
+            value[index].BankAccountID.Should().Be(expected[index].BankAccountID.Value);
         }
     }
 

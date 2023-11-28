@@ -13,7 +13,7 @@ internal sealed class BankAccountTransactionBuilder : IBankAccountTransactionBui
         _bankAccountTransaction = _bankAccountTransaction with
         {
             BankAccountTransactionID = new(bankAccountTransactionID),
-            BankAccountID = 10,
+            BankAccountID = new(10),
             Description = "Test Transaction"
         };
         return this;
@@ -21,7 +21,7 @@ internal sealed class BankAccountTransactionBuilder : IBankAccountTransactionBui
 
     public IBankAccountTransactionBuilder WithBankAccountID(int bankAccountID)
     {
-        _bankAccountTransaction = _bankAccountTransaction with { BankAccountID = bankAccountID };
+        _bankAccountTransaction = _bankAccountTransaction with { BankAccountID = new(bankAccountID) };
         return this;
     }
 

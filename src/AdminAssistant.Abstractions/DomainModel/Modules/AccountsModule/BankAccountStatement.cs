@@ -1,3 +1,5 @@
+using AdminAssistant.DomainModel.Modules.DocumentsModule;
+
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
 /// <summary></summary>
@@ -5,8 +7,8 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 public sealed record BankAccountStatement : IDatabasePersistable
 {
     public BankAccountStatementId BankAccountStatementID { get; init; } = BankAccountStatementId.Default;
-    public int BankAccountID { get; init; } = Constants.UnknownRecordID;
-    public int DocumentID { get; init; } = Constants.UnknownRecordID;
+    public BankAccountId BankAccountID { get; init; } = BankAccountId.Default;
+    public DocumentId DocumentID { get; init; } = DocumentId.Default;
     public DateTime StatementDate { get; init; }
     public bool IsReconciled { get; init; }
     public DateTime StartDate { get; init; }

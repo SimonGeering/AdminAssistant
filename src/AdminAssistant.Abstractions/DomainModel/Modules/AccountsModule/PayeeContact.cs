@@ -1,10 +1,12 @@
+using AdminAssistant.DomainModel.Modules.ContactsModule;
+
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
 public sealed record PayeeContact : IDatabasePersistable
 {
     public PayeeContactId PayeeContactID { get; init; } = PayeeContactId.Default;
-    public int PayeeID { get; init; }
-    public int ContactID { get; init; }
+    public PayeeId PayeeID { get; init; } = PayeeId.Default;
+    public ContactId ContactID { get; init; } = ContactId.Default;
     public bool IsPrimaryContact { get; init; }
 
     public Id PrimaryKey => PayeeContactID;
