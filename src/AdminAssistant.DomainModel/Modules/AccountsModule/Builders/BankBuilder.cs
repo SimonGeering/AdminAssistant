@@ -12,14 +12,14 @@ internal sealed class BankBuilder : IBankBuilder
         _bank = _bank with
         {
             BankID = new(bankID),
-            BankName = "ACME Bank PLC"
+            BankName = new("ACME Bank PLC")
         };
         return this;
     }
 
     public IBankBuilder WithBankName(string bankName)
     {
-        _bank = _bank with { BankName = bankName };
+        _bank = _bank with { BankName = new(bankName) };
         return this;
     }
 }

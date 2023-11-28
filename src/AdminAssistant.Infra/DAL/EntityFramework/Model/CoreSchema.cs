@@ -1,6 +1,7 @@
 using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 using Microsoft.EntityFrameworkCore;
+using AdminAssistant.Abstractions.DomainModel.Shared;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 
@@ -100,7 +101,7 @@ public static class CoreSchema
     {
         modelBuilder.Entity<CompanyEntity>().ToTable("Company").Metadata.SetSchema(CoreSchema.Name);
         modelBuilder.Entity<CompanyEntity>().HasKey(x => x.CompanyID);
-        modelBuilder.Entity<CompanyEntity>().Property(x => x.Name).IsRequired().IsUnicode().HasMaxLength(Constants.NameMaxLength);
+        modelBuilder.Entity<CompanyEntity>().Property(x => x.Name).IsRequired().IsUnicode().HasMaxLength(EntityName.MaxLength);
         modelBuilder.Entity<CompanyEntity>().Property(x => x.CompanyNumber).IsRequired().IsUnicode().HasMaxLength(Company.CompanyNumberMaxLength).HasDefaultValue(default(string));
         modelBuilder.Entity<CompanyEntity>().Property(x => x.VATNumber).IsRequired().IsUnicode().HasMaxLength(Company.VATNumberMaxLength).HasDefaultValue(default(string));
     }

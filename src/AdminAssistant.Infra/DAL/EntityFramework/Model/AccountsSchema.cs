@@ -1,6 +1,7 @@
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.DomainModel.Modules.AccountsModule;
 using Microsoft.EntityFrameworkCore;
+using AdminAssistant.Abstractions.DomainModel.Shared;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model;
 
@@ -83,7 +84,7 @@ public static class AccountsSchema
     {
         builder.Entity<PayeeEntity>().ToTable("Payee").Metadata.SetSchema(AccountsSchema.Name);
         builder.Entity<PayeeEntity>().HasKey(x => x.PayeeID);
-        builder.Entity<PayeeEntity>().Property(x => x.Name).IsRequired().IsUnicode().HasMaxLength(Constants.NameMaxLength);
+        builder.Entity<PayeeEntity>().Property(x => x.Name).IsRequired().IsUnicode().HasMaxLength(EntityName.MaxLength);
         // TODO: Payee_OnModelCreating
     }
 }

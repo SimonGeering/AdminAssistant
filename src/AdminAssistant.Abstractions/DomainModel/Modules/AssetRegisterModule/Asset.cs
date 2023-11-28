@@ -1,8 +1,10 @@
+using AdminAssistant.Abstractions.DomainModel.Shared;
+
 namespace AdminAssistant.DomainModel.Modules.AssetRegisterModule;
 
 public sealed record Asset : IDatabasePersistable
 {
-    public const int AssetNameMaxLength = Constants.NameMaxLength;
+    public const int AssetNameMaxLength = EntityName.MaxLength;
 
     public AssetId AssetID { get; set; } = AssetId.Default;
     public string AssetName { get; set; } = string.Empty;

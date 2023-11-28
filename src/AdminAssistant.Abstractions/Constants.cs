@@ -27,25 +27,12 @@ public static class Constants
     public const int KeyMaxLength = 20;
 
     /// <summary>
-    /// The maximum length of a name filed
-    /// </summary>
-    /// <remarks>
-    /// For example the name of a person or company.
-    /// </remarks>
-    public const int NameMaxLength = 50;
-
-    /// <summary>
     /// The max length of a user sign-on.
     /// </summary>
     /// <remarks>
     /// For example a windows login or online account user name
     /// </remarks>
     public const int UserSignOnMaxLength = 50;
-
-    /// <summary>
-    /// The maximum length of a description field.
-    /// </summary>
-    public const int DescriptionMaxLength = 255;
 
     /// <summary>
     /// The maximum length of a notes field.

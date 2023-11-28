@@ -1,9 +1,11 @@
+using AdminAssistant.Abstractions.DomainModel.Shared;
+
 namespace AdminAssistant.DomainModel.Modules.ContactsModule;
 
 public sealed record Contact : IDatabasePersistable
 {
-    public const int FirstNameMaxLength = Constants.NameMaxLength;
-    public const int LastNameMaxLength = Constants.NameMaxLength;
+    public const int FirstNameMaxLength = EntityName.MaxLength;
+    public const int LastNameMaxLength = EntityName.MaxLength;
 
     public ContactId ContactID { get; init; } = ContactId.Default;
     public int OwnerID { get; init; } = Constants.UnknownRecordID;

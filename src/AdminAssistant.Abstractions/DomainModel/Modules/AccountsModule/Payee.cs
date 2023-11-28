@@ -1,8 +1,10 @@
+using AdminAssistant.Abstractions.DomainModel.Shared;
+
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
 public sealed record Payee : IDatabasePersistable
 {
-    public const int NameMaxLength = Constants.NameMaxLength;
+    public const int NameMaxLength = EntityName.MaxLength;
 
     public PayeeId PayeeID { get; init; } = PayeeId.Default;
     public string Name { get; init; } = string.Empty;

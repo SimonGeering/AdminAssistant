@@ -1,8 +1,10 @@
+using AdminAssistant.Abstractions.DomainModel.Shared;
+
 namespace AdminAssistant.DomainModel.Modules.MailModule;
 
 public sealed record MailMessage : IDatabasePersistable
 {
-    public const int SubjectNameMaxLength = Constants.DescriptionMaxLength;
+    public const int SubjectNameMaxLength = EntityDescription.MaxLength;
 
     public MailMessageId MailMessageID { get; set; } = MailMessageId.Default;
     public string Subject { get; set; } = string.Empty;

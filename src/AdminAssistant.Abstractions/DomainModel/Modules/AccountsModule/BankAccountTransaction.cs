@@ -1,10 +1,11 @@
+using AdminAssistant.Abstractions.DomainModel.Shared;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
 public sealed record BankAccountTransaction : IDatabasePersistable
 {
-    public const int DescriptionMaxLength = Constants.DescriptionMaxLength;
+    public const int DescriptionMaxLength = EntityDescription.MaxLength;
 
     public BankAccountTransactionId BankAccountTransactionID { get; init; } = BankAccountTransactionId.Default;
     public BankAccountId BankAccountID { get; init; } = BankAccountId.Default;

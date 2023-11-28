@@ -1,3 +1,4 @@
+using AdminAssistant.Abstractions.DomainModel.Shared;
 using AutoMapper;
 using System.Reflection;
 
@@ -13,6 +14,8 @@ public abstract class MappingProfileBase : Profile
         ApplyIMapToMappings(assembly);
 
         CreateMap<Id, int>().ConvertUsing(x => x.Value);
+        CreateMap<EntityName, string>().ConvertUsing(x => x.Value);
+        CreateMap<EntityDescription, string>().ConvertUsing(x => x.Value);
     }
 
     private void ApplyIMapFromMappings(Assembly assembly)

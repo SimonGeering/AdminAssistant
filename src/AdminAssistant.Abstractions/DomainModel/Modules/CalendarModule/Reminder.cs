@@ -1,8 +1,10 @@
+using AdminAssistant.Abstractions.DomainModel.Shared;
+
 namespace AdminAssistant.DomainModel.Modules.CalendarModule;
 
 public sealed record Reminder : IDatabasePersistable
 {
-    public const int ReminderNameMaxLength = Constants.NameMaxLength;
+    public const int ReminderNameMaxLength = EntityName.MaxLength;
 
     public ReminderId ReminderID { get; set; } = ReminderId.Default;
     public string ReminderName { get; set; } = string.Empty;

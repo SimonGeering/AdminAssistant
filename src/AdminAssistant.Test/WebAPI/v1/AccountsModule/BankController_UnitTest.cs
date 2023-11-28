@@ -32,7 +32,7 @@ public sealed class BankController_Put_Should
         var bankRequest = new BankUpdateRequestDto()
         {
             BankID = bank.BankID.Value,
-            BankName = bank.BankName
+            BankName = bank.BankName.Value
         };
 
         // Act
@@ -49,7 +49,7 @@ public sealed class BankController_Put_Should
 
         var value = (BankResponseDto)result.Value!;
         value.BankID.Should().Be(bank.BankID.Value);
-        value.BankName.Should().Be(bank.BankName);
+        value.BankName.Should().Be(bank.BankName.Value);
     }
 
     [Fact]
@@ -153,7 +153,7 @@ public class BankController_BankPost_Should
 
         var bankRequest = new BankCreateRequestDto()
         {
-            BankName = bank.BankName
+            BankName = bank.BankName.Value
         };
 
         // Act
@@ -170,7 +170,7 @@ public class BankController_BankPost_Should
 
         var value = (BankResponseDto)result.Value!;
         value.BankID.Should().Be(bank.BankID.Value);
-        value.BankName.Should().Be(bank.BankName);
+        value.BankName.Should().Be(bank.BankName.Value);
     }
 
     [Fact]
@@ -254,7 +254,7 @@ public class BankController_BankGetById_Should
         result.Value.Should().NotBeNull();
         var value = (BankResponseDto)result.Value!;
         value.BankID.Should().Be(bank.BankID.Value);
-        value.BankName.Should().Be(bank.BankName);
+        value.BankName.Should().Be(bank.BankName.Value);
     }
 
     [Fact]
@@ -324,7 +324,7 @@ public class BankController_BankGet_Should
         for (var index = 0; index < expected.Length; index++)
         {
             value[index].BankID.Should().Be(expected[index].BankID.Value);
-            value[index].BankName.Should().Be(expected[index].BankName);
+            value[index].BankName.Should().Be(expected[index].BankName.Value);
         }
     }
 }

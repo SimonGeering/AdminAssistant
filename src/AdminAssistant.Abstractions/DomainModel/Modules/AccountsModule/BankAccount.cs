@@ -1,3 +1,4 @@
+using AdminAssistant.Abstractions.DomainModel.Shared;
 using AdminAssistant.DomainModel.Modules.CoreModule;
 
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
@@ -8,7 +9,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 /// <seealso cref="IDatabasePersistable"/>
 public sealed record BankAccount : IDatabasePersistable
 {
-    public const int AccountNameMaxLength = Constants.NameMaxLength;
+    public const int AccountNameMaxLength = EntityName.MaxLength;
 
     /// <summary>
     /// Unique identifier for the <see cref="BankAccount"/>.

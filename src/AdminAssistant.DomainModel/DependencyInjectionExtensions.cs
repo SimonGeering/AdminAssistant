@@ -1,51 +1,64 @@
+using AdminAssistant.Abstractions.DomainModel.Shared.Validation;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
 using AdminAssistant.DomainModel.Modules.ContactsModule.Validation;
 using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
 using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.DomainModel.Shared.Validation;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static partial class DependencyInjectionExtensions
 {
-    public static void AddAdminAssistantClientSideDomainModel(this IServiceCollection services)
-        => AddAdminAssistantCommonDomainModel(services);
+    public static IServiceCollection AddAdminAssistantClientSideDomainModel(this IServiceCollection services)
+        => services.AddAdminAssistantCommonDomainModel();
 
-    public static void AddAdminAssistantServerSideDomainModel(this IServiceCollection services)
+    public static IServiceCollection AddAdminAssistantServerSideDomainModel(this IServiceCollection services)
     {
-        AddAdminAssistantCommonDomainModel(services);
+        services.AddAdminAssistantCommonDomainModel();
 
         // Add Infrastructure DomainModel ...
         services.AddTransient<IUserContextProvider, UserContextProvider>();
 
         // Set-up / Add MediatR based on an assembly marker type ...
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(RequestHandlerBase<,>).Assembly));
+        return services;
     }
 
-    public static void AddAdminAssistantCommonDomainModel(this IServiceCollection services)
+    public static IServiceCollection AddAdminAssistantCommonDomainModel(this IServiceCollection services)
     {
-        AddAccountsCommonDomainModel(services);
-        AddBudgetCommonDomainModel(services);
-        AddContactsCommonDomainModel(services);
-        AddCoreCommonDomainModel(services);
+        services.AddAccountsCommonDomainModel();
+        services.AddBudgetCommonDomainModel();
+        services.AddContactsCommonDomainModel();
+        services.AddCoreCommonDomainModel();
+        services.AddSharedDomainModel();
+        return services;
     }
 
-    private static void AddAccountsCommonDomainModel(IServiceCollection services)
+    private static IServiceCollection AddAccountsCommonDomainModel(this IServiceCollection services)
     {
         services.AddTransient<IBankAccountValidator, BankAccountValidator>();
         services.AddTransient<IBankAccountTransactionValidator, BankAccountTransactionValidator>();
         services.AddTransient<IBankAccountTypeValidator, BankAccountTypeValidator>();
         services.AddTransient<IBankValidator, BankValidator>();
         services.AddTransient<IPayeeValidator, PayeeValidator>();
+        return services;
     }
 
-    private static void AddBudgetCommonDomainModel(IServiceCollection services)
+    private static IServiceCollection AddBudgetCommonDomainModel(this IServiceCollection services)
         => services.AddTransient<IBudgetValidator, BudgetValidator>();
 
-    private static void AddContactsCommonDomainModel(IServiceCollection services)
-    => services.AddTransient<IContactValidator, ContactValidator>();
+    private static IServiceCollection AddContactsCommonDomainModel(this IServiceCollection services)
+        => services.AddTransient<IContactValidator, ContactValidator>();
 
-    private static void AddCoreCommonDomainModel(IServiceCollection services)
+    private static IServiceCollection AddCoreCommonDomainModel(this IServiceCollection services)
         => services.AddTransient<ICurrencyValidator, CurrencyValidator>();
+
+    private static IServiceCollection AddSharedDomainModel(this IServiceCollection services)
+    {
+        services.AddTransient<IEntityNameValidator, EntityNameValidator>();
+        services.AddTransient<IEntityDescriptionValidator, EntityDescriptionValidator>();
+        return services;
+    }
 }
