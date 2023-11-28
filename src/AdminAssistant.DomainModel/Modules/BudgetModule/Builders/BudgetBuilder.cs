@@ -12,7 +12,7 @@ internal sealed class BudgetBuilder : IBudgetBuilder
     {
         _budget = _budget with
         {
-            BudgetID = budgetID,
+            BudgetID = new(budgetID),
             BudgetName = "Test Budget"
         };
         return this;

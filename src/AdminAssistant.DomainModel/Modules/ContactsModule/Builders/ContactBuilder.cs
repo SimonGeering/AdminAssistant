@@ -9,11 +9,11 @@ internal sealed class ContactBuilder : IContactBuilder
 
     public Contact Build() => _contact;
 
-    public IContactBuilder WithTestData(int assetID = Constants.UnknownRecordID)
+    public IContactBuilder WithTestData(int contactID = Constants.UnknownRecordID)
     {
         _contact = _contact with
         {
-            ContactID = assetID,
+            ContactID = new(contactID),
             FirstName = "Fred",
             LastName = "Smith"
         };

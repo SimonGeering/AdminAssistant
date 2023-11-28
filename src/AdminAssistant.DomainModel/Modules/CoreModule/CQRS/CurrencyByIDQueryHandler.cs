@@ -8,7 +8,7 @@ internal sealed class CurrencyByIDQueryHandler(ICurrencyRepository currencyRepos
 {
     public override async Task<Result<Currency>> Handle(CurrencyByIDQuery request, CancellationToken cancellationToken)
     {
-        var result = await currencyRepository.GetAsync(request.CurrencyID, cancellationToken).ConfigureAwait(false);
+        var result = await currencyRepository.GetAsync(new CurrencyId(request.CurrencyID), cancellationToken).ConfigureAwait(false);
 
         if (result == null || result.CurrencyID.IsUnknownRecordID)
             return Result<Currency>.NotFound();

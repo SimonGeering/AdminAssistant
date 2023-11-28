@@ -15,9 +15,9 @@ internal sealed class BankRepository(
     IUserContextProvider userContextProvider)
     : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankRepository
 {
-    public async Task<Bank?> GetAsync(int id, CancellationToken cancellationToken)
+    public async Task<Bank?> GetAsync(BankId id, CancellationToken cancellationToken)
     {
-        var data = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id, cancellationToken).ConfigureAwait(false);
+        var data = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id.Value, cancellationToken).ConfigureAwait(false);
         return Mapper.Map<Bank>(data);
     }
 
@@ -41,13 +41,13 @@ internal sealed class BankRepository(
         return Mapper.Map<Bank>(entity);
     }
 
-    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
+    public async Task DeleteAsync(BankId id, CancellationToken cancellationToken)
     {
-        var entity = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id, cancellationToken).ConfigureAwait(false);
+        var entity = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id.Value, cancellationToken).ConfigureAwait(false);
 
         // TODO: make this a custom domain exception and handle in controller.
-        if (entity == null || entity.BankID != id)
-            throw new ArgumentException($"Record with ID {id} not found", nameof(id));
+        if (entity == null || entity.BankID != id.Value)
+            throw new ArgumentException($"Record with ID {id.Value} not found", nameof(id));
 
         DbContext.Banks.Remove(entity);
         await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);

@@ -36,9 +36,9 @@ public sealed class AccountsService_UnitTest
         // Assert
         result.Should().BeEquivalentTo(new List<BankAccountType>()
         {
-            new BankAccountType() { BankAccountTypeID = Constants.UnknownRecordID, Description = string.Empty },
-            new BankAccountType { BankAccountTypeID = 1, Description = "Current Account" },
-            new BankAccountType { BankAccountTypeID = 2, Description = "Savings Account" },
+            new BankAccountType() { BankAccountTypeID = BankAccountTypeId.Default, Description = string.Empty },
+            new BankAccountType { BankAccountTypeID = new(1), Description = "Current Account" },
+            new BankAccountType { BankAccountTypeID = new(2), Description = "Savings Account" },
         });
     }
 }

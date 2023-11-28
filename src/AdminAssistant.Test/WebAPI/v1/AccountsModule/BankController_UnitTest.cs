@@ -31,7 +31,7 @@ public sealed class BankController_Put_Should
         var container = services.BuildServiceProvider();
         var bankRequest = new BankUpdateRequestDto()
         {
-            BankID = bank.BankID,
+            BankID = bank.BankID.Value,
             BankName = bank.BankName
         };
 
@@ -48,7 +48,7 @@ public sealed class BankController_Put_Should
         result.Value.Should().BeAssignableTo<BankResponseDto>();
 
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID);
+        value.BankID.Should().Be(bank.BankID.Value);
         value.BankName.Should().Be(bank.BankName);
     }
 
@@ -169,7 +169,7 @@ public class BankController_BankPost_Should
         result.Value.Should().BeAssignableTo<BankResponseDto>();
 
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID);
+        value.BankID.Should().Be(bank.BankID.Value);
         value.BankName.Should().Be(bank.BankName);
     }
 
@@ -241,7 +241,7 @@ public class BankController_BankGetById_Should
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID.Value, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -253,7 +253,7 @@ public class BankController_BankGetById_Should
 
         result.Value.Should().NotBeNull();
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID);
+        value.BankID.Should().Be(bank.BankID.Value);
         value.BankName.Should().Be(bank.BankName);
     }
 
@@ -323,7 +323,7 @@ public class BankController_BankGet_Should
         var expected = banks.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankID.Should().Be(expected[index].BankID);
+            value[index].BankID.Should().Be(expected[index].BankID.Value);
             value[index].BankName.Should().Be(expected[index].BankName);
         }
     }

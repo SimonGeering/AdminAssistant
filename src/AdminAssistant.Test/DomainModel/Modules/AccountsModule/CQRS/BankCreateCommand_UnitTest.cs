@@ -24,7 +24,7 @@ public sealed class BankCreateCommand_Should
             .Returns(() =>
             {
                 var result = bank.DeepClone();
-                result = result with { BankID = 30 };
+                result = result with { BankID = new(30) };
                 return Task.FromResult(result);
             });
 
@@ -38,7 +38,7 @@ public sealed class BankCreateCommand_Should
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.BankID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.BankID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]

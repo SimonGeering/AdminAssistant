@@ -65,13 +65,13 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
 
     public int BankAccountID
     {
-        get => bankAccount.BankAccountID;
+        get => bankAccount.BankAccountID.Value;
         set
         {
             if (bankAccount.BankAccountID.Equals(value))
                 return;
 
-            bankAccount = bankAccount with { BankAccountID = value };
+            bankAccount = bankAccount with { BankAccountID = new(value) };
             RefreshValidation();
             OnPropertyChanged();
         }
@@ -79,13 +79,13 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
 
     public int BankAccountTypeID
     {
-        get => bankAccount.BankAccountTypeID;
+        get => bankAccount.BankAccountTypeID.Value;
         set
         {
             if (bankAccount.BankAccountTypeID.Equals(value))
                 return;
 
-            bankAccount = bankAccount with { BankAccountTypeID = value };
+            bankAccount = bankAccount with { BankAccountTypeID = new(value) };
             RefreshValidation();
             OnPropertyChanged();
         }
@@ -93,13 +93,13 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
 
     public int CurrencyID
     {
-        get => bankAccount.CurrencyID;
+        get => bankAccount.CurrencyID.Value;
         set
         {
             if (bankAccount.CurrencyID.Equals(value))
                 return;
 
-            bankAccount = bankAccount with { CurrencyID = value };
+            bankAccount = bankAccount with { CurrencyID = new(value) };
             RefreshValidation();
             OnPropertyChanged();
         }

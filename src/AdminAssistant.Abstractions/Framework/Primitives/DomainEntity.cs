@@ -1,11 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
 
 namespace AdminAssistant.Framework.Primitives;
+
 public abstract class DomainEntity<TId>
     : IEqualityComparer<TId>, IEquatable<DomainEntity<TId>>, IDatabasePersistable
     where TId : Id
 {
-    public int PrimaryKey => Id.Value;
+    public Id PrimaryKey => Id;
 
     public TId Id { get; private init; }
 

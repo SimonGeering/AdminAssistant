@@ -11,6 +11,8 @@ public abstract class MappingProfileBase : Profile
     {
         ApplyIMapFromMappings(assembly);
         ApplyIMapToMappings(assembly);
+
+        CreateMap<Id, int>().ConvertUsing(x => x.Value);
     }
 
     private void ApplyIMapFromMappings(Assembly assembly)

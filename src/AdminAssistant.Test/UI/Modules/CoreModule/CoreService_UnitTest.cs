@@ -35,10 +35,10 @@ public sealed class CoreService_GetCurrencyListAsync
         // Assert
         result.Should().BeEquivalentTo(new List<Currency>()
             {
-                new Currency() { CurrencyID = Constants.UnknownRecordID, Symbol = string.Empty, DecimalFormat = string.Empty },
-                new Currency { CurrencyID = 1, Symbol = "GBP", DecimalFormat = "2.2-2" },
-                new Currency { CurrencyID = 2, Symbol = "EUR", DecimalFormat = "2.2-2" },
-                new Currency { CurrencyID = 3, Symbol = "USD", DecimalFormat = "2.2-2" },
+                new Currency() { CurrencyID = CurrencyId.Default, Symbol = string.Empty, DecimalFormat = string.Empty },
+                new Currency { CurrencyID = new CurrencyId(1), Symbol = "GBP", DecimalFormat = "2.2-2" },
+                new Currency { CurrencyID = new CurrencyId(2), Symbol = "EUR", DecimalFormat = "2.2-2" },
+                new Currency { CurrencyID = new CurrencyId(3), Symbol = "USD", DecimalFormat = "2.2-2" },
             });
     }
 }

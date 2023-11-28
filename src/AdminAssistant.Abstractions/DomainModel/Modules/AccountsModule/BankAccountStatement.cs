@@ -4,7 +4,7 @@ namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 /// <seealso cref="IDatabasePersistable"/>
 public sealed record BankAccountStatement : IDatabasePersistable
 {
-    public int BankAccountStatementID { get; init; } = Constants.UnknownRecordID;
+    public BankAccountStatementId BankAccountStatementID { get; init; } = BankAccountStatementId.Default;
     public int BankAccountID { get; init; } = Constants.UnknownRecordID;
     public int DocumentID { get; init; } = Constants.UnknownRecordID;
     public DateTime StatementDate { get; init; }
@@ -17,5 +17,9 @@ public sealed record BankAccountStatement : IDatabasePersistable
     public int TotalPaymentsOut { get; init; }
 
     /// <inheritdoc/>
-    public int PrimaryKey => BankAccountStatementID;
+    public Id PrimaryKey => BankAccountStatementID;
+}
+public sealed record BankAccountStatementId(int Value) : Id(Value)
+{
+    public static BankAccountStatementId Default => new(Constants.UnknownRecordID);
 }

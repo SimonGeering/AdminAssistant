@@ -32,7 +32,7 @@ public sealed class ContactUpdateCommand_Should
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.ContactID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.ContactID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]

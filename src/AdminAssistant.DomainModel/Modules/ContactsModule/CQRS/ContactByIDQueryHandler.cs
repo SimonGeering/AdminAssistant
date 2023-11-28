@@ -8,8 +8,8 @@ internal sealed class ContactByIDQueryHandler(ILoggingProvider loggingProvider, 
 {
     public override async Task<Result<Contact>> Handle(ContactByIDQuery request, CancellationToken cancellationToken)
     {
-        var result = await contactRepository.GetAsync(request.ContactID, cancellationToken).ConfigureAwait(false);
-        if (result == null || result.ContactID == Constants.UnknownRecordID)
+        var result = await contactRepository.GetAsync(new ContactId(request.ContactID), cancellationToken).ConfigureAwait(false);
+        if (result == null || result.ContactID.IsUnknownRecordID)
             return Result<Contact>.NotFound();
 
         return Result<Contact>.Success(result);

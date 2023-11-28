@@ -9,5 +9,9 @@ public sealed record Currency : IDatabasePersistable
     public string Symbol { get; set; } = string.Empty;
     public string DecimalFormat { get; set; } = string.Empty;
 
-    public int PrimaryKey => CurrencyID.Value;
+    public Id PrimaryKey => CurrencyID;
+}
+public sealed record CurrencyId(int Value) : Id(Value)
+{
+    public static CurrencyId Default => new(Constants.UnknownRecordID);
 }

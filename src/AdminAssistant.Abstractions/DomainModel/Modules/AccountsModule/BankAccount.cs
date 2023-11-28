@@ -1,3 +1,5 @@
+using AdminAssistant.DomainModel.Modules.CoreModule;
+
 namespace AdminAssistant.DomainModel.Modules.AccountsModule;
 
 /// <summary>
@@ -11,17 +13,17 @@ public sealed record BankAccount : IDatabasePersistable
     /// <summary>
     /// Unique identifier for the <see cref="BankAccount"/>.
     /// </summary>
-    public int BankAccountID { get; init; }
+    public BankAccountId BankAccountID { get; init; } = BankAccountId.Default;
 
     /// <summary>
     /// The unique identifier of the <see cref="BankAccountType"/> for this <see cref="BankAccount"/>./>
     /// </summary>
-    public int BankAccountTypeID { get; init; } = Constants.UnknownRecordID;
+    public BankAccountTypeId BankAccountTypeID { get; init; } = BankAccountTypeId.Default;
 
     /// <summary>
     /// The unique identifier of the <see cref="CoreModule.Currency"/> for this <see cref="BankAccount"/>./>
     /// </summary>
-    public int CurrencyID { get; init; }
+    public CurrencyId CurrencyID { get; init; } = CurrencyId.Default;
 
     /// <summary>
     /// The unique identifier of the owner of this <see cref="BankAccount"/>./>
@@ -35,5 +37,9 @@ public sealed record BankAccount : IDatabasePersistable
     public DateTime OpenedOn { get; init; }
 
     /// <inheritdoc/>
-    public int PrimaryKey => BankAccountID;
+    public Id PrimaryKey => BankAccountID;
+}
+public sealed record BankAccountId(int Value) : Id(Value)
+{
+    public static BankAccountId Default => new(Constants.UnknownRecordID);
 }

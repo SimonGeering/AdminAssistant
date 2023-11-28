@@ -13,7 +13,7 @@ public sealed class ContactByIDQuery_Should
     public async Task Return_NotFound_GivenANonExistentContactID()
     {
         // Arrange
-        var nonExistentContactID = Constants.UnknownRecordID;
+        var nonExistentContactID = ContactId.Default;
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
@@ -26,7 +26,7 @@ public sealed class ContactByIDQuery_Should
         services.AddTransient((sp) => mockContactRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(nonExistentContactID));
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(nonExistentContactID.Value));
 
         // Assert
         result.Status.Should().Be(ResultStatus.NotFound);
@@ -50,7 +50,7 @@ public sealed class ContactByIDQuery_Should
         services.AddTransient((sp) => mockContactRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(contact.ContactID));
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(contact.ContactID.Value));
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

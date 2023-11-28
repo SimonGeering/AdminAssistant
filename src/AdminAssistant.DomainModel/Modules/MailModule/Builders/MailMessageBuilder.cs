@@ -13,7 +13,7 @@ internal sealed class MailMessageBuilder : IMailMessageBuilder
     {
         _mailMessage = _mailMessage with
         {
-            MailMessageID = assetID,
+            MailMessageID = new(assetID),
             Subject = "A mail from the boss"
         };
         return this;

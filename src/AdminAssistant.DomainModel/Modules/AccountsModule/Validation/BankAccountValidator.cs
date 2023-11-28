@@ -1,3 +1,5 @@
+using AdminAssistant.DomainModel.Modules.CoreModule;
+
 namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 
 internal sealed class BankAccountValidator : AbstractValidator<BankAccount>, IBankAccountValidator
@@ -9,10 +11,10 @@ internal sealed class BankAccountValidator : AbstractValidator<BankAccount>, IBa
             .MaximumLength(BankAccount.AccountNameMaxLength);
 
         RuleFor(x => x.BankAccountTypeID)
-            .NotEqual(Constants.UnknownRecordID);
+            .NotEqual(BankAccountTypeId.Default);
 
         RuleFor(x => x.CurrencyID)
-            .NotEqual(Constants.UnknownRecordID);
+            .NotEqual(CurrencyId.Default);
 
         // TODO: Validate BankAccountTypeID selection against DB.
 

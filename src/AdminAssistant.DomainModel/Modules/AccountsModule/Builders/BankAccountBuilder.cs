@@ -12,10 +12,10 @@ internal sealed class BankAccountBuilder : IBankAccountBuilder
     {
         _bankAccount = _bankAccount with
         {
-            BankAccountID = bankAccountID,
+            BankAccountID = new (bankAccountID),
             AccountName = "A valid account name",
-            CurrencyID = 10,
-            BankAccountTypeID = 10,
+            CurrencyID = new (10),
+            BankAccountTypeID = new(10),
             OpenedOn = DateTime.Now
         };
         return this;
@@ -23,12 +23,12 @@ internal sealed class BankAccountBuilder : IBankAccountBuilder
 
     public IBankAccountBuilder WithBankAccountTypeID(int bankAccountTypeID)
     {
-        _bankAccount = _bankAccount with { BankAccountTypeID = bankAccountTypeID };
+        _bankAccount = _bankAccount with { BankAccountTypeID = new(bankAccountTypeID) };
         return this;
     }
     public IBankAccountBuilder WithCurrencyID(int currencyID)
     {
-        _bankAccount = _bankAccount with { CurrencyID = currencyID };
+        _bankAccount = _bankAccount with { CurrencyID = new(currencyID) };
         return this;
     }
 

@@ -13,7 +13,7 @@ internal sealed class AssetBuilder : IAssetBuilder
     {
         _asset = _asset with
         {
-            AssetID = assetID,
+            AssetID = new(assetID),
             AssetName = "2 bed detached house"
         };
         return this;

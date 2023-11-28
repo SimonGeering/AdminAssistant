@@ -12,7 +12,7 @@ internal sealed class BankAccountTransactionBuilder : IBankAccountTransactionBui
     {
         _bankAccountTransaction = _bankAccountTransaction with
         {
-            BankAccountTransactionID = bankAccountTransactionID,
+            BankAccountTransactionID = new(bankAccountTransactionID),
             BankAccountID = 10,
             Description = "Test Transaction"
         };

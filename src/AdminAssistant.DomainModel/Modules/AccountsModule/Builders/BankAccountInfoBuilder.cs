@@ -12,7 +12,7 @@ internal sealed class BankAccountInfoBuilder : IBankAccountInfoBuilder
     {
         _bankAccountInfo = _bankAccountInfo with
         {
-            BankAccountID = bankAccountInfoID,
+            BankAccountID = new(bankAccountInfoID),
             AccountName = "A valid account name",
             CurrentBalance = 0,
             Symbol = "GBP",

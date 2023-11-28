@@ -13,7 +13,7 @@ public sealed class BankByIDQuery_Should
     public async Task Return_NotFound_GivenANonExistentBankID()
     {
         // Arrange
-        var nonExistentBankID = Constants.UnknownRecordID;
+        var nonExistentBankID = BankId.Default;
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
@@ -26,7 +26,7 @@ public sealed class BankByIDQuery_Should
         services.AddTransient((sp) => mockBankRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(nonExistentBankID));
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(nonExistentBankID.Value));
 
         // Assert
         result.Status.Should().Be(ResultStatus.NotFound);
@@ -50,7 +50,7 @@ public sealed class BankByIDQuery_Should
         services.AddTransient((sp) => mockBankRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(bank.BankID));
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(bank.BankID.Value));
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

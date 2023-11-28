@@ -50,7 +50,7 @@ public sealed class BankAccountTypeController_BankAccountTypeGet_Should
         var expected = bankAccountTypes.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankAccountTypeID.Should().Be(expected[index].BankAccountTypeID);
+            value[index].BankAccountTypeID.Should().Be(expected[index].BankAccountTypeID.Value);
             value[index].Description.Should().Be(expected[index].Description);
         }
     }

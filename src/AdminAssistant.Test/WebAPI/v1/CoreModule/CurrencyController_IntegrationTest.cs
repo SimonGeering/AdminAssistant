@@ -44,7 +44,7 @@ public sealed class Currency_Put_Should : IntegrationTestBase
 
         var request = new CurrencyUpdateRequestDto()
         {
-            CurrencyID = aud.CurrencyID,
+            CurrencyID = aud.CurrencyID.Value,
             DecimalFormat = "0.0",
             Symbol = aud.Symbol
         };
@@ -73,10 +73,10 @@ public class Currency_GetById_Should : IntegrationTestBase
         var aud = await dal.SaveAsync(new Currency() { DecimalFormat = CoreSchema.DefaultCurrencyDecimalFormat, Symbol = "AUD" }, default);
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetCurrencyByIdAsync(aud.CurrencyID);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetCurrencyByIdAsync(aud.CurrencyID.Value);
 
         // Assert
-        response.CurrencyID.Should().Be(aud.CurrencyID);
+        response.CurrencyID.Should().Be(aud.CurrencyID.Value);
         response.DecimalFormat.Should().Be(aud.DecimalFormat);
         response.Symbol.Should().Be(aud.Symbol);
     }

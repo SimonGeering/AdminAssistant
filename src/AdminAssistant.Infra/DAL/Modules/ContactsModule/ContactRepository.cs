@@ -15,9 +15,9 @@ internal sealed class ContactRepository(
     IUserContextProvider userContextProvider)
     : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IContactRepository
 {
-    public async Task<Contact?> GetAsync(int id, CancellationToken cancellationToken)
+    public async Task<Contact?> GetAsync(ContactId id, CancellationToken cancellationToken)
     {
-        var data = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id, cancellationToken).ConfigureAwait(false);
+        var data = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id.Value, cancellationToken).ConfigureAwait(false);
         return Mapper.Map<Contact>(data);
     }
 
@@ -54,13 +54,13 @@ internal sealed class ContactRepository(
         return Mapper.Map<Contact>(entity);
     }
 
-    public async Task DeleteAsync(int id, CancellationToken cancellationToken)
+    public async Task DeleteAsync(ContactId id, CancellationToken cancellationToken)
     {
-        var entity = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id, cancellationToken).ConfigureAwait(false);
+        var entity = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id.Value, cancellationToken).ConfigureAwait(false);
 
         // TODO: make this a custom domain exception and handle in controller.
-        if (entity == null || entity.ContactID != id)
-            throw new ArgumentException($"Record with ID {id} not found", nameof(id));
+        if (entity == null || entity.ContactID != id.Value)
+            throw new ArgumentException($"Record with ID {id.Value} not found", nameof(id));
 
         DbContext.Contacts.Remove(entity);
         await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);

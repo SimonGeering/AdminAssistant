@@ -4,8 +4,12 @@ public sealed record TaskList : IDatabasePersistable
 {
     public const int TaskListNameMaxLength = Constants.NameMaxLength;
 
-    public int TaskListID { get; set; }
+    public TaskListId TaskListID { get; set; } = TaskListId.Default;
     public string TaskListName { get; set; } = string.Empty;
 
-    public int PrimaryKey => TaskListID;
+    public Id PrimaryKey => TaskListID;
+}
+public sealed record TaskListId(int Value) : Id(Value)
+{
+    public static TaskListId Default => new(Constants.UnknownRecordID);
 }

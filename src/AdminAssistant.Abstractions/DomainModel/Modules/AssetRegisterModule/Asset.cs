@@ -4,8 +4,12 @@ public sealed record Asset : IDatabasePersistable
 {
     public const int AssetNameMaxLength = Constants.NameMaxLength;
 
-    public int AssetID { get; set; }
+    public AssetId AssetID { get; set; } = AssetId.Default;
     public string AssetName { get; set; } = string.Empty;
 
-    public int PrimaryKey => AssetID;
+    public Id PrimaryKey => AssetID;
+}
+public sealed record AssetId(int Value) : Id(Value)
+{
+    public static AssetId Default => new(Constants.UnknownRecordID);
 }

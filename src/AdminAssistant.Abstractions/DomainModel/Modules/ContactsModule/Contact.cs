@@ -14,5 +14,9 @@ public sealed record Contact : IDatabasePersistable
     public DateTime? DateOfBirth { get; set; }
 
 
-    public int PrimaryKey => ContactID.Value;
+    public Id PrimaryKey => ContactID;
+}
+public sealed record ContactId(int Value) : Id(Value)
+{
+    public static ContactId Default => new(Constants.UnknownRecordID);
 }

@@ -54,7 +54,7 @@ public sealed class BankAccountInfoController_BankAccountInfoGet_Should
         var expected = bankAccountInfoList.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankAccountID.Should().Be(expected[index].BankAccountID);
+            value[index].BankAccountID.Should().Be(expected[index].BankAccountID.Value);
             value[index].AccountName.Should().Be(expected[index].AccountName);
         }
     }

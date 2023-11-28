@@ -11,7 +11,7 @@ internal sealed class BankAccountTypeBuilder : IBankAccountTypeBuilder
     {
         _bankAccountType = _bankAccountType with
         {
-            BankAccountTypeID = bankAccountTypeID,
+            BankAccountTypeID = new(bankAccountTypeID),
             Description = "A valid BankAccountType description"
         };
         return this;

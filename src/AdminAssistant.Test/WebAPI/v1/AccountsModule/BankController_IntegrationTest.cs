@@ -42,7 +42,7 @@ public sealed class Bank_Put_Should : IntegrationTestBase
 
         var request = new BankUpdateRequestDto()
         {
-            BankID = acmeBank.BankID,
+            BankID = acmeBank.BankID.Value,
             BankName = "Acme UK Bank"
         };
 
@@ -70,10 +70,10 @@ public class Bank_Get_Should : IntegrationTestBase
         var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }, default);
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID.Value);
 
         // Assert
-        response.BankID.Should().Be(acmeBuildingSociety.BankID);
+        response.BankID.Should().Be(acmeBuildingSociety.BankID.Value);
         response.BankName.Should().Be(acmeBuildingSociety.BankName);
     }
 
@@ -92,8 +92,8 @@ public class Bank_Get_Should : IntegrationTestBase
         var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAsync();
 
         // Assert
-        response.Should().ContainSingle(x => x.BankID == acmeBankPLC.BankID && x.BankName == acmeBankPLC.BankName);
-        response.Should().ContainSingle(x => x.BankID == acmeBuildingSociety.BankID && x.BankName == acmeBuildingSociety.BankName);
+        response.Should().ContainSingle(x => x.BankID == acmeBankPLC.BankID.Value && x.BankName == acmeBankPLC.BankName);
+        response.Should().ContainSingle(x => x.BankID == acmeBuildingSociety.BankID.Value && x.BankName == acmeBuildingSociety.BankName);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

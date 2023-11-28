@@ -30,8 +30,8 @@ public sealed class BankAccountController_Put_Should
         var container = services.BuildServiceProvider();
         var bankAccountRequest = new BankAccountUpdateRequestDto()
         {
-            BankAccountTypeID = bankAccount.BankAccountTypeID,
-            CurrencyID = bankAccount.CurrencyID,
+            BankAccountTypeID = bankAccount.BankAccountTypeID.Value,
+            CurrencyID = bankAccount.CurrencyID.Value,
             AccountName = bankAccount.AccountName,
             IsBudgeted = bankAccount.IsBudgeted,
             OpeningBalance = bankAccount.OpeningBalance,
@@ -52,9 +52,9 @@ public sealed class BankAccountController_Put_Should
         result.Value.Should().BeAssignableTo<BankAccountResponseDto>();
 
         var value = (BankAccountResponseDto)result.Value!;
-        value.BankAccountID.Should().Be(bankAccount.BankAccountID);
-        value.BankAccountTypeID.Should().Be(bankAccount.BankAccountTypeID);
-        value.CurrencyID.Should().Be(bankAccount.CurrencyID);
+        value.BankAccountID.Should().Be(bankAccount.BankAccountID.Value);
+        value.BankAccountTypeID.Should().Be(bankAccount.BankAccountTypeID.Value);
+        value.CurrencyID.Should().Be(bankAccount.CurrencyID.Value);
         value.AccountName.Should().Be(bankAccount.AccountName);
         value.IsBudgeted.Should().Be(bankAccount.IsBudgeted);
         value.OpeningBalance.Should().Be(bankAccount.OpeningBalance);
@@ -160,8 +160,8 @@ public sealed class BankAccountController_BankAccountPost_Should
 
         var bankAccountRequest = new BankAccountCreateRequestDto()
         {
-            BankAccountTypeID = bankAccount.BankAccountTypeID,
-            CurrencyID = bankAccount.CurrencyID,
+            BankAccountTypeID = bankAccount.BankAccountTypeID.Value,
+            CurrencyID = bankAccount.CurrencyID.Value,
             AccountName = bankAccount.AccountName,
             IsBudgeted = bankAccount.IsBudgeted,
             OpeningBalance = bankAccount.OpeningBalance,
@@ -182,9 +182,9 @@ public sealed class BankAccountController_BankAccountPost_Should
         result.Value.Should().BeAssignableTo<BankAccountResponseDto>();
 
         var value = (BankAccountResponseDto)result.Value!;
-        value.BankAccountID.Should().Be(bankAccount.BankAccountID);
-        value.BankAccountTypeID.Should().Be(bankAccount.BankAccountTypeID);
-        value.CurrencyID.Should().Be(bankAccount.CurrencyID);
+        value.BankAccountID.Should().Be(bankAccount.BankAccountID.Value);
+        value.BankAccountTypeID.Should().Be(bankAccount.BankAccountTypeID.Value);
+        value.CurrencyID.Should().Be(bankAccount.CurrencyID.Value);
         value.AccountName.Should().Be(bankAccount.AccountName);
         value.IsBudgeted.Should().Be(bankAccount.IsBudgeted);
         value.OpeningBalance.Should().Be(bankAccount.OpeningBalance);
@@ -257,7 +257,7 @@ public sealed class BankAccountController_BankAccountGetById_Should
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID.Value, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -268,7 +268,7 @@ public sealed class BankAccountController_BankAccountGetById_Should
 
         result.Value.Should().NotBeNull();
         var value = (BankAccountResponseDto)result.Value!;
-        value.BankAccountID.Should().Be(bankAccount.BankAccountID);
+        value.BankAccountID.Should().Be(bankAccount.BankAccountID.Value);
         value.AccountName.Should().Be(bankAccount.AccountName);
     }
 
@@ -338,7 +338,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         var expected = bankAccountTransactionList.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankAccountTransactionID.Should().Be(expected[index].BankAccountTransactionID);
+            value[index].BankAccountTransactionID.Should().Be(expected[index].BankAccountTransactionID.Value);
             value[index].BankAccountID.Should().Be(expected[index].BankAccountID);
         }
     }

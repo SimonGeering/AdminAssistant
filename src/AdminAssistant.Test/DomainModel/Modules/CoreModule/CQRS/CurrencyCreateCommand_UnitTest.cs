@@ -24,7 +24,7 @@ public sealed class CurrencyCreateCommand_Should
             .Returns(() =>
             {
                 var result = currency.DeepClone();
-                result = result with { CurrencyID = 30 };
+                result = result with { CurrencyID = new(30) };
                 return Task.FromResult(result);
             });
 
@@ -38,7 +38,7 @@ public sealed class CurrencyCreateCommand_Should
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.CurrencyID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.CurrencyID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]

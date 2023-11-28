@@ -13,7 +13,7 @@ internal sealed class ReminderBuilder : IReminderBuilder
     {
         _reminder = _reminder with
         {
-            ReminderID = reminderID,
+            ReminderID = new(reminderID),
             ReminderName = "Do something important"
         };
         return this;

@@ -10,7 +10,7 @@ internal sealed class PayeeBuilder : IPayeeBuilder
     {
         _payee = _payee with
         {
-            PayeeID = payeeID,
+            PayeeID = new(payeeID),
             Name = $"Payee {payeeID}",
         };
 

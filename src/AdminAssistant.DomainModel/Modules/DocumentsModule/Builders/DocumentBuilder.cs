@@ -13,7 +13,7 @@ internal sealed class DocumentBuilder : IDocumentBuilder
     {
         _document = _document with
         {
-            DocumentID = documentID,
+            DocumentID = new DocumentId(documentID),
             FileName = "SomRandomFileName.txt"
         };
         return this;

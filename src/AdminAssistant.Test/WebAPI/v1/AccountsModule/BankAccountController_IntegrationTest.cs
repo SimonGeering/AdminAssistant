@@ -21,18 +21,18 @@ public sealed class BankAccount_Get_Should : IntegrationTestBase
         var dal = Container.GetRequiredService<IBankAccountRepository>();
         await dal.SaveAsync(new BankAccount()
         {
-            BankAccountTypeID = BankAccountTypes[Constants.FirstItem].BankAccountTypeID,
-            CurrencyID = Currencies[Constants.FirstItem].CurrencyID,
+            BankAccountTypeID = new(BankAccountTypes[Constants.FirstItem].BankAccountTypeID),
+            CurrencyID = new(Currencies[Constants.FirstItem].CurrencyID),
             OwnerID = PersonalOwner.OwnerID,
             AccountName = "Acme Bank PLC",
         }, default);
         var acmeBuildingSocietyAccount = await dal.SaveAsync(new BankAccount() { AccountName = "Acme Building Society Account" }, default);
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountByIdAsync(acmeBuildingSocietyAccount.BankAccountID);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountByIdAsync(acmeBuildingSocietyAccount.BankAccountID.Value);
 
         // Assert
-        response.BankAccountID.Should().Be(acmeBuildingSocietyAccount.BankAccountID);
+        response.BankAccountID.Should().Be(acmeBuildingSocietyAccount.BankAccountID.Value);
         response.AccountName.Should().Be(acmeBuildingSocietyAccount.AccountName);
     }
 }

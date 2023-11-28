@@ -13,7 +13,7 @@ internal sealed class TaskListBuilder : ITaskListBuilder
     {
         _taskList = _taskList with
         {
-            TaskListID = taskListID,
+            TaskListID = new(taskListID),
             TaskListName = "My Task List"
         };
         return this;

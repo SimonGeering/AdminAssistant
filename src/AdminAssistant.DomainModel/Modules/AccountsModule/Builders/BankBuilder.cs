@@ -11,7 +11,7 @@ internal sealed class BankBuilder : IBankBuilder
     {
         _bank = _bank with
         {
-            BankID = bankID,
+            BankID = new(bankID),
             BankName = "ACME Bank PLC"
         };
         return this;

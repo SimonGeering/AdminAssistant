@@ -4,7 +4,11 @@ public sealed record BankAccountTransactionType : IDatabasePersistable
 {
     public const int DescriptionMaxLength = Constants.DescriptionMaxLength;
 
-    public int BankAccountTransactionTypeID { get; init; } = Constants.UnknownRecordID;
+    public BankAccountTransactionTypeId BankAccountTransactionTypeID { get; init; } = BankAccountTransactionTypeId.Default;
     public string Description { get; init; } = string.Empty;
-    public int PrimaryKey => BankAccountTransactionTypeID;
+    public Id PrimaryKey => BankAccountTransactionTypeID;
+}
+public sealed record BankAccountTransactionTypeId(int Value) : Id(Value)
+{
+    public static BankAccountTransactionTypeId Default => new(Constants.UnknownRecordID);
 }

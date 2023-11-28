@@ -4,8 +4,12 @@ public sealed record MailMessage : IDatabasePersistable
 {
     public const int SubjectNameMaxLength = Constants.DescriptionMaxLength;
 
-    public int MailMessageID { get; set; }
+    public MailMessageId MailMessageID { get; set; } = MailMessageId.Default;
     public string Subject { get; set; } = string.Empty;
 
-    public int PrimaryKey => MailMessageID;
+    public Id PrimaryKey => MailMessageID;
+}
+public sealed record MailMessageId(int Value) : Id(Value)
+{
+    public static MailMessageId Default => new(Constants.UnknownRecordID);
 }

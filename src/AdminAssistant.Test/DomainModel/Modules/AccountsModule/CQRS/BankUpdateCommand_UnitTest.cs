@@ -32,7 +32,7 @@ public sealed class BankUpdateCommand_Should
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.BankID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.BankID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]

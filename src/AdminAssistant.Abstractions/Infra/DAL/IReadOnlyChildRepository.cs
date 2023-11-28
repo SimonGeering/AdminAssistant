@@ -6,5 +6,5 @@ public interface IReadOnlyChildRepository<TDomainModel>
     Task<TDomainModel> GetAsync(int id, CancellationToken cancellationToken);
     Task<List<TDomainModel>> GetListAsync(int parentID, CancellationToken cancellationToken);
     Task<List<TDomainModel>> GetListAsync(IDatabasePersistable parent, CancellationToken cancellationToken)
-        => GetListAsync(parent.PrimaryKey, cancellationToken);
+        => GetListAsync(parent.PrimaryKey.Value, cancellationToken);
 }

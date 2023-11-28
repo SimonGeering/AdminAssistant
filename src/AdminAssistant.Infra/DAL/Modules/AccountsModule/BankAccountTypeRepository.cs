@@ -14,9 +14,9 @@ internal sealed class BankAccountTypeRepository(
     IUserContextProvider userContextProvider)
     : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankAccountTypeRepository
 {
-    public async Task<BankAccountType?> GetAsync(int id, CancellationToken cancellationToken)
+    public async Task<BankAccountType?> GetAsync(BankAccountTypeId id, CancellationToken cancellationToken)
     {
-        var data = await DbContext.BankAccountTypes.FirstOrDefaultAsync(x => x.BankAccountTypeID == id, cancellationToken).ConfigureAwait(false);
+        var data = await DbContext.BankAccountTypes.FirstOrDefaultAsync(x => x.BankAccountTypeID == id.Value, cancellationToken).ConfigureAwait(false);
         return Mapper.Map<BankAccountType>(data);
     }
 

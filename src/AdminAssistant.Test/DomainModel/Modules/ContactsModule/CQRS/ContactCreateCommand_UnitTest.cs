@@ -24,7 +24,7 @@ public sealed class ContactCreateCommand_Should
             .Returns(() =>
             {
                 var result = contact.DeepClone();
-                result = result with { ContactID = 30 };
+                result = result with { ContactID = result.ContactID with { Value = 30 } };
                 return Task.FromResult(result);
             });
 
@@ -38,7 +38,7 @@ public sealed class ContactCreateCommand_Should
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.ContactID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.ContactID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]

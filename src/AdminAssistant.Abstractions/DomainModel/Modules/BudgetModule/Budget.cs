@@ -4,8 +4,12 @@ public sealed record Budget : IDatabasePersistable
 {
     public const int BudgetNameMaxLength = Constants.NameMaxLength;
 
-    public int BudgetID { get; set; }
+    public BudgetId BudgetID { get; set; } = BudgetId.Default;
     public string BudgetName { get; set; } = string.Empty;
 
-    public int PrimaryKey => BudgetID;
+    public Id PrimaryKey => BudgetID;
+}
+public sealed record BudgetId(int Value) : Id(Value)
+{
+    public static BudgetId Default => new(Constants.UnknownRecordID);
 }

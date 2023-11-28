@@ -13,7 +13,7 @@ public sealed class CurrencyByIDQuery_Should
     public async Task Return_NotFound_GivenANonExistentCurrencyID()
     {
         // Arrange
-        var nonExistentCurrencyID = Constants.UnknownRecordID;
+        var nonExistentCurrencyID = CurrencyId.Default;
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
@@ -26,7 +26,7 @@ public sealed class CurrencyByIDQuery_Should
         services.AddTransient((sp) => mockCurrencyRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(nonExistentCurrencyID));
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(nonExistentCurrencyID.Value));
 
         // Assert
         result.Status.Should().Be(ResultStatus.NotFound);
@@ -50,7 +50,7 @@ public sealed class CurrencyByIDQuery_Should
         services.AddTransient((sp) => mockCurrencyRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(currency.CurrencyID));
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(currency.CurrencyID.Value));
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

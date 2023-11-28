@@ -8,10 +8,10 @@ public interface IDatabasePersistable
     /// <summary>
     /// The Unique Identifier for the entity within its coresponding database table.
     /// </summary>
-    int PrimaryKey { get; }
+    Id PrimaryKey { get; }
 
     /// <summary>
     /// Flag to determine if the entity is newly created in memory or if it has been previously persisted to the database.
     /// </summary>
-    bool IsNew => PrimaryKey == Constants.NewRecordID;
+    bool IsNew => PrimaryKey.IsNewRecordID;
 }

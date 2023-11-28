@@ -8,5 +8,9 @@ public sealed record Document : IDatabasePersistable
 
     public string FileName { get; set; } = string.Empty;
 
-    public int PrimaryKey => DocumentID.Value;
+    public Id PrimaryKey => DocumentID;
+}
+public sealed record DocumentId(int Value) : Id(Value)
+{
+    public static DocumentId Default => new(Constants.UnknownRecordID);
 }

@@ -4,7 +4,7 @@ public sealed record BankAccountTransaction : IDatabasePersistable
 {
     public const int DescriptionMaxLength = Constants.DescriptionMaxLength;
 
-    public int BankAccountTransactionID { get; init; }
+    public BankAccountTransactionId BankAccountTransactionID { get; init; } = BankAccountTransactionId.Default;
     public int BankAccountID { get; init; }
     public int BankAccountTransactionTypeID { get; init; }
     public int BankAccountStatementID { get; init; }
@@ -25,5 +25,9 @@ public sealed record BankAccountTransaction : IDatabasePersistable
     public string Notes { get; init; } = string.Empty;
     public DateTime TransactionDate { get; init; } = DateTime.Now;
 
-    public int PrimaryKey => BankAccountTransactionID;
+    public Id PrimaryKey => BankAccountTransactionID;
+}
+public sealed record BankAccountTransactionId(int Value) : Id(Value)
+{
+    public static BankAccountTransactionId Default => new(Constants.UnknownRecordID);
 }

@@ -24,7 +24,7 @@ public sealed class BankAccountCreateCommand_Should
             .Returns(() =>
             {
                 var result = bankAccount.DeepClone();
-                result = result with { BankAccountID = 30 };
+                result = result with { BankAccountID = new(30) };
                 return Task.FromResult(result);
             });
 
@@ -38,7 +38,7 @@ public sealed class BankAccountCreateCommand_Should
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.BankAccountID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.BankAccountID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]

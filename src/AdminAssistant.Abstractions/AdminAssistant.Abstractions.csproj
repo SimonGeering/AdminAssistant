@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <DocumentationFile>AdminAssistant.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Abstractions.docs.xml</DocumentationFile>
     <NoWarn>$(NoWarn);</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
-    <None Remove="AdminAssistant.docs.xml" />
+    <None Remove="AdminAssistant.Abstractions.docs.xml" />
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
