@@ -1,38 +1,33 @@
-﻿#pragma warning disable CA1707 // Identifiers should not contain underscores
-using ArchUnitNET.Domain;
-using ArchUnitNET.Loader;
-using ArchUnitNET.Fluent;
-using Xunit;
+#pragma warning disable CA1707 // Identifiers should not contain underscores
 
-//add a using directive to ArchUnitNET.Fluent.ArchRuleDefinition to easily define ArchRules
-using static ArchUnitNET.Fluent.ArchRuleDefinition;
+using NetArchTest.Rules;
+using NetArchTest.Rules.Policies;
 using Xunit.Abstractions;
 
 namespace AdminAssistant.Test.Architecture;
 
 public sealed class Architecture_Test(ITestOutputHelper output)
 {
-    // https://archunitnet.readthedocs.io/en/latest/guide/
-    private static readonly ArchUnitNET.Domain.Architecture _architecture =
-        new ArchLoader().LoadAssemblies(typeof(Architecture_Test).Assembly)
-        .Build();
-
-    private readonly IObjectProvider<IType> ExampleLayer = Types().That().ResideInAssembly("ExampleAssembly").As("Example Layer");
-
-    [Fact(Skip = "WIP")]
-    [Trait("Category", "Unit")]
-    public void Return_IsValid_GivenAValidCurrency()
+    [Fact]
+    [Trait("Category", "Architecture")]
+    public void DomainModel_Should_OnlyDependOn_Abstractions()
     {
         // Arrange
-        var assemblies = _architecture.Assemblies.ToList();
-
-        ExampleLayer.Should().NotBeNull();
+        var architecturePolicy = Policy.Define("Passing Policy", "This policy demonstrated a valid passing policy with reasonable rules")
+            .For(Types.InCurrentDomain)
+            .Add(t => t.That()
+               .ResideInNamespace("AdminAssistant.DomainModel")
+                   .ShouldNot()
+                   .HaveDependencyOn("AdminAssistant.UI"),
+               "Enforcing clean architecture", "Domain should not depend on UI"
+            );
 
         // Act
-        assemblies.ForEach( x => output.WriteLine(x.FullName));
+        var policyEvaluation = architecturePolicy.Evaluate();
 
         // Assert
-        assemblies.Should().HaveCount(1);
+        policyEvaluation.WriteReportTo(output);
+        policyEvaluation.HasViolations.Should().BeFalse();
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
