@@ -8,6 +8,8 @@ namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.Validation;
 
 public sealed class BankValidator_Should
 {
+    const string BankName_Value = $"{nameof(Bank.BankName)}.{nameof(Bank.BankName.Value)}";
+
     [Fact]
     [Trait("Category", "Unit")]
     public async Task Return_IsValid_GivenAValidBank()
@@ -41,7 +43,7 @@ public sealed class BankValidator_Should
 
         // Assert
         result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Bank.BankName));
+        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == BankName_Value);
     }
 
     [Fact]
@@ -60,7 +62,7 @@ public sealed class BankValidator_Should
 
         // Assert
         result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Bank.BankName));
+        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == BankName_Value);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

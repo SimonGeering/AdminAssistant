@@ -1,11 +1,9 @@
-using AdminAssistant.Abstractions.DomainModel.Shared.Validation;
 using AdminAssistant.DomainModel;
 using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
 using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
 using AdminAssistant.DomainModel.Modules.ContactsModule.Validation;
 using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
 using AdminAssistant.DomainModel.Shared;
-using AdminAssistant.DomainModel.Shared.Validation;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -56,9 +54,5 @@ public static partial class DependencyInjectionExtensions
         => services.AddTransient<ICurrencyValidator, CurrencyValidator>();
 
     private static IServiceCollection AddSharedDomainModel(this IServiceCollection services)
-    {
-        services.AddTransient<IEntityNameValidator, EntityNameValidator>();
-        services.AddTransient<IEntityDescriptionValidator, EntityDescriptionValidator>();
-        return services;
-    }
+        => services;
 }
