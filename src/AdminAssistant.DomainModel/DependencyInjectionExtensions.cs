@@ -1,9 +1,8 @@
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
-using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
-using AdminAssistant.DomainModel.Modules.ContactsModule.Validation;
-using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
-using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Modules.AccountsModule.Validation;
+using AdminAssistant.Modules.BudgetModule.Validation;
+using AdminAssistant.Modules.ContactsModule.Validation;
+using AdminAssistant.Modules.CoreModule.Validation;
+using AdminAssistant.Shared;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -18,9 +17,6 @@ public static partial class DependencyInjectionExtensions
 
         // Add Infrastructure DomainModel ...
         services.AddTransient<IUserContextProvider, UserContextProvider>();
-
-        // Set-up / Add MediatR based on an assembly marker type ...
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(RequestHandlerBase<,>).Assembly));
         return services;
     }
 

@@ -48,7 +48,7 @@ public sealed class Startup(IConfiguration configuration)
         services.AddControllers();
         services.AddFluentValidationAutoValidation()
             .AddFluentValidationClientsideAdapters()
-            .AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
+            .AddValidatorsFromAssemblyContaining<SimonGeering.Framework.Primitives.IPersistable>();
 
         if (System.Diagnostics.Debugger.IsAttached == false)
         {
@@ -82,7 +82,7 @@ public sealed class Startup(IConfiguration configuration)
         });
         services.AddFluentValidationRulesToSwagger(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 
-        services.AddAutoMapper(typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
+        services.AddAutoMapper(typeof(DomainModel.MappingProfile), typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
 
         if (System.Diagnostics.Debugger.IsAttached == false)
         {
@@ -100,7 +100,7 @@ public sealed class Startup(IConfiguration configuration)
                         .AddConsoleExporter();
                 });
         }
-
+        services.AddAdminAssistantApplication();
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
         services.AddAdminAssistantServerSideInfra(configSettings);

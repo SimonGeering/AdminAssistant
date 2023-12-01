@@ -1,7 +1,6 @@
-using AdminAssistant.Abstractions.DomainModel.Shared;
 using Ardalis.GuardClauses;
 
-namespace AdminAssistant.DomainModel.Shared.Validation;
+namespace AdminAssistant.Shared.Validation;
 
 internal static class FluentValidationRuleBuilderExtensions
 {

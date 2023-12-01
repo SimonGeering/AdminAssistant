@@ -1,5 +1,10 @@
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders;
+namespace AdminAssistant.Modules.AccountsModule.Builders;
 
+public interface IBankAccountInfoBuilder
+{
+    BankAccountInfo Build();
+    IBankAccountInfoBuilder WithTestData(int bankAccountInfoID = Constants.UnknownRecordID);
+}
 internal sealed class BankAccountInfoBuilder : IBankAccountInfoBuilder
 {
     private BankAccountInfo _bankAccountInfo = new();

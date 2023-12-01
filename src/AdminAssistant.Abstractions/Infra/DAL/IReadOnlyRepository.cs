@@ -1,7 +1,7 @@
 namespace AdminAssistant.Infra.DAL;
 
 public interface IReadOnlyRepository<TDomainModel, TId>
-    where TDomainModel : IDatabasePersistable
+    where TDomainModel : IPersistable
     where TId : Id
 {
     Task<TDomainModel?> GetAsync(TId id, CancellationToken cancellationToken);

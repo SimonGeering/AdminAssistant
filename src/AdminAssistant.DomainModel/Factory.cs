@@ -1,14 +1,14 @@
-using AdminAssistant.DomainModel.Modules.AccountsModule.Builders;
-using AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders;
-using AdminAssistant.DomainModel.Modules.BudgetModule.Builders;
-using AdminAssistant.DomainModel.Modules.CalendarModule.Builders;
-using AdminAssistant.DomainModel.Modules.ContactsModule.Builders;
-using AdminAssistant.DomainModel.Modules.CoreModule.Builders;
-using AdminAssistant.DomainModel.Modules.DocumentsModule.Builders;
-using AdminAssistant.DomainModel.Modules.MailModule.Builders;
-using AdminAssistant.DomainModel.Modules.TasksModule.Builders;
+using AdminAssistant.Modules.AccountsModule.Builders;
+using AdminAssistant.Modules.AssetRegisterModule.Builders;
+using AdminAssistant.Modules.BudgetModule.Builders;
+using AdminAssistant.Modules.CalendarModule.Builders;
+using AdminAssistant.Modules.ContactsModule.Builders;
+using AdminAssistant.Modules.CoreModule.Builders;
+using AdminAssistant.Modules.DocumentsModule.Builders;
+using AdminAssistant.Modules.MailModule.Builders;
+using AdminAssistant.Modules.TasksModule.Builders;
 
-namespace AdminAssistant.DomainModel;
+namespace AdminAssistant.Domain;
 
 public static class Factory
 {

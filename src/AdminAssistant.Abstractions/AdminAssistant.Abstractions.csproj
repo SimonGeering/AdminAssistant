@@ -12,25 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Infra\DAL\Modules\Accounts\**" />
-    <EmbeddedResource Remove="Infra\DAL\Modules\Accounts\**" />
-    <None Remove="Infra\DAL\Modules\Accounts\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" />
-    <PackageReference Include="Ardalis.Result" />
-    <PackageReference Include="Ardalis.Result.FluentValidation" />
-    <PackageReference Include="AutoMapper" />
-    <PackageReference Include="FluentValidation" />
-    <PackageReference Include="MediatR" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="SonarAnalyzer.CSharp">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -38,19 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infra\DAL\Modules\BillingModule\" />
-    <Folder Include="Infra\DAL\Modules\AssetRegisterModule\" />
-    <Folder Include="Infra\DAL\Modules\BudgetModule\" />
-    <Folder Include="Infra\DAL\Modules\CalendarModule\" />
-    <Folder Include="Infra\DAL\Modules\ContactsModule\" />
-    <Folder Include="Infra\DAL\Modules\DashboardModule\" />
-    <Folder Include="Infra\DAL\Modules\MailModule\" />
-    <Folder Include="Infra\DAL\Modules\TasksModule\" />
-    <Folder Include="Infra\DAL\Modules\ReportsModule\" />
-    <Folder Include="DomainModel\Modules\BillingModule\" />
-    <Folder Include="DomainModel\Modules\DashboardModule\" />
-    <Folder Include="DomainModel\Modules\ReportsModule\" />
-    <Folder Include="Infra\Providers\" />
+    <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
   </ItemGroup>
 
 </Project>

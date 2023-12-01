@@ -1,5 +1,8 @@
-namespace AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
+namespace AdminAssistant.Modules.BudgetModule.Validation;
 
+public interface IBudgetValidator : IValidator<Budget>
+{
+}
 internal sealed class BudgetValidator : AbstractValidator<Budget>, IBudgetValidator
 {
     public BudgetValidator()

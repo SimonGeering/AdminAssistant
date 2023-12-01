@@ -50,6 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdminAssistant.Application\AdminAssistant.Application.csproj" />
     <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
     <ProjectReference Include="..\AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />

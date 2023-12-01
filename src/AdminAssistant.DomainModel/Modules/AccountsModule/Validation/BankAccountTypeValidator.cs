@@ -1,5 +1,8 @@
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+namespace AdminAssistant.Modules.AccountsModule.Validation;
 
+public interface IBankAccountTypeValidator : IValidator<BankAccountType>
+{
+}
 internal sealed class BankAccountTypeValidator : AbstractValidator<BankAccountType>, IBankAccountTypeValidator
 {
     public BankAccountTypeValidator()

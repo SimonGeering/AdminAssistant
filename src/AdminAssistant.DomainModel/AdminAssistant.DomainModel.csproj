@@ -1,31 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <DocumentationFile>AdminAssistant.DomainModel.docs.xml</DocumentationFile>
-    <NoWarn>$(NoWarn);</NoWarn>
-  </PropertyGroup>
+    <PropertyGroup>
+        <DocumentationFile>AdminAssistant.DomainModel.docs.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);</NoWarn>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="AdminAssistant.DomainModel.docs.xml" />
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Remove="AdminAssistant.DomainModel.docs.xml" />
+        <None Include="..\.editorconfig" Link=".editorconfig" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Ardalis.Extensions" />
-    <PackageReference Include="SonarAnalyzer.CSharp">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Ardalis.Extensions" />
+        <PackageReference Include="Ardalis.GuardClauses" />
+        <PackageReference Include="FluentValidation" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+        <PackageReference Include="SonarAnalyzer.CSharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant.Abstractions\AdminAssistant.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Modules\BillingModule\" />
-    <Folder Include="Modules\DashboardModule\" />
-    <Folder Include="Modules\ReportsModule\" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\SimonGeering.Framework\SimonGeering.Framework.csproj" />
+    </ItemGroup>
 
 </Project>

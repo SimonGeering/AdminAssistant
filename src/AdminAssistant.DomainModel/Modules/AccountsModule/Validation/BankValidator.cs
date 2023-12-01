@@ -1,7 +1,10 @@
-using AdminAssistant.DomainModel.Shared.Validation;
+using AdminAssistant.Shared.Validation;
 
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+namespace AdminAssistant.Modules.AccountsModule.Validation;
 
+public interface IBankValidator : IValidator<Bank>
+{
+}
 internal sealed class BankValidator : AbstractValidator<Bank>, IBankValidator
 {
     public BankValidator()

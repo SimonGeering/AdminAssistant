@@ -1,5 +1,8 @@
-namespace AdminAssistant.DomainModel.Modules.CoreModule.Validation;
+namespace AdminAssistant.Modules.CoreModule.Validation;
 
+public interface ICurrencyValidator : IValidator<Currency>
+{
+}
 internal sealed class CurrencyValidator : AbstractValidator<Currency>, ICurrencyValidator
 {
     public CurrencyValidator()

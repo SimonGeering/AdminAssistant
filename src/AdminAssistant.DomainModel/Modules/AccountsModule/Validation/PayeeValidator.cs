@@ -1,5 +1,8 @@
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+namespace AdminAssistant.Modules.AccountsModule.Validation;
 
+public interface IPayeeValidator : IValidator<Payee>
+{
+}
 internal sealed class PayeeValidator : AbstractValidator<Payee>, IPayeeValidator
 {
     public PayeeValidator()

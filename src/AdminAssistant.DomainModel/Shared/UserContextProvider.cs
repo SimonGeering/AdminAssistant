@@ -1,5 +1,9 @@
-namespace AdminAssistant.DomainModel.Shared;
+namespace AdminAssistant.Shared;
 
+public interface IUserContextProvider
+{
+    User GetCurrentUser();
+}
 internal sealed class UserContextProvider : IUserContextProvider
 {
     // TODO: Hard coded user ID.
