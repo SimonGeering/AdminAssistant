@@ -1,7 +1,7 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 using AdminAssistant.Modules.DocumentsModule;
+using AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.WebAPI.v1.DocumentsModule;

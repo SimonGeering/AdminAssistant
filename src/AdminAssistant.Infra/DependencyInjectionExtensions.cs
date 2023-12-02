@@ -1,15 +1,14 @@
 using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Infra.Providers;
 using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
-using Npgsql.EntityFrameworkCore;
 using MediatR;
 using AdminAssistant.Framework.MediatR;
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
-using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 using SimonGeering.Framework.Configuration;
-using AdminAssistant.Infra.DAL.Modules.ContactsModule;
+using AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
+using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
+using AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
 

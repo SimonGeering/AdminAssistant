@@ -1,7 +1,7 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.Domain;
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Modules.CoreModule.Commands;
+using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 
 namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.CQRS;
 

@@ -1,11 +1,14 @@
+using AdminAssistant.Infra.DAL;
 using AdminAssistant.Infra.DAL.EntityFramework;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using AdminAssistant.Infra.Providers;
-using AdminAssistant.Modules.DocumentsModule;
 using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule;
+namespace AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
+
+public interface IDocumentRepository : IRepository<Document, DocumentId>;
 
 internal sealed class DocumentRepository(
     IApplicationDbContext dbContext,
@@ -32,7 +35,7 @@ internal sealed class DocumentRepository(
 
         if (IsNew(domainObjectToSave))
         {
-            entity.Audit = new EntityFramework.Model.Core.AuditEntity()
+            entity.Audit = new AuditEntity()
             {
                 CreatedBy = UserContextProvider.GetCurrentUser().SignOn,
                 CreatedOn = DateTimeProvider.UtcNow

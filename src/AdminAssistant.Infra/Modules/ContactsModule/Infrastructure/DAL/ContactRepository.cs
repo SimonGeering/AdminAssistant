@@ -1,11 +1,14 @@
+using AdminAssistant.Infra.DAL;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.Providers;
-using AdminAssistant.Modules.ContactsModule;
 using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Infra.DAL.Modules.ContactsModule;
+namespace AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
+
+public interface IContactRepository : IRepository<Contact, ContactId>;
 
 internal sealed class ContactRepository(
     IApplicationDbContext dbContext,
@@ -32,7 +35,7 @@ internal sealed class ContactRepository(
 
         if (IsNew(domainObjectToSave))
         {
-            entity.Audit = new EntityFramework.Model.Core.AuditEntity()
+            entity.Audit = new AuditEntity()
             {
                 CreatedBy = UserContextProvider.GetCurrentUser().SignOn,
                 CreatedOn = DateTimeProvider.UtcNow

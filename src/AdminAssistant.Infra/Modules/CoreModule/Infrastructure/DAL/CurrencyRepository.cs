@@ -1,11 +1,13 @@
+using AdminAssistant.Infra.DAL;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.Providers;
-using AdminAssistant.Modules.CoreModule;
 using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Infra.DAL.Modules.CoreModule;
+namespace AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
+
+public interface ICurrencyRepository : IRepository<Currency, CurrencyId>;
 
 internal sealed class CurrencyRepository(
     IApplicationDbContext dbContext,

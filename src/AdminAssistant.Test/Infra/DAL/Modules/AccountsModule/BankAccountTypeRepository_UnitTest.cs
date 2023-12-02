@@ -2,9 +2,9 @@
 using AdminAssistant.Domain;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 using AdminAssistant.Shared;
 using MappingProfile = AdminAssistant.Infra.DAL.MappingProfile;
 

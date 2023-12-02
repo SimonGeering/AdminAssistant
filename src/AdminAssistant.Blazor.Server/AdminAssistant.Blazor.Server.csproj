@@ -40,9 +40,6 @@
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
     <PackageReference Include="System.Net.Http.Json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="SonarAnalyzer.CSharp">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -54,12 +51,6 @@
     <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
     <ProjectReference Include="..\AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="WebAPI\v1\DashboardModule\" />
-    <Folder Include="WebAPI\v1\BillingModule\" />
-    <Folder Include="WebAPI\v1\ReportsModule\" />
   </ItemGroup>
 
 </Project>

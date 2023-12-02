@@ -1,10 +1,12 @@
+using AdminAssistant.Infra.DAL;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.Providers;
-using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
+namespace AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+
+public interface IBankAccountTypeRepository : IReadOnlyRepository<BankAccountType, BankAccountTypeId>;
 
 internal sealed class BankAccountTypeRepository(
     IApplicationDbContext dbContext,

@@ -1,5 +1,5 @@
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 using AdminAssistant.Modules.AccountsModule.Validation;
 
 namespace AdminAssistant.Modules.AccountsModule.Commands;

@@ -1,5 +1,5 @@
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 using AdminAssistant.Modules.CoreModule.Validation;
 
 namespace AdminAssistant.Modules.CoreModule.Commands;

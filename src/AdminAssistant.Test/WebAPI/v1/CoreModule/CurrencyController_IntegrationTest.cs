@@ -2,8 +2,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.WebAPI.v1.CoreModule;

@@ -1,4 +1,4 @@
-using AdminAssistant.Infra.DAL.Modules.ContactsModule;
+using AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
 using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.Modules.ContactsModule.Queries;

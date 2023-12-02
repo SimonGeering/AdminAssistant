@@ -5,9 +5,6 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Major Bug", "S3343:Caller information parameters should come at the end of the parameter list", Justification = "False  positive - not possible due to param array.", Scope = "member", Target = "~M:AdminAssistant.Infra.Providers.ILoggingProvider.Start(System.String,System.String,System.String,System.Int32,System.Object[])")]
-[assembly: SuppressMessage("Major Bug", "S3343:Caller information parameters should come at the end of the parameter list", Justification = "False  positive - not possible due to param array.", Scope = "member", Target = "~M:AdminAssistant.Infra.Providers.ILoggingProvider.Finish(System.String,System.String,System.String,System.Int32,System.Object[])")]
-[assembly: SuppressMessage("Major Bug", "S3343:Caller information parameters should come at the end of the parameter list", Justification = "False  positive - not possible due to param array.", Scope = "member", Target = "~M:AdminAssistant.Infra.Providers.ILoggingProvider.Finish``1(``0,System.String,System.String,System.String,System.Int32,System.Object[])~``0")]
 [assembly: SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty", Justification = "False positive - MediatR implementation", Scope = "type", Target = "~T:AdminAssistant.Modules.AccountsModule.Queries.BankQuery")]
 [assembly: SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty", Justification = "False positive - MediatR implementation", Scope = "type", Target = "~T:AdminAssistant.Modules.AccountsModule.Queries.BankAccountTypesQuery")]
 [assembly: SuppressMessage("Minor Code Smell", "S2094:Classes should not be empty", Justification = "False positive - MediatR implementation", Scope = "type", Target = "~T:AdminAssistant.Modules.ContactsModule.Queries.ContactQuery")]

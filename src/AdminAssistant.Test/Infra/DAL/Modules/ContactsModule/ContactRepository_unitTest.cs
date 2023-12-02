@@ -2,9 +2,9 @@
 using AdminAssistant.Domain;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
-using AdminAssistant.Infra.DAL.Modules.ContactsModule;
 using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.ContactsModule;
+using AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
 using AdminAssistant.Shared;
 using MappingProfile = AdminAssistant.Infra.DAL.MappingProfile;
 

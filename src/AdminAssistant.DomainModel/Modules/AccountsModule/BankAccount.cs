@@ -22,7 +22,7 @@ public sealed record BankAccount : IPersistable
     public BankAccountTypeId BankAccountTypeID { get; init; } = BankAccountTypeId.Default;
 
     /// <summary>
-    /// The unique identifier of the <see cref="CoreModule.Domain.Currency"/> for this <see cref="BankAccount"/>./>
+    /// The unique identifier of the <see cref="Currency"/> for this <see cref="BankAccount"/>./>
     /// </summary>
     public CurrencyId CurrencyID { get; init; } = CurrencyId.Default;
 

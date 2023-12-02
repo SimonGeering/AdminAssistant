@@ -1,11 +1,14 @@
+using AdminAssistant.Infra.DAL;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
+using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.Providers;
-using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
-namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
+namespace AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+
+public interface IBankAccountRepository : IRepository<BankAccount, BankAccountId>;
 
 internal sealed class BankAccountRepository(
     IApplicationDbContext dbContext,
@@ -26,7 +29,7 @@ internal sealed class BankAccountRepository(
 
         if (IsNew(domainObjectToSave))
         {
-            entity.Audit = new EntityFramework.Model.Core.AuditEntity()
+            entity.Audit = new AuditEntity()
             {
                 CreatedBy = UserContextProvider.GetCurrentUser().SignOn,
                 CreatedOn = DateTimeProvider.UtcNow
