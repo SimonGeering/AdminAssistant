@@ -1,4 +1,5 @@
 #pragma warning disable IDE0090 // Use 'new(...)'
+using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Retro.Modules.AccountsModule;
 using AdminAssistant.Shared;
 using Ardalis.GuardClauses;
@@ -31,12 +32,12 @@ using var host = new HostBuilder()
         logging.AddDebug();
 
         logging.AddFilter("Default", LogLevel.Information)
-                .AddFilter(AdminAssistant.Infrastructure.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
+                .AddFilter(ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
                 .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else
         logging.AddFilter("Default", LogLevel.Warning)
-                .AddFilter(AdminAssistant.Infra.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
+                .AddFilter(ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
                 .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
 
