@@ -1,11 +1,12 @@
 #pragma warning disable IDE0090 // Use 'new(...)'
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Retro.Modules.AccountsModule;
+using AdminAssistant.Shared;
 using Ardalis.GuardClauses;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SimonGeering.Framework.Primitives;
 
 using var host = new HostBuilder()
     .ConfigureServices((hostContext, services) =>
@@ -15,7 +16,7 @@ using var host = new HostBuilder()
 
         services.AddAdminAssistantWebAPIClient(configSettings);
 
-        services.AddValidatorsFromAssemblyContaining<AdminAssistant.Infra.DAL.IDatabasePersistable>();
+        services.AddValidatorsFromAssemblyContaining<IPersistable>();
 
         services.AddAdminAssistantClientSideProviders();
         services.AddAdminAssistantClientSideDomainModel();

@@ -1,6 +1,6 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 using System.Reflection;
-using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
@@ -95,7 +95,7 @@ public abstract class IntegrationTestBase : IDisposable
             // Ignore system tables and anything that was populated by the EF seed data...
             TablesToIgnore = ["sysdiagrams", "__EFMigrationsHistory", "tblObjectType"],
             WithReseed = true
-        });        
+        });
         await _respawner.ResetAsync(_connectionString).ConfigureAwait(false);
 
         // Test Seed data ...

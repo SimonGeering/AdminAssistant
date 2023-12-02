@@ -1,10 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.TasksModule;
-using AdminAssistant.DomainModel.Modules.TasksModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.TasksModule;
+using AdminAssistant.Modules.TasksModule.Queries;
 using AdminAssistant.WebAPI.v1.TasksModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.TasksModule.TaskListControllerUnitTest;
 

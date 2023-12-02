@@ -1,8 +1,7 @@
-using AutoMapper;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;

@@ -1,4 +1,4 @@
-using AdminAssistant.UI;
+using AdminAssistant.Primitives.UI;
 
 namespace AdminAssistant.Retro.Shared;
 

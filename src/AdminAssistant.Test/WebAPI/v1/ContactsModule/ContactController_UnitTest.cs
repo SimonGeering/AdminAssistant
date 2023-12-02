@@ -1,11 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.ContactsModule;
-using AdminAssistant.DomainModel.Modules.ContactsModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.ContactsModule;
+using AdminAssistant.Modules.ContactsModule.Queries;
 using AdminAssistant.WebAPI.v1.ContactsModule;
-using FluentAssertions.Common;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.ContactsModule;
 

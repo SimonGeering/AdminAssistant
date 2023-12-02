@@ -1,12 +1,12 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.DomainModel.Shared;
-using AdminAssistant.Infra.DAL;
+using AdminAssistant.Domain;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Shared;
+using MappingProfile = AdminAssistant.Infra.DAL.MappingProfile;
 
 namespace AdminAssistant.Test.Infra.DAL.Modules.CoreModule;
 

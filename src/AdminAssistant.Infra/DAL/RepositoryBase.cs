@@ -1,7 +1,6 @@
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.Providers;
-using AutoMapper;
+using AdminAssistant.Shared;
 
 namespace AdminAssistant.Infra.DAL;
 
@@ -20,5 +19,5 @@ internal abstract class RepositoryBase
         UserContextProvider = userContextProvider;
     }
 
-    public bool IsNew(IDatabasePersistable domainObject) => domainObject.IsNew;
+    protected static bool IsNew(IPersistable domainObject) => domainObject.IsNew;
 }

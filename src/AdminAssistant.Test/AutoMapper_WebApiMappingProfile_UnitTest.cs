@@ -1,13 +1,13 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AssetRegisterModule;
-using AdminAssistant.DomainModel.Modules.BudgetModule;
-using AdminAssistant.DomainModel.Modules.CalendarModule;
-using AdminAssistant.DomainModel.Modules.ContactsModule;
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.DomainModel.Modules.DocumentsModule;
-using AdminAssistant.DomainModel.Modules.MailModule;
-using AdminAssistant.DomainModel.Modules.TasksModule;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AssetRegisterModule;
+using AdminAssistant.Modules.BudgetModule;
+using AdminAssistant.Modules.CalendarModule;
+using AdminAssistant.Modules.ContactsModule;
+using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Modules.DocumentsModule;
+using AdminAssistant.Modules.MailModule;
+using AdminAssistant.Modules.TasksModule;
 using AdminAssistant.WebAPI.v1;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using AdminAssistant.WebAPI.v1.AssetRegisterModule;

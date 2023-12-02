@@ -18,7 +18,7 @@ internal static class BudgetSchema
     {
         modelBuilder.Entity<BudgetEntity>().ToTable("Budget").Metadata.SetSchema(BudgetSchema.Name);
         modelBuilder.Entity<BudgetEntity>().HasKey(x => x.BudgetID);
-        modelBuilder.Entity<BudgetEntity>().Property(x => x.BudgetName).IsRequired().IsUnicode().HasMaxLength(DomainModel.Modules.BudgetModule.Budget.BudgetNameMaxLength);
+        modelBuilder.Entity<BudgetEntity>().Property(x => x.BudgetName).IsRequired().IsUnicode().HasMaxLength(AdminAssistant.Modules.BudgetModule.Budget.BudgetNameMaxLength);
         // TODO: Budget_OnModelCreating
     }
     private static void BudgetEntry_OnModelCreating(ModelBuilder modelBuilder)

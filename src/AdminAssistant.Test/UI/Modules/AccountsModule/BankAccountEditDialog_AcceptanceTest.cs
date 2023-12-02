@@ -1,8 +1,8 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.UI.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.UI;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using static AdminAssistant.Test.TestConstants;
 

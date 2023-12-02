@@ -1,9 +1,8 @@
-using AutoMapper;
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.CoreModule;
@@ -19,7 +18,7 @@ internal sealed class CurrencyRepository(
     {
         var entity = Mapper.Map<CurrencyEntity>(domainObjectToSave);
 
-        if (base.IsNew(domainObjectToSave))
+        if (IsNew(domainObjectToSave))
         {
             DbContext.Currencies.Add(entity);
         }

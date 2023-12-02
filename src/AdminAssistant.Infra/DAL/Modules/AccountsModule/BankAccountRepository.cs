@@ -1,9 +1,8 @@
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.Providers;
-using AutoMapper;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
@@ -25,7 +24,7 @@ internal sealed class BankAccountRepository(
     {
         var entity = Mapper.Map<BankAccountEntity>(domainObjectToSave);
 
-        if (base.IsNew(domainObjectToSave))
+        if (IsNew(domainObjectToSave))
         {
             entity.Audit = new EntityFramework.Model.Core.AuditEntity()
             {

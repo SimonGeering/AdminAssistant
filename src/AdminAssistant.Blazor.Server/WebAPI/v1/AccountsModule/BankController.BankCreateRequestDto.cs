@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.AccountsModule;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
@@ -12,4 +11,4 @@ public sealed record BankCreateRequestDto : IMapTo<Bank>
     public void MapTo(AutoMapper.Profile profile)
         => profile.CreateMap<BankCreateRequestDto, Bank>()
                   .ForMember(x => x.BankID, opt => opt.Ignore());
-}    
+}

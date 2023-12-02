@@ -1,8 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.BudgetModule;
-using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.BudgetModule;
+using AdminAssistant.Modules.BudgetModule.Validation;
 
 namespace AdminAssistant.Test.DomainModel.Modules.BudgetModule.Validation;
 

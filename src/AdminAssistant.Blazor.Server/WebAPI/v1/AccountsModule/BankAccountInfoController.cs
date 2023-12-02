@@ -1,6 +1,6 @@
-using AdminAssistant.DomainModel.Shared;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.AccountsModule.Queries;
+using AdminAssistant.Shared;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

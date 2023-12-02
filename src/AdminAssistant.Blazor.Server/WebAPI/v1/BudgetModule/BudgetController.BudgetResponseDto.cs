@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.BudgetModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.BudgetModule;
 
 namespace AdminAssistant.WebAPI.v1.BudgetModule;
 

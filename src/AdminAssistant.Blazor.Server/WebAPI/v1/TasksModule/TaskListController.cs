@@ -1,5 +1,5 @@
-using AdminAssistant.DomainModel.Modules.TasksModule.CQRS;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.TasksModule.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.CoreModule;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
 

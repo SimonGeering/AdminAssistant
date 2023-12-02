@@ -1,5 +1,5 @@
-using AdminAssistant.DomainModel.Modules.CalendarModule.CQRS;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.CalendarModule.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

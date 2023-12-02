@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.MailModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.MailModule;
 
 namespace AdminAssistant.WebAPI.v1.MailModule;
 

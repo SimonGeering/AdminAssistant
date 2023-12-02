@@ -1,6 +1,7 @@
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule.Commands;
+using AdminAssistant.Modules.CoreModule.Queries;
 using Ardalis.Result;
 using AutoMapper;
 using MediatR;

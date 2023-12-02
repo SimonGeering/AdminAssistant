@@ -1,5 +1,5 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
 
@@ -17,6 +17,7 @@ public class ServiceCollection_Should
 
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
         services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
 
         var serviceProvider = services.BuildServiceProvider();

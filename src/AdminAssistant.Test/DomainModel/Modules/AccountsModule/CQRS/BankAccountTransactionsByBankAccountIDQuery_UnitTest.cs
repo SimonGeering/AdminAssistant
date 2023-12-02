@@ -1,8 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
+using AdminAssistant.Domain;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Queries;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
@@ -23,6 +23,7 @@ public sealed class BankAccountTransactionsByBankAccountIDQuery_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var bankAccountID = 9;
         var mockBankAccountTransactionRepository = new Mock<IBankAccountTransactionRepository>();

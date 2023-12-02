@@ -1,5 +1,5 @@
 using System.Reflection.PortableExecutable;
-using AdminAssistant.UI.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.UI;
 using Terminal.Gui;
 
 namespace AdminAssistant.Retro.Modules.AccountsModule;

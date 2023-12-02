@@ -1,8 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.ContactsModule;
-using AdminAssistant.DomainModel.Modules.ContactsModule.CQRS;
+using AdminAssistant.Domain;
 using AdminAssistant.Infra.DAL.Modules.ContactsModule;
+using AdminAssistant.Modules.ContactsModule;
+using AdminAssistant.Modules.ContactsModule.Queries;
 
 namespace AdminAssistant.Test.DomainModel.Modules.ContactsModule.CQRS;
 
@@ -17,6 +17,7 @@ public sealed class ContactByIDQuery_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
+        services.AddAdminAssistantApplication();
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockContactRepository = new Mock<IContactRepository>();
@@ -41,6 +42,7 @@ public sealed class ContactByIDQuery_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
+        services.AddAdminAssistantApplication();
         services.AddAdminAssistantServerSideDomainModel();
 
         var mockContactRepository = new Mock<IContactRepository>();

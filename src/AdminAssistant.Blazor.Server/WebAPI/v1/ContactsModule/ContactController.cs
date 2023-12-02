@@ -1,6 +1,7 @@
-using AdminAssistant.DomainModel.Modules.ContactsModule;
-using AdminAssistant.DomainModel.Modules.ContactsModule.CQRS;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.ContactsModule;
+using AdminAssistant.Modules.ContactsModule.Commands;
+using AdminAssistant.Modules.ContactsModule.Queries;
 using Ardalis.Result;
 using AutoMapper;
 using MediatR;

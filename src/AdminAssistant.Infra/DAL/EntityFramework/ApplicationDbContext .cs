@@ -1,4 +1,4 @@
-using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework.Model;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Budget;

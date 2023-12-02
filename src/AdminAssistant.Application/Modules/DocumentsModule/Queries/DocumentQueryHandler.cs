@@ -1,4 +1,3 @@
-using AdminAssistant.Application;
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
 using AdminAssistant.Infra.Providers;
 

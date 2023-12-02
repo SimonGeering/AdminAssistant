@@ -1,14 +1,14 @@
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.Modules.AccountsModule;
 using AdminAssistant.Infra.Providers;
-using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 using Npgsql.EntityFrameworkCore;
 using MediatR;
 using AdminAssistant.Framework.MediatR;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
 using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
-using AdminAssistant.Framework.Configuration;
+using SimonGeering.Framework.Configuration;
 using AdminAssistant.Infra.DAL.Modules.ContactsModule;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
@@ -86,4 +86,3 @@ public static class DependencyInjectionExtensions
     private static void AddDocumentsDAL(this IServiceCollection services)
         => services.AddTransient<IDocumentRepository, DocumentRepository>();
 }
-

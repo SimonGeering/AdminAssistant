@@ -1,8 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
+using AdminAssistant.Domain;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
-using ObjectCloner.Extensions; // https://github.com/marcelltoth/ObjectCloner
+using AdminAssistant.Modules.CoreModule.Commands;
+using ObjectCloner.Extensions;
+
+// https://github.com/marcelltoth/ObjectCloner
 
 namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.CQRS;
 
@@ -18,6 +20,7 @@ public sealed class CurrencyCreateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var mockCurrencyRepository = new Mock<ICurrencyRepository>();
         mockCurrencyRepository.Setup(x => x.SaveAsync(currency, It.IsAny<CancellationToken>()))
@@ -49,6 +52,7 @@ public sealed class CurrencyCreateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
         services.AddTransient((sp) => new Mock<ICurrencyRepository>().Object);
 
         var bank = Factory.Currency.WithTestData()

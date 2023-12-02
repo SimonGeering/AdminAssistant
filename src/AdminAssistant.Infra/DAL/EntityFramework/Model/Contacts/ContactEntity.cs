@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.ContactsModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.ContactsModule;
 
 namespace AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 

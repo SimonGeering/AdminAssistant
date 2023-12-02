@@ -1,7 +1,7 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Infra.Providers;
-using AdminAssistant.UI.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.UI;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.UI.Modules.AccountsModule;

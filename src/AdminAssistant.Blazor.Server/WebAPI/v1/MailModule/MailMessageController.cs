@@ -1,5 +1,5 @@
-using AdminAssistant.DomainModel.Modules.MailModule.CQRS;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.MailModule.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

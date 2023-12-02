@@ -1,4 +1,4 @@
-using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Shared;
 using Ardalis.GuardClauses;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -82,7 +82,7 @@ public sealed class Startup(IConfiguration configuration)
         });
         services.AddFluentValidationRulesToSwagger(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 
-        services.AddAutoMapper(typeof(DomainModel.MappingProfile), typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
+        services.AddAutoMapper(typeof(Domain.MappingProfile), typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
 
         if (System.Diagnostics.Debugger.IsAttached == false)
         {
@@ -100,9 +100,9 @@ public sealed class Startup(IConfiguration configuration)
                         .AddConsoleExporter();
                 });
         }
-        services.AddAdminAssistantApplication();
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
         services.AddAdminAssistantServerSideInfra(configSettings);
     }
 

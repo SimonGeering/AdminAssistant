@@ -1,4 +1,4 @@
-using AdminAssistant.UI;
+using AdminAssistant.Primitives.UI;
 using Microsoft.AspNetCore.Components;
 
 namespace AdminAssistant.Blazor.Client.Shared;

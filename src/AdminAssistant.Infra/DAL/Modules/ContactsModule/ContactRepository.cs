@@ -1,9 +1,8 @@
-using AdminAssistant.DomainModel.Modules.ContactsModule;
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
 using AdminAssistant.Infra.Providers;
-using AutoMapper;
+using AdminAssistant.Modules.ContactsModule;
+using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.ContactsModule;
@@ -31,7 +30,7 @@ internal sealed class ContactRepository(
     {
         var entity = Mapper.Map<ContactEntity>(domainObjectToSave);
 
-        if (base.IsNew(domainObjectToSave))
+        if (IsNew(domainObjectToSave))
         {
             entity.Audit = new EntityFramework.Model.Core.AuditEntity()
             {

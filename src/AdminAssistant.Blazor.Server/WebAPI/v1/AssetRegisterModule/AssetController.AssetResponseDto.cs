@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.AssetRegisterModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.AssetRegisterModule;
 
 namespace AdminAssistant.WebAPI.v1.AssetRegisterModule;
 

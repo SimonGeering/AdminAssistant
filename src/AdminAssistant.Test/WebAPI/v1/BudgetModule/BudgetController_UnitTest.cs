@@ -1,10 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.BudgetModule;
-using AdminAssistant.DomainModel.Modules.BudgetModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.BudgetModule;
+using AdminAssistant.Modules.BudgetModule.Queries;
 using AdminAssistant.WebAPI.v1.BudgetModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.BudgetModule;
 

@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <RootNamespace>SimonGeering.Framework</RootNamespace>
         <DocumentationFile>SimonGeering.Framework.docs.xml</DocumentationFile>
         <NoWarn>$(NoWarn);</NoWarn>
     </PropertyGroup>

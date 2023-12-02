@@ -1,5 +1,5 @@
-using AdminAssistant.DomainModel.Modules.AssetRegisterModule.CQRS;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.AssetRegisterModule.Queries;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

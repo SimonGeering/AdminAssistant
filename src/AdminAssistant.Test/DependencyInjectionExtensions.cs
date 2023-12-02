@@ -1,4 +1,4 @@
-using AdminAssistant.DomainModel.Shared;
+using AdminAssistant.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.Providers;
 using Microsoft.Extensions.Logging;

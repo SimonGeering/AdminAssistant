@@ -1,9 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.ContactsModule;
-using AdminAssistant.DomainModel.Modules.ContactsModule.Validation;
-using FluentValidation;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.ContactsModule;
+using AdminAssistant.Modules.ContactsModule.Validation;
 
 namespace AdminAssistant.Test.DomainModel.Modules.ContactsModule.Validation;
 

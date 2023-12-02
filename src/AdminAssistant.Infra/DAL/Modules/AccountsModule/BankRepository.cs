@@ -1,9 +1,8 @@
-using AutoMapper;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.AccountsModule;
@@ -31,7 +30,7 @@ internal sealed class BankRepository(
     {
         var entity = Mapper.Map<BankEntity>(domainObjectToSave);
 
-        if (base.IsNew(domainObjectToSave))
+        if (IsNew(domainObjectToSave))
             DbContext.Banks.Add(entity);
         else
             DbContext.Banks.Update(entity);

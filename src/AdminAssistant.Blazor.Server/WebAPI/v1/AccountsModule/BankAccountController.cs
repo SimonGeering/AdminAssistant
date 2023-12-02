@@ -1,6 +1,7 @@
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Commands;
+using AdminAssistant.Modules.AccountsModule.Queries;
 using Ardalis.Result;
 using AutoMapper;
 using MediatR;

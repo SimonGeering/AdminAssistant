@@ -1,10 +1,10 @@
 using AdminAssistant.Blazor.Client;
-using AdminAssistant.Infra.DAL;
 using AdminAssistant.Infra.Providers;
 using MudBlazor.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Components.Web;
+using SimonGeering.Framework.Primitives;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("app");
@@ -33,10 +33,10 @@ builder.Services.AddLogging(logging =>
 });
 
 // See https://github.com/ryanelian/FluentValidation.Blazor
-builder.Services.AddValidatorsFromAssemblyContaining<IDatabasePersistable>();
+builder.Services.AddValidatorsFromAssemblyContaining<IPersistable>();
 
 builder.Services.AddAdminAssistantClientSideProviders();
 builder.Services.AddAdminAssistantClientSideDomainModel();
-builder.Services.AddAdminAssistantUI(AdminAssistant.UI.Shared.FontAwesomeVersion.V4o7o0);
+builder.Services.AddAdminAssistantUI();
 
 await builder.Build().RunAsync();

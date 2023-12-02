@@ -1,9 +1,8 @@
-using AutoMapper;
-using AdminAssistant.DomainModel.Modules.DocumentsModule;
-using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.Infra.DAL.EntityFramework;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using AdminAssistant.Infra.Providers;
+using AdminAssistant.Modules.DocumentsModule;
+using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infra.DAL.Modules.DocumentsModule;
@@ -31,7 +30,7 @@ internal sealed class DocumentRepository(
     {
         var entity = Mapper.Map<DocumentEntity>(domainObjectToSave);
 
-        if (base.IsNew(domainObjectToSave))
+        if (IsNew(domainObjectToSave))
         {
             entity.Audit = new EntityFramework.Model.Core.AuditEntity()
             {

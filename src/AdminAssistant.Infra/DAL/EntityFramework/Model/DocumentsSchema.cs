@@ -1,4 +1,4 @@
-using AdminAssistant.DomainModel.Modules.DocumentsModule;
+using AdminAssistant.Modules.DocumentsModule;
 using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
 using Microsoft.EntityFrameworkCore;
 

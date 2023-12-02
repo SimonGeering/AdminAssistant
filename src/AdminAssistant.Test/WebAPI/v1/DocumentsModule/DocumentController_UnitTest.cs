@@ -1,10 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.DocumentsModule;
-using AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.DocumentsModule;
+using AdminAssistant.Modules.DocumentsModule.Queries;
 using AdminAssistant.WebAPI.v1.DocumentsModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.DocumentsModule;
 

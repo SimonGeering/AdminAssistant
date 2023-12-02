@@ -1,5 +1,4 @@
 using AdminAssistant.Blazor.Client.Shared;
-using AdminAssistant.UI.Modules;
 
 namespace AdminAssistant.Blazor.Client.Modules;
 

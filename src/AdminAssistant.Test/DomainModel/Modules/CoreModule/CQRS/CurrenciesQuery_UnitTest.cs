@@ -1,8 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
+using AdminAssistant.Domain;
 using AdminAssistant.Infra.DAL.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule.Queries;
 
 namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.CQRS;
 
@@ -22,6 +22,7 @@ public sealed class CurrenciesQuery_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var mockRepository = new Mock<ICurrencyRepository>();
         mockRepository.Setup(x => x.GetListAsync(It.IsAny<CancellationToken>()))
