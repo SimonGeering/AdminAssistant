@@ -1,6 +1,6 @@
-using Microsoft.Extensions.DependencyInjection;
+using AdminAssistant;
 
-namespace AdminAssistant;
+namespace Microsoft.Extensions.DependencyInjection;
 
 public static partial class DependencyInjectionExtensions
 {

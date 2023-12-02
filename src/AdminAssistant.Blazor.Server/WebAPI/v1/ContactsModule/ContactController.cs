@@ -1,12 +1,6 @@
-using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.ContactsModule;
 using AdminAssistant.Modules.ContactsModule.Commands;
 using AdminAssistant.Modules.ContactsModule.Queries;
-using Ardalis.Result;
-using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1.ContactsModule;
 

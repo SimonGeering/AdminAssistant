@@ -1,6 +1,6 @@
-﻿#if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
+#if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Infrastructure.Providers;
 
 namespace AdminAssistant.Test.Infra.Providers;
 

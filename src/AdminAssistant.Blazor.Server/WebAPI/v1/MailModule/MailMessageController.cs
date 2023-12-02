@@ -1,9 +1,4 @@
-using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.MailModule.Queries;
-using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1.MailModule;
 

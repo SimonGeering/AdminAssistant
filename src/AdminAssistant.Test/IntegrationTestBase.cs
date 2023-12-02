@@ -1,11 +1,11 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 using System.Reflection;
 using AdminAssistant.Shared;
-using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.DAL.EntityFramework.Model;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Infrastructure.EntityFramework;
+using AdminAssistant.Infrastructure.EntityFramework.Model;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Accounts;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Core;
+using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Hosting;

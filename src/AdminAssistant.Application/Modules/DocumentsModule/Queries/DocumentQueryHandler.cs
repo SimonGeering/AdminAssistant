@@ -1,4 +1,3 @@
-using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
 
 namespace AdminAssistant.Modules.DocumentsModule.Queries;

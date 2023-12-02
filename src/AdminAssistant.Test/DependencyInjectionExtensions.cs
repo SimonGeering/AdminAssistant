@@ -1,6 +1,6 @@
+using AdminAssistant.Infrastructure.EntityFramework;
+using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Shared;
-using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.Providers;
 using Microsoft.Extensions.Logging;
 
 // ReSharper disable once CheckNamespace

@@ -1,8 +1,3 @@
-using AdminAssistant.Infra.Providers;
-using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-
 namespace AdminAssistant.WebAPI;
 
 public abstract class WebApiControllerBase : ControllerBase

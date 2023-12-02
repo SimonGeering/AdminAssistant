@@ -1,7 +1,7 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Core;
 using AdminAssistant.Modules.CoreModule;
 using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;

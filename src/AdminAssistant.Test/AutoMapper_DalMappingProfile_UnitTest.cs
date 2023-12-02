@@ -1,13 +1,13 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using AdminAssistant.Infrastructure.EntityFramework.Model.Accounts;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Contacts;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Core;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Documents;
+using AdminAssistant.Infrastructure;
 using AdminAssistant.Modules.AccountsModule;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
+using AdminAssistant.Modules.ContactsModule;
 using AdminAssistant.Modules.CoreModule;
 using AdminAssistant.Modules.DocumentsModule;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Documents;
-using AdminAssistant.Infra.DAL;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Contacts;
-using AdminAssistant.Modules.ContactsModule;
 
 namespace AdminAssistant.Test.Infra.DAL;
 

@@ -82,7 +82,7 @@ public sealed class Startup(IConfiguration configuration)
         });
         services.AddFluentValidationRulesToSwagger(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 
-        services.AddAutoMapper(typeof(Domain.MappingProfile), typeof(Infra.DAL.MappingProfile), typeof(WebAPI.v1.MappingProfile));
+        services.AddAutoMapper(typeof(Domain.MappingProfile), typeof(Infrastructure.MappingProfile), typeof(WebAPI.v1.MappingProfile));
 
         if (System.Diagnostics.Debugger.IsAttached == false)
         {

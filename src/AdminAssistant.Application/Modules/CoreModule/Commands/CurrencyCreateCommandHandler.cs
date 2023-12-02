@@ -1,4 +1,3 @@
-using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 using AdminAssistant.Modules.CoreModule.Validation;
 

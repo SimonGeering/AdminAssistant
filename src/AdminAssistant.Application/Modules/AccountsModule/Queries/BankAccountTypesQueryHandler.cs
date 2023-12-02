@@ -1,4 +1,3 @@
-using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 
 namespace AdminAssistant.Modules.AccountsModule.Queries;

@@ -1,9 +1,9 @@
-using AdminAssistant.Infra.DAL;
-using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Infrastructure.DAL;
+using AdminAssistant.Infrastructure.EntityFramework;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Core;
 using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
+using AdminAssistant.Infrastructure.Providers;
 
 namespace AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 

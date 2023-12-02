@@ -1,9 +1,4 @@
-using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.DocumentsModule.Queries;
-using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1.DocumentsModule;
 

@@ -1,6 +1,6 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.Modules.AccountsModule;
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Modules.AccountsModule.UI;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 

@@ -1,12 +1,6 @@
-using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.CoreModule;
 using AdminAssistant.Modules.CoreModule.Commands;
 using AdminAssistant.Modules.CoreModule.Queries;
-using Ardalis.Result;
-using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1.CoreModule;
 

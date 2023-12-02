@@ -1,14 +1,14 @@
-using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.Providers;
-using AdminAssistant.Shared;
-using Microsoft.EntityFrameworkCore;
-using MediatR;
-using AdminAssistant.Framework.MediatR;
-using SimonGeering.Framework.Configuration;
-using AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
-using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
-using AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
+using AdminAssistant.Infrastructure.EntityFramework;
+using AdminAssistant.Infrastructure.MediatR;
+using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+using AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
+using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
+using AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
+using AdminAssistant.Shared;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using SimonGeering.Framework.Configuration;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
 

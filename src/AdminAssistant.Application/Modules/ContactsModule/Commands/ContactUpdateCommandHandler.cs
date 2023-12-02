@@ -1,6 +1,5 @@
 using AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
 using AdminAssistant.Modules.ContactsModule.Validation;
-using AdminAssistant.Infra.Providers;
 
 namespace AdminAssistant.Modules.ContactsModule.Commands;
 

@@ -1,5 +1,4 @@
 using AdminAssistant.Blazor.Server;
-using AdminAssistant.Infra.Providers;
 
 Host.CreateDefaultBuilder()
     .ConfigureLogging(logging =>

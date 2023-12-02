@@ -1,6 +1,6 @@
-using AdminAssistant.Infra.DAL;
-using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Infrastructure.DAL;
+using AdminAssistant.Infrastructure.EntityFramework;
+using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
 

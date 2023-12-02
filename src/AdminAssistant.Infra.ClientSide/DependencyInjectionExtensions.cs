@@ -1,4 +1,4 @@
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Infrastructure.Providers;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
 

@@ -1,5 +1,5 @@
 using AdminAssistant.Blazor.Client;
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Infrastructure.Providers;
 using MudBlazor.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;

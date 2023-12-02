@@ -1,12 +1,6 @@
-using AdminAssistant.Infra.Providers;
 using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Modules.AccountsModule.Commands;
 using AdminAssistant.Modules.AccountsModule.Queries;
-using Ardalis.Result;
-using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
 

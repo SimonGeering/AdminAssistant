@@ -31,7 +31,7 @@ using var host = new HostBuilder()
         logging.AddDebug();
 
         logging.AddFilter("Default", LogLevel.Information)
-                .AddFilter(AdminAssistant.Infra.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
+                .AddFilter(AdminAssistant.Infrastructure.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
                 .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else

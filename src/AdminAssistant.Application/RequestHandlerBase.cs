@@ -1,5 +1,3 @@
-using AdminAssistant.Infra.Providers;
-
 namespace AdminAssistant;
 
 internal abstract class RequestHandlerBase<TRequest, TResponse> : IRequestHandler<TRequest, TResponse>

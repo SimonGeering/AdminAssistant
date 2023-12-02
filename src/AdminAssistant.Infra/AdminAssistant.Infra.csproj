@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <DocumentationFile>AdminAssistant.Infra.docs.xml</DocumentationFile>
-        <RootNamespace>AdminAssistant.Infra</RootNamespace>
         <NoWarn>$(NoWarn);</NoWarn>
     </PropertyGroup>
 
