@@ -1,5 +1,8 @@
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+namespace AdminAssistant.Modules.AccountsModule.Validation;
 
+public interface IBankAccountTransactionValidator : IValidator<BankAccountTransaction>
+{
+}
 internal sealed class BankAccountTransactionValidator : AbstractValidator<BankAccountTransaction>, IBankAccountTransactionValidator
 {
     public BankAccountTransactionValidator()
@@ -9,6 +12,6 @@ internal sealed class BankAccountTransactionValidator : AbstractValidator<BankAc
             .MaximumLength(BankAccountTransaction.DescriptionMaxLength);
 
         RuleFor(x => x.BankAccountID)
-            .NotEqual(Constants.UnknownRecordID);
+            .NotEqual(BankAccountId.Default);
     }
 }

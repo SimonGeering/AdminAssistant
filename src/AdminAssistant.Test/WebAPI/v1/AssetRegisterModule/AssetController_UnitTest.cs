@@ -1,10 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AssetRegisterModule;
-using AdminAssistant.DomainModel.Modules.AssetRegisterModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AssetRegisterModule;
+using AdminAssistant.Modules.AssetRegisterModule.Queries;
 using AdminAssistant.WebAPI.v1.AssetRegisterModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.AssetRegisterModule;
 
@@ -12,6 +12,7 @@ public sealed class AssetController_GetAssets
 {
     [Fact]
     [Trait("Category", "Unit")]
+    [SuppressMessage("Major Code Smell", "S125:Sections of code should not be commented out", Justification = "WIP")]
     public async Task Returns_Status200OK_With_AListOfAssets_Given_NoArguments()
     {
         // Arrange
@@ -33,7 +34,7 @@ public sealed class AssetController_GetAssets
         services.AddTransient<AssetController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<AssetController>().GetAssets().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<AssetController>().GetAssets(default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -54,5 +55,6 @@ public sealed class AssetController_GetAssets
         //    value[i].DecimalFormat.Should().Be(expected[i].DecimalFormat);
         //}
     }
+#pragma warning restore S125 // Sections of code should not be commented out
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

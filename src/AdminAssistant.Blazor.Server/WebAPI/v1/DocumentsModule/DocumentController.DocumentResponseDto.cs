@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.DocumentsModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.DocumentsModule;
 
 namespace AdminAssistant.WebAPI.v1.DocumentsModule;
 

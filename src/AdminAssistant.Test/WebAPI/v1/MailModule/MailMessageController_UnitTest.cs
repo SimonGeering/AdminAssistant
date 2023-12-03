@@ -1,10 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.MailModule;
-using AdminAssistant.DomainModel.Modules.MailModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.MailModule;
+using AdminAssistant.Modules.MailModule.Queries;
 using AdminAssistant.WebAPI.v1.MailModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.MailModule;
 
@@ -33,7 +33,7 @@ public sealed class MailMessageController_GetMailMessages
         services.AddTransient<MailMessageController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<MailMessageController>().GetMailMessages().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<MailMessageController>().GetMailMessages(default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -43,6 +43,7 @@ public sealed class MailMessageController_GetMailMessages
         var result = (OkObjectResult)response.Result!;
         result.Value.Should().BeAssignableTo<IEnumerable<MailMessageResponseDto>>();
 
+        #pragma warning disable S125 // Sections of code should not be commented out
         //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();
         //value.Should().HaveCount(currencies.Count);
 
@@ -53,6 +54,7 @@ public sealed class MailMessageController_GetMailMessages
         //    value[i].Symbol.Should().Be(expected[i].Symbol);
         //    value[i].DecimalFormat.Should().Be(expected[i].DecimalFormat);
         //}
+        #pragma warning restore S125 // Sections of code should not be commented out
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

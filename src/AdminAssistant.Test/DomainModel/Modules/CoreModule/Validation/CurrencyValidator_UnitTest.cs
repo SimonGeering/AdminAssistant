@@ -1,8 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.DomainModel.Modules.CoreModule.Validation;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule.Validation;
 
 namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.Validation;
 
@@ -19,7 +19,7 @@ public sealed class CurrencyValidator_Should
         var currency = Factory.Currency.WithTestData().Build();
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -37,7 +37,7 @@ public sealed class CurrencyValidator_Should
                                        .WithoutADecimalFormat()
                                        .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -56,7 +56,7 @@ public sealed class CurrencyValidator_Should
                                        .WithDecimalFormat(new string('x', Currency.DecimalFormatMaxLength + 1))
                                        .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -75,7 +75,7 @@ public sealed class CurrencyValidator_Should
                                        .WithoutASymbol()
                                        .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -94,7 +94,7 @@ public sealed class CurrencyValidator_Should
                                        .WithSymbol(new string('x', Currency.SymbolMaxLength + 1))
                                        .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
         result.IsValid.Should().BeFalse();

@@ -18,7 +18,7 @@
   <PropertyGroup>
     <DocumentationFile>AdminAssistant.WPF.docs.xml</DocumentationFile>
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>1701;1702;NU1605</NoWarn>
+    <NoWarn>$(NoWarn)1701;1702;NU1605</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -40,6 +40,13 @@
     <PackageReference Include="Syncfusion.Themes.Office2019Black.WPF" />
     <PackageReference Include="Syncfusion.Themes.Office2019Colorful.WPF" />
     <PackageReference Include="Syncfusion.Themes.Office365.WPF" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,54 @@
+@page "/accounts/bulk-upload"
+@inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.UI.IBankAccountStatementImportViewModel>
+
+<PageTitle>@vm.PageTitle</PageTitle>
+
+<MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
+<MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
+
+<MudPaper id="wrapper" class="d-flex flex-row pa" style="height: 80vh;">
+
+    <MudPaper id="col1" class="flex-grow-1 ml-4 mr-2 mud-theme-primary">
+        <MudStack Justify="Justify.SpaceBetween">
+            <MudFileUpload T="IBrowserFile" Accept=".pdf" FilesChanged="UploadStatement" MaximumFileCount="1">
+                <ButtonTemplate>
+                    <MudButton HtmlTag="label" Size="Size.Medium" Variant="Variant.Text"
+                               StartIcon="@Icons.Material.Filled.FileUpload"
+                               Color="Color.Tertiary" for="@context">
+                        Select statement.
+                    </MudButton>
+                </ButtonTemplate>
+            </MudFileUpload>
+            @if (vm.EmbeddedFileContentSrc != string.Empty)
+            {
+                <MudContainer>
+                    <MudIcon Icon="@Icons.Material.Filled.AttachFile" Size="Size.Small" /> @vm.FileName - <code>@vm.FileSize bytes</code>
+                </MudContainer>
+                <embed src="@vm.EmbeddedFileContentSrc" class="flex-grow-1" style="width:100%; height:60vh;" />
+            }
+        </MudStack>
+    </MudPaper>
+
+    <MudPaper id="col2" class="flex-grow-1 ml-2 mr-4 mud-theme-tertiary">
+
+        <MudText MultiLine="true">
+            This is a multiline text block.
+            Line 2.
+            Line 3.
+        </MudText>
+    </MudPaper>
+
+</MudPaper>
+
+@code {
+
+    private async Task UploadStatement(IBrowserFile browserFile)
+    {
+        using var memoryStream = new MemoryStream();
+        await browserFile.OpenReadStream().CopyToAsync(memoryStream).ConfigureAwait(false);
+        byte[] fileBytes = memoryStream.ToArray();
+
+        await vm.ImportStatementAsync(browserFile.ContentType, browserFile.Name, browserFile.Size, fileBytes);
+    }
+}
+

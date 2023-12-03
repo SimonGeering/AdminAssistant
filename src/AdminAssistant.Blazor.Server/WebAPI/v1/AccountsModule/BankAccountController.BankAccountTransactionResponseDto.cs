@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.AccountsModule;
 
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
 
@@ -7,6 +6,10 @@ public sealed record BankAccountTransactionResponseDto : IMapFrom<BankAccountTra
 {
     public int BankAccountTransactionID { get; init; }
     public int BankAccountID { get; init; }
+    public int BankAccountTransactionTypeID { get; init; }
+    public int BankAccountStatementID { get; init; }
+    public int BankAccountStatementNumber { get; init; }
+    public bool IsReconciled { get; init; }
 
     public int PayeeID { get; init; }
     public string PayeeName { get; init; } = string.Empty;

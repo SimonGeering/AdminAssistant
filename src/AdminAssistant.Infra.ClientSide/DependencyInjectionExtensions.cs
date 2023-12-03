@@ -1,4 +1,4 @@
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Infrastructure.Providers;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
 
@@ -12,6 +12,7 @@ public static class DependencyInjectionExtensions
         // This can be resolved in future by splitting infra into multiple assemblies, but this is not worth doing
         // until it gets bigger sure to implementation of other integrations.
         services.AddTransient<ILoggingProvider, ClientSideLoggingProvider>();
+        services.AddTransient<IPdfFileProvider, PdfFileProvider>();
         services.AddSharedProviders();
     }
 

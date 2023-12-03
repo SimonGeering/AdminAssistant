@@ -1,4 +1,4 @@
-using AdminAssistant.UI;
+using AdminAssistant.Primitives.UI;
 
 namespace AdminAssistant.Retro.Shared;
 
@@ -8,7 +8,7 @@ internal abstract class DialogWindowBase<TViewModel>
 {
     protected TViewModel VM {get; init;}
 
-	public DialogWindowBase(TViewModel vm, string title)
+	protected DialogWindowBase(TViewModel vm, string title)
 	{
         VM = vm;
 		Title = title;

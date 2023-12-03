@@ -1,6 +1,7 @@
 global using Ardalis.Result;
 global using FluentAssertions;
 global using Microsoft.Extensions.DependencyInjection;
+global using System.Diagnostics.CodeAnalysis;
 global using MediatR;
 global using MockQueryable.Moq;
 global using Moq;

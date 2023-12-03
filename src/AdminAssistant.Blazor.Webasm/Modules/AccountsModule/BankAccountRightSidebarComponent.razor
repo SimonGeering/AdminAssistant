@@ -1,0 +1,62 @@
+@inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.UI.IBankAccountRightSidebarViewModel>
+@inject IDialogService Dialog
+@using AdminAssistant.Modules.AccountsModule;
+
+<MudExpansionPanels MultiExpansion="true">
+
+    <MudExpansionPanel Text="Budgeted Accounts" IsInitiallyExpanded="true">
+        <MudTable Items="@_budgetedAccounts" Striped="true" Dense="true" Elevation="0">
+            <ColGroup>
+                <col style="width: 100%;" />
+                <col style="width: auto;" />
+            </ColGroup>
+            <RowTemplate>
+                <MudTd DataLabel="AccountName">@context.AccountName</MudTd>
+                <MudTd DataLabel="CurrentBalance">@context.CurrentBalance</MudTd>
+            </RowTemplate>
+            <FooterContent>
+                <MudButton OnClick="@(_ => OpenBankAccountEditDialog())" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
+            </FooterContent>
+        </MudTable>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Off Budget Accounts" IsInitiallyExpanded="true">
+        <MudTable Items="@_offBudgetAccounts" Striped="true" Dense="true" Elevation="0">
+            <ColGroup>
+                <col style="width: auto;" />
+                <col style="width: auto;" />
+            </ColGroup>
+            <RowTemplate>
+                <MudTd DataLabel="AccountName">@context.AccountName</MudTd>
+                <MudTd DataLabel="CurrentBalance">@context.CurrentBalance</MudTd>
+            </RowTemplate>
+            <FooterContent>
+                <MudButton OnClick="@(_ => OpenBankAccountEditDialog())" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
+            </FooterContent>
+        </MudTable>
+    </MudExpansionPanel>
+
+</MudExpansionPanels>
+
+@*<MudButton @onclick="@(_ => this.vm.AddBankAccount.Execute(null))" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add Account</MudButton>*@
+
+@code {
+
+    private List<BankAccountInfo> _budgetedAccounts = new List<BankAccountInfo>
+    {
+        new BankAccountInfo { BankAccountID = new(10), AccountName = "Barclays Current Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" },
+        new BankAccountInfo { BankAccountID = new(11), AccountName = "Barclays Savings Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" },
+        new BankAccountInfo { BankAccountID = new(12), AccountName = "Halifax Cash ISA", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" }
+    };
+
+    private List<BankAccountInfo> _offBudgetAccounts = new List<BankAccountInfo>()
+    {
+        new BankAccountInfo { BankAccountID = new(13), AccountName = "Halifax Online Savings Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" }
+    };
+
+    private void OpenBankAccountEditDialog()
+    {
+        var dialogOptions = new DialogOptions() { CloseButton = true };
+        Dialog.Show<BankAccountEditDialogComponent>("Custom Options Dialog", dialogOptions);
+    }
+}

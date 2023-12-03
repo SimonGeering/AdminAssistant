@@ -2,7 +2,7 @@
     "stryker-config":
     {
         "solution": "../AdminAssistant.sln",
-        "project": "AdminAssistant.Blazor.Server.csproj",
+        "project": "AdminAssistant.DomainModel.csproj",
         "test-case-filter": "Category=Unit",
         "reporters": [
             "progress",
@@ -10,7 +10,8 @@
         ],
         "ignore-methods": [
             "*ConfigureAwait",
-            "Log.Start"
+            "Log.Start",
+            "Trace.Assert"
         ]
     }
 }

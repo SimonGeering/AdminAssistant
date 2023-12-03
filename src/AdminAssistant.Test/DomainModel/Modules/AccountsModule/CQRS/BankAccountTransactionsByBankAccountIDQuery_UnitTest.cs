@@ -1,8 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+using AdminAssistant.Modules.AccountsModule.Queries;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
@@ -23,21 +23,22 @@ public sealed class BankAccountTransactionsByBankAccountIDQuery_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var bankAccountID = 9;
         var mockBankAccountTransactionRepository = new Mock<IBankAccountTransactionRepository>();
-        mockBankAccountTransactionRepository.Setup(x => x.GetListAsync(bankAccountID))
-            .Returns(Task.FromResult<List<BankAccountTransaction>>(bankAccountTransactionList));
+        mockBankAccountTransactionRepository.Setup(x => x.GetListAsync(bankAccountID, It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(bankAccountTransactionList));
 
         services.AddTransient((sp) => mockBankAccountTransactionRepository.Object);
         var query = new BankAccountTransactionsByBankAccountIDQuery(bankAccountID);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(query).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(query);
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().BeEquivalentTo(bankAccountTransactionList);            
+        result.Value.Should().BeEquivalentTo(bankAccountTransactionList);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

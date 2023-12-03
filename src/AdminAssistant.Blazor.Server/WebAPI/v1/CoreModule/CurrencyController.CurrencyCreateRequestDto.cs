@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.CoreModule;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace AdminAssistant.WebAPI.v1.CoreModule;

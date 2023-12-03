@@ -1,22 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Product>Admin Assistant</Product>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>latest</LangVersion>
-    <Platforms>AnyCPU</Platforms>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisLevel>latest</AnalysisLevel>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <DocumentationFile>AdminAssistant.UI.docs.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWarn>$(NoWarn);</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
+    <None Remove="AdminAssistant.Accounts.UI.docs.xml" />
     <None Remove="AdminAssistant.UI.docs.xml" />
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
@@ -26,14 +16,20 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <PackageReference Include="Microsoft.Extensions.Http" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
-    <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="Ardalis.GuardClauses" />
     <PackageReference Include="Microsoft.Toolkit.Mvvm" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
-    <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj" />
   </ItemGroup>
 
 </Project>

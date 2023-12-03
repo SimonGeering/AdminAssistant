@@ -1,0 +1,90 @@
+@inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.UI.IBankAccountTransactionListViewModel>
+@using AdminAssistant.Modules.AccountsModule;
+
+<MudTable Items="@_transactions" FixedHeader="true" FixedFooter="true"
+          Bordered="true" Dense="true" HorizontalScrollbar="true">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Barclays Current Account</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="_searchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+    </ToolBarContent>
+    <ColGroup>
+        <col style="width: auto;" />
+        <col style="width: 40%;" />
+        <col style="width: *;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col style="width: auto;" />
+        <col />
+    </ColGroup>
+    <HeaderContent>
+        <MudTh>Date</MudTh>
+        <MudTh>Payee</MudTh>
+        <MudTh>Description</MudTh>
+        <MudTh>Credit</MudTh>
+        <MudTh>Debit</MudTh>
+        <MudTh>Balance</MudTh>
+        <MudTh>&nbsp;</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Date">@context.TransactionDate.ToShortDateString()</MudTd>
+        <MudTd DataLabel="Payee">@context.PayeeName</MudTd>
+        <MudTd DataLabel="Description">@context.Description</MudTd>
+        <MudTd DataLabel="Credit">@context.Credit</MudTd>
+        <MudTd DataLabel="Debit">@context.Debit</MudTd>
+        <MudTd DataLabel="Balance">@context.Balance</MudTd>
+        <MudTd>
+            <MudStack Row="true">
+                <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Edit" Color="Color.Info">Edit</MudButton>
+                <MudButton Size="Size.Small" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
+            </MudStack>
+        </MudTd>
+    </RowTemplate>
+    <FooterContent>
+        <MudStack Row="true">
+            <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Refresh" Color="Color.Tertiary">Refresh</MudButton>
+            <MudButton Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add</MudButton>
+        </MudStack>
+    </FooterContent>
+</MudTable>
+
+@code {
+    private string _searchString = string.Empty;
+
+    private List<BankAccountTransaction> _transactions = new List<BankAccountTransaction>()
+    {
+        new BankAccountTransaction() {
+            PayeeName = "Browdens",
+            Description = "Debit payment",
+            Credit = 0,
+            Debit = 600,
+            Balance = 532550,
+            TransactionDate = DateTime.Parse("09-02-2023"),
+            Notes = "Papers",
+            Symbol = "£",
+            DecimalFormat = "0.00",
+        },
+        new BankAccountTransaction() {
+            PayeeName = "Parker & Co",
+            Description = "Salary",
+            Credit = 357000,
+            Debit = 0,
+            Balance = 532500,
+            TransactionDate = DateTime.Parse("21-02-2023"),
+            Notes = "Notes",
+            Symbol = "£",
+            DecimalFormat = "0.00",
+        },
+        new BankAccountTransaction() {
+            PayeeName = "Morisons",
+            Description = "Debit payment",
+            Credit = 0,
+            Debit = 1250,
+            Balance = 532550,
+            TransactionDate = DateTime.Parse("05-03-2023"),
+            Notes = "Notes",
+            Symbol = "£",
+            DecimalFormat = "0.00",
+        }
+    };
+}

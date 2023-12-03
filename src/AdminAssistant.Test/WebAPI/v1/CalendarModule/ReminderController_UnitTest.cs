@@ -1,10 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.CalendarModule;
-using AdminAssistant.DomainModel.Modules.CalendarModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.CalendarModule;
+using AdminAssistant.Modules.CalendarModule.Queries;
 using AdminAssistant.WebAPI.v1.CalendarModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.CalendarModule;
 
@@ -33,7 +33,7 @@ public sealed class ReminderController_Get
         services.AddTransient<ReminderController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<ReminderController>().GetReminders().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<ReminderController>().GetReminders(default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -43,6 +43,7 @@ public sealed class ReminderController_Get
         var result = (OkObjectResult)response.Result!;
         result.Value.Should().BeAssignableTo<IEnumerable<ReminderResponseDto>>();
 
+#pragma warning disable S125 // Sections of code should not be commented out
         //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();
         //value.Should().HaveCount(currencies.Count);
 
@@ -53,6 +54,7 @@ public sealed class ReminderController_Get
         //    value[i].Symbol.Should().Be(expected[i].Symbol);
         //    value[i].DecimalFormat.Should().Be(expected[i].DecimalFormat);
         //}
+#pragma warning restore S125 // Sections of code should not be commented out
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

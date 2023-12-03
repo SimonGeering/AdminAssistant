@@ -1,5 +1,11 @@
-namespace AdminAssistant.DomainModel.Modules.TasksModule.Builders;
+namespace AdminAssistant.Modules.TasksModule.Builders;
 
+public interface ITaskListBuilder
+{
+    TaskList Build();
+    ITaskListBuilder WithTestData(int taskListID = Constants.UnknownRecordID);
+    ITaskListBuilder WithTaskListName(string taskListName);
+}
 internal sealed class TaskListBuilder : ITaskListBuilder
 {
     private TaskList _taskList = new();
@@ -13,7 +19,7 @@ internal sealed class TaskListBuilder : ITaskListBuilder
     {
         _taskList = _taskList with
         {
-            TaskListID = taskListID,
+            TaskListID = new(taskListID),
             TaskListName = "My Task List"
         };
         return this;

@@ -1,5 +1,11 @@
-namespace AdminAssistant.DomainModel.Modules.CalendarModule.Builders;
+namespace AdminAssistant.Modules.CalendarModule.Builders;
 
+public interface IReminderBuilder
+{
+    Reminder Build();
+    IReminderBuilder WithTestData(int reminderID = Constants.UnknownRecordID);
+    IReminderBuilder WithReminderName(string reminderName);
+}
 internal sealed class ReminderBuilder : IReminderBuilder
 {
     private Reminder _reminder = new();
@@ -13,7 +19,7 @@ internal sealed class ReminderBuilder : IReminderBuilder
     {
         _reminder = _reminder with
         {
-            ReminderID = reminderID,
+            ReminderID = new(reminderID),
             ReminderName = "Do something important"
         };
         return this;

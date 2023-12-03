@@ -1,8 +1,9 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.DocumentsModule;
-using AdminAssistant.DomainModel.Modules.DocumentsModule.CQRS;
-using AdminAssistant.Infra.DAL.Modules.DocumentsModule;
+
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.DocumentsModule;
+using AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
+using AdminAssistant.Modules.DocumentsModule.Queries;
 
 namespace AdminAssistant.Test.DomainModel.Modules.DocumentsModule.CQRS;
 
@@ -22,14 +23,16 @@ public sealed class DocumentQuery_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var mockRepository = new Mock<IDocumentRepository>();
-        mockRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(documentList));
+        mockRepository.Setup(x => x.GetListAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(documentList));
 
         services.AddTransient((sp) => mockRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new DocumentQuery()).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new DocumentQuery());
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

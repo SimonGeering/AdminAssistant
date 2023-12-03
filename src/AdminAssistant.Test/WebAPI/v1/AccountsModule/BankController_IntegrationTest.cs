@@ -1,8 +1,8 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
@@ -14,12 +14,12 @@ public sealed class Bank_Post_Should : IntegrationTestBase
     public async Task Return_ANewlyCreatedBank_Given_AValidBank()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var request = new BankCreateRequestDto() { BankName = "Acme Bank" };
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PostBankAsync(request).ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PostBankAsync(request);
 
         // Assert
         response.BankID.Should().BeGreaterThan(0);
@@ -35,19 +35,19 @@ public sealed class Bank_Put_Should : IntegrationTestBase
     public async Task Return_ANewlyUpdatedBank_Given_AValidExistingBank()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankRepository>();
-        var acmeBank = await dal.SaveAsync(new Bank() { BankName = "Acme Bank" }).ConfigureAwait(false);
+        var acmeBank = await dal.SaveAsync(new Bank() { BankName = new("Acme Bank") }, default);
 
         var request = new BankUpdateRequestDto()
         {
-            BankID = acmeBank.BankID,
+            BankID = acmeBank.BankID.Value,
             BankName = "Acme UK Bank"
         };
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PutBankAsync(request).ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().PutBankAsync(request);
 
         // Assert
         response.BankID.Should().Be(request.BankID);
@@ -63,18 +63,18 @@ public class Bank_Get_Should : IntegrationTestBase
     public async Task Return_ABank_Given_BankID()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankRepository>();
-        await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }).ConfigureAwait(false);
-        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
+        await dal.SaveAsync(new Bank() { BankName = new("Acme Bank PLC") }, default);
+        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = new("Acme Building Society") }, default);
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID).ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankByIdAsync(acmeBuildingSociety.BankID.Value);
 
         // Assert
-        response.BankID.Should().Be(acmeBuildingSociety.BankID);
-        response.BankName.Should().Be(acmeBuildingSociety.BankName);
+        response.BankID.Should().Be(acmeBuildingSociety.BankID.Value);
+        response.BankName.Should().Be(acmeBuildingSociety.BankName.Value);
     }
 
     [Fact]
@@ -82,18 +82,18 @@ public class Bank_Get_Should : IntegrationTestBase
     public async Task Return_AllBanks_Given_NoParameters()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankRepository>();
-        var acmeBankPLC = await dal.SaveAsync(new Bank() { BankName = "Acme Bank PLC" }).ConfigureAwait(false);
-        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = "Acme Building Society" }).ConfigureAwait(false);
+        var acmeBankPLC = await dal.SaveAsync(new Bank() { BankName = new("Acme Bank PLC") }, default);
+        var acmeBuildingSociety = await dal.SaveAsync(new Bank() { BankName = new("Acme Building Society") }, default);
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAsync().ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAsync();
 
         // Assert
-        response.Should().ContainSingle(x => x.BankID == acmeBankPLC.BankID && x.BankName == acmeBankPLC.BankName);
-        response.Should().ContainSingle(x => x.BankID == acmeBuildingSociety.BankID && x.BankName == acmeBuildingSociety.BankName);
+        response.Should().ContainSingle(x => x.BankID == acmeBankPLC.BankID.Value && x.BankName == acmeBankPLC.BankName.Value);
+        response.Should().ContainSingle(x => x.BankID == acmeBuildingSociety.BankID.Value && x.BankName == acmeBuildingSociety.BankName.Value);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

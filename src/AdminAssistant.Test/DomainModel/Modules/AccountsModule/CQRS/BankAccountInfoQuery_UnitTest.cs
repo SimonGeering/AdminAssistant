@@ -1,8 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+using AdminAssistant.Modules.AccountsModule.Queries;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
@@ -23,14 +23,16 @@ public sealed class BankAccountInfoQuery_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var mockRepository = new Mock<IBankAccountInfoRepository>();
-        mockRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(bankAccountInfoList));
+        mockRepository.Setup(x => x.GetListAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(bankAccountInfoList));
 
         services.AddTransient((sp) => mockRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountInfoQuery(ownerID)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountInfoQuery(ownerID));
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

@@ -1,3 +1,4 @@
+#pragma warning disable S125 // Sections of code should not be commented out
 //#pragma warning disable CA1707 // Identifiers should not contain underscores
 //using AdminAssistant.DomainModel.Modules.AccountsModule;
 //using AdminAssistant.Framework.Providers;
@@ -88,3 +89,4 @@
 //    }
 //}
 //#pragma warning restore CA1707 // Identifiers should not contain underscores
+#pragma warning restore S125 // Sections of code should not be commented out

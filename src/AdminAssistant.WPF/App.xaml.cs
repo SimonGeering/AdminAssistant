@@ -1,6 +1,9 @@
 using System.Windows;
+using AdminAssistant.DomainModel.Shared;
 using AdminAssistant.WPF.Modules.AccountsModule;
+using Ardalis.GuardClauses;
 using FluentValidation;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -23,8 +26,10 @@ public partial class App : Application
         host = new HostBuilder()
             .ConfigureServices((hostContext, services) =>
             {
-                services.AddAdminAssistantWebAPIClient(new Uri("https://localhost:5001"));
+                var configSettings = hostContext.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+                Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
 
+                services.AddAdminAssistantWebAPIClient(configSettings);
                 services.AddValidatorsFromAssemblyContaining<Infra.DAL.IDatabasePersistable>();
 
                 services.AddAdminAssistantClientSideProviders();

@@ -1,10 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Queries;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
@@ -33,7 +33,7 @@ public sealed class BankAccountTypeController_BankAccountTypeGet_Should
         services.AddTransient<BankAccountTypeController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountTypeController>().BankAccountTypeGet().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountTypeController>().BankAccountTypeGet(default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -50,7 +50,7 @@ public sealed class BankAccountTypeController_BankAccountTypeGet_Should
         var expected = bankAccountTypes.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankAccountTypeID.Should().Be(expected[index].BankAccountTypeID);
+            value[index].BankAccountTypeID.Should().Be(expected[index].BankAccountTypeID.Value);
             value[index].Description.Should().Be(expected[index].Description);
         }
     }

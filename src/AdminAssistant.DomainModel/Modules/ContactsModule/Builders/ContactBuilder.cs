@@ -1,5 +1,12 @@
-namespace AdminAssistant.DomainModel.Modules.ContactsModule.Builders;
+namespace AdminAssistant.Modules.ContactsModule.Builders;
 
+public interface IContactBuilder
+{
+    Contact Build();
+    IContactBuilder WithTestData(int contactID = Constants.UnknownRecordID);
+    IContactBuilder WithFirstName(string firstName);
+    IContactBuilder WithLastName(string lastName);
+}
 internal sealed class ContactBuilder : IContactBuilder
 {
     private Contact _contact = new();
@@ -9,11 +16,11 @@ internal sealed class ContactBuilder : IContactBuilder
 
     public Contact Build() => _contact;
 
-    public IContactBuilder WithTestData(int assetID = Constants.UnknownRecordID)
+    public IContactBuilder WithTestData(int contactID = Constants.UnknownRecordID)
     {
         _contact = _contact with
         {
-            ContactID = assetID,
+            ContactID = new(contactID),
             FirstName = "Fred",
             LastName = "Smith"
         };

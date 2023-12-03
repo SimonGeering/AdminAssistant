@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.AccountsModule;
 
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
 

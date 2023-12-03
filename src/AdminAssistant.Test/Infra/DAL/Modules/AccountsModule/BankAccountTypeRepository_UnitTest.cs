@@ -1,12 +1,12 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Shared;
-using AdminAssistant.Infra.DAL;
-using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Domain;
+using AdminAssistant.Infrastructure.EntityFramework;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Accounts;
+using AdminAssistant.Infrastructure.Providers;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+using AdminAssistant.Shared;
+using MappingProfile = AdminAssistant.Infrastructure.MappingProfile;
 
 namespace AdminAssistant.Test.Infra.DAL.Modules.AccountsModule;
 
@@ -37,7 +37,7 @@ public sealed class BankAccountTypeRepository_GetListAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetListAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetListAsync(default);
 
         // Assert
         result.Should().HaveCount(bankAccountTypeList.Count);
@@ -73,10 +73,10 @@ public class BankAccountTypeRepository_GetAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetAsync(bankAccountTypeList.First().BankAccountTypeID).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetAsync(bankAccountTypeList[Constants.FirstItem].BankAccountTypeID, default);
 
         // Assert
-        result.Should().BeEquivalentTo(bankAccountTypeList.First());
+        result.Should().BeEquivalentTo(bankAccountTypeList[Constants.FirstItem]);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

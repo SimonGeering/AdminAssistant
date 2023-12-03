@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.TasksModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.TasksModule;
 
 namespace AdminAssistant.WebAPI.v1.TasksModule;
 

@@ -1,11 +1,11 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 using System.Reflection;
-using AdminAssistant.DomainModel.Shared;
-using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.DAL.EntityFramework.Model;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Shared;
+using AdminAssistant.Infrastructure.EntityFramework;
+using AdminAssistant.Infrastructure.EntityFramework.Model;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Accounts;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Core;
+using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Hosting;
@@ -19,12 +19,12 @@ namespace AdminAssistant.Test;
 [Collection("SequentialDBBackedTests")]
 public abstract class IntegrationTestBase : IDisposable
 {
+    private Respawn.Respawner? _respawner;
     private readonly IHost _testServer;
-    private readonly Respawn.Checkpoint _checkpoint;
     private readonly string _connectionString;
     private readonly HttpClient _httpClient;
 
-    public IntegrationTestBase()
+    protected IntegrationTestBase()
     {
         var hostBuilder = Host.CreateDefaultBuilder()
             .ConfigureLogging(logging =>
@@ -55,11 +55,7 @@ public abstract class IntegrationTestBase : IDisposable
                 var baseConfig = configBuilder.Build();
 
                 // Switch out the DB for a Test DB by convention - assumes a '_TestDB' suffix to prod DB name ...
-                var configSettings = baseConfig.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
-
-                if (configSettings == null)
-                    throw new NullReferenceException("Failed to load configuration settings");
-
+                var configSettings = baseConfig.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>() ?? throw new NullReferenceException("Failed to load configuration settings");
                 var connectionStringFromUserSecrets = configSettings.ConnectionString;
                 // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
                 var testConnectionString = connectionStringFromUserSecrets.Replace("Initial Catalog=AdminAssistant", "Initial Catalog=AdminAssistant_Test", StringComparison.InvariantCulture);
@@ -81,32 +77,26 @@ public abstract class IntegrationTestBase : IDisposable
         // TODO: Update this to use connection string builder so it is not hard coded to assume Application Name from config.
         _connectionString = _testServer.Services.GetRequiredService<IApplicationDbContext>().ConnectionString.Replace("Application Name=AdminAssistant;", "Application Name=AdminAssistant_TestDBReset", StringComparison.InvariantCulture);
 
-        _checkpoint = new Respawn.Checkpoint
-        {
-            // Ignore system tables and anything that was populated by the EF seed data... 
-            TablesToIgnore = new[]
-            {
-                    "sysdiagrams",
-                    "__EFMigrationsHistory",
-                    "tblObjectType"
-                },
-            WithReseed = true
-        };
-
         Container = _testServer.Services;
         _httpClient = _testServer.GetTestClient();
     }
 
     protected IServiceProvider Container { get; }
-    protected List<BankAccountTypeEntity> BankAccountTypes { get; private set; } = new List<BankAccountTypeEntity>();
-    protected List<CurrencyEntity> Currencies { get; private set; } = new List<CurrencyEntity>();
+    protected List<BankAccountTypeEntity> BankAccountTypes { get; private set; } = [];
+    protected List<CurrencyEntity> Currencies { get; private set; } = [];
     protected UserProfileEntity UserProfile { get; private set; } = new UserProfileEntity();
     protected OwnerEntity CompanyOwner { get; private set; } = new OwnerEntity();
     protected OwnerEntity PersonalOwner { get; private set; } = new OwnerEntity();
 
     protected async Task ResetDatabaseAsync()
     {
-        await _checkpoint.Reset(_connectionString).ConfigureAwait(false);
+        _respawner ??= await Respawn.Respawner.CreateAsync(_connectionString, new Respawn.RespawnerOptions
+        {
+            // Ignore system tables and anything that was populated by the EF seed data...
+            TablesToIgnore = ["sysdiagrams", "__EFMigrationsHistory", "tblObjectType"],
+            WithReseed = true
+        });
+        await _respawner.ResetAsync(_connectionString).ConfigureAwait(false);
 
         // Test Seed data ...
         var dbContext = Container.GetRequiredService<IApplicationDbContext>();
@@ -121,10 +111,10 @@ public abstract class IntegrationTestBase : IDisposable
 
     protected virtual Action<IServiceCollection> ConfigureTestServices() => services =>
     {
-            // Register the WebAPIClient using the test httpClient ... 
-            services.AddTransient<IAdminAssistantWebAPIClient>((sp) =>
+        // Register the WebAPIClient using the test httpClient ...
+        services.AddTransient<IAdminAssistantWebAPIClient>((sp) =>
         {
-            Guard.Against.Null(_httpClient.BaseAddress, "httpClient.BaseAddress");
+            Guard.Against.Null(_httpClient.BaseAddress);
             return new AdminAssistantWebAPIClient(_httpClient) { BaseUrl = _httpClient.BaseAddress.ToString() };
         });
         services.AddAutoMapper(typeof(MappingProfile));
@@ -199,7 +189,7 @@ public abstract class IntegrationTestBase : IDisposable
     #region IDisposable
 
     private bool disposedValue;
-    
+
     protected virtual void Dispose(bool disposing)
     {
         if (!disposedValue)
@@ -220,12 +210,14 @@ public abstract class IntegrationTestBase : IDisposable
         }
     }
 
+#pragma warning disable S125 // Sections of code should not be commented out
     // override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
     //~IntegrationTestBase()
     //{
     //    // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
     //    Dispose(disposing: false);
     //}
+#pragma warning restore S125 // Sections of code should not be commented out
 
     public void Dispose()
     {

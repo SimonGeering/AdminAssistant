@@ -8,10 +8,10 @@ namespace AdminAssistant.WPF.Shared;
 [MarkupExtensionReturnType(typeof(ImageSource))]
 public sealed class ModuleImageExtension : FontAwesomeImageExtension
 {
-    private ModuleEnum module;
+    private Module module;
 
     [ConstructorArgument("module")]
-    public ModuleEnum Module
+    public Module Module
     {
         get => module;
         set {
@@ -25,7 +25,7 @@ public sealed class ModuleImageExtension : FontAwesomeImageExtension
     {
     }
 
-    public ModuleImageExtension(ModuleEnum module)
+    public ModuleImageExtension(Module module)
         : base(module.ToPackIconFontAwesomeKind())
     {
     }

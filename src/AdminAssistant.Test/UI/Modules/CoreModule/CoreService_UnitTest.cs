@@ -1,6 +1,6 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.UI.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule.UI;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.UI.Modules.CoreModule;
@@ -30,15 +30,15 @@ public sealed class CoreService_GetCurrencyListAsync
         services.AddTransient((sp) => mockWebAPIClient.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICoreService>().GetCurrencyListAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICoreService>().GetCurrencyListAsync();
 
         // Assert
         result.Should().BeEquivalentTo(new List<Currency>()
             {
-                new Currency() { CurrencyID = Constants.UnknownRecordID, Symbol = string.Empty, DecimalFormat = string.Empty },
-                new Currency { CurrencyID = 1, Symbol = "GBP", DecimalFormat = "2.2-2" },
-                new Currency { CurrencyID = 2, Symbol = "EUR", DecimalFormat = "2.2-2" },
-                new Currency { CurrencyID = 3, Symbol = "USD", DecimalFormat = "2.2-2" },
+                new Currency() { CurrencyID = CurrencyId.Default, Symbol = string.Empty, DecimalFormat = string.Empty },
+                new Currency { CurrencyID = new CurrencyId(1), Symbol = "GBP", DecimalFormat = "2.2-2" },
+                new Currency { CurrencyID = new CurrencyId(2), Symbol = "EUR", DecimalFormat = "2.2-2" },
+                new Currency { CurrencyID = new CurrencyId(3), Symbol = "USD", DecimalFormat = "2.2-2" },
             });
     }
 }

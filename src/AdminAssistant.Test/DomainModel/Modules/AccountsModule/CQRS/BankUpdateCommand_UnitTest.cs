@@ -1,7 +1,7 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AccountsModule.Commands;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
@@ -17,22 +17,23 @@ public sealed class BankUpdateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var mockBankRepository = new Mock<IBankRepository>();
-        mockBankRepository.Setup(x => x.SaveAsync(bank))
+        mockBankRepository.Setup(x => x.SaveAsync(bank, It.IsAny<CancellationToken>()))
                           .Returns(Task.FromResult(bank));
 
         services.AddTransient((sp) => mockBankRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankUpdateCommand(bank)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankUpdateCommand(bank));
 
         // Assert
         result.Should().NotBeNull();
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.BankID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.BankID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]
@@ -43,13 +44,14 @@ public sealed class BankUpdateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
         services.AddTransient((sp) => new Mock<IBankRepository>().Object);
 
         var bank = Factory.Bank.WithTestData()
                                .WithBankName(string.Empty)
                                .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankUpdateCommand(bank)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankUpdateCommand(bank));
 
         // Assert
         result.Should().NotBeNull();

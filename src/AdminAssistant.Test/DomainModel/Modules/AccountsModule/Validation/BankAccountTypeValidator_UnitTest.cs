@@ -1,8 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Validation;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.Validation;
 
@@ -19,7 +19,7 @@ public sealed class BankAccountTypeValidator_Should
         var bankAccountType = Factory.BankAccountType.WithTestData(20)
                                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -37,7 +37,7 @@ public sealed class BankAccountTypeValidator_Should
                                                      .WithDescription(string.Empty)
                                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -56,7 +56,7 @@ public sealed class BankAccountTypeValidator_Should
                                                      .WithDescription(new string('x', BankAccountType.DescriptionMaxLength + 1))
                                                      .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeValidator>().ValidateAsync(bankAccountType);
 
         // Assert
         result.IsValid.Should().BeFalse();

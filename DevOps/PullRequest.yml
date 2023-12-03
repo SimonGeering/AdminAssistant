@@ -29,7 +29,7 @@ stages:
       displayName: 'Ensure CI uses correct sdk Version'
       inputs:
         packageType: 'sdk'
-        version: '7.0.x'
+        version: '8.0.x'
         includePreviewVersions: false
     # Restore dependencies ...
     - task: DotNetCoreCLI@2
@@ -39,7 +39,7 @@ stages:
         projects: 'src/AdminAssistant.sln'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
-    # Sonar Cloud Prepare
+    # Sonar Cloud Prepare ...
     - task: SonarCloudPrepare@1
       inputs:
         SonarCloud: 'SonarCube'
@@ -60,9 +60,10 @@ stages:
       inputs:
         command: 'test'
         projects: 'src/AdminAssistant.sln'
+        arguments: '--configuration Release --no-build --collect "Code coverage" --settings "$(Build.SourcesDirectory)\src\AdminAssistant.Test\.runsettings" --filter "Category=Unit"'
+        publishTestResults: true
         testRunTitle: 'Unit Tests'
-        arguments: '--configuration Release --no-build --collect "Code coverage" --filter "Category=Unit"'
-    # Sonar Cloud Analyze and Publish
+    # Sonar Cloud Analyze and Publish ...
     - task: SonarCloudAnalyze@1
     - task: SonarCloudPublish@1
       inputs:

@@ -1,20 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Product>Admin Assistant</Product>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>latest</LangVersion>
-    <Platforms>AnyCPU</Platforms>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisLevel>latest</AnalysisLevel>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <DocumentationFile>AdminAssistant.Infra.ClientSide.docs.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <NoWarn>1701;1702;NU1605</NoWarn>
+    <NoWarn>$(NoWarn);</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,12 +16,16 @@
     <PackageReference Include="AutoMapper" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" />
+    <PackageReference Include="PDFsharp" />
     <PackageReference Include="Polly.Extensions.Http" />
     <PackageReference Include="Polly" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant\AdminAssistant.csproj" />
+    <PackageReference Include="SonarAnalyzer.CSharp">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

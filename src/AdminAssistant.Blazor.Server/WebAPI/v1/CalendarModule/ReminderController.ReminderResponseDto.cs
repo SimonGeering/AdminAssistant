@@ -1,5 +1,4 @@
-using AdminAssistant.DomainModel.Modules.CalendarModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.CalendarModule;
 
 namespace AdminAssistant.WebAPI.v1.CalendarModule;
 

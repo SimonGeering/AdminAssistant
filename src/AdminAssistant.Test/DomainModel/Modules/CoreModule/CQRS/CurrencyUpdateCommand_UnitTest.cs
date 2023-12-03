@@ -1,7 +1,7 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.CoreModule.Commands;
+using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 
 namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.CQRS;
 
@@ -17,22 +17,23 @@ public sealed class BankUpdateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var mockRepository = new Mock<ICurrencyRepository>();
-        mockRepository.Setup(x => x.SaveAsync(currency))
+        mockRepository.Setup(x => x.SaveAsync(currency, It.IsAny<CancellationToken>()))
                       .Returns(Task.FromResult(currency));
 
         services.AddTransient((sp) => mockRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency));
 
         // Assert
         result.Should().NotBeNull();
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.CurrencyID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.CurrencyID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]
@@ -43,13 +44,14 @@ public sealed class BankUpdateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
         services.AddTransient((sp) => new Mock<ICurrencyRepository>().Object);
 
         var currency = Factory.Currency.WithTestData()
                                        .WithoutASymbol()
                                        .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency));
 
         // Assert
         result.Should().NotBeNull();

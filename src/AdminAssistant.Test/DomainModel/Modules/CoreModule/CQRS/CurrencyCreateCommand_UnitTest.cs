@@ -1,8 +1,10 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
-using ObjectCloner.Extensions; // https://github.com/marcelltoth/ObjectCloner
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.CoreModule.Commands;
+using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
+using ObjectCloner.Extensions;
+
+// https://github.com/marcelltoth/ObjectCloner
 
 namespace AdminAssistant.Test.DomainModel.Modules.CoreModule.CQRS;
 
@@ -18,27 +20,28 @@ public sealed class CurrencyCreateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var mockCurrencyRepository = new Mock<ICurrencyRepository>();
-        mockCurrencyRepository.Setup(x => x.SaveAsync(currency))
+        mockCurrencyRepository.Setup(x => x.SaveAsync(currency, It.IsAny<CancellationToken>()))
             .Returns(() =>
             {
                 var result = currency.DeepClone();
-                result = result with { CurrencyID = 30 };
+                result = result with { CurrencyID = new(30) };
                 return Task.FromResult(result);
             });
 
         services.AddTransient((sp) => mockCurrencyRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyCreateCommand(currency)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyCreateCommand(currency));
 
         // Assert
         result.Should().NotBeNull();
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.CurrencyID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.CurrencyID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]
@@ -49,13 +52,14 @@ public sealed class CurrencyCreateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
         services.AddTransient((sp) => new Mock<ICurrencyRepository>().Object);
 
         var bank = Factory.Currency.WithTestData()
                                    .WithoutASymbol()
                                    .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyCreateCommand(bank)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyCreateCommand(bank));
 
         // Assert
         result.Should().NotBeNull();

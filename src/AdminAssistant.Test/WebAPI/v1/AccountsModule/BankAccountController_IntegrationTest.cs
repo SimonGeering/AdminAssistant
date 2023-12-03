@@ -1,10 +1,8 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
@@ -14,27 +12,27 @@ public sealed class BankAccount_Get_Should : IntegrationTestBase
 {
     [Fact(Skip = "WIP while we work out FK changes.")]
     [Trait("Category", "Integration")]
+    [SuppressMessage("Usage", "xUnit1004:Test methods should not be skipped", Justification = "WIP while we work out FK changes.")]
     public async Task Return_ABankAccount_Given_BankAccountID()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var dal = Container.GetRequiredService<IBankAccountRepository>();
         await dal.SaveAsync(new BankAccount()
         {
-            BankAccountTypeID = BankAccountTypes.First().BankAccountTypeID,
-            CurrencyID = Currencies.First().CurrencyID,
+            BankAccountTypeID = new(BankAccountTypes[Constants.FirstItem].BankAccountTypeID),
+            CurrencyID = new(Currencies[Constants.FirstItem].CurrencyID),
             OwnerID = PersonalOwner.OwnerID,
             AccountName = "Acme Bank PLC",
-            
-        }).ConfigureAwait(false);
-        var acmeBuildingSocietyAccount = await dal.SaveAsync(new BankAccount() { AccountName = "Acme Building Society Account" }).ConfigureAwait(false);
+        }, default);
+        var acmeBuildingSocietyAccount = await dal.SaveAsync(new BankAccount() { AccountName = "Acme Building Society Account" }, default);
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountByIdAsync(acmeBuildingSocietyAccount.BankAccountID).ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountByIdAsync(acmeBuildingSocietyAccount.BankAccountID.Value);
 
         // Assert
-        response.BankAccountID.Should().Be(acmeBuildingSocietyAccount.BankAccountID);
+        response.BankAccountID.Should().Be(acmeBuildingSocietyAccount.BankAccountID.Value);
         response.AccountName.Should().Be(acmeBuildingSocietyAccount.AccountName);
     }
 }
