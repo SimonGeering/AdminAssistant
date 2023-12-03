@@ -16,7 +16,6 @@ using AdminAssistant.Modules.CoreModule.UI;
 using AdminAssistant.Modules.DashboardModule.UI;
 using AdminAssistant.Modules.DocumentsModule.UI;
 using AdminAssistant.Modules.MailModule.UI;
-using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

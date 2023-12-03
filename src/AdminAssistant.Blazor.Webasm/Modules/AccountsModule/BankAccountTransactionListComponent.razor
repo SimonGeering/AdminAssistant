@@ -51,7 +51,7 @@
 @code {
     private string _searchString = string.Empty;
 
-    private List<BankAccountTransaction> _transactions = new List<BankAccountTransaction>()
+    private readonly List<BankAccountTransaction> _transactions = new List<BankAccountTransaction>()
     {
         new BankAccountTransaction() {
             PayeeName = "Browdens",

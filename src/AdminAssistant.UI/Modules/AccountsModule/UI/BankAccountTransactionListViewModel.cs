@@ -1,5 +1,3 @@
-using System.ComponentModel;
-
 namespace AdminAssistant.Modules.AccountsModule.UI;
 
 public interface IBankAccountTransactionListViewModel : IViewModelBase

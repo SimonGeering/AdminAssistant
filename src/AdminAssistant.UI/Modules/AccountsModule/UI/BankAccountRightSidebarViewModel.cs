@@ -1,6 +1,3 @@
-using Microsoft.Toolkit.Mvvm.Input;
-using Microsoft.Toolkit.Mvvm.Messaging;
-
 namespace AdminAssistant.Modules.AccountsModule.UI;
 
 public interface IBankAccountRightSidebarViewModel : IViewModelBase

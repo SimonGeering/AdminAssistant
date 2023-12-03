@@ -3,7 +3,7 @@
 using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 using AdminAssistant.Modules.AccountsModule.UI;
-using Microsoft.Toolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging;
 using static AdminAssistant.Test.TestConstants;
 
 namespace AdminAssistant.Test.UI.Modules.AccountsModule;
