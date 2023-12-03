@@ -1,8 +1,6 @@
 namespace AdminAssistant.Modules.AccountsModule.UI;
 
-public sealed class EditBankAccountMessage
+public sealed class EditBankAccountMessage(BankAccount bankAccount)
 {
-    public EditBankAccountMessage(BankAccount bankAccount) => BankAccount = bankAccount;
-
-    public BankAccount BankAccount { get; set; }
+    public BankAccount BankAccount { get; set; } = bankAccount;
 }

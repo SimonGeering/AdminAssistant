@@ -1,6 +1,3 @@
-using AdminAssistant.UI.Shared;
-using Microsoft.Toolkit.Mvvm.Messaging;
-
 namespace AdminAssistant.Shared.UI;
 
 public interface IMainWindowViewModel : IViewModelBase
