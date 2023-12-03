@@ -18,6 +18,7 @@
         </MudMenu>
         <MudAvatar Size="@_avatarSize" Color="@_appBarItemColor">SG</MudAvatar>
     </MudAppBar>
+
     <MudDrawer @bind-Open="@_drawerOpen" Width="140px" Variant="@DrawerVariant.Mini" ClipMode="DrawerClipMode.Always" Elevation="2">
         <MudNavMenu Dense="@_isDense">
             @foreach (var item in this.vm.Modules)
@@ -26,9 +27,22 @@
             }
         </MudNavMenu>
     </MudDrawer>
+
     <MudMainContent>
-        @Body
+        <div Class="mud-height-full pa-4">
+            @Body
+        </div>
     </MudMainContent>
+
+    <MudDrawer @bind-Open="@_rightSideBarOpen" Width="300px" Variant="@DrawerVariant.Mini" ClipMode="DrawerClipMode.Always" Anchor="Anchor.End" Elevation="0">
+        <MudStack Row="true">
+            <MudIconButton OnClick="@OnRightSideBarToggleClick" Icon="@_rightSideBarControlIcon" />
+        </MudStack>
+        <MudContainer class="@_showRightSideBarContent">
+            <SectionOutlet SectionName="right-side-bar" />
+        </MudContainer>
+    </MudDrawer>
+
 </MudLayout>
 
 @code {
@@ -83,5 +97,16 @@
             _avatarSize = Size.Medium;
         }
         _isDense = isDense.Value;
+    }
+
+    private string _rightSideBarControlIcon = @Icons.Material.Outlined.ArrowCircleLeft;
+    private string _showRightSideBarContent = "invisible";
+    private bool _rightSideBarOpen = false;
+
+    private void OnRightSideBarToggleClick()
+    {
+        _rightSideBarOpen = !_rightSideBarOpen;
+        _showRightSideBarContent = _rightSideBarOpen ? "visible" : "invisible";
+        _rightSideBarControlIcon = _rightSideBarOpen ? @Icons.Material.Outlined.ArrowCircleRight : @Icons.Material.Outlined.ArrowCircleLeft;
     }
 }
