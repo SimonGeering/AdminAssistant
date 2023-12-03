@@ -35,7 +35,7 @@
     // TODO: move to VM
     private Size _avatarSize = Size.Medium;
     private Color _appBarItemColor = Color.Primary;
-    private MudTheme _theme = new(); // TODO: Save theme preferences https://www.thomasclaudiushuber.com/2021/04/19/store-data-of-your-blazor-app-in-the-local-storage-and-in-the-session-storage/
+    private readonly MudTheme _theme = new(); // TODO: Save theme preferences https://www.thomasclaudiushuber.com/2021/04/19/store-data-of-your-blazor-app-in-the-local-storage-and-in-the-session-storage/
     private MudThemeProvider _mudThemeProvider = new();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
