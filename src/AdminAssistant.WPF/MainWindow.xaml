@@ -21,8 +21,8 @@
     <!--<local:ModeSelectionItemToStringConverter x:Key="ModeSelectionItemToStringConverter" />-->
     <local:ModeSelectionItemToIconImageConverter x:Key="ModeSelectionItemToIconImageConverter" Brush="White" />
 
-    <local:ModuleEnumToIconImageConverter x:Key="ModuleEnumToIconImageConverter" Brush="White" />
-    <local:ModeEnumToIconImageConverter x:Key="ModeEnumToIconImageConverter" Brush="White" />
+    <local:ModuleToIconImageConverter x:Key="ModuleToIconImageConverter" Brush="White" />
+    <local:ModeToIconImageConverter x:Key="ModeToIconImageConverter" Brush="White" />
   </Window.Resources>
 
   <DockPanel LastChildFill="True">
@@ -32,7 +32,7 @@
       <Label Content="Header" />
     </Grid>
     <!-- End Header -->
-    
+
     <!-- Start Footer -->
     <Grid DockPanel.Dock="Bottom">
       <Label Height="auto" Content="{Binding FooterText}" HorizontalAlignment="Center" />
@@ -46,7 +46,7 @@
         <RowDefinition x:Name="navBarBody" Height="auto" />
         <RowDefinition x:Name="overflow" Height="*" />
       </Grid.RowDefinitions>
-      
+
       <!-- Start Sidebar Header -->
       <!--
         TODO: Just hard code data, behavior and styling for now.
@@ -64,7 +64,7 @@
             <DataTemplate>
               <sf:DropDownMenuItem Header="{Binding Label}" HorizontalAlignment="Left">
                 <sf:DropDownMenuItem.Icon>
-                  <Image Source="{Binding Mode, Converter={StaticResource ModeEnumToIconImageConverter}}" />
+                  <Image Source="{Binding Mode, Converter={StaticResource ModeToIconImageConverter}}" />
                 </sf:DropDownMenuItem.Icon>
               </sf:DropDownMenuItem>
             </DataTemplate>
@@ -73,7 +73,7 @@
       </sf:DropDownButtonAdv>
 
       <!-- End Sidebar Header -->
-      
+
       <!-- Start Sidebar Body -->
       <!--
         TODO: Just hard code data, behavior and styling for now.

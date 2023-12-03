@@ -1,12 +1,10 @@
-using AdminAssistant.DomainModel.Modules.ContactsModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.ContactsModule;
 
-namespace AdminAssistant.WebAPI.v1.ContactsModule
+namespace AdminAssistant.WebAPI.v1.ContactsModule;
+
+public sealed record ContactResponseDto : IMapFrom<Contact>
 {
-    public record ContactResponseDto : IMapFrom<Contact>
-    {
-        public int ContactID { get; init; }
-        public string FirstName { get; init; } = string.Empty;
-        public string LastName { get; init; } = string.Empty;
-    }
+    public int ContactID { get; init; }
+    public string FirstName { get; init; } = string.Empty;
+    public string LastName { get; init; } = string.Empty;
 }

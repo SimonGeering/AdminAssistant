@@ -1,11 +1,9 @@
-using AdminAssistant.DomainModel.Modules.TasksModule;
-using AdminAssistant.Framework.TypeMapping;
+using AdminAssistant.Modules.TasksModule;
 
-namespace AdminAssistant.WebAPI.v1.TasksModule
+namespace AdminAssistant.WebAPI.v1.TasksModule;
+
+public sealed record TaskListResponseDto : IMapFrom<TaskList>
 {
-    public record TaskListResponseDto : IMapFrom<TaskList>
-    {
-        public int TaskListID { get; init; }
-        public string TaskListName { get; init; } = string.Empty;
-    }
+    public int TaskListID { get; init; }
+    public string TaskListName { get; init; } = string.Empty;
 }

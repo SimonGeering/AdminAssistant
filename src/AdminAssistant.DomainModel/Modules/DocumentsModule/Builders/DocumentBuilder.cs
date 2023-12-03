@@ -1,6 +1,12 @@
-namespace AdminAssistant.DomainModel.Modules.DocumentsModule.Builders;
+namespace AdminAssistant.Modules.DocumentsModule.Builders;
 
-internal class DocumentBuilder : IDocumentBuilder
+public interface IDocumentBuilder
+{
+    Document Build();
+    IDocumentBuilder WithTestData(int documentID = Constants.UnknownRecordID);
+    IDocumentBuilder WithFileName(string fileName);
+}
+internal sealed class DocumentBuilder : IDocumentBuilder
 {
     private Document _document = new();
 
@@ -13,7 +19,7 @@ internal class DocumentBuilder : IDocumentBuilder
     {
         _document = _document with
         {
-            DocumentID = documentID,
+            DocumentID = new DocumentId(documentID),
             FileName = "SomRandomFileName.txt"
         };
         return this;

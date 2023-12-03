@@ -1,11 +1,11 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AccountsModule.Commands;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
-public class BankAccountUpdateCommand_Should
+public sealed class BankAccountUpdateCommand_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -17,22 +17,23 @@ public class BankAccountUpdateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var mockBankAccountRepository = new Mock<IBankAccountRepository>();
-        mockBankAccountRepository.Setup(x => x.SaveAsync(bankAccount))
+        mockBankAccountRepository.Setup(x => x.SaveAsync(bankAccount, It.IsAny<CancellationToken>()))
                                  .Returns(Task.FromResult(bankAccount));
 
         services.AddTransient((sp) => mockBankAccountRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount));
 
         // Assert
         result.Should().NotBeNull();
         result.Status.Should().Be(ResultStatus.Ok);
         result.ValidationErrors.Should().BeEmpty();
         result.Value.Should().NotBeNull();
-        result.Value.BankAccountID.Should().BeGreaterThan(Constants.NewRecordID);
+        result.Value.BankAccountID.Value.Should().BeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]
@@ -43,13 +44,14 @@ public class BankAccountUpdateCommand_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
         services.AddTransient((sp) => new Mock<IBankAccountRepository>().Object);
 
         var bankAccount = Factory.BankAccount.WithTestData()
                                              .WithAccountName(string.Empty)
                                              .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount)).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountUpdateCommand(bankAccount));
 
         // Assert
         result.Should().NotBeNull();

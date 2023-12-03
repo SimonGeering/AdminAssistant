@@ -5,17 +5,17 @@ using AdminAssistant.UI.Shared.WebAPIClient.v1;
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
-public class BankAccountType_Get_Should : IntegrationTestBase
+public sealed class BankAccountType_Get_Should : IntegrationTestBase
 {
     [Fact]
     [Trait("Category", "Integration")]
     public async Task Return_AllBankAccountTypes_Given_NoParameters()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         // Act
-        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountTypeAsync().ConfigureAwait(false);
+        var response = await Container.GetRequiredService<IAdminAssistantWebAPIClient>().GetBankAccountTypeAsync(default);
 
         // Assert
         response.Should().HaveCount(2);

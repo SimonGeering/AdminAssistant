@@ -1,6 +1,15 @@
-namespace AdminAssistant.DomainModel.Modules.CoreModule.Builders;
+namespace AdminAssistant.Modules.CoreModule.Builders;
 
-internal class CurrencyBuilder : ICurrencyBuilder
+public interface ICurrencyBuilder
+{
+    Currency Build();
+    ICurrencyBuilder WithoutADecimalFormat();
+    ICurrencyBuilder WithDecimalFormat(string decimalFormat);
+    ICurrencyBuilder WithoutASymbol();
+    ICurrencyBuilder WithSymbol(string symbol);
+    ICurrencyBuilder WithTestData(int currencyID = Constants.UnknownRecordID);
+}
+internal sealed class CurrencyBuilder : ICurrencyBuilder
 {
     private Currency _currency = new();
 
@@ -26,7 +35,7 @@ internal class CurrencyBuilder : ICurrencyBuilder
     {
         _currency = _currency with
         {
-            CurrencyID = currencyID,
+            CurrencyID = new CurrencyId(currencyID),
             Symbol = "GBP",
             DecimalFormat = "2.2-2",
         };

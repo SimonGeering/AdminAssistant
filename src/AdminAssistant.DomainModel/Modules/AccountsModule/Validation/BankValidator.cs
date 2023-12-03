@@ -1,12 +1,12 @@
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+using AdminAssistant.Shared.Validation;
 
-internal class BankValidator : AbstractValidator<Bank>, IBankValidator
+namespace AdminAssistant.Modules.AccountsModule.Validation;
+
+public interface IBankValidator : IValidator<Bank>
+{
+}
+internal sealed class BankValidator : AbstractValidator<Bank>, IBankValidator
 {
     public BankValidator()
-    {
-        RuleFor(x => x.BankName)
-            .NotEmpty();
-        RuleFor(x => x.BankName)
-            .MaximumLength(Bank.BankNameMaxLength);
-    }
+        => RuleFor(x => x.BankName).ValidEntityName(nameof(Bank.BankName));
 }

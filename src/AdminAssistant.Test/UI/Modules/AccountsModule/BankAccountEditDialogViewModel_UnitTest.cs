@@ -1,3 +1,4 @@
+#pragma warning disable S125 // Sections of code should not be commented out
 //#pragma warning disable CA1707 // Identifiers should not contain underscores
 //using AdminAssistant.DomainModel.Modules.AccountsModule;
 //using AdminAssistant.Framework.Providers;
@@ -5,7 +6,7 @@
 
 //namespace AdminAssistant.Test.UI.Modules.AccountsModule.BankAccountEditDialog
 //{
-//    public class BankAccountEditDialogViewModel_Should
+//    public sealed class BankAccountEditDialogViewModel_Should
 //    {
 //        [Fact]
 //        [Trait("Category", "Unit")]
@@ -88,3 +89,4 @@
 //    }
 //}
 //#pragma warning restore CA1707 // Identifiers should not contain underscores
+#pragma warning restore S125 // Sections of code should not be commented out

@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <DocumentationFile>AdminAssistant.Application.docs.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\.editorconfig" Link=".editorconfig" />
+        <None Remove="AdminAssistant.Application.docs.xml" />
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Ardalis.Result" />
+        <PackageReference Include="Ardalis.Result.FluentValidation" />
+        <PackageReference Include="MediatR" />
+        <PackageReference Include="SonarAnalyzer.CSharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+    </ItemGroup>
+    
+</Project>

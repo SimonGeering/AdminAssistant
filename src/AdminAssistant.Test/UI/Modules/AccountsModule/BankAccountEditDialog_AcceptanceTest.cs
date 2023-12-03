@@ -1,25 +1,25 @@
 #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.UI.Modules.AccountsModule;
-using Microsoft.Toolkit.Mvvm.Messaging;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+using AdminAssistant.Modules.AccountsModule.UI;
+using CommunityToolkit.Mvvm.Messaging;
 using static AdminAssistant.Test.TestConstants;
 
 namespace AdminAssistant.Test.UI.Modules.AccountsModule;
 
 [Collection("SequentialDBBackedTests")]
-public class BankAccountEditDialog_Should : AcceptanceTestBase
+public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
 {
     [Fact]
     [Trait("Category", "Acceptance")]
     public async Task ShowAnNewBankAccount_WhenOpenedForCreate()
     {
         // Arrange
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var vm = Container.GetRequiredService<IBankAccountEditDialogViewModel>();
-        await vm.OnInitializedAsync().ConfigureAwait(false);
+        await vm.OnInitializedAsync();
 
         var messenger = Container.GetRequiredService<IMessenger>();
 
@@ -44,7 +44,7 @@ public class BankAccountEditDialog_Should : AcceptanceTestBase
         vm.HeaderText.Should().Be(IBankAccountEditDialogViewModel.NewBankAccountHeader);
         vm.ShowDialog.Should().BeTrue();
 
-        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
+        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync(default);
         savedBankAccounts.Should().BeEmpty();
     }
 
@@ -52,10 +52,10 @@ public class BankAccountEditDialog_Should : AcceptanceTestBase
     [Trait("Category", "Acceptance")]
     public async Task CloseWithoutSaving_WhenCancelButtonIsClicked()
     {
-        await ResetDatabaseAsync().ConfigureAwait(false);
+        await ResetDatabaseAsync();
 
         var vm = Container.GetRequiredService<IBankAccountEditDialogViewModel>();
-        await vm.OnInitializedAsync().ConfigureAwait(false);
+        await vm.OnInitializedAsync();
 
         var messenger = Container.GetRequiredService<IMessenger>();
         messenger.Send(new EditBankAccountMessage(new BankAccount()));
@@ -66,10 +66,11 @@ public class BankAccountEditDialog_Should : AcceptanceTestBase
         // Assert
         vm.ShowDialog.Should().BeFalse();
 
-        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
+        var savedBankAccounts = await Container.GetRequiredService<IBankAccountRepository>().GetListAsync(default);
         savedBankAccounts.Should().BeEmpty();
     }
 
+    #pragma warning disable S125 // Sections of code should not be commented out
     //[Fact(Skip="WIP")]
     //[Trait("Category", "Integration")]
     //public async Task OnlyEnableSave_WhenNoValidationErrorsShown()
@@ -88,6 +89,7 @@ public class BankAccountEditDialog_Should : AcceptanceTestBase
     //    // Assert
     //    //vm.AccountNameValidationMessage
     //}
+    #pragma warning restore S125 // Sections of code should not be commented out
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
 #endif // quick and dirty fix for #85 category filtering breaking CI Unit Test run.

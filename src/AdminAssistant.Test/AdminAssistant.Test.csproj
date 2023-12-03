@@ -1,86 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
-    <Product>Admin Assistant</Product>
-    <IsPackable>false</IsPackable>
-    <RootNamespace>AdminAssistant</RootNamespace>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>latest</LangVersion>
-    <Platforms>AnyCPU</Platforms>
-    <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <AnalysisLevel>latest</AnalysisLevel>
-  </PropertyGroup>
+    <PropertyGroup>
+        <IsPackable>false</IsPackable>
+        <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
+        <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);1701;1702;NU1605</NoWarn>
+    </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
+    <ItemGroup>
+        <None Remove="AdminAssistant.Test.docs.xml" />
+        <None Include="..\.editorconfig" Link=".editorconfig" />
+        <None Remove="lcov.info" />
+        <Compile Remove="DomainModel\Modules\Core\**" />
+        <EmbeddedResource Remove="DomainModel\Modules\Core\**" />
+        <None Remove="DomainModel\Modules\Core\**" />
+    </ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>AdminAssistant.Test.docs.xml</DocumentationFile>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-  </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Ardalis.GuardClauses" />
+        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="FluentValidation" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" />
+        <PackageReference Include="Microsoft.AspNetCore.TestHost" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+        <PackageReference Include="Moq" />
+        <PackageReference Include="MockQueryable.Moq" />
+        <PackageReference Include="NetArchTest.Rules" />
+        <PackageReference Include="ObjectCloner.Extensions" />
+        <PackageReference Include="Respawn" />
+        <PackageReference Include="xunit" />
+        <PackageReference Include="xunit.runner.visualstudio">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Xunit.SkippableFact" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="DomainModel\Modules\Core\**" />
-    <EmbeddedResource Remove="DomainModel\Modules\Core\**" />
-    <None Remove="DomainModel\Modules\Core\**" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="SonarAnalyzer.CSharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Remove="AdminAssistant.Accounts.Test.docs.xml" />
-    <None Remove="AdminAssistant.Test.docs.xml" />
-    <None Remove="lcov.info" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
+        <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj" />
+        <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
+    <ItemGroup>
+        <Folder Include="DomainModel\Modules\AssetRegisterModule\" />
+        <Folder Include="DomainModel\Modules\BillingModule\" />
+        <Folder Include="DomainModel\Modules\CalendarModule\" />
+        <Folder Include="DomainModel\Modules\DashboardModule\" />
+        <Folder Include="DomainModel\Modules\MailModule\" />
+        <Folder Include="DomainModel\Modules\TasksModule\" />
+        <Folder Include="DomainModel\Modules\ReportsModule\" />
+        <Folder Include="Infra\DAL\Modules\DocumentsModule\" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Ardalis.GuardClauses" Version="3.2.0" />
-    <PackageReference Include="FluentAssertions" Version="6.8.0" />
-    <PackageReference Include="FluentValidation" Version="10.3.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.TestHost" Version="7.0.1" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
-    <PackageReference Include="Moq" Version="4.16.1" />
-    <PackageReference Include="MockQueryable.Moq" Version="5.0.1" />
-    <PackageReference Include="ObjectCloner.Extensions" Version="2.0.1" />
-    <PackageReference Include="Respawn" Version="4.0.0" />
-    <PackageReference Include="xunit" Version="2.4.2" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="coverlet.collector" Version="3.2.0">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Xunit.SkippableFact" Version="1.4.13" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\AdminAssistant.Blazor.Client\AdminAssistant.Blazor.Client.csproj" />
-    <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
-    <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
-    <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DomainModel\Modules\AssetRegisterModule\" />
-    <Folder Include="DomainModel\Modules\BillingModule\" />
-    <Folder Include="DomainModel\Modules\CalendarModule\" />
-    <Folder Include="DomainModel\Modules\ContactsModule\" />
-    <Folder Include="DomainModel\Modules\DashboardModule\" />
-    <Folder Include="DomainModel\Modules\MailModule\" />
-    <Folder Include="DomainModel\Modules\TasksModule\" />
-    <Folder Include="DomainModel\Modules\ReportsModule\" />
-    <Folder Include="Infra\DAL\Modules\DocumentsModule\" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Update="_TestData\ConfidentialTestData\BankAccountStatement.pdf">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 </Project>

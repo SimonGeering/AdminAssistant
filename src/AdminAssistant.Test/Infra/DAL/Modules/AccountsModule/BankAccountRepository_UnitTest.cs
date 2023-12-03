@@ -1,16 +1,16 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Shared;
-using AdminAssistant.Infra.DAL;
-using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Domain;
+using AdminAssistant.Infrastructure.EntityFramework;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Accounts;
+using AdminAssistant.Infrastructure.Providers;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+using AdminAssistant.Shared;
+using MappingProfile = AdminAssistant.Infrastructure.MappingProfile;
 
 namespace AdminAssistant.Test.Infra.DAL.Modules.AccountsModule;
 
-public class BankAccountRepository_UnitTest
+public sealed class BankAccountRepository_UnitTest
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -37,7 +37,7 @@ public class BankAccountRepository_UnitTest
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync(default);
 
         // Assert
         result.Should().HaveCount(bankAccountList.Count);
@@ -70,10 +70,10 @@ public class BankAccountRepository_UnitTest
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetAsync(bankAccountList.First().BankAccountID).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetAsync(bankAccountList[Constants.FirstItem].BankAccountID, default);
 
         // Assert
-        result.Should().BeEquivalentTo(bankAccountList.First());
+        result.Should().BeEquivalentTo(bankAccountList[Constants.FirstItem]);
     }
 
     [Fact]
@@ -104,7 +104,7 @@ public class BankAccountRepository_UnitTest
         var newBankAccountToSave = Factory.BankAccount.WithAccountName("TestNewBankAccountToSave").Build();
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().SaveAsync(newBankAccountToSave).ConfigureAwait(false);
+        await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().SaveAsync(newBankAccountToSave, default);
 
         // Assert
         mockBankAccounts.Verify(x => x.Add(It.Is<BankAccountEntity>((arg) => IsValidForInsert(arg))), Times.Once());
@@ -124,6 +124,7 @@ public class BankAccountRepository_UnitTest
         return true;
     }
 
+    [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
     private bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
     {
         bankAccountToSave.BankAccountID.Should().NotBe(Constants.NewRecordID);

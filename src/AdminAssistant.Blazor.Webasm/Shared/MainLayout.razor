@@ -1,0 +1,87 @@
+@inherits AdminAssistantLayoutComponentBase<AdminAssistant.Shared.UI.IMainWindowViewModel>
+@inject NavigationManager NavigationManager
+
+<MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1" Dense="@_isDense">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Edge="Edge.Start" OnClick="@((e) => this.OnDrawerToggleClick())" />
+        <MudText Typo="Typo.h5">Admin Assistant</MudText>
+        <MudSpacer />
+        <MudMenu Icon="@Icons.Material.Filled.Settings" Color="@_appBarItemColor" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+            <MudStack Class="pl-2">
+                <MudSwitch T="bool" Checked="_isDarkMode" CheckedChanged="(e) => OnIsDarkModeChanged(e)" Color="Color.Primary" Label="Toggle Light/Dark Mode" />
+                <MudSwitch T="bool" Checked="_isDense" CheckedChanged="(e) => OnIsDenseChanged(e)" Color="Color.Primary" Label="Toggle Dense Spacing" />
+            </MudStack>
+        </MudMenu>
+        <MudAvatar Size="@_avatarSize" Color="@_appBarItemColor">SG</MudAvatar>
+    </MudAppBar>
+    <MudDrawer @bind-Open="@_drawerOpen" Width="140px" Variant="@DrawerVariant.Mini" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <MudNavMenu Dense="@_isDense">
+            @foreach (var item in this.vm.Modules)
+            {
+                <MudNavLink Href="@item.Route" Match="NavLinkMatch.All" Icon="@item.Icon">@item.Label</MudNavLink>
+            }
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    // TODO: move to VM
+    private Size _avatarSize = Size.Medium;
+    private Color _appBarItemColor = Color.Primary;
+    private readonly MudTheme _theme = new(); // TODO: Save theme preferences https://www.thomasclaudiushuber.com/2021/04/19/store-data-of-your-blazor-app-in-the-local-storage-and-in-the-session-storage/
+    private MudThemeProvider _mudThemeProvider = new();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            var isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            OnIsDarkModeChanged(isDarkMode);
+            StateHasChanged();
+        }
+    }
+
+    private bool _drawerOpen = true;
+    private void OnDrawerToggleClick() => _drawerOpen = !_drawerOpen;
+
+    private bool _isDarkMode;
+    private void OnIsDarkModeChanged(bool? isDarkMode)
+    {
+        if (isDarkMode.HasValue == false)
+            return;
+
+        if (isDarkMode.Value)
+        {
+            _appBarItemColor = Color.Primary;
+        }
+        else
+        {
+            _appBarItemColor = Color.Tertiary;
+        }
+        _isDarkMode = isDarkMode.Value;
+    }
+
+    private bool _isDense = false;
+    private void OnIsDenseChanged(bool? isDense)
+    {
+        if (isDense.HasValue == false)
+            return;
+
+        if (isDense.Value)
+        {
+            _avatarSize = Size.Small;
+        }
+        else
+        {
+            _avatarSize = Size.Medium;
+        }
+        _isDense = isDense.Value;
+    }
+}

@@ -1,12 +1,12 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.BudgetModule;
-using AdminAssistant.DomainModel.Modules.BudgetModule.Validation;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.BudgetModule;
+using AdminAssistant.Modules.BudgetModule.Validation;
 
 namespace AdminAssistant.Test.DomainModel.Modules.BudgetModule.Validation;
 
-public class BudgetValidator_Should
+public sealed class BudgetValidator_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -19,7 +19,7 @@ public class BudgetValidator_Should
         var budget = Factory.Budget.WithTestData().Build();
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -37,7 +37,7 @@ public class BudgetValidator_Should
                                    .WithBudgetName(string.Empty)
                                    .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -56,7 +56,7 @@ public class BudgetValidator_Should
                                    .WithBudgetName(new string('x', Budget.BudgetNameMaxLength + 1))
                                    .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBudgetValidator>().ValidateAsync(budget);
 
         // Assert
         result.IsValid.Should().BeFalse();

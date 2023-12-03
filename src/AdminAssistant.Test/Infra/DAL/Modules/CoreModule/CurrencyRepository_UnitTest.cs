@@ -1,16 +1,16 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.DomainModel.Shared;
-using AdminAssistant.Infra.DAL;
-using AdminAssistant.Infra.DAL.EntityFramework;
-using AdminAssistant.Infra.DAL.EntityFramework.Model.Core;
-using AdminAssistant.Infra.DAL.Modules.CoreModule;
-using AdminAssistant.Infra.Providers;
+using AdminAssistant.Domain;
+using AdminAssistant.Infrastructure.EntityFramework;
+using AdminAssistant.Infrastructure.EntityFramework.Model.Core;
+using AdminAssistant.Infrastructure.Providers;
+using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
+using AdminAssistant.Shared;
+using MappingProfile = AdminAssistant.Infrastructure.MappingProfile;
 
 namespace AdminAssistant.Test.Infra.DAL.Modules.CoreModule;
 
-public class CurrencyRepository_GetListAsync
+public sealed class CurrencyRepository_GetListAsync
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -37,7 +37,7 @@ public class CurrencyRepository_GetListAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetListAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetListAsync(default);
 
         // Assert
         result.Should().HaveCount(currencyList.Count);
@@ -73,10 +73,10 @@ public class CurrencyRepository_GetAsync
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetAsync(currencyList.First().CurrencyID).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetAsync(currencyList[Constants.FirstItem].CurrencyID, default);
 
         // Assert
-        result.Should().BeEquivalentTo(currencyList.First());
+        result.Should().BeEquivalentTo(currencyList[Constants.FirstItem]);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

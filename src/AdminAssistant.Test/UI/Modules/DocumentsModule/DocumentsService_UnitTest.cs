@@ -1,11 +1,11 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel.Modules.DocumentsModule;
-using AdminAssistant.UI.Modules.DocumentsModule;
+using AdminAssistant.Modules.DocumentsModule;
+using AdminAssistant.Modules.DocumentsModule.UI;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 
 namespace AdminAssistant.Test.UI.Modules.DocumentsModule;
 
-public class DocumentsService_GetDocumentListAsync
+public sealed class DocumentsService_GetDocumentListAsync
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -29,13 +29,13 @@ public class DocumentsService_GetDocumentListAsync
         services.AddTransient((sp) => mockWebAPIClient.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IDocumentsService>().GetDocumentListAsync().ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IDocumentsService>().GetDocumentListAsync();
 
         // Assert
         result.Should().BeEquivalentTo(new List<Document>()
             {
-                new Document { DocumentID = 1, FileName = "test.pdf" },
-                new Document { DocumentID = 2, FileName = "test2.docx" },
+                new Document { DocumentID = new(1), FileName = "test.pdf" },
+                new Document { DocumentID = new(2), FileName = "test2.docx" },
             });
     }
 }

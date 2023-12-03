@@ -1,12 +1,12 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using AdminAssistant.Infra.DAL.Modules.AccountsModule;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+using AdminAssistant.Modules.AccountsModule.Queries;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.CQRS;
 
-public class BankAccountTypesQuery_Should
+public sealed class BankAccountTypesQuery_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -22,14 +22,16 @@ public class BankAccountTypesQuery_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAdminAssistantServerSideDomainModel();
+        services.AddAdminAssistantApplication();
 
         var mockRepository = new Mock<IBankAccountTypeRepository>();
-        mockRepository.Setup(x => x.GetListAsync()).Returns(Task.FromResult(bankAccountTypes));
+        mockRepository.Setup(x => x.GetListAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(bankAccountTypes));
 
         services.AddTransient((sp) => mockRepository.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountTypesQuery()).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountTypesQuery());
 
         // Assert
         result.Status.Should().Be(ResultStatus.Ok);

@@ -1,13 +1,11 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-//using FluentValidation;
-
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule.Validation;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Validation;
 
 namespace AdminAssistant.Test.DomainModel.Modules.AccountsModule.Validation;
 
-public class BankAccountTransactionValidator_Should
+public sealed class BankAccountTransactionValidator_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -21,7 +19,7 @@ public class BankAccountTransactionValidator_Should
                                                                    .WithBankAccountID(20)
                                                                    .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction);
 
         // Assert
         result.IsValid.Should().BeTrue();
@@ -39,7 +37,7 @@ public class BankAccountTransactionValidator_Should
                                                                    .WithBankAccountID(Constants.UnknownRecordID)
                                                                    .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction);
 
 
         // Assert
@@ -59,7 +57,7 @@ public class BankAccountTransactionValidator_Should
                                                                    .WithDescription(string.Empty)
                                                                    .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction);
 
         // Assert
         result.IsValid.Should().BeFalse();
@@ -79,7 +77,7 @@ public class BankAccountTransactionValidator_Should
                                                                    .WithDescription(new string('x', BankAccountTransaction.DescriptionMaxLength + 1))
                                                                    .Build();
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction).ConfigureAwait(false);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction);
 
         // Assert
         result.IsValid.Should().BeFalse();

@@ -1,20 +1,28 @@
-using System.Windows;
-using FluentValidation;
+#pragma warning disable IDE0090 // Use 'new(...)'
+using AdminAssistant.Infrastructure.Providers;
+using AdminAssistant.Retro.Modules.AccountsModule;
+using AdminAssistant.Shared;
+using Ardalis.GuardClauses;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Terminal.Gui;
+using SimonGeering.Framework.Primitives;
 
 using var host = new HostBuilder()
     .ConfigureServices((hostContext, services) =>
     {
-        services.AddAdminAssistantWebAPIClient(new Uri("https://localhost:5001"));
+        var configSettings = hostContext.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+        Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
 
-        services.AddValidatorsFromAssemblyContaining<AdminAssistant.Infra.DAL.IDatabasePersistable>();
+        services.AddAdminAssistantWebAPIClient(configSettings);
+
+        services.AddValidatorsFromAssemblyContaining<IPersistable>();
 
         services.AddAdminAssistantClientSideProviders();
         services.AddAdminAssistantClientSideDomainModel();
         services.AddAdminAssistantUI();
+        services.AddAdminAssistantRetroUIElements();
     })
     .ConfigureLogging(logging =>
     {
@@ -24,12 +32,12 @@ using var host = new HostBuilder()
         logging.AddDebug();
 
         logging.AddFilter("Default", LogLevel.Information)
-                .AddFilter(AdminAssistant.Infra.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
+                .AddFilter(ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
                 .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
 #else
         logging.AddFilter("Default", LogLevel.Warning)
-                .AddFilter(AdminAssistant.Infra.Providers.ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
+                .AddFilter(ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
                 .AddFilter("Microsoft", LogLevel.Warning)
                 .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
 
@@ -62,6 +70,10 @@ using (var scope = host.Services.CreateScope())
         new MenuBarItem ("_File", new MenuItem []
         {
             new MenuItem ("_Quit", "", () => Quit()),
+        }),
+        new MenuBarItem ("_Accounts", new MenuItem []
+        {
+            new MenuItem ("_BankAccountEdit", "", () => AccountsBankAccountEdit(scope)),
         })
     });
     Top.Add(menu);
@@ -71,12 +83,13 @@ using (var scope = host.Services.CreateScope())
         new StatusItem(Key.CtrlMask | Key.Q, "~^Q~ Quit", () => Quit()),
     });
 
-    Win.Add(lblStatus = new Label("Len:")
+    lblStatus = new Label("Len:")
     {
         Y = Pos.Bottom(Win),
         Width = Dim.Fill(),
         TextAlignment = TextAlignment.Right
-    });
+    };
+    Win.Add(lblStatus);
     Top.Add(statusBar);
 
     Application.Run(Top); // Must explicit call Application.Shutdown method to shutdown.
@@ -84,3 +97,9 @@ using (var scope = host.Services.CreateScope())
 }
 
 static void Quit() => Application.RequestStop();
+static void AccountsBankAccountEdit(IServiceScope scope)
+{
+    var bankAccountEditDialog = scope.ServiceProvider.GetRequiredService<BankAccountEditDialog>();
+    Application.Run(bankAccountEditDialog);
+}
+#pragma warning restore IDE0090 // Use 'new(...)'

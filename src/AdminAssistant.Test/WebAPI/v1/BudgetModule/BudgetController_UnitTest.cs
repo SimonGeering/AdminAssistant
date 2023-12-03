@@ -1,14 +1,14 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.BudgetModule;
-using AdminAssistant.DomainModel.Modules.BudgetModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.BudgetModule;
+using AdminAssistant.Modules.BudgetModule.Queries;
 using AdminAssistant.WebAPI.v1.BudgetModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.BudgetModule;
 
-public class BudgetController_UnitTest_Should
+public sealed class BudgetController_UnitTest_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -33,7 +33,7 @@ public class BudgetController_UnitTest_Should
         services.AddTransient<BudgetController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BudgetController>().GetBudgets().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BudgetController>().GetBudgets(default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -43,6 +43,7 @@ public class BudgetController_UnitTest_Should
         var result = (OkObjectResult)response.Result!;
         result.Value.Should().BeAssignableTo<IEnumerable<BudgetResponseDto>>();
 
+        #pragma warning disable S125 // Sections of code should not be commented out
         //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();
         //value.Should().HaveCount(currencies.Count);
 
@@ -53,6 +54,7 @@ public class BudgetController_UnitTest_Should
         //    value[i].Symbol.Should().Be(expected[i].Symbol);
         //    value[i].DecimalFormat.Should().Be(expected[i].DecimalFormat);
         //}
+        #pragma warning restore S125 // Sections of code should not be commented out
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

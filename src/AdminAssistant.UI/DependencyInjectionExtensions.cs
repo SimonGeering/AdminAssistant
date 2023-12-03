@@ -1,31 +1,36 @@
-using AdminAssistant.UI.Modules.AccountsModule;
-using AdminAssistant.UI.Modules.AdminModule;
-using AdminAssistant.UI.Modules.AssetRegisterModule;
-using AdminAssistant.UI.Modules.BillingModule;
-using AdminAssistant.UI.Modules.BudgetModule;
-using AdminAssistant.UI.Modules.CalendarModule;
-using AdminAssistant.UI.Modules.ContactsModule;
-using AdminAssistant.UI.Modules.CoreModule;
-using AdminAssistant.UI.Modules.DashboardModule;
-using AdminAssistant.UI.Modules.DocumentsModule;
-using AdminAssistant.UI.Modules.MailModule;
-using AdminAssistant.UI.Modules.ReportsModule;
-using AdminAssistant.UI.Modules.TasksModule;
-using AdminAssistant.UI.Shared;
-using AdminAssistant.UI.Shared.WebAPIClient.v1;
-using Microsoft.Toolkit.Mvvm.Messaging;
+using AdminAssistant.Modules.ContactsModule.UI;
+using AdminAssistant.Modules.NotesModule.UI;
+using AdminAssistant.Shared;
+using AdminAssistant.Modules.ReportsModule.UI;
+using AdminAssistant.Modules.TasksModule.UI;
+using AdminAssistant.Shared.UI;
+using AdminAssistant.Modules.AccountsModule.UI;
+using AdminAssistant.Modules.AccountsModule.AdminUI;
+using AdminAssistant.Modules.AdminModule.AdminUI;
+using AdminAssistant.Modules.AssetRegisterModule.UI;
+using AdminAssistant.Modules.BillingModule.UI;
+using AdminAssistant.Modules.BudgetModule.UI;
+using AdminAssistant.Modules.CalendarModule.UI;
+using AdminAssistant.Modules.CoreModule.AdminUI;
+using AdminAssistant.Modules.CoreModule.UI;
+using AdminAssistant.Modules.DashboardModule.UI;
+using AdminAssistant.Modules.DocumentsModule.UI;
+using AdminAssistant.Modules.MailModule.UI;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjectionExtensions
 {
-    public static void AddAdminAssistantWebAPIClient(this IServiceCollection services, System.Uri baseAddress)
+    public static void AddAdminAssistantWebAPIClient(this IServiceCollection services, ConfigurationSettings configurationSettings)
+        => AddAdminAssistantWebAPIClient(services, new Uri(configurationSettings.WebApiClientBaseAddress));
+
+    public static void AddAdminAssistantWebAPIClient(this IServiceCollection services, Uri baseAddress)
     {
         services.AddHttpClient<IAdminAssistantWebAPIClient, AdminAssistantWebAPIClient>(AdminAssistant.Constants.AdminAssistantWebAPIClient, (httpClient) => httpClient.BaseAddress = baseAddress);
         services.AddAutoMapper(typeof(MappingProfile));
     }
 
-    public static void AddAdminAssistantUI(this IServiceCollection services)
+    public static void AddAdminAssistantUI(this IServiceCollection services, FontAwesomeVersion fontAwesomeVersion = FontAwesomeVersion.V4o7o0)
     {
         // Add MVVM Toolkit registrations ...
         services.AddSingleton<IMessenger, StrongReferenceMessenger>();
@@ -36,9 +41,12 @@ public static class DependencyInjectionExtensions
         services.AddSingleton<IBankAccountBalanceListViewModel, BankAccountBalanceListViewModel>();
         services.AddSingleton<IBankAccountEditDialogViewModel, BankAccountEditDialogViewModel>();
         services.AddSingleton<IBankAccountRightSidebarViewModel, BankAccountRightSidebarViewModel>();
+        services.AddSingleton<IBankAccountStatementImportViewModel, BankAccountStatementImportViewModel>();
         services.AddSingleton<IBankAccountTransactionListViewModel, BankAccountTransactionListViewModel>();
 
         services.AddTransient<IAccountsService, AccountsService>();
+
+        services.AddSingleton<IBankListViewModel, BankListViewModel>();
 
         // Add Admin UI ...
         services.AddSingleton<IAdminViewModel, AdminViewModel>();
@@ -61,6 +69,8 @@ public static class DependencyInjectionExtensions
         // Add Core UI ...
         services.AddTransient<ICoreService, CoreService>();
 
+        services.AddSingleton<ICurrencyListViewModel, CurrencyListViewModel>();
+
         // Add Dashboard UI ...
         services.AddSingleton<IDashboardViewModel, DashboardViewModel>();
 
@@ -74,11 +84,15 @@ public static class DependencyInjectionExtensions
         // Add Reports UI ...
         services.AddSingleton<IReportsViewModel, ReportsViewModel>();
 
+        // Add Notes UI ...
+        services.AddSingleton<INotesViewModel, NotesViewModel>();
+
         // Add Tasks UI ...
         services.AddSingleton<ITasksViewModel, TasksViewModel>();
 
         // Add Shared UI ...
-        services.AddTransient<IAppService, AppService>();
+        services.AddTransient<IAppService, AppService>((serviceProvider) => new AppService(fontAwesomeVersion));
+
         services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
     }
 }

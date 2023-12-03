@@ -1,14 +1,15 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.AccountsModule;
-using AdminAssistant.DomainModel.Modules.AccountsModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.AccountsModule.Commands;
+using AdminAssistant.Modules.AccountsModule;
+using AdminAssistant.Modules.AccountsModule.Queries;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
-public class BankController_Put_Should
+public sealed class BankController_Put_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -31,12 +32,12 @@ public class BankController_Put_Should
         var container = services.BuildServiceProvider();
         var bankRequest = new BankUpdateRequestDto()
         {
-            BankID = bank.BankID,
-            BankName = bank.BankName
+            BankID = bank.BankID.Value,
+            BankName = bank.BankName.Value
         };
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -48,8 +49,8 @@ public class BankController_Put_Should
         result.Value.Should().BeAssignableTo<BankResponseDto>();
 
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID);
-        value.BankName.Should().Be(bank.BankName);
+        value.BankID.Should().Be(bank.BankID.Value);
+        value.BankName.Should().Be(bank.BankName.Value);
     }
 
     [Fact]
@@ -75,7 +76,7 @@ public class BankController_Put_Should
         var bankRequest = mapper.Map<BankUpdateRequestDto>(bank);
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(bankRequest).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(bankRequest, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundObjectResult>();
@@ -110,7 +111,7 @@ public class BankController_Put_Should
         var bankRequest = mapper.Map<BankUpdateRequestDto>(bank);
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -153,11 +154,11 @@ public class BankController_BankPost_Should
 
         var bankRequest = new BankCreateRequestDto()
         {
-            BankName = bank.BankName
+            BankName = bank.BankName.Value
         };
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -169,8 +170,8 @@ public class BankController_BankPost_Should
         result.Value.Should().BeAssignableTo<BankResponseDto>();
 
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID);
-        value.BankName.Should().Be(bank.BankName);
+        value.BankID.Should().Be(bank.BankID.Value);
+        value.BankName.Should().Be(bank.BankName.Value);
     }
 
     [Fact]
@@ -201,7 +202,7 @@ public class BankController_BankPost_Should
         var bankRequest = mapper.Map<BankCreateRequestDto>(bank);
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -241,7 +242,7 @@ public class BankController_BankGetById_Should
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID.Value, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -253,8 +254,8 @@ public class BankController_BankGetById_Should
 
         result.Value.Should().NotBeNull();
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID);
-        value.BankName.Should().Be(bank.BankName);
+        value.BankID.Should().Be(bank.BankID.Value);
+        value.BankName.Should().Be(bank.BankName.Value);
     }
 
     [Fact]
@@ -273,7 +274,7 @@ public class BankController_BankGetById_Should
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(10).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(10, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundResult>();
@@ -306,7 +307,7 @@ public class BankController_BankGet_Should
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet(default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -323,8 +324,8 @@ public class BankController_BankGet_Should
         var expected = banks.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankID.Should().Be(expected[index].BankID);
-            value[index].BankName.Should().Be(expected[index].BankName);
+            value[index].BankID.Should().Be(expected[index].BankID.Value);
+            value[index].BankName.Should().Be(expected[index].BankName.Value);
         }
     }
 }

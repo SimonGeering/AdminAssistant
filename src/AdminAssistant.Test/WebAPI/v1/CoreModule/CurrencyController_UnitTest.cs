@@ -1,14 +1,15 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.DomainModel;
-using AdminAssistant.DomainModel.Modules.CoreModule;
-using AdminAssistant.DomainModel.Modules.CoreModule.CQRS;
-using AdminAssistant.WebAPI.v1;
+using AdminAssistant.Domain;
+using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule.Commands;
+using AdminAssistant.Modules.CoreModule.Queries;
 using AdminAssistant.WebAPI.v1.CoreModule;
 using Microsoft.AspNetCore.Mvc;
+using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.CoreModule;
 
-public class CurrencyController_Put_Should
+public sealed class CurrencyController_Put_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -31,13 +32,13 @@ public class CurrencyController_Put_Should
         var container = services.BuildServiceProvider();
         var currencyRequest = new CurrencyUpdateRequestDto()
         {
-            CurrencyID = currency.CurrencyID,
+            CurrencyID = currency.CurrencyID.Value,
             DecimalFormat = currency.DecimalFormat,
             Symbol = currency.Symbol
         };
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -49,7 +50,7 @@ public class CurrencyController_Put_Should
         result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
 
         var value = (CurrencyResponseDto)result.Value!;
-        value.CurrencyID.Should().Be(currency.CurrencyID);
+        value.CurrencyID.Should().Be(currency.CurrencyID.Value);
         value.Symbol.Should().Be(currency.Symbol);
         value.DecimalFormat.Should().Be(currency.DecimalFormat);
     }
@@ -77,7 +78,7 @@ public class CurrencyController_Put_Should
         var currencyRequest = mapper.Map<CurrencyUpdateRequestDto>(currency);
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundObjectResult>();
@@ -112,7 +113,7 @@ public class CurrencyController_Put_Should
         var currencyRequest = mapper.Map<CurrencyUpdateRequestDto>(currency);
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -131,7 +132,7 @@ public class CurrencyController_Put_Should
     }
 }
 
-public class CurrencyController_CurrencyPost_Should
+public sealed class CurrencyController_CurrencyPost_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -159,7 +160,7 @@ public class CurrencyController_CurrencyPost_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -171,7 +172,7 @@ public class CurrencyController_CurrencyPost_Should
         result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
 
         var value = (CurrencyResponseDto)result.Value!;
-        value.CurrencyID.Should().Be(currency.CurrencyID);
+        value.CurrencyID.Should().Be(currency.CurrencyID.Value);
         value.Symbol.Should().Be(currency.Symbol);
         value.DecimalFormat.Should().Be(currency.DecimalFormat);
     }
@@ -204,7 +205,7 @@ public class CurrencyController_CurrencyPost_Should
         var currencyRequest = mapper.Map<CurrencyCreateRequestDto>(currency);
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest).ConfigureAwait(false);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -224,7 +225,7 @@ public class CurrencyController_CurrencyPost_Should
     }
 }
 
-public class CurrencyController_CurrencyGetById_Should
+public sealed class CurrencyController_CurrencyGetById_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -245,7 +246,7 @@ public class CurrencyController_CurrencyGetById_Should
         services.AddTransient<CurrencyController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(currency.CurrencyID).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(currency.CurrencyID.Value, default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -257,7 +258,7 @@ public class CurrencyController_CurrencyGetById_Should
         result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
 
         var value = (CurrencyResponseDto)result.Value!;
-        value.CurrencyID.Should().Be(currency.CurrencyID);
+        value.CurrencyID.Should().Be(currency.CurrencyID.Value);
         value.Symbol.Should().Be(currency.Symbol);
         value.DecimalFormat.Should().Be(currency.DecimalFormat);
     }
@@ -278,7 +279,7 @@ public class CurrencyController_CurrencyGetById_Should
         services.AddTransient<CurrencyController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(10).ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(10, default);
 
         // Assert
         response.Result.Should().BeOfType<NotFoundResult>();
@@ -286,7 +287,7 @@ public class CurrencyController_CurrencyGetById_Should
     }
 }
 
-public class CurrencyController_GetCurrency_Should
+public sealed class CurrencyController_GetCurrency_Should
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -311,7 +312,7 @@ public class CurrencyController_GetCurrency_Should
         services.AddTransient<CurrencyController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().GetCurrency().ConfigureAwait(false);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().GetCurrency(default);
 
         // Assert
         response.Value.Should().BeNull();
@@ -328,7 +329,7 @@ public class CurrencyController_GetCurrency_Should
         var expected = currencies.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].CurrencyID.Should().Be(expected[index].CurrencyID);
+            value[index].CurrencyID.Should().Be(expected[index].CurrencyID.Value);
             value[index].Symbol.Should().Be(expected[index].Symbol);
             value[index].DecimalFormat.Should().Be(expected[index].DecimalFormat);
         }

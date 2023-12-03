@@ -1,6 +1,13 @@
-namespace AdminAssistant.DomainModel.Modules.AccountsModule.Builders;
+namespace AdminAssistant.Modules.AccountsModule.Builders;
 
-internal class BankAccountTransactionBuilder : IBankAccountTransactionBuilder
+public interface IBankAccountTransactionBuilder
+{
+    BankAccountTransaction Build();
+    IBankAccountTransactionBuilder WithTestData(int bankAccountTransactionID = Constants.UnknownRecordID);
+    IBankAccountTransactionBuilder WithBankAccountID(int bankAccountID);
+    IBankAccountTransactionBuilder WithDescription(string description);
+}
+internal sealed class BankAccountTransactionBuilder : IBankAccountTransactionBuilder
 {
     private BankAccountTransaction _bankAccountTransaction = new();
 
@@ -12,8 +19,8 @@ internal class BankAccountTransactionBuilder : IBankAccountTransactionBuilder
     {
         _bankAccountTransaction = _bankAccountTransaction with
         {
-            BankAccountTransactionID = bankAccountTransactionID,
-            BankAccountID = 10,
+            BankAccountTransactionID = new(bankAccountTransactionID),
+            BankAccountID = new(10),
             Description = "Test Transaction"
         };
         return this;
@@ -21,7 +28,7 @@ internal class BankAccountTransactionBuilder : IBankAccountTransactionBuilder
 
     public IBankAccountTransactionBuilder WithBankAccountID(int bankAccountID)
     {
-        _bankAccountTransaction = _bankAccountTransaction with { BankAccountID = bankAccountID };
+        _bankAccountTransaction = _bankAccountTransaction with { BankAccountID = new(bankAccountID) };
         return this;
     }
 

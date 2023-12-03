@@ -1,6 +1,12 @@
-namespace AdminAssistant.DomainModel.Modules.AssetRegisterModule.Builders;
+namespace AdminAssistant.Modules.AssetRegisterModule.Builders;
 
-internal class AssetBuilder : IAssetBuilder
+public interface IAssetBuilder
+{
+    Asset Build();
+    IAssetBuilder WithTestData(int assetID = Constants.UnknownRecordID);
+    IAssetBuilder WithAssetName(string assetName);
+}
+internal sealed class AssetBuilder : IAssetBuilder
 {
     private Asset _asset = new();
 
@@ -13,7 +19,7 @@ internal class AssetBuilder : IAssetBuilder
     {
         _asset = _asset with
         {
-            AssetID = assetID,
+            AssetID = new(assetID),
             AssetName = "2 bed detached house"
         };
         return this;

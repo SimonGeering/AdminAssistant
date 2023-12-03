@@ -1,0 +1,17 @@
+<Project>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Product>Admin Assistant</Product>
+        <RootNamespace>AdminAssistant</RootNamespace>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>latest</LangVersion>
+        <Platforms>AnyCPU</Platforms>
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally><!--See: https://devblogs.microsoft.com/nuget/introducing-central-package-management/-->
+        <!--<NoWarn>$(NoWarn);1701;1702;NU1605</NoWarn>-->
+        <NoWarn>$(NoWarn);S1133;S1135;S1125;1701;1702;1591;NU1605;CS1591</NoWarn><!--https://github.com/dotnet/aspnetcore/issues/50836-->
+    </PropertyGroup>
+</Project>

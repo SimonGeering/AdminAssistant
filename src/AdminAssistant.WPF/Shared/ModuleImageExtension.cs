@@ -3,31 +3,30 @@ using System.Windows.Media;
 using AdminAssistant.UI.Shared;
 using MahApps.Metro.IconPacks;
 
-namespace AdminAssistant.WPF.Shared
+namespace AdminAssistant.WPF.Shared;
+
+[MarkupExtensionReturnType(typeof(ImageSource))]
+public sealed class ModuleImageExtension : FontAwesomeImageExtension
 {
-    [MarkupExtensionReturnType(typeof(ImageSource))]
-    public class ModuleImageExtension : FontAwesomeImageExtension
+    private Module module;
+
+    [ConstructorArgument("module")]
+    public Module Module
     {
-        private ModuleEnum module;
-
-        [ConstructorArgument("module")]
-        public ModuleEnum Module
-        {
-            get => module;
-            set {
-                base.Kind = value.ToPackIconFontAwesomeKind();
-                module = value;
-            }
+        get => module;
+        set {
+            base.Kind = value.ToPackIconFontAwesomeKind();
+            module = value;
         }
+    }
 
-        public ModuleImageExtension()
-            : base()
-        {
-        }
+    public ModuleImageExtension()
+        : base()
+    {
+    }
 
-        public ModuleImageExtension(ModuleEnum module)
-            : base(module.ToPackIconFontAwesomeKind())
-        {
-        }
+    public ModuleImageExtension(Module module)
+        : base(module.ToPackIconFontAwesomeKind())
+    {
     }
 }

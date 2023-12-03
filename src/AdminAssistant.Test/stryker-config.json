@@ -1,0 +1,17 @@
+{
+    "stryker-config":
+    {
+        "solution": "../AdminAssistant.sln",
+        "project": "AdminAssistant.DomainModel.csproj",
+        "test-case-filter": "Category=Unit",
+        "reporters": [
+            "progress",
+            "html"
+        ],
+        "ignore-methods": [
+            "*ConfigureAwait",
+            "Log.Start",
+            "Trace.Assert"
+        ]
+    }
+}

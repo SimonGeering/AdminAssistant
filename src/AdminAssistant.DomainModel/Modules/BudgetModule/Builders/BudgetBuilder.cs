@@ -1,6 +1,12 @@
-namespace AdminAssistant.DomainModel.Modules.BudgetModule.Builders;
+namespace AdminAssistant.Modules.BudgetModule.Builders;
 
-internal class BudgetBuilder : IBudgetBuilder
+public interface IBudgetBuilder
+{
+    Budget Build();
+    IBudgetBuilder WithTestData(int budgetID = Constants.UnknownRecordID);
+    IBudgetBuilder WithBudgetName(string budgetName);
+}
+internal sealed class BudgetBuilder : IBudgetBuilder
 {
     private Budget _budget = new();
 
@@ -12,7 +18,7 @@ internal class BudgetBuilder : IBudgetBuilder
     {
         _budget = _budget with
         {
-            BudgetID = budgetID,
+            BudgetID = new(budgetID),
             BudgetName = "Test Budget"
         };
         return this;

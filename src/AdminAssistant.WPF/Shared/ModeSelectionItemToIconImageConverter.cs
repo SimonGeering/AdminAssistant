@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Windows;
@@ -6,40 +5,39 @@ using System.Windows.Data;
 using AdminAssistant.UI.Shared;
 using MahApps.Metro.IconPacks.Converter;
 
-namespace AdminAssistant.WPF.Shared
+namespace AdminAssistant.WPF.Shared;
+
+public sealed class ModeSelectionItemToIconImageConverter : PackIconFontAwesomeKindToImageConverter, IValueConverter
 {
-    public class ModeSelectionItemToIconImageConverter : PackIconFontAwesomeKindToImageConverter, IValueConverter
+    /// <inheritdoc />
+    [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Ok to just return DependencyProperty.UnsetValue if anything goes wrong.")]
+    object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        /// <inheritdoc />
-        [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Ok to just return DependencyProperty.UnsetValue if anything goes wrong.")]
-        object IValueConverter.Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        try
         {
-            try
-            {
-                if ((value is ModeSelectionItem) == false)
-                    return DependencyProperty.UnsetValue;
-
-                var enumValue = ((ModeSelectionItem)value).Mode.ToPackIconFontAwesomeKind();
-                return base.Convert(enumValue, targetType, parameter, culture);
-            }
-            catch
-            {
+            if ((value is ModeSelectionItem) == false)
                 return DependencyProperty.UnsetValue;
-            }
+
+            var enumValue = ((ModeSelectionItem)value).Mode.ToPackIconFontAwesomeKind();
+            return base.Convert(enumValue, targetType, parameter, culture);
         }
-
-        /// <inheritdoc />
-        [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Ok to just return DependencyProperty.UnsetValue if anything goes wrong.")]
-        object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        catch
         {
-            try
-            {
-                return base.ConvertBack(value, targetType, parameter, culture);
-            }
-            catch
-            {
-                return DependencyProperty.UnsetValue;
-            }
+            return DependencyProperty.UnsetValue;
+        }
+    }
+
+    /// <inheritdoc />
+    [SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Ok to just return DependencyProperty.UnsetValue if anything goes wrong.")]
+    object IValueConverter.ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        try
+        {
+            return base.ConvertBack(value, targetType, parameter, culture);
+        }
+        catch
+        {
+            return DependencyProperty.UnsetValue;
         }
     }
 }

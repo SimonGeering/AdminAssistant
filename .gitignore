@@ -369,3 +369,4 @@ MigrationBackup/
 /ux
 /src/AdminAssistant.Blazor.Client/wwwroot/appsettings.json
 *.env
+/src/AdminAssistant.Test/_TestData/ConfidentialTestData/

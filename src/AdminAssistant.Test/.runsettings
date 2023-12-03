@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RunSettings>
+    <DataCollectionRunSettings>
+        <DataCollectors>
+            <DataCollector friendlyName="Code coverage">
+                <Configuration>
+                    <!--https://learn.microsoft.com/en-us/visualstudio/test/customizing-code-coverage-analysis?view=vs-2022-->
+                    <ModulePaths>
+                        <Include>
+                            <!--Exclude all assemblies except those starting AdminAssistant-->
+                            <ModulePath>AdminAssistant.*</ModulePath>
+                        </Include>
+                    </ModulePaths>
+                </Configuration>
+            </DataCollector>
+        </DataCollectors>
+    </DataCollectionRunSettings>
+</RunSettings>
