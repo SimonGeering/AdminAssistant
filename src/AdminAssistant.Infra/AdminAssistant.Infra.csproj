@@ -28,6 +28,13 @@
     </ItemGroup>
 
     <ItemGroup>
+        <SonarQubeSetting Include="sonar.exclusions">
+            <!-- Exclude EF Migrations from SonarAnalyzer -->
+            <Value>**/Migrations/*</Value>
+        </SonarQubeSetting>
+    </ItemGroup>
+    
+    <ItemGroup>
         <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
         <ProjectReference Include="..\AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj" />
         <ProjectReference Include="..\SimonGeering.Framework\SimonGeering.Framework.csproj" />
