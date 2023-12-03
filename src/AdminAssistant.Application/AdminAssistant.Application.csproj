@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+      <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
     </ItemGroup>
     
 </Project>
