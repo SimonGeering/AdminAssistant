@@ -11,7 +11,7 @@ internal sealed class CurrencyByIDQueryHandler(ICurrencyRepository currencyRepos
     {
         var result = await currencyRepository.GetAsync(new CurrencyId(request.CurrencyID), cancellationToken).ConfigureAwait(false);
 
-        if (result == null || result.CurrencyID.IsUnknownRecordID)
+        if (result == null || result.CurrencyID.IsUnknownRecordId)
             return Result<Currency>.NotFound();
 
         return Result<Currency>.Success(result);

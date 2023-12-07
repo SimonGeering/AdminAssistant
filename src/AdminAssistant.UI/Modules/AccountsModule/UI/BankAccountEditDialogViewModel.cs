@@ -10,9 +10,9 @@ public interface IBankAccountEditDialogViewModel : IViewModelBase, IRecipient<Ed
     public const string NewBankAccountHeader = "New bank account";
     public const string EditBankAccountHeader = "Edit bank account";
 
-    int BankAccountID { get; }
-    int BankAccountTypeID { get; set; }
-    int CurrencyID { get; set; }
+    int BankAccountId { get; }
+    int BankAccountTypeId { get; set; }
+    int CurrencyId { get; set; }
     string AccountName { get; set; }
     public bool IsBudgeted { get; set; }
     public int OpeningBalance { get; set; }
@@ -42,7 +42,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
     private readonly ICoreService _coreService;
     private readonly IMessenger _messenger;
 
-    private BankAccount bankAccount = new();
+    private BankAccount _bankAccount = new();
 
     public BankAccountEditDialogViewModel(
         ILoggingProvider log,
@@ -72,57 +72,57 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
 
     public string AccountName
     {
-        get => bankAccount.AccountName;
+        get => _bankAccount.AccountName;
         set
         {
-            if (bankAccount.AccountName.Equals(value, StringComparison.InvariantCulture))
+            if (_bankAccount.AccountName.Equals(value, StringComparison.InvariantCulture))
                 return;
 
             // TODO: Switch to call base helper extension.
             // TODO: Hook Property changed and call refresh validation once for all properties.
-            bankAccount = bankAccount with { AccountName = value };
+            _bankAccount = _bankAccount with { AccountName = value };
             RefreshValidation();
             OnPropertyChanged();
         }
     }
 
-    public int BankAccountID
+    public int BankAccountId
     {
-        get => bankAccount.BankAccountID.Value;
+        get => _bankAccount.BankAccountID.Value;
         set
         {
-            if (bankAccount.BankAccountID.Equals(value))
+            if (_bankAccount.BankAccountID.Value.Equals(value))
                 return;
 
-            bankAccount = bankAccount with { BankAccountID = new(value) };
+            _bankAccount = _bankAccount with { BankAccountID = new BankAccountId(value) };
             RefreshValidation();
             OnPropertyChanged();
         }
     }
 
-    public int BankAccountTypeID
+    public int BankAccountTypeId
     {
-        get => bankAccount.BankAccountTypeID.Value;
+        get => _bankAccount.BankAccountTypeID.Value;
         set
         {
-            if (bankAccount.BankAccountTypeID.Equals(value))
+            if (_bankAccount.BankAccountTypeID.Value.Equals(value))
                 return;
 
-            bankAccount = bankAccount with { BankAccountTypeID = new(value) };
+            _bankAccount = _bankAccount with { BankAccountTypeID = new BankAccountTypeId(value) };
             RefreshValidation();
             OnPropertyChanged();
         }
     }
 
-    public int CurrencyID
+    public int CurrencyId
     {
-        get => bankAccount.CurrencyID.Value;
+        get => _bankAccount.CurrencyID.Value;
         set
         {
-            if (bankAccount.CurrencyID.Equals(value))
+            if (_bankAccount.CurrencyID.Value.Equals(value))
                 return;
 
-            bankAccount = bankAccount with { CurrencyID = new(value) };
+            _bankAccount = _bankAccount with { CurrencyID = new CurrencyId(value) };
             RefreshValidation();
             OnPropertyChanged();
         }
@@ -130,13 +130,13 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
 
     public bool IsBudgeted
     {
-        get => bankAccount.IsBudgeted;
+        get => _bankAccount.IsBudgeted;
         set
         {
-            if (bankAccount.IsBudgeted.Equals(value))
+            if (_bankAccount.IsBudgeted.Equals(value))
                 return;
 
-            bankAccount = bankAccount with { IsBudgeted = value };
+            _bankAccount = _bankAccount with { IsBudgeted = value };
             RefreshValidation();
             OnPropertyChanged();
         }
@@ -144,29 +144,29 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
 
     public int OpeningBalance
     {
-        get => bankAccount.OpeningBalance;
+        get => _bankAccount.OpeningBalance;
         set
         {
-            if (bankAccount.OpeningBalance.Equals(value))
+            if (_bankAccount.OpeningBalance.Equals(value))
                 return;
 
-            bankAccount = bankAccount with { OpeningBalance = value };
+            _bankAccount = _bankAccount with { OpeningBalance = value };
             RefreshValidation();
             OnPropertyChanged();
         }
     }
 
-    public int CurrentBalance => bankAccount.CurrentBalance;
+    public int CurrentBalance => _bankAccount.CurrentBalance;
 
     public DateTime OpenedOn
     {
-        get => bankAccount.OpenedOn;
+        get => _bankAccount.OpenedOn;
         set
         {
-            if (bankAccount.OpenedOn.Equals(value))
+            if (_bankAccount.OpenedOn.Equals(value))
                 return;
 
-            bankAccount = bankAccount with { OpenedOn = value };
+            _bankAccount = _bankAccount with { OpenedOn = value };
             RefreshValidation();
             OnPropertyChanged();
         }
@@ -176,30 +176,30 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
 
     public BindingList<Currency> Currencies { get; } = [];
 
-    private string headerText = string.Empty;
+    private string _headerText = string.Empty;
     public string HeaderText
     {
-        get => headerText;
+        get => _headerText;
         private set
         {
-            if (headerText.Equals(value, StringComparison.InvariantCulture))
+            if (_headerText.Equals(value, StringComparison.InvariantCulture))
                 return;
 
-            headerText = value;
+            _headerText = value;
             OnPropertyChanged();
         }
     }
 
-    private bool showDialog;
+    private bool _showDialog;
     public bool ShowDialog
     {
-        get => showDialog;
+        get => _showDialog;
         set
         {
-            if (showDialog.Equals(value))
+            if (_showDialog.Equals(value))
                 return;
 
-            showDialog = value;
+            _showDialog = value;
             OnPropertyChanged();
         }
     }
@@ -208,7 +208,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
     {
         Log.Start();
 
-        bankAccount = bankAccount with { AccountName = accountName };
+        _bankAccount = _bankAccount with { AccountName = accountName };
         RefreshValidation();
         OnPropertyChanged();
 
@@ -226,7 +226,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
     {
         Log.Start();
 
-        bankAccount = new BankAccount();
+        _bankAccount = new BankAccount();
         ShowDialog = false;
 
         await Task.CompletedTask.ConfigureAwait(true);
@@ -249,15 +249,15 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
             if (canSave)
             {
 #pragma warning disable S125 // Sections of code should not be commented out
-                if ((bankAccount as IPersistable).IsNew)
+                if ((_bankAccount as IPersistable).IsNew)
                 {
-                    var savedBankAccountResult = await _accountsService.CreateBankAccountAsync(bankAccount).ConfigureAwait(true);
+                    var savedBankAccountResult = await _accountsService.CreateBankAccountAsync(_bankAccount).ConfigureAwait(true);
                     // TODO: Notify OnBankAccountCreated
                     // this.accountsStateStore.OnBankAccountCreated(savedBankAccount);
                 }
                 else
                 {
-                    var savedBankAccountResult = await _accountsService.UpdateBankAccountAsync(bankAccount).ConfigureAwait(true);
+                    var savedBankAccountResult = await _accountsService.UpdateBankAccountAsync(_bankAccount).ConfigureAwait(true);
                     // TODO: Notify OnBankAccountUpdated
                     // this.accountsStateStore.OnBankAccountUpdated(savedBankAccount);
                 }
@@ -298,22 +298,22 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
 
     public void Receive(EditBankAccountMessage message)
     {
-        bankAccount = message.BankAccount;
-        HeaderText = (bankAccount as IPersistable).IsNew ? IBankAccountEditDialogViewModel.NewBankAccountHeader : IBankAccountEditDialogViewModel.EditBankAccountHeader;
+        _bankAccount = message.BankAccount;
+        HeaderText = (_bankAccount as IPersistable).IsNew ? IBankAccountEditDialogViewModel.NewBankAccountHeader : IBankAccountEditDialogViewModel.EditBankAccountHeader;
         RefreshValidation();
         ShowDialog = true;
     }
 
     private bool RefreshValidation()
     {
-        var result = _bankAccountValidator.Validate(bankAccount);
+        var result = _bankAccountValidator.Validate(_bankAccount);
         AccountNameValidationMessage = GetValidationMessageForField(nameof(BankAccount.AccountName), result);
         AccountNameValidationClass = GetValidationClassForField(nameof(BankAccount.AccountName), result);
 
         return result.IsValid;
     }
 
-    private string GetValidationMessageForField(string fieldName, ValidationResult result)
+    private static string GetValidationMessageForField(string fieldName, ValidationResult result)
     {
         if (result.IsValid)
             return ValidationMessage.None;
@@ -335,7 +335,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
         return GetValidationClassForSeverity(result.Errors.Single(x => x.PropertyName == fieldName).Severity);
     }
 
-    private string GetValidationClassForSeverity(FluentValidation.Severity severity) => severity switch
+    private static string GetValidationClassForSeverity(FluentValidation.Severity severity) => severity switch
     {
         FluentValidation.Severity.Error => ValidationCssClass.Error,
         FluentValidation.Severity.Warning => ValidationCssClass.Warning,

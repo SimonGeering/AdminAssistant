@@ -1,9 +1,4 @@
 namespace SimonGeering.Framework;
 
-public abstract class ApplicationBaseException : Exception
-{
-    protected ApplicationBaseException(string? message)
-        : base(message)
-    {
-    }
-}
+public abstract class ApplicationBaseException(string? message)
+    : Exception(message);

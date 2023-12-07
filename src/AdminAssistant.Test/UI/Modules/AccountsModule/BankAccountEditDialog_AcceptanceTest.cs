@@ -27,12 +27,12 @@ public sealed class BankAccountEditDialog_Should : AcceptanceTestBase
         messenger.Send(new EditBankAccountMessage(new BankAccount()));
 
         // Assert
-        vm.BankAccountID.Should().Be(Constants.NewRecordID);
+        vm.BankAccountId.Should().Be(Constants.NewRecordID);
 
-        vm.BankAccountTypeID.Should().Be(Constants.UnknownRecordID);
+        vm.BankAccountTypeId.Should().Be(Constants.UnknownRecordID);
         vm.BankAccountTypes.Should().NotBeEmpty();
 
-        vm.CurrencyID.Should().Be(Constants.UnknownRecordID);
+        vm.CurrencyId.Should().Be(Constants.UnknownRecordID);
         vm.Currencies.Should().NotBeEmpty();
 
         vm.AccountName.Should().BeEmpty();

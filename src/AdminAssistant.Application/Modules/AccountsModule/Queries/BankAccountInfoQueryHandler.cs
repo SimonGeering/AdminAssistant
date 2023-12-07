@@ -2,6 +2,8 @@ using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 
 namespace AdminAssistant.Modules.AccountsModule.Queries;
 
+public sealed record BankAccountInfoQuery(int OwnerId) : IRequest<Result<IEnumerable<BankAccountInfo>>>;
+
 internal sealed class BankAccountInfoQueryHandler(
     IBankAccountInfoRepository bankAccountInfoRepository,
     ILoggingProvider loggingProvider)
