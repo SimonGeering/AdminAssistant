@@ -33,6 +33,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimonGeering.Framework", "SimonGeering.Framework\SimonGeering.Framework.csproj", "{6FF549EC-56C8-44A2-BEEC-0773B504341B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimonGeering.Framework.Test", "SimonGeering.Framework.Test\SimonGeering.Framework.Test.csproj", "{B506489B-9AFF-4D95-A063-76CFD4712F5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{6FF549EC-56C8-44A2-BEEC-0773B504341B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FF549EC-56C8-44A2-BEEC-0773B504341B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FF549EC-56C8-44A2-BEEC-0773B504341B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B506489B-9AFF-4D95-A063-76CFD4712F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B506489B-9AFF-4D95-A063-76CFD4712F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B506489B-9AFF-4D95-A063-76CFD4712F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B506489B-9AFF-4D95-A063-76CFD4712F5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

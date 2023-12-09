@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <IsPackable>false</IsPackable>
+        <IsTestProject>true</IsTestProject>
+        <DocumentationFile>SimonGeering.Framework.Test.docs.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);1701;1702;NU1605</NoWarn>
+
+        <PackageId>SimonGeering.Framework.Tests</PackageId>
+        <Authors>Simon Geering</Authors>
+        <Company>Test Company Attribute</Company>
+        <Product>Simon Geering - Framework</Product>
+        <Copyright>Copyright (c) 2020 Simon Geering.</Copyright>
+        <Description>Simon Geering - Framework - Tests</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="SimonGeering.Framework.Test.docs.xml" />
+        <None Include="..\.editorconfig" Link=".editorconfig" />
+        <None Remove="lcov.info" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="Moq" />
+        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="xunit" />
+        <PackageReference Include="xunit.runner.visualstudio">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="coverlet.collector">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Xunit.SkippableFact" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <ProjectReference Include="..\SimonGeering.Framework\SimonGeering.Framework.csproj" />
+    </ItemGroup>
+
+</Project>

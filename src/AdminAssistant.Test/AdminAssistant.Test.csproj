@@ -10,9 +10,6 @@
         <None Remove="AdminAssistant.Test.docs.xml" />
         <None Include="..\.editorconfig" Link=".editorconfig" />
         <None Remove="lcov.info" />
-        <Compile Remove="DomainModel\Modules\Core\**" />
-        <EmbeddedResource Remove="DomainModel\Modules\Core\**" />
-        <None Remove="DomainModel\Modules\Core\**" />
     </ItemGroup>
 
     <ItemGroup>
