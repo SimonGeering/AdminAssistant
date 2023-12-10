@@ -8,6 +8,8 @@ using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddServiceDefaults();
+
 // TODO: Make version a constant shared with WebAPI Assemblies
 const string WebAPIVersion = "v1";
 const string WebAPITitle = $"Admin Assistant WebAPI {WebAPIVersion}.";
@@ -60,6 +62,8 @@ builder.Services.AddAdminAssistantApplication();
 builder.Services.AddAdminAssistantServerSideInfra(configSettings);
 
 var app = builder.Build();
+
+app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
