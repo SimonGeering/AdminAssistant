@@ -26,6 +26,7 @@
         <PackageReference Include="NetArchTest.Rules" />
         <PackageReference Include="ObjectCloner.Extensions" />
         <PackageReference Include="Respawn" />
+        <PackageReference Include="Testcontainers" />
         <PackageReference Include="xunit" />
         <PackageReference Include="xunit.runner.visualstudio">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
