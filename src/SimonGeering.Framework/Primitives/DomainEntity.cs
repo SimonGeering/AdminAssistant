@@ -2,8 +2,12 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace SimonGeering.Framework.Primitives;
 
+public interface IDomainEntity<out TId> where TId : Id
+{
+    public TId Id { get; }
+}
 public abstract class DomainEntity<TId>(TId id)
-    : IEqualityComparer<TId>, IEquatable<DomainEntity<TId>>, IPersistable
+    : IDomainEntity<TId>, IEqualityComparer<TId>, IEquatable<DomainEntity<TId>>, IPersistable
     where TId : Id
 {
     public Id PrimaryKey => Id;
