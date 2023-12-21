@@ -1,3 +1,6 @@
+// https://devblogs.microsoft.com/dotnet/announcing-dotnet-aspire-preview-2/
+// https://learn.microsoft.com/en-gb/dotnet/aspire/
+using AdminAssistant;
 using AdminAssistant.Infrastructure.EntityFramework;
 using AdminAssistant.Shared;
 using Ardalis.GuardClauses;
@@ -15,38 +18,23 @@ if (Enum.TryParse(configurationSettings.DatabaseProvider, out DatabaseProvider d
 var webApp = builder.AddProject<Projects.AdminAssistant_Blazor_Server>("AdminAssistant.Blazor.Server");
 
 switch (databaseProvider)
-{
-    case DatabaseProvider.SQLServer:
-        Guard.Against.NullOrEmpty(configurationSettings.ConnectionString);
-        var sqlServerExternalDb = builder.AddSqlServerConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
-        webApp.WithReference(sqlServerExternalDb);
-        break;
-
-    case DatabaseProvider.SQLServerLocalDB:
-        Guard.Against.NullOrEmpty(configurationSettings.ConnectionString);
-        var sqlServerLocalDb = builder.AddSqlServerConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
-        webApp.WithReference(sqlServerLocalDb);
-        break;
-
-    case DatabaseProvider.SQLite:
-        // Unsupported.
-        break;
-
-    case DatabaseProvider.PostgresSQL:
-        Guard.Against.NullOrEmpty(configurationSettings.ConnectionString);
-        var postgresExternalDb = builder.AddPostgresConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
-        webApp.WithReference(postgresExternalDb);
-        break;
-
+{    
     case DatabaseProvider.SQLServerContainer:
-        var sqlServerDbContainer = builder.AddSqlServerContainer("AdminAssistant_SQLServer").AddDatabase(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName);
+        var sqlServerDbContainer = builder.AddSqlServer(Constants.Infrastructure.SqlServerContainerName).AddDatabase(ApplicationDbContext.DatabaseName);
         webApp.WithReference(sqlServerDbContainer);
         break;
 
     case DatabaseProvider.PostgresSQLContainer:
-        var postgresDbContainer = builder.AddPostgresContainer("AdminAssistant_Postgres").AddDatabase(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName);
+        var postgresDbContainer = builder.AddPostgres(Constants.Infrastructure.PostgressContainerName).AddDatabase(ApplicationDbContext.DatabaseName);
         webApp.WithReference(postgresDbContainer);
+        break;
+
+    default:
+        // Connect to external non-aspire DB.
         break;
 }
 
+webApp.WithReference(builder.AddProject<Projects.AdminAssistant_Services_Accounts>("AdminAssistant.Services.Accounts"));
+webApp.WithReference(builder.AddProject<Projects.AdminAssistant_Services_AssetRegister>("AdminAssistant.Services.AssetRegister"));
+webApp.WithReference(builder.AddProject<Projects.AdminAssistant_Services_Core>("AdminAssistant.Services.Core"));
 builder.Build().Run();

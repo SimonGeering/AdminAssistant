@@ -23,6 +23,10 @@
 
     <ItemGroup>
         <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Accounts\AdminAssistant.Services.Accounts.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.AssetRegister\AdminAssistant.Services.AssetRegister.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Core\AdminAssistant.Services.Core.csproj" />
+        <ProjectReference Include="..\SimonGeering.Framework\SimonGeering.Framework.csproj" />
     </ItemGroup>
 
 </Project>

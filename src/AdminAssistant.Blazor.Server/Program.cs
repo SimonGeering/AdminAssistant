@@ -5,6 +5,10 @@ using Microsoft.OpenApi.Models;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
+using AdminAssistant.Infrastructure.EntityFramework;
+using PdfSharp.Charting;
+using SimonGeering.Framework.Configuration;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,10 +63,9 @@ builder.Services.AddAutoMapper(typeof(AdminAssistant.Domain.MappingProfile), typ
 builder.Services.AddAdminAssistantServerSideProviders();
 builder.Services.AddAdminAssistantServerSideDomainModel();
 builder.Services.AddAdminAssistantApplication();
-builder.Services.AddAdminAssistantServerSideInfra(configSettings);
+builder.AddAdminAssistantServerSideInfra(configSettings);
 
 var app = builder.Build();
-
 app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.

@@ -1,3 +1,4 @@
+using AdminAssistant;
 using AdminAssistant.Infrastructure.EntityFramework;
 using AdminAssistant.Infrastructure.MediatR;
 using AdminAssistant.Infrastructure.Providers;
@@ -8,6 +9,9 @@ using AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
 using AdminAssistant.Shared;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Hosting;
+using PdfSharp.Charting;
 using SimonGeering.Framework.Configuration;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
@@ -15,15 +19,44 @@ using SimonGeering.Framework.Configuration;
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjectionExtensions
-{
+{ 
+    public static void AddAdminAssistantServerSideInfra(this IHostApplicationBuilder builder, ConfigurationSettings configurationSettings)
+    {
+        var databaseProvider = configurationSettings.GetDatabaseProviderRequiredSetting();
+
+        switch (databaseProvider)
+        {
+            case DatabaseProvider.SQLServerContainer:
+                builder.AddSqlServerDbContext<ApplicationDbContext>(ApplicationDbContext.DatabaseName);
+                break;
+
+            case DatabaseProvider.PostgresSQLContainer:
+                builder.AddNpgsqlDbContext<ApplicationDbContext>(ApplicationDbContext.DatabaseName);
+                break;
+
+            default:
+                builder.Services.AddNonContainerDbContext(configurationSettings);
+                break;
+        }
+        builder.Services.AddAdminAssistantServerSideInfra();
+    }
+
     public static void AddAdminAssistantServerSideInfra(this IServiceCollection services, ConfigurationSettings configurationSettings)
     {
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>)); // Use typeof because <,>
+        services.AddNonContainerDbContext(configurationSettings);
+        services.AddAdminAssistantServerSideInfra();
+    }
 
-        // EF Core ...
+    private static DatabaseProvider GetDatabaseProviderRequiredSetting(this ConfigurationSettings configurationSettings)
+    {
         if (Enum.TryParse(configurationSettings.DatabaseProvider, out DatabaseProvider databaseProvider) == false)
             throw new ConfigurationException("Unable to load 'DatabaseProvider' configuration setting.");
 
+        return databaseProvider;
+    }
+
+    private static void AddNonContainerDbContext(this IServiceCollection services, ConfigurationSettings configurationSettings)
+    {
         // This does not use GetConnectionString as KeyVault does not make the distinction.
         // All secrets are key value pairs, here the key is the DB provider ...
         var connectionString = configurationSettings.ConnectionString;
@@ -31,25 +64,30 @@ public static class DependencyInjectionExtensions
         if (string.IsNullOrEmpty(connectionString))
             throw new ConfigurationException("Configuration failed to load");
 
+        var databaseProvider = configurationSettings.GetDatabaseProviderRequiredSetting();
         switch (databaseProvider)
         {
             case DatabaseProvider.SQLServer:
-                services.AddDbContext<IApplicationDbContext, SqlServerApplicationDbContext>(optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
-                break;
-
             case DatabaseProvider.SQLServerLocalDB:
-                services.AddDbContext<IApplicationDbContext, SqlServerApplicationDbContext>(optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
+                services.AddDbContext<ApplicationDbContext>(optionsBuilder => optionsBuilder.UseSqlServer(connectionString));
                 break;
 
             case DatabaseProvider.SQLite:
-                services.AddDbContext<IApplicationDbContext, SqliteApplicationDbContext>(optionsBuilder => optionsBuilder.UseSqlite(connectionString));
+                services.AddDbContext<ApplicationDbContext>(optionsBuilder => optionsBuilder.UseSqlite(connectionString));
                 break;
 
             case DatabaseProvider.PostgresSQL:
-                services.AddDbContext<IApplicationDbContext, PostgresApplicationDbContext>(optionsBuilder => optionsBuilder.UseNpgsql(connectionString));
+                services.AddDbContext<ApplicationDbContext>(optionsBuilder => optionsBuilder.UseNpgsql(connectionString));
                 break;
-        }
 
+            default:
+                throw new UnsupportedDatabaseProviderException(databaseProvider);
+        }
+    }
+
+    private static void AddAdminAssistantServerSideInfra(this IServiceCollection services)
+    {
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>)); // Use typeof because <,>
         AddDALRepositories(services);
     }
 

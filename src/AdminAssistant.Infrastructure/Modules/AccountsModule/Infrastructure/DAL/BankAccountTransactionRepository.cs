@@ -9,7 +9,7 @@ namespace AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 public interface IBankAccountTransactionRepository : IReadOnlyChildRepository<BankAccountTransaction>;
 
 internal sealed class BankAccountTransactionRepository(
-    IApplicationDbContext dbContext,
+    ApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)

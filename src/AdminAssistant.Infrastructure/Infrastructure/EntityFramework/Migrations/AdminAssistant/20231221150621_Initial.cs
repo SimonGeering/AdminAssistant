@@ -1,12 +1,11 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
+namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.AdminAssistant
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -37,18 +36,18 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    AuditID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    IsArchived = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
-                    IsDeleted = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
-                    CreatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, defaultValueSql: "NOW()"),
-                    CreatedBy = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    UpdatedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    ArchivedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    ArchivedBy = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    DeletedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DeletedBy = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
+                    AuditID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsArchived = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()"),
+                    CreatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UpdatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ArchivedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ArchivedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DeletedBy = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,9 +59,9 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Accounts",
                 columns: table => new
                 {
-                    BankID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    BankName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
+                    BankID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BankName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -74,12 +73,12 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Accounts",
                 columns: table => new
                 {
-                    BankAccountTypeID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Description = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    AllowPersonal = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
-                    AllowCompany = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false),
-                    IsDeprecated = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false)
+                    BankAccountTypeID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    AllowPersonal = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    AllowCompany = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    IsDeprecated = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -91,11 +90,11 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    CurrencyID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    CurrencyID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Symbol = table.Column<string>(type: "CHAR(3)", maxLength: 3, nullable: false),
                     DecimalFormat = table.Column<string>(type: "CHAR(5)", maxLength: 5, nullable: false),
-                    IsDeprecated = table.Column<bool>(type: "boolean", nullable: false, defaultValue: false)
+                    IsDeprecated = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
                 },
                 constraints: table =>
                 {
@@ -107,9 +106,9 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    PermissionID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    PermissionKey = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false)
+                    PermissionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PermissionKey = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -121,9 +120,9 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    SettingID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    SettingKey = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false)
+                    SettingID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SettingKey = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -135,9 +134,9 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Contacts",
                 columns: table => new
                 {
-                    AddressID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuditID = table.Column<int>(type: "integer", nullable: false)
+                    AddressID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuditID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -156,21 +155,21 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Accounts",
                 columns: table => new
                 {
-                    BankAccountTransactionID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    BankAccountID = table.Column<int>(type: "integer", nullable: false),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    PayeeID = table.Column<int>(type: "integer", nullable: false),
-                    CurrencyID = table.Column<int>(type: "integer", nullable: false),
-                    BankAccountTransactionTypeID = table.Column<int>(type: "integer", nullable: false),
-                    BankAccountStatementID = table.Column<int>(type: "integer", nullable: false),
-                    BankAccountStatementNumber = table.Column<int>(type: "integer", nullable: false),
-                    IsReconciled = table.Column<bool>(type: "boolean", nullable: false),
-                    TransactionDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Credit = table.Column<int>(type: "integer", nullable: false),
-                    Debit = table.Column<int>(type: "integer", nullable: false),
-                    Description = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false),
-                    Notes = table.Column<string>(type: "character varying(4000)", maxLength: 4000, nullable: false)
+                    BankAccountTransactionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BankAccountID = table.Column<int>(type: "int", nullable: false),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    PayeeID = table.Column<int>(type: "int", nullable: false),
+                    CurrencyID = table.Column<int>(type: "int", nullable: false),
+                    BankAccountTransactionTypeID = table.Column<int>(type: "int", nullable: false),
+                    BankAccountStatementID = table.Column<int>(type: "int", nullable: false),
+                    BankAccountStatementNumber = table.Column<int>(type: "int", nullable: false),
+                    IsReconciled = table.Column<bool>(type: "bit", nullable: false),
+                    TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Credit = table.Column<int>(type: "int", nullable: false),
+                    Debit = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Notes = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -189,11 +188,11 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Budget",
                 columns: table => new
                 {
-                    BudgetID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    OwnerID = table.Column<int>(type: "integer", nullable: false),
-                    BudgetName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
+                    BudgetID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    BudgetName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -212,10 +211,10 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Budget",
                 columns: table => new
                 {
-                    BudgetEntryID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    BudgetID = table.Column<int>(type: "integer", nullable: false),
-                    AuditID = table.Column<int>(type: "integer", nullable: false)
+                    BudgetEntryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BudgetID = table.Column<int>(type: "int", nullable: false),
+                    AuditID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -234,11 +233,11 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Contacts",
                 columns: table => new
                 {
-                    ContactAddressID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AddressID = table.Column<int>(type: "integer", nullable: false),
-                    ContactID = table.Column<int>(type: "integer", nullable: false),
-                    AuditID = table.Column<int>(type: "integer", nullable: false)
+                    ContactAddressID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AddressID = table.Column<int>(type: "int", nullable: false),
+                    ContactID = table.Column<int>(type: "int", nullable: false),
+                    AuditID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -257,11 +256,11 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Documents",
                 columns: table => new
                 {
-                    DocumentID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    OwnerID = table.Column<int>(type: "integer", nullable: false),
-                    FileName = table.Column<string>(type: "character varying(255)", maxLength: 255, nullable: false)
+                    DocumentID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -280,10 +279,10 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Accounts",
                 columns: table => new
                 {
-                    PayeeID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
+                    PayeeID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -302,11 +301,11 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    UserProfileID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    SignOn = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    MSGraphID = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
+                    UserProfileID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    SignOn = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    MSGraphID = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -325,14 +324,14 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    CompanyID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    UserProfileID = table.Column<int>(type: "integer", nullable: false),
-                    Name = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    CompanyNumber = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    VATNumber = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    DateOfIncorporation = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    CompanyID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    UserProfileID = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    CompanyNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    VATNumber = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    DateOfIncorporation = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -358,10 +357,10 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    PersonalDetailsID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    UserProfileID = table.Column<int>(type: "integer", nullable: false)
+                    PersonalDetailsID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    UserProfileID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -387,10 +386,10 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    UserProfilePermissionID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserProfileID = table.Column<int>(type: "integer", nullable: false),
-                    PermissionID = table.Column<int>(type: "integer", nullable: false)
+                    UserProfilePermissionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserProfileID = table.Column<int>(type: "int", nullable: false),
+                    PermissionID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -416,10 +415,10 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    UserProfileSettingID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserProfileID = table.Column<int>(type: "integer", nullable: false),
-                    SettingID = table.Column<int>(type: "integer", nullable: false)
+                    UserProfileSettingID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserProfileID = table.Column<int>(type: "int", nullable: false),
+                    SettingID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -445,10 +444,10 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 columns: table => new
                 {
-                    OwnerID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CompanyID = table.Column<int>(type: "integer", nullable: true),
-                    PersonalDetailsID = table.Column<int>(type: "integer", nullable: true)
+                    OwnerID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyID = table.Column<int>(type: "int", nullable: true),
+                    PersonalDetailsID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -474,14 +473,14 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "AssetRegister",
                 columns: table => new
                 {
-                    AssetID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ManufacturerID = table.Column<int>(type: "integer", nullable: false),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    OwnerID = table.Column<int>(type: "integer", nullable: false),
-                    PurchasePrice = table.Column<int>(type: "integer", nullable: false),
-                    DepreciatedValue = table.Column<int>(type: "integer", nullable: false),
-                    ReplacementCost = table.Column<int>(type: "integer", nullable: false)
+                    AssetID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ManufacturerID = table.Column<int>(type: "int", nullable: false),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    PurchasePrice = table.Column<int>(type: "int", nullable: false),
+                    DepreciatedValue = table.Column<int>(type: "int", nullable: false),
+                    ReplacementCost = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -507,17 +506,17 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Accounts",
                 columns: table => new
                 {
-                    BankAccountID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    OwnerID = table.Column<int>(type: "integer", nullable: false),
-                    BankAccountTypeID = table.Column<int>(type: "integer", nullable: false),
-                    CurrencyID = table.Column<int>(type: "integer", nullable: false),
-                    AccountName = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    OpeningBalance = table.Column<int>(type: "integer", nullable: false),
-                    CurrentBalance = table.Column<int>(type: "integer", nullable: false),
-                    OpenedOn = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    IsBudgeted = table.Column<bool>(type: "boolean", nullable: false)
+                    BankAccountID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    BankAccountTypeID = table.Column<int>(type: "int", nullable: false),
+                    CurrencyID = table.Column<int>(type: "int", nullable: false),
+                    AccountName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    OpeningBalance = table.Column<int>(type: "int", nullable: false),
+                    CurrentBalance = table.Column<int>(type: "int", nullable: false),
+                    OpenedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsBudgeted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -550,14 +549,14 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Contacts",
                 columns: table => new
                 {
-                    ContactID = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AuditID = table.Column<int>(type: "integer", nullable: false),
-                    OwnerID = table.Column<int>(type: "integer", nullable: false),
-                    TitleID = table.Column<int>(type: "integer", nullable: false),
-                    FirstName = table.Column<string>(type: "text", nullable: false),
-                    LastName = table.Column<string>(type: "text", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
+                    ContactID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuditID = table.Column<int>(type: "int", nullable: false),
+                    OwnerID = table.Column<int>(type: "int", nullable: false),
+                    TitleID = table.Column<int>(type: "int", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -698,7 +697,8 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                 schema: "Core",
                 table: "Owner",
                 columns: new[] { "CompanyID", "PersonalDetailsID" },
-                unique: true);
+                unique: true,
+                filter: "[CompanyID] IS NOT NULL AND [PersonalDetailsID] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Owner_PersonalDetailsID",

@@ -11,7 +11,7 @@ namespace AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
 public interface IContactRepository : IRepository<Contact, ContactId>;
 
 internal sealed class ContactRepository(
-    IApplicationDbContext dbContext,
+    ApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)

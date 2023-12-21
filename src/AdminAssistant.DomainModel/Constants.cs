@@ -58,4 +58,13 @@ public static class Constants
     /// The name used for adding httpClient to the services collection.
     /// </summary>
     public const string AdminAssistantWebAPIClient = "AdminAssistantWebAPIClient";
+
+    /// <summary>
+    /// Infrastructure Global Constants.
+    /// </summary>
+    public static class Infrastructure
+    {
+        public const string SqlServerContainerName = "AdminAssistant_SQLServer";
+        public const string PostgressContainerName = "AdminAssistant_Postgres";
+    }
 }

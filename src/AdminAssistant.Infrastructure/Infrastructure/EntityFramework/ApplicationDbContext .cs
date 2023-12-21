@@ -9,49 +9,61 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infrastructure.EntityFramework;
 
-public interface IApplicationDbContext : IDisposable
-{
-    // Core ...
-    DbSet<AuditEntity> AuditTrail { get; set; }
-    DbSet<CompanyEntity> Company { get; set; }
-    DbSet<PersonalDetailsEntity> PersonalDetails { get; set; }
-    DbSet<OwnerEntity> Owners { get; set; }
+//public interface IApplicationDbContext : IDisposable
+//{
+//    // Core ...
+//    DbSet<AuditEntity> AuditTrail { get; set; }
+//    DbSet<CompanyEntity> Company { get; set; }
+//    DbSet<PersonalDetailsEntity> PersonalDetails { get; set; }
+//    DbSet<OwnerEntity> Owners { get; set; }
 
-    DbSet<UserProfileEntity> UserProfiles { get; set; }
-    DbSet<CurrencyEntity> Currencies { get; set; }
+//    DbSet<UserProfileEntity> UserProfiles { get; set; }
+//    DbSet<CurrencyEntity> Currencies { get; set; }
 
-    DbSet<PermissionEntity> Permissions { get; set; }
-    DbSet<SettingEntity> Settings { get; set; }
+//    DbSet<PermissionEntity> Permissions { get; set; }
+//    DbSet<SettingEntity> Settings { get; set; }
 
-    // Accounts ...
-    DbSet<BankEntity> Banks { get; set; }
-    DbSet<BankAccountEntity> BankAccounts { get; set; }
-    DbSet<BankAccountTransactionEntity> BankAccountTransactions { get; set; }
-    DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; }
+//    // Accounts ...
+//    DbSet<BankEntity> Banks { get; set; }
+//    DbSet<BankAccountEntity> BankAccounts { get; set; }
+//    DbSet<BankAccountTransactionEntity> BankAccountTransactions { get; set; }
+//    DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; }
 
-    // Contacts ...
-    DbSet<ContactEntity> Contacts { get; set; }
+//    // Contacts ...
+//    DbSet<ContactEntity> Contacts { get; set; }
 
-    // Documents ...
-    DbSet<DocumentEntity> Documents { get; set; }
+//    // Documents ...
+//    DbSet<DocumentEntity> Documents { get; set; }
 
-    // TODO: Soft Delete https://medium.com/@unhandlederror/deleting-it-softly-with-ef-core-5f191db5cf72
-    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+//    // TODO: Soft Delete https://medium.com/@unhandlederror/deleting-it-softly-with-ef-core-5f191db5cf72
+//    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
-    // Migrations etc ...
-    string ConnectionString { get; }
-    void EnsureDatabaseIsCreated();
-    void Migrate();
-}
+//    // Migrations etc ...
+//    string ConnectionString { get; }
+//    void EnsureDatabaseIsCreated();
+//    void Migrate();
+//}
 
 // dotnet ef migrations add InitialCreate --startup-project ..\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.csproj
 // dotnet ef database update
-public abstract class ApplicationDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext : DbContext
 {
-    private readonly DatabaseProvider _databaseProvider;
+    public const string DatabaseName = "AdminAssistant";
 
-    protected ApplicationDbContext(DbContextOptions options, DatabaseProvider databaseProvider)
-        : base(options) => _databaseProvider = databaseProvider;
+    private readonly DatabaseProvider _databaseProvider = DatabaseProvider.Unknown;
+
+    public ApplicationDbContext(DbContextOptions options)
+        : base(options)
+    {
+        if (Database.IsNpgsql())
+            _databaseProvider = DatabaseProvider.PostgresSQL;
+        else if (Database.IsSqlServer())
+            _databaseProvider = DatabaseProvider.SQLServer;
+        else if (Database.IsSqlite())
+            _databaseProvider = DatabaseProvider.SQLite;
+        else
+            throw new UnsupportedDatabaseProviderException(_databaseProvider);
+    }
 
     // Core ...
     public DbSet<AuditEntity> AuditTrail { get; set; } = null!;

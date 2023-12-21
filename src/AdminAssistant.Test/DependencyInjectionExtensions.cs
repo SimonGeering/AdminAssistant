@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjectionExtensions
 {
-    public static void AddMockDbContext(this IServiceCollection services, Mock<IApplicationDbContext> mockDbContext)
+    public static void AddMockDbContext(this IServiceCollection services, Mock<ApplicationDbContext> mockDbContext)
         => services.AddTransient(_ => mockDbContext.Object);
 
     public static void AddMockUserContextProvider(this IServiceCollection services)
