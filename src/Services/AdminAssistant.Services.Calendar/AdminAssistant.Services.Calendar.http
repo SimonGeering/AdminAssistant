@@ -1,0 +1,6 @@
+@AdminAssistant.Services.Calendar_HostAddress = http://localhost:5107
+
+GET {{AdminAssistant.Services.Calendar_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

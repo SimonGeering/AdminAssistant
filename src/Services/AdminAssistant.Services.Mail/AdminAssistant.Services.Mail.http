@@ -1,0 +1,6 @@
+@AdminAssistant.Services.Mail_HostAddress = http://localhost:5270
+
+GET {{AdminAssistant.Services.Mail_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

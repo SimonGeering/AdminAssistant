@@ -1,0 +1,6 @@
+@AdminAssistant.Services.Budget_HostAddress = http://localhost:5290
+
+GET {{AdminAssistant.Services.Budget_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,6 @@
+@AdminAssistant.Services.Admin_HostAddress = http://localhost:5201
+
+GET {{AdminAssistant.Services.Admin_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
