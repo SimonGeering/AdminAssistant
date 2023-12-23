@@ -9,14 +9,46 @@ using SimonGeering.Framework.Configuration;
 
 var builder = DistributedApplication.CreateBuilder(args);
 
+// Config Settings ...
 //var configurationSettings = builder.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
 //Guard.Against.Null(configurationSettings);
 
 //if (Enum.TryParse(configurationSettings.DatabaseProvider, out DatabaseProvider databaseProvider) == false)
 //    throw new ConfigurationException("Unable to load 'DatabaseProvider' configuration setting.");
 
+// Services ...
+var accounts = builder.AddProject<Projects.AdminAssistant_Services_Accounts>("AdminAssistant.Services.Accounts");
+var admin = builder.AddProject<Projects.AdminAssistant_Services_Admin>("AdminAssistant.Services.Admin");
+var assetRegister = builder.AddProject<Projects.AdminAssistant_Services_AssetRegister>("AdminAssistant.Services.AssetRegister");
+var budget = builder.AddProject<Projects.AdminAssistant_Services_Budget>("AdminAssistant.Services.Budget");
+var calendar = builder.AddProject<Projects.AdminAssistant_Services_Calendar>("AdminAssistant.Services.Calendar");
+var contacts = builder.AddProject<Projects.AdminAssistant_Services_Contacts>("AdminAssistant.Services.Contacts");
+var core = builder.AddProject<Projects.AdminAssistant_Services_Core>("AdminAssistant.Services.Core");
+var documents = builder.AddProject<Projects.AdminAssistant_Services_Documents>("AdminAssistant.Services.Documents");
+var mail = builder.AddProject<Projects.AdminAssistant_Services_Mail>("AdminAssistant.Services.Mail");
+var notes = builder.AddProject<Projects.AdminAssistant_Services_Notes>("AdminAssistant.Services.Notes");
+var scheduledPayments = builder.AddProject<Projects.AdminAssistant_Services_ScheduledPayments>("AdminAssistant.Services.ScheduledPayments");
+var tasks = builder.AddProject<Projects.AdminAssistant_Services_Tasks>("AdminAssistant.Services.Tasks");
+
+builder.AddProject<Projects.AdminAssistant_Hangfire>("AdminAssistant.HangFire");
+
+var gateway = builder.AddProject<Projects.AdminAssistant_Gateway>("AdminAssistant.Gateway")
+    .WithReference(accounts)
+    .WithReference(admin)
+    .WithReference(assetRegister)
+    .WithReference(budget)
+    .WithReference(calendar)
+    .WithReference(contacts)
+    .WithReference(core)
+    .WithReference(documents)
+    .WithReference(mail)
+    .WithReference(notes)
+    .WithReference(scheduledPayments)
+    .WithReference(tasks);
+
 //var webApp = builder.AddProject<Projects.AdminAssistant_Blazor_Server>("AdminAssistant.Blazor.Server");
-var webApp = builder.AddProject<Projects.AdminAssistant_Blazor>("AdminAssistant.Blazor");
+builder.AddProject<Projects.AdminAssistant_Blazor>("AdminAssistant.Blazor")
+    .WithReference(gateway);
 
 //switch (databaseProvider)
 //{    
@@ -35,19 +67,5 @@ var webApp = builder.AddProject<Projects.AdminAssistant_Blazor>("AdminAssistant.
 //        break;
 //}
 
-//webApp.WithReference(builder.AddProject<Projects.AdminAssistant_Services_Accounts>("AdminAssistant.Services.Accounts"));
-//webApp.WithReference(builder.AddProject<Projects.AdminAssistant_Services_AssetRegister>("AdminAssistant.Services.AssetRegister"));
-//webApp.WithReference(builder.AddProject<Projects.AdminAssistant_Services_Core>("AdminAssistant.Services.Core"));
-builder.AddProject<Projects.AdminAssistant_Services_Budget>("adminassistant.services.budget");
-builder.AddProject<Projects.AdminAssistant_Services_Calendar>("adminassistant.services.calendar");
-builder.AddProject<Projects.AdminAssistant_Services_Contacts>("adminassistant.services.contacts");
-builder.AddProject<Projects.AdminAssistant_Services_Documents>("adminassistant.services.documents");
-builder.AddProject<Projects.AdminAssistant_Services_Mail>("adminassistant.services.mail");
-builder.AddProject<Projects.AdminAssistant_Services_Tasks>("adminassistant.services.tasks");
-builder.AddProject<Projects.AdminAssistant_Services_Notes>("adminassistant.services.notes");
-builder.AddProject<Projects.AdminAssistant_Services_Admin>("adminassistant.services.admin");
-builder.AddProject<Projects.AdminAssistant_Services_ScheduledPayments>("adminassistant.services.scheduledpayments");
-builder.AddProject<Projects.AdminAssistant_Gateway>("adminassistant.gateway");
-builder.AddProject<Projects.AdminAssistant_Hangfire>("adminassistant.hangfire");
 
 builder.Build().Run();
