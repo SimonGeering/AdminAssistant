@@ -13,9 +13,9 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="8.0.0" />
-    <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.14.0.81108" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.23.0.88079" />
     <!--AdminAssistant.Aspire-->
-    <PackageVersion Include="Aspire.Hosting" Version="8.0.0-preview.1.23557.2" />
+    <PackageVersion Include="Aspire.Hosting" Version="8.0.0-preview.4.24156.9" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="8.0.0-preview.1.23557.2" />
     <PackageVersion Include="Npgsql.OpenTelemetry" Version="8.0.1" />
