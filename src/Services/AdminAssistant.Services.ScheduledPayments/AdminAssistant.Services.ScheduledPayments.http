@@ -1,0 +1,6 @@
+@AdminAssistant.Services.ScheduledPayments_HostAddress = http://localhost:5087
+
+GET {{AdminAssistant.Services.ScheduledPayments_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

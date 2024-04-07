@@ -23,6 +23,23 @@
 
     <ItemGroup>
         <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Gateway\AdminAssistant.Gateway.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Hangfire\AdminAssistant.Hangfire.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Accounts\AdminAssistant.Services.Accounts.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Admin\AdminAssistant.Services.Admin.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.AssetRegister\AdminAssistant.Services.AssetRegister.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Budget\AdminAssistant.Services.Budget.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Calendar\AdminAssistant.Services.Calendar.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Contacts\AdminAssistant.Services.Contacts.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Core\AdminAssistant.Services.Core.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Documents\AdminAssistant.Services.Documents.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Mail\AdminAssistant.Services.Mail.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Notes\AdminAssistant.Services.Notes.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.ScheduledPayments\AdminAssistant.Services.ScheduledPayments.csproj" />
+        <ProjectReference Include="..\Services\AdminAssistant.Services.Tasks\AdminAssistant.Services.Tasks.csproj" />
+        <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj">
+            <IsAspireProjectResource>false</IsAspireProjectResource>
+        </ProjectReference>
     </ItemGroup>
 
 </Project>
