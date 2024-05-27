@@ -10,7 +10,25 @@ namespace AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
 
 public interface IContactRepository : IRepository<Contact, ContactId>;
 
-internal sealed class ContactRepository(
+internal sealed class SqlServerContactRepository(
+    SqlServerApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : ContactRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider)
+{
+}
+
+internal sealed class PostgresContactRepository(
+    PostgresApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : ContactRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider)
+{
+}
+
+internal abstract class ContactRepositoryBase(
     IApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,

@@ -18,7 +18,7 @@ if (Enum.TryParse(configurationSettings.DatabaseProvider, out DatabaseProvider d
     throw new ConfigurationException("Unable to load 'DatabaseProvider' configuration setting.");
 
 // Main App ...
-var webApp = builder.AddProject<Projects.AdminAssistant_Blazor_Server>(configurationSettings.AspireServerAppName);
+//var webApp = builder.AddProject<Projects.AdminAssistant_Blazor_Server>(configurationSettings.AspireServerAppName);
 
 // Database Server ...
 switch (databaseProvider)
@@ -26,16 +26,16 @@ switch (databaseProvider)
     case DatabaseProvider.SQLServer:
         Guard.Against.NullOrEmpty(configurationSettings.ConnectionString);
         throw new NotImplementedException("TODO - DatabaseProvider.SQLServer");
-        // var sqlServerExternalDb = builder.AddSqlServerConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
-        // webApp.WithReference(sqlServerExternalDb);
-        // break;
+    // var sqlServerExternalDb = builder.AddSqlServerConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
+    // webApp.WithReference(sqlServerExternalDb);
+    // break;
 
     case DatabaseProvider.SQLServerLocalDB:
         Guard.Against.NullOrEmpty(configurationSettings.ConnectionString);
         throw new NotImplementedException("TODO - DatabaseProvider.SQLServerLocalDB");
-        // var sqlServerLocalDb = builder.AddSqlServerConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
-        // webApp.WithReference(sqlServerLocalDb);
-        // break;
+    // var sqlServerLocalDb = builder.AddSqlServerConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
+    // webApp.WithReference(sqlServerLocalDb);
+    // break;
 
     case DatabaseProvider.SQLite:
         throw new System.NotSupportedException("SQLite database provider not currently supported.");
@@ -43,15 +43,15 @@ switch (databaseProvider)
     case DatabaseProvider.PostgresSQL:
         Guard.Against.NullOrEmpty(configurationSettings.ConnectionString);
         throw new NotImplementedException("TODO - DatabaseProvider.PostgresSQL");
-        // var postgresExternalDb = builder.AddPostgresConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
-        // webApp.WithReference(postgresExternalDb);
-        // break;
+    // var postgresExternalDb = builder.AddPostgresConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
+    // webApp.WithReference(postgresExternalDb);
+    // break;
 
     case DatabaseProvider.SQLServerContainer:
         var sqlServerDbContainer = builder
             .AddSqlServer(configurationSettings.AspireSqlServerName)
             .AddDatabase(configurationSettings.AspireDatabaseName);
-        webApp.WithReference(sqlServerDbContainer);
+        //webApp.WithReference(sqlServerDbContainer, configurationSettings.AspireDatabaseName);
         break;
 
     case DatabaseProvider.PostgresSQLContainer:
@@ -59,7 +59,7 @@ switch (databaseProvider)
             .AddPostgres(configurationSettings.AspirePostgresServerName)
             .WithPgAdmin()
             .AddDatabase(configurationSettings.AspireDatabaseName);
-        webApp.WithReference(postgresDbContainer);
+        //webApp.WithReference(postgresDbContainer, configurationSettings.AspireDatabaseName);
         break;
 }
 
@@ -83,7 +83,7 @@ var backgroundJobHost = builder.AddProject<Projects.AdminAssistant_Hangfire>("Ad
 // Gateway ...
 var gateway = builder.AddProject<Projects.AdminAssistant_Gateway>("AdminAssistant-Gateway");
 
-webApp.WithReference(gateway);
+//webApp.WithReference(gateway);
 
 builder.Build().Run();
 #pragma warning restore S1481

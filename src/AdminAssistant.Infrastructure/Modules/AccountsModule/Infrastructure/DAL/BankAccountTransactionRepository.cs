@@ -8,7 +8,25 @@ namespace AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 
 public interface IBankAccountTransactionRepository : IReadOnlyChildRepository<BankAccountTransaction>;
 
-internal sealed class BankAccountTransactionRepository(
+internal sealed class SqlServerBankAccountTransactionRepository(
+    SqlServerApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : BankAccountTransactionRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider)
+{
+}
+
+internal sealed class PostgresBankAccountTransactionRepository(
+    PostgresApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : BankAccountTransactionRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider)
+{
+}
+
+internal abstract class BankAccountTransactionRepositoryBase(
     IApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,

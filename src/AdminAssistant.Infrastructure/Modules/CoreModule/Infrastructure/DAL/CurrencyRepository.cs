@@ -9,7 +9,25 @@ namespace AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 
 public interface ICurrencyRepository : IRepository<Currency, CurrencyId>;
 
-internal sealed class CurrencyRepository(
+internal sealed class SqlServerCurrencyRepository(
+    SqlServerApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : CurrencyRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider)
+{
+}
+
+internal sealed class PostgresCurrencyRepository(
+    PostgresApplicationDbContext dbContext,
+    IMapper mapper,
+    IDateTimeProvider dateTimeProvider,
+    IUserContextProvider userContextProvider)
+    : CurrencyRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider)
+{
+}
+
+internal abstract class CurrencyRepositoryBase(
     IApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,
