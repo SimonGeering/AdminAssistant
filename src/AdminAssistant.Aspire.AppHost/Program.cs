@@ -18,7 +18,7 @@ if (Enum.TryParse(configurationSettings.DatabaseProvider, out DatabaseProvider d
     throw new ConfigurationException("Unable to load 'DatabaseProvider' configuration setting.");
 
 // Main App ...
-//var webApp = builder.AddProject<Projects.AdminAssistant_Blazor_Server>(configurationSettings.AspireServerAppName);
+var webApp = builder.AddProject<Projects.AdminAssistant_Blazor_Server>(configurationSettings.AspireServerAppName);
 
 // Database Server ...
 switch (databaseProvider)
@@ -83,7 +83,7 @@ var backgroundJobHost = builder.AddProject<Projects.AdminAssistant_Hangfire>("Ad
 // Gateway ...
 var gateway = builder.AddProject<Projects.AdminAssistant_Gateway>("AdminAssistant-Gateway");
 
-//webApp.WithReference(gateway);
+webApp.WithReference(gateway);
 
 builder.Build().Run();
 #pragma warning restore S1481
