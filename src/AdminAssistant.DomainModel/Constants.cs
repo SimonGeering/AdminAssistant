@@ -6,6 +6,26 @@ namespace AdminAssistant;
 /// </summary>
 public static class Constants
 {
+    public static class Services
+    {
+        public const string AccountsApi = "AdminAssistant-AccountsApi";
+        public const string AdminApi = "AdminAssistant-AdminApi";
+        public const string AssetRegisterApi = "AdminAssistant-AssetRegisterApi";
+        public const string BudgetApi = "AdminAssistant-BudgetApi";
+        public const string CalendarApi = "AdminAssistant-CalendarApi";
+        public const string ContactsApi = "AdminAssistant-ContactsApi";
+        public const string CoreApi = "AdminAssistant-CoreApi";
+        public const string DocumentsApi = "AdminAssistant-DocumentsApi";
+        public const string MailApi = "AdminAssistant-MailApi";
+        public const string NotesApi = "AdminAssistant-NotesApi";
+        public const string ScheduledPaymentsApi = "AdminAssistant-ScheduledPaymentsApi";
+        public const string TasksApi = "AdminAssistant-TasksApi";
+
+        public const string BackgroundJobHost = "AdminAssistant-BackgroundJobHost";
+
+        public const string Gateway = "AdminAssistant-Gateway";
+    }
+
     /// <summary>
     /// Represents the index of the first item in an array.
     /// </summary>
