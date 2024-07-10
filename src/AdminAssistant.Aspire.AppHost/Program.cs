@@ -45,7 +45,7 @@ switch (databaseProvider)
     case DatabaseProvider.SQLServerLocalDB:
         Guard.Against.NullOrEmpty(configurationSettings.ConnectionString);
         throw new NotImplementedException("TODO - DatabaseProvider.SQLServerLocalDB");
-        var moo = builder.AddConnectionString
+        //var moo = builder.AddConnectionString
     // var sqlServerLocalDb = builder.AddSqlServerConnection(ConfigurationSettings.AdminAssistantWellKnownConnectionStringName, configurationSettings.ConnectionString);
     // webApp.WithReference(sqlServerLocalDb);
     // break;
@@ -65,7 +65,7 @@ switch (databaseProvider)
             .AddSqlServer(configurationSettings.AspireSqlServerName)
             .AddDatabase(configurationSettings.AspireDatabaseName);
         //webApp.WithReference(sqlServerDbContainer, configurationSettings.AspireDatabaseName);
-        accounts.WithReference(sqlServerDbContainer)
+        //accounts.WithReference(sqlServerDbContainer)
         break;
 
     case DatabaseProvider.PostgresSQLContainer:
@@ -98,6 +98,9 @@ var gateway = builder.AddProject<Projects.AdminAssistant_Gateway>(Constants.Serv
 
 // Main App ...
 var webApp = builder.AddProject<Projects.AdminAssistant_Blazor_Server>(configurationSettings.AspireServerAppName)
+    .WithReference(gateway);
+
+var retroApp = builder.AddProject<Projects.AdminAssistant_Retro>("RetroConsole")
     .WithReference(gateway);
 
 builder.Build().Run();

@@ -29,9 +29,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
     <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
     <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

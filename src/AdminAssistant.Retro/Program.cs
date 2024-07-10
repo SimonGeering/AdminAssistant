@@ -1,49 +1,27 @@
 #pragma warning disable IDE0090 // Use 'new(...)'
-using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Retro.Modules.AccountsModule;
 using AdminAssistant.Shared;
 using Ardalis.GuardClauses;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using SimonGeering.Framework.Primitives;
 
-using var host = new HostBuilder()
-    .ConfigureServices((hostContext, services) =>
-    {
-        var configSettings = hostContext.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
-        Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
+var builder = Host.CreateApplicationBuilder(args);
+builder.AddServiceDefaults();
 
-        services.AddAdminAssistantWebAPIClient(configSettings);
+var configSettings = builder.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
 
-        services.AddValidatorsFromAssemblyContaining<IPersistable>();
+builder.Services.AddAdminAssistantWebAPIClient(configSettings);
+builder.Services.AddValidatorsFromAssemblyContaining<IPersistable>();
+builder.Services.AddAdminAssistantClientSideProviders();
+builder.Services.AddAdminAssistantClientSideDomainModel();
+builder.Services.AddAdminAssistantUI();
 
-        services.AddAdminAssistantClientSideProviders();
-        services.AddAdminAssistantClientSideDomainModel();
-        services.AddAdminAssistantUI();
-        services.AddAdminAssistantRetroUIElements();
-    })
-    .ConfigureLogging(logging =>
-    {
-        logging.ClearProviders();
-#if DEBUG
-        logging.AddConsole();
-        logging.AddDebug();
+builder.Services.AddAdminAssistantRetroUIElements();
 
-        logging.AddFilter("Default", LogLevel.Information)
-                .AddFilter(ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
-                .AddFilter("Microsoft", LogLevel.Warning)
-                .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Information);
-#else
-        logging.AddFilter("Default", LogLevel.Warning)
-                .AddFilter(ILoggingProvider.ClientSideLogCategory, LogLevel.Debug)
-                .AddFilter("Microsoft", LogLevel.Warning)
-                .AddFilter("Microsoft.Hosting.Lifetime", LogLevel.Warning);
-
-        // TODO: Configure production logging.
-#endif
-    }).Build();
+using var host = new HostBuilder().Build();
 
 using (var scope = host.Services.CreateScope())
 {
