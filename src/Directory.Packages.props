@@ -85,7 +85,7 @@
     <PackageVersion Include="NSwag.MSBuild" Version="14.0.0-preview010" />
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="ReactiveUI" Version="19.5.1" />
-    <PackageVersion Include="Terminal.Gui" Version="1.14.1" />
+    <PackageVersion Include="Terminal.Gui" Version="2.0.0-prealpha.1829" />
     <!--AdminAssistant.Test-->
     <PackageVersion Include="coverlet.collector" Version="6.0.0" />
     <PackageVersion Include="FluentAssertions" Version="6.12.0" />

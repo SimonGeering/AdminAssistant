@@ -60,7 +60,7 @@ internal sealed class BankAccountEditDialog : DialogWindowBase<IBankAccountEditD
 			Text = "Username:"
 		};
 
-		usernameText = new TextField ("") {
+		usernameText = new TextField {
 			// Position text field adjacent to the label
 			X = Pos.Right (usernameLabel) + 1,
 
@@ -74,7 +74,7 @@ internal sealed class BankAccountEditDialog : DialogWindowBase<IBankAccountEditD
 			Y = Pos.Bottom (usernameLabel) + 1
 		};
 
-		var passwordText = new TextField ("") {
+		var passwordText = new TextField () {
 			Secret = true,
 			// align with the text box above
 			X = Pos.Left (usernameText),
@@ -92,7 +92,8 @@ internal sealed class BankAccountEditDialog : DialogWindowBase<IBankAccountEditD
 		};
 
 		// When login button is clicked display a message popup
-		btnLogin.Clicked += () => {
+		btnLogin.Accept += (sender, e) =>
+        {
 			if (usernameText.Text == "admin" && passwordText.Text == "password") {
 				MessageBox.Query ("Logging In", "Login Successful", "Ok");
 				Application.RequestStop ();
