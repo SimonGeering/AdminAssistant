@@ -7,6 +7,8 @@ public static class DependencyInjectionExtensions
 {
     public static IServiceCollection AddAdminAssistantRetroUIElements(this IServiceCollection services)
     {
+        services.AddTransient<MainWindow>();
+
         services.AddAccountsRetroUIElements();
         return services;
     }

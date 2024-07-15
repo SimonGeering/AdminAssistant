@@ -1,9 +1,6 @@
-using System.Reflection.PortableExecutable;
 using AdminAssistant.Modules.AccountsModule.UI;
-using Terminal.Gui;
 
 namespace AdminAssistant.Retro.Modules.AccountsModule;
-
 
 //        <Header><div id = "Accounts_BankAccountEditDialog_Title" > @this.vm.HeaderText </ div ></ Header >
 //        < Content >
@@ -50,50 +47,43 @@ namespace AdminAssistant.Retro.Modules.AccountsModule;
 
 internal sealed class BankAccountEditDialog : DialogWindowBase<IBankAccountEditDialogViewModel>
 {
-	public TextField usernameText;
-
-	public BankAccountEditDialog(IBankAccountEditDialogViewModel vm)
+    public BankAccountEditDialog(IBankAccountEditDialogViewModel vm)
         : base(vm, vm.HeaderText)
 	{
-        // Create input components and labels
-		var usernameLabel = new Label () {
-			Text = "Username:"
-		};
+        var usernameLabel = new Label { Text = "Username:" };
 
-		usernameText = new TextField {
-			// Position text field adjacent to the label
-			X = Pos.Right (usernameLabel) + 1,
+        var usernameText = new TextField
+        {
+            X = Pos.Right (usernameLabel) + 1, // Position text field adjacent to the label
+            Width = Dim.Fill (), // Fill remaining horizontal space
+        };
 
-			// Fill remaining horizontal space
-			Width = Dim.Fill (),
-		};
-
-		var passwordLabel = new Label () {
+        var passwordLabel = new Label
+        {
 			Text = "Password:",
 			X = Pos.Left (usernameLabel),
 			Y = Pos.Bottom (usernameLabel) + 1
 		};
 
-		var passwordText = new TextField () {
+        var passwordText = new TextField
+        {
 			Secret = true,
-			// align with the text box above
-			X = Pos.Left (usernameText),
+			X = Pos.Left (usernameText), // align with the text box above
 			Y = Pos.Top (passwordLabel),
 			Width = Dim.Fill (),
 		};
 
-		// Create login button
-		var btnLogin = new Button () {
+		var btnLogin = new Button
+        {
 			Text = "Login",
 			Y = Pos.Bottom(passwordLabel) + 1,
 			// center the login button horizontally
 			X = Pos.Center (),
 			IsDefault = true,
 		};
-
-		// When login button is clicked display a message popup
 		btnLogin.Accept += (sender, e) =>
         {
+            // When login button is clicked display a message popup
 			if (usernameText.Text == "admin" && passwordText.Text == "password") {
 				MessageBox.Query ("Logging In", "Login Successful", "Ok");
 				Application.RequestStop ();
