@@ -97,11 +97,13 @@ var gateway = builder.AddProject<Projects.AdminAssistant_Gateway>(Constants.Serv
     .WithReference(tasks);
 
 // Main App ...
-var webApp = builder.AddProject<Projects.AdminAssistant_Blazor_Server>(configurationSettings.AspireServerAppName)
+builder.AddProject<Projects.AdminAssistant_Blazor_Server>(configurationSettings.AspireServerAppName)
     .WithReference(gateway);
 
-var retroApp = builder.AddProject<Projects.AdminAssistant_Retro>("RetroConsole")
+builder.AddProject<Projects.AdminAssistant_Retro>(Constants.Services.RetroConsole)
     .WithReference(gateway);
+
+builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationWorkerService>(Constants.Services.DatabaseMigrationWorkerService);
 
 builder.Build().Run();
 #pragma warning restore S1481

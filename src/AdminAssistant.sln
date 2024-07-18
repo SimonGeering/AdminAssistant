@@ -69,6 +69,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Services.Tas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Gateway", "AdminAssistant.Gateway\AdminAssistant.Gateway.csproj", "{6EE96684-F224-4A36-88A4-A381994BAB1F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Aspire.DatabaseMigrationWorkerService", "AdminAssistant.Aspire.DatabaseMigrationWorkerService\AdminAssistant.Aspire.DatabaseMigrationWorkerService.csproj", "{8E723F6E-7DDD-47D9-97E0-721B39CC5F54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -183,6 +185,10 @@ Global
 		{6EE96684-F224-4A36-88A4-A381994BAB1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EE96684-F224-4A36-88A4-A381994BAB1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6EE96684-F224-4A36-88A4-A381994BAB1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E723F6E-7DDD-47D9-97E0-721B39CC5F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E723F6E-7DDD-47D9-97E0-721B39CC5F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E723F6E-7DDD-47D9-97E0-721B39CC5F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E723F6E-7DDD-47D9-97E0-721B39CC5F54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

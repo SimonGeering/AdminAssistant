@@ -24,6 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\AdminAssistant.Aspire.DatabaseMigrationWorkerService\AdminAssistant.Aspire.DatabaseMigrationWorkerService.csproj" />
         <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
         <ProjectReference Include="..\AdminAssistant.Gateway\AdminAssistant.Gateway.csproj" />
         <ProjectReference Include="..\AdminAssistant.Hangfire\AdminAssistant.Hangfire.csproj" />

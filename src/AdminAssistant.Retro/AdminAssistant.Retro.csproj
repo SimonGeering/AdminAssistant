@@ -10,18 +10,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="AdminAssistant.Retro.docs.xml"/>
-        <None Include="..\.editorconfig" Link=".editorconfig"/>
+        <None Remove="AdminAssistant.Retro.docs.xml" />
+        <None Include="..\.editorconfig" Link=".editorconfig" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="FluentValidation.DependencyInjectionExtensions"/>
-        <PackageReference Include="JetBrains.Annotations"/><!--https://github.com/gui-cs/Terminal.Gui/issues/3544-->
-        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets"/>
-        <PackageReference Include="Microsoft.Extensions.Hosting"/>
-        <PackageReference Include="Microsoft.Extensions.Http"/>
-        <PackageReference Include="ReactiveUI"/>
-        <PackageReference Include="Terminal.Gui"/>
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+        <PackageReference Include="JetBrains.Annotations" /><!--https://github.com/gui-cs/Terminal.Gui/issues/3544-->
+        <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" />
+        <PackageReference Include="Microsoft.Extensions.Http" />
+        <PackageReference Include="ReactiveUI" />
+        <PackageReference Include="Terminal.Gui" />
     </ItemGroup>
 
     <ItemGroup>
@@ -32,17 +32,19 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj"/>
-        <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj"/>
-        <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj"/>
-        <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj"/>
+        <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
+        <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="appsettings.json"/>
+        <None Remove="appsettings.json" />
         <Content Include="appsettings.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
+
+    <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

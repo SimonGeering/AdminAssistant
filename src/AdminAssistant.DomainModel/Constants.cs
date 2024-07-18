@@ -24,8 +24,12 @@ public static class Constants
         public const string BackgroundJobHost = "AdminAssistant-BackgroundJobHost";
 
         public const string Gateway = "AdminAssistant-Gateway";
-    }
 
+        // TODO: move this somewhere not Services
+        public const string RetroConsole = "AdminAssistant-RetroConsole";
+        // TODO: move this somewhere not Services
+        public const string DatabaseMigrationWorkerService = "AdminAssistant-DatabaseMigrationWorkerService";
+    }
     /// <summary>
     /// Represents the index of the first item in an array.
     /// </summary>
