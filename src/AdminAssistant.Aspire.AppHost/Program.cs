@@ -6,6 +6,7 @@
 using AdminAssistant;
 using AdminAssistant.Shared;
 using Ardalis.GuardClauses;
+using Aspire.Hosting;
 using Microsoft.Extensions.Configuration;
 using SimonGeering.Framework.Configuration;
 
@@ -19,18 +20,33 @@ if (Enum.TryParse(configurationSettings.DatabaseProvider, out DatabaseProvider d
     throw new ConfigurationException("Unable to load 'DatabaseProvider' configuration setting.");
 
 // Services ...
-var accounts = builder.AddProject<Projects.AdminAssistant_Services_Accounts>(Constants.Services.AccountsApi);
-var admin = builder.AddProject<Projects.AdminAssistant_Services_Admin>(Constants.Services.AdminApi);
-var assetRegister = builder.AddProject<Projects.AdminAssistant_Services_AssetRegister>(Constants.Services.AssetRegisterApi);
-var budget = builder.AddProject<Projects.AdminAssistant_Services_Budget>(Constants.Services.BudgetApi);
-var calendar = builder.AddProject<Projects.AdminAssistant_Services_Calendar>(Constants.Services.CalendarApi);
-var contacts = builder.AddProject<Projects.AdminAssistant_Services_Contacts>(Constants.Services.ContactsApi);
-var core = builder.AddProject<Projects.AdminAssistant_Services_Core>(Constants.Services.CoreApi);
-var documents = builder.AddProject<Projects.AdminAssistant_Services_Documents>(Constants.Services.DocumentsApi);
-var mail = builder.AddProject<Projects.AdminAssistant_Services_Mail>(Constants.Services.MailApi);
-var notes = builder.AddProject<Projects.AdminAssistant_Services_Notes>(Constants.Services.NotesApi);
-var scheduledPayments = builder.AddProject<Projects.AdminAssistant_Services_ScheduledPayments>(Constants.Services.ScheduledPaymentsApi);
-var tasks = builder.AddProject<Projects.AdminAssistant_Services_Tasks>(Constants.Services.TasksApi);
+var accounts = builder.AddProject<Projects.AdminAssistant_Services_Accounts>(Constants.Services.AccountsApi)
+    .WithHealthCheck();
+var admin = builder.AddProject<Projects.AdminAssistant_Services_Admin>(Constants.Services.AdminApi)
+    .WithHealthCheck();
+var assetRegister = builder.AddProject<Projects.AdminAssistant_Services_AssetRegister>(Constants.Services.AssetRegisterApi)
+    .WithHealthCheck();
+var budget = builder.AddProject<Projects.AdminAssistant_Services_Budget>(Constants.Services.BudgetApi)
+    .WithHealthCheck();
+var calendar = builder.AddProject<Projects.AdminAssistant_Services_Calendar>(Constants.Services.CalendarApi)
+    .WithHealthCheck();
+var contacts = builder.AddProject<Projects.AdminAssistant_Services_Contacts>(Constants.Services.ContactsApi)
+    .WithHealthCheck();
+var core = builder.AddProject<Projects.AdminAssistant_Services_Core>(Constants.Services.CoreApi)
+    .WithHealthCheck();
+var documents = builder.AddProject<Projects.AdminAssistant_Services_Documents>(Constants.Services.DocumentsApi)
+    .WithHealthCheck();
+var mail = builder.AddProject<Projects.AdminAssistant_Services_Mail>(Constants.Services.MailApi)
+    .WithHealthCheck();
+var notes = builder.AddProject<Projects.AdminAssistant_Services_Notes>(Constants.Services.NotesApi)
+    .WithHealthCheck();
+var scheduledPayments = builder.AddProject<Projects.AdminAssistant_Services_ScheduledPayments>(Constants.Services.ScheduledPaymentsApi)
+    .WithHealthCheck();
+var tasks = builder.AddProject<Projects.AdminAssistant_Services_Tasks>(Constants.Services.TasksApi)
+    .WithHealthCheck();
+
+// EF Database management ...
+var databaseMigrationWorkerService = builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationWorkerService>(Constants.Services.DatabaseMigrationWorkerService);
 
 // Database Server ...
 switch (databaseProvider)
@@ -43,6 +59,8 @@ switch (databaseProvider)
     // break;
 
     case DatabaseProvider.SQLServerLocalDB:
+
+        //var sqlServerLocalDb = builder.AddConnectionString()
         Guard.Against.NullOrEmpty(configurationSettings.ConnectionString);
         throw new NotImplementedException("TODO - DatabaseProvider.SQLServerLocalDB");
         //var moo = builder.AddConnectionString
@@ -63,47 +81,87 @@ switch (databaseProvider)
     case DatabaseProvider.SQLServerContainer:
         var sqlServerDbContainer = builder
             .AddSqlServer(configurationSettings.AspireSqlServerName)
+            .WithHealthCheck()
             .AddDatabase(configurationSettings.AspireDatabaseName);
-        //webApp.WithReference(sqlServerDbContainer, configurationSettings.AspireDatabaseName);
-        //accounts.WithReference(sqlServerDbContainer)
+
+        accounts.WithReference(sqlServerDbContainer);
+        admin.WithReference(sqlServerDbContainer);
+        assetRegister.WithReference(sqlServerDbContainer);
+        budget.WithReference(sqlServerDbContainer);
+        calendar.WithReference(sqlServerDbContainer);
+        contacts.WithReference(sqlServerDbContainer);
+        core.WithReference(sqlServerDbContainer);
+        documents.WithReference(sqlServerDbContainer);
+        mail.WithReference(sqlServerDbContainer);
+        notes.WithReference(sqlServerDbContainer);
+        scheduledPayments.WithReference(sqlServerDbContainer);
+        tasks.WithReference(sqlServerDbContainer);
+
+        databaseMigrationWorkerService.WithReference(sqlServerDbContainer)
+            .WaitFor(sqlServerDbContainer);
         break;
 
     case DatabaseProvider.PostgresSQLContainer:
         var postgresDbContainer = builder
             .AddPostgres(configurationSettings.AspirePostgresServerName)
+            .WithHealthCheck()
             .WithPgAdmin()
             .AddDatabase(configurationSettings.AspireDatabaseName);
-        //webApp.WithReference(postgresDbContainer, configurationSettings.AspireDatabaseName);
+
+        accounts.WithReference(postgresDbContainer);
+        admin.WithReference(postgresDbContainer);
+        assetRegister.WithReference(postgresDbContainer);
+        budget.WithReference(postgresDbContainer);
+        calendar.WithReference(postgresDbContainer);
+        contacts.WithReference(postgresDbContainer);
+        core.WithReference(postgresDbContainer);
+        documents.WithReference(postgresDbContainer);
+        mail.WithReference(postgresDbContainer);
+        notes.WithReference(postgresDbContainer);
+        scheduledPayments.WithReference(postgresDbContainer);
+        tasks.WithReference(postgresDbContainer);
+
+        databaseMigrationWorkerService.WithReference(postgresDbContainer)
+            .WaitFor(postgresDbContainer);
         break;
 }
 
-
-// Background Job Host ...
-var backgroundJobHost = builder.AddProject<Projects.AdminAssistant_Hangfire>(Constants.Services.BackgroundJobHost);
-
 // Gateway ...
 var gateway = builder.AddProject<Projects.AdminAssistant_Gateway>(Constants.Services.Gateway)
-    .WithReference(accounts)
-    .WithReference(admin)
-    .WithReference(assetRegister)
-    .WithReference(budget)
-    .WithReference(calendar)
-    .WithReference(contacts)
-    .WithReference(core)
-    .WithReference(documents)
-    .WithReference(mail)
-    .WithReference(notes)
-    .WithReference(scheduledPayments)
-    .WithReference(tasks);
+    .WithReference(accounts).WaitFor(accounts)
+    .WithReference(admin).WaitFor(admin)
+    .WithReference(assetRegister).WaitFor(assetRegister)
+    .WithReference(budget).WaitFor(budget)
+    .WithReference(calendar).WaitFor(calendar)
+    .WithReference(contacts).WaitFor(contacts)
+    .WithReference(core).WaitFor(core)
+    .WithReference(documents).WaitFor(documents)
+    .WithReference(mail).WaitFor(mail)
+    .WithReference(notes).WaitFor(notes)
+    .WithReference(scheduledPayments).WaitFor(scheduledPayments)
+    .WithReference(tasks).WaitFor(tasks)
+    .WithHealthCheck();
+
+// Background Job Host ...
+builder.AddProject<Projects.AdminAssistant_Hangfire>(Constants.Services.BackgroundJobHost)
+    .WithReference(gateway)
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService)
+    .WaitFor(gateway);
 
 // Main App ...
 builder.AddProject<Projects.AdminAssistant_Blazor_Server>(configurationSettings.AspireServerAppName)
-    .WithReference(gateway);
+    .WithReference(gateway)
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService)
+    .WaitFor(gateway);
 
+// Retro console UI ... :-)
 builder.AddProject<Projects.AdminAssistant_Retro>(Constants.Services.RetroConsole)
-    .WithReference(gateway);
-
-builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationWorkerService>(Constants.Services.DatabaseMigrationWorkerService);
+    .WithReference(gateway)
+    .WaitFor(databaseMigrationWorkerService)
+    .WaitFor(gateway)
+    .ExcludeFromManifest();
 
 builder.Build().Run();
 #pragma warning restore S1481

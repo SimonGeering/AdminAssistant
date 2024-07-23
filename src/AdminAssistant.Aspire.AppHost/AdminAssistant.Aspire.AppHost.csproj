@@ -44,6 +44,9 @@
         <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj">
             <IsAspireProjectResource>false</IsAspireProjectResource>
         </ProjectReference>
+        <ProjectReference Include="..\WaitForDependencies.Aspire.Hosting\WaitForDependencies.Aspire.Hosting.csproj">
+            <IsAspireProjectResource>false</IsAspireProjectResource>
+        </ProjectReference>
     </ItemGroup>
 
 </Project>
