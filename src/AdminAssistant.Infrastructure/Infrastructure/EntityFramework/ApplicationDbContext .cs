@@ -6,6 +6,8 @@ using AdminAssistant.Infrastructure.EntityFramework.Model.Contacts;
 using AdminAssistant.Infrastructure.EntityFramework.Model.Core;
 using AdminAssistant.Infrastructure.EntityFramework.Model.Documents;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace AdminAssistant.Infrastructure.EntityFramework;
 
@@ -42,6 +44,10 @@ public interface IApplicationDbContext : IDisposable
     string ConnectionString { get; }
     void EnsureDatabaseIsCreated();
     void Migrate();
+
+    Task EnsureDatabaseAsync(CancellationToken cancellationToken);
+    Task RunMigrationAsync(CancellationToken cancellationToken);
+    Task SeedDataAsync(CancellationToken cancellationToken);
 }
 
 // dotnet ef migrations add InitialCreate --startup-project ..\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.csproj
@@ -80,6 +86,52 @@ public abstract class ApplicationDbContext : DbContext, IApplicationDbContext
     public string ConnectionString => Database.GetDbConnection().ConnectionString;
     public void EnsureDatabaseIsCreated() => Database.EnsureCreated();
     public void Migrate() => Database.Migrate();
+
+    public async Task EnsureDatabaseAsync(CancellationToken cancellationToken)
+    {
+        var dbCreator = Database.GetService<IRelationalDatabaseCreator>();
+
+        var strategy = Database.CreateExecutionStrategy();
+        await strategy.ExecuteAsync(async () =>
+        {
+            // Create the database if it does not exist.
+            // Do this first so there is then a database to start a transaction against.
+            if (!await dbCreator.ExistsAsync(cancellationToken))
+            {
+                await dbCreator.CreateAsync(cancellationToken);
+            }
+        });
+    }
+
+    public async Task RunMigrationAsync(CancellationToken cancellationToken)
+    {
+        var strategy = Database.CreateExecutionStrategy();
+        await strategy.ExecuteAsync(async () =>
+        {
+            // Run migration in a transaction to avoid partial migration if it fails.
+            await using var transaction = await Database.BeginTransactionAsync(cancellationToken);
+            await Database.MigrateAsync(cancellationToken);
+            await transaction.CommitAsync(cancellationToken);
+        });
+    }
+
+    public async Task SeedDataAsync(CancellationToken cancellationToken)
+    {
+        var strategy = Database.CreateExecutionStrategy();
+        await strategy.ExecuteAsync(async () =>
+        {
+            // Seed the database
+            await using var transaction = await Database.BeginTransactionAsync(cancellationToken);
+            // await Tickets.AddAsync(new()
+            // {
+            //     Title = "Test Ticket",
+            //     Description = "Default ticket, please ignore!",
+            //     Completed = true
+            // }, cancellationToken);
+            await SaveChangesAsync(cancellationToken);
+            await transaction.CommitAsync(cancellationToken);
+        });
+    }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
