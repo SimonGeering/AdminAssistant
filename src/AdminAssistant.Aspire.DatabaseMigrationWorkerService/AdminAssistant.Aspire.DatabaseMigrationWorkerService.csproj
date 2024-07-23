@@ -15,9 +15,25 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Hosting" />
-    </ItemGroup>
 
+        <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
+        <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" />
+
+        <PackageReference Include="SonarAnalyzer.CSharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>        
+    </ItemGroup>
+    
+    <ItemGroup>
+        <SonarQubeSetting Include="sonar.exclusions">
+            <!-- Exclude EF Migrations from SonarAnalyzer -->
+            <Value>**/Migrations/*</Value>
+        </SonarQubeSetting>
+    </ItemGroup>    
+    
     <ItemGroup>
         <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
     </ItemGroup>
 </Project>

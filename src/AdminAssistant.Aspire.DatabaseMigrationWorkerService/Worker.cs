@@ -1,23 +1,31 @@
+using System.Diagnostics;
+using AdminAssistant.Infrastructure.EntityFramework;
+using OpenTelemetry.Trace;
+
 namespace AdminAssistant.Aspire.DatabaseMigrationWorkerService;
 
-public class Worker : BackgroundService
+public class Worker(IServiceProvider serviceProvider, IHostApplicationLifetime hostApplicationLifetime) : BackgroundService
 {
-    private readonly ILogger<Worker> _logger;
+    private static readonly ActivitySource ActivitySource = new("Migrations");
 
-    public Worker(ILogger<Worker> logger)
+    protected override async Task ExecuteAsync(CancellationToken cancellationToken)
     {
-        _logger = logger;
-    }
+        using var activity = ActivitySource.StartActivity("Migrating database", ActivityKind.Client);
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-    {
-        while (!stoppingToken.IsCancellationRequested)
+        try
         {
-            if (_logger.IsEnabled(LogLevel.Information))
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-            }
-            await Task.Delay(1000, stoppingToken);
+            using var scope = serviceProvider.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<IApplicationDbContext>();
+
+            await dbContext.EnsureDatabaseAsync(cancellationToken);
+            await dbContext.RunMigrationAsync(cancellationToken);
+            await dbContext.SeedDataAsync(cancellationToken);
         }
+        catch (Exception ex)
+        {
+            activity?.RecordException(ex);
+            throw;
+        }
+        hostApplicationLifetime.StopApplication();
     }
 }
