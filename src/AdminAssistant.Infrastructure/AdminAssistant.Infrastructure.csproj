@@ -19,7 +19,6 @@
         <PackageReference Include="Ardalis.Result" />
         <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" />
         <PackageReference Include="AutoMapper" />
-        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
         <PackageReference Include="MediatR" />
         <PackageReference Include="Microsoft.Extensions.Hosting" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
