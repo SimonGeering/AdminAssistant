@@ -49,9 +49,9 @@ internal sealed class LoggingBehaviour<TRequest, TResponse>(ILoggingProvider log
             loggingProvider.LogDebug("{requestName} Handling - {result.Errors.Count()} Errors:", requestName, result.Errors.Count());
         }
 
-        if (result.ValidationErrors.Count == 0)
+        if (result.ValidationErrors.Any())
         {
-            loggingProvider.LogDebug("{requestName} Handling - {result.ValidationErrors.Count} Validation Errors:", requestName, result.ValidationErrors.Count);
+            loggingProvider.LogDebug("{requestName} Handling - {result.ValidationErrors.Count} Validation Errors:", requestName, result.ValidationErrors.Count());
         }
 
         return result.Status.ToString();
