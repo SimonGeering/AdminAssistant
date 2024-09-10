@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.SqlServer
 {
-    [DbContext(typeof(SqlServerApplicationDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20201019144909_Initial")]
     partial class Initial
     {

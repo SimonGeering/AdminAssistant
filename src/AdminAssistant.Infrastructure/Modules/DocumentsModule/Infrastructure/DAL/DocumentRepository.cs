@@ -10,26 +10,8 @@ namespace AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
 
 public interface IDocumentRepository : IRepository<Document, DocumentId>;
 
-internal sealed class SqlServerDocumentRepository(
-    SqlServerApplicationDbContext dbContext,
-    IMapper mapper,
-    IDateTimeProvider dateTimeProvider,
-    IUserContextProvider userContextProvider)
-    : DocumentRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider)
-{
-}
-
-internal sealed class PostgresDocumentRepository(
-    PostgresApplicationDbContext dbContext,
-    IMapper mapper,
-    IDateTimeProvider dateTimeProvider,
-    IUserContextProvider userContextProvider)
-    : DocumentRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider)
-{
-}
-
-internal abstract class DocumentRepositoryBase(
-    IApplicationDbContext dbContext,
+internal sealed class DocumentRepository(
+    ApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)

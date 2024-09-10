@@ -8,26 +8,8 @@ namespace AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 
 public interface IBankAccountTypeRepository : IReadOnlyRepository<BankAccountType, BankAccountTypeId>;
 
-internal sealed class SqlServerBankAccountTypeRepository(
-    SqlServerApplicationDbContext dbContext,
-    IMapper mapper,
-    IDateTimeProvider dateTimeProvider,
-    IUserContextProvider userContextProvider)
-    : BankAccountTypeRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankAccountTypeRepository
-{
-}
-
-internal sealed class PostgresBankAccountTypeRepository(
-    PostgresApplicationDbContext dbContext,
-    IMapper mapper,
-    IDateTimeProvider dateTimeProvider,
-    IUserContextProvider userContextProvider)
-    : BankAccountTypeRepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankAccountTypeRepository
-{
-}
-
-internal abstract class BankAccountTypeRepositoryBase(
-    IApplicationDbContext dbContext,
+internal sealed class BankAccountTypeRepository(
+    ApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)

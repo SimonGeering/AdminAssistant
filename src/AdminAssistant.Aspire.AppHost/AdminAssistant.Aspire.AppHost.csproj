@@ -15,7 +15,6 @@
 
     <ItemGroup>
         <PackageReference Include="Aspire.Hosting.AppHost" />
-        <PackageReference Include="Aspire.Hosting.PostgreSQL" />
         <PackageReference Include="Aspire.Hosting.SqlServer" />
         <PackageReference Include="SonarAnalyzer.CSharp">
             <PrivateAssets>all</PrivateAssets>

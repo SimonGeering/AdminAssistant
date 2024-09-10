@@ -1,24 +1,24 @@
-﻿// Based on https://github.com/davidfowl/WaitForDependenciesAspire under MIT lic - thanks David Fowler :-)
-using Aspire.Hosting.ApplicationModel;
-using HealthChecks.NpgSql;
+//// Based on https://github.com/davidfowl/WaitForDependenciesAspire under MIT lic - thanks David Fowler :-)
+//using Aspire.Hosting.ApplicationModel;
+//using HealthChecks.NpgSql;
 
-namespace Aspire.Hosting;
+//namespace Aspire.Hosting;
 
-public static class PostgreSqlHealthCheckExtensions
-{
-    /// <summary>
-    /// Adds a health check to the PostgreSQL server resource.
-    /// </summary>
-    public static IResourceBuilder<PostgresServerResource> WithHealthCheck(this IResourceBuilder<PostgresServerResource> builder)
-    {
-        return builder.WithAnnotation(HealthCheckAnnotation.Create(cs => new NpgSqlHealthCheck(new NpgSqlHealthCheckOptions(cs))));
-    }
+//public static class PostgreSqlHealthCheckExtensions
+//{
+//    /// <summary>
+//    /// Adds a health check to the PostgreSQL server resource.
+//    /// </summary>
+//    public static IResourceBuilder<PostgresServerResource> WithHealthCheck(this IResourceBuilder<PostgresServerResource> builder)
+//    {
+//        return builder.WithAnnotation(HealthCheckAnnotation.Create(cs => new NpgSqlHealthCheck(new NpgSqlHealthCheckOptions(cs))));
+//    }
 
-    /// <summary>
-    /// Adds a health check to the PostgreSQL database resource.
-    /// </summary>
-    public static IResourceBuilder<PostgresDatabaseResource> WithHealthCheck(this IResourceBuilder<PostgresDatabaseResource> builder)
-    {
-        return builder.WithAnnotation(HealthCheckAnnotation.Create(cs => new NpgSqlHealthCheck(new NpgSqlHealthCheckOptions(cs))));
-    }
-}
+//    /// <summary>
+//    /// Adds a health check to the PostgreSQL database resource.
+//    /// </summary>
+//    public static IResourceBuilder<PostgresDatabaseResource> WithHealthCheck(this IResourceBuilder<PostgresDatabaseResource> builder)
+//    {
+//        return builder.WithAnnotation(HealthCheckAnnotation.Create(cs => new NpgSqlHealthCheck(new NpgSqlHealthCheckOptions(cs))));
+//    }
+//}

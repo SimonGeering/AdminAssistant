@@ -25,7 +25,7 @@ public sealed class BankAccountTypeRepository_GetListAsync
             };
         var data = mapper.Map<IList<BankAccountTypeEntity>>(bankAccountTypeList);
 
-        var mockDbContext = new Mock<IApplicationDbContext>();
+        var mockDbContext = new Mock<ApplicationDbContext>();
         mockDbContext.Setup(x => x.BankAccountTypes)
             .Returns(data.AsQueryable().BuildMockDbSet().Object);
 
@@ -61,7 +61,7 @@ public class BankAccountTypeRepository_GetAsync
             };
         var data = mapper.Map<IList<BankAccountTypeEntity>>(bankAccountTypeList);
 
-        var mockDbContext = new Mock<IApplicationDbContext>();
+        var mockDbContext = new Mock<ApplicationDbContext>();
         mockDbContext.Setup(x => x.BankAccountTypes)
             .Returns(data.AsQueryable().BuildMockDbSet().Object);
 

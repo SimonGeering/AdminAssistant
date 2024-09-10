@@ -25,7 +25,7 @@ public sealed class ContactRepository_unitTest
         };
         var data = mapper.Map<IList<ContactEntity>>(contactList);
 
-        var mockDbContext = new Mock<IApplicationDbContext>();
+        var mockDbContext = new Mock<ApplicationDbContext>();
         mockDbContext.Setup(x => x.Contacts)
             .Returns(data.AsQueryable().BuildMockDbSet().Object);
 
@@ -58,7 +58,7 @@ public sealed class ContactRepository_unitTest
             };
         var data = mapper.Map<IList<ContactEntity>>(contactList);
 
-        var mockDbContext = new Mock<IApplicationDbContext>();
+        var mockDbContext = new Mock<ApplicationDbContext>();
         mockDbContext.Setup(x => x.Contacts)
             .Returns(data.AsQueryable().BuildMockDbSet().Object);
 
@@ -91,7 +91,7 @@ public sealed class ContactRepository_unitTest
         var mockContacts = mapper.Map<IList<ContactEntity>>(contactList).AsQueryable().BuildMockDbSet();
         mockContacts.Setup(x => x.Add(It.IsAny<ContactEntity>()));
 
-        var mockDbContext = new Mock<IApplicationDbContext>();
+        var mockDbContext = new Mock<ApplicationDbContext>();
         mockDbContext.Setup(x => x.Contacts).Returns(mockContacts.Object);
 
         var services = new ServiceCollection();
