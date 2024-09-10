@@ -6,6 +6,12 @@ namespace AdminAssistant;
 /// </summary>
 public static class Constants
 {
+    public const string ServerAppName = "AdminAssistantServer";
+
+    public const string DatabaseServerName = "AdminAssistantDatabaseServer";
+    public const string ApplicationDatabaseName = "AdminAssistant";
+    public const string ScheduledJobDatabase = "AdminAssistantScheduledJobs";
+
     public static class Services
     {
         public const string AccountsApi = "AdminAssistant-AccountsApi";
@@ -21,7 +27,7 @@ public static class Constants
         public const string ScheduledPaymentsApi = "AdminAssistant-ScheduledPaymentsApi";
         public const string TasksApi = "AdminAssistant-TasksApi";
 
-        public const string BackgroundJobHost = "AdminAssistant-BackgroundJobHost";
+        public const string ScheduledJobHost = "AdminAssistant-ScheduledJobHost";
 
         public const string Gateway = "AdminAssistant-Gateway";
 

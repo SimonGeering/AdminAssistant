@@ -11,8 +11,7 @@ builder.RootComponents.Add<App>("app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddMudServices();
-
-builder.Services.AddAdminAssistantWebAPIClient(new Uri(builder.HostEnvironment.BaseAddress));
+builder.Services.AddAdminAssistantWebAPIClient();
 builder.Services.AddLogging(logging =>
 {
     // NB Configuration must be done in code as no other option is currently supported client side.

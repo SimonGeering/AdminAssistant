@@ -18,7 +18,7 @@ public class ServiceCollection_Should
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
         services.AddAdminAssistantApplication();
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
 
         var serviceProvider = services.BuildServiceProvider();
 

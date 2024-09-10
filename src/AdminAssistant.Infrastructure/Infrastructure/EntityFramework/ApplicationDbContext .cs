@@ -13,7 +13,13 @@ namespace AdminAssistant.Infrastructure.EntityFramework;
 // dotnet ef migrations add InitialCreate --startup-project ..\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.csproj
 // dotnet ef database update
 public class ApplicationDbContext : DbContext
-{    
+{
+    public ApplicationDbContext(DbContextOptions options)
+        : base(options)
+    {
+            
+    }
+
     // Core ...
     public DbSet<AuditEntity> AuditTrail { get; set; } = null!;
     public DbSet<CompanyEntity> Company { get; set; } = null!;

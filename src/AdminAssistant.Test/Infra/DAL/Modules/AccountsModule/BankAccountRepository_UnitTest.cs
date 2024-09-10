@@ -33,7 +33,7 @@ public sealed class BankAccountRepository_UnitTest
         services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
         services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
@@ -66,7 +66,7 @@ public sealed class BankAccountRepository_UnitTest
         services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
         services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
@@ -99,7 +99,7 @@ public sealed class BankAccountRepository_UnitTest
         services.AddMockUserContextProvider();
         services.AddMockDbContext(mockDbContext);
         services.AddAutoMapper(typeof(MappingProfile));
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
 
         var newBankAccountToSave = Factory.BankAccount.WithAccountName("TestNewBankAccountToSave").Build();
 

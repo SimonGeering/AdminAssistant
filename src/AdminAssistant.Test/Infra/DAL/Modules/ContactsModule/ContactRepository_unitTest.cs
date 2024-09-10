@@ -33,7 +33,7 @@ public sealed class ContactRepository_unitTest
         services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
         services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
@@ -66,7 +66,7 @@ public sealed class ContactRepository_unitTest
         services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
         services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
@@ -99,7 +99,7 @@ public sealed class ContactRepository_unitTest
         services.AddMockUserContextProvider();
         services.AddMockDbContext(mockDbContext);
         services.AddAutoMapper(typeof(MappingProfile));
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
 
         var newContactToSave = Factory.Contact.WithFirstName("TestNewContactToSaveFirstName")
                                               .WithLastName("TestNewContactToSaveLastName")

@@ -33,7 +33,7 @@ public sealed class BankAccountTypeRepository_GetListAsync
         services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
         services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
@@ -69,7 +69,7 @@ public class BankAccountTypeRepository_GetAsync
         services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
         services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act

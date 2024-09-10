@@ -1,6 +1,3 @@
-using AdminAssistant.Shared;
-using Ardalis.GuardClauses;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SimonGeering.Framework.Primitives;
@@ -17,11 +14,7 @@ AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
 
 var builder = Host.CreateApplicationBuilder(args);
 builder.AddServiceDefaults();
-
-var configSettings = builder.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
-Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
-
-builder.Services.AddAdminAssistantWebAPIClient(configSettings);
+builder.Services.AddAdminAssistantWebAPIClient();
 builder.Services.AddValidatorsFromAssemblyContaining<IPersistable>();
 builder.Services.AddAdminAssistantClientSideProviders();
 builder.Services.AddAdminAssistantClientSideDomainModel();

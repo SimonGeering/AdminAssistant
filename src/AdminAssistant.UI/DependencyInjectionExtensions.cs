@@ -1,6 +1,5 @@
 using AdminAssistant.Modules.ContactsModule.UI;
 using AdminAssistant.Modules.NotesModule.UI;
-using AdminAssistant.Shared;
 using AdminAssistant.Modules.ReportsModule.UI;
 using AdminAssistant.Modules.TasksModule.UI;
 using AdminAssistant.Shared.UI;
@@ -16,17 +15,15 @@ using AdminAssistant.Modules.CoreModule.UI;
 using AdminAssistant.Modules.DashboardModule.UI;
 using AdminAssistant.Modules.DocumentsModule.UI;
 using AdminAssistant.Modules.MailModule.UI;
+using AdminAssistant;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjectionExtensions
 {
-    public static void AddAdminAssistantWebAPIClient(this IServiceCollection services, ConfigurationSettings configurationSettings)
-        => AddAdminAssistantWebAPIClient(services, new Uri(configurationSettings.WebApiClientBaseAddress));
-
-    public static void AddAdminAssistantWebAPIClient(this IServiceCollection services, Uri baseAddress)
+    public static void AddAdminAssistantWebAPIClient(this IServiceCollection services)
     {
-        services.AddHttpClient<IAdminAssistantWebAPIClient, AdminAssistantWebAPIClient>(AdminAssistant.Constants.AdminAssistantWebAPIClient, (httpClient) => httpClient.BaseAddress = baseAddress);
+        services.AddHttpClient<IAdminAssistantWebAPIClient, AdminAssistantWebAPIClient>(static client => client.BaseAddress = new("https+http://" + Constants.Services.Gateway));
         services.AddAutoMapper(typeof(MappingProfile));
     }
 
