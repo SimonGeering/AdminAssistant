@@ -96,7 +96,7 @@ builder.AddProject<Projects.AdminAssistant_Hangfire>(Constants.Services.Schedule
     .WaitFor(databaseMigrationWorkerService); // Should be waiting for gateway in the long run
 
 // Main App ...
-builder.AddProject<Projects.AdminAssistant_Blazor_Server>(Constants.ServerAppName)
+builder.AddProject<Projects.AdminAssistant_ServerSideBlazor>(Constants.ServerAppName)
     .WithReference(gateway)
     .WithHealthCheck()
     .WaitFor(databaseMigrationWorkerService); // Should be waiting for gateway in the long run

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <RootNamespace>AdminAssistant.ServerSideBlazor</RootNamespace>
+        <AssemblyName>AdminAssistant.ServerSideBlazor</AssemblyName>
+        <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
+        <DocumentationFile>AdminAssistant.ServerSideBlazor.docs.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);</NoWarn>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <None Remove="AdminAssistant.ServerSideBlazor.docs.xml" />
+        <None Include="..\.editorconfig" Link=".editorconfig" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MudBlazor" />
+        <PackageReference Include="SonarAnalyzer.CSharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+    </ItemGroup>
+</Project>

@@ -24,10 +24,10 @@
 
     <ItemGroup>
         <ProjectReference Include="..\AdminAssistant.Aspire.DatabaseMigrationWorkerService\AdminAssistant.Aspire.DatabaseMigrationWorkerService.csproj" />
-        <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
         <ProjectReference Include="..\AdminAssistant.Gateway\AdminAssistant.Gateway.csproj" />
         <ProjectReference Include="..\AdminAssistant.Hangfire\AdminAssistant.Hangfire.csproj" />
         <ProjectReference Include="..\AdminAssistant.Retro\AdminAssistant.Retro.csproj" />
+        <ProjectReference Include="..\AdminAssistant.ServerSideBlazor\AdminAssistant.ServerSideBlazor.csproj" />
         <ProjectReference Include="..\Services\AdminAssistant.Services.Accounts\AdminAssistant.Services.Accounts.csproj" />
         <ProjectReference Include="..\Services\AdminAssistant.Services.Admin\AdminAssistant.Services.Admin.csproj" />
         <ProjectReference Include="..\Services\AdminAssistant.Services.AssetRegister\AdminAssistant.Services.AssetRegister.csproj" />
