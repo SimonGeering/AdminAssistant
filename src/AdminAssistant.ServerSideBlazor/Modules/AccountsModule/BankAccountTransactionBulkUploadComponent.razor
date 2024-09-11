@@ -12,11 +12,11 @@
         <MudStack Justify="Justify.SpaceBetween">
             <MudFileUpload T="IBrowserFile" Accept=".pdf" FilesChanged="UploadStatement" MaximumFileCount="1">
                 <ButtonTemplate>
-                    <MudButton HtmlTag="label" Size="Size.Medium" Variant="Variant.Text"
+                    @* <MudButton HtmlTag="label" Size="Size.Medium" Variant="Variant.Text"
                                StartIcon="@Icons.Material.Filled.FileUpload"
                                Color="Color.Tertiary" for="@context">
                         Select statement.
-                    </MudButton>
+                    </MudButton> *@
                 </ButtonTemplate>
             </MudFileUpload>
             @if (vm.EmbeddedFileContentSrc != string.Empty)

@@ -98,8 +98,8 @@ builder.AddProject<Projects.AdminAssistant_Hangfire>(Constants.Services.Schedule
 // Main App ...
 builder.AddProject<Projects.AdminAssistant_ServerSideBlazor>(Constants.ServerAppName)
     .WithReference(gateway)
-    .WithHealthCheck()
-    .WaitFor(databaseMigrationWorkerService); // Should be waiting for gateway in the long run
+    .WithHealthCheck();
+    // .WaitFor(databaseMigrationWorkerService); // Should be waiting for gateway in the long run
 
 // Retro console UI ... :-)
 builder.AddProject<Projects.AdminAssistant_Retro>(Constants.Services.RetroConsole)

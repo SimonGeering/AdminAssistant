@@ -2,18 +2,22 @@
 
     <PropertyGroup>
         <RootNamespace>AdminAssistant.ServerSideBlazor</RootNamespace>
-        <AssemblyName>AdminAssistant.ServerSideBlazor</AssemblyName>
+        <AssemblyName>AdminAssistant.Blazor.Client</AssemblyName>
         <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
+        <ServiceWorkerAssetsManifest>service-worker-assets.js</ServiceWorkerAssetsManifest>
         <DocumentationFile>AdminAssistant.ServerSideBlazor.docs.xml</DocumentationFile>
-        <NoWarn>$(NoWarn);</NoWarn>
+        <NoWarn>$(NoWarn);1591;</NoWarn>
     </PropertyGroup>
     
     <ItemGroup>
         <None Remove="AdminAssistant.ServerSideBlazor.docs.xml" />
         <None Include="..\.editorconfig" Link=".editorconfig" />
+        <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+        <PackageReference Include="Microsoft.Extensions.Http" />
         <PackageReference Include="MudBlazor" />
         <PackageReference Include="SonarAnalyzer.CSharp">
             <PrivateAssets>all</PrivateAssets>
@@ -22,6 +26,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Infrastructure.ClientSide\AdminAssistant.Infrastructure.ClientSide.csproj" />
+        <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
     </ItemGroup>
 </Project>
