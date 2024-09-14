@@ -6,16 +6,30 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 builder.Services.AddReverseProxy()
     .LoadFromMemory(
-    [        
+    [
+        new RouteConfig()
+        {
+            RouteId = "fallbackRoute",
+            ClusterId = "fallbackCluster",
+            Match = new RouteMatch { Path = "/{**catch-all}" }
+        },
         new RouteConfig()
         {
             RouteId = "coreRoute",
             ClusterId = "coreCluster",
-            Match = new RouteMatch { Path = "/core/{**catch-all}" },
-            Transforms = [new Dictionary<string, string>() { { "PathRemovePrefix", "/core" } }]
+            Match = new RouteMatch { Path = Constants.ApiGateway.CoreApiPrefix + "/{**catch-all}" },
+            Transforms = [new Dictionary<string, string>() { { "PathRemovePrefix", Constants.ApiGateway.CoreApiPrefix } }]
         }
     ],
     [
+        new ClusterConfig()
+        {
+            ClusterId = "fallbackCluster",
+            Destinations = new Dictionary<string, DestinationConfig>()
+            {
+                { "fallbackDestination", new DestinationConfig { Address = $"http://{Constants.Services.Gateway}", Health = $"http://{Constants.Services.Gateway}/alive" } }
+            }
+        },
         new ClusterConfig()
         {
             ClusterId = "coreCluster",
@@ -23,9 +37,8 @@ builder.Services.AddReverseProxy()
             {
                 { "coreDestination", new DestinationConfig { Address = $"http://{Constants.Services.CoreApi}", Health = $"http://{Constants.Services.CoreApi}/alive" } }
             }
-        }
+        }        
     ])
-    //.LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
     .AddServiceDiscoveryDestinationResolver();
 
 // https://www.milanjovanovic.tech/blog/implementing-an-api-gateway-for-microservices-with-yarp

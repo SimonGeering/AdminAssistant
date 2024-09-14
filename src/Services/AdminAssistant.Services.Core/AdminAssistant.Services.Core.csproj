@@ -1,19 +1,33 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <InvariantGlobalization>true</InvariantGlobalization>
+        <RootNamespace>AdminAssistant.Services.Core</RootNamespace>
+        <AssemblyName>AdminAssistant.Services.Core</AssemblyName>
+        <DocumentationFile>AdminAssistant.Services.Core.docs.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);</NoWarn>
         <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <DockerfileContext>..\..</DockerfileContext>
     </PropertyGroup>
 
+
+    <ItemGroup>
+        <None Remove="AdminAssistant.Services.Core.docs.xml" />
+        <None Include="..\..\.editorconfig" Link=".editorconfig" />
+    </ItemGroup>
+
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
         <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="SonarAnalyzer.CSharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\AdminAssistant.Application\AdminAssistant.Application.csproj" />
         <ProjectReference Include="..\..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
     </ItemGroup>
 

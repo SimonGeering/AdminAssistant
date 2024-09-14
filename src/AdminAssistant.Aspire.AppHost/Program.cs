@@ -26,50 +26,63 @@ var databaseMigrationWorkerService = builder.AddProject<Projects.AdminAssistant_
 // Services ...
 var accounts = builder.AddProject<Projects.AdminAssistant_Services_Accounts>(Constants.Services.AccountsApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var admin = builder.AddProject<Projects.AdminAssistant_Services_Admin>(Constants.Services.AdminApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var assetRegister = builder.AddProject<Projects.AdminAssistant_Services_AssetRegister>(Constants.Services.AssetRegisterApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var budget = builder.AddProject<Projects.AdminAssistant_Services_Budget>(Constants.Services.BudgetApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var calendar = builder.AddProject<Projects.AdminAssistant_Services_Calendar>(Constants.Services.CalendarApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
+
 var contacts = builder.AddProject<Projects.AdminAssistant_Services_Contacts>(Constants.Services.ContactsApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var core = builder.AddProject<Projects.AdminAssistant_Services_Core>(Constants.Services.CoreApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var documents = builder.AddProject<Projects.AdminAssistant_Services_Documents>(Constants.Services.DocumentsApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var mail = builder.AddProject<Projects.AdminAssistant_Services_Mail>(Constants.Services.MailApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var notes = builder.AddProject<Projects.AdminAssistant_Services_Notes>(Constants.Services.NotesApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var scheduledPayments = builder.AddProject<Projects.AdminAssistant_Services_ScheduledPayments>(Constants.Services.ScheduledPaymentsApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 var tasks = builder.AddProject<Projects.AdminAssistant_Services_Tasks>(Constants.Services.TasksApi)
     .WithReference(applicationDatabase)
-    .WithHealthCheck();
+    .WithHealthCheck()
+    .WaitFor(databaseMigrationWorkerService);
 
 // API Gateway ...
 var gateway = builder.AddProject<Projects.AdminAssistant_Gateway>(Constants.Services.Gateway)
@@ -88,6 +101,9 @@ var gateway = builder.AddProject<Projects.AdminAssistant_Gateway>(Constants.Serv
     .WithHealthCheck()
     .WaitFor(databaseMigrationWorkerService);
 
+gateway.WithReference(gateway);
+
+
 // Scheduled Job Host ...
 builder.AddProject<Projects.AdminAssistant_Hangfire>(Constants.Services.ScheduledJobHost)
     .WithReference(gateway)
@@ -99,7 +115,6 @@ builder.AddProject<Projects.AdminAssistant_Hangfire>(Constants.Services.Schedule
 builder.AddProject<Projects.AdminAssistant_ServerSideBlazor>(Constants.ServerAppName)
     .WithReference(gateway)
     .WithHealthCheck();
-    // .WaitFor(databaseMigrationWorkerService); // Should be waiting for gateway in the long run
 
 // Retro console UI ... :-)
 builder.AddProject<Projects.AdminAssistant_Retro>(Constants.Services.RetroConsole)

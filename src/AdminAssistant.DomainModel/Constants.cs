@@ -12,6 +12,12 @@ public static class Constants
     public const string ApplicationDatabaseName = "AdminAssistant";
     public const string ScheduledJobDatabase = "AdminAssistantScheduledJobs";
 
+    public static class ApiGateway
+    {
+        private const string ApiRoutePrefix = "api";
+        public const string CoreApiPrefix = $"/{ApiRoutePrefix}/core";
+    }
+
     public static class Services
     {
         public const string AccountsApi = "AdminAssistant-AccountsApi";
