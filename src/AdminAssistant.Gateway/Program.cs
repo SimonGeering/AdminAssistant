@@ -4,6 +4,7 @@ using Yarp.ReverseProxy.Configuration;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
+
 builder.Services.AddReverseProxy()
     .LoadFromMemory(
     [
@@ -53,3 +54,7 @@ app.Run();
 // https://github.com/rjygraham/AspireYarpTest
 
 // https://github.com/dotnet/aspire/issues/4605
+
+// Yarp + swagger
+// https://github.com/andreytreyt/yarp-swagger/tree/main/sample
+https://github.com/microsoft/reverse-proxy/issues/1789
