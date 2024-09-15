@@ -21,8 +21,11 @@
     <PackageVersion Include="AspNetCore.HealthChecks.Uris" Version="8.0.1" />
     <!--AdminAssistant.Aspire.AppHost-->
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="8.2.0" />
-    <!--<PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="8.2.0" />-->
     <PackageVersion Include="Aspire.Hosting.SqlServer" Version="8.2.0" />
+    <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
+    <PackageVersion Include="Aspire.Dashboard.Sdk.linux-x64" Version="8.2.0" />
+    <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
+    <PackageVersion Include="Aspire.Hosting.Orchestration.linux-x64" Version="8.2.0" />
     <!--AdminAssistant.Aspire.ServiceDefaults-->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.9.1" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="8.2.0" />
