@@ -38,7 +38,7 @@ builder.Services.AddReverseProxy()
             {
                 { "coreDestination", new DestinationConfig { Address = $"http://{Constants.Services.CoreApi}", Health = $"http://{Constants.Services.CoreApi}/alive" } }
             }
-        }        
+        }
     ])
     .AddServiceDiscoveryDestinationResolver();
 
@@ -57,4 +57,4 @@ app.Run();
 
 // Yarp + swagger
 // https://github.com/andreytreyt/yarp-swagger/tree/main/sample
-https://github.com/microsoft/reverse-proxy/issues/1789
+// https://github.com/microsoft/reverse-proxy/issues/1789
