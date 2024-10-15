@@ -16,16 +16,16 @@
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="9.32.0.97167" />
     <!--AdminAssistant Services - SOA Web API's-->
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8" />
-    <PackageVersion Include="Aspire.Hosting" Version="8.2.0" />
+    <PackageVersion Include="Aspire.Hosting" Version="9.0.0-rc.1.24511.1" />
     <PackageVersion Include="AspNetCore.HealthChecks.SqlServer" Version="8.0.2" />
     <PackageVersion Include="AspNetCore.HealthChecks.Uris" Version="8.0.1" />
     <!--AdminAssistant.Aspire.AppHost-->
-    <PackageVersion Include="Aspire.Hosting.AppHost" Version="8.2.0" />
-    <PackageVersion Include="Aspire.Hosting.SqlServer" Version="8.2.0" />
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.0.0-rc.1.24511.1" />
+    <PackageVersion Include="Aspire.Hosting.SqlServer" Version="9.0.0-rc.1.24511.1" />
     <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
-    <PackageVersion Include="Aspire.Dashboard.Sdk.linux-x64" Version="8.2.0" />
+    <PackageVersion Include="Aspire.Dashboard.Sdk.linux-x64" Version="9.0.0-rc.1.24511.1" />
     <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
-    <PackageVersion Include="Aspire.Hosting.Orchestration.linux-x64" Version="8.2.0" />
+    <PackageVersion Include="Aspire.Hosting.Orchestration.linux-x64" Version="9.0.0-rc.1.24511.1" />
     <!--AdminAssistant.Aspire.ServiceDefaults-->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="8.9.1" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="8.2.0" />
@@ -71,7 +71,7 @@
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery.Yarp" Version="8.2.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery.Dns" Version="8.2.0" />
     <!--AdminAssistant.Infra-->
-    <PackageVersion Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="8.2.0" />
+    <PackageVersion Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0-rc.1.24511.1" />
     <PackageVersion Include="Microsoft.Graph" Version="4.52.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
     <!--AdminAssistant.Infra.ClientSide-->
