@@ -59,6 +59,11 @@ indent_size = 4
 [*.cs]
 indent_size = 4
 
+# Namespace style: 'file_scoped' for file-scoped, 'block_scoped' for block-scoped
+csharp_namespace_body = file_scoped
+# Namespace style severity level
+csharp_namespace_body_severity = suggestion
+
 # ==========================================
 #### Core EditorConfig Options ####
 # ==========================================
