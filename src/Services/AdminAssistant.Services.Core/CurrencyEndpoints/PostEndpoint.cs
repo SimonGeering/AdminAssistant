@@ -1,4 +1,10 @@
+using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.Modules.CoreModule.Commands;
+using Ardalis.Result;
+using AutoMapper;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using SimonGeering.Framework.TypeMapping;
 
 namespace AdminAssistant.Services.Core.CurrencyEndpoints;
@@ -7,8 +13,34 @@ public static class PostEndpoint
 {
     public static IEndpointRouteBuilder MapCurrencyPost(this IEndpointRouteBuilder endpoints)
     {
+    //    endpoints.MapPost(string.Empty, PostCurrency);
         return endpoints;
     }
+
+     // internal static async Task<Results<CurrencyResponseDto>> PostCurrency(
+     //     CurrencyCreateRequestDto currencyCreateRequest,
+     //     CancellationToken cancellationToken,
+     //     [FromServices] IMapper mapper,
+     //     [FromServices] IMediator mediator,
+     //     [FromServices] ILoggingProvider log)
+     // {
+     //     log.Start();
+     //
+     //     var currency = mapper.Map<Currency>(currencyCreateRequest);
+     //     var result = await mediator.Send(new CurrencyCreateCommand(currency), cancellationToken).ConfigureAwait(false);
+     //
+     //     if (result.Status == ResultStatus.Invalid)
+     //     {
+     //         return log.Finish(TypedResults.UnprocessableEntity(result.ValidationErrors));
+     //
+     //         //result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
+     //         //return Log.Finish(UnprocessableEntity(ModelState)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
+     //     }
+     //
+     //     var response = mapper.Map<CurrencyResponseDto>(result.Value);
+     //     return log.Finish(TypedResults.CreatedAtRoute(nameof(CurrencyGetById), new { currencyID = response.CurrencyID }, response));
+     // }
+     //
 //     [HttpPost]
 //     [SwaggerOperation("Creates a new Currency.", OperationId = "PostCurrency")]
 //     [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created currency with its assigned newly ID.", type: typeof(CurrencyResponseDto))]

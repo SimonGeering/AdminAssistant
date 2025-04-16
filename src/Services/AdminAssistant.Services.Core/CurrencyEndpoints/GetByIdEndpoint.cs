@@ -12,23 +12,7 @@ public static class GetByIdEndpoint
 {
     public static IEndpointRouteBuilder MapCurrencyGetById(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/{currencyID}", async Task<Results<Ok<CurrencyResponseDto>, NotFound>> (
-                [FromQuery] int currencyID, CancellationToken cancellationToken,
-                [FromServices] IMapper mapper,
-                [FromServices] IMediator mediator,
-                [FromServices] ILoggingProvider log) =>
-            {
-                log.Start();
-
-                var result = await mediator.Send(new CurrencyByIDQuery(currencyID), cancellationToken)
-                    .ConfigureAwait(false);
-
-                if (result.Status == ResultStatus.NotFound)
-                    return log.Finish(TypedResults.NotFound());
-
-                var response = mapper.Map<CurrencyResponseDto>(result.Value);
-                return log.Finish(TypedResults.Ok(response));
-            })
+        endpoints.MapGet("/{currencyID}", GetCurrencyById)
             .WithOpenApi(cfg =>
             {
                 var currencyId = cfg.Parameters[0];
@@ -46,5 +30,23 @@ public static class GetByIdEndpoint
             .Produces(StatusCodes.Status500InternalServerError);
 
         return endpoints;
+    }
+
+    internal static async Task<Results<Ok<CurrencyResponseDto>, NotFound>> GetCurrencyById(
+        [FromQuery] int currencyId, CancellationToken cancellationToken,
+        [FromServices] IMapper mapper,
+        [FromServices] IMediator mediator,
+        [FromServices] ILoggingProvider log)
+    {
+        log.Start();
+
+        var result = await mediator.Send(new CurrencyByIDQuery(currencyId), cancellationToken)
+            .ConfigureAwait(false);
+
+        if (result.Status == ResultStatus.NotFound)
+            return log.Finish(TypedResults.NotFound());
+
+        var response = mapper.Map<CurrencyResponseDto>(result.Value);
+        return log.Finish(TypedResults.Ok(response));
     }
 }
