@@ -29,6 +29,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\AdminAssistant.Aspire.DatabaseMigrationWorkerService\AdminAssistant.Aspire.DatabaseMigrationWorkerService.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Avalonia\AdminAssistant.Avalonia.csproj" />
         <ProjectReference Include="..\AdminAssistant.Gateway\AdminAssistant.Gateway.csproj" />
         <ProjectReference Include="..\AdminAssistant.Hangfire\AdminAssistant.Hangfire.csproj" />
         <ProjectReference Include="..\AdminAssistant.Retro\AdminAssistant.Retro.csproj" />

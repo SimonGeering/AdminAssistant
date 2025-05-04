@@ -71,6 +71,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Aspire.Datab
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.ServerSideBlazor", "AdminAssistant.ServerSideBlazor\AdminAssistant.ServerSideBlazor.csproj", "{5620C696-3C45-44C6-BA6C-F19D2B6C4DC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.IntegrationTests", "AdminAssistant.IntegrationTests\AdminAssistant.IntegrationTests.csproj", "{803A0531-7CD4-4BA7-A3CA-4AF0F8AC8936}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Avalonia", "AdminAssistant.Avalonia\AdminAssistant.Avalonia.csproj", "{72BEDFC0-8936-4C16-BD15-8481E5782711}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -185,6 +189,14 @@ Global
 		{5620C696-3C45-44C6-BA6C-F19D2B6C4DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5620C696-3C45-44C6-BA6C-F19D2B6C4DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5620C696-3C45-44C6-BA6C-F19D2B6C4DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{803A0531-7CD4-4BA7-A3CA-4AF0F8AC8936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{803A0531-7CD4-4BA7-A3CA-4AF0F8AC8936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{803A0531-7CD4-4BA7-A3CA-4AF0F8AC8936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{803A0531-7CD4-4BA7-A3CA-4AF0F8AC8936}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72BEDFC0-8936-4C16-BD15-8481E5782711}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72BEDFC0-8936-4C16-BD15-8481E5782711}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72BEDFC0-8936-4C16-BD15-8481E5782711}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72BEDFC0-8936-4C16-BD15-8481E5782711}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

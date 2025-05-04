@@ -13,7 +13,7 @@ var sqlServer = builder
 var applicationDatabase = sqlServer.AddDatabase(Constants.ApplicationDatabaseName);
 var scheduledJobDatabase = sqlServer.AddDatabase(Constants.ScheduledJobDatabase);
 
-var databaseMigrationWorkerService = builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationWorkerService>(Constants.Services.DatabaseMigrationWorkerService)
+var databaseMigrationWorkerService = builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationWorkerService>(Constants.DatabaseMigrationWorkerService)
     .WithReference(applicationDatabase)
     .WaitFor(sqlServer);
 
@@ -94,8 +94,12 @@ builder.AddProject<Projects.AdminAssistant_Hangfire>(Constants.Services.Schedule
 builder.AddProject<Projects.AdminAssistant_ServerSideBlazor>(Constants.ServerAppName)
     .WithReference(gateway);
 
+// Avalonia App ...
+builder.AddProject<Projects.AdminAssistant_Avalonia>(Constants.AvaloniaAppName)
+    .WithReference(gateway);
+
 // Retro console UI ... :-)
-builder.AddProject<Projects.AdminAssistant_Retro>(Constants.Services.RetroConsole)
+builder.AddProject<Projects.AdminAssistant_Retro>(Constants.RetroConsole)
     .WithReference(gateway)
     .WaitFor(databaseMigrationWorkerService)
     .ExcludeFromManifest(); // Should be waiting for gateway in the long run

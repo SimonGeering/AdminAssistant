@@ -12,6 +12,10 @@ public static class Constants
     public const string ApplicationDatabaseName = "AdminAssistant";
     public const string ScheduledJobDatabase = "AdminAssistantScheduledJobs";
 
+    public const string AvaloniaAppName = "AdminAssistant-Avalonia";
+    public const string RetroConsole = "AdminAssistant-RetroConsole";
+    public const string DatabaseMigrationWorkerService = "AdminAssistant-DatabaseMigrationWorkerService";
+
     public static class ApiGateway
     {
         private const string ApiRoutePrefix = "api";
@@ -36,11 +40,6 @@ public static class Constants
         public const string ScheduledJobHost = "AdminAssistant-ScheduledJobHost";
 
         public const string Gateway = "AdminAssistant-Gateway";
-
-        // TODO: move this somewhere not Services
-        public const string RetroConsole = "AdminAssistant-RetroConsole";
-        // TODO: move this somewhere not Services
-        public const string DatabaseMigrationWorkerService = "AdminAssistant-DatabaseMigrationWorkerService";
     }
     /// <summary>
     /// Represents the index of the first item in an array.
