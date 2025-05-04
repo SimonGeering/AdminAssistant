@@ -8,7 +8,7 @@ public class Worker(IServiceProvider serviceProvider, IHostApplicationLifetime h
 {
     private static readonly ActivitySource ActivitySource = new("Migrations");
 
-    protected override async Task ExecuteAsync(CancellationToken cancellationToken)
+    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         using var activity = ActivitySource.StartActivity("Migrating database", ActivityKind.Client);
 
@@ -17,13 +17,13 @@ public class Worker(IServiceProvider serviceProvider, IHostApplicationLifetime h
             using var scope = serviceProvider.CreateScope();
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-            await dbContext.EnsureDatabaseAsync(cancellationToken);
-            await dbContext.RunMigrationAsync(cancellationToken);
-            await dbContext.SeedDataAsync(cancellationToken);
+            await dbContext.EnsureDatabaseAsync(stoppingToken);
+            await dbContext.RunMigrationAsync(stoppingToken);
+            await dbContext.SeedDataAsync(stoppingToken);
         }
         catch (Exception ex)
         {
-            activity?.RecordException(ex);
+            activity?.AddException(ex);
             throw;
         }
         hostApplicationLifetime.StopApplication();

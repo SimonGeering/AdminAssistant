@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
 
+// ReSharper disable once CheckNamespace
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjectionExtensions
@@ -26,7 +27,7 @@ public static class DependencyInjectionExtensions
     }
 
     public static void AddAdminAssistantApplicationDbContext(this IHostApplicationBuilder builder)
-        => builder.AddSqlServerDbContext<ApplicationDbContext>(Constants.ApplicationDatabaseName);
+        => builder.AddNpgsqlDbContext<ApplicationDbContext>(Constants.ApplicationDatabaseName);
 
     public static void AddAdminAssistantServerSideProviders(this IServiceCollection services)
     {

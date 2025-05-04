@@ -12,10 +12,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" />
         <PackageReference Include="Ardalis.GuardClauses" />
         <PackageReference Include="Ardalis.Result" />
         <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" />
+        <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
         <PackageReference Include="AutoMapper" />
         <PackageReference Include="MediatR" />
         <PackageReference Include="Microsoft.Extensions.Hosting" />

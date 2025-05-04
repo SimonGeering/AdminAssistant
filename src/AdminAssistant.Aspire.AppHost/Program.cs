@@ -7,15 +7,20 @@ using AdminAssistant;
 var builder = DistributedApplication.CreateBuilder(args);
 
 // Database Server ...
-var sqlServer = builder
-    .AddSqlServer(Constants.DatabaseServerName);
+var postgres = builder.AddPostgres(Constants.DatabaseServerName)
+    .WithDataVolume("postgresql-data", isReadOnly: false)
+    .WithLifetime(ContainerLifetime.Persistent);
 
-var applicationDatabase = sqlServer.AddDatabase(Constants.ApplicationDatabaseName);
-var scheduledJobDatabase = sqlServer.AddDatabase(Constants.ScheduledJobDatabase);
+postgres.WithPgAdmin()
+    .WithEnvironment("PGADMIN_CONFIG_THEME", "dark")
+    .WithLifetime(ContainerLifetime.Persistent);
+
+var applicationDatabase = postgres.AddDatabase(Constants.ApplicationDatabaseName);
+var scheduledJobDatabase = postgres.AddDatabase(Constants.ScheduledJobDatabase);
 
 var databaseMigrationWorkerService = builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationWorkerService>(Constants.DatabaseMigrationWorkerService)
     .WithReference(applicationDatabase)
-    .WaitFor(sqlServer);
+    .WaitFor(postgres);
 
 // Services ...
 var accounts = builder.AddProject<Projects.AdminAssistant_Services_Accounts>(Constants.Services.AccountsApi)

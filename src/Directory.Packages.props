@@ -4,6 +4,7 @@
     <PackageVersion Include="Ardalis.Extensions" Version="0.9.4" />
     <PackageVersion Include="Ardalis.GuardClauses" Version="4.6.0" />
     <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="8.0.0" />
+    <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.2.1" />
     <PackageVersion Include="AutoMapper" Version="13.0.1" />
     <PackageVersion Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
@@ -21,11 +22,11 @@
     <PackageVersion Include="AspNetCore.HealthChecks.Uris" Version="8.0.1" />
     <!--AdminAssistant.Aspire.AppHost-->
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.2.1" />
-    <PackageVersion Include="Aspire.Hosting.SqlServer" Version="9.2.0" />
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="9.2.1" />
     <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
     <PackageVersion Include="Aspire.Dashboard.Sdk.linux-x64" Version="9.2.1" />
     <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
-    <PackageVersion Include="Aspire.Hosting.Orchestration.linux-x64" Version="9.2.0" />
+    <PackageVersion Include="Aspire.Hosting.Orchestration.linux-x64" Version="9.2.1" />
     <!--AdminAssistant.Aspire.ServiceDefaults-->
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.4.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.2.0" />
@@ -84,7 +85,6 @@
     <!--https://github.com/hangfire-postgres/Hangfire.PostgreSql-->
     <!--https://dev.to/pradeepradyumna/your-first-hangfire-job-fornet8-with-postgresql-30nd-->
     <!--AdminAssistant.Infra-->
-    <PackageVersion Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" Version="9.2.0" />
     <PackageVersion Include="Microsoft.Graph" Version="4.52.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
     <!--AdminAssistant.Infra.ClientSide-->
@@ -95,7 +95,7 @@
     <!--AdminAssistant.Infra.WebApiClient-->
     <PackageVersion Include="NSwag.MSBuild" Version="14.0.0-preview010" />
     <!--AdminAssistant.IntegrationTests-->
-    <PackageVersion Include="Aspire.Hosting.Testing" Version="9.2.0" />
+    <PackageVersion Include="Aspire.Hosting.Testing" Version="9.2.1" />
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="ReactiveUI" Version="20.1.1" />
     <PackageVersion Include="Terminal.Gui" Version="2.0.0-prealpha.1829" />
