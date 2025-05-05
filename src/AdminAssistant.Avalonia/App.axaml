@@ -3,7 +3,7 @@
              x:Class="AdminAssistant.Avalonia.App"
              xmlns:local="using:AdminAssistant.Avalonia"
              RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows the system theme variant. "Dark" or "Light" are other available options. -->
+    <!-- "Default" ThemeVariant follows the system theme variant. "Dark" or "Light" are other available options. -->
 
     <Application.DataTemplates>
         <local:ViewLocator/>
@@ -11,5 +11,16 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="AppStyles.axaml" />
     </Application.Styles>
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="/Assets/Styles/Palette.axaml"/>
+                <ResourceInclude Source="/Assets/Styles/PaletteDark.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
 </Application>

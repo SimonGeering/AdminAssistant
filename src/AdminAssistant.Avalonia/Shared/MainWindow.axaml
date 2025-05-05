@@ -1,0 +1,54 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AdminAssistant.Shared.UI"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:AdminAssistant.UI;assembly=AdminAssistant.UI"
+        mc:Ignorable="d" d:DesignWidth="1024" d:DesignHeight="768"
+        x:Class="AdminAssistant.Avalonia.Views.MainWindow"
+        x:DataType="vm:IMainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AdminAssistant.Avalonia"
+        d:DataContext="{x:Static ui:DesignTime.MainWindowViewModel}">
+
+        <Grid RowDefinitions="Auto, *" ColumnDefinitions="*">
+            <!-- header -->
+            <Grid Grid.Row="0" ColumnDefinitions="Auto, *, Auto">
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Button></Button>
+                    <TextBlock>Admin Assistant</TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button></Button>
+                    <Button>SG</Button>
+                </StackPanel>
+            </Grid>
+            <!-- body -->
+            <Grid Grid.Row="1" RowDefinitions="*" ColumnDefinitions="auto, *, 150">
+                <StackPanel Grid.Column="0">
+                    <Button>Dashboard</Button>
+                    <Button>Mail</Button>
+                    <Button>Calendar</Button>
+                    <Button>Contacts</Button>
+                    <Button>Tasks</Button>
+                    <Button>Notes</Button>
+                    <Button>Accounts</Button>
+                    <Button>AssetRegister</Button>
+                    <Button>Billing</Button>
+                    <Button>Budget</Button>
+                    <Button>Documents</Button>
+                    <Button>Reports</Button>
+                    <Button>Admin</Button>
+                </StackPanel>
+                <Panel Grid.Column="1">
+                    <TextBlock Text="{Binding FooterText}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Panel>
+                <StackPanel Grid.Column="2">
+                    <Button> ex</Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+</Window>

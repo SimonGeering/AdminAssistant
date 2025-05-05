@@ -1,0 +1,33 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="Black" Color="#27272f" />
+    <SolidColorBrush x:Key="Primary" Color="#776be7" />
+    <SolidColorBrush x:Key="Info" Color="#3299ff" />
+    <SolidColorBrush x:Key="Success" Color="#0bba83" />
+    <SolidColorBrush x:Key="Warning" Color="#ffa800" />
+    <SolidColorBrush x:Key="Error" Color="#f64e62" />
+    <SolidColorBrush x:Key="Dark" Color="#27272f" />
+    <SolidColorBrush x:Key="TextPrimary" Color="#B3FFFFFF" /> <!-- Converted from rgba(255,255,255, 0.70) -->
+    <SolidColorBrush x:Key="TextSecondary" Color="#80FFFFFF" /> <!-- Converted from rgba(255,255,255, 0.50) -->
+    <SolidColorBrush x:Key="TextDisabled" Color="#33FFFFFF" /> <!-- Converted from rgba(255,255,255, 0.20) -->
+    <SolidColorBrush x:Key="ActionDefault" Color="#adadb1" />
+    <SolidColorBrush x:Key="ActionDisabled" Color="#42FFFFFF" /> <!-- Converted from rgba(255,255,255, 0.26) -->
+    <SolidColorBrush x:Key="ActionDisabledBackground" Color="#1FFFFFFF" /> <!-- Converted from rgba(255,255,255, 0.12) -->
+    <SolidColorBrush x:Key="Background" Color="#32333d" />
+    <SolidColorBrush x:Key="BackgroundGray" Color="#27272f" />
+    <SolidColorBrush x:Key="Surface" Color="#373740" />
+    <SolidColorBrush x:Key="DrawerBackground" Color="#27272f" />
+    <SolidColorBrush x:Key="DrawerText" Color="#80FFFFFF" /> <!-- Converted from rgba(255,255,255, 0.50) -->
+    <SolidColorBrush x:Key="DrawerIcon" Color="#80FFFFFF" /> <!-- Converted from rgba(255,255,255, 0.50) -->
+    <SolidColorBrush x:Key="AppbarBackground" Color="#27272f" />
+    <SolidColorBrush x:Key="AppbarText" Color="#B3FFFFFF" /> <!-- Converted from rgba(255,255,255, 0.70) -->
+    <SolidColorBrush x:Key="LinesDefault" Color="#1FFFFFFF" /> <!-- Converted from rgba(255,255,255, 0.12) -->
+    <SolidColorBrush x:Key="LinesInputs" Color="#4DFFFFFF" /> <!-- Converted from rgba(255,255,255, 0.30) -->
+    <SolidColorBrush x:Key="TableLines" Color="#1FFFFFFF" /> <!-- Converted from rgba(255,255,255, 0.12) -->
+    <SolidColorBrush x:Key="TableStriped" Color="#33FFFFFF" /> <!-- Converted from rgba(255,255,255, 0.20) -->
+    <SolidColorBrush x:Key="Divider" Color="#1FFFFFFF" /> <!-- Converted from rgba(255,255,255, 0.12) -->
+    <SolidColorBrush x:Key="DividerLight" Color="#0FFFFFFF" /> <!-- Converted from rgba(255,255,255, 0.06) -->
+    <SolidColorBrush x:Key="Skeleton" Color="#1CFFFFFF" /> <!-- Converted from rgba(255,255,255, 0.11) -->
+
+</ResourceDictionary>
