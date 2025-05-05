@@ -1,7 +1,5 @@
-using System;
 using Avalonia.Controls;
 using Avalonia.Controls.Templates;
-using AdminAssistant.Avalonia.ViewModels;
 
 namespace AdminAssistant.Avalonia;
 
@@ -24,7 +22,5 @@ public class ViewLocator : IDataTemplate
     }
 
     public bool Match(object? data)
-    {
-        return data is ViewModelBase;
-    }
+        => data is AdminAssistant.Shared.UI.IMainWindowViewModel;
 }

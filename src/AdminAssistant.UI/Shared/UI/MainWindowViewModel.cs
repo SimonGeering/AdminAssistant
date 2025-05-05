@@ -25,6 +25,13 @@ internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
     private readonly SidebarStateSettings _contractedSidebarState;
     private readonly SidebarStateSettings _expandedSidebarState;
 
+#if DEBUG // Design Time implementation
+    internal MainWindowViewModel() : base(null!)
+    {
+        FooterText = $"[Designer Mock] - Admin Assistant - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
+    }
+#endif // DEBUG
+
     public MainWindowViewModel(IMessenger messenger, IAppService appService, ILoggingProvider loggerProvider)
         : base(loggerProvider)
     {
@@ -107,5 +114,6 @@ internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
         _messenger.Send(new ModuleSelectionChangedMessage(ActiveModule));
     }
 
+    public string PageTitle => "Admin Assistant";
     public string FooterText { get; }
 }

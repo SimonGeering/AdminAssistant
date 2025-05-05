@@ -9,7 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Models\"/>
         <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
 
@@ -24,5 +23,16 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="CommunityToolkit.Mvvm" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Modules\" />
+      <Folder Include="Shared\UI\" />
     </ItemGroup>
 </Project>
