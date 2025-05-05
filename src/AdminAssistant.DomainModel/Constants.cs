@@ -8,9 +8,13 @@ public static class Constants
 {
     public const string ServerAppName = "AdminAssistantServer";
 
+    public const string IAMServerName = "AdminAssistantIAMServer";
     public const string DatabaseServerName = "AdminAssistantDatabaseServer";
     public const string ApplicationDatabaseName = "AdminAssistant";
-    public const string ScheduledJobDatabase = "AdminAssistantScheduledJobs";
+    public const string ScheduledJobDatabaseName = "AdminAssistantScheduledJobs";
+
+    public const string MessageBusName = "AdminAssistantMessageBus";
+    public const string CacheName = "AdminAssistantCache";
 
     public const string AvaloniaAppName = "AdminAssistant-Avalonia";
     public const string RetroConsole = "AdminAssistant-RetroConsole";
