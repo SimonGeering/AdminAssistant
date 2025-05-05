@@ -9,7 +9,8 @@ var builder = DistributedApplication.CreateBuilder(args);
 
 // IAM Server ...
 var keycloak = builder.AddKeycloak(Constants.IAMServerName, 8080)
-    .WithDataVolume("keycloak-data");
+    .WithDataVolume("keycloak-data")
+    .WithLifetime(ContainerLifetime.Persistent);
 
 // Database Server ...
 var postgres = builder.AddPostgres(Constants.DatabaseServerName)
