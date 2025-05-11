@@ -17,8 +17,21 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions options)
         : base(options)
     {
-            
+
     }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        => optionsBuilder
+            .UseAsyncSeeding(async (context, _, cancellationToken) =>
+            {
+                if (!await context.Set<Blog>().AnyAsync(b => b.Url == "http://test.com", cancellationToken))
+                {
+                    context.Set<Blog>().Add(new Blog { Url = "http://test.com" });
+                    await context.SaveChangesAsync(cancellationToken);
+                }
+            });
+
+
 
     // Core ...
     public DbSet<AuditEntity> AuditTrail { get; set; } = null!;
