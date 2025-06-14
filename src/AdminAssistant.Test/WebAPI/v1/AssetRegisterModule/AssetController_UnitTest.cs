@@ -1,3 +1,4 @@
+#pragma warning disable S125
 // #pragma warning disable CA1707 // Identifiers should not contain underscores
 // using AdminAssistant.Domain;
 // using AdminAssistant.Modules.AssetRegisterModule;
@@ -58,3 +59,4 @@
 // #pragma warning restore S125 // Sections of code should not be commented out
 // }
 // #pragma warning restore CA1707 // Identifiers should not contain underscores
+#pragma warning restore S125

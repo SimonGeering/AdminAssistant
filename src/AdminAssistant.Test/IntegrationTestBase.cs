@@ -1,3 +1,4 @@
+#pragma warning disable S125
 // #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 // using System.Reflection;
 // using AdminAssistant.Shared;
@@ -228,3 +229,4 @@
 //     #endregion // IDisposable
 // }
 // #endif // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
+#pragma warning restore S125

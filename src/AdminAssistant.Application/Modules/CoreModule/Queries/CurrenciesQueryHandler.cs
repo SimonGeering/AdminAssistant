@@ -1,4 +1,5 @@
 using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
+using Ardalis.GuardClauses;
 
 namespace AdminAssistant.Modules.CoreModule.Queries;
 
@@ -10,8 +11,7 @@ internal sealed class CurrenciesQueryHandler(ICurrencyRepository currencyReposit
     public override async Task<Result<IEnumerable<Currency>>> Handle(CurrenciesQuery request, CancellationToken cancellationToken)
     {
         var result = await currencyRepository.GetListAsync(cancellationToken).ConfigureAwait(false);
-
-        Trace.Assert(result.Count > 0, "Currency list was not populated.");
+        Guard.Against.Zero(result.Count, message: "Currency list was not populated.");
 
         return Result<IEnumerable<Currency>>.Success(result);
     }

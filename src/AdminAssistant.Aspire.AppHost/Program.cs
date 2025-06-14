@@ -163,16 +163,12 @@ builder.AddProject<Projects.AdminAssistant_ServerSideBlazor>(Constants.ServerApp
 
 // Avalonia App ...
 builder.AddProject<Projects.AdminAssistant_Avalonia>(Constants.AvaloniaAppName)
-    .WithReference(gateway);
-
-// Retro console UI ... :-)
-builder.AddProject<Projects.AdminAssistant_Retro>(Constants.RetroConsole)
     .WithReference(gateway)
     .WaitFor(databaseMigrationWorkerService)  // Should be waiting for gateway in the long run
     .ExcludeFromManifest(); // Not a web app
 
-// Avalonia UI ...
-builder.AddProject<Projects.AdminAssistant_Avalonia>(Constants.Services.Avalonia)
+// Retro console UI ... :-)
+builder.AddProject<Projects.AdminAssistant_Retro>(Constants.RetroConsole)
     .WithReference(gateway)
     .WaitFor(databaseMigrationWorkerService)  // Should be waiting for gateway in the long run
     .ExcludeFromManifest(); // Not a web app

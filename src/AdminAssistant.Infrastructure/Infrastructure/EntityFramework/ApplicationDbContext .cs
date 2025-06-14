@@ -19,7 +19,10 @@ public class ApplicationDbContext : DbContext
     {
 
     }
-
+#pragma warning disable S125
+    // Going to have to hold off on the nice new EF seeding for the time being due to
+    // https://github.com/dotnet/aspire/discussions/9554#discussioncomment-13349438
+    /*
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder
             .UseAsyncSeeding(async (context, _, cancellationToken) =>
@@ -30,8 +33,8 @@ public class ApplicationDbContext : DbContext
                     await context.SaveChangesAsync(cancellationToken);
                 }
             });
-
-
+    */
+#pragma warning restore S125
 
     // Core ...
     public DbSet<AuditEntity> AuditTrail { get; set; } = null!;
@@ -96,12 +99,15 @@ public class ApplicationDbContext : DbContext
         {
             // Seed the database
             await using var transaction = await Database.BeginTransactionAsync(cancellationToken);
+            // TODO: SeedDataAsync
+#pragma warning disable S125
             // await Tickets.AddAsync(new()
             // {
             //     Title = "Test Ticket",
             //     Description = "Default ticket, please ignore!",
             //     Completed = true
             // }, cancellationToken);
+#pragma warning restore S125
             await SaveChangesAsync(cancellationToken);
             await transaction.CommitAsync(cancellationToken);
         });

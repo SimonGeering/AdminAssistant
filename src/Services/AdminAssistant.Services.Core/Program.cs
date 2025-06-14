@@ -44,7 +44,6 @@ if (app.Environment.IsDevelopment())
         cfg.PreSerializeFilters.Add((swaggerDoc, httpRequest) =>
         {
             if (!httpRequest.Headers.ContainsKey("X-Forwarded-Host")) return;
-            var basePath = "proxy";
             var serverUrl = $"{httpRequest.Scheme}://{httpRequest.Headers["X-Forwarded-Host"]}{Constants.ApiGateway.CoreApiPrefix}/";
             swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = serverUrl } };
         });

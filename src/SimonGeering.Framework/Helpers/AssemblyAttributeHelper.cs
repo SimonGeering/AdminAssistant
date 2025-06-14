@@ -4,8 +4,11 @@ namespace SimonGeering.Framework.Helpers;
 
 public interface IAssemblyAttributeHelper
 {
-    TAttribute GetCustomAssemblyAttribute<TAttribute>(Assembly assembly);
-    TProperty GetCustomAssemblyAttributeProperty<TProperty, A>(Func<A, TProperty> propertyHelper, Assembly assembly);
+    TAttribute GetCustomAssemblyAttribute<TAttribute>(Assembly assembly)
+        where TAttribute : Attribute;
+
+    TProperty GetCustomAssemblyAttributeProperty<TProperty, TAttribute>(Func<TAttribute, TProperty> propertyHelper, Assembly assembly)
+        where TAttribute : Attribute;
 
     string GetCulture(Assembly assembly);
     string GetFullName(Assembly assembly);
@@ -22,10 +25,14 @@ public interface IAssemblyAttributeHelper
 }
 public class AssemblyAttributeHelper : IAssemblyAttributeHelper
 {
+    private const string Unknown = "Unknown";
+
     public TAttribute GetCustomAssemblyAttribute<TAttribute>(Assembly assembly)
+        where TAttribute : Attribute
         => GetAttribute<TAttribute>(assembly);
 
     public TProperty GetCustomAssemblyAttributeProperty<TProperty, TAttribute>(Func<TAttribute, TProperty> propertyHelper, Assembly assembly)
+        where TAttribute : Attribute
         => GetAttributeProperty(assembly, propertyHelper);
 
     public string GetCompany(Assembly assembly)
@@ -55,7 +62,7 @@ public class AssemblyAttributeHelper : IAssemblyAttributeHelper
     public string GetName(Assembly assembly)
     {
         ArgumentNullException.ThrowIfNull(assembly);
-        return assembly.GetName().Name;
+        return assembly.GetName().Name ?? Unknown;
     }
 
     public string GetProduct(Assembly assembly)
@@ -70,15 +77,18 @@ public class AssemblyAttributeHelper : IAssemblyAttributeHelper
     public string GetVersion(Assembly assembly)
         => GetAttributeProperty(assembly, (AssemblyVersionAttribute a) => a.Version);
 
-    private TAttribute GetAttribute<TAttribute>(Assembly assembly)
+    private static TAttribute GetAttribute<TAttribute>(Assembly assembly)
+        where TAttribute : Attribute
     {
         ArgumentNullException.ThrowIfNull(assembly);
-        return (TAttribute)assembly.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault();
+        return (TAttribute)(assembly.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault()
+            ?? throw new InvalidOperationException($"Attribute {typeof(TAttribute).Name} not found."));
     }
 
-    private TProperty GetAttributeProperty<TProperty, TAttribute>(Assembly assembly, Func<TAttribute, TProperty> propertyHelper)
+    private static TProperty GetAttributeProperty<TProperty, TAttribute>(Assembly assembly, Func<TAttribute, TProperty> propertyHelper)
+        where TAttribute : Attribute
     {
         var attribute = GetAttribute<TAttribute>(assembly);
-        return attribute == null ? default(TProperty) : propertyHelper.Invoke(attribute);
+        return propertyHelper.Invoke(attribute);
     }
 }

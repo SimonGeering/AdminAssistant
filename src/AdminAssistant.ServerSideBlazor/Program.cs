@@ -44,9 +44,9 @@ app.UseAntiforgery();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 
-app.Run();
+await app.RunAsync();
 
-
+#pragma warning disable S125
 //var builder = WebAssemblyHostBuilder.CreateDefault(args);
 //builder.RootComponents.Add<App>("app");
 //builder.RootComponents.Add<HeadOutlet>("head::after");
@@ -80,3 +80,4 @@ app.Run();
 //builder.Services.AddAdminAssistantUI();
 
 //await builder.Build().RunAsync();
+#pragma warning restore S125

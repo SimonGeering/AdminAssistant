@@ -26,11 +26,13 @@ internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
     private readonly SidebarStateSettings _expandedSidebarState;
 
 #if DEBUG // Design Time implementation
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+
     internal MainWindowViewModel() : base(null!)
-    {
-        FooterText = $"[Designer Mock] - Admin Assistant - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
-    }
-#endif // DEBUG
+        => FooterText = $"[Designer Mock] - Admin Assistant - V{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
+
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider adding the 'required' modifier or declaring as nullable.
+#endif // DEBUG - Design Time implementation
 
     public MainWindowViewModel(IMessenger messenger, IAppService appService, ILoggingProvider loggerProvider)
         : base(loggerProvider)
@@ -114,6 +116,6 @@ internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
         _messenger.Send(new ModuleSelectionChangedMessage(ActiveModule));
     }
 
-    public string PageTitle => "Admin Assistant";
+    public static string PageTitle => "Admin Assistant";
     public string FooterText { get; }
 }

@@ -13,10 +13,13 @@ public static class PostEndpoint
 {
     public static IEndpointRouteBuilder MapCurrencyPost(this IEndpointRouteBuilder endpoints)
     {
-    //    endpoints.MapPost(string.Empty, PostCurrency);
+#pragma warning disable S125
+        //    endpoints.MapPost(string.Empty, PostCurrency);
+#pragma warning restore S125
         return endpoints;
     }
 
+#pragma warning disable S125
      // internal static async Task<Results<CurrencyResponseDto>> PostCurrency(
      //     CurrencyCreateRequestDto currencyCreateRequest,
      //     CancellationToken cancellationToken,
@@ -62,6 +65,7 @@ public static class PostEndpoint
 //         return Log.Finish(CreatedAtRoute(nameof(CurrencyGetById), new { currencyID = response.CurrencyID }, response));
 //     }
 //
+#pragma warning restore S125
 }
 
 // [SwaggerSchema(Required = new[] { "Symbol", "DecimalFormat" })]

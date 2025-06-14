@@ -10,9 +10,6 @@ internal sealed class BankQueryHandler(IBankRepository bankRepository, ILoggingP
     public override async Task<Result<IEnumerable<Bank>>> Handle(BankQuery request, CancellationToken cancellationToken)
     {
         var result = await bankRepository.GetListAsync(cancellationToken).ConfigureAwait(false);
-
-        Trace.Assert(result.Count > 0, "Bank list was not populated.");
-
         return Result<IEnumerable<Bank>>.Success(result);
     }
 }

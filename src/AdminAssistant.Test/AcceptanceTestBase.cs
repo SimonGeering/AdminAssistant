@@ -1,3 +1,4 @@
+#pragma warning disable S125
 // #if DEBUG // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
 //
 // namespace AdminAssistant.Test;
@@ -15,3 +16,4 @@
 //     };
 // }
 // #endif // quick and dirty fix for #85 category filtering breaking CI Unit Test run.
+#pragma warning restore S125

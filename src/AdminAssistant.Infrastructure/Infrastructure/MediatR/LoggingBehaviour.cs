@@ -20,7 +20,7 @@ internal sealed class LoggingBehaviour<TRequest, TResponse>(ILoggingProvider log
         //Request
         var requestName = typeof(TRequest).Name;
 
-        loggingProvider.LogInformation("{requestName} Handling Started", requestName);
+        loggingProvider.LogInformation("{RequestName} Handling Started", requestName);
 
         foreach (var prop in request.GetType().GetProperties())
         {
@@ -32,13 +32,13 @@ internal sealed class LoggingBehaviour<TRequest, TResponse>(ILoggingProvider log
         //Response
         if (response is not IResult result)
         {
-            loggingProvider.LogInformation("{requestName} Handling Completed", requestName);
+            loggingProvider.LogInformation("{RequestName} Handling Completed", requestName);
             return response;
         }
 
         var status = LogResultDetails(requestName, result);
 
-        loggingProvider.LogInformation("{requestName} Handling Completed - {status}", requestName, status);
+        loggingProvider.LogInformation("{RequestName} Handling Completed - {Status}", requestName, status);
         return response;
     }
 
@@ -46,12 +46,12 @@ internal sealed class LoggingBehaviour<TRequest, TResponse>(ILoggingProvider log
     {
         if (result.Errors.Any())
         {
-            loggingProvider.LogDebug("{requestName} Handling - {result.Errors.Count()} Errors:", requestName, result.Errors.Count());
+            loggingProvider.LogDebug("{RequestName} Handling - {ResultErrors_Count} Errors:", requestName, result.Errors.Count());
         }
 
         if (result.ValidationErrors.Any())
         {
-            loggingProvider.LogDebug("{requestName} Handling - {result.ValidationErrors.Count} Validation Errors:", requestName, result.ValidationErrors.Count());
+            loggingProvider.LogDebug("{RequestName} Handling - {ResultValidationErrors_Count} Validation Errors:", requestName, result.ValidationErrors.Count());
         }
 
         return result.Status.ToString();

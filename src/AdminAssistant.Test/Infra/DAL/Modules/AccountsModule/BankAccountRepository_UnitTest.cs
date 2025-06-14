@@ -113,7 +113,7 @@ public sealed class BankAccountRepository_UnitTest
 
     //UpdatesAuditing_WhenSavingAnExistingBankAccount
 
-    private bool IsValidForInsert(BankAccountEntity bankAccountToSave)
+    private static bool IsValidForInsert(BankAccountEntity bankAccountToSave)
     {
         bankAccountToSave.BankAccountID.Should().Be(Constants.NewRecordID);
         bankAccountToSave.Audit.Should().NotBeNull();
@@ -125,7 +125,7 @@ public sealed class BankAccountRepository_UnitTest
     }
 
     [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
-    private bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
+    private static bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
     {
         bankAccountToSave.BankAccountID.Should().NotBe(Constants.NewRecordID);
         bankAccountToSave.Audit.Should().NotBeNull();

@@ -1,4 +1,5 @@
 using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
+using Ardalis.GuardClauses;
 
 namespace AdminAssistant.Modules.AccountsModule.Queries;
 
@@ -12,8 +13,7 @@ internal sealed class BankAccountTypesQueryHandler(
     public override async Task<Result<IEnumerable<BankAccountType>>> Handle(BankAccountTypesQuery request, CancellationToken cancellationToken)
     {
         var result = await bankAccountTypeRepository.GetListAsync(cancellationToken).ConfigureAwait(false);
-
-        Trace.Assert(result.Count > 0, "BankAccountType list was not populated.");
+        Guard.Against.Zero(result.Count, message: "BankAccountType list was not populated.");
 
         return Result<IEnumerable<BankAccountType>>.Success(result);
     }

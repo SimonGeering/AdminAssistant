@@ -1,3 +1,6 @@
+// TODO: MappingProfile
+
+#pragma warning disable S125
 // namespace AdminAssistant.WebAPI.v1;
 //
 // public sealed class MappingProfile : MappingProfileBase
@@ -7,3 +10,4 @@
 //     {
 //     }
 // }
+#pragma warning restore S125

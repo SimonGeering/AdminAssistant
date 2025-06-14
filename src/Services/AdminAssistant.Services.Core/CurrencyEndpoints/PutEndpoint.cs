@@ -8,6 +8,7 @@ public static class PutEndpoint
         return endpoints;
     }
 
+#pragma warning disable S125
 //     [HttpPut]
 //     [SwaggerOperation("Update an existing Currency.", OperationId = "PutCurrency")]
 //     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated CurrencyResponseDto", type: typeof(CurrencyResponseDto))]
@@ -35,6 +36,7 @@ public static class PutEndpoint
 //         var response = Mapper.Map<CurrencyResponseDto>(result.Value);
 //         return Log.Finish(Ok(response));
 //     }
+#pragma warning restore S125
 }
 
 //[SwaggerSchema(Required = new[] { "CurrencyID", "Symbol", "DecimalFormat" })]

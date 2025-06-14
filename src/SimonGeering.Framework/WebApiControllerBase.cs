@@ -1,3 +1,5 @@
+// TODO: WebApiControllerBase
+#pragma warning disable S125
 // namespace AdminAssistant.WebAPI;
 //
 // public abstract class WebApiControllerBase : ControllerBase
@@ -13,3 +15,4 @@
 //     protected IMediator Mediator { get; }
 //     protected ILoggingProvider Log { get; }
 // }
+#pragma warning restore S125

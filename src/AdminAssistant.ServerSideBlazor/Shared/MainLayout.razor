@@ -13,8 +13,8 @@
         <MudSpacer />
         <MudMenu Icon="@Icons.Material.Filled.Settings" Color="@_appBarItemColor" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
             <MudStack Class="pl-2">
-                <MudSwitch T="bool" Checked="_isDarkMode" CheckedChanged="(e) => OnIsDarkModeChanged(e)" Color="Color.Primary" Label="Toggle Light/Dark Mode" />
-                <MudSwitch T="bool" Checked="_isDense" CheckedChanged="(e) => OnIsDenseChanged(e)" Color="Color.Primary" Label="Toggle Dense Spacing" />
+                <MudSwitch T="bool" @bind-Value="_isDarkMode" @bind-Value:after="() => OnIsDarkModeChanged(_isDarkMode)" Color="Color.Primary" Label="Toggle Light/Dark Mode" />
+                <MudSwitch T="bool" @bind-Value="_isDense" @bind-Value:after="() => OnIsDenseChanged(_isDarkMode)" Color="Color.Primary" Label="Toggle Dense Spacing" />
             </MudStack>
         </MudMenu>
         <MudAvatar Size="@_avatarSize" Color="@_appBarItemColor">SG</MudAvatar>
