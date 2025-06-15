@@ -7,7 +7,6 @@
     "settings": {
         "omnisharp.loggingLevel": "warning",
         "omnisharp.enableEditorConfigSupport": true,
-        "omnisharp.enableRoslynAnalyzers": true,
         "files.associations": {
             "*/DevOps/.yml": "azure-pipelines"
         },
@@ -18,6 +17,7 @@
             "**/obj/": true,
             "**/.cr/": true,
             "**/.vs/": true,
+            "**/.idea/": true,
             "**/node_modules/": true,
             "**/*.csproj.user": true,
             "**/*.docs.xml": true,
@@ -27,7 +27,6 @@
             "**/AdminAssistant.ldf": true,
         },
         "cSpell.language": "en-GB",
-        "cSpell.enableCompoundWords": true,
         "cSpell.ignorePaths": [
             "**/package.json",
             "**/package-lock.json",
@@ -86,11 +85,13 @@
             "connectionId": "simongeering",
             "projectKey": "SimonGeering_AdminAssistant"
         },
+        "rest-client.previewOption": "exchange",
         // updated 2023-02-01 09:11
         // https://github.com/antfu/vscode-file-nesting-config
         "explorer.fileNesting.enabled": true,
         "explorer.fileNesting.expand": false,
         "explorer.fileNesting.patterns": {
+            "*.sln": "$(capture).sln.DotSettings, $(capture).sln.DotSettings.user",
             "tsconfig.json": "tsconfig.*.json",
             "*.asax": "$(capture).*.cs, $(capture).*.vb",
             "*.ascx": "$(capture).*.cs, $(capture).*.vb",
@@ -143,15 +144,14 @@
     },
     "extensions": {
         "recommendations": [
+            "ms-dotnettools.vscode-dotnet-runtime",
             "ms-dotnettools.csdevkit",
             "ms-dotnettools.csharp",
-            "ms-dotnettools.vscodeintellicode-csharp",
-            "visualstudioexptteam.vscodeintellicode",
-            "visualstudioexptteam.vscodeintellicode-completions",
             "ms-dotnettools.blazorwasm-companion",
             "ms-mssql.mssql",
             "streetsidesoftware.code-spell-checker",
             "ryanluker.vscode-coverage-gutters",
+            "ms-vscode.live-server",
             "editorconfig.editorconfig",
             "rexebin.f12-open-file",
             "donjayamanne.githistory",
@@ -164,11 +164,17 @@
             "shardulm94.trailing-spaces",
             "pflannery.vscode-versionlens",
             "vscode-icons-team.vscode-icons",
-            "ms-azuretools.vscode-docker",
+            "ms-azuretools.vscode-containers",
             "systemticks.c4-dsl-extension",
-            "ms-ossdata.vscode-postgresql"
+            "ms-ossdata.vscode-pgsql",
+            "humao.rest-client",
+            "ibm.output-colorizer",
+            "sonarsource.sonarlint-vscode",
+            "MermaidChart.vscode-mermaid-chart",
+            "mikestead.dotenv"
         ],
         "unwantedRecommendations": [
+            "ms-ossdata.vscode-postgresql",
             "ms-vscode.azurecli",
             "spmeesseman.vscode-taskexplorer",
             "hbenl.vscode-test-explorer",
