@@ -2,7 +2,7 @@ using AdminAssistant.Shared.UI;
 
 namespace AdminAssistant.Retro.Shared
 {
-    internal class MainWindow : Toplevel
+    internal sealed class MainWindow : Toplevel
     {
         private IMainWindowViewModel VM { get; init; }
         public MainWindow(IMainWindowViewModel vm)
@@ -24,15 +24,28 @@ namespace AdminAssistant.Retro.Shared
                 [
                     new MenuItem("_Quit", "", MainWindow.Quit)
                 ]),
-                new MenuBarItem("_View", Array.Empty<MenuItem>())
-#pragma warning disable S125
-                //     new MenuBarItem ("_Accounts", new MenuItem []
-                //     {
-                //         new MenuItem ("_BankAccountEdit", "", () => AccountsBankAccountEdit(scope)),
-                //     })
-#pragma warning restore S125
+                new MenuBarItem("_View",
+         [
+                    new MenuItem("_Accounts", "", () => ShowModule("Accounts")),
+                    new MenuItem("A_dmin", "", () => ShowModule("Admin")),
+                    new MenuItem("A_ssetRegister", "", () => ShowModule("AssetRegister")),
+                    new MenuItem("_Billing", "", () => ShowModule("Billing")),
+                    new MenuItem("B_udget", "", () => ShowModule("Budget")),
+                    new MenuItem("_Calendar", "", () => ShowModule("Calendar")),
+                    new MenuItem("C_ontacts", "", () => ShowModule("Contacts")),
+                    new MenuItem("Dashboard", "", () => ShowModule("Dashboard")),
+                    new MenuItem("_Documents", "", () => ShowModule("Documents")),
+                    new MenuItem("_Notes", "", () => ShowModule("Notes")),
+                    new MenuItem("_Mail", "", () => ShowModule("Mail")),
+                    new MenuItem("_Reports", "", () => ShowModule("Reports")),
+                    new MenuItem("_Tasks", "", () => ShowModule("Tasks")),
+                ])
             ]
         };
+
+        // Placeholder method for launching module views
+        private static void ShowModule(string moduleName)
+            => MessageBox.Query(40, 7, "Module Launch", $"You selected: {moduleName}", "OK");
 
         private static StatusBar MainStatusBar => new(
         [
