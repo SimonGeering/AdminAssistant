@@ -27,7 +27,7 @@ public sealed class BankAccountTypeRepository_GetListAsync
 
         var mockDbContext = new Mock<ApplicationDbContext>();
         mockDbContext.Setup(x => x.BankAccountTypes)
-            .Returns(data.AsQueryable().BuildMockDbSet().Object);
+            .Returns(data.BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
         services.AddAutoMapper(typeof(MappingProfile));
@@ -63,7 +63,7 @@ public class BankAccountTypeRepository_GetAsync
 
         var mockDbContext = new Mock<ApplicationDbContext>();
         mockDbContext.Setup(x => x.BankAccountTypes)
-            .Returns(data.AsQueryable().BuildMockDbSet().Object);
+            .Returns(data.BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
         services.AddAutoMapper(typeof(MappingProfile));
