@@ -14,8 +14,8 @@
     <PackageVersion Include="AutoMapper" Version="[13.0.1]" />
     <PackageVersion Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageVersion Include="FluentValidation" Version="11.9.2" />
-    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
+    <PackageVersion Include="FluentValidation" Version="12.0.0" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.9" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.9" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.9" />
@@ -104,19 +104,19 @@
     <!--AdminAssistant.Infra.ClientSide-->
     <PackageVersion Include="Microsoft.Extensions.Http.Polly" Version="9.0.9" />
     <PackageVersion Include="Polly.Extensions.Http" Version="3.0.0" />
-    <PackageVersion Include="Polly" Version="8.5.2" />
-    <PackageVersion Include="PDFsharp" Version="6.1.1" />
+    <PackageVersion Include="Polly" Version="8.6.4" />
+    <PackageVersion Include="PDFsharp" Version="6.2.2" />
     <!--AdminAssistant.Infra.WebApiClient-->
     <PackageVersion Include="NSwag.MSBuild" Version="14.0.0-preview010" />
     <!--AdminAssistant.IntegrationTests-->
     <PackageVersion Include="Aspire.Hosting.Testing" Version="9.5.0" />
     <!--AdminAssistant.Retro-->
-    <PackageVersion Include="ReactiveUI" Version="20.1.1" />
+    <PackageVersion Include="ReactiveUI" Version="21.0.1" />
     <PackageVersion Include="Terminal.Gui" Version="2.0.0-prealpha.1829" />
     <PackageVersion Include="JetBrains.Annotations" Version="2025.2.2" />
     <!--https://github.com/gui-cs/Terminal.Gui/issues/3544-->
     <!--AdminAssistant.Test-->
-    <PackageVersion Include="coverlet.collector" Version="6.0.2" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.4" />
     <!-- FluentAssertions v7.2.0 is the last version under Apache 2.0.
            v8+ requires a commercial license via Xceed Software.
            See: https://fluentassertions.com/releases/#800 -->
