@@ -57,7 +57,7 @@
     {
         if (firstRender)
         {
-            var isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            var isDarkMode = await _mudThemeProvider.GetSystemDarkModeAsync();
             OnIsDarkModeChanged(isDarkMode);
             StateHasChanged();
         }
