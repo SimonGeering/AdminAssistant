@@ -8,12 +8,12 @@
     <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="9.5.0" />
     <PackageVersion Include="Aspire.Hosting.Redis" Version="9.5.0" />
     <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.0" />
-      <!-- AutoMapper v13.0.1 is the last version under MIT license.
+    <!-- AutoMapper v13.0.1 is the last version under MIT license.
            Later versions require commercial licensing via Lucky Penny Software.
-           See: https://github.com/AutoMapper/AutoMapper/issues/4536 -->      
+           See: https://github.com/AutoMapper/AutoMapper/issues/4536 -->
     <PackageVersion Include="AutoMapper" Version="[13.0.1]" />
     <PackageVersion Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
-    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageVersion Include="FluentValidation" Version="11.9.2" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.9" />
@@ -48,18 +48,18 @@
     <!--AdminAssistant.Application-->
     <PackageVersion Include="Ardalis.Result" Version="9.1.0" />
     <PackageVersion Include="Ardalis.Result.FluentValidation" Version="9.1.0" />
-      <!-- MediatR v12.5.0 is the last version under Apache 2.0 license.
+    <!-- MediatR v12.5.0 is the last version under Apache 2.0 license.
      Later versions require commercial licensing via Lucky Penny Software.
      See: https://github.com/jbogard/MediatR/issues/618 -->
     <PackageVersion Include="MediatR" Version="[12.5.0]" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
     <!--AdminAssistant.Avalonia-->
-    <PackageVersion Include="Avalonia" Version="11.2.7" />
-    <PackageVersion Include="Avalonia.Desktop" Version="11.2.7" />
-    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.2.7" />
-    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.2.7" />
-    <PackageVersion Include="Avalonia.Diagnostics" Version="11.2.7" />
+    <PackageVersion Include="Avalonia" Version="11.3.6" />
+    <PackageVersion Include="Avalonia.Desktop" Version="11.3.6" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.3.6" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.3.6" />
+    <PackageVersion Include="Avalonia.Diagnostics" Version="11.3.6" />
     <!--AdminAssistant.Blazor-->
     <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageVersion Include="MicroElements.Swashbuckle.FluentValidation" Version="6.0.0" />
@@ -117,7 +117,10 @@
     <!--https://github.com/gui-cs/Terminal.Gui/issues/3544-->
     <!--AdminAssistant.Test-->
     <PackageVersion Include="coverlet.collector" Version="6.0.2" />
-    <PackageVersion Include="FluentAssertions" Version="6.12.1" />
+    <!-- FluentAssertions v7.2.0 is the last version under Apache 2.0.
+           v8+ requires a commercial license via Xceed Software.
+           See: https://fluentassertions.com/releases/#800 -->
+    <PackageVersion Include="FluentAssertions" Version="[7.2.0]" />
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="9.0.9" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.9" />
