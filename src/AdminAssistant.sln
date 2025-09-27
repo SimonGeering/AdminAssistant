@@ -75,6 +75,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.IntegrationT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Avalonia", "AdminAssistant.Avalonia\AdminAssistant.Avalonia.csproj", "{72BEDFC0-8936-4C16-BD15-8481E5782711}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docker-compose-artifacts", "docker-compose-artifacts", "{CA4F3DA5-FEDA-42C8-97B8-8EF12E996DE7}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose-artifacts\docker-compose.yaml = docker-compose-artifacts\docker-compose.yaml
+		docker-compose-artifacts\readme.md = docker-compose-artifacts\readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
