@@ -84,7 +84,8 @@ else
 // Add OpenAPI/Swagger middleware ...
 
 // Serves the registered OpenAPI/Swagger documents on `/swagger/v1/swagger.json`
-app.UseSwagger(c => c.SerializeAsV2 = true); // Needed for the VS2019 to be able to generate a REST Client.
+app.UseSwagger();
+//app.UseSwagger(c => c.SerializeAsV2 = true); // Needed for the VS2019 to be able to generate a REST Client.
 
 // Serves the Swagger UI 3 web ui to view the OpenAPI/Swagger documents by default on `/swagger`
 app.UseSwaggerUI(c =>
