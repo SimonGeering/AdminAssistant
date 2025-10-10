@@ -27,7 +27,7 @@ public sealed class CurrencyRepository_GetListAsync
 
         var mockDbContext = new Mock<IApplicationDbContext>();
         mockDbContext.Setup(x => x.Currencies)
-            .Returns(currencyData.AsQueryable().BuildMockDbSet().Object);
+            .Returns(currencyData.BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
         services.AddAutoMapper(typeof(MappingProfile));
@@ -63,7 +63,7 @@ public class CurrencyRepository_GetAsync
 
         var mockDbContext = new Mock<IApplicationDbContext>();
         mockDbContext.Setup(x => x.Currencies)
-            .Returns(currencyData.AsQueryable().BuildMockDbSet().Object);
+            .Returns(currencyData.BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
         services.AddAutoMapper(typeof(MappingProfile));

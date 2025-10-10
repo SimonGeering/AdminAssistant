@@ -13,6 +13,7 @@
     <ItemGroup>
         <PackageReference Include="Ardalis.Extensions" />
         <PackageReference Include="Ardalis.GuardClauses" />
+        <PackageReference Include="Ardalis.Result" />
         <PackageReference Include="FluentValidation" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
         <PackageReference Include="SonarAnalyzer.CSharp">

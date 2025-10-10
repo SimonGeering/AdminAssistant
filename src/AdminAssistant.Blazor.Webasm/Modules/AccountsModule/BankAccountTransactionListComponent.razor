@@ -1,8 +1,7 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.UI.IBankAccountTransactionListViewModel>
 @using AdminAssistant.Modules.AccountsModule;
 
-<MudTable Items="@_transactions" FixedHeader="true" FixedFooter="true"
-          Bordered="true" Dense="true" HorizontalScrollbar="true">
+<MudTable Items="@_transactions" FixedHeader="true" FixedFooter="true" Bordered="true" Dense="true" HorizontalScrollbar="true">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Barclays Current Account</MudText>
         <MudSpacer />
@@ -10,8 +9,8 @@
     </ToolBarContent>
     <ColGroup>
         <col style="width: auto;" />
-        <col style="width: 40%;" />
-        <col style="width: *;" />
+        <col style="width: auto;" />
+        <col style="width: max-content;" />
         <col style="width: auto;" />
         <col style="width: auto;" />
         <col style="width: auto;" />

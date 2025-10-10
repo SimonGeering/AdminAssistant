@@ -11,13 +11,13 @@
     <MudPaper id="col1" class="flex-grow-1 ml-4 mr-2 mud-theme-primary">
         <MudStack Justify="Justify.SpaceBetween">
             <MudFileUpload T="IBrowserFile" Accept=".pdf" FilesChanged="UploadStatement" MaximumFileCount="1">
-                <ButtonTemplate>
-                    <MudButton HtmlTag="label" Size="Size.Medium" Variant="Variant.Text"
-                               StartIcon="@Icons.Material.Filled.FileUpload"
-                               Color="Color.Tertiary" for="@context">
-                        Select statement.
-                    </MudButton>
-                </ButtonTemplate>
+                @* <ButtonTemplate> *@
+                @*     <MudButton HtmlTag="label" Size="Size.Medium" Variant="Variant.Text" *@
+                @*                StartIcon="@Icons.Material.Filled.FileUpload" *@
+                @*                Color="Color.Tertiary" for="@context"> *@
+                @*         Select statement. *@
+                @*     </MudButton> *@
+                @* </ButtonTemplate> *@
             </MudFileUpload>
             @if (vm.EmbeddedFileContentSrc != string.Empty)
             {

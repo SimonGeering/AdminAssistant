@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <DocumentationFile>AdminAssistant.Infra.ClientSide.docs.xml</DocumentationFile>
+    <DocumentationFile>AdminAssistant.Infrastructure.ClientSide.docs.xml</DocumentationFile>
     <NoWarn>$(NoWarn);</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdminAssistant.Infra.ClientSide.docs.xml" />
+    <None Remove="AdminAssistant.Infrastructure.ClientSide.docs.xml" />
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <SupportedPlatform Include="browser" />
   </ItemGroup>

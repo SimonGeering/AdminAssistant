@@ -17,13 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Infra", "AdminAssistant.Infra\AdminAssistant.Infra.csproj", "{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Infrastructure", "AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj", "{FFBA789F-F289-4C7E-AAF0-55B453A30A0D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.DomainModel", "AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj", "{37E3A777-7802-411D-8738-9C55B6A5288E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Retro", "AdminAssistant.Retro\AdminAssistant.Retro.csproj", "{E72BBBA7-8A75-47E2-BFF4-7460163616E2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Infra.ClientSide", "AdminAssistant.Infra.ClientSide\AdminAssistant.Infra.ClientSide.csproj", "{CA7C589A-4830-495B-9B96-B2E9D01E78F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Infrastructure.ClientSide", "AdminAssistant.Infrastructure.ClientSide\AdminAssistant.Infrastructure.ClientSide.csproj", "{CA7C589A-4830-495B-9B96-B2E9D01E78F4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Server", "AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj", "{6A9F66A8-5E16-4048-8377-408EB7237009}"
 EndProject
@@ -31,7 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Blazor.Webas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Application", "AdminAssistant.Application\AdminAssistant.Application.csproj", "{B4A1067A-4623-4B65-93FE-82CAAED987E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimonGeering.Framework", "SimonGeering.Framework\SimonGeering.Framework.csproj", "{6FF549EC-56C8-44A2-BEEC-0773B504341B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimonGeering.Framework", "SimonGeering.Framework\SimonGeering.Framework.csproj", "{6FF549EC-56C8-44A2-BEEC-0773B504341B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimonGeering.Framework.Test", "SimonGeering.Framework.Test\SimonGeering.Framework.Test.csproj", "{B506489B-9AFF-4D95-A063-76CFD4712F5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Aspire.AppHost", "AdminAssistant.Aspire.AppHost\AdminAssistant.Aspire.AppHost.csproj", "{A9D0D587-7EC3-4503-9773-BEB2EDF21387}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Aspire.ServiceDefaults", "AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj", "{36752223-0E9C-4EBC-8A26-577E7E3C5D66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +85,18 @@ Global
 		{6FF549EC-56C8-44A2-BEEC-0773B504341B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FF549EC-56C8-44A2-BEEC-0773B504341B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FF549EC-56C8-44A2-BEEC-0773B504341B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B506489B-9AFF-4D95-A063-76CFD4712F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B506489B-9AFF-4D95-A063-76CFD4712F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B506489B-9AFF-4D95-A063-76CFD4712F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B506489B-9AFF-4D95-A063-76CFD4712F5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9D0D587-7EC3-4503-9773-BEB2EDF21387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9D0D587-7EC3-4503-9773-BEB2EDF21387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9D0D587-7EC3-4503-9773-BEB2EDF21387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9D0D587-7EC3-4503-9773-BEB2EDF21387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36752223-0E9C-4EBC-8A26-577E7E3C5D66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36752223-0E9C-4EBC-8A26-577E7E3C5D66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36752223-0E9C-4EBC-8A26-577E7E3C5D66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36752223-0E9C-4EBC-8A26-577E7E3C5D66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

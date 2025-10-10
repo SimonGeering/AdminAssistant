@@ -2,15 +2,17 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace SimonGeering.Framework.Primitives;
 
-public abstract class DomainEntity<TId>
-    : IEqualityComparer<TId>, IEquatable<DomainEntity<TId>>, IPersistable
+public interface IDomainEntity<out TId> where TId : Id
+{
+    public TId Id { get; }
+}
+public abstract class DomainEntity<TId>(TId id)
+    : IDomainEntity<TId>, IEqualityComparer<TId>, IEquatable<DomainEntity<TId>>, IPersistable
     where TId : Id
 {
     public Id PrimaryKey => Id;
 
-    public TId Id { get; private init; }
-
-    protected DomainEntity(TId id) => Id = id;
+    public TId Id { get; private init; } = id;
 
     public static bool operator == (DomainEntity<TId> left, DomainEntity<TId> right)
         => left is not null && right is not null && left.Equals(right);

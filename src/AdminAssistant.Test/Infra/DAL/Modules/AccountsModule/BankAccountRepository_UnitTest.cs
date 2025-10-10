@@ -27,7 +27,7 @@ public sealed class BankAccountRepository_UnitTest
 
         var mockDbContext = new Mock<IApplicationDbContext>();
         mockDbContext.Setup(x => x.BankAccounts)
-            .Returns(data.AsQueryable().BuildMockDbSet().Object);
+            .Returns(data.BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
         services.AddAutoMapper(typeof(MappingProfile));
@@ -60,7 +60,7 @@ public sealed class BankAccountRepository_UnitTest
 
         var mockDbContext = new Mock<IApplicationDbContext>();
         mockDbContext.Setup(x => x.BankAccounts)
-            .Returns(data.AsQueryable().BuildMockDbSet().Object);
+            .Returns(data.BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
         services.AddAutoMapper(typeof(MappingProfile));
@@ -88,7 +88,7 @@ public sealed class BankAccountRepository_UnitTest
                 Factory.BankAccount.WithTestData(20).Build()
             };
 
-        var mockBankAccounts = mapper.Map<IList<BankAccountEntity>>(bankAccountList).AsQueryable().BuildMockDbSet();
+        var mockBankAccounts = mapper.Map<IList<BankAccountEntity>>(bankAccountList).BuildMockDbSet();
         mockBankAccounts.Setup(x => x.Add(It.IsAny<BankAccountEntity>()));
 
         var mockDbContext = new Mock<IApplicationDbContext>();

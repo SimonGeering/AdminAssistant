@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.0" />
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
+        <DocumentationFile>AdminAssistant.Aspire.AppHost.docs.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);</NoWarn>
+        <SkipAddAspireDefaultReferences>true</SkipAddAspireDefaultReferences>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="AdminAssistant.Aspire.AppHost.docs.xml" />
+        <None Include="..\.editorconfig" Link=".editorconfig" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" />
+        <PackageReference Include="SonarAnalyzer.CSharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
+        <PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" />
+        <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
+        <PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />
+        <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj">
+            <IsAspireProjectResource>false</IsAspireProjectResource>
+        </ProjectReference>
+    </ItemGroup>
+
+</Project>
