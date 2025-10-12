@@ -6,6 +6,26 @@ namespace AdminAssistant;
 /// </summary>
 public static class Constants
 {
+    public const string ServerAppName = "AdminAssistantServer";
+
+    public const string IAMServerName = "AdminAssistantIAMServer";
+    public const string DatabaseServerName = "AdminAssistantDatabaseServer";
+    public const string DatabaseServerAdminDashboardName = "AdminAssistantDatabaseServerAdminDashboad";
+    public const string ApplicationDatabaseName = "AdminAssistant";
+    public const string ScheduledJobDatabaseName = "AdminAssistantScheduledJobs";
+
+    public const string MessageBusName = "AdminAssistantMessageBus";
+    public const string CacheName = "AdminAssistantCache";
+    public const string CacheAdminDashboardName = "AdminAssistantCacheAdminDashboad";
+
+    public const string AvaloniaAppName = "AdminAssistant-Avalonia";
+    public const string RetroConsole = "AdminAssistant-RetroConsole";
+    public const string DatabaseMigrationWorkerService = "AdminAssistant-DatabaseMigrationWorkerService";
+
+    public const string Api = "AdminAssistant-Api";
+    public const string ScheduledJobHost = "AdminAssistant-ScheduledJobHost";
+    public const string Gateway = "AdminAssistant-Gateway";
+
     /// <summary>
     /// Represents the index of the first item in an array.
     /// </summary>
@@ -59,3 +79,4 @@ public static class Constants
     /// </summary>
     public const string AdminAssistantWebAPIClient = "AdminAssistantWebAPIClient";
 }
+

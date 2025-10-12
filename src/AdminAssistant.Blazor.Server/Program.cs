@@ -14,8 +14,8 @@ builder.AddServiceDefaults();
 const string WebAPIVersion = "v1";
 const string WebAPITitle = $"Admin Assistant WebAPI {WebAPIVersion}.";
 
-var configSettings = builder.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
-Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
+//var configSettings = builder.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
+//Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
 
 builder.Services.AddMvc(opts =>
 {
@@ -59,7 +59,7 @@ builder.Services.AddAutoMapper(typeof(AdminAssistant.Domain.MappingProfile), typ
 builder.Services.AddAdminAssistantServerSideProviders();
 builder.Services.AddAdminAssistantServerSideDomainModel();
 builder.Services.AddAdminAssistantApplication();
-builder.Services.AddAdminAssistantServerSideInfra(configSettings);
+builder.Services.AddAdminAssistantServerSideInfra();
 
 var app = builder.Build();
 
