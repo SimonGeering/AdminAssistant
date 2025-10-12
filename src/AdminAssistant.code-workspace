@@ -143,30 +143,30 @@
     },
     "extensions": {
         "recommendations": [
-            "ms-dotnettools.csdevkit",
-            "ms-dotnettools.csharp",
-            "ms-dotnettools.vscodeintellicode-csharp",
-            "visualstudioexptteam.vscodeintellicode",
-            "visualstudioexptteam.vscodeintellicode-completions",
-            "ms-dotnettools.blazorwasm-companion",
-            "ms-mssql.mssql",
-            "streetsidesoftware.code-spell-checker",
-            "ryanluker.vscode-coverage-gutters",
-            "editorconfig.editorconfig",
-            "rexebin.f12-open-file",
-            "donjayamanne.githistory",
-            "eamodio.gitlens",
-            "yzhang.markdown-all-in-one",
-            "davidanson.vscode-markdownlint",
-            "christian-kohler.path-intellisense",
-            "wayou.vscode-todo-highlight",
-            "gruntfuggly.todo-tree",
-            "shardulm94.trailing-spaces",
-            "pflannery.vscode-versionlens",
-            "vscode-icons-team.vscode-icons",
-            "ms-azuretools.vscode-docker",
-            "systemticks.c4-dsl-extension",
-            "ms-ossdata.vscode-postgresql"
+            "ms-dotnettools.csdevkit", // .NET Dev Kit
+            "ms-dotnettools.csharp", // C# for Visual Studio Code
+            "ms-dotnettools.vscodeintellicode-csharp", // IntelliCode for C#
+            "visualstudioexptteam.vscodeintellicode", // IntelliCode (General AI-assisted IntelliSense)
+            "visualstudioexptteam.vscodeintellicode-completions", // IntelliCode Completions (AI-assisted completions)
+            "ms-dotnettools.blazorwasm-companion", // Blazor WebAssembly Debugging Extension
+            "ms-mssql.mssql", // SQL Server (mssql)
+            "streetsidesoftware.code-spell-checker", // Code Spell Checker
+            "ryanluker.vscode-coverage-gutters", // Coverage Gutters
+            "editorconfig.editorconfig", // EditorConfig for VS Code
+            "rexebin.f12-open-file", // F12 Open File
+            "donjayamanne.githistory", // Git History
+            "eamodio.gitlens", // GitLens — Git supercharged
+            "yzhang.markdown-all-in-one", // Markdown All in One
+            "davidanson.vscode-markdownlint", // MarkdownLint
+            "christian-kohler.path-intellisense", // Path Intellisense
+            "wayou.vscode-todo-highlight", // TODO Highlight
+            "gruntfuggly.todo-tree", // Todo Tree
+            "shardulm94.trailing-spaces", // Trailing Spaces
+            "pflannery.vscode-versionlens", // Version Lens
+            "vscode-icons-team.vscode-icons", // vscode-icons
+            "ms-azuretools.vscode-docker", // Docker Extension
+            "systemticks.c4-dsl-extension", // C4 DSL Extension (for C4 model diagrams)
+            "ms-ossdata.vscode-postgresql" // PostgreSQL Extension
         ],
         "unwantedRecommendations": [
             "ms-vscode.azurecli",
