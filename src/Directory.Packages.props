@@ -25,6 +25,7 @@
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.15.0.120848" />
     <!--AdminAssistant.Aspire-->
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.5.1" />
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="9.5.0" />
     <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
     <PackageVersion Include="Aspire.Dashboard.Sdk.linux-x64" Version="9.5.0" />
     <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
@@ -78,8 +79,6 @@
     <!--No project specific packages-->
     <!--AdminAssistant.Infra-->
     <PackageVersion Include="Microsoft.Graph" Version="4.52.0" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.9" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.9" />
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     <!--AdminAssistant.Infra.ClientSide-->
     <PackageVersion Include="Microsoft.Extensions.Http.Polly" Version="9.0.9" />
