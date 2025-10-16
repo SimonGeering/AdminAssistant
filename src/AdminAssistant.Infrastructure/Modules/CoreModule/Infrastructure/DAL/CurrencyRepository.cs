@@ -10,7 +10,7 @@ namespace AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 public interface ICurrencyRepository : IRepository<Currency, CurrencyId>;
 
 internal sealed class CurrencyRepository(
-    IApplicationDbContext dbContext,
+    ApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)

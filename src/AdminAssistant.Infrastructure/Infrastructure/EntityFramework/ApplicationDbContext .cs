@@ -9,49 +9,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Infrastructure.EntityFramework;
 
-public interface IApplicationDbContext : IDisposable
-{
-    // Core ...
-    DbSet<AuditEntity> AuditTrail { get; set; }
-    DbSet<CompanyEntity> Company { get; set; }
-    DbSet<PersonalDetailsEntity> PersonalDetails { get; set; }
-    DbSet<OwnerEntity> Owners { get; set; }
-
-    DbSet<UserProfileEntity> UserProfiles { get; set; }
-    DbSet<CurrencyEntity> Currencies { get; set; }
-
-    DbSet<PermissionEntity> Permissions { get; set; }
-    DbSet<SettingEntity> Settings { get; set; }
-
-    // Accounts ...
-    DbSet<BankEntity> Banks { get; set; }
-    DbSet<BankAccountEntity> BankAccounts { get; set; }
-    DbSet<BankAccountTransactionEntity> BankAccountTransactions { get; set; }
-    DbSet<BankAccountTypeEntity> BankAccountTypes { get; set; }
-
-    // Contacts ...
-    DbSet<ContactEntity> Contacts { get; set; }
-
-    // Documents ...
-    DbSet<DocumentEntity> Documents { get; set; }
-
-    // TODO: Soft Delete https://medium.com/@unhandlederror/deleting-it-softly-with-ef-core-5f191db5cf72
-    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
-
-    // Migrations etc ...
-    string ConnectionString { get; }
-    void EnsureDatabaseIsCreated();
-    void Migrate();
-}
-
 // dotnet ef migrations add InitialCreate --startup-project ..\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.csproj
 // dotnet ef database update
-public abstract class ApplicationDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext : DbContext
 {
-    private readonly DatabaseProvider _databaseProvider;
-
-    protected ApplicationDbContext(DbContextOptions options, DatabaseProvider databaseProvider)
-        : base(options) => _databaseProvider = databaseProvider;
+    protected ApplicationDbContext(DbContextOptions options)
+        : base(options)
+    {}
 
     // Core ...
     public DbSet<AuditEntity> AuditTrail { get; set; } = null!;
@@ -83,7 +47,7 @@ public abstract class ApplicationDbContext : DbContext, IApplicationDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        CoreSchema.OnModelCreating(modelBuilder, _databaseProvider);
+        CoreSchema.OnModelCreating(modelBuilder);
 
         AccountsSchema.OnModelCreating(modelBuilder);
         AssetRegisterSchema.OnModelCreating(modelBuilder);

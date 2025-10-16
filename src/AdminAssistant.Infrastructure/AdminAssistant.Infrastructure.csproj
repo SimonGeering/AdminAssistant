@@ -3,6 +3,7 @@
     <PropertyGroup>
         <DocumentationFile>AdminAssistant.Infrastructure.docs.xml</DocumentationFile>
         <NoWarn>$(NoWarn);</NoWarn>
+        <InternalsVisibleTo>AdminAssistant.Test</InternalsVisibleTo>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,6 +20,7 @@
         <PackageReference Include="AutoMapper" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
         <PackageReference Include="MediatR" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
         <PackageReference Include="Microsoft.Extensions.Hosting" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
         <PackageReference Include="SonarAnalyzer.CSharp">

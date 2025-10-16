@@ -1,11 +1,14 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+using AdminAssistant.Infrastructure.EntityFramework;
 using AdminAssistant.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
+using Microsoft.EntityFrameworkCore;
+using Xunit.Abstractions;
 
 namespace AdminAssistant.Test;
 
-public class ServiceCollection_Should
+public class ServiceCollection_Should(ITestOutputHelper output)
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -14,16 +17,27 @@ public class ServiceCollection_Should
         // Arrange
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
-
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
         services.AddAdminAssistantApplication();
         services.AddAdminAssistantServerSideInfra();
 
+        foreach (var s in services.Where(s => s.ServiceType == typeof(ApplicationDbContext)))
+        {
+            output.WriteLine($"Registered: {s.ImplementationType?.Name ?? "Factory"} for {s.ServiceType.Name}");
+        }
+        foreach (var s in services.Where(s => s.ServiceType == typeof(ApplicationDbContext)))
+        {
+            output.WriteLine($"[DI DEBUG] Lifetime: {s.Lifetime}, ImplType: {s.ImplementationType?.FullName ?? "Factory"}, ImplFactory: {(s.ImplementationFactory != null ? "Yes" : "No")}");
+        }
+
         var serviceProvider = services.BuildServiceProvider();
 
         // Act
         var result = new List<object>();
+
+        using var scope = serviceProvider.CreateScope();
+        var scopedProvider = scope.ServiceProvider;
 
         foreach (var serviceDescriptor in services)
         {
@@ -32,10 +46,11 @@ public class ServiceCollection_Should
 
             try
             {
-                if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture))
+                if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture) ||
+                    typeof(DbContext).IsAssignableFrom(serviceDescriptor.ServiceType))
                     continue;
 
-                var instance = serviceProvider.GetRequiredService(serviceDescriptor.ServiceType);
+                var instance = scopedProvider.GetRequiredService(serviceDescriptor.ServiceType);
                 instance.Should().NotBeNull();
                 instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);

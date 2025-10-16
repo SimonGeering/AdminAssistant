@@ -25,7 +25,7 @@ public sealed class CurrencyRepository_GetListAsync
             };
         var currencyData = mapper.Map<IList<CurrencyEntity>>(currencyList);
 
-        var mockDbContext = new Mock<IApplicationDbContext>();
+        var mockDbContext = new Mock<ApplicationDbContext>();
         mockDbContext.Setup(x => x.Currencies)
             .Returns(currencyData.BuildMockDbSet().Object);
 
@@ -61,7 +61,7 @@ public class CurrencyRepository_GetAsync
             };
         var currencyData = mapper.Map<IList<CurrencyEntity>>(currencyList);
 
-        var mockDbContext = new Mock<IApplicationDbContext>();
+        var mockDbContext = new Mock<ApplicationDbContext>();
         mockDbContext.Setup(x => x.Currencies)
             .Returns(currencyData.BuildMockDbSet().Object);
 

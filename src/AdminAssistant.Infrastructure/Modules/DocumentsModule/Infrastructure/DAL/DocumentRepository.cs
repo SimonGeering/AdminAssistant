@@ -11,7 +11,7 @@ namespace AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
 public interface IDocumentRepository : IRepository<Document, DocumentId>;
 
 internal sealed class DocumentRepository(
-    IApplicationDbContext dbContext,
+    ApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)
