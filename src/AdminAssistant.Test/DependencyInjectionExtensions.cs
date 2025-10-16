@@ -12,7 +12,7 @@ public static class DependencyInjectionExtensions
     public static void AddMockDbContext(this IServiceCollection services, Mock<ApplicationDbContext> mockDbContext)
         => services.AddTransient(_ => mockDbContext.Object);
 
-    public static void AddMockDbContext(this IServiceCollection services)
+    public static void AddInMemoryDbContext(this IServiceCollection services)
         => services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("TestDb"));
 
     public static void AddMockUserContextProvider(this IServiceCollection services)
@@ -40,7 +40,7 @@ public static class DependencyInjectionExtensions
 
     public static void AddMocksOfExternalServerSideDependencies(this IServiceCollection services)
     {
-        services.AddMockDbContext();
+        services.AddInMemoryDbContext();
         services.AddMockServerSideLogging();
         services.AddTransient(_ => new Mock<IMapper>().Object);
     }
