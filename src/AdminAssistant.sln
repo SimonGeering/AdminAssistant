@@ -39,6 +39,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminAssistant.Aspire.AppHo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminAssistant.Aspire.ServiceDefaults", "AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj", "{36752223-0E9C-4EBC-8A26-577E7E3C5D66}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevOps", "DevOps", "{FA178DB0-5DEE-4F61-983E-0C32690E56A9}"
+	ProjectSection(SolutionItems) = preProject
+		..\DevOps\ContinuousIntegration.yml = ..\DevOps\ContinuousIntegration.yml
+		..\DevOps\ManualFullBuild.yml = ..\DevOps\ManualFullBuild.yml
+		..\DevOps\NuGet.config = ..\DevOps\NuGet.config
+		..\DevOps\PullRequest.yml = ..\DevOps\PullRequest.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
