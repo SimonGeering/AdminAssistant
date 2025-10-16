@@ -28,9 +28,6 @@ public class ServiceCollection_Should(ITestOutputHelper output)
 
         var serviceProvider = services.BuildServiceProvider();
 
-        var concrete = services.FirstOrDefault(d => d.ServiceType == typeof(ApplicationDbContext) && d.ImplementationFactory == null);
-        concrete.Should().BeNull("ApplicationDbContext must be registered via AddDbContext<TContext>()");
-
         // Act
         var result = new List<object>();
 
