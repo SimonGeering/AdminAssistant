@@ -46,13 +46,9 @@ public interface IApplicationDbContext : IDisposable
 
 // dotnet ef migrations add InitialCreate --startup-project ..\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.csproj
 // dotnet ef database update
-public abstract class ApplicationDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+    : DbContext(options), IApplicationDbContext
 {
-    private readonly DatabaseProvider _databaseProvider;
-
-    protected ApplicationDbContext(DbContextOptions options, DatabaseProvider databaseProvider)
-        : base(options) => _databaseProvider = databaseProvider;
-
     // Core ...
     public DbSet<AuditEntity> AuditTrail { get; set; } = null!;
     public DbSet<CompanyEntity> Company { get; set; } = null!;
@@ -83,7 +79,7 @@ public abstract class ApplicationDbContext : DbContext, IApplicationDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        CoreSchema.OnModelCreating(modelBuilder, _databaseProvider);
+        CoreSchema.OnModelCreating(modelBuilder);
 
         AccountsSchema.OnModelCreating(modelBuilder);
         AssetRegisterSchema.OnModelCreating(modelBuilder);

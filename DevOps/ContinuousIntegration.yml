@@ -41,13 +41,13 @@ stages:
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
     # Sonar Cloud Prepare ...
-    # - task: SonarCloudPrepare@1
-    #   inputs:
-    #     SonarCloud: 'SonarCube'
-    #     organization: 'simongeering'
-    #     scannerMode: 'MSBuild'
-    #     projectKey: 'SimonGeering_AdminAssistant'
-    #     projectName: 'AdminAssistant'
+#    - task: SonarCloudPrepare@1
+#      inputs:
+#        SonarCloud: 'SonarCube'
+#        organization: 'simongeering'
+#        scannerMode: 'MSBuild'
+#        projectKey: 'SimonGeering_AdminAssistant'
+#        projectName: 'AdminAssistant'
     # Build ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet build'
@@ -65,7 +65,7 @@ stages:
         publishTestResults: true
         testRunTitle: 'Unit Tests'
     # Sonar Cloud Analyze and Publish ...
-    # - task: SonarCloudAnalyze@1
-    # - task: SonarCloudPublish@1
-    #   inputs:
-    #     pollingTimeoutSec: '300'
+#    - task: SonarCloudAnalyze@1
+#    - task: SonarCloudPublish@1
+#      inputs:
+#        pollingTimeoutSec: '300'
