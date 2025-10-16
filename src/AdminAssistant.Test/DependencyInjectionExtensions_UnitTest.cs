@@ -4,6 +4,7 @@ using AdminAssistant.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Xunit.Abstractions;
 
 namespace AdminAssistant.Test;
@@ -16,22 +17,19 @@ public class ServiceCollection_Should(ITestOutputHelper output)
     {
         // Arrange
         var services = new ServiceCollection();
-        services.AddMocksOfExternalServerSideDependencies();
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
         services.AddAdminAssistantApplication();
         services.AddAdminAssistantServerSideInfra();
-
-        foreach (var s in services.Where(s => s.ServiceType == typeof(ApplicationDbContext)))
-        {
-            output.WriteLine($"Registered: {s.ImplementationType?.Name ?? "Factory"} for {s.ServiceType.Name}");
-        }
-        foreach (var s in services.Where(s => s.ServiceType == typeof(ApplicationDbContext)))
-        {
-            output.WriteLine($"[DI DEBUG] Lifetime: {s.Lifetime}, ImplType: {s.ImplementationType?.FullName ?? "Factory"}, ImplFactory: {(s.ImplementationFactory != null ? "Yes" : "No")}");
-        }
+        // Mocks ...
+        services.AddMocksOfExternalServerSideDependencies();
+        services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("TestDb"));
+        services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
         var serviceProvider = services.BuildServiceProvider();
+
+        var concrete = services.FirstOrDefault(d => d.ServiceType == typeof(ApplicationDbContext) && d.ImplementationFactory == null);
+        concrete.Should().BeNull("ApplicationDbContext must be registered via AddDbContext<TContext>()");
 
         // Act
         var result = new List<object>();
@@ -46,8 +44,7 @@ public class ServiceCollection_Should(ITestOutputHelper output)
 
             try
             {
-                if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture) ||
-                    typeof(DbContext).IsAssignableFrom(serviceDescriptor.ServiceType))
+                if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture)) //||
                     continue;
 
                 var instance = scopedProvider.GetRequiredService(serviceDescriptor.ServiceType);
@@ -73,12 +70,13 @@ public class ServiceCollection_Should(ITestOutputHelper output)
     {
         // Arrange
         var services = new ServiceCollection();
-        services.AddMocksOfExternalClientSideDependencies();
-        services.AddTransient((sp) => new Mock<IAdminAssistantWebAPIClient>().Object);
-
         services.AddAdminAssistantClientSideProviders();
         services.AddAdminAssistantClientSideDomainModel();
         services.AddAdminAssistantUI();
+        // Mocks ...
+        services.AddMockClientSideLogging();
+        services.AddTransient(_ => new Mock<IMapper>().Object);
+        services.AddTransient(_ => new Mock<IAdminAssistantWebAPIClient>().Object);
 
         var serviceProvider = services.BuildServiceProvider();
 

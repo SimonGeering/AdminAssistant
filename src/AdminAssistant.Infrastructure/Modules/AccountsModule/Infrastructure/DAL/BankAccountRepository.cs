@@ -11,7 +11,7 @@ namespace AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 public interface IBankAccountRepository : IRepository<BankAccount, BankAccountId>;
 
 internal sealed class BankAccountRepository(
-    ApplicationDbContext dbContext,
+    IApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)

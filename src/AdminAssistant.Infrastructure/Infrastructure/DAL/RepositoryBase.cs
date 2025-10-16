@@ -6,12 +6,12 @@ namespace AdminAssistant.Infrastructure.DAL;
 
 internal abstract class RepositoryBase
 {
-    protected ApplicationDbContext DbContext { get; }
+    protected IApplicationDbContext DbContext { get; }
     protected IMapper Mapper { get; }
     protected IDateTimeProvider DateTimeProvider { get; }
     protected IUserContextProvider UserContextProvider { get; }
 
-    protected RepositoryBase(ApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
+    protected RepositoryBase(IApplicationDbContext dbContext, IMapper mapper, IDateTimeProvider dateTimeProvider, IUserContextProvider userContextProvider)
     {
         DbContext = dbContext;
         Mapper = mapper;

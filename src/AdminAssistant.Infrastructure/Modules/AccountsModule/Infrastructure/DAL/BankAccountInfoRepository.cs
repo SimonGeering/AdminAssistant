@@ -9,7 +9,7 @@ namespace AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 public interface IBankAccountInfoRepository : IReadOnlyRepository<BankAccountInfo, BankId>;
 
 internal sealed class BankAccountInfoRepository(
-    ApplicationDbContext dbContext,
+    IApplicationDbContext dbContext,
     IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)
