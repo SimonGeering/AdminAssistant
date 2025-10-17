@@ -35,8 +35,8 @@ public sealed class BankAccountInfoQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountInfoQuery(ownerID));
 
         // Assert
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().BeEquivalentTo(bankAccountInfoList);
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.Value.ShouldBeEquivalentTo(bankAccountInfoList);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

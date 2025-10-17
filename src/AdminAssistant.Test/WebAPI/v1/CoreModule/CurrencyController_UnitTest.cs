@@ -41,18 +41,18 @@ public sealed class CurrencyController_Put_Should
         var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<CurrencyResponseDto>();
 
         var value = (CurrencyResponseDto)result.Value!;
-        value.CurrencyID.Should().Be(currency.CurrencyID.Value);
-        value.Symbol.Should().Be(currency.Symbol);
-        value.DecimalFormat.Should().Be(currency.DecimalFormat);
+        value.CurrencyID.ShouldBe(currency.CurrencyID.Value);
+        value.Symbol.ShouldBe(currency.Symbol);
+        value.DecimalFormat.ShouldBe(currency.DecimalFormat);
     }
 
     [Fact]
@@ -81,8 +81,8 @@ public sealed class CurrencyController_Put_Should
         var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
 
         // Assert
-        response.Result.Should().BeOfType<NotFoundObjectResult>();
-        response.Value.Should().BeNull();
+        response.Result.ShouldBeOfType<NotFoundObjectResult>();
+        response.Value.ShouldBeNull();
     }
 
     [Fact]
@@ -116,18 +116,18 @@ public sealed class CurrencyController_Put_Should
         var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<UnprocessableEntityObjectResult>();
 
         var result = (UnprocessableEntityObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var errors = (SerializableError)result.Value!;
 
         foreach (var expectedErrorDetails in validationErrors)
         {
             var messages = (string[])errors[expectedErrorDetails.Identifier];
-            messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            messages.ShouldContain(expectedErrorDetails.ErrorMessage);
         }
     }
 }
@@ -163,18 +163,18 @@ public sealed class CurrencyController_CurrencyPost_Should
         var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<CreatedAtRouteResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<CreatedAtRouteResult>();
 
         var result = (CreatedAtRouteResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<CurrencyResponseDto>();
 
         var value = (CurrencyResponseDto)result.Value!;
-        value.CurrencyID.Should().Be(currency.CurrencyID.Value);
-        value.Symbol.Should().Be(currency.Symbol);
-        value.DecimalFormat.Should().Be(currency.DecimalFormat);
+        value.CurrencyID.ShouldBe(currency.CurrencyID.Value);
+        value.Symbol.ShouldBe(currency.Symbol);
+        value.DecimalFormat.ShouldBe(currency.DecimalFormat);
     }
 
     [Fact]
@@ -208,19 +208,19 @@ public sealed class CurrencyController_CurrencyPost_Should
         var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<UnprocessableEntityObjectResult>();
 
         var result = (UnprocessableEntityObjectResult)response.Result!;
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var errors = (SerializableError)result.Value!;
 
         foreach (var expectedErrorDetails in validationErrors)
         {
             var messages = (string[])errors[expectedErrorDetails.Identifier];
-            messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            messages.ShouldContain(expectedErrorDetails.ErrorMessage);
         }
     }
 }
@@ -249,18 +249,18 @@ public sealed class CurrencyController_CurrencyGetById_Should
         var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(currency.CurrencyID.Value, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<CurrencyResponseDto>();
 
         var value = (CurrencyResponseDto)result.Value!;
-        value.CurrencyID.Should().Be(currency.CurrencyID.Value);
-        value.Symbol.Should().Be(currency.Symbol);
-        value.DecimalFormat.Should().Be(currency.DecimalFormat);
+        value.CurrencyID.ShouldBe(currency.CurrencyID.Value);
+        value.Symbol.ShouldBe(currency.Symbol);
+        value.DecimalFormat.ShouldBe(currency.DecimalFormat);
     }
 
     [Fact]
@@ -282,8 +282,8 @@ public sealed class CurrencyController_CurrencyGetById_Should
         var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(10, default);
 
         // Assert
-        response.Result.Should().BeOfType<NotFoundResult>();
-        response.Value.Should().BeNull();
+        response.Result.ShouldBeOfType<NotFoundResult>();
+        response.Value.ShouldBeNull();
     }
 }
 
@@ -315,23 +315,23 @@ public sealed class CurrencyController_GetCurrency_Should
         var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().GetCurrency(default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<IEnumerable<CurrencyResponseDto>>();
+        result.Value.ShouldBeAssignableTo<IEnumerable<CurrencyResponseDto>>();
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var value = ((IEnumerable<CurrencyResponseDto>)result.Value!).ToArray();
-        value.Should().HaveCount(currencies.Count);
+        value.Length.ShouldBe(currencies.Count);
 
         var expected = currencies.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].CurrencyID.Should().Be(expected[index].CurrencyID.Value);
-            value[index].Symbol.Should().Be(expected[index].Symbol);
-            value[index].DecimalFormat.Should().Be(expected[index].DecimalFormat);
+            value[index].CurrencyID.ShouldBe(expected[index].CurrencyID.Value);
+            value[index].Symbol.ShouldBe(expected[index].Symbol);
+            value[index].DecimalFormat.ShouldBe(expected[index].DecimalFormat);
         }
     }
 }

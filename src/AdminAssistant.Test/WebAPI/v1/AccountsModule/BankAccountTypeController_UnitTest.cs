@@ -36,22 +36,22 @@ public sealed class BankAccountTypeController_BankAccountTypeGet_Should
         var response = await services.BuildServiceProvider().GetRequiredService<BankAccountTypeController>().BankAccountTypeGet(default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<IEnumerable<BankAccountTypeResponseDto>>();
+        result.Value.ShouldBeAssignableTo<IEnumerable<BankAccountTypeResponseDto>>();
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var value = ((IEnumerable<BankAccountTypeResponseDto>)result.Value!).ToArray();
-        value.Should().HaveCount(bankAccountTypes.Count);
+        value.Length.ShouldBe(bankAccountTypes.Count);
 
         var expected = bankAccountTypes.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankAccountTypeID.Should().Be(expected[index].BankAccountTypeID.Value);
-            value[index].Description.Should().Be(expected[index].Description);
+            value[index].BankAccountTypeID.ShouldBe(expected[index].BankAccountTypeID.Value);
+            value[index].Description.ShouldBe(expected[index].Description);
         }
     }
 }

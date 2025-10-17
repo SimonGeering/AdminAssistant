@@ -36,12 +36,12 @@ public sealed class MailMessageController_GetMailMessages
         var response = await services.BuildServiceProvider().GetRequiredService<MailMessageController>().GetMailMessages(default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<IEnumerable<MailMessageResponseDto>>();
+        result.Value.ShouldBeAssignableTo<IEnumerable<MailMessageResponseDto>>();
 
         #pragma warning disable S125 // Sections of code should not be commented out
         //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();

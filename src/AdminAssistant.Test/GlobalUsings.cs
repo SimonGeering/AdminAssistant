@@ -1,5 +1,5 @@
 global using Ardalis.Result;
-global using FluentAssertions;
+global using Shouldly;
 global using Microsoft.Extensions.DependencyInjection;
 global using System.Diagnostics.CodeAnalysis;
 global using Mediator;

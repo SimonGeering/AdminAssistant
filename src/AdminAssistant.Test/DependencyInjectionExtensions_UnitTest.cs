@@ -45,8 +45,8 @@ public class ServiceCollection_Should(ITestOutputHelper output)
                     continue;
 
                 var instance = scopedProvider.GetRequiredService(serviceDescriptor.ServiceType);
-                instance.Should().NotBeNull();
-                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                instance.ShouldNotBeNull();
+                instance.ShouldBeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ public class ServiceCollection_Should(ITestOutputHelper output)
 
         // Assert
         var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.Contains("MediatR", StringComparison.InvariantCulture) == false);
-        result.Should().HaveCount(expectedInstanceCountLessExclusions);
+        result.Count.ShouldBe(expectedInstanceCountLessExclusions);
         await Task.CompletedTask;
     }
 
@@ -85,8 +85,8 @@ public class ServiceCollection_Should(ITestOutputHelper output)
             try
             {
                 var instance = serviceProvider.GetRequiredService(serviceDescriptor.ServiceType);
-                instance.Should().NotBeNull();
-                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                instance.ShouldNotBeNull();
+                instance.ShouldBeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);
             }
             catch (Exception ex)
@@ -96,7 +96,7 @@ public class ServiceCollection_Should(ITestOutputHelper output)
         }
 
         // Assert
-        result.Should().HaveCount(services.Count);
+        result.Count.ShouldBe(services.Count);
         await Task.CompletedTask;
     }
 }

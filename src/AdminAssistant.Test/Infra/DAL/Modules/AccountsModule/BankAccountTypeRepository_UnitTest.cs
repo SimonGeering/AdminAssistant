@@ -40,8 +40,8 @@ public sealed class BankAccountTypeRepository_GetListAsync
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetListAsync(default);
 
         // Assert
-        result.Should().HaveCount(bankAccountTypeList.Count);
-        result.Should().BeEquivalentTo(bankAccountTypeList);
+        result.Count.ShouldBe(bankAccountTypeList.Count);
+        result.ShouldBeEquivalentTo(bankAccountTypeList);
     }
 }
 
@@ -76,7 +76,7 @@ public class BankAccountTypeRepository_GetAsync
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTypeRepository>().GetAsync(bankAccountTypeList[Constants.FirstItem].BankAccountTypeID, default);
 
         // Assert
-        result.Should().BeEquivalentTo(bankAccountTypeList[Constants.FirstItem]);
+        result.ShouldBeEquivalentTo(bankAccountTypeList[Constants.FirstItem]);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

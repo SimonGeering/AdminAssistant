@@ -30,7 +30,7 @@ public sealed class CurrencyByIDQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(nonExistentCurrencyID.Value));
 
         // Assert
-        result.Status.Should().Be(ResultStatus.NotFound);
+        result.Status.ShouldBe(ResultStatus.NotFound);
     }
 
     [Fact]
@@ -55,8 +55,8 @@ public sealed class CurrencyByIDQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyByIDQuery(currency.CurrencyID.Value));
 
         // Assert
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().Be(currency);
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.Value.ShouldBe(currency);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

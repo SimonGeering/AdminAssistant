@@ -22,7 +22,7 @@ public sealed class PdfFileProvider_ReadAllLinesAsync_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IPdfFileProvider>().ReadAllLinesAsync(fileContent);
 
         // Assert
-        result.Should().NotBeEmpty();
+        result.ShouldNotBeEmpty();
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

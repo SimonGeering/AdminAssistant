@@ -40,8 +40,8 @@ public sealed class ContactRepository_unitTest
         var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetListAsync(default);
 
         // Assert
-        result.Should().HaveCount(contactList.Count);
-        result.Should().BeEquivalentTo(contactList);
+        result.Count.ShouldBe(contactList.Count);
+        result.ShouldBeEquivalentTo(contactList);
     }
 
     [Fact]
@@ -73,7 +73,7 @@ public sealed class ContactRepository_unitTest
         var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetAsync(contactList[Constants.FirstItem].ContactID, default);
 
         // Assert
-        result.Should().BeEquivalentTo(contactList[Constants.FirstItem]);
+        result.ShouldBeEquivalentTo(contactList[Constants.FirstItem]);
     }
 
     [Fact]
@@ -117,11 +117,11 @@ public sealed class ContactRepository_unitTest
 
     private bool IsValidForInsert(ContactEntity contactToSave)
     {
-        contactToSave.ContactID.Should().Be(Constants.NewRecordID);
-        contactToSave.Audit.Should().NotBeNull();
+        contactToSave.ContactID.ShouldBe(Constants.NewRecordID);
+        contactToSave.Audit.ShouldNotBeNull();
 
-        contactToSave.Audit.CreatedBy.Should().NotBeNullOrEmpty();
-        contactToSave.Audit.CreatedOn.Should().NotBe(default);
+        contactToSave.Audit.CreatedBy.ShouldNotBeNullOrEmpty();
+        contactToSave.Audit.CreatedOn.ShouldNotBe(default);
 
         return true;
     }
@@ -129,8 +129,8 @@ public sealed class ContactRepository_unitTest
     [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
     private bool IsValidForUpdate(ContactEntity contactToSave)
     {
-        contactToSave.ContactID.Should().NotBe(Constants.NewRecordID);
-        contactToSave.Audit.Should().NotBeNull();
+        contactToSave.ContactID.ShouldNotBe(Constants.NewRecordID);
+        contactToSave.Audit.ShouldNotBeNull();
 
         return true;
     }

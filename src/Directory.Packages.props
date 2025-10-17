@@ -89,10 +89,7 @@
     <PackageVersion Include="Terminal.Gui" Version="1.19.0" />
     <!--AdminAssistant.Test-->
     <PackageVersion Include="coverlet.collector" Version="6.0.4" />
-    <!-- FluentAssertions v7.2.0 is the last version under Apache 2.0.
-                v8+ requires a commercial license via Xceed Software.
-                See: https://fluentassertions.com/releases/#800 -->
-    <PackageVersion Include="FluentAssertions" Version="[7.2.0]" />
+    <PackageVersion Include="Shouldly" Version="4.3.0" />
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="9.0.10" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />

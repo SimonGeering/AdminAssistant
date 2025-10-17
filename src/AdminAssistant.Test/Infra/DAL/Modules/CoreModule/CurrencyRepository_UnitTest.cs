@@ -40,8 +40,8 @@ public sealed class CurrencyRepository_GetListAsync
         var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetListAsync(default);
 
         // Assert
-        result.Should().HaveCount(currencyList.Count);
-        result.Should().BeEquivalentTo(currencyList);
+        result.Count.ShouldBe(currencyList.Count);
+        result.ShouldBeEquivalentTo(currencyList);
     }
 }
 
@@ -76,7 +76,7 @@ public class CurrencyRepository_GetAsync
         var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyRepository>().GetAsync(currencyList[Constants.FirstItem].CurrencyID, default);
 
         // Assert
-        result.Should().BeEquivalentTo(currencyList[Constants.FirstItem]);
+        result.ShouldBeEquivalentTo(currencyList[Constants.FirstItem]);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

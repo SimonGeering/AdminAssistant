@@ -37,12 +37,12 @@ public sealed class AssetController_GetAssets
         var response = await services.BuildServiceProvider().GetRequiredService<AssetController>().GetAssets(default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<IEnumerable<AssetResponseDto>>();
+        result.Value.ShouldBeAssignableTo<IEnumerable<AssetResponseDto>>();
 
         //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();
         //value.Should().HaveCount(currencies.Count);

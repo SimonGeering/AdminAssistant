@@ -40,8 +40,8 @@ public sealed class BankAccountRepository_UnitTest
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync(default);
 
         // Assert
-        result.Should().HaveCount(bankAccountList.Count);
-        result.Should().BeEquivalentTo(bankAccountList);
+        result.Count.ShouldBe(bankAccountList.Count);
+        result.ShouldBeEquivalentTo(bankAccountList);
     }
 
     [Fact]
@@ -73,7 +73,7 @@ public sealed class BankAccountRepository_UnitTest
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetAsync(bankAccountList[Constants.FirstItem].BankAccountID, default);
 
         // Assert
-        result.Should().BeEquivalentTo(bankAccountList[Constants.FirstItem]);
+        result.ShouldBeEquivalentTo(bankAccountList[Constants.FirstItem]);
     }
 
     [Fact]
@@ -115,11 +115,11 @@ public sealed class BankAccountRepository_UnitTest
 
     private bool IsValidForInsert(BankAccountEntity bankAccountToSave)
     {
-        bankAccountToSave.BankAccountID.Should().Be(Constants.NewRecordID);
-        bankAccountToSave.Audit.Should().NotBeNull();
+        bankAccountToSave.BankAccountID.ShouldBe(Constants.NewRecordID);
+        bankAccountToSave.Audit.ShouldNotBeNull();
 
-        bankAccountToSave.Audit.CreatedBy.Should().NotBeNullOrEmpty();
-        bankAccountToSave.Audit.CreatedOn.Should().NotBe(default);
+        bankAccountToSave.Audit.CreatedBy.ShouldNotBeNullOrEmpty();
+        bankAccountToSave.Audit.CreatedOn.ShouldNotBe(default);
 
         return true;
     }
@@ -127,8 +127,8 @@ public sealed class BankAccountRepository_UnitTest
     [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
     private bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
     {
-        bankAccountToSave.BankAccountID.Should().NotBe(Constants.NewRecordID);
-        bankAccountToSave.Audit.Should().NotBeNull();
+        bankAccountToSave.BankAccountID.ShouldNotBe(Constants.NewRecordID);
+        bankAccountToSave.Audit.ShouldNotBeNull();
 
         return true;
     }

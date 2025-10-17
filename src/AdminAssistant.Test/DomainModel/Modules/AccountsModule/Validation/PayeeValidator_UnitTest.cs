@@ -22,7 +22,7 @@ public sealed class PayeeValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IPayeeValidator>().ValidateAsync(payee);
 
         // Assert
-        result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -40,7 +40,7 @@ public sealed class PayeeValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IPayeeValidator>().ValidateAsync(payee);
 
         // Assert
-        result.IsValid.Should().BeFalse();
+        result.IsValid.ShouldBeFalse();
     }
 
     [Fact]
@@ -58,7 +58,7 @@ public sealed class PayeeValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IPayeeValidator>().ValidateAsync(payee);
 
         // Assert
-        result.IsValid.Should().BeFalse();
+        result.IsValid.ShouldBeFalse();
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

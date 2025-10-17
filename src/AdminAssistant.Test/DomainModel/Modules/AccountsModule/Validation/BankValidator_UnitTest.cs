@@ -24,7 +24,7 @@ public sealed class BankValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankValidator>().ValidateAsync(bank);
 
         // Assert
-        result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -42,8 +42,8 @@ public sealed class BankValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankValidator>().ValidateAsync(bank);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == BankName_Value);
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == BankName_Value);
     }
 
     [Fact]
@@ -61,8 +61,8 @@ public sealed class BankValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankValidator>().ValidateAsync(bank);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == BankName_Value);
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == BankName_Value);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

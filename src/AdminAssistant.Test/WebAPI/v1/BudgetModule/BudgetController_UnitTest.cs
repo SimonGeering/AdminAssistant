@@ -36,12 +36,12 @@ public sealed class BudgetController_UnitTest_Should
         var response = await services.BuildServiceProvider().GetRequiredService<BudgetController>().GetBudgets(default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<IEnumerable<BudgetResponseDto>>();
+        result.Value.ShouldBeAssignableTo<IEnumerable<BudgetResponseDto>>();
 
         #pragma warning disable S125 // Sections of code should not be commented out
         //var value = ((IEnumerable<CurrencyResponseDto>)result.Value).ToArray();

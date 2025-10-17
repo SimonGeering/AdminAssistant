@@ -218,7 +218,7 @@ public class DalMappingProfile_Should
         var result = _mapper.Map(instance, source, destination);
 
         // Assert
-        result.Should().NotBeNull();
+        result.ShouldNotBeNull();
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

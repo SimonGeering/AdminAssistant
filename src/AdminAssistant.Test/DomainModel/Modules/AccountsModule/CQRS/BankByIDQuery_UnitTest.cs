@@ -30,7 +30,7 @@ public sealed class BankByIDQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(nonExistentBankID.Value));
 
         // Assert
-        result.Status.Should().Be(ResultStatus.NotFound);
+        result.Status.ShouldBe(ResultStatus.NotFound);
     }
 
     [Fact]
@@ -55,8 +55,8 @@ public sealed class BankByIDQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankByIDQuery(bank.BankID.Value));
 
         // Assert
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().Be(bank);
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.Value.ShouldBe(bank);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

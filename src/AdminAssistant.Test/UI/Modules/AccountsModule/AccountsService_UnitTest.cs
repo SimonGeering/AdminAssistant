@@ -34,7 +34,7 @@ public sealed class AccountsService_UnitTest
         var result = await services.BuildServiceProvider().GetRequiredService<IAccountsService>().LoadBankAccountTypesLookupDataAsync();
 
         // Assert
-        result.Should().BeEquivalentTo(new List<BankAccountType>()
+        result.ShouldBeEquivalentTo(new List<BankAccountType>()
         {
             new BankAccountType() { BankAccountTypeID = BankAccountTypeId.Default, Description = string.Empty },
             new BankAccountType { BankAccountTypeID = new(1), Description = "Current Account" },

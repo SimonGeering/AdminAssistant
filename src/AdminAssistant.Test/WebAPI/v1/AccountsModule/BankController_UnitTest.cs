@@ -40,17 +40,17 @@ public sealed class BankController_Put_Should
         var response = await container.GetRequiredService<BankController>().BankPut(bankRequest, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<BankResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<BankResponseDto>();
 
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID.Value);
-        value.BankName.Should().Be(bank.BankName.Value);
+        value.BankID.ShouldBe(bank.BankID.Value);
+        value.BankName.ShouldBe(bank.BankName.Value);
     }
 
     [Fact]
@@ -79,8 +79,8 @@ public sealed class BankController_Put_Should
         var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(bankRequest, default);
 
         // Assert
-        response.Result.Should().BeOfType<NotFoundObjectResult>();
-        response.Value.Should().BeNull();
+        response.Result.ShouldBeOfType<NotFoundObjectResult>();
+        response.Value.ShouldBeNull();
     }
 
     [Fact]
@@ -114,18 +114,18 @@ public sealed class BankController_Put_Should
         var response = await container.GetRequiredService<BankController>().BankPut(bankRequest, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<UnprocessableEntityObjectResult>();
 
         var result = (UnprocessableEntityObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var errors = (SerializableError)result.Value!;
 
         foreach (var expectedErrorDetails in validationErrors)
         {
             var messages = (string[])errors[expectedErrorDetails.Identifier];
-            messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            messages.ShouldContain(expectedErrorDetails.ErrorMessage);
         }
     }
 }
@@ -161,17 +161,17 @@ public class BankController_BankPost_Should
         var response = await container.GetRequiredService<BankController>().BankPost(bankRequest, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<CreatedAtRouteResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<CreatedAtRouteResult>();
 
         var result = (CreatedAtRouteResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<BankResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<BankResponseDto>();
 
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID.Value);
-        value.BankName.Should().Be(bank.BankName.Value);
+        value.BankID.ShouldBe(bank.BankID.Value);
+        value.BankName.ShouldBe(bank.BankName.Value);
     }
 
     [Fact]
@@ -205,18 +205,18 @@ public class BankController_BankPost_Should
         var response = await container.GetRequiredService<BankController>().BankPost(bankRequest, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<UnprocessableEntityObjectResult>();
 
         var result = (UnprocessableEntityObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var errors = (SerializableError)result.Value!;
 
         foreach (var expectedErrorDetails in validationErrors)
         {
             var messages = (string[])errors[expectedErrorDetails.Identifier];
-            messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            messages.ShouldContain(expectedErrorDetails.ErrorMessage);
         }
     }
 }
@@ -245,17 +245,17 @@ public class BankController_BankGetById_Should
         var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID.Value, default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<BankResponseDto>();
+        result.Value.ShouldBeAssignableTo<BankResponseDto>();
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID.Value);
-        value.BankName.Should().Be(bank.BankName.Value);
+        value.BankID.ShouldBe(bank.BankID.Value);
+        value.BankName.ShouldBe(bank.BankName.Value);
     }
 
     [Fact]
@@ -277,8 +277,8 @@ public class BankController_BankGetById_Should
         var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(10, default);
 
         // Assert
-        response.Result.Should().BeOfType<NotFoundResult>();
-        response.Value.Should().BeNull();
+        response.Result.ShouldBeOfType<NotFoundResult>();
+        response.Value.ShouldBeNull();
     }
 }
 
@@ -310,22 +310,22 @@ public class BankController_BankGet_Should
         var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet(default);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<IEnumerable<BankResponseDto>>();
+        result.Value.ShouldBeAssignableTo<IEnumerable<BankResponseDto>>();
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var value = ((IEnumerable<BankResponseDto>)result.Value!).ToArray();
-        value.Should().HaveCount(banks.Count);
+        value.Length.ShouldBe(banks.Count);
 
         var expected = banks.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankID.Should().Be(expected[index].BankID.Value);
-            value[index].BankName.Should().Be(expected[index].BankName.Value);
+            value[index].BankID.ShouldBe(expected[index].BankID.Value);
+            value[index].BankName.ShouldBe(expected[index].BankName.Value);
         }
     }
 }

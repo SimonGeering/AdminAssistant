@@ -37,11 +37,11 @@ public sealed class CurrencyCreateCommand_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyCreateCommand(currency));
 
         // Assert
-        result.Should().NotBeNull();
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.ValidationErrors.Should().BeEmpty();
-        result.Value.Should().NotBeNull();
-        result.Value.CurrencyID.Value.Should().BeGreaterThan(Constants.NewRecordID);
+        result.ShouldNotBeNull();
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.ValidationErrors.ShouldBeEmpty();
+        result.Value.ShouldNotBeNull();
+        result.Value.CurrencyID.Value.ShouldBeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]
@@ -62,9 +62,9 @@ public sealed class CurrencyCreateCommand_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyCreateCommand(bank));
 
         // Assert
-        result.Should().NotBeNull();
-        result.Status.Should().Be(ResultStatus.Invalid);
-        result.ValidationErrors.Should().NotBeEmpty();
+        result.ShouldNotBeNull();
+        result.Status.ShouldBe(ResultStatus.Invalid);
+        result.ValidationErrors.ShouldNotBeEmpty();
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

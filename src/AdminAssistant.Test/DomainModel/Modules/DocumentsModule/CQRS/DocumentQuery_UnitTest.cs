@@ -35,8 +35,8 @@ public sealed class DocumentQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new DocumentQuery());
 
         // Assert
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().BeEquivalentTo(documentList);
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.Value.ShouldBeEquivalentTo(documentList);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

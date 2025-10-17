@@ -32,7 +32,7 @@ public sealed class DocumentsService_GetDocumentListAsync
         var result = await services.BuildServiceProvider().GetRequiredService<IDocumentsService>().GetDocumentListAsync();
 
         // Assert
-        result.Should().BeEquivalentTo(new List<Document>()
+        result.ShouldBeEquivalentTo(new List<Document>()
             {
                 new Document { DocumentID = new(1), FileName = "test.pdf" },
                 new Document { DocumentID = new(2), FileName = "test2.docx" },
