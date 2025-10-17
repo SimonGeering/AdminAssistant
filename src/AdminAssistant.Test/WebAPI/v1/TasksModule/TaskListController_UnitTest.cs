@@ -27,7 +27,7 @@ public sealed class GetTaskLists
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<TaskListQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<TaskList>>.Success(taskLists)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<TaskList>>.Success(taskLists)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<TaskListController>();

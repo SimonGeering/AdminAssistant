@@ -27,7 +27,7 @@ public sealed class BankAccountTypeController_BankAccountTypeGet_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTypesQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<BankAccountType>>.Success(bankAccountTypes)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<BankAccountType>>.Success(bankAccountTypes)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankAccountTypeController>();

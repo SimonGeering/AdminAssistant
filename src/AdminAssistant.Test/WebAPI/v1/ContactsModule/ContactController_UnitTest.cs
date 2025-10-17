@@ -27,7 +27,7 @@ public sealed class ContactController_GetContacts
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<ContactQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<Contact>>.Success(contacts)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<Contact>>.Success(contacts)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<ContactController>();

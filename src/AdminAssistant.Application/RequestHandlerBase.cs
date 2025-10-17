@@ -6,5 +6,5 @@ internal abstract class RequestHandlerBase<TRequest, TResponse>(ILoggingProvider
 {
     protected ILoggingProvider Log { get; } = loggingProvider;
 
-    public abstract Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
+    public abstract ValueTask<TResponse> Handle(TRequest request, CancellationToken cancellationToken);
 }

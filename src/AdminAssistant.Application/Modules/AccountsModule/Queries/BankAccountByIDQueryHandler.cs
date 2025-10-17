@@ -7,7 +7,7 @@ public sealed record BankAccountByIDQuery(int BankAccountId) : IRequest<Result<B
 internal sealed class BankAccountByIDQueryHandler(ILoggingProvider loggingProvider, IBankAccountRepository bankAccountRepository)
     : RequestHandlerBase<BankAccountByIDQuery, Result<BankAccount>>(loggingProvider)
 {
-    public override async Task<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
+    public override async ValueTask<Result<BankAccount>> Handle(BankAccountByIDQuery request, CancellationToken cancellationToken)
     {
         var bankAccount = await bankAccountRepository.GetAsync(new(request.BankAccountId), cancellationToken).ConfigureAwait(false);
 

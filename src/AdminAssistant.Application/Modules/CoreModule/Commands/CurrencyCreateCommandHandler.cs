@@ -11,7 +11,7 @@ internal sealed class CurrencyCreateCommandHandler(
     ICurrencyValidator currencyValidator)
     : RequestHandlerBase<CurrencyCreateCommand, Result<Currency>>(loggingProvider)
 {
-    public override async Task<Result<Currency>> Handle(CurrencyCreateCommand command, CancellationToken cancellationToken)
+    public override async ValueTask<Result<Currency>> Handle(CurrencyCreateCommand command, CancellationToken cancellationToken)
     {
         var validationResult = await currencyValidator.ValidateAsync(command.Currency, cancellationToken).ConfigureAwait(false);
 

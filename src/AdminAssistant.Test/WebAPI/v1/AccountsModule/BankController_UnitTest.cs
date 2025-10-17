@@ -24,7 +24,7 @@ public sealed class BankController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Success(bank)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Success(bank)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankController>();
@@ -65,7 +65,7 @@ public sealed class BankController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.NotFound()));
+                    .Returns(ValueTask.FromResult(Result<Bank>.NotFound()));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankController>();
@@ -100,7 +100,7 @@ public sealed class BankController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Invalid(validationErrors)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Invalid(validationErrors)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankController>();
@@ -145,7 +145,7 @@ public class BankController_BankPost_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankCreateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Success(bank)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Success(bank)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankController>();
@@ -191,7 +191,7 @@ public class BankController_BankPost_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankCreateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Invalid(validationErrors)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Invalid(validationErrors)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankController>();
@@ -236,7 +236,7 @@ public class BankController_BankGetById_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankByIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Success(bank)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Success(bank)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankController>();
@@ -268,7 +268,7 @@ public class BankController_BankGetById_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankByIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.NotFound()));
+                    .Returns(ValueTask.FromResult(Result<Bank>.NotFound()));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankController>();
@@ -301,7 +301,7 @@ public class BankController_BankGet_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<Bank>>.Success(banks)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<Bank>>.Success(banks)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BankController>();
