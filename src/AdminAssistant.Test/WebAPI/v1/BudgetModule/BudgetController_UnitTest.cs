@@ -27,7 +27,7 @@ public sealed class BudgetController_UnitTest_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BudgetQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<Budget>>.Success(budgets)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<Budget>>.Success(budgets)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<BudgetController>();

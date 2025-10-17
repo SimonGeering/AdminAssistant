@@ -20,7 +20,7 @@ public sealed class BankAccountController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<BankAccount>.Success(bankAccount)));
+                    .Returns(ValueTask.FromResult(Result<BankAccount>.Success(bankAccount)));
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
@@ -72,7 +72,7 @@ public sealed class BankAccountController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<BankAccount>.NotFound()));
+                    .Returns(ValueTask.FromResult(Result<BankAccount>.NotFound()));
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
@@ -106,7 +106,7 @@ public sealed class BankAccountController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<BankAccount>.Invalid(validationErrors)));
+                    .Returns(ValueTask.FromResult(Result<BankAccount>.Invalid(validationErrors)));
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
@@ -149,7 +149,7 @@ public sealed class BankAccountController_BankAccountPost_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountCreateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<BankAccount>.Success(bankAccount)));
+                    .Returns(ValueTask.FromResult(Result<BankAccount>.Success(bankAccount)));
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
@@ -207,7 +207,7 @@ public sealed class BankAccountController_BankAccountPost_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountCreateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<BankAccount>.Invalid(validationErrors)));
+                    .Returns(ValueTask.FromResult(Result<BankAccount>.Invalid(validationErrors)));
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
@@ -249,7 +249,7 @@ public sealed class BankAccountController_BankAccountGetById_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountByIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<BankAccount>.Success(bankAccount)));
+                    .Returns(ValueTask.FromResult(Result<BankAccount>.Success(bankAccount)));
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
@@ -280,7 +280,7 @@ public sealed class BankAccountController_BankAccountGetById_Should
         // Arrange
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountByIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<BankAccount>.NotFound()));
+                    .Returns(ValueTask.FromResult(Result<BankAccount>.NotFound()));
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
@@ -312,7 +312,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTransactionsByBankAccountIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<BankAccountTransaction>>.Success(bankAccountTransactionList)));
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
@@ -351,7 +351,7 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         // Arrange
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTransactionsByBankAccountIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<BankAccountTransaction>>.NotFound()));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<BankAccountTransaction>>.NotFound()));
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();

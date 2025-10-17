@@ -11,7 +11,7 @@ internal sealed class ContactUpdateCommandHandler(
     IContactValidator contactValidator)
     : RequestHandlerBase<ContactUpdateCommand, Result<Contact>>(loggingProvider)
 {
-    public override async Task<Result<Contact>> Handle(ContactUpdateCommand command, CancellationToken cancellationToken)
+    public override async ValueTask<Result<Contact>> Handle(ContactUpdateCommand command, CancellationToken cancellationToken)
     {
         var validationResult = await contactValidator.ValidateAsync(command.Contact, cancellationToken).ConfigureAwait(false);
 

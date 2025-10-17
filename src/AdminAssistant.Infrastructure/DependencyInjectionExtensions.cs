@@ -1,12 +1,10 @@
 using AdminAssistant;
 using AdminAssistant.Infrastructure.EntityFramework;
-using AdminAssistant.Infrastructure.MediatR;
 using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 using AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
 using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 using AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
-using MediatR;
 using Microsoft.Extensions.Hosting;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
@@ -17,8 +15,6 @@ public static class DependencyInjectionExtensions
 {
     public static void AddAdminAssistantServerSideInfra(this IServiceCollection services)
     {
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>)); // Use typeof because <,>
-
         AddAccountsDAL(services);
         AddContactsDAL(services);
         AddCoreDAL(services);

@@ -24,7 +24,7 @@ public sealed class BankAccountInfoController_BankAccountInfoGet_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountInfoQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<BankAccountInfo>>.Success(bankAccountInfoList)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<BankAccountInfo>>.Success(bankAccountInfoList)));
 
         var mockUserContextProvider = new Mock<IUserContextProvider>();
         mockUserContextProvider.Setup(x => x.GetCurrentUser())

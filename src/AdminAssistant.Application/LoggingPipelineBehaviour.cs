@@ -1,33 +1,30 @@
-using AdminAssistant.Infrastructure.Providers;
 using Ardalis.GuardClauses;
-using Ardalis.Result;
-using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace AdminAssistant.Infrastructure.MediatR;
+namespace AdminAssistant.Application;
 
-/// <summary>Logger for MediatR</summary>
+/// <summary>Logger for Mediator</summary>
 /// <typeparam name="TRequest"></typeparam>
 /// <typeparam name="TResponse"></typeparam>
-/// <remarks>See "https://www.codewithmukesh.com/blog/mediatr-pipeline-behaviour/"</remarks>
-internal sealed class LoggingBehaviour<TRequest, TResponse>(ILoggingProvider loggingProvider)
-    : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
+/// <remarks>See "https://github.com/martinothamar/Mediator?tab=readme-ov-file#44-use-pipeline-behaviors"</remarks>
+internal sealed class LoggingPipelineBehaviour<TRequest, TResponse>(ILoggingProvider loggingProvider)
+    : IPipelineBehavior<TRequest, TResponse> where TRequest : Mediator.IMessage
 {
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async ValueTask<TResponse> Handle(TRequest message, MessageHandlerDelegate<TRequest, TResponse> next, CancellationToken cancellationToken)
     {
-        Guard.Against.Null(request);
+        Guard.Against.Null(message);
 
         //Request
         var requestName = typeof(TRequest).Name;
 
         loggingProvider.LogInformation("{requestName} Handling Started", requestName);
 
-        foreach (var prop in request.GetType().GetProperties())
+        foreach (var prop in message.GetType().GetProperties())
         {
-            loggingProvider.LogDebug("{Property} : {@Value}", prop.Name, prop.GetValue(request, null));
+            loggingProvider.LogDebug("{Property} : {@Value}", prop.Name, prop.GetValue(message, null));
         }
 
-        var response = await next().ConfigureAwait(false);
+        var response = await next(message, cancellationToken).ConfigureAwait(false);
 
         //Response
         if (response is not IResult result)

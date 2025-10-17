@@ -27,7 +27,7 @@ public sealed class DocumentController_UnitTest_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<DocumentQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<Document>>.Success(documents)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<Document>>.Success(documents)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<AdminAssistant.WebAPI.v1.DocumentsModule.DocumentController>();

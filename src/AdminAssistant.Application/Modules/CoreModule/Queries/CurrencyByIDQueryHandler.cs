@@ -7,7 +7,7 @@ public sealed record CurrencyByIDQuery(int CurrencyID) : IRequest<Result<Currenc
 internal sealed class CurrencyByIDQueryHandler(ICurrencyRepository currencyRepository, ILoggingProvider loggingProvider)
     : RequestHandlerBase<CurrencyByIDQuery, Result<Currency>>(loggingProvider)
 {
-    public override async Task<Result<Currency>> Handle(CurrencyByIDQuery request, CancellationToken cancellationToken)
+    public override async ValueTask<Result<Currency>> Handle(CurrencyByIDQuery request, CancellationToken cancellationToken)
     {
         var result = await currencyRepository.GetAsync(new CurrencyId(request.CurrencyID), cancellationToken).ConfigureAwait(false);
 

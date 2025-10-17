@@ -27,7 +27,7 @@ public sealed class ReminderController_Get
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<ReminderQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<Reminder>>.Success(documents)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<Reminder>>.Success(documents)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<ReminderController>();

@@ -45,11 +45,8 @@
     <!--AdminAssistant.Application-->
     <PackageVersion Include="Ardalis.Result" Version="10.1.0" />
     <PackageVersion Include="Ardalis.Result.FluentValidation" Version="10.1.0" />
-    <!-- MediatR v12.5.0 is the last version under Apache 2.0 license.
-       Later versions require commercial licensing via Lucky Penny Software.
-       See: https://github.com/jbogard/MediatR/issues/618 -->
-    <PackageVersion Include="MediatR" Version="[12.5.0]" />
-    <PackageVersion Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="Mediator.SourceGenerator" Version="3.0.1" />
+    <PackageVersion Include="Mediator.Abstractions" Version="3.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
     <!--AdminAssistant.Blazor-->

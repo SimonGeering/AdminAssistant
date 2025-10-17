@@ -9,7 +9,7 @@ internal sealed class BankAccountTransactionsByBankAccountIDQueryHandler(
     ILoggingProvider loggingProvider)
     : RequestHandlerBase<BankAccountTransactionsByBankAccountIDQuery, Result<IEnumerable<BankAccountTransaction>>>(loggingProvider)
 {
-    public override async Task<Result<IEnumerable<BankAccountTransaction>>> Handle(BankAccountTransactionsByBankAccountIDQuery request, CancellationToken cancellationToken)
+    public override async ValueTask<Result<IEnumerable<BankAccountTransaction>>> Handle(BankAccountTransactionsByBankAccountIDQuery request, CancellationToken cancellationToken)
     {
         var bankAccountTransactionList = await bankAccountTransactionRepository.GetListAsync(request.BankAccountId, cancellationToken).ConfigureAwait(false);
 

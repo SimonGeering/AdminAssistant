@@ -28,7 +28,7 @@ public sealed class AssetController_GetAssets
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<AssetQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<Asset>>.Success(documents)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<Asset>>.Success(documents)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<AssetController>();

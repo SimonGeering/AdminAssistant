@@ -24,7 +24,7 @@ public sealed class CurrencyController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Currency>.Success(currency)));
+                    .Returns(ValueTask.FromResult(Result<Currency>.Success(currency)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<CurrencyController>();
@@ -67,7 +67,7 @@ public sealed class CurrencyController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Currency>.NotFound()));
+                    .Returns(ValueTask.FromResult(Result<Currency>.NotFound()));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<CurrencyController>();
@@ -102,7 +102,7 @@ public sealed class CurrencyController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Currency>.Invalid(validationErrors)));
+                    .Returns(ValueTask.FromResult(Result<Currency>.Invalid(validationErrors)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<CurrencyController>();
@@ -147,7 +147,7 @@ public sealed class CurrencyController_CurrencyPost_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyCreateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Currency>.Success(currency)));
+                    .Returns(ValueTask.FromResult(Result<Currency>.Success(currency)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<CurrencyController>();
@@ -194,7 +194,7 @@ public sealed class CurrencyController_CurrencyPost_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyCreateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Currency>.Invalid(validationErrors)));
+                    .Returns(ValueTask.FromResult(Result<Currency>.Invalid(validationErrors)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<CurrencyController>();
@@ -240,7 +240,7 @@ public sealed class CurrencyController_CurrencyGetById_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyByIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Currency>.Success(currency)));
+                    .Returns(ValueTask.FromResult(Result<Currency>.Success(currency)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<CurrencyController>();
@@ -273,7 +273,7 @@ public sealed class CurrencyController_CurrencyGetById_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyByIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Currency>.NotFound()));
+                    .Returns(ValueTask.FromResult(Result<Currency>.NotFound()));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<CurrencyController>();
@@ -306,7 +306,7 @@ public sealed class CurrencyController_GetCurrency_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrenciesQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<Currency>>.Success(currencies)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<Currency>>.Success(currencies)));
 
         services.AddTransient((sp) => mockMediator.Object);
         services.AddTransient<CurrencyController>();

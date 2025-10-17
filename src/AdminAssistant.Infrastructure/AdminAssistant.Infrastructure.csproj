@@ -19,7 +19,7 @@
         <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" />
         <PackageReference Include="AutoMapper" />
         <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" />
-        <PackageReference Include="MediatR" />
+        <PackageReference Include="Mediator.Abstractions" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" />
         <PackageReference Include="Microsoft.Extensions.Hosting" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
