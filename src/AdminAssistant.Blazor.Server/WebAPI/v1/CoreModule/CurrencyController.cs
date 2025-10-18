@@ -19,7 +19,7 @@ public sealed class CurrencyController(IMapper mapper, IMediator mediator, ILogg
     {
         Log.Start();
 
-        var currency = Mapper.Map<Currency>(currencyUpdateRequest);
+        var currency = currencyUpdateRequest.ToCurrency();
         var result = await Mediator.Send(new CurrencyUpdateCommand(currency), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
@@ -34,7 +34,7 @@ public sealed class CurrencyController(IMapper mapper, IMediator mediator, ILogg
             return Log.Finish(UnprocessableEntity(ModelState));
         }
 
-        var response = Mapper.Map<CurrencyResponseDto>(result.Value);
+        var response = result.Value.ToCurrencyResponseDto();
         return Log.Finish(Ok(response));
     }
 

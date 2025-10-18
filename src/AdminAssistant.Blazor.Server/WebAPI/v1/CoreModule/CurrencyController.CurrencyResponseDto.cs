@@ -8,3 +8,13 @@ public sealed record CurrencyResponseDto : IMapFrom<Currency>
     public string Symbol { get; init; } = string.Empty;
     public string DecimalFormat { get; init; } = string.Empty;
 }
+public static partial class CurrencyMapper
+{
+    public static CurrencyResponseDto ToCurrencyResponseDto(this Currency source)
+        => new()
+        {
+            CurrencyID = source.CurrencyID.Value,
+            Symbol = source.Symbol,
+            DecimalFormat = source.DecimalFormat
+        };
+}

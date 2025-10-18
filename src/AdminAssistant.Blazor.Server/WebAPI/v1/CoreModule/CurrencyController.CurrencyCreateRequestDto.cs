@@ -13,3 +13,13 @@ public sealed record CurrencyCreateRequestDto : IMapTo<Currency>
         => profile.CreateMap<CurrencyCreateRequestDto, Currency>()
                   .ForMember(x => x.CurrencyID, opt => opt.Ignore());
 }
+public static partial class CurrencyMapper
+{
+    public static Currency ToCurrency(this CurrencyCreateRequestDto source)
+        => new()
+        {
+            CurrencyID = CurrencyId.Default,
+            Symbol = source.Symbol,
+            DecimalFormat = source.DecimalFormat
+        };
+}
