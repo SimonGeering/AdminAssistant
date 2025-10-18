@@ -5,8 +5,8 @@ public interface ICoreService
     Task<List<Currency>> GetCurrencyListAsync();
 }
 
-internal sealed class CoreService(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, IMapper mapper, ILoggingProvider log)
-    : ServiceBase(adminAssistantWebAPIClient, mapper, log), ICoreService
+internal sealed class CoreService(IAdminAssistantWebAPIClient adminAssistantWebAPIClient, ILoggingProvider log)
+    : ServiceBase(adminAssistantWebAPIClient, log), ICoreService
 {
     public async Task<List<Currency>> GetCurrencyListAsync()
     {
@@ -14,7 +14,7 @@ internal sealed class CoreService(IAdminAssistantWebAPIClient adminAssistantWebA
 
         var response = await AdminAssistantWebAPIClient.GetCurrencyAsync().ConfigureAwait(false);
 
-        var result = new List<Currency>(Mapper.Map<IEnumerable<Currency>>(response));
+        var result = new List<Currency>(response.ToCurrencyList());
         result.Insert(0, new Currency() { CurrencyID = CurrencyId.Default, Symbol = string.Empty, DecimalFormat = string.Empty });
 
         return Log.Finish(result);

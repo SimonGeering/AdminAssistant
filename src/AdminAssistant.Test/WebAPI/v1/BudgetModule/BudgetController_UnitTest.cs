@@ -24,7 +24,6 @@ public sealed class BudgetController_UnitTest_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BudgetQuery>(), It.IsAny<CancellationToken>()))

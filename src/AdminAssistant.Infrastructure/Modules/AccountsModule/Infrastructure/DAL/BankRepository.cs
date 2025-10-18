@@ -11,26 +11,25 @@ public interface IBankRepository : IRepository<Bank, BankId>;
 
 internal sealed class BankRepository(
     IApplicationDbContext dbContext,
-    IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)
-    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankRepository
+    : RepositoryBase(dbContext, dateTimeProvider, userContextProvider), IBankRepository
 {
     public async Task<Bank?> GetAsync(BankId id, CancellationToken cancellationToken)
     {
         var data = await DbContext.Banks.FirstOrDefaultAsync(x => x.BankID == id.Value, cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<Bank>(data);
+        return data?.ToBank();
     }
 
     public async Task<List<Bank>> GetListAsync(CancellationToken cancellationToken)
     {
         var data = await DbContext.Banks.ToListAsync(cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<List<Bank>>(data);
+        return data.ToBankList();
     }
 
     public async Task<Bank> SaveAsync(Bank domainObjectToSave, CancellationToken cancellationToken)
     {
-        var entity = Mapper.Map<BankEntity>(domainObjectToSave);
+        var entity = domainObjectToSave.ToBankEntity();
 
         if (IsNew(domainObjectToSave))
             DbContext.Banks.Add(entity);
@@ -39,7 +38,7 @@ internal sealed class BankRepository(
 
         await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-        return Mapper.Map<Bank>(entity);
+        return entity.ToBank();
     }
 
     public async Task DeleteAsync(BankId id, CancellationToken cancellationToken)

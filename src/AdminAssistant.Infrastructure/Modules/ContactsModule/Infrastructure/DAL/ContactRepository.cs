@@ -1,6 +1,5 @@
 using AdminAssistant.Infrastructure.DAL;
 using AdminAssistant.Infrastructure.EntityFramework;
-using AdminAssistant.Infrastructure.EntityFramework.Model.Contacts;
 using AdminAssistant.Infrastructure.EntityFramework.Model.Core;
 using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Shared;
@@ -12,26 +11,25 @@ public interface IContactRepository : IRepository<Contact, ContactId>;
 
 internal sealed class ContactRepository(
     IApplicationDbContext dbContext,
-    IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)
-    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IContactRepository
+    : RepositoryBase(dbContext, dateTimeProvider, userContextProvider), IContactRepository
 {
     public async Task<Contact?> GetAsync(ContactId id, CancellationToken cancellationToken)
     {
         var data = await DbContext.Contacts.FirstOrDefaultAsync(x => x.ContactID == id.Value, cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<Contact>(data);
+        return data?.ToContact();
     }
 
     public async Task<List<Contact>> GetListAsync(CancellationToken cancellationToken)
     {
         var data = await DbContext.Contacts.ToListAsync(cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<List<Contact>>(data);
+        return data.ToContactList();
     }
 
     public async Task<Contact> SaveAsync(Contact domainObjectToSave, CancellationToken cancellationToken)
     {
-        var entity = Mapper.Map<ContactEntity>(domainObjectToSave);
+        var entity = domainObjectToSave.ToContactEntity();
 
         if (IsNew(domainObjectToSave))
         {
@@ -53,7 +51,7 @@ internal sealed class ContactRepository(
 
         await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-        return Mapper.Map<Contact>(entity);
+        return entity.ToContact();
     }
 
     public async Task DeleteAsync(ContactId id, CancellationToken cancellationToken)

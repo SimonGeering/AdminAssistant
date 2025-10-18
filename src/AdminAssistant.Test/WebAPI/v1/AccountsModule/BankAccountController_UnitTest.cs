@@ -7,7 +7,6 @@ using AdminAssistant.Modules.AccountsModule.Commands;
 using AdminAssistant.Modules.AccountsModule.Queries;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
@@ -26,7 +25,6 @@ public sealed class BankAccountController_Put_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -149,7 +147,6 @@ public sealed class BankAccountController_BankAccountPost_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -246,7 +243,6 @@ public sealed class BankAccountController_BankAccountGetById_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
@@ -309,7 +305,6 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 

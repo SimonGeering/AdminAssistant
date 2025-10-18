@@ -10,20 +10,19 @@ public interface IBankAccountTypeRepository : IReadOnlyRepository<BankAccountTyp
 
 internal sealed class BankAccountTypeRepository(
     IApplicationDbContext dbContext,
-    IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)
-    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankAccountTypeRepository
+    : RepositoryBase(dbContext, dateTimeProvider, userContextProvider), IBankAccountTypeRepository
 {
     public async Task<BankAccountType?> GetAsync(BankAccountTypeId id, CancellationToken cancellationToken)
     {
         var data = await DbContext.BankAccountTypes.FirstOrDefaultAsync(x => x.BankAccountTypeID == id.Value, cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<BankAccountType>(data);
+        return data?.ToBankAccountType();
     }
 
     public async Task<List<BankAccountType>> GetListAsync(CancellationToken cancellationToken)
     {
         var data = await DbContext.BankAccountTypes.ToListAsync(cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<List<BankAccountType>>(data);
+        return data.ToBankAccountTypeList();
     }
 }

@@ -10,10 +10,9 @@ public interface IBankAccountInfoRepository : IReadOnlyRepository<BankAccountInf
 
 internal sealed class BankAccountInfoRepository(
     IApplicationDbContext dbContext,
-    IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)
-    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankAccountInfoRepository
+    : RepositoryBase(dbContext, dateTimeProvider, userContextProvider), IBankAccountInfoRepository
 {
 
     // TODO: Check this transform is being done in TSQL server side.

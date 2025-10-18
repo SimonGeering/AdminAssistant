@@ -1,4 +1,6 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Infrastructure.EntityFramework;
 using AdminAssistant.Infrastructure.EntityFramework.Model.Contacts;
@@ -6,7 +8,6 @@ using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Modules.ContactsModule;
 using AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
 using AdminAssistant.Shared;
-using MappingProfile = AdminAssistant.Infrastructure.MappingProfile;
 
 namespace AdminAssistant.Test.Infra.DAL.Modules.ContactsModule;
 
@@ -17,27 +18,24 @@ public sealed class ContactRepository_unitTest
     public async Task Returns_PopulatedContactList_WhenDatabaseHasData()
     {
         // Arrange
-        var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
         var contactList = new List<Contact>()
         {
             Factory.Contact.WithTestData(10).Build(),
             Factory.Contact.WithTestData(20).Build()
         };
-        var data = mapper.Map<IList<ContactEntity>>(contactList);
 
         var mockDbContext = new Mock<IApplicationDbContext>();
         mockDbContext.Setup(x => x.Contacts)
-            .Returns(data.BuildMockDbSet().Object);
+            .Returns(contactList.ToContactEntityList().BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
-        services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
-        services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
+        services.AddTransient(_ => new Mock<IDateTimeProvider>().Object);
+        services.AddTransient(_ => new Mock<IUserContextProvider>().Object);
         services.AddAdminAssistantServerSideInfra();
-        services.AddTransient((sp) => mockDbContext.Object);
+        services.AddTransient(_ => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetListAsync(default);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetListAsync(CancellationToken.None);
 
         // Assert
         result.Count.ShouldBe(contactList.Count);
@@ -49,28 +47,24 @@ public sealed class ContactRepository_unitTest
     public async Task Returns_AContact_WhenDatabaseContainsAnItemWithTheGivenID()
     {
         // Arrange
-        var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
-
         var contactList = new List<Contact>()
             {
                 Factory.Contact.WithTestData(10).Build(),
                 Factory.Contact.WithTestData(20).Build()
             };
-        var data = mapper.Map<IList<ContactEntity>>(contactList);
 
         var mockDbContext = new Mock<IApplicationDbContext>();
         mockDbContext.Setup(x => x.Contacts)
-            .Returns(data.BuildMockDbSet().Object);
+            .Returns(contactList.ToContactEntityList().BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
-        services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
-        services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
+        services.AddTransient(_ => new Mock<IDateTimeProvider>().Object);
+        services.AddTransient(_ => new Mock<IUserContextProvider>().Object);
         services.AddAdminAssistantServerSideInfra();
-        services.AddTransient((sp) => mockDbContext.Object);
+        services.AddTransient(_ => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetAsync(contactList[Constants.FirstItem].ContactID, default);
+        var result = await services.BuildServiceProvider().GetRequiredService<IContactRepository>().GetAsync(contactList[Constants.FirstItem].ContactID, CancellationToken.None);
 
         // Assert
         result.ShouldBeEquivalentTo(contactList[Constants.FirstItem]);
@@ -81,14 +75,13 @@ public sealed class ContactRepository_unitTest
     public async Task AddsAuditing_WhenSavingNewContact()
     {
         // Arrange
-        var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
         var contactList = new List<Contact>()
             {
                 Factory.Contact.WithTestData(10).Build(),
                 Factory.Contact.WithTestData(20).Build()
             };
 
-        var mockContacts = mapper.Map<IList<ContactEntity>>(contactList).BuildMockDbSet();
+        var mockContacts = contactList.ToContactEntityList().BuildMockDbSet();
         mockContacts.Setup(x => x.Add(It.IsAny<ContactEntity>()));
 
         var mockDbContext = new Mock<IApplicationDbContext>();
@@ -98,7 +91,6 @@ public sealed class ContactRepository_unitTest
         services.AddMockDateTimeProvider();
         services.AddMockUserContextProvider();
         services.AddMockDbContext(mockDbContext);
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddAdminAssistantServerSideInfra();
 
         var newContactToSave = Factory.Contact.WithFirstName("TestNewContactToSaveFirstName")
@@ -106,10 +98,10 @@ public sealed class ContactRepository_unitTest
                                               .Build();
 
         // Act
-        await services.BuildServiceProvider().GetRequiredService<IContactRepository>().SaveAsync(newContactToSave, default);
+        await services.BuildServiceProvider().GetRequiredService<IContactRepository>().SaveAsync(newContactToSave, CancellationToken.None);
 
         // Assert
-        mockContacts.Verify(x => x.Add(It.Is<ContactEntity>((arg) => IsValidForInsert(arg))), Times.Once());
+        mockContacts.Verify(x => x.Add(It.Is<ContactEntity>(arg => IsValidForInsert(arg))), Times.Once());
         mockDbContext.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once());
     }
 

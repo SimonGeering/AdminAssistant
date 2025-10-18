@@ -1,8 +1,6 @@
-using AdminAssistant.Modules.AccountsModule;
-
 namespace AdminAssistant.Infrastructure.EntityFramework.Model.Accounts;
 
-public sealed class PayeeContactEntity : IMapFrom<PayeeContact>, IMapTo<PayeeContact>
+public sealed class PayeeContactEntity
 {
     // Table "Accounts.PayeeContact"
     public int PayeeContactID { get; set; } // PK
@@ -12,9 +10,4 @@ public sealed class PayeeContactEntity : IMapFrom<PayeeContact>, IMapTo<PayeeCon
     public bool IsPrimaryContact { get; set; }
 
     public Core.AuditEntity Audit { get; internal set; } = null!;
-
-    public void MapFrom(AutoMapper.Profile profile) => profile
-        .CreateMap<PayeeContact, PayeeContactEntity>()
-        .ForMember(x => x.AuditID, opt => opt.Ignore())
-        .ForMember(x => x.Audit, opt => opt.Ignore());
 }

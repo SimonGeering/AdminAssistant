@@ -1,7 +1,6 @@
 using AdminAssistant.Infrastructure.DAL;
 using AdminAssistant.Infrastructure.EntityFramework;
 using AdminAssistant.Infrastructure.EntityFramework.Model.Core;
-using AdminAssistant.Infrastructure.EntityFramework.Model.Documents;
 using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Shared;
 using Microsoft.EntityFrameworkCore;
@@ -12,26 +11,25 @@ public interface IDocumentRepository : IRepository<Document, DocumentId>;
 
 internal sealed class DocumentRepository(
     IApplicationDbContext dbContext,
-    IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)
-    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IDocumentRepository
+    : RepositoryBase(dbContext, dateTimeProvider, userContextProvider), IDocumentRepository
 {
     public async Task<Document?> GetAsync(DocumentId id, CancellationToken cancellationToken)
     {
         var data = await DbContext.Documents.FirstOrDefaultAsync(x => x.DocumentID == id.Value, cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<Document>(data);
+        return data?.ToDocument();
     }
 
     public async Task<List<Document>> GetListAsync(CancellationToken cancellationToken)
     {
         var data = await DbContext.Documents.ToListAsync(cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<List<Document>>(data);
+        return data.ToDocumentList();
     }
 
     public async Task<Document> SaveAsync(Document domainObjectToSave, CancellationToken cancellationToken)
     {
-        var entity = Mapper.Map<DocumentEntity>(domainObjectToSave);
+        var entity = domainObjectToSave.ToDocumentEntity();
 
         if (IsNew(domainObjectToSave))
         {
@@ -50,7 +48,7 @@ internal sealed class DocumentRepository(
 
         await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-        return Mapper.Map<Document>(entity);
+        return entity.ToDocument();
     }
 
     public async Task DeleteAsync(DocumentId id, CancellationToken cancellationToken)

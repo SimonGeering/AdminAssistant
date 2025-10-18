@@ -1,8 +1,6 @@
-using AdminAssistant.Modules.AccountsModule;
-
 namespace AdminAssistant.Infrastructure.EntityFramework.Model.Accounts;
 
-public sealed class BankAccountStatementEntity : IMapFrom<BankAccountStatement>, IMapTo<BankAccountStatement>
+public sealed class BankAccountStatementEntity
 {
     // Table "Accounts.BankAccountStatement"
     public int BankAccountStatementID { get; set; } // PK
@@ -22,11 +20,4 @@ public sealed class BankAccountStatementEntity : IMapFrom<BankAccountStatement>,
 
     public Core.AuditEntity Audit { get; internal set; } = null!;
     public Core.OwnerEntity Owner { get; internal set; } = null!;
-
-    public void MapFrom(AutoMapper.Profile profile) => profile
-        .CreateMap<BankAccountStatement, BankAccountStatementEntity>()
-        .ForMember(x => x.AuditID, opt => opt.Ignore())
-        .ForMember(x => x.Audit, opt => opt.Ignore())
-        .ForMember(x => x.OwnerID, opt => opt.Ignore())
-        .ForMember(x => x.Owner, opt => opt.Ignore());
 }

@@ -117,7 +117,6 @@
 //             Guard.Against.Null(_httpClient.BaseAddress);
 //             return new AdminAssistantWebAPIClient(_httpClient) { BaseUrl = _httpClient.BaseAddress.ToString() };
 //         });
-//         services.AddAutoMapper(typeof(MappingProfile));
 //     };
 //
 //     private async Task<List<BankAccountTypeEntity>> SeedBankAccountTypeTestData(IApplicationDbContext dbContext)

@@ -25,10 +25,7 @@ public static class DependencyInjectionExtensions
         => AddAdminAssistantWebAPIClient(services, new Uri(configurationSettings.WebApiClientBaseAddress));
 
     public static void AddAdminAssistantWebAPIClient(this IServiceCollection services, Uri baseAddress)
-    {
-        services.AddHttpClient<IAdminAssistantWebAPIClient, AdminAssistantWebAPIClient>(AdminAssistant.Constants.AdminAssistantWebAPIClient, (httpClient) => httpClient.BaseAddress = baseAddress);
-        services.AddAutoMapper(typeof(MappingProfile));
-    }
+        => services.AddHttpClient<IAdminAssistantWebAPIClient, AdminAssistantWebAPIClient>(AdminAssistant.Constants.AdminAssistantWebAPIClient, (httpClient) => httpClient.BaseAddress = baseAddress);
 
     public static void AddAdminAssistantUI(this IServiceCollection services, FontAwesomeVersion fontAwesomeVersion = FontAwesomeVersion.V4o7o0)
     {

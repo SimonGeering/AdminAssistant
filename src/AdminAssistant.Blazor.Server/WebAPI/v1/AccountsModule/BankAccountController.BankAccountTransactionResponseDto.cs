@@ -1,8 +1,6 @@
-using AdminAssistant.Modules.AccountsModule;
-
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
 
-public sealed record BankAccountTransactionResponseDto : IMapFrom<BankAccountTransaction>
+public sealed record BankAccountTransactionResponseDto
 {
     public int BankAccountTransactionID { get; init; }
     public int BankAccountID { get; init; }

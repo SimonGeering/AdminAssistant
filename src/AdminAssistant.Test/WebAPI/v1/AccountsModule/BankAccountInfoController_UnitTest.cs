@@ -33,7 +33,6 @@ public sealed class BankAccountInfoController_BankAccountInfoGet_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient(_ => mockMediator.Object);
         services.AddTransient(_ => mockUserContextProvider.Object);
         services.AddTransient<BankAccountInfoController>();

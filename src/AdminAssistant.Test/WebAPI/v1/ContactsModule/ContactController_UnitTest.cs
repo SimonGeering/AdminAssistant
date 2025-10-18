@@ -24,7 +24,6 @@ public sealed class ContactController_GetContacts
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<ContactQuery>(), It.IsAny<CancellationToken>()))
@@ -73,7 +72,6 @@ public sealed class ContactController_GetContacts
 
     //var services = new ServiceCollection();
     //services.AddMockServerSideLogging();
-    //services.AddAutoMapper(typeof(MappingProfile));
 
     //var mockMediator = new Mock<IMediator>();
     //services.AddTransient((sp) => mockMediator.Object);

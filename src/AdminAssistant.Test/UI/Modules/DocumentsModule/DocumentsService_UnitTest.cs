@@ -25,7 +25,6 @@ public sealed class DocumentsService_GetDocumentListAsync
         var services = new ServiceCollection();
         services.AddAdminAssistantUI();
         services.AddMockClientSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => mockWebAPIClient.Object);
 
         // Act

@@ -26,7 +26,6 @@ public sealed class CoreService_GetCurrencyListAsync
         var services = new ServiceCollection();
         services.AddAdminAssistantUI();
         services.AddMockClientSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => mockWebAPIClient.Object);
 
         // Act

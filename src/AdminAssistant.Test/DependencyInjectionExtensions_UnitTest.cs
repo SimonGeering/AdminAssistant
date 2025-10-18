@@ -71,7 +71,6 @@ public class ServiceCollection_Should()
         services.AddAdminAssistantUI();
         // Mocks ...
         services.AddMockClientSideLogging();
-        services.AddTransient(_ => new Mock<IMapper>().Object);
         services.AddTransient(_ => new Mock<IAdminAssistantWebAPIClient>().Object);
 
         var serviceProvider = services.BuildServiceProvider();

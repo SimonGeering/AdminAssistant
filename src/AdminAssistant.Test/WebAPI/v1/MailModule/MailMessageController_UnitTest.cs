@@ -24,7 +24,6 @@ public sealed class MailMessageController_GetMailMessages
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<MailMessageQuery>(), It.IsAny<CancellationToken>()))

@@ -55,7 +55,6 @@ builder.Services.AddSwaggerGen(c =>
     c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
 });
 builder.Services.AddFluentValidationRulesToSwagger(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
-builder.Services.AddAutoMapper(typeof(AdminAssistant.Domain.MappingProfile), typeof(AdminAssistant.Infrastructure.MappingProfile), typeof(AdminAssistant.WebAPI.v1.MappingProfile));
 builder.Services.AddAdminAssistantServerSideProviders();
 builder.Services.AddAdminAssistantServerSideDomainModel();
 builder.Services.AddAdminAssistantApplication();

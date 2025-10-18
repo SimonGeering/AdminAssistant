@@ -26,7 +26,6 @@ public sealed class AccountsService_UnitTest
         var services = new ServiceCollection();
         services.AddAdminAssistantUI();
         services.AddMockClientSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient(_ => new Mock<IPdfFileProvider>().Object);
         services.AddTransient(_ => mockWebAPIClient.Object);
 
