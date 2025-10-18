@@ -6,7 +6,6 @@ using AdminAssistant.Modules.CoreModule.Commands;
 using AdminAssistant.Modules.CoreModule.Queries;
 using AdminAssistant.WebAPI.v1.CoreModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.CoreModule;
 
@@ -21,7 +20,6 @@ public sealed class CurrencyController_Put_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyUpdateCommand>(), It.IsAny<CancellationToken>()))
@@ -133,7 +131,6 @@ public sealed class CurrencyController_CurrencyPost_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyCreateCommand>(), It.IsAny<CancellationToken>()))
@@ -190,9 +187,11 @@ public sealed class CurrencyController_CurrencyPost_Should
         services.AddTransient<CurrencyController>();
 
         var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var currencyRequest = mapper.Map<CurrencyCreateRequestDto>(currency);
+        var currencyRequest = new CurrencyCreateRequestDto
+        {
+            DecimalFormat = currency.DecimalFormat,
+            Symbol = currency.Symbol
+        };
 
         // Act
         var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, CancellationToken.None);
@@ -226,7 +225,6 @@ public sealed class CurrencyController_CurrencyGetById_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyByIDQuery>(), It.IsAny<CancellationToken>()))
@@ -292,7 +290,6 @@ public sealed class CurrencyController_GetCurrency_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrenciesQuery>(), It.IsAny<CancellationToken>()))

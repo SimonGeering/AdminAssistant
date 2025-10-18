@@ -17,4 +17,7 @@ public static partial class CurrencyMapper
             Symbol = source.Symbol,
             DecimalFormat = source.DecimalFormat
         };
+
+    public static IEnumerable<CurrencyResponseDto> ToCurrencyList(this IEnumerable<Currency> source)
+        => source.Select(x => x.ToCurrencyResponseDto());
 }
