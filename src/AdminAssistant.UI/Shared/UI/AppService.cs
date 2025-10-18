@@ -40,7 +40,7 @@ internal sealed class AppService(FontAwesomeVersion fontAwesomeVersion) : IAppSe
 
     public ModuleSelectionItem GetDefaultModule() => GetModuleItem(DefaultModule);
 
-    private string GetLabelForMode(Mode mode) => mode switch
+    private static string GetLabelForMode(Mode mode) => mode switch
     {
         Mode.Company => "Company",
         Mode.Personal => "Personal",
@@ -69,7 +69,7 @@ internal sealed class AppService(FontAwesomeVersion fontAwesomeVersion) : IAppSe
         _ => throw new ArgumentOutOfRangeException(nameof(mode))
     };
 
-    private string GetLabelForModule(Module module) => module switch
+    private static string GetLabelForModule(Module module) => module switch
     {
         Module.Mail => "Mail",
         Module.Calendar => "Calendar",

@@ -16,6 +16,7 @@ builder.AddProject<Projects.AdminAssistant_Blazor_Server>("AdminAssistantBlazorS
 await builder.Build().RunAsync();
 
 
+#pragma warning disable S125
 /*
 
    // IAM Server ...
@@ -205,3 +206,4 @@ await builder.Build().RunAsync();
 
    #pragma warning restore S1481
 */
+#pragma warning restore S125

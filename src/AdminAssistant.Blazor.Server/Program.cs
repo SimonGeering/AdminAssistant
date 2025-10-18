@@ -113,7 +113,7 @@ app.MapWhen(ctx => ctx.Request.Path.StartsWithSegments("/api"), api =>
     });
 });
 
-app.Run();
+await app.RunAsync();
 
 public partial class Program
 {

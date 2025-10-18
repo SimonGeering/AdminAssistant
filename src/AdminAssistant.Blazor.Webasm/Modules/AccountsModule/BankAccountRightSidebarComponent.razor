@@ -52,9 +52,9 @@
         new BankAccountInfo { BankAccountID = new BankAccountId(13), AccountName = "Halifax Online Savings Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" }
     ];
 
-    private void OpenBankAccountEditDialog()
+    private async Task OpenBankAccountEditDialog()
     {
         var dialogOptions = new DialogOptions { CloseButton = true };
-        Dialog.Show<BankAccountEditDialogComponent>("Custom Options Dialog", dialogOptions);
+        await Dialog.ShowAsync<BankAccountEditDialogComponent>("Custom Options Dialog", dialogOptions);
     }
 }
