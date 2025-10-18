@@ -1,10 +1,11 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.CalendarModule;
 using AdminAssistant.Modules.CalendarModule.Queries;
 using AdminAssistant.WebAPI.v1.CalendarModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.CalendarModule;
 
@@ -29,11 +30,11 @@ public sealed class ReminderController_Get
         mockMediator.Setup(x => x.Send(It.IsAny<ReminderQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<IEnumerable<Reminder>>.Success(documents)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<ReminderController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<ReminderController>().GetReminders(default);
+        var response = await services.BuildServiceProvider().GetRequiredService<ReminderController>().GetReminders(CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();

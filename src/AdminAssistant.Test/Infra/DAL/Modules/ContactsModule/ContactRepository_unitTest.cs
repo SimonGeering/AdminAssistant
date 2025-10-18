@@ -115,7 +115,7 @@ public sealed class ContactRepository_unitTest
 
     //UpdatesAuditing_WhenSavingAnExistingContact
 
-    private bool IsValidForInsert(ContactEntity contactToSave)
+    private static bool IsValidForInsert(ContactEntity contactToSave)
     {
         contactToSave.ContactID.ShouldBe(Constants.NewRecordID);
         contactToSave.Audit.ShouldNotBeNull();
@@ -127,7 +127,7 @@ public sealed class ContactRepository_unitTest
     }
 
     [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
-    private bool IsValidForUpdate(ContactEntity contactToSave)
+    private static bool IsValidForUpdate(ContactEntity contactToSave)
     {
         contactToSave.ContactID.ShouldNotBe(Constants.NewRecordID);
         contactToSave.Audit.ShouldNotBeNull();

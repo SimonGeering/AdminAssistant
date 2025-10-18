@@ -1,10 +1,11 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.MailModule;
 using AdminAssistant.Modules.MailModule.Queries;
 using AdminAssistant.WebAPI.v1.MailModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.MailModule;
 
@@ -29,11 +30,11 @@ public sealed class MailMessageController_GetMailMessages
         mockMediator.Setup(x => x.Send(It.IsAny<MailMessageQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<IEnumerable<MailMessage>>.Success(documents)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<MailMessageController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<MailMessageController>().GetMailMessages(default);
+        var response = await services.BuildServiceProvider().GetRequiredService<MailMessageController>().GetMailMessages(CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();

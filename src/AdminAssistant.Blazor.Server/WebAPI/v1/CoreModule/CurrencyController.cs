@@ -1,4 +1,3 @@
-using AdminAssistant.Modules.CoreModule;
 using AdminAssistant.Modules.CoreModule.Commands;
 using AdminAssistant.Modules.CoreModule.Queries;
 
@@ -83,7 +82,7 @@ public sealed class CurrencyController(IMediator mediator, ILoggingProvider log)
         log.Start();
 
         var result = await mediator.Send(new CurrenciesQuery(), cancellationToken).ConfigureAwait(false);
-        var response = result.Value.ToCurrencyList();
+        var response = result.Value.ToCurrencyResponseDtoEnumeration();
 
         return log.Finish(Ok(response));
     }

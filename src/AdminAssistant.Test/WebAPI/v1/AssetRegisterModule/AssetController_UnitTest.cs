@@ -1,10 +1,11 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.AssetRegisterModule;
 using AdminAssistant.Modules.AssetRegisterModule.Queries;
 using AdminAssistant.WebAPI.v1.AssetRegisterModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.AssetRegisterModule;
 
@@ -30,11 +31,11 @@ public sealed class AssetController_GetAssets
         mockMediator.Setup(x => x.Send(It.IsAny<AssetQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<IEnumerable<Asset>>.Success(documents)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<AssetController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<AssetController>().GetAssets(default);
+        var response = await services.BuildServiceProvider().GetRequiredService<AssetController>().GetAssets(CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();

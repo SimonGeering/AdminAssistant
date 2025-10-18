@@ -1,10 +1,11 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Modules.AccountsModule.Queries;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
@@ -29,11 +30,11 @@ public sealed class BankAccountTypeController_BankAccountTypeGet_Should
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountTypesQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<IEnumerable<BankAccountType>>.Success(bankAccountTypes)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountTypeController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountTypeController>().BankAccountTypeGet(default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountTypeController>().BankAccountTypeGet(CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();

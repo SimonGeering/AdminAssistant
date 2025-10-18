@@ -6,8 +6,7 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule;
 [ApiController]
 [Route("api/v1/accounts-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Accounts Module")]
-public sealed class BankAccountInfoController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider, IUserContextProvider userContextProvider)
-    : WebApiControllerBase(mapper, mediator, loggingProvider)
+public sealed class BankAccountInfoController(IMediator mediator, ILoggingProvider log, IUserContextProvider userContextProvider) : ControllerBase
 {
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<BankAccountInfoResponseDto>), StatusCodes.Status200OK)]
@@ -15,11 +14,11 @@ public sealed class BankAccountInfoController(IMapper mapper, IMediator mediator
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankAccountInfoResponseDto", type: typeof(IEnumerable<BankAccountInfoResponseDto>))]
     public async Task<ActionResult<IEnumerable<BankAccountInfoResponseDto>>> BankAccountInfoGet(CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var result = await Mediator.Send(new BankAccountInfoQuery(userContextProvider.GetCurrentUser().UserID), cancellationToken).ConfigureAwait(false);
-        var response = Mapper.Map<IEnumerable<BankAccountInfoResponseDto>>(result.Value);
+        var result = await mediator.Send(new BankAccountInfoQuery(userContextProvider.GetCurrentUser().UserID), cancellationToken).ConfigureAwait(false);
+        var response = result.Value.ToBankAccountInfoResponseDtoEnumeration();
 
-        return Log.Finish(Ok(response));
+        return log.Finish(Ok(response));
     }
 }

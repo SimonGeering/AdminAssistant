@@ -1,15 +1,14 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Infrastructure.EntityFramework;
-using AdminAssistant.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Xunit.Abstractions;
 
 namespace AdminAssistant.Test;
 
-public class ServiceCollection_Should(ITestOutputHelper output)
+public class ServiceCollection_Should()
 {
     [Fact]
     [Trait("Category", "Unit")]

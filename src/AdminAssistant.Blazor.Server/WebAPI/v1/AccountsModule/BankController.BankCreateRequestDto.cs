@@ -1,14 +1,7 @@
-using AdminAssistant.Modules.AccountsModule;
-using Swashbuckle.AspNetCore.Annotations;
-
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
 
-[SwaggerSchema(Required = new[] { "BankName" })]
-public sealed record BankCreateRequestDto : IMapTo<Bank>
+[SwaggerSchema(Required = ["BankName"])]
+public sealed record BankCreateRequestDto
 {
     public string BankName { get; init; } = string.Empty;
-
-    public void MapTo(AutoMapper.Profile profile)
-        => profile.CreateMap<BankCreateRequestDto, Bank>()
-                  .ForMember(x => x.BankID, opt => opt.Ignore());
 }

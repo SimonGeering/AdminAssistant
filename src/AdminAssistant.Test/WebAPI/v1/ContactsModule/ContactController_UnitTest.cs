@@ -1,10 +1,11 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.ContactsModule;
 using AdminAssistant.Modules.ContactsModule.Queries;
 using AdminAssistant.WebAPI.v1.ContactsModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.ContactsModule;
 
@@ -29,11 +30,11 @@ public sealed class ContactController_GetContacts
         mockMediator.Setup(x => x.Send(It.IsAny<ContactQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<IEnumerable<Contact>>.Success(contacts)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<ContactController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<ContactController>().GetContact(default);
+        var response = await services.BuildServiceProvider().GetRequiredService<ContactController>().GetContact(CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();

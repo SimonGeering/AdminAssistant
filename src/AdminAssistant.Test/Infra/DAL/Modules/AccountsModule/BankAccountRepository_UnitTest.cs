@@ -31,13 +31,13 @@ public sealed class BankAccountRepository_UnitTest
 
         var services = new ServiceCollection();
         services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
-        services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
+        services.AddTransient(_ => new Mock<IDateTimeProvider>().Object);
+        services.AddTransient(_ => new Mock<IUserContextProvider>().Object);
         services.AddAdminAssistantServerSideInfra();
         services.AddTransient((sp) => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync(default);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync(CancellationToken.None);
 
         // Assert
         result.Count.ShouldBe(bankAccountList.Count);
@@ -64,13 +64,14 @@ public sealed class BankAccountRepository_UnitTest
 
         var services = new ServiceCollection();
         services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
-        services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
+        services.AddTransient(_ => new Mock<IDateTimeProvider>().Object);
+        services.AddTransient(_ => new Mock<IUserContextProvider>().Object);
         services.AddAdminAssistantServerSideInfra();
-        services.AddTransient((sp) => mockDbContext.Object);
+        services.AddTransient(_ => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetAsync(bankAccountList[Constants.FirstItem].BankAccountID, default);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>()
+            .GetAsync(bankAccountList[Constants.FirstItem].BankAccountID, CancellationToken.None);
 
         // Assert
         result.ShouldBeEquivalentTo(bankAccountList[Constants.FirstItem]);
@@ -111,9 +112,9 @@ public sealed class BankAccountRepository_UnitTest
         mockDbContext.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once());
     }
 
-    //UpdatesAuditing_WhenSavingAnExistingBankAccount
+    //TODO: UpdatesAuditing_WhenSavingAnExistingBankAccount
 
-    private bool IsValidForInsert(BankAccountEntity bankAccountToSave)
+    private static bool IsValidForInsert(BankAccountEntity bankAccountToSave)
     {
         bankAccountToSave.BankAccountID.ShouldBe(Constants.NewRecordID);
         bankAccountToSave.Audit.ShouldNotBeNull();
@@ -125,7 +126,7 @@ public sealed class BankAccountRepository_UnitTest
     }
 
     [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
-    private bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
+    private static bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
     {
         bankAccountToSave.BankAccountID.ShouldNotBe(Constants.NewRecordID);
         bankAccountToSave.Audit.ShouldNotBeNull();

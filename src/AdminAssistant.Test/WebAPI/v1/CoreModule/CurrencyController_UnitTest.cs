@@ -1,5 +1,6 @@
 // ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.CoreModule;
 using AdminAssistant.Modules.CoreModule.Commands;
@@ -29,7 +30,7 @@ public sealed class CurrencyController_Put_Should
         services.AddTransient<CurrencyController>();
 
         var container = services.BuildServiceProvider();
-        var currencyRequest = currency.ToCurrencyUpdateRequest();
+        var currencyRequest = currency.ToCurrencyUpdateRequestDto();
 
         // Act
         var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, CancellationToken.None);
@@ -66,7 +67,7 @@ public sealed class CurrencyController_Put_Should
         services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
-        var currencyRequest = currency.ToCurrencyUpdateRequest();
+        var currencyRequest = currency.ToCurrencyUpdateRequestDto();
 
         // Act
         var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, CancellationToken.None);
@@ -98,7 +99,7 @@ public sealed class CurrencyController_Put_Should
         services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
-        var currencyRequest = currency.ToCurrencyUpdateRequest();
+        var currencyRequest = currency.ToCurrencyUpdateRequestDto();
 
         // Act
         var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, CancellationToken.None);

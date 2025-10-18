@@ -5,19 +5,18 @@ namespace AdminAssistant.WebAPI.v1.AssetRegisterModule;
 [ApiController]
 [Route("api/v1/assetregister-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Asset Register Module")]
-public sealed class AssetController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-    : WebApiControllerBase(mapper, mediator, loggingProvider)
+public sealed class AssetController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
     [HttpGet]
     [SwaggerOperation("Lists all assets", OperationId = "GetAsset")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of AssetResponseDto", type: typeof(IEnumerable<AssetResponseDto>))]
     public async Task<ActionResult<IEnumerable<AssetResponseDto>>> GetAssets(CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var result = await Mediator.Send(new AssetQuery(), cancellationToken).ConfigureAwait(false);
-        var response = Mapper.Map<IEnumerable<AssetResponseDto>>(result.Value);
+        var result = await mediator.Send(new AssetQuery(), cancellationToken).ConfigureAwait(false);
+        var response = result.Value.ToBudgetResponseDtoEnumeration();
 
-        return Log.Finish(Ok(response));
+        return log.Finish(Ok(response));
     }
 }

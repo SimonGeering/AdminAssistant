@@ -1,4 +1,6 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Modules.AccountsModule.Commands;
@@ -25,7 +27,7 @@ public sealed class BankAccountController_Put_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
         var container = services.BuildServiceProvider();
@@ -41,7 +43,7 @@ public sealed class BankAccountController_Put_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest, default);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest, CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();
@@ -76,16 +78,13 @@ public sealed class BankAccountController_Put_Should
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
-        var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var bankAccountRequest = mapper.Map<BankAccountUpdateRequestDto>(bankAccount);
+        var bankAccountRequest = bankAccount.ToBankAccountUpdateRequestDto();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest, CancellationToken.None);
 
         // Assert
         response.Result.ShouldBeOfType<NotFoundObjectResult>();
@@ -110,16 +109,13 @@ public sealed class BankAccountController_Put_Should
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
-        var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var bankAccountRequest = mapper.Map<BankAccountUpdateRequestDto>(bankAccount);
+        var bankAccountRequest = bankAccount.ToBankAccountUpdateRequestDto();
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountPut(bankAccountRequest, CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();
@@ -154,7 +150,7 @@ public sealed class BankAccountController_BankAccountPost_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
         var container = services.BuildServiceProvider();
@@ -171,7 +167,7 @@ public sealed class BankAccountController_BankAccountPost_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest, default);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest, CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();
@@ -211,16 +207,13 @@ public sealed class BankAccountController_BankAccountPost_Should
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
-        var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var bankAccountRequest = mapper.Map<BankAccountCreateRequestDto>(bankAccount);
+        var bankAccountRequest = bankAccount.ToBankAccountCreateRequestDto();
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountPost(bankAccountRequest, CancellationToken.None);
 
         // Assert
         response.Result.ShouldNotBeNull();
@@ -254,11 +247,11 @@ public sealed class BankAccountController_BankAccountGetById_Should
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID.Value, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(bankAccount.BankAccountID.Value, CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();
@@ -284,11 +277,11 @@ public sealed class BankAccountController_BankAccountGetById_Should
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(10, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountGetById(10, CancellationToken.None);
 
         // Assert
         response.Result.ShouldBeOfType<NotFoundResult>();
@@ -317,13 +310,13 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
         services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
         var container = services.BuildServiceProvider();
 
         // Act
-        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList[Constants.FirstItem].BankAccountID.Value, default);
+        var response = await container.GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(bankAccountTransactionList[Constants.FirstItem].BankAccountID.Value, CancellationToken.None);
 
         // Assert
         response.Value.ShouldBeNull();
@@ -355,11 +348,11 @@ public class BankAccountController_BankAccountTransactionsGetByBankAccountID_Sho
 
         var services = new ServiceCollection();
         services.AddMocksOfExternalServerSideDependencies();
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankAccountController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(Constants.UnknownRecordID, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountController>().BankAccountTransactionsGetByBankAccountID(Constants.UnknownRecordID, CancellationToken.None);
 
         // Assert
         response.Result.ShouldBeOfType<NotFoundResult>();
