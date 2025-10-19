@@ -22,7 +22,7 @@ public sealed class BankAccountTransactionValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction);
 
         // Assert
-        result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -41,8 +41,8 @@ public sealed class BankAccountTransactionValidator_Should
 
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccountTransaction.BankAccountID));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccountTransaction.BankAccountID));
     }
 
     [Fact]
@@ -60,8 +60,8 @@ public sealed class BankAccountTransactionValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(BankAccountTransaction.Description));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(BankAccountTransaction.Description));
     }
 
 
@@ -80,7 +80,7 @@ public sealed class BankAccountTransactionValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountTransactionValidator>().ValidateAsync(bankAccountTransaction);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(BankAccountTransaction.Description));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(BankAccountTransaction.Description));
     }
 }

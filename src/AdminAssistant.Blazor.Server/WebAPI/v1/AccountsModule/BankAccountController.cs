@@ -1,4 +1,3 @@
-using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Modules.AccountsModule.Commands;
 using AdminAssistant.Modules.AccountsModule.Queries;
 
@@ -7,8 +6,7 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule;
 [ApiController]
 [Route("api/v1/accounts-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Accounts Module")]
-public sealed class BankAccountController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-    : WebApiControllerBase(mapper, mediator, loggingProvider)
+public sealed class BankAccountController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
     [HttpPut]
     [SwaggerOperation("Update an existing BankAccount.", OperationId = "PutBankAccount")]
@@ -17,25 +15,25 @@ public sealed class BankAccountController(IMapper mapper, IMediator mediator, IL
     [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountUpdateRequest is invalid.")]
     public async Task<ActionResult<BankAccountResponseDto>> BankAccountPut([FromBody, SwaggerParameter("The BankAccount for which updates are to be persisted.", Required = true)] BankAccountUpdateRequestDto bankAccountUpdateRequest, CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var bankAccount = Mapper.Map<BankAccount>(bankAccountUpdateRequest);
-        var result = await Mediator.Send(new BankAccountUpdateCommand(bankAccount), cancellationToken).ConfigureAwait(false);
+        var bankAccount = bankAccountUpdateRequest.ToBankAccount();
+        var result = await mediator.Send(new BankAccountUpdateCommand(bankAccount), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
         {
             result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
-            return Log.Finish(NotFound(ModelState));
+            return log.Finish(NotFound(ModelState));
         }
 
         if (result.Status == ResultStatus.Invalid)
         {
             result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
-            return Log.Finish(UnprocessableEntity(ModelState));
+            return log.Finish(UnprocessableEntity(ModelState));
         }
 
-        var response = Mapper.Map<BankAccountResponseDto>(result.Value);
-        return Log.Finish(Ok(response));
+        var response = result.Value.ToBankAccountResponseDto();
+        return log.Finish(Ok(response));
     }
 
     [HttpPost]
@@ -44,52 +42,54 @@ public sealed class BankAccountController(IMapper mapper, IMediator mediator, IL
     [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountCreateRequest is invalid.")]
     public async Task<ActionResult<BankAccountResponseDto>> BankAccountPost([FromBody, SwaggerParameter("The details of the BankAccount to be created.", Required = true)] BankAccountCreateRequestDto bankAccountCreateRequest, CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var bankAccount = Mapper.Map<BankAccount>(bankAccountCreateRequest);
-        var result = await Mediator.Send(new BankAccountCreateCommand(bankAccount), cancellationToken).ConfigureAwait(false);
+        var bankAccount = bankAccountCreateRequest.ToBankAccount();
+        var result = await mediator.Send(new BankAccountCreateCommand(bankAccount), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.Invalid)
         {
             result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
-            return Log.Finish(UnprocessableEntity(ModelState)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
+            return log.Finish(UnprocessableEntity(ModelState)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
         }
 
-        var response = Mapper.Map<BankAccountResponseDto>(result.Value);
-        return Log.Finish(CreatedAtRoute(nameof(BankAccountGetById), new { bankAccountID = response.BankAccountID }, response));
+        var response = result.Value.ToBankAccountResponseDto();
+        return log.Finish(CreatedAtRoute(nameof(BankAccountGetById), new { bankAccountID = response.BankAccountID }, response));
     }
 
     [HttpGet("{bankAccountID}")]
     [SwaggerOperation("Gets the BankAccountResponseDto with the given ID.", OperationId = "GetBankAccountById")]
     [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the BankAccount requested.", type: typeof(BankAccountResponseDto))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
-    public async Task<ActionResult<BankAccountResponseDto>> BankAccountGetById([SwaggerParameter("The ID of the BankAccount to be returned.", Required = true)] int bankAccountID, CancellationToken cancellationToken)
+    public async Task<ActionResult<BankAccountResponseDto>> BankAccountGetById(
+        [SwaggerParameter("The ID of the BankAccount to be returned.", Required = true)] int bankAccountID, CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var result = await Mediator.Send(new BankAccountByIDQuery(bankAccountID), cancellationToken).ConfigureAwait(false);
+        var result = await mediator.Send(new BankAccountByIDQuery(bankAccountID), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
-            return Log.Finish(NotFound());
+            return log.Finish(NotFound());
 
-        var response = Mapper.Map<BankAccountResponseDto>(result.Value);
-        return Log.Finish(Ok(response));
+        var response = result.Value.ToBankAccountResponseDto();
+        return log.Finish(Ok(response));
     }
 
     [HttpGet("{bankAccountID}/transactions")]
     [SwaggerOperation("Get the transactions since the last bank account statement for the BankAccount with the given ID.", OperationId = "GetBankAccountTransactionByBankAccountID")]
     [SwaggerResponse(StatusCodes.Status200OK, "OK - returns a list of BankAccountTransactionResponseDto.", type: typeof(IEnumerable<BankAccountTransactionResponseDto>))]
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
-    public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> BankAccountTransactionsGetByBankAccountID([SwaggerParameter("The ID of the BankAccount.", Required = true)] int bankAccountID, CancellationToken cancellationToken)
+    public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> BankAccountTransactionsGetByBankAccountID(
+        [SwaggerParameter("The ID of the BankAccount.", Required = true)] int bankAccountID, CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var result = await Mediator.Send(new BankAccountTransactionsByBankAccountIDQuery(bankAccountID), cancellationToken).ConfigureAwait(false);
+        var result = await mediator.Send(new BankAccountTransactionsByBankAccountIDQuery(bankAccountID), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
-            return Log.Finish(NotFound());
+            return log.Finish(NotFound());
 
-        var response = Mapper.Map<IEnumerable<BankAccountTransactionResponseDto>>(result.Value);
-        return Log.Finish(Ok(response));
+        var response = result.Value.ToBankAccountTransactionResponseDtoEnumeration();
+        return log.Finish(Ok(response));
     }
 }

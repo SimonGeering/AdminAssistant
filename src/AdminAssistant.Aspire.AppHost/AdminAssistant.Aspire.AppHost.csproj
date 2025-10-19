@@ -38,6 +38,7 @@
         <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj">
             <IsAspireProjectResource>false</IsAspireProjectResource>
         </ProjectReference>
+        <ProjectReference Include="..\AdminAssistant.Retro\AdminAssistant.Retro.csproj" />
     </ItemGroup>
 
 </Project>

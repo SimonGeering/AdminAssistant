@@ -36,7 +36,7 @@ stages:
       displayName: 'dotnet restore'
       inputs:
         command: 'restore'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.slnx'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
     # Sonar Cloud Prepare ...
@@ -52,14 +52,14 @@ stages:
       displayName: 'dotnet build'
       inputs:
         command: 'build'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.slnx'
         arguments: '--configuration Release --no-restore'
     # Run Unit Tests ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet test'
       inputs:
         command: 'test'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.slnx'
         arguments: '--configuration Release --no-build --collect "Code coverage" --settings "$(Build.SourcesDirectory)\src\AdminAssistant.Test\.runsettings" --filter "Category=Unit"'
         publishTestResults: true
         testRunTitle: 'Unit Tests'

@@ -29,11 +29,11 @@ public sealed class BankUpdateCommand_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency));
 
         // Assert
-        result.Should().NotBeNull();
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.ValidationErrors.Should().BeEmpty();
-        result.Value.Should().NotBeNull();
-        result.Value.CurrencyID.Value.Should().BeGreaterThan(Constants.NewRecordID);
+        result.ShouldNotBeNull();
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.ValidationErrors.ShouldBeEmpty();
+        result.Value.ShouldNotBeNull();
+        result.Value.CurrencyID.Value.ShouldBeGreaterThan(Constants.NewRecordID);
     }
 
     [Fact]
@@ -54,9 +54,9 @@ public sealed class BankUpdateCommand_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrencyUpdateCommand(currency));
 
         // Assert
-        result.Should().NotBeNull();
-        result.Status.Should().Be(ResultStatus.Invalid);
-        result.ValidationErrors.Should().NotBeEmpty();
+        result.ShouldNotBeNull();
+        result.Status.ShouldBe(ResultStatus.Invalid);
+        result.ValidationErrors.ShouldNotBeEmpty();
     }
     // TODO: Add test for CurrencyUpdateCommand where CurrencyID not in ICurrencyRepository
 }

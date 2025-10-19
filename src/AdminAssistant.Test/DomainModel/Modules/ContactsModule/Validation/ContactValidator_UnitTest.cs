@@ -22,7 +22,7 @@ public sealed class ContactValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
-        result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -40,8 +40,8 @@ public sealed class ContactValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Contact.FirstName));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Contact.FirstName));
     }
 
     [Fact]
@@ -59,8 +59,8 @@ public sealed class ContactValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Contact.FirstName));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Contact.FirstName));
     }
 
     [Fact]
@@ -78,8 +78,8 @@ public sealed class ContactValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Contact.LastName));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Contact.LastName));
     }
 
     [Fact]
@@ -97,8 +97,8 @@ public sealed class ContactValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IContactValidator>().ValidateAsync(contact);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Contact.LastName));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Contact.LastName));
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

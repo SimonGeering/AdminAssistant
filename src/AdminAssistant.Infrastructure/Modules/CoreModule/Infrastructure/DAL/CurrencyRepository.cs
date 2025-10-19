@@ -11,14 +11,13 @@ public interface ICurrencyRepository : IRepository<Currency, CurrencyId>;
 
 internal sealed class CurrencyRepository(
     IApplicationDbContext dbContext,
-    IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)
-    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), ICurrencyRepository
+    : RepositoryBase(dbContext, dateTimeProvider, userContextProvider), ICurrencyRepository
 {
     public async Task<Currency> SaveAsync(Currency domainObjectToSave, CancellationToken cancellationToken)
     {
-        var entity = Mapper.Map<CurrencyEntity>(domainObjectToSave);
+        var entity = domainObjectToSave.ToCurrencyEntity();
 
         if (IsNew(domainObjectToSave))
         {
@@ -31,7 +30,7 @@ internal sealed class CurrencyRepository(
 
         await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-        return Mapper.Map<Currency>(entity);
+        return entity.ToCurrency();
     }
 
     public async Task DeleteAsync(CurrencyId id, CancellationToken cancellationToken)
@@ -49,12 +48,12 @@ internal sealed class CurrencyRepository(
     public async Task<Currency?> GetAsync(CurrencyId id, CancellationToken cancellationToken)
     {
         var data = await DbContext.Currencies.FirstOrDefaultAsync(x => x.CurrencyID == id.Value, cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<Currency>(data);
+        return data?.ToCurrency();
     }
 
     public async Task<List<Currency>> GetListAsync(CancellationToken cancellationToken)
     {
         var data = await DbContext.Currencies.ToListAsync(cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<List<Currency>>(data);
+        return data.ToCurrencyList();
     }
 }

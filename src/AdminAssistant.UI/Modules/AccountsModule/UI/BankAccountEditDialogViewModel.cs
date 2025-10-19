@@ -324,7 +324,7 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
         return result.Errors.Single(x => x.PropertyName == fieldName).ErrorMessage;
     }
 
-    private string GetValidationClassForField(string fieldName, ValidationResult result)
+    private static string GetValidationClassForField(string fieldName, ValidationResult result)
     {
         if (result.IsValid)
             return ValidationCssClass.None;

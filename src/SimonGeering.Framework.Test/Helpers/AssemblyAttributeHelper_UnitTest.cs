@@ -20,8 +20,8 @@ public class GetCulture
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetCulture(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -39,7 +39,7 @@ public class GetFullName
         var result = services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetFullName(Assembly.GetExecutingAssembly());
 
         // Assert ...
-        result.Should().Be(Assembly.GetExecutingAssembly().FullName);
+        result.ShouldBe(Assembly.GetExecutingAssembly().FullName);
     }
 
     [Fact]
@@ -54,8 +54,8 @@ public class GetFullName
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetFullName(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -73,7 +73,7 @@ public class GetName
         var result = services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetName(Assembly.GetExecutingAssembly());
 
         // Assert ...
-        result.Should().Be("SimonGeering.Framework.Test");
+        result.ShouldBe("SimonGeering.Framework.Test");
     }
 
     [Fact]
@@ -88,8 +88,8 @@ public class GetName
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetName(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -107,7 +107,7 @@ public class GetTitle
         var result = services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetTitle(Assembly.GetExecutingAssembly());
 
         // Assert ...
-        result.Should().Be("SimonGeering.Framework.Test");
+        result.ShouldBe("SimonGeering.Framework.Test");
     }
 
     [Fact]
@@ -122,8 +122,8 @@ public class GetTitle
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetTitle(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -141,7 +141,7 @@ public class GetCopyright
         var result = services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetCopyright(Assembly.GetExecutingAssembly());
 
         // Assert ...
-        result.Should().Be("Copyright (c) 2020 Simon Geering.");
+        result.ShouldBe("Copyright (c) 2020 Simon Geering.");
     }
 
     [Fact]
@@ -156,8 +156,8 @@ public class GetCopyright
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetCopyright(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -175,8 +175,8 @@ public class GetConfiguration
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetConfiguration(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -194,8 +194,8 @@ public class GetTrademark
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetTrademark(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -213,8 +213,8 @@ public class GetFileVersion
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetFileVersion(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -232,8 +232,8 @@ public class GetVersion
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetVersion(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -251,7 +251,7 @@ public class GetProduct
         var result = services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetProduct(Assembly.GetExecutingAssembly());
 
         // Assert ...
-        result.Should().Be("Simon Geering - Framework");
+        result.ShouldBe("Simon Geering - Framework");
     }
 
     [Fact]
@@ -266,8 +266,8 @@ public class GetProduct
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetProduct(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -285,7 +285,7 @@ public class GetCompany
         var result = services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetCompany(Assembly.GetExecutingAssembly());
 
         // Assert ...
-        result.Should().Be("Test Company Attribute");
+        result.ShouldBe("Test Company Attribute");
     }
 
     [Fact]
@@ -300,8 +300,8 @@ public class GetCompany
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetCompany(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 
@@ -319,7 +319,7 @@ public class GetDescription
         var result = services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetDescription(Assembly.GetExecutingAssembly());
 
         // Assert ...
-        result.Should().Be("Simon Geering - Framework - Tests");
+        result.ShouldBe("Simon Geering - Framework - Tests");
     }
 
     [Fact]
@@ -334,8 +334,8 @@ public class GetDescription
         var act = () => services.BuildServiceProvider().GetRequiredService<IAssemblyAttributeHelper>().GetDescription(null!);
 
         // Assert ...
-        act.Should().Throw<ArgumentNullException>()
-            .WithParameterName(TestData.AssemblyParameterName);
+        act.ShouldThrow<ArgumentNullException>()
+            .ParamName.ShouldBe(TestData.AssemblyParameterName);
     }
 }
 

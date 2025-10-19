@@ -12,20 +12,19 @@ public interface IBankAccountRepository : IRepository<BankAccount, BankAccountId
 
 internal sealed class BankAccountRepository(
     IApplicationDbContext dbContext,
-    IMapper mapper,
     IDateTimeProvider dateTimeProvider,
     IUserContextProvider userContextProvider)
-    : RepositoryBase(dbContext, mapper, dateTimeProvider, userContextProvider), IBankAccountRepository
+    : RepositoryBase(dbContext, dateTimeProvider, userContextProvider), IBankAccountRepository
 {
     public async Task<List<BankAccountTransaction>> GetBankAccountTransactionListAsync(BankAccountId bankAccountID, CancellationToken cancellationToken)
     {
         var source = await DbContext.BankAccountTransactions.Where(x => x.BankAccountID == bankAccountID.Value).ToListAsync(cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<List<BankAccountTransaction>>(source);
+        return source.ToBankAccountTransactionList();
     }
 
     public async Task<BankAccount> SaveAsync(BankAccount domainObjectToSave, CancellationToken cancellationToken)
     {
-        var entity = Mapper.Map<BankAccountEntity>(domainObjectToSave);
+        var entity = domainObjectToSave.ToBankAccountEntity();
 
         if (IsNew(domainObjectToSave))
         {
@@ -47,7 +46,7 @@ internal sealed class BankAccountRepository(
 
         await DbContext.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
 
-        return Mapper.Map<BankAccount>(entity);
+        return entity.ToBankAccount();
     }
 
     public async Task DeleteAsync(BankAccountId id, CancellationToken cancellationToken)
@@ -65,12 +64,12 @@ internal sealed class BankAccountRepository(
     public async Task<BankAccount?> GetAsync(BankAccountId id, CancellationToken cancellationToken)
     {
         var data = await DbContext.BankAccounts.FirstOrDefaultAsync(x => x.BankAccountID == id.Value, cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<BankAccount?>(data);
+        return data?.ToBankAccount();
     }
 
     public async Task<List<BankAccount>> GetListAsync(CancellationToken cancellationToken)
     {
         var data = await DbContext.BankAccounts.ToListAsync(cancellationToken).ConfigureAwait(false);
-        return Mapper.Map<List<BankAccount>>(data);
+        return data.ToBankAccountList();
     }
 }

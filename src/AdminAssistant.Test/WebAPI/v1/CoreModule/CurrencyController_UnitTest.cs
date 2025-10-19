@@ -1,11 +1,12 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.CoreModule;
 using AdminAssistant.Modules.CoreModule.Commands;
 using AdminAssistant.Modules.CoreModule.Queries;
 using AdminAssistant.WebAPI.v1.CoreModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.CoreModule;
 
@@ -20,39 +21,33 @@ public sealed class CurrencyController_Put_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyUpdateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<Currency>.Success(currency)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
         var container = services.BuildServiceProvider();
-        var currencyRequest = new CurrencyUpdateRequestDto()
-        {
-            CurrencyID = currency.CurrencyID.Value,
-            DecimalFormat = currency.DecimalFormat,
-            Symbol = currency.Symbol
-        };
+        var currencyRequest = currency.ToCurrencyUpdateRequestDto();
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<CurrencyResponseDto>();
 
         var value = (CurrencyResponseDto)result.Value!;
-        value.CurrencyID.Should().Be(currency.CurrencyID.Value);
-        value.Symbol.Should().Be(currency.Symbol);
-        value.DecimalFormat.Should().Be(currency.DecimalFormat);
+        value.CurrencyID.ShouldBe(currency.CurrencyID.Value);
+        value.Symbol.ShouldBe(currency.Symbol);
+        value.DecimalFormat.ShouldBe(currency.DecimalFormat);
     }
 
     [Fact]
@@ -69,20 +64,17 @@ public sealed class CurrencyController_Put_Should
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyUpdateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<Currency>.NotFound()));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
-        var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var currencyRequest = mapper.Map<CurrencyUpdateRequestDto>(currency);
+        var currencyRequest = currency.ToCurrencyUpdateRequestDto();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, CancellationToken.None);
 
         // Assert
-        response.Result.Should().BeOfType<NotFoundObjectResult>();
-        response.Value.Should().BeNull();
+        response.Result.ShouldBeOfType<NotFoundObjectResult>();
+        response.Value.ShouldBeNull();
     }
 
     [Fact]
@@ -90,10 +82,10 @@ public sealed class CurrencyController_Put_Should
     public async Task Return_Status422UnprocessableEntity_Given_AnInvalidCurrency()
     {
         // Arrange
-        var validationErrors = new List<ValidationError>()
+        var validationErrors = new List<ValidationError>
             {
-                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
-                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+                new() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
             };
         var currency = Factory.Currency.WithTestData(10).Build();
 
@@ -104,30 +96,27 @@ public sealed class CurrencyController_Put_Should
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyUpdateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<Currency>.Invalid(validationErrors)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
-        var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var currencyRequest = mapper.Map<CurrencyUpdateRequestDto>(currency);
+        var currencyRequest = currency.ToCurrencyUpdateRequestDto();
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyPut(currencyRequest, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<UnprocessableEntityObjectResult>();
 
         var result = (UnprocessableEntityObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var errors = (SerializableError)result.Value!;
 
         foreach (var expectedErrorDetails in validationErrors)
         {
             var messages = (string[])errors[expectedErrorDetails.Identifier];
-            messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            messages.ShouldContain(expectedErrorDetails.ErrorMessage);
         }
     }
 }
@@ -143,38 +132,37 @@ public sealed class CurrencyController_CurrencyPost_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyCreateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<Currency>.Success(currency)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
         var container = services.BuildServiceProvider();
-        var currencyRequest = new CurrencyCreateRequestDto()
+        var currencyRequest = new CurrencyCreateRequestDto
         {
             DecimalFormat = currency.DecimalFormat,
             Symbol = currency.Symbol
         };
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, default);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<CreatedAtRouteResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<CreatedAtRouteResult>();
 
         var result = (CreatedAtRouteResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<CurrencyResponseDto>();
 
         var value = (CurrencyResponseDto)result.Value!;
-        value.CurrencyID.Should().Be(currency.CurrencyID.Value);
-        value.Symbol.Should().Be(currency.Symbol);
-        value.DecimalFormat.Should().Be(currency.DecimalFormat);
+        value.CurrencyID.ShouldBe(currency.CurrencyID.Value);
+        value.Symbol.ShouldBe(currency.Symbol);
+        value.DecimalFormat.ShouldBe(currency.DecimalFormat);
     }
 
     [Fact]
@@ -184,8 +172,8 @@ public sealed class CurrencyController_CurrencyPost_Should
         // Arrange
         var validationErrors = new List<ValidationError>()
             {
-                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
-                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+                new() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
             };
         var currency = Factory.Currency.WithTestData(10).Build();
 
@@ -196,31 +184,33 @@ public sealed class CurrencyController_CurrencyPost_Should
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyCreateCommand>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<Currency>.Invalid(validationErrors)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
         var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var currencyRequest = mapper.Map<CurrencyCreateRequestDto>(currency);
+        var currencyRequest = new CurrencyCreateRequestDto
+        {
+            DecimalFormat = currency.DecimalFormat,
+            Symbol = currency.Symbol
+        };
 
         // Act
-        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, default);
+        var response = await container.GetRequiredService<CurrencyController>().CurrencyPost(currencyRequest, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<UnprocessableEntityObjectResult>();
 
         var result = (UnprocessableEntityObjectResult)response.Result!;
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var errors = (SerializableError)result.Value!;
 
         foreach (var expectedErrorDetails in validationErrors)
         {
             var messages = (string[])errors[expectedErrorDetails.Identifier];
-            messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            messages.ShouldContain(expectedErrorDetails.ErrorMessage);
         }
     }
 }
@@ -236,31 +226,30 @@ public sealed class CurrencyController_CurrencyGetById_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyByIDQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<Currency>.Success(currency)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(currency.CurrencyID.Value, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(currency.CurrencyID.Value, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<CurrencyResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<CurrencyResponseDto>();
 
         var value = (CurrencyResponseDto)result.Value!;
-        value.CurrencyID.Should().Be(currency.CurrencyID.Value);
-        value.Symbol.Should().Be(currency.Symbol);
-        value.DecimalFormat.Should().Be(currency.DecimalFormat);
+        value.CurrencyID.ShouldBe(currency.CurrencyID.Value);
+        value.Symbol.ShouldBe(currency.Symbol);
+        value.DecimalFormat.ShouldBe(currency.DecimalFormat);
     }
 
     [Fact]
@@ -275,15 +264,15 @@ public sealed class CurrencyController_CurrencyGetById_Should
         mockMediator.Setup(x => x.Send(It.IsAny<CurrencyByIDQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<Currency>.NotFound()));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(10, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().CurrencyGetById(10, CancellationToken.None);
 
         // Assert
-        response.Result.Should().BeOfType<NotFoundResult>();
-        response.Value.Should().BeNull();
+        response.Result.ShouldBeOfType<NotFoundResult>();
+        response.Value.ShouldBeNull();
     }
 }
 
@@ -302,36 +291,35 @@ public sealed class CurrencyController_GetCurrency_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<CurrenciesQuery>(), It.IsAny<CancellationToken>()))
                     .Returns(ValueTask.FromResult(Result<IEnumerable<Currency>>.Success(currencies)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<CurrencyController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().GetCurrency(default);
+        var response = await services.BuildServiceProvider().GetRequiredService<CurrencyController>().GetCurrency(CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<IEnumerable<CurrencyResponseDto>>();
+        result.Value.ShouldBeAssignableTo<IEnumerable<CurrencyResponseDto>>();
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var value = ((IEnumerable<CurrencyResponseDto>)result.Value!).ToArray();
-        value.Should().HaveCount(currencies.Count);
+        value.Length.ShouldBe(currencies.Count);
 
         var expected = currencies.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].CurrencyID.Should().Be(expected[index].CurrencyID.Value);
-            value[index].Symbol.Should().Be(expected[index].Symbol);
-            value[index].DecimalFormat.Should().Be(expected[index].DecimalFormat);
+            value[index].CurrencyID.ShouldBe(expected[index].CurrencyID.Value);
+            value[index].Symbol.ShouldBe(expected[index].Symbol);
+            value[index].DecimalFormat.ShouldBe(expected[index].DecimalFormat);
         }
     }
 }

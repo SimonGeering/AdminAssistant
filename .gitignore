@@ -370,3 +370,6 @@ MigrationBackup/
 /src/AdminAssistant.Blazor.Client/wwwroot/appsettings.json
 *.env
 /src/AdminAssistant.Test/_TestData/ConfidentialTestData/
+/src/.idea/.idea.AdminAssistant/.idea/avalonia.xml
+/src/.idea/.idea.AdminAssistant/.idea/dataSources.xml
+/src/docker-compose-artifacts/docker-compose.yaml

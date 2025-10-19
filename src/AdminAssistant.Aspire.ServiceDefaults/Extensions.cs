@@ -71,6 +71,7 @@ public static class Extensions
             builder.Services.ConfigureOpenTelemetryTracerProvider(tracing => tracing.AddOtlpExporter());
         }
 
+#pragma warning disable S125
         // Uncomment the following lines to enable the Prometheus exporter (requires the OpenTelemetry.Exporter.Prometheus.AspNetCore package)
         // builder.Services.AddOpenTelemetry()
         //    .WithMetrics(metrics => metrics.AddPrometheusExporter());
@@ -78,6 +79,7 @@ public static class Extensions
         // Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.Exporter package)
         // builder.Services.AddOpenTelemetry()
         //    .UseAzureMonitor();
+#pragma warning restore S125
 
         return builder;
     }
@@ -94,7 +96,9 @@ public static class Extensions
     public static WebApplication MapDefaultEndpoints(this WebApplication app)
     {
         // Uncomment the following line to enable the Prometheus endpoint (requires the OpenTelemetry.Exporter.Prometheus.AspNetCore package)
+#pragma warning disable S125
         // app.MapPrometheusScrapingEndpoint();
+#pragma warning restore S125
 
         // All health checks must pass for app to be considered ready to accept traffic after starting
         app.MapHealthChecks("/health");

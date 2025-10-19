@@ -4,7 +4,7 @@
 
 <MudExpansionPanels MultiExpansion="true">
 
-    <MudExpansionPanel Text="Budgeted Accounts" IsInitiallyExpanded="true">
+    <MudExpansionPanel Text="Budgeted Accounts" isInitiallyExpanded="true">
         <MudTable Items="@_budgetedAccounts" Striped="true" Dense="true" Elevation="0">
             <ColGroup>
                 <col style="width: 100%;" />
@@ -20,7 +20,7 @@
         </MudTable>
     </MudExpansionPanel>
 
-    <MudExpansionPanel Text="Off Budget Accounts" IsInitiallyExpanded="true">
+    <MudExpansionPanel Text="Off Budget Accounts" isInitiallyExpanded="true">
         <MudTable Items="@_offBudgetAccounts" Striped="true" Dense="true" Elevation="0">
             <ColGroup>
                 <col style="width: auto;" />
@@ -52,9 +52,9 @@
         new BankAccountInfo { BankAccountID = new BankAccountId(13), AccountName = "Halifax Online Savings Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" }
     ];
 
-    private void OpenBankAccountEditDialog()
+    private async Task OpenBankAccountEditDialog()
     {
         var dialogOptions = new DialogOptions { CloseButton = true };
-        Dialog.Show<BankAccountEditDialogComponent>("Custom Options Dialog", dialogOptions);
+        await Dialog.ShowAsync<BankAccountEditDialogComponent>("Custom Options Dialog", dialogOptions);
     }
 }

@@ -29,7 +29,7 @@ public sealed class BankAccountByIDQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountByIDQuery(nonExistentBankAccountID.Value));
 
         // Assert
-        result.Status.Should().Be(ResultStatus.NotFound);
+        result.Status.ShouldBe(ResultStatus.NotFound);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

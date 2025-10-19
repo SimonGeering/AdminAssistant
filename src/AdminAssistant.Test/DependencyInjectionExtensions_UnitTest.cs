@@ -1,15 +1,14 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Infrastructure.EntityFramework;
-using AdminAssistant.Shared;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Xunit.Abstractions;
 
 namespace AdminAssistant.Test;
 
-public class ServiceCollection_Should(ITestOutputHelper output)
+public class ServiceCollection_Should()
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -45,8 +44,8 @@ public class ServiceCollection_Should(ITestOutputHelper output)
                     continue;
 
                 var instance = scopedProvider.GetRequiredService(serviceDescriptor.ServiceType);
-                instance.Should().NotBeNull();
-                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                instance.ShouldNotBeNull();
+                instance.ShouldBeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);
             }
             catch (Exception ex)
@@ -57,7 +56,7 @@ public class ServiceCollection_Should(ITestOutputHelper output)
 
         // Assert
         var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.Contains("MediatR", StringComparison.InvariantCulture) == false);
-        result.Should().HaveCount(expectedInstanceCountLessExclusions);
+        result.Count.ShouldBe(expectedInstanceCountLessExclusions);
         await Task.CompletedTask;
     }
 
@@ -72,7 +71,6 @@ public class ServiceCollection_Should(ITestOutputHelper output)
         services.AddAdminAssistantUI();
         // Mocks ...
         services.AddMockClientSideLogging();
-        services.AddTransient(_ => new Mock<IMapper>().Object);
         services.AddTransient(_ => new Mock<IAdminAssistantWebAPIClient>().Object);
 
         var serviceProvider = services.BuildServiceProvider();
@@ -85,8 +83,8 @@ public class ServiceCollection_Should(ITestOutputHelper output)
             try
             {
                 var instance = serviceProvider.GetRequiredService(serviceDescriptor.ServiceType);
-                instance.Should().NotBeNull();
-                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                instance.ShouldNotBeNull();
+                instance.ShouldBeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);
             }
             catch (Exception ex)
@@ -96,7 +94,7 @@ public class ServiceCollection_Should(ITestOutputHelper output)
         }
 
         // Assert
-        result.Should().HaveCount(services.Count);
+        result.Count.ShouldBe(services.Count);
         await Task.CompletedTask;
     }
 }

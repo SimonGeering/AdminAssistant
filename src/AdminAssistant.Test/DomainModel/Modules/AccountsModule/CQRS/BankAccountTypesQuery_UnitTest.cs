@@ -34,8 +34,8 @@ public sealed class BankAccountTypesQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankAccountTypesQuery());
 
         // Assert
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().BeEquivalentTo(bankAccountTypes);
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.Value.ShouldBeEquivalentTo(bankAccountTypes);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

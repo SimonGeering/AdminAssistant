@@ -1,3 +1,4 @@
+@using System.Diagnostics.CodeAnalysis
 @inherits AdminAssistantLayoutComponentBase<AdminAssistant.Shared.UI.IMainWindowViewModel>
 @inject NavigationManager NavigationManager
 
@@ -12,8 +13,8 @@
         <MudSpacer />
         <MudMenu Icon="@Icons.Material.Filled.Settings" Color="@_appBarItemColor" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
             <MudStack Class="pl-2">
-                <MudSwitch T="bool" Checked="_isDarkMode" CheckedChanged="(e) => OnIsDarkModeChanged(e)" Color="Color.Primary" Label="Toggle Light/Dark Mode" />
-                <MudSwitch T="bool" Checked="_isDense" CheckedChanged="(e) => OnIsDenseChanged(e)" Color="Color.Primary" Label="Toggle Dense Spacing" />
+                <MudSwitch T="bool" checked="_isDarkMode" checkedChanged="(e) => OnIsDarkModeChanged(e)" Color="Color.Primary" Label="Toggle Light/Dark Mode" />
+                <MudSwitch T="bool" checked="_isDense" checkedChanged="(e) => OnIsDenseChanged(e)" Color="Color.Primary" Label="Toggle Dense Spacing" />
             </MudStack>
         </MudMenu>
         <MudAvatar Size="@_avatarSize" Color="@_appBarItemColor">SG</MudAvatar>
@@ -56,7 +57,7 @@
     {
         if (firstRender)
         {
-            var isDarkMode = await _mudThemeProvider.GetSystemPreference();
+            var isDarkMode = await _mudThemeProvider.GetSystemDarkModeAsync();
             OnIsDarkModeChanged(isDarkMode);
             StateHasChanged();
         }
@@ -83,6 +84,7 @@
     }
 
     private bool _isDense = false;
+    [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
     private void OnIsDenseChanged(bool? isDense)
     {
         if (isDense.HasValue == false)

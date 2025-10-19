@@ -36,10 +36,7 @@ public static class DependencyInjectionExtensions
     }
 
     public static void AddMocksOfExternalServerSideDependencies(this IServiceCollection services)
-    {
-        services.AddMockServerSideLogging();
-        services.AddTransient(_ => new Mock<IMapper>().Object);
-    }
+        => services.AddMockServerSideLogging();
 
     public static void AddMockServerSideLogging(this IServiceCollection services)
     {

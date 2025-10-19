@@ -22,7 +22,7 @@ public sealed class CurrencyValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
-        result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -40,8 +40,8 @@ public sealed class CurrencyValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Currency.DecimalFormat));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Currency.DecimalFormat));
     }
 
     [Fact]
@@ -59,8 +59,8 @@ public sealed class CurrencyValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Currency.DecimalFormat));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Currency.DecimalFormat));
     }
 
     [Fact]
@@ -78,8 +78,8 @@ public sealed class CurrencyValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Currency.Symbol));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(Currency.Symbol));
     }
 
     [Fact]
@@ -97,8 +97,8 @@ public sealed class CurrencyValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<ICurrencyValidator>().ValidateAsync(currency);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Currency.Symbol));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(Currency.Symbol));
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

@@ -105,20 +105,20 @@ public abstract class LoggingProvider : ILoggingProvider
     public IDisposable? BeginScope<TState>(TState state) where TState : notnull => _logger.BeginScope(state);
     public IDisposable? BeginScope(string messageFormat, params object[] args) => _logger.BeginScope(messageFormat, args);
 
-    public void Start([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0) => _logger.LogDebug("Start {memberName}", memberName);
-    public void Start(string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args) => _logger.LogDebug("Start {memberName}", memberName);
+    public void Start([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0) => _logger.LogDebug("Start {MemberName}", memberName);
+    public void Start(string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args) => _logger.LogDebug("Start {MemberName}", memberName);
 
-    public void Finish([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0) => _logger.LogDebug("Finish {memberName}", memberName);
-    public void Finish(string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args) => _logger.LogDebug("Finish {memberName}", memberName);
+    public void Finish([CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0) => _logger.LogDebug("Finish {MemberName}", memberName);
+    public void Finish(string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args) => _logger.LogDebug("Finish {MemberName}", memberName);
 
     public TResult Finish<TResult>(TResult result, string message = "", [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0, params object[] args)
     {
-        _logger.LogDebug("Finish {memberName}", memberName);
+        _logger.LogDebug("Finish {MemberName}", memberName);
         return result;
     }
     public TResult Finish<TResult>(TResult result, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
     {
-        _logger.LogDebug("Finish {memberName}", memberName);
+        _logger.LogDebug("Finish {MemberName}", memberName);
         return result;
     }
 

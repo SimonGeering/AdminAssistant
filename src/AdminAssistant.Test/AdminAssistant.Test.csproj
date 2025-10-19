@@ -14,7 +14,6 @@
 
     <ItemGroup>
         <PackageReference Include="Ardalis.GuardClauses" />
-        <PackageReference Include="FluentAssertions" />
         <PackageReference Include="FluentValidation" />
         <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" />
         <PackageReference Include="Microsoft.Extensions.Hosting" />
@@ -26,6 +25,7 @@
         <PackageReference Include="NetArchTest.Rules" />
         <PackageReference Include="ObjectCloner.Extensions" />
         <PackageReference Include="Respawn" />
+        <PackageReference Include="Shouldly" />
         <PackageReference Include="Testcontainers" />
         <PackageReference Include="xunit" />
         <PackageReference Include="xunit.runner.visualstudio">

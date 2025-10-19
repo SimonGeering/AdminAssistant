@@ -1,9 +1,6 @@
-using AdminAssistant.Modules.AccountsModule;
-using Swashbuckle.AspNetCore.Annotations;
-
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
 
-public sealed record BankAccountResponseDto : IMapFrom<BankAccount>
+public sealed record BankAccountResponseDto
 {
     [SwaggerSchema("The BankAccount identifier.", ReadOnly = true)]
     public int BankAccountID { get; init; }

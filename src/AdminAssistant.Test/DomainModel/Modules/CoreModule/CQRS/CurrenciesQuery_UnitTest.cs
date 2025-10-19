@@ -34,8 +34,8 @@ public sealed class CurrenciesQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new CurrenciesQuery());
 
         // Assert
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().BeEquivalentTo(currencyList);
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.Value.ShouldBeEquivalentTo(currencyList);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores
