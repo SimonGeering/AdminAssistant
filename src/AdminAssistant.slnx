@@ -5,9 +5,25 @@
     <File Path="..\DevOps\NuGet.config" />
     <File Path="..\DevOps\PullRequest.yml" />
   </Folder>
+  <Folder Name="/Samples/" />
+  <Folder Name="/Samples/Aspire/">
+    <Project Path="..\Samples\Aspire\AspireStarter.ApiService\AspireStarter.ApiService.csproj" Type="Classic C#" />
+    <Project Path="..\Samples\Aspire\AspireStarter.AppHost\AspireStarter.AppHost.csproj" Type="Classic C#" />
+    <Project Path="..\Samples\Aspire\AspireStarter.ServiceDefaults\AspireStarter.ServiceDefaults.csproj" Type="Classic C#" />
+    <Project Path="..\Samples\Aspire\AspireStarter.Tests\AspireStarter.Tests.csproj" Type="Classic C#" />
+    <Project Path="..\Samples\Aspire\AspireStarter.Web\AspireStarter.Web.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/Samples/Avalonia/">
+    <Project Path="..\Samples\Avalonia\AvaloniaMVVM.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/Samples/MudBlazor/">
+    <Project Path="..\Samples\MudBlazor\MudBlazorWebApp.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/Samples/WebAPI/">
+    <Project Path="..\Samples\WebAPI\WebApiWithControllers.csproj" Type="Classic C#" />
+  </Folder>
   <Folder Name="/Solution Items/">
     <File Path="..\.gitignore" />
-
     <File Path=".editorconfig" />
     <File Path="..\docs\cli.md" />
     <File Path="..\docs\database.dbml" />
