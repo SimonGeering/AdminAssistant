@@ -26,14 +26,13 @@ public sealed class CoreService_GetCurrencyListAsync
         var services = new ServiceCollection();
         services.AddAdminAssistantUI();
         services.AddMockClientSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient((sp) => mockWebAPIClient.Object);
 
         // Act
         var result = await services.BuildServiceProvider().GetRequiredService<ICoreService>().GetCurrencyListAsync();
 
         // Assert
-        result.Should().BeEquivalentTo(new List<Currency>()
+        result.ShouldBeEquivalentTo(new List<Currency>()
             {
                 new Currency() { CurrencyID = CurrencyId.Default, Symbol = string.Empty, DecimalFormat = string.Empty },
                 new Currency { CurrencyID = new CurrencyId(1), Symbol = "GBP", DecimalFormat = "2.2-2" },

@@ -1,11 +1,14 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
-using AdminAssistant.Shared;
+
+using AdminAssistant.Infrastructure.EntityFramework;
 using AdminAssistant.UI.Shared.WebAPIClient.v1;
 using Ardalis.GuardClauses;
+using Microsoft.EntityFrameworkCore;
 
 namespace AdminAssistant.Test;
 
-public class ServiceCollection_Should
+public class ServiceCollection_Should()
 {
     [Fact]
     [Trait("Category", "Unit")]
@@ -13,17 +16,22 @@ public class ServiceCollection_Should
     {
         // Arrange
         var services = new ServiceCollection();
-        services.AddMocksOfExternalServerSideDependencies();
-
         services.AddAdminAssistantServerSideProviders();
         services.AddAdminAssistantServerSideDomainModel();
         services.AddAdminAssistantApplication();
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
+        // Mocks ...
+        services.AddMocksOfExternalServerSideDependencies();
+        services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("TestDb"));
+        services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ApplicationDbContext>());
 
         var serviceProvider = services.BuildServiceProvider();
 
         // Act
         var result = new List<object>();
+
+        using var scope = serviceProvider.CreateScope();
+        var scopedProvider = scope.ServiceProvider;
 
         foreach (var serviceDescriptor in services)
         {
@@ -32,12 +40,12 @@ public class ServiceCollection_Should
 
             try
             {
-                if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture))
+                if (serviceDescriptor.ServiceType.FullName.Contains("MediatR", StringComparison.InvariantCulture)) //||
                     continue;
 
-                var instance = serviceProvider.GetRequiredService(serviceDescriptor.ServiceType);
-                instance.Should().NotBeNull();
-                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                var instance = scopedProvider.GetRequiredService(serviceDescriptor.ServiceType);
+                instance.ShouldNotBeNull();
+                instance.ShouldBeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);
             }
             catch (Exception ex)
@@ -48,7 +56,7 @@ public class ServiceCollection_Should
 
         // Assert
         var expectedInstanceCountLessExclusions = services.Count(x => x.ServiceType.FullName?.Contains("MediatR", StringComparison.InvariantCulture) == false);
-        result.Should().HaveCount(expectedInstanceCountLessExclusions);
+        result.Count.ShouldBe(expectedInstanceCountLessExclusions);
         await Task.CompletedTask;
     }
 
@@ -58,12 +66,12 @@ public class ServiceCollection_Should
     {
         // Arrange
         var services = new ServiceCollection();
-        services.AddMocksOfExternalClientSideDependencies();
-        services.AddTransient((sp) => new Mock<IAdminAssistantWebAPIClient>().Object);
-
         services.AddAdminAssistantClientSideProviders();
         services.AddAdminAssistantClientSideDomainModel();
         services.AddAdminAssistantUI();
+        // Mocks ...
+        services.AddMockClientSideLogging();
+        services.AddTransient(_ => new Mock<IAdminAssistantWebAPIClient>().Object);
 
         var serviceProvider = services.BuildServiceProvider();
 
@@ -75,8 +83,8 @@ public class ServiceCollection_Should
             try
             {
                 var instance = serviceProvider.GetRequiredService(serviceDescriptor.ServiceType);
-                instance.Should().NotBeNull();
-                instance.Should().BeAssignableTo(serviceDescriptor.ServiceType);
+                instance.ShouldNotBeNull();
+                instance.ShouldBeAssignableTo(serviceDescriptor.ServiceType);
                 result.Add(instance);
             }
             catch (Exception ex)
@@ -86,7 +94,7 @@ public class ServiceCollection_Should
         }
 
         // Assert
-        result.Should().HaveCount(services.Count);
+        result.Count.ShouldBe(services.Count);
         await Task.CompletedTask;
     }
 }

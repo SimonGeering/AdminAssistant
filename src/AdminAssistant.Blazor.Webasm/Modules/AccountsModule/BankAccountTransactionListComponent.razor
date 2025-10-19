@@ -1,8 +1,8 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.UI.IBankAccountTransactionListViewModel>
+@using System.Globalization
 @using AdminAssistant.Modules.AccountsModule;
 
-<MudTable Items="@_transactions" FixedHeader="true" FixedFooter="true"
-          Bordered="true" Dense="true" HorizontalScrollbar="true">
+<MudTable Items="@_transactions" FixedHeader="true" FixedFooter="true" Bordered="true" Dense="true" HorizontalScrollbar="true">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Barclays Current Account</MudText>
         <MudSpacer />
@@ -10,8 +10,8 @@
     </ToolBarContent>
     <ColGroup>
         <col style="width: auto;" />
-        <col style="width: 40%;" />
-        <col style="width: *;" />
+        <col style="width: auto;" />
+        <col style="width: max-content;" />
         <col style="width: auto;" />
         <col style="width: auto;" />
         <col style="width: auto;" />
@@ -59,7 +59,7 @@
             Credit = 0,
             Debit = 600,
             Balance = 532550,
-            TransactionDate = DateTime.Parse("09-02-2023"),
+            TransactionDate = DateTime.Parse("09-02-2023", CultureInfo.InvariantCulture),
             Notes = "Papers",
             Symbol = "£",
             DecimalFormat = "0.00",
@@ -70,7 +70,7 @@
             Credit = 357000,
             Debit = 0,
             Balance = 532500,
-            TransactionDate = DateTime.Parse("21-02-2023"),
+            TransactionDate = DateTime.Parse("21-02-2023", CultureInfo.InvariantCulture),
             Notes = "Notes",
             Symbol = "£",
             DecimalFormat = "0.00",
@@ -81,7 +81,7 @@
             Credit = 0,
             Debit = 1250,
             Balance = 532550,
-            TransactionDate = DateTime.Parse("05-03-2023"),
+            TransactionDate = DateTime.Parse("05-03-2023", CultureInfo.InvariantCulture),
             Notes = "Notes",
             Symbol = "£",
             DecimalFormat = "0.00",

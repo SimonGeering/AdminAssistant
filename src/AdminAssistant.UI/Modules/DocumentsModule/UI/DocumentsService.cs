@@ -5,17 +5,16 @@ public interface IDocumentsService
     Task<List<Document>> GetDocumentListAsync();
 }
 internal sealed class DocumentsService(
-    IAdminAssistantWebAPIClient adminAssistantWebAPIClient,
-    IMapper mapper,
+    IAdminAssistantWebAPIClient adminAssistantWebApiClient,
     ILoggingProvider log)
-    : ServiceBase(adminAssistantWebAPIClient, mapper, log), IDocumentsService
+    : ServiceBase(adminAssistantWebApiClient, log), IDocumentsService
 {
     public async Task<List<Document>> GetDocumentListAsync()
     {
         Log.Start();
 
         var response = await AdminAssistantWebAPIClient.GetDocumentAsync().ConfigureAwait(false);
-        var result = new List<Document>(Mapper.Map<IEnumerable<Document>>(response));
+        var result = new List<Document>(response.ToDocumentEnumeration());
 
         return Log.Finish(result);
     }

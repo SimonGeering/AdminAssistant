@@ -11,7 +11,7 @@ internal sealed class CurrencyUpdateCommandHandler(
     ICurrencyValidator currencyValidator)
     : RequestHandlerBase<CurrencyUpdateCommand, Result<Currency>>(loggingProvider)
 {
-    public override async Task<Result<Currency>> Handle(CurrencyUpdateCommand command, CancellationToken cancellationToken)
+    public override async ValueTask<Result<Currency>> Handle(CurrencyUpdateCommand command, CancellationToken cancellationToken)
     {
         var validationResult = await currencyValidator.ValidateAsync(command.Currency, cancellationToken).ConfigureAwait(false);
 

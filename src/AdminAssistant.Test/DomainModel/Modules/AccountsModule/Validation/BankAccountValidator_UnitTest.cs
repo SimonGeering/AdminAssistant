@@ -24,7 +24,7 @@ public sealed class BankAccountValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
-        result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Fact]
@@ -42,8 +42,8 @@ public sealed class BankAccountValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(BankAccount.AccountName));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEmptyValidator" && x.PropertyName == nameof(BankAccount.AccountName));
     }
 
 
@@ -62,8 +62,8 @@ public sealed class BankAccountValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(BankAccount.AccountName));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "MaximumLengthValidator" && x.PropertyName == nameof(BankAccount.AccountName));
     }
 
     [Fact]
@@ -81,8 +81,8 @@ public sealed class BankAccountValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccount.BankAccountTypeID));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccount.BankAccountTypeID));
     }
 
     [Fact]
@@ -100,8 +100,8 @@ public sealed class BankAccountValidator_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountValidator>().ValidateAsync(bankAccount);
 
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().Contain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccount.CurrencyID));
+        result.IsValid.ShouldBeFalse();
+        result.Errors.ShouldContain(x => x.Severity == Severity.Error && x.ErrorCode == "NotEqualValidator" && x.PropertyName == nameof(BankAccount.CurrencyID));
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

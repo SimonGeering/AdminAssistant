@@ -4,7 +4,7 @@
 
 <MudExpansionPanels MultiExpansion="true">
 
-    <MudExpansionPanel Text="Budgeted Accounts" IsInitiallyExpanded="true">
+    <MudExpansionPanel Text="Budgeted Accounts" isInitiallyExpanded="true">
         <MudTable Items="@_budgetedAccounts" Striped="true" Dense="true" Elevation="0">
             <ColGroup>
                 <col style="width: 100%;" />
@@ -20,7 +20,7 @@
         </MudTable>
     </MudExpansionPanel>
 
-    <MudExpansionPanel Text="Off Budget Accounts" IsInitiallyExpanded="true">
+    <MudExpansionPanel Text="Off Budget Accounts" isInitiallyExpanded="true">
         <MudTable Items="@_offBudgetAccounts" Striped="true" Dense="true" Elevation="0">
             <ColGroup>
                 <col style="width: auto;" />
@@ -38,25 +38,23 @@
 
 </MudExpansionPanels>
 
-@*<MudButton @onclick="@(_ => this.vm.AddBankAccount.Execute(null))" Size="Size.Medium" Variant="Variant.Text" StartIcon="@Icons.Material.Filled.Add" Color="Color.Info">Add Account</MudButton>*@
-
 @code {
 
-    private readonly List<BankAccountInfo> _budgetedAccounts = new List<BankAccountInfo>
-    {
-        new BankAccountInfo { BankAccountID = new(10), AccountName = "Barclays Current Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" },
-        new BankAccountInfo { BankAccountID = new(11), AccountName = "Barclays Savings Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" },
-        new BankAccountInfo { BankAccountID = new(12), AccountName = "Halifax Cash ISA", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" }
-    };
+    private readonly List<BankAccountInfo> _budgetedAccounts =
+    [
+        new BankAccountInfo { BankAccountID = new BankAccountId(10), AccountName = "Barclays Current Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" },
+        new BankAccountInfo { BankAccountID = new BankAccountId(11), AccountName = "Barclays Savings Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" },
+        new BankAccountInfo { BankAccountID = new BankAccountId(12), AccountName = "Halifax Cash ISA", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" }
+    ];
 
-    private readonly List<BankAccountInfo> _offBudgetAccounts = new List<BankAccountInfo>()
-    {
-        new BankAccountInfo { BankAccountID = new(13), AccountName = "Halifax Online Savings Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" }
-    };
+    private readonly List<BankAccountInfo> _offBudgetAccounts =
+    [
+        new BankAccountInfo { BankAccountID = new BankAccountId(13), AccountName = "Halifax Online Savings Account", CurrentBalance = 506005, Symbol = "£", DecimalFormat = "0.00" }
+    ];
 
-    private void OpenBankAccountEditDialog()
+    private async Task OpenBankAccountEditDialog()
     {
-        var dialogOptions = new DialogOptions() { CloseButton = true };
-        Dialog.Show<BankAccountEditDialogComponent>("Custom Options Dialog", dialogOptions);
+        var dialogOptions = new DialogOptions { CloseButton = true };
+        await Dialog.ShowAsync<BankAccountEditDialogComponent>("Custom Options Dialog", dialogOptions);
     }
 }

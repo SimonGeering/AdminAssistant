@@ -14,7 +14,11 @@
     <ItemGroup>
         <PackageReference Include="Ardalis.Result" />
         <PackageReference Include="Ardalis.Result.FluentValidation" />
-        <PackageReference Include="MediatR" />
+        <PackageReference Include="Mediator.SourceGenerator" >
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Mediator.Abstractions" />
         <PackageReference Include="SonarAnalyzer.CSharp">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -22,7 +26,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+      <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
     </ItemGroup>
-    
+
 </Project>

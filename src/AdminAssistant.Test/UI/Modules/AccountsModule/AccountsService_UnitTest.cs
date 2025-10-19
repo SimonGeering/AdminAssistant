@@ -26,7 +26,6 @@ public sealed class AccountsService_UnitTest
         var services = new ServiceCollection();
         services.AddAdminAssistantUI();
         services.AddMockClientSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
         services.AddTransient(_ => new Mock<IPdfFileProvider>().Object);
         services.AddTransient(_ => mockWebAPIClient.Object);
 
@@ -34,7 +33,7 @@ public sealed class AccountsService_UnitTest
         var result = await services.BuildServiceProvider().GetRequiredService<IAccountsService>().LoadBankAccountTypesLookupDataAsync();
 
         // Assert
-        result.Should().BeEquivalentTo(new List<BankAccountType>()
+        result.ShouldBeEquivalentTo(new List<BankAccountType>()
         {
             new BankAccountType() { BankAccountTypeID = BankAccountTypeId.Default, Description = string.Empty },
             new BankAccountType { BankAccountTypeID = new(1), Description = "Current Account" },

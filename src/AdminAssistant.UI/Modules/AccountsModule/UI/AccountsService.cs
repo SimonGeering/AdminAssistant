@@ -9,10 +9,9 @@ public interface IAccountsService
 }
 internal sealed class AccountsService(
     IPdfFileProvider pdfFileProvider,
-    IAdminAssistantWebAPIClient adminAssistantWebAPIClient,
-    IMapper mapper,
+    IAdminAssistantWebAPIClient adminAssistantWebApiClient,
     ILoggingProvider log)
-    : ServiceBase(adminAssistantWebAPIClient, mapper, log), IAccountsService
+    : ServiceBase(adminAssistantWebApiClient, log), IAccountsService
 {
     public async Task<List<BankAccountType>> LoadBankAccountTypesLookupDataAsync()
     {
@@ -20,7 +19,7 @@ internal sealed class AccountsService(
 
         var response = await AdminAssistantWebAPIClient.GetBankAccountTypeAsync().ConfigureAwait(false);
 
-        var result = new List<BankAccountType>(Mapper.Map<IEnumerable<BankAccountType>>(response));
+        var result = new List<BankAccountType>(response.ToBankAccountTypeList());
         result.Insert(0, new BankAccountType() { BankAccountTypeID = BankAccountTypeId.Default, Description = string.Empty });
 
         return Log.Finish(result);
@@ -30,11 +29,11 @@ internal sealed class AccountsService(
     {
         Log.Start();
 
-        var request = Mapper.Map<BankAccountCreateRequestDto>(model);
+        var request = model.ToBankAccountCreateRequestDto();
 
         var response = await AdminAssistantWebAPIClient.PostBankAccountAsync(request).ConfigureAwait(false);
 
-        var result = Mapper.Map<BankAccount>(response);
+        var result = response.ToBankAccount();
         return Log.Finish(result);
     }
 
@@ -42,11 +41,11 @@ internal sealed class AccountsService(
     {
         Log.Start();
 
-        var request = Mapper.Map<BankAccountUpdateRequestDto>(model);
+        var request = model.ToBankAccountUpdateRequestDto();
 
         var response = await AdminAssistantWebAPIClient.PutBankAccountAsync(request).ConfigureAwait(false);
 
-        var result = Mapper.Map<BankAccount>(response);
+        var result = response.ToBankAccount();
         return Log.Finish(result);
     }
 

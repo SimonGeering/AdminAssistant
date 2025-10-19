@@ -1,4 +1,3 @@
-using AdminAssistant.Modules.ContactsModule;
 using AdminAssistant.Modules.ContactsModule.Commands;
 using AdminAssistant.Modules.ContactsModule.Queries;
 
@@ -7,8 +6,7 @@ namespace AdminAssistant.WebAPI.v1.ContactsModule;
 [ApiController]
 [Route("api/v1/contacts-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Contacts Module")]
-public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-    : WebApiControllerBase(mapper, mediator, loggingProvider)
+public sealed class ContactController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
     [HttpPut]
     [SwaggerOperation("Update an existing Contact.", OperationId = "PutContact")]
@@ -17,25 +15,25 @@ public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggi
     [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given ContactUpdateRequest is invalid.")]
     public async Task<ActionResult<ContactResponseDto>> ContactPut([FromBody, SwaggerParameter("The Contact for which updates are to be persisted.", Required = true)] ContactUpdateRequestDto ContactUpdateRequest, CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var contact = Mapper.Map<Contact>(ContactUpdateRequest);
-        var result = await Mediator.Send(new ContactUpdateCommand(contact), cancellationToken).ConfigureAwait(false);
+        var contact = ContactUpdateRequest.ToContact();
+        var result = await mediator.Send(new ContactUpdateCommand(contact), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
         {
             result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
-            return Log.Finish(NotFound(ModelState));
+            return log.Finish(NotFound(ModelState));
         }
 
         if (result.Status == ResultStatus.Invalid)
         {
             result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
-            return Log.Finish(UnprocessableEntity(ModelState));
+            return log.Finish(UnprocessableEntity(ModelState));
         }
 
-        var response = Mapper.Map<ContactResponseDto>(result.Value);
-        return Log.Finish(Ok(response));
+        var response = result.Value.ToContactResponseDto();
+        return log.Finish(Ok(response));
     }
 
     [HttpPost]
@@ -44,19 +42,19 @@ public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggi
     [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given ContactCreateRequest is invalid.")]
     public async Task<ActionResult<ContactResponseDto>> ContactPost([FromBody, SwaggerParameter("The details of the Contact to be created.", Required = true)] ContactCreateRequestDto ContactCreateRequest, CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var contact = Mapper.Map<Contact>(ContactCreateRequest);
-        var result = await Mediator.Send(new ContactCreateCommand(contact), cancellationToken).ConfigureAwait(false);
+        var contact = ContactCreateRequest.ToContact();
+        var result = await mediator.Send(new ContactCreateCommand(contact), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.Invalid)
         {
             result.ValidationErrors.ToList().ForEach((err) => ModelState.AddModelError(err.Identifier, err.ErrorMessage));
-            return Log.Finish(UnprocessableEntity(ModelState)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
+            return log.Finish(UnprocessableEntity(ModelState)); // https://stackoverflow.com/questions/47269601/what-http-response-code-to-use-for-failed-post-request
         }
 
-        var response = Mapper.Map<ContactResponseDto>(result.Value);
-        return Log.Finish(CreatedAtRoute(nameof(ContactGetById), new { response.ContactID }, response));
+        var response = result.Value.ToContactResponseDto();
+        return log.Finish(CreatedAtRoute(nameof(ContactGetById), new { response.ContactID }, response));
     }
 
     [HttpGet("{contactID}", Name = nameof(ContactGetById))]
@@ -65,15 +63,15 @@ public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggi
     [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given ContactID does not exist.")]
     public async Task<ActionResult<ContactResponseDto>> ContactGetById([SwaggerParameter("The ID of the Contact to be returned.", Required = true)] int contactId, CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var result = await Mediator.Send(new ContactByIDQuery(contactId), cancellationToken).ConfigureAwait(false);
+        var result = await mediator.Send(new ContactByIDQuery(contactId), cancellationToken).ConfigureAwait(false);
 
         if (result.Status == ResultStatus.NotFound)
-            return Log.Finish(NotFound());
+            return log.Finish(NotFound());
 
-        var response = Mapper.Map<ContactResponseDto>(result.Value);
-        return Log.Finish(Ok(response));
+        var response = result.Value.ToContactResponseDto();
+        return log.Finish(Ok(response));
     }
 
     [HttpGet]
@@ -81,11 +79,11 @@ public sealed class ContactController(IMapper mapper, IMediator mediator, ILoggi
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of ContactResponseDto", type: typeof(IEnumerable<ContactResponseDto>))]
     public async Task<ActionResult<IEnumerable<ContactResponseDto>>> GetContact(CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var result = await Mediator.Send(new ContactQuery(), cancellationToken).ConfigureAwait(false);
-        var response = Mapper.Map<IEnumerable<ContactResponseDto>>(result.Value);
+        var result = await mediator.Send(new ContactQuery(), cancellationToken).ConfigureAwait(false);
+        var response = result.Value.ToContactResponseDtoEnumeration();
 
-        return Log.Finish(Ok(response));
+        return log.Finish(Ok(response));
     }
 }

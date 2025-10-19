@@ -30,42 +30,42 @@ stages:
       displayName: 'Ensure CI uses correct sdk Version'
       inputs:
         packageType: 'sdk'
-        version: '8.0.x'
+        version: '9.0.x'
         includePreviewVersions: false
     # Restore dependencies ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet restore'
       inputs:
         command: 'restore'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.slnx'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
     # Sonar Cloud Prepare ...
-    - task: SonarCloudPrepare@1
-      inputs:
-        SonarCloud: 'SonarCube'
-        organization: 'simongeering'
-        scannerMode: 'MSBuild'
-        projectKey: 'SimonGeering_AdminAssistant'
-        projectName: 'AdminAssistant'
+#    - task: SonarCloudPrepare@1
+#      inputs:
+#        SonarCloud: 'SonarCube'
+#        organization: 'simongeering'
+#        scannerMode: 'MSBuild'
+#        projectKey: 'SimonGeering_AdminAssistant'
+#        projectName: 'AdminAssistant'
     # Build ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet build'
       inputs:
         command: 'build'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.slnx'
         arguments: '--configuration Release --no-restore'
     # Run Unit Tests ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet test'
       inputs:
         command: 'test'
-        projects: 'src/AdminAssistant.sln'
+        projects: 'src/AdminAssistant.slnx'
         arguments: '--configuration Release --no-build --collect "Code coverage" --settings "$(Build.SourcesDirectory)\src\AdminAssistant.Test\.runsettings" --filter "Category=Unit"'
         publishTestResults: true
         testRunTitle: 'Unit Tests'
     # Sonar Cloud Analyze and Publish ...
-    - task: SonarCloudAnalyze@1
-    - task: SonarCloudPublish@1
-      inputs:
-        pollingTimeoutSec: '300'
+#    - task: SonarCloudAnalyze@1
+#    - task: SonarCloudPublish@1
+#      inputs:
+#        pollingTimeoutSec: '300'

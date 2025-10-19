@@ -37,8 +37,8 @@ public sealed class BankAccountTransactionsByBankAccountIDQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(query);
 
         // Assert
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().BeEquivalentTo(bankAccountTransactionList);
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.Value.ShouldBeEquivalentTo(bankAccountTransactionList);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

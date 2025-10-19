@@ -30,8 +30,8 @@ public sealed class BankQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new BankQuery());
 
         // Assert
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().BeEquivalentTo(bankList);
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.Value.ShouldBeEquivalentTo(bankList);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

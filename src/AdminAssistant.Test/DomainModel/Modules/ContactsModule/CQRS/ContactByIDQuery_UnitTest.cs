@@ -30,7 +30,7 @@ public sealed class ContactByIDQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(nonExistentContactID.Value));
 
         // Assert
-        result.Status.Should().Be(ResultStatus.NotFound);
+        result.Status.ShouldBe(ResultStatus.NotFound);
     }
 
     [Fact]
@@ -55,8 +55,8 @@ public sealed class ContactByIDQuery_Should
         var result = await services.BuildServiceProvider().GetRequiredService<IMediator>().Send(new ContactByIDQuery(contact.ContactID.Value));
 
         // Assert
-        result.Status.Should().Be(ResultStatus.Ok);
-        result.Value.Should().Be(contact);
+        result.Status.ShouldBe(ResultStatus.Ok);
+        result.Value.ShouldBe(contact);
     }
 }
 #pragma warning restore CA1707 // Identifiers should not contain underscores

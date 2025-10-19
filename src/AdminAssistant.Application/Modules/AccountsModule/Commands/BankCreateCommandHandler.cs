@@ -11,7 +11,7 @@ internal sealed class BankCreateCommandHandler(
     IBankValidator bankValidator)
     : RequestHandlerBase<BankCreateCommand, Result<Bank>>(loggingProvider)
 {
-    public override async Task<Result<Bank>> Handle(BankCreateCommand command, CancellationToken cancellationToken)
+    public override async ValueTask<Result<Bank>> Handle(BankCreateCommand command, CancellationToken cancellationToken)
     {
         var validationResult = await bankValidator.ValidateAsync(command.Bank, cancellationToken).ConfigureAwait(false);
 

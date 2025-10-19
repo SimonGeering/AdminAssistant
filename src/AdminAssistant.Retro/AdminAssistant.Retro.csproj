@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
-    <ProjectReference Include="..\AdminAssistant.Infra\AdminAssistant.Infra.csproj" />
+    <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
     <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
   </ItemGroup>
 

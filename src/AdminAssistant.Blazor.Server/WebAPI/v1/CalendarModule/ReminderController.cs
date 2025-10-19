@@ -5,19 +5,18 @@ namespace AdminAssistant.WebAPI.v1.CalendarModule;
 [ApiController]
 [Route("api/v1/calendar-module/[controller]")]
 [ApiExplorerSettings(GroupName = "Calendar Module")]
-public sealed class ReminderController(IMapper mapper, IMediator mediator, ILoggingProvider loggingProvider)
-    : WebApiControllerBase(mapper, mediator, loggingProvider)
+public sealed class ReminderController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
     [HttpGet]
     [SwaggerOperation("Lists all reminders.", OperationId = "GetReminder")]
     [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of ReminderResponseDto", type: typeof(IEnumerable<ReminderResponseDto>))]
     public async Task<ActionResult<IEnumerable<ReminderResponseDto>>> GetReminders(CancellationToken cancellationToken)
     {
-        Log.Start();
+        log.Start();
 
-        var result = await Mediator.Send(new ReminderQuery(), cancellationToken).ConfigureAwait(false);
-        var response = Mapper.Map<IEnumerable<ReminderResponseDto>>(result.Value);
+        var result = await mediator.Send(new ReminderQuery(), cancellationToken).ConfigureAwait(false);
+        var response = result.Value.ToReminderResponseDtoEnumeration();
 
-        return Log.Finish(Ok(response));
+        return log.Finish(Ok(response));
     }
 }

@@ -1,4 +1,6 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Infrastructure.EntityFramework;
 using AdminAssistant.Infrastructure.EntityFramework.Model.Accounts;
@@ -6,7 +8,6 @@ using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 using AdminAssistant.Shared;
-using MappingProfile = AdminAssistant.Infrastructure.MappingProfile;
 
 namespace AdminAssistant.Test.Infra.DAL.Modules.AccountsModule;
 
@@ -17,31 +18,28 @@ public sealed class BankAccountRepository_UnitTest
     public async Task Returns_PopulatedBankAccountList_WhenDatabaseHasData()
     {
         // Arrange
-        var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
         var bankAccountList = new List<BankAccount>()
             {
                 Factory.BankAccount.WithTestData(10).Build(),
                 Factory.BankAccount.WithTestData(20).Build()
             };
-        var data = mapper.Map<IList<BankAccountEntity>>(bankAccountList);
 
         var mockDbContext = new Mock<IApplicationDbContext>();
         mockDbContext.Setup(x => x.BankAccounts)
-            .Returns(data.AsQueryable().BuildMockDbSet().Object);
+            .Returns(bankAccountList.ToBankAccountEntityList().BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
-        services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
-        services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
-        services.AddTransient((sp) => mockDbContext.Object);
+        services.AddTransient(_ => new Mock<IDateTimeProvider>().Object);
+        services.AddTransient(_ => new Mock<IUserContextProvider>().Object);
+        services.AddAdminAssistantServerSideInfra();
+        services.AddTransient(_ => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync(default);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetListAsync(CancellationToken.None);
 
         // Assert
-        result.Should().HaveCount(bankAccountList.Count);
-        result.Should().BeEquivalentTo(bankAccountList);
+        result.Count.ShouldBe(bankAccountList.Count);
+        result.ShouldBeEquivalentTo(bankAccountList);
     }
 
     [Fact]
@@ -49,31 +47,29 @@ public sealed class BankAccountRepository_UnitTest
     public async Task Returns_ABankAccount_WhenDatabaseContainsAnItemWithTheGivenID()
     {
         // Arrange
-        var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
 
         var bankAccountList = new List<BankAccount>()
             {
                 Factory.BankAccount.WithTestData(10).Build(),
                 Factory.BankAccount.WithTestData(20).Build()
             };
-        var data = mapper.Map<IList<BankAccountEntity>>(bankAccountList);
 
         var mockDbContext = new Mock<IApplicationDbContext>();
         mockDbContext.Setup(x => x.BankAccounts)
-            .Returns(data.AsQueryable().BuildMockDbSet().Object);
+            .Returns(bankAccountList.ToBankAccountEntityList().BuildMockDbSet().Object);
 
         var services = new ServiceCollection();
-        services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => new Mock<IDateTimeProvider>().Object);
-        services.AddTransient((sp) => new Mock<IUserContextProvider>().Object);
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
-        services.AddTransient((sp) => mockDbContext.Object);
+        services.AddTransient(_ => new Mock<IDateTimeProvider>().Object);
+        services.AddTransient(_ => new Mock<IUserContextProvider>().Object);
+        services.AddAdminAssistantServerSideInfra();
+        services.AddTransient(_ => mockDbContext.Object);
 
         // Act
-        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().GetAsync(bankAccountList[Constants.FirstItem].BankAccountID, default);
+        var result = await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>()
+            .GetAsync(bankAccountList[Constants.FirstItem].BankAccountID, CancellationToken.None);
 
         // Assert
-        result.Should().BeEquivalentTo(bankAccountList[Constants.FirstItem]);
+        result.ShouldBeEquivalentTo(bankAccountList[Constants.FirstItem]);
     }
 
     [Fact]
@@ -81,14 +77,13 @@ public sealed class BankAccountRepository_UnitTest
     public async Task AddsAuditing_WhenSavingNewBankAccount()
     {
         // Arrange
-        var mapper = new ServiceCollection().AddAutoMapper(typeof(MappingProfile)).BuildServiceProvider().GetRequiredService<IMapper>();
         var bankAccountList = new List<BankAccount>()
             {
                 Factory.BankAccount.WithTestData(10).Build(),
                 Factory.BankAccount.WithTestData(20).Build()
             };
 
-        var mockBankAccounts = mapper.Map<IList<BankAccountEntity>>(bankAccountList).AsQueryable().BuildMockDbSet();
+        var mockBankAccounts = bankAccountList.ToBankAccountEntityList().BuildMockDbSet();
         mockBankAccounts.Setup(x => x.Add(It.IsAny<BankAccountEntity>()));
 
         var mockDbContext = new Mock<IApplicationDbContext>();
@@ -98,37 +93,36 @@ public sealed class BankAccountRepository_UnitTest
         services.AddMockDateTimeProvider();
         services.AddMockUserContextProvider();
         services.AddMockDbContext(mockDbContext);
-        services.AddAutoMapper(typeof(MappingProfile));
-        services.AddAdminAssistantServerSideInfra(new ConfigurationSettings() { ConnectionString = "FakeConnectionString", DatabaseProvider = "SQLServerLocalDB" });
+        services.AddAdminAssistantServerSideInfra();
 
         var newBankAccountToSave = Factory.BankAccount.WithAccountName("TestNewBankAccountToSave").Build();
 
         // Act
-        await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().SaveAsync(newBankAccountToSave, default);
+        await services.BuildServiceProvider().GetRequiredService<IBankAccountRepository>().SaveAsync(newBankAccountToSave, CancellationToken.None);
 
         // Assert
         mockBankAccounts.Verify(x => x.Add(It.Is<BankAccountEntity>((arg) => IsValidForInsert(arg))), Times.Once());
         mockDbContext.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once());
     }
 
-    //UpdatesAuditing_WhenSavingAnExistingBankAccount
+    //TODO: UpdatesAuditing_WhenSavingAnExistingBankAccount
 
-    private bool IsValidForInsert(BankAccountEntity bankAccountToSave)
+    private static bool IsValidForInsert(BankAccountEntity bankAccountToSave)
     {
-        bankAccountToSave.BankAccountID.Should().Be(Constants.NewRecordID);
-        bankAccountToSave.Audit.Should().NotBeNull();
+        bankAccountToSave.BankAccountID.ShouldBe(Constants.NewRecordID);
+        bankAccountToSave.Audit.ShouldNotBeNull();
 
-        bankAccountToSave.Audit.CreatedBy.Should().NotBeNullOrEmpty();
-        bankAccountToSave.Audit.CreatedOn.Should().NotBe(default);
+        bankAccountToSave.Audit.CreatedBy.ShouldNotBeNullOrEmpty();
+        bankAccountToSave.Audit.CreatedOn.ShouldNotBe(default);
 
         return true;
     }
 
     [SuppressMessage("CodeQuality", "IDE0051:Remove unused private members", Justification = "WIP")]
-    private bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
+    private static bool IsValidForUpdate(BankAccountEntity bankAccountToSave)
     {
-        bankAccountToSave.BankAccountID.Should().NotBe(Constants.NewRecordID);
-        bankAccountToSave.Audit.Should().NotBeNull();
+        bankAccountToSave.BankAccountID.ShouldNotBe(Constants.NewRecordID);
+        bankAccountToSave.Audit.ShouldNotBeNull();
 
         return true;
     }

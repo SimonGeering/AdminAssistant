@@ -1,11 +1,12 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.AccountsModule.Commands;
 using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Modules.AccountsModule.Queries;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
@@ -20,13 +21,12 @@ public sealed class BankController_Put_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Success(bank)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Success(bank)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankController>();
 
         var container = services.BuildServiceProvider();
@@ -37,20 +37,20 @@ public sealed class BankController_Put_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest, default);
+        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<BankResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<BankResponseDto>();
 
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID.Value);
-        value.BankName.Should().Be(bank.BankName.Value);
+        value.BankID.ShouldBe(bank.BankID.Value);
+        value.BankName.ShouldBe(bank.BankName.Value);
     }
 
     [Fact]
@@ -65,22 +65,19 @@ public sealed class BankController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.NotFound()));
+                    .Returns(ValueTask.FromResult(Result<Bank>.NotFound()));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankController>();
 
-        var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var bankRequest = mapper.Map<BankUpdateRequestDto>(bank);
+        var bankRequest = bank.ToBankUpdateRequestDto();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(bankRequest, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(bankRequest, CancellationToken.None);
 
         // Assert
-        response.Result.Should().BeOfType<NotFoundObjectResult>();
-        response.Value.Should().BeNull();
+        response.Result.ShouldBeOfType<NotFoundObjectResult>();
+        response.Value.ShouldBeNull();
     }
 
     [Fact]
@@ -100,32 +97,29 @@ public sealed class BankController_Put_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankUpdateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Invalid(validationErrors)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Invalid(validationErrors)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankController>();
 
-        var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var bankRequest = mapper.Map<BankUpdateRequestDto>(bank);
+        var bankRequest = bank.ToBankUpdateRequestDto();
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPut(bankRequest, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPut(bankRequest, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<UnprocessableEntityObjectResult>();
 
         var result = (UnprocessableEntityObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var errors = (SerializableError)result.Value!;
 
         foreach (var expectedErrorDetails in validationErrors)
         {
             var messages = (string[])errors[expectedErrorDetails.Identifier];
-            messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            messages.ShouldContain(expectedErrorDetails.ErrorMessage);
         }
     }
 }
@@ -141,16 +135,13 @@ public class BankController_BankPost_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankCreateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Success(bank)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Success(bank)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankController>();
-
-        var container = services.BuildServiceProvider();
 
         var bankRequest = new BankCreateRequestDto()
         {
@@ -158,20 +149,20 @@ public class BankController_BankPost_Should
         };
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPost(bankRequest, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<CreatedAtRouteResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<CreatedAtRouteResult>();
 
         var result = (CreatedAtRouteResult)response.Result!;
-        result.Value.Should().NotBeNull();
-        result.Value.Should().BeAssignableTo<BankResponseDto>();
+        result.Value.ShouldNotBeNull();
+        result.Value.ShouldBeAssignableTo<BankResponseDto>();
 
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID.Value);
-        value.BankName.Should().Be(bank.BankName.Value);
+        value.BankID.ShouldBe(bank.BankID.Value);
+        value.BankName.ShouldBe(bank.BankName.Value);
     }
 
     [Fact]
@@ -181,8 +172,8 @@ public class BankController_BankPost_Should
         // Arrange
         var validationErrors = new List<ValidationError>()
             {
-                new ValidationError() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
-                new ValidationError() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
+                new() { Identifier="ExampleErrorCode", ErrorMessage="ExampleErrorMessage", Severity=ValidationSeverity.Error },
+                new() { Identifier="ExampleErrorCode2", ErrorMessage="ExampleErrorMessage2", Severity=ValidationSeverity.Error }
             };
         var bank = Factory.Bank.WithTestData(10).Build();
 
@@ -191,32 +182,29 @@ public class BankController_BankPost_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankCreateCommand>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Invalid(validationErrors)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Invalid(validationErrors)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankController>();
 
-        var container = services.BuildServiceProvider();
-
-        var mapper = container.GetRequiredService<IMapper>();
-        var bankRequest = mapper.Map<BankCreateRequestDto>(bank);
+        var bankRequest = bank.ToBankCreateRequestDto();
 
         // Act
-        var response = await container.GetRequiredService<BankController>().BankPost(bankRequest, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankPost(bankRequest, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<UnprocessableEntityObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<UnprocessableEntityObjectResult>();
 
         var result = (UnprocessableEntityObjectResult)response.Result!;
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var errors = (SerializableError)result.Value!;
 
         foreach (var expectedErrorDetails in validationErrors)
         {
             var messages = (string[])errors[expectedErrorDetails.Identifier];
-            messages.Should().Contain(expectedErrorDetails.ErrorMessage);
+            messages.ShouldContain(expectedErrorDetails.ErrorMessage);
         }
     }
 }
@@ -232,30 +220,29 @@ public class BankController_BankGetById_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankByIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.Success(bank)));
+                    .Returns(ValueTask.FromResult(Result<Bank>.Success(bank)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID.Value, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(bank.BankID.Value, CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<BankResponseDto>();
+        result.Value.ShouldBeAssignableTo<BankResponseDto>();
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var value = (BankResponseDto)result.Value!;
-        value.BankID.Should().Be(bank.BankID.Value);
-        value.BankName.Should().Be(bank.BankName.Value);
+        value.BankID.ShouldBe(bank.BankID.Value);
+        value.BankName.ShouldBe(bank.BankName.Value);
     }
 
     [Fact]
@@ -268,17 +255,17 @@ public class BankController_BankGetById_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankByIDQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<Bank>.NotFound()));
+                    .Returns(ValueTask.FromResult(Result<Bank>.NotFound()));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(10, default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGetById(10, CancellationToken.None);
 
         // Assert
-        response.Result.Should().BeOfType<NotFoundResult>();
-        response.Value.Should().BeNull();
+        response.Result.ShouldBeOfType<NotFoundResult>();
+        response.Value.ShouldBeNull();
     }
 }
 
@@ -297,35 +284,34 @@ public class BankController_BankGet_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<Bank>>.Success(banks)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<Bank>>.Success(banks)));
 
-        services.AddTransient((sp) => mockMediator.Object);
+        services.AddTransient(_ => mockMediator.Object);
         services.AddTransient<BankController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet(default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankController>().BankGet(CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
-        response.Result.Should().NotBeNull();
-        response.Result.Should().BeOfType<OkObjectResult>();
+        response.Value.ShouldBeNull();
+        response.Result.ShouldNotBeNull();
+        response.Result.ShouldBeOfType<OkObjectResult>();
 
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<IEnumerable<BankResponseDto>>();
+        result.Value.ShouldBeAssignableTo<IEnumerable<BankResponseDto>>();
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var value = ((IEnumerable<BankResponseDto>)result.Value!).ToArray();
-        value.Should().HaveCount(banks.Count);
+        value.Length.ShouldBe(banks.Count);
 
         var expected = banks.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankID.Should().Be(expected[index].BankID.Value);
-            value[index].BankName.Should().Be(expected[index].BankName.Value);
+            value[index].BankID.ShouldBe(expected[index].BankID.Value);
+            value[index].BankName.ShouldBe(expected[index].BankName.Value);
         }
     }
 }

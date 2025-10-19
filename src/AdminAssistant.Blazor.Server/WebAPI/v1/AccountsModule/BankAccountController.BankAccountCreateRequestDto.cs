@@ -1,10 +1,7 @@
-using AdminAssistant.Modules.AccountsModule;
-using Swashbuckle.AspNetCore.Annotations;
-
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
 
 [SwaggerSchema(Required = new[] { "BankAccountTypeID", "CurrencyID", "AccountName", "IsBudgeted", "OpeningBalance", "OpenedOn" })]
-public sealed record BankAccountCreateRequestDto : IMapTo<BankAccount>
+public sealed record BankAccountCreateRequestDto
 {
     [SwaggerSchema("The BankAccountType for this BankAccount.")]
     public int BankAccountTypeID { get; init; }
@@ -15,9 +12,4 @@ public sealed record BankAccountCreateRequestDto : IMapTo<BankAccount>
     public int OpeningBalance { get; init; }
     public int CurrentBalance { get; init; }
     public DateTime OpenedOn { get; init; }
-
-    public void MapTo(AutoMapper.Profile profile)
-        => profile.CreateMap<BankAccountCreateRequestDto, BankAccount>()
-                  .ForMember(x => x.BankAccountID, opt => opt.Ignore())
-                  .ForMember(x => x.OwnerID, opt => opt.Ignore());
 }

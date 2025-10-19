@@ -1,14 +1,9 @@
 @inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.UI.IBankAccountEditDialogViewModel>
-@using AdminAssistant.Modules.AccountsModule;
-@using AdminAssistant.Modules.CoreModule;
 
 <MudDialog>
     <DialogContent>
         <div class="d-flex flex-column py-1">
-            <MudButton OnClick="ChangeTitle">Change Title</MudButton>
-            <MudButton OnClick="ToggleCloseButton">Toggle Close Button</MudButton>
-            <MudButton OnClick="ToggleFullWidth">Toggle Full Width</MudButton>
-            <MudButton OnClick="ToggleHeader">Toggle Header</MudButton>
+            <p>Dialog content</p>
         </div>
     </DialogContent>
     <DialogActions>
@@ -17,34 +12,10 @@
 </MudDialog>
 
 @code {
-    [CascadingParameter] MudDialogInstance MudDialog { get; set; } = new();
+    [CascadingParameter] IMudDialogInstance MudDialog { get; set; } = default!;
 
     void Close() => MudDialog.Close(DialogResult.Ok(true));
-
-    void ChangeTitle()
-    {
-        MudDialog.SetTitle("Current time is: " + DateTime.Now);
-    }
-
-    void ToggleCloseButton()
-    {
-        MudDialog.Options.CloseButton = !(MudDialog.Options.CloseButton ?? false);
-        MudDialog.SetOptions(MudDialog.Options);
-    }
-
-    void ToggleFullWidth()
-    {
-        MudDialog.Options.FullWidth = !(MudDialog.Options.FullWidth ?? true);
-        MudDialog.SetOptions(MudDialog.Options);
-    }
-
-    void ToggleHeader()
-    {
-        MudDialog.Options.NoHeader = !(MudDialog.Options.NoHeader ?? false);
-        MudDialog.SetOptions(MudDialog.Options);
-    }
 }
-
 @*
 <SfDialog @bind-Visible="@this.vm.ShowDialog" Width="500px" IsModal="true" ShowCloseIcon="true">
     <DialogTemplates>

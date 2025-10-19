@@ -1,6 +1,7 @@
 using AdminAssistant.Infrastructure.EntityFramework;
 using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Shared;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 // ReSharper disable once CheckNamespace
@@ -35,16 +36,7 @@ public static class DependencyInjectionExtensions
     }
 
     public static void AddMocksOfExternalServerSideDependencies(this IServiceCollection services)
-    {
-        services.AddMockServerSideLogging();
-        services.AddTransient(_ => new Mock<IMapper>().Object);
-    }
-
-    public static void AddMocksOfExternalClientSideDependencies(this IServiceCollection services)
-    {
-        services.AddMockClientSideLogging();
-        services.AddTransient(_ => new Mock<IMapper>().Object);
-    }
+        => services.AddMockServerSideLogging();
 
     public static void AddMockServerSideLogging(this IServiceCollection services)
     {

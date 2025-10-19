@@ -1,11 +1,12 @@
+// ReSharper disable InconsistentNaming
 #pragma warning disable CA1707 // Identifiers should not contain underscores
+
 using AdminAssistant.Domain;
 using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Modules.AccountsModule.Queries;
 using AdminAssistant.Shared;
 using AdminAssistant.WebAPI.v1.AccountsModule;
 using Microsoft.AspNetCore.Mvc;
-using MappingProfile = AdminAssistant.WebAPI.v1.MappingProfile;
 
 namespace AdminAssistant.Test.WebAPI.v1.AccountsModule;
 
@@ -24,7 +25,7 @@ public sealed class BankAccountInfoController_BankAccountInfoGet_Should
 
         var mockMediator = new Mock<IMediator>();
         mockMediator.Setup(x => x.Send(It.IsAny<BankAccountInfoQuery>(), It.IsAny<CancellationToken>()))
-                    .Returns(Task.FromResult(Result<IEnumerable<BankAccountInfo>>.Success(bankAccountInfoList)));
+                    .Returns(ValueTask.FromResult(Result<IEnumerable<BankAccountInfo>>.Success(bankAccountInfoList)));
 
         var mockUserContextProvider = new Mock<IUserContextProvider>();
         mockUserContextProvider.Setup(x => x.GetCurrentUser())
@@ -32,30 +33,29 @@ public sealed class BankAccountInfoController_BankAccountInfoGet_Should
 
         var services = new ServiceCollection();
         services.AddMockServerSideLogging();
-        services.AddAutoMapper(typeof(MappingProfile));
-        services.AddTransient((sp) => mockMediator.Object);
-        services.AddTransient((sp) => mockUserContextProvider.Object);
+        services.AddTransient(_ => mockMediator.Object);
+        services.AddTransient(_ => mockUserContextProvider.Object);
         services.AddTransient<BankAccountInfoController>();
 
         // Act
-        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountInfoController>().BankAccountInfoGet(default);
+        var response = await services.BuildServiceProvider().GetRequiredService<BankAccountInfoController>().BankAccountInfoGet(CancellationToken.None);
 
         // Assert
-        response.Value.Should().BeNull();
+        response.Value.ShouldBeNull();
 
-        response.Result.Should().NotBeNull();
+        response.Result.ShouldNotBeNull();
         var result = (OkObjectResult)response.Result!;
-        result.Value.Should().BeAssignableTo<IEnumerable<BankAccountInfoResponseDto>>();
+        result.Value.ShouldBeAssignableTo<IEnumerable<BankAccountInfoResponseDto>>();
 
-        result.Value.Should().NotBeNull();
+        result.Value.ShouldNotBeNull();
         var value = ((IEnumerable<BankAccountInfoResponseDto>)result.Value!).ToArray();
-        value.Should().HaveCount(bankAccountInfoList.Count);
+        value.Length.ShouldBe(bankAccountInfoList.Count);
 
         var expected = bankAccountInfoList.ToArray();
         for (var index = 0; index < expected.Length; index++)
         {
-            value[index].BankAccountID.Should().Be(expected[index].BankAccountID.Value);
-            value[index].AccountName.Should().Be(expected[index].AccountName);
+            value[index].BankAccountID.ShouldBe(expected[index].BankAccountID.Value);
+            value[index].AccountName.ShouldBe(expected[index].AccountName);
         }
     }
 }
