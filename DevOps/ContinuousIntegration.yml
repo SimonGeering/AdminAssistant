@@ -5,7 +5,7 @@ trigger: # CI Builds
   branches:
     include:
     - dev
-    - master
+    - main
   paths:
     exclude:
     - ./DevOps
