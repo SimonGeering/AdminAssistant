@@ -69,9 +69,9 @@ var api = builder.AddProject<Projects.AdminAssistant_Api>(Constants.Api)
     .WithExternalHttpEndpoints()
     .WithHttpHealthCheck("/health")
     .WithReference(applicationDatabase).WaitFor(applicationDatabase)
-    .WithReference(msgBus).WaitFor(msgBus);
-    //.WithAnnotation("Swagger UI", "swagger")
-    //.WithAnnotation("OpenAPI JSON", "openapi/v1.json");
+    .WithReference(msgBus).WaitFor(msgBus)
+    .WithUrl("/swagger", "Swagger UI")
+    .WithUrl("/openapi/v1.json", "OpenAPI JSON");
 
 // Main App ...
 builder.AddProject<Projects.AdminAssistant_Web>(Constants.WebAppName)
