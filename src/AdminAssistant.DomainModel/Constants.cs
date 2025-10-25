@@ -6,6 +6,7 @@ namespace AdminAssistant;
 /// </summary>
 public static class Constants
 {
+    public const string WebAppName = "AdminAssistant-Web";
     public const string ServerAppName = "AdminAssistantServer";
 
     public const string IAMServerName = "AdminAssistantIAMServer";

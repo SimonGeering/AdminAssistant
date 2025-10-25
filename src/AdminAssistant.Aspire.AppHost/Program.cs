@@ -54,25 +54,42 @@ var msgBus = builder.AddRabbitMQ(Constants.MessageBusName, msgBusAdminUsername, 
 
 var msgBusAdmin = msgBus.WithManagementPlugin()
     .WithLifetime(ContainerLifetime.Persistent);
+
+#pragma warning disable S125
 /*
-   // var databaseMigrationWorkerService = builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationWorkerService>(Constants.DatabaseMigrationWorkerService)
+      // var databaseMigrationWorkerService = builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationWorkerService>(Constants.DatabaseMigrationWorkerService)
    //     .WithReference(applicationDatabase)
    //     .WaitFor(postgres)
    //     .WithParentRelationship(postgres);
 */
+#pragma warning restore S125
+
+// Web API ...
+var api = builder.AddProject<Projects.AdminAssistant_Api>(Constants.Api)
+    .WithReference(applicationDatabase).WaitFor(applicationDatabase)
+    .WithReference(msgBus).WaitFor(msgBus)
+    .WithExternalHttpEndpoints();
+    //.WithAnnotation("Swagger UI", "swagger")
+    //.WithAnnotation("OpenAPI JSON", "openapi/v1.json");
 
 // Main App ...
-builder.AddProject<Projects.AdminAssistant_Blazor_Server>(Constants.ServerAppName)
-    .WithReference(applicationDatabase)
-    //.WaitFor(databaseMigrationWorkerService)
-    .WithReference(msgBus).WaitFor(msgBus)
+builder.AddProject<Projects.AdminAssistant_Web>(Constants.WebAppName)
+    .WithReference(api).WaitFor(api)
     .WithReference(cache).WaitFor(cache)
     .WithExternalHttpEndpoints();
 
-// Retro console UI ... :-)
-builder.AddProject<Projects.AdminAssistant_Retro>(Constants.RetroConsole)
-    //.WaitFor(databaseMigrationWorkerService)
+// Avalonia App ...
+builder.AddProject<Projects.AdminAssistant_AvaloniaApp>(Constants.AvaloniaAppName)
+    .WithReference(api).WaitFor(api)
+    .WithReference(cache).WaitFor(cache)
     .ExcludeFromManifest(); // Not a web app
+
+#pragma warning disable S125
+// Retro console UI ... :-)
+//builder.AddProject<Projects.AdminAssistant_Retro>(Constants.RetroConsole)
+    //.WaitFor(databaseMigrationWorkerService)
+    //.ExcludeFromManifest(); // Not a web app
+#pragma warning restore S125
 
 await builder.Build().RunAsync();
 

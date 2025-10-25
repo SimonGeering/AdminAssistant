@@ -31,9 +31,11 @@
     <File Path="Directory.Packages.props" />
     <File Path="global.json" />
   </Folder>
+  <Project Path="AdminAssistant.Api\AdminAssistant.Api.csproj" Type="Classic C#" />
   <Project Path="AdminAssistant.Application\AdminAssistant.Application.csproj" />
   <Project Path="AdminAssistant.Aspire.AppHost\AdminAssistant.Aspire.AppHost.csproj" Type="Classic C#" />
   <Project Path="AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+  <Project Path="AdminAssistant.AvaloniaApp\AdminAssistant.AvaloniaApp.csproj" Type="Classic C#" />
   <Project Path="AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
   <Project Path="AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />
   <Project Path="AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
@@ -42,6 +44,7 @@
   <Project Path="AdminAssistant.Retro\AdminAssistant.Retro.csproj" />
   <Project Path="AdminAssistant.Test\AdminAssistant.Test.csproj" />
   <Project Path="AdminAssistant.UI\AdminAssistant.UI.csproj" />
+  <Project Path="AdminAssistant.Web\AdminAssistant.Web.csproj" Type="Classic C#" />
   <Project Path="SimonGeering.Framework.Test\SimonGeering.Framework.Test.csproj" />
   <Project Path="SimonGeering.Framework\SimonGeering.Framework.csproj" />
 </Solution>

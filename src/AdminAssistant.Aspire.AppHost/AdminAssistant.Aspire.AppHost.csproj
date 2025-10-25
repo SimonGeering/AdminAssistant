@@ -33,12 +33,15 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\AdminAssistant.Api\AdminAssistant.Api.csproj" />
+        <ProjectReference Include="..\AdminAssistant.AvaloniaApp\AdminAssistant.AvaloniaApp.csproj" />
         <ProjectReference Include="..\AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
         <ProjectReference Include="..\AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />
         <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj">
             <IsAspireProjectResource>false</IsAspireProjectResource>
         </ProjectReference>
         <ProjectReference Include="..\AdminAssistant.Retro\AdminAssistant.Retro.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Web\AdminAssistant.Web.csproj" />
     </ItemGroup>
 
 </Project>
