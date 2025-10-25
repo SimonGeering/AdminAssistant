@@ -1,7 +1,8 @@
 using AdminAssistant;
 using AdminAssistant.Web;
+using FluentValidation;
 using MudBlazor.Services;
-using AdminAssistant.Web.Components;
+using SimonGeering.Framework.Primitives;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
@@ -13,6 +14,11 @@ builder.Services.AddMudServices();
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddAdminAssistantClientSideProviders();
+builder.Services.AddAdminAssistantClientSideDomainModel();
+builder.Services.AddAdminAssistantUI();
+builder.Services.AddAdminAssistantWebAPIClient(new Uri($"https+http://{Constants.Api}"));
 
 builder.Services.AddHttpClient<WeatherApiClient>(client =>
     {
@@ -39,7 +45,15 @@ app.UseOutputCache();
 
 app.MapStaticAssets();
 
-app.MapRazorComponents<App>()
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents()
+    .AddCircuitOptions(options =>
+    {
+        if (builder.Environment.IsDevelopment())
+            options.DetailedErrors = true;
+    });
+
+app.MapRazorComponents<AdminAssistant.Web.Shared.App>()
     .AddInteractiveServerRenderMode();
 
 app.MapDefaultEndpoints();

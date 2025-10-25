@@ -27,6 +27,40 @@
     <ItemGroup>
       <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
       <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+      <ProjectReference Include="..\AdminAssistant.Infrastructure.ClientSide\AdminAssistant.Infrastructure.ClientSide.csproj" />
+      <ProjectReference Include="..\AdminAssistant.UI\AdminAssistant.UI.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Modules\AccountsModule\Accounts.razor" />
+      <AdditionalFiles Include="Modules\AccountsModule\Admin\BankListComponent.razor" />
+      <AdditionalFiles Include="Modules\AccountsModule\BankAccountBalanceListComponent.razor" />
+      <AdditionalFiles Include="Modules\AccountsModule\BankAccountEditDialogComponent.razor" />
+      <AdditionalFiles Include="Modules\AccountsModule\BankAccountRightSidebarComponent.razor" />
+      <AdditionalFiles Include="Modules\AccountsModule\BankAccountTransactionBulkUploadComponent.razor" />
+      <AdditionalFiles Include="Modules\AccountsModule\BankAccountTransactionListComponent.razor" />
+      <AdditionalFiles Include="Modules\AdminModule\Admin.razor" />
+      <AdditionalFiles Include="Modules\AssetRegisterModule\AssetRegister.razor" />
+      <AdditionalFiles Include="Modules\BillingModule\Billing.razor" />
+      <AdditionalFiles Include="Modules\BudgetModule\Budget.razor" />
+      <AdditionalFiles Include="Modules\BudgetModule\BudgetListComponent.razor" />
+      <AdditionalFiles Include="Modules\CalendarModule\Calendar.razor" />
+      <AdditionalFiles Include="Modules\ContactsModule\Contacts.razor" />
+      <AdditionalFiles Include="Modules\CoreModule\Admin\CurrencyListComponent.razor" />
+      <AdditionalFiles Include="Modules\DashboardModule\Dashboard.razor" />
+      <AdditionalFiles Include="Modules\DocumentsModule\Documents.razor" />
+      <AdditionalFiles Include="Modules\MailModule\Mail.razor" />
+      <AdditionalFiles Include="Modules\NotesModule\Notes.razor" />
+      <AdditionalFiles Include="Modules\ReportsModule\Reports.razor" />
+      <AdditionalFiles Include="Modules\ScheduledPaymentsModule\ScheduledPayments.razor" />
+      <AdditionalFiles Include="Modules\TasksModule\Tasks.razor" />
+      <AdditionalFiles Include="Shared\MainLayout.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ServiceWorker Include="wwwroot\service-worker.js">
+        <PublishedContent>wwwroot/service-worker.published.js</PublishedContent>
+      </ServiceWorker>
     </ItemGroup>
 
 </Project>

@@ -35,7 +35,6 @@
     <ItemGroup>
         <ProjectReference Include="..\AdminAssistant.Api\AdminAssistant.Api.csproj" />
         <ProjectReference Include="..\AdminAssistant.AvaloniaApp\AdminAssistant.AvaloniaApp.csproj" />
-        <ProjectReference Include="..\AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />
         <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj">
             <IsAspireProjectResource>false</IsAspireProjectResource>
         </ProjectReference>
