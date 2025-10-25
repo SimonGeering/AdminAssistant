@@ -4,15 +4,21 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
 using Npgsql;
-using OpenTelemetry.Logs;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
+using OpenTelemetry;
 
 namespace Microsoft.Extensions.Hosting;
 
+// Adds common Aspire services: service discovery, resilience, health checks, and OpenTelemetry.
+// This project should be referenced by each service project in your solution.
+// To learn more about using this project, see https://aka.ms/dotnet/aspire/service-defaults
 public static class Extensions
 {
-    public static IHostApplicationBuilder AddServiceDefaults(this IHostApplicationBuilder builder)
+    private const string HealthEndpointPath = "/health";
+    private const string AlivenessEndpointPath = "/alive";
+
+    public static TBuilder AddServiceDefaults<TBuilder>(this TBuilder builder) where TBuilder : IHostApplicationBuilder
     {
         builder.ConfigureOpenTelemetry();
         builder.AddDefaultHealthChecks();
@@ -25,10 +31,17 @@ public static class Extensions
             // Turn on service discovery by default
             http.AddServiceDiscovery();
         });
+
+        // Uncomment the following to restrict the allowed schemes for service discovery.
+        // builder.Services.Configure<ServiceDiscoveryOptions>(options =>
+        // {
+        //     options.AllowedSchemes = ["https"];
+        // });
+
         return builder;
     }
 
-    public static IHostApplicationBuilder ConfigureOpenTelemetry(this IHostApplicationBuilder builder)
+    public static TBuilder ConfigureOpenTelemetry<TBuilder>(this TBuilder builder) where TBuilder : IHostApplicationBuilder
     {
         builder.Logging.AddOpenTelemetry(logging =>
         {
@@ -37,22 +50,28 @@ public static class Extensions
         });
 
         builder.Services.AddOpenTelemetry()
-            .WithMetrics(metrics => metrics.AddRuntimeInstrumentation().AddBuiltInMeters())
+            .WithMetrics(metrics =>
+            {
+                metrics.AddAspNetCoreInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddRuntimeInstrumentation();
+            })
             .WithTracing(tracing =>
             {
-                if (builder.Environment.IsDevelopment())
-                {
-                    // We want to view all traces in development
-                    tracing.SetSampler(new AlwaysOnSampler());
-                }
-
-                tracing.AddAspNetCoreInstrumentation()
-                       .AddGrpcClientInstrumentation()
-                       .AddHttpClientInstrumentation()
-                       .AddEntityFrameworkCoreInstrumentation()
-                       .AddNpgsql()
-                       .AddSqlClientInstrumentation()
-                       .AddConsoleExporter();
+                tracing.AddSource(builder.Environment.ApplicationName)
+                    .AddAspNetCoreInstrumentation(tracing =>
+                        // Exclude health check requests from tracing
+                        tracing.Filter = context =>
+                            !context.Request.Path.StartsWithSegments(HealthEndpointPath)
+                            && !context.Request.Path.StartsWithSegments(AlivenessEndpointPath)
+                    )
+                    // Uncomment the following line to enable gRPC instrumentation (requires the OpenTelemetry.Instrumentation.GrpcNetClient package)
+                    .AddGrpcClientInstrumentation()
+                    .AddHttpClientInstrumentation()
+                    .AddEntityFrameworkCoreInstrumentation()
+                    .AddNpgsql()
+                    .AddSqlClientInstrumentation()
+                    .AddConsoleExporter();
             });
 
         builder.AddOpenTelemetryExporters();
@@ -60,31 +79,26 @@ public static class Extensions
         return builder;
     }
 
-    private static IHostApplicationBuilder AddOpenTelemetryExporters(this IHostApplicationBuilder builder)
+    private static TBuilder AddOpenTelemetryExporters<TBuilder>(this TBuilder builder) where TBuilder : IHostApplicationBuilder
     {
         var useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
 
         if (useOtlpExporter)
         {
-            builder.Services.Configure<OpenTelemetryLoggerOptions>(logging => logging.AddOtlpExporter());
-            builder.Services.ConfigureOpenTelemetryMeterProvider(metrics => metrics.AddOtlpExporter());
-            builder.Services.ConfigureOpenTelemetryTracerProvider(tracing => tracing.AddOtlpExporter());
+            builder.Services.AddOpenTelemetry().UseOtlpExporter();
         }
 
-#pragma warning disable S125
-        // Uncomment the following lines to enable the Prometheus exporter (requires the OpenTelemetry.Exporter.Prometheus.AspNetCore package)
-        // builder.Services.AddOpenTelemetry()
-        //    .WithMetrics(metrics => metrics.AddPrometheusExporter());
-
-        // Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.Exporter package)
-        // builder.Services.AddOpenTelemetry()
-        //    .UseAzureMonitor();
-#pragma warning restore S125
+        // Uncomment the following lines to enable the Azure Monitor exporter (requires the Azure.Monitor.OpenTelemetry.AspNetCore package)
+        //if (!string.IsNullOrEmpty(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]))
+        //{
+        //    builder.Services.AddOpenTelemetry()
+        //       .UseAzureMonitor();
+        //}
 
         return builder;
     }
 
-    public static IHostApplicationBuilder AddDefaultHealthChecks(this IHostApplicationBuilder builder)
+    private static TBuilder AddDefaultHealthChecks<TBuilder>(this TBuilder builder) where TBuilder : IHostApplicationBuilder
     {
         builder.Services.AddHealthChecks()
             // Add a default liveness check to ensure app is responsive
@@ -95,26 +109,20 @@ public static class Extensions
 
     public static WebApplication MapDefaultEndpoints(this WebApplication app)
     {
-        // Uncomment the following line to enable the Prometheus endpoint (requires the OpenTelemetry.Exporter.Prometheus.AspNetCore package)
-#pragma warning disable S125
-        // app.MapPrometheusScrapingEndpoint();
-#pragma warning restore S125
-
-        // All health checks must pass for app to be considered ready to accept traffic after starting
-        app.MapHealthChecks("/health");
-
-        // Only health checks tagged with the "live" tag must pass for app to be considered alive
-        app.MapHealthChecks("/alive", new HealthCheckOptions
+        // Adding health checks endpoints to applications in non-development environments has security implications.
+        // See https://aka.ms/dotnet/aspire/healthchecks for details before enabling these endpoints in non-development environments.
+        if (app.Environment.IsDevelopment())
         {
-            Predicate = r => r.Tags.Contains("live")
-        });
+            // All health checks must pass for app to be considered ready to accept traffic after starting
+            app.MapHealthChecks(HealthEndpointPath);
+
+            // Only health checks tagged with the "live" tag must pass for app to be considered alive
+            app.MapHealthChecks(AlivenessEndpointPath, new HealthCheckOptions
+            {
+                Predicate = r => r.Tags.Contains("live")
+            });
+        }
 
         return app;
     }
-
-    private static MeterProviderBuilder AddBuiltInMeters(this MeterProviderBuilder meterProviderBuilder) =>
-        meterProviderBuilder.AddMeter(
-            "Microsoft.AspNetCore.Hosting",
-            "Microsoft.AspNetCore.Server.Kestrel",
-            "System.Net.Http");
 }

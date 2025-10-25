@@ -16,7 +16,7 @@ public static class Constants
     public const string ScheduledJobDatabaseName = "AdminAssistantScheduledJobs";
 
     public const string MessageBusName = "AdminAssistantMessageBus";
-    public const string CacheName = "AdminAssistantCache";
+    public const string CacheName = "AdminAssistant-Cache";
     public const string CacheAdminDashboardName = "AdminAssistantCacheAdminDashboad";
 
     public const string AvaloniaAppName = "AdminAssistant-Avalonia";

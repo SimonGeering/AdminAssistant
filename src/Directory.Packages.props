@@ -44,6 +44,8 @@
     <PackageVersion Include="Mediator.Abstractions" Version="3.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <!--AdminAssistant.WebApp-->
+    <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="9.5.1" />
     <!--AdminAssistant.Api-->
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.10"/>
     <!--AdminAssistant.AvaloniaApp-->
@@ -106,6 +108,9 @@
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
     <PackageVersion Include="Xunit.SkippableFact" Version="1.5.23" />
+    <!--AdminAssistant.IntegrationTests-->
+    <PackageVersion Include="Aspire.Hosting.Testing" Version="9.5.1"/>
+      
     <!--AdminAssistant.UI-->
     <!--No project specific packages-->
     <!--AdminAssistant.WPF-->

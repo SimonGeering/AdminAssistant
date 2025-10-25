@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Aspire.StackExchange.Redis.OutputCaching" />
         <PackageReference Include="MudBlazor" />
         <PackageReference Include="SonarAnalyzer.CSharp">
             <PrivateAssets>all</PrivateAssets>
@@ -25,6 +26,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+      <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     </ItemGroup>
 
 </Project>

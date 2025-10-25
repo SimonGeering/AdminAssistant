@@ -66,17 +66,19 @@ var msgBusAdmin = msgBus.WithManagementPlugin()
 
 // Web API ...
 var api = builder.AddProject<Projects.AdminAssistant_Api>(Constants.Api)
+    .WithExternalHttpEndpoints()
+    .WithHttpHealthCheck("/health")
     .WithReference(applicationDatabase).WaitFor(applicationDatabase)
-    .WithReference(msgBus).WaitFor(msgBus)
-    .WithExternalHttpEndpoints();
+    .WithReference(msgBus).WaitFor(msgBus);
     //.WithAnnotation("Swagger UI", "swagger")
     //.WithAnnotation("OpenAPI JSON", "openapi/v1.json");
 
 // Main App ...
 builder.AddProject<Projects.AdminAssistant_Web>(Constants.WebAppName)
+    .WithExternalHttpEndpoints()
+    .WithHttpHealthCheck("/health")
     .WithReference(api).WaitFor(api)
-    .WithReference(cache).WaitFor(cache)
-    .WithExternalHttpEndpoints();
+    .WithReference(cache).WaitFor(cache);
 
 // Avalonia App ...
 builder.AddProject<Projects.AdminAssistant_AvaloniaApp>(Constants.AvaloniaAppName)

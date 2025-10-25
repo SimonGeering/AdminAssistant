@@ -5,23 +5,6 @@
     <File Path="..\DevOps\NuGet.config" />
     <File Path="..\DevOps\PullRequest.yml" />
   </Folder>
-  <Folder Name="/Samples/" />
-  <Folder Name="/Samples/Aspire/">
-    <Project Path="..\Samples\Aspire\AspireStarter.ApiService\AspireStarter.ApiService.csproj" Type="Classic C#" />
-    <Project Path="..\Samples\Aspire\AspireStarter.AppHost\AspireStarter.AppHost.csproj" Type="Classic C#" />
-    <Project Path="..\Samples\Aspire\AspireStarter.ServiceDefaults\AspireStarter.ServiceDefaults.csproj" Type="Classic C#" />
-    <Project Path="..\Samples\Aspire\AspireStarter.Tests\AspireStarter.Tests.csproj" Type="Classic C#" />
-    <Project Path="..\Samples\Aspire\AspireStarter.Web\AspireStarter.Web.csproj" Type="Classic C#" />
-  </Folder>
-  <Folder Name="/Samples/Avalonia/">
-    <Project Path="..\Samples\Avalonia\AvaloniaMVVM.csproj" Type="Classic C#" />
-  </Folder>
-  <Folder Name="/Samples/MudBlazor/">
-    <Project Path="..\Samples\MudBlazor\MudBlazorWebApp.csproj" Type="Classic C#" />
-  </Folder>
-  <Folder Name="/Samples/WebAPI/">
-    <Project Path="..\Samples\WebAPI\WebApiWithControllers.csproj" Type="Classic C#" />
-  </Folder>
   <Folder Name="/Solution Items/">
     <File Path="..\.gitignore" />
     <File Path=".editorconfig" />
@@ -41,6 +24,7 @@
   <Project Path="AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
   <Project Path="AdminAssistant.Infrastructure.ClientSide\AdminAssistant.Infrastructure.ClientSide.csproj" />
   <Project Path="AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
+  <Project Path="AdminAssistant.IntegrationTests\AdminAssistant.IntegrationTests.csproj" Type="Classic C#" />
   <Project Path="AdminAssistant.Retro\AdminAssistant.Retro.csproj" />
   <Project Path="AdminAssistant.Test\AdminAssistant.Test.csproj" />
   <Project Path="AdminAssistant.UI\AdminAssistant.UI.csproj" />
