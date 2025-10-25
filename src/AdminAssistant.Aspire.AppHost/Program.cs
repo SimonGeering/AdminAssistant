@@ -37,14 +37,6 @@ var redisInsight = cache.WithRedisInsight(containerName: Constants.CacheAdminDas
     .WithLifetime(ContainerLifetime.Persistent);
 
 // Message Buss ...
-#pragma warning disable S125
-// Example Parameters ...
-// "Parameters": {
-//     "msgBusAdminUserName": "secretusername",
-//     "msgBusAdminPassword": "secretpassword"
-// }
-#pragma warning restore S125
-
 var msgBusAdminUsername = builder.AddParameter("msgBusAdminUsername", secret: true);
 var msgBusAdminPassword = builder.AddParameter("msgBusAdminPassword", secret: true);
 
@@ -71,12 +63,7 @@ var api = builder.AddProject<Projects.AdminAssistant_Api>(Constants.Api)
     .WithReference(applicationDatabase).WaitFor(applicationDatabase)
     .WithReference(msgBus).WaitFor(msgBus)
     .WithUrl("/api/docs/index.html");
-
-
-//api.WithUrl("/api/docs/index.html", "Swagger UI");
-//api.WithUrl("/openapi/v1.json", "OpenAPI JSON");
-//api.WithUrl("/swagger/v1/swagger.json", "Swagger JSON");
-
+//OpenAPI JSON = /openapi/v1.json
 
 // Main App ...
 builder.AddProject<Projects.AdminAssistant_Web>(Constants.WebAppName)

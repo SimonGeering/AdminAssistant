@@ -14,17 +14,22 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="FluentValidation.AspNetCore" />
+        <PackageReference Include="MicroElements.Swashbuckle.FluentValidation" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
         <PackageReference Include="Swashbuckle.AspNetCore" />
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
         <PackageReference Include="SonarAnalyzer.CSharp">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-        </PackageReference>        
+        </PackageReference>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Application\AdminAssistant.Application.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -19,7 +19,6 @@
   <Project Path="AdminAssistant.Aspire.AppHost\AdminAssistant.Aspire.AppHost.csproj" Type="Classic C#" />
   <Project Path="AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
   <Project Path="AdminAssistant.AvaloniaApp\AdminAssistant.AvaloniaApp.csproj" Type="Classic C#" />
-  <Project Path="AdminAssistant.Blazor.Server\AdminAssistant.Blazor.Server.csproj" />
   <Project Path="AdminAssistant.Blazor.Webasm\AdminAssistant.Blazor.Webasm.csproj" />
   <Project Path="AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
   <Project Path="AdminAssistant.Infrastructure.ClientSide\AdminAssistant.Infrastructure.ClientSide.csproj" />
