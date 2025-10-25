@@ -15,6 +15,8 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
         <PackageReference Include="SonarAnalyzer.CSharp">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -23,6 +25,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Ardalis.GuardClauses">
+        <HintPath>..\..\..\..\..\..\.nuget\packages\ardalis.guardclauses\5.0.0\lib\net8.0\Ardalis.GuardClauses.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

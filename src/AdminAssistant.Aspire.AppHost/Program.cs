@@ -70,8 +70,13 @@ var api = builder.AddProject<Projects.AdminAssistant_Api>(Constants.Api)
     .WithHttpHealthCheck("/health")
     .WithReference(applicationDatabase).WaitFor(applicationDatabase)
     .WithReference(msgBus).WaitFor(msgBus)
-    .WithUrl("/swagger", "Swagger UI")
-    .WithUrl("/openapi/v1.json", "OpenAPI JSON");
+    .WithUrl("/api/docs/index.html");
+
+
+//api.WithUrl("/api/docs/index.html", "Swagger UI");
+//api.WithUrl("/openapi/v1.json", "OpenAPI JSON");
+//api.WithUrl("/swagger/v1/swagger.json", "Swagger JSON");
+
 
 // Main App ...
 builder.AddProject<Projects.AdminAssistant_Web>(Constants.WebAppName)
@@ -84,14 +89,15 @@ builder.AddProject<Projects.AdminAssistant_Web>(Constants.WebAppName)
 builder.AddProject<Projects.AdminAssistant_AvaloniaApp>(Constants.AvaloniaAppName)
     .WithReference(api).WaitFor(api)
     .WithReference(cache).WaitFor(cache)
+    .WithExplicitStart()
     .ExcludeFromManifest(); // Not a web app
 
-#pragma warning disable S125
 // Retro console UI ... :-)
-//builder.AddProject<Projects.AdminAssistant_Retro>(Constants.RetroConsole)
-    //.WaitFor(databaseMigrationWorkerService)
-    //.ExcludeFromManifest(); // Not a web app
-#pragma warning restore S125
+builder.AddProject<Projects.AdminAssistant_Retro>(Constants.RetroConsole)
+    .WithReference(api).WaitFor(api)
+    .WithReference(cache).WaitFor(cache)
+    .WithExplicitStart()
+    .ExcludeFromManifest(); // Not a web app
 
 await builder.Build().RunAsync();
 
