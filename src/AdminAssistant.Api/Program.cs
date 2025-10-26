@@ -75,8 +75,10 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseResponseCompression();
+#pragma warning disable S125
     //    // TODO: put the error page back but without bootstrap.
     //    app.UseExceptionHandler("/Error");
+#pragma warning restore S125
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
