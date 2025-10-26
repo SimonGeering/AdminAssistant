@@ -21,7 +21,7 @@ public sealed class AccountsService_UnitTest
         };
 
         var mockBankAccountTypeApiClient = new Mock<IBankAccountTypeApiClient>();
-        mockBankAccountTypeApiClient.Setup(x => x.GetBankAccountTypesAsync())
+        mockBankAccountTypeApiClient.Setup(x => x.GetBankAccountTypesAsync(CancellationToken.None))
             .Returns(Task.FromResult(bankAccountTypeList));
 
         var services = new ServiceCollection();

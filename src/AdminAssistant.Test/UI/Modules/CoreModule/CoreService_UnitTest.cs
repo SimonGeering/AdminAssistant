@@ -21,7 +21,7 @@ public sealed class CoreService_GetCurrencyListAsync
             };
 
         var mockWebAPIClient = new Mock<ICurrencyApiClient>();
-        mockWebAPIClient.Setup(x => x.GetCurrenciesAsync())
+        mockWebAPIClient.Setup(x => x.GetCurrenciesAsync(CancellationToken.None))
             .Returns(Task.FromResult(currencyList));
 
         var services = new ServiceCollection();

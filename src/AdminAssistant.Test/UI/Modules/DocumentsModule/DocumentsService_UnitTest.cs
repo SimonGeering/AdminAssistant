@@ -20,7 +20,7 @@ public sealed class DocumentsService_GetDocumentListAsync
             };
 
         var mockWebAPIClient = new Mock<IDocumentApiClient>();
-        mockWebAPIClient.Setup(x => x.GetDocumentsAsync())
+        mockWebAPIClient.Setup(x => x.GetDocumentsAsync(CancellationToken.None))
             .Returns(Task.FromResult(documentsList));
 
         var services = new ServiceCollection();
