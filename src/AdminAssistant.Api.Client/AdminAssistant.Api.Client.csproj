@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <DocumentationFile>AdminAssistant.Api.Client.docs.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="AdminAssistant.Api.Client.docs.xml" />
+        <None Include="..\.editorconfig" Link=".editorconfig" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Refit.HttpClientFactory" />
+        <PackageReference Include="SonarAnalyzer.CSharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Modules\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AdminAssistant.Api.Contracts\AdminAssistant.Api.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>

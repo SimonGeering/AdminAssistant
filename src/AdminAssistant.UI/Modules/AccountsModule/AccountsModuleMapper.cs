@@ -1,4 +1,5 @@
 using AdminAssistant.Modules.CoreModule;
+using AdminAssistant.WebAPI.v1.AccountsModule;
 
 namespace AdminAssistant.Modules.AccountsModule;
 
@@ -7,11 +8,11 @@ internal static class AccountsModuleMapper
     internal static BankAccountType ToBankAccountType(this BankAccountTypeResponseDto source)
         => new()
         {
-            BankAccountTypeID = source.BankAccountTypeID.HasValue ? new BankAccountTypeId(source.BankAccountTypeID.Value) : BankAccountTypeId.Default,
-            Description = source.Description ?? string.Empty,
+            BankAccountTypeID = new BankAccountTypeId(source.BankAccountTypeID),
+            Description = source.Description,
         };
 
-    internal static IEnumerable<BankAccountType> ToBankAccountTypeList(this ICollection<BankAccountTypeResponseDto> source)
+    internal static IEnumerable<BankAccountType> ToBankAccountTypeList(this IEnumerable<BankAccountTypeResponseDto> source)
         => source.Select(ToBankAccountType);
 
     internal static BankAccountCreateRequestDto ToBankAccountCreateRequestDto(this BankAccount source)
@@ -29,14 +30,14 @@ internal static class AccountsModuleMapper
     internal static BankAccount ToBankAccount(this BankAccountResponseDto source)
         => new()
         {
-            BankAccountID = source.BankAccountID.HasValue ? new BankAccountId(source.BankAccountID.Value) : BankAccountId.Default,
-            AccountName = source.AccountName ?? string.Empty,
-            BankAccountTypeID = source.BankAccountTypeID.HasValue ? new BankAccountTypeId(source.BankAccountTypeID.Value) : BankAccountTypeId.Default,
-            CurrencyID = source.CurrencyID.HasValue ? new CurrencyId(source.CurrencyID.Value) : CurrencyId.Default,
-            IsBudgeted = source.IsBudgeted ?? false,
-            OpeningBalance = source.OpeningBalance ?? 0,
-            OpenedOn = source.OpenedOn ?? DateTime.MinValue,
-            CurrentBalance = source.CurrentBalance ?? 0
+            BankAccountID = new BankAccountId(source.BankAccountID),
+            AccountName = source.AccountName,
+            BankAccountTypeID = new BankAccountTypeId(source.BankAccountTypeID),
+            CurrencyID = new CurrencyId(source.CurrencyID),
+            IsBudgeted = source.IsBudgeted,
+            OpeningBalance = source.OpeningBalance,
+            OpenedOn = source.OpenedOn,
+            CurrentBalance = source.CurrentBalance
         };
 
     internal static BankAccountUpdateRequestDto ToBankAccountUpdateRequestDto(this BankAccount source)

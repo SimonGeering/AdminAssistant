@@ -17,6 +17,7 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.10" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="9.0.10" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="8.0.0" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.15.0.120848" />
     <!--AdminAssistant.Aspire-->
     <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.5.2" />

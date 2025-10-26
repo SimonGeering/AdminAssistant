@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AdminAssistant.Api.Client\AdminAssistant.Api.Client.csproj" />
     <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
     <ProjectReference Include="..\AdminAssistant.Infrastructure.ClientSide\AdminAssistant.Infrastructure.ClientSide.csproj" />
   </ItemGroup>

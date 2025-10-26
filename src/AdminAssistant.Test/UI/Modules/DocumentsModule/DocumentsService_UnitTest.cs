@@ -1,7 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.Modules.DocumentsModule;
 using AdminAssistant.Modules.DocumentsModule.UI;
-using AdminAssistant.UI.Shared.WebAPIClient.v1;
+using AdminAssistant.WebAPI.v1.DocumentsModule;
+using AdminAssistant.WebAPIClient.v1.DocumentsModule;
 
 namespace AdminAssistant.Test.UI.Modules.DocumentsModule;
 
@@ -12,14 +13,14 @@ public sealed class DocumentsService_GetDocumentListAsync
     public async Task ReturnAListOfDocuments_GivenNoArguments()
     {
         // Arrange
-        ICollection<DocumentResponseDto> documentsList = new List<DocumentResponseDto>()
+        IEnumerable<DocumentResponseDto> documentsList = new List<DocumentResponseDto>()
             {
                 new DocumentResponseDto { DocumentID = 1, FileName = "test.pdf" },
                 new DocumentResponseDto { DocumentID = 2, FileName = "test2.docx" },
             };
 
-        var mockWebAPIClient = new Mock<IAdminAssistantWebAPIClient>();
-        mockWebAPIClient.Setup(x => x.GetDocumentAsync())
+        var mockWebAPIClient = new Mock<IDocumentApiClient>();
+        mockWebAPIClient.Setup(x => x.GetDocumentsAsync(CancellationToken.None))
             .Returns(Task.FromResult(documentsList));
 
         var services = new ServiceCollection();
