@@ -167,24 +167,6 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                     b.HasKey("BankAccountTypeID");
 
                     b.ToTable("BankAccountType", "Accounts");
-
-                    b.HasData(
-                        new
-                        {
-                            BankAccountTypeID = 1,
-                            AllowCompany = true,
-                            AllowPersonal = true,
-                            Description = "Current Account",
-                            IsDeprecated = false
-                        },
-                        new
-                        {
-                            BankAccountTypeID = 2,
-                            AllowCompany = true,
-                            AllowPersonal = true,
-                            Description = "Savings Account",
-                            IsDeprecated = false
-                        });
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Accounts.BankEntity", b =>
@@ -527,29 +509,6 @@ namespace AdminAssistant.Infrastructure.EntityFramework.Migrations.Postgres
                     b.HasKey("CurrencyID");
 
                     b.ToTable("Currency", "Core");
-
-                    b.HasData(
-                        new
-                        {
-                            CurrencyID = 1,
-                            DecimalFormat = "2.2-2",
-                            IsDeprecated = false,
-                            Symbol = "GBP"
-                        },
-                        new
-                        {
-                            CurrencyID = 2,
-                            DecimalFormat = "2.2-2",
-                            IsDeprecated = false,
-                            Symbol = "EUR"
-                        },
-                        new
-                        {
-                            CurrencyID = 3,
-                            DecimalFormat = "2.2-2",
-                            IsDeprecated = false,
-                            Symbol = "USD"
-                        });
                 });
 
             modelBuilder.Entity("AdminAssistant.Infra.DAL.EntityFramework.Model.Core.OwnerEntity", b =>

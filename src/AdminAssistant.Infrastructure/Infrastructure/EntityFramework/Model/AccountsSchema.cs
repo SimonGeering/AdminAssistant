@@ -76,8 +76,6 @@ public static class AccountsSchema
         builder.Entity<BankAccountTypeEntity>().Property(x => x.AllowPersonal).IsRequired().HasDefaultValue(false);
         builder.Entity<BankAccountTypeEntity>().Property(x => x.AllowCompany).IsRequired().HasDefaultValue(false);
         builder.Entity<BankAccountTypeEntity>().Property(x => x.IsDeprecated).IsRequired().HasDefaultValue(false);
-
-        builder.Entity<BankAccountTypeEntity>().HasData(GetBankAccountTypesSeedData(true));
     }
 
     private static void Payee_OnModelCreating(ModelBuilder builder)

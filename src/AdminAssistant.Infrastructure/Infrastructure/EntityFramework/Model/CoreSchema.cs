@@ -100,7 +100,6 @@ public static class CoreSchema
         modelBuilder.Entity<CurrencyEntity>().Property(x => x.Symbol).IsRequired().IsUnicode().HasMaxLength(Currency.SymbolMaxLength).HasColumnType($"CHAR({Currency.SymbolMaxLength})");
         modelBuilder.Entity<CurrencyEntity>().Property(x => x.DecimalFormat).IsRequired().HasMaxLength(Currency.DecimalFormatMaxLength).HasColumnType($"CHAR({Currency.DecimalFormatMaxLength})");
         modelBuilder.Entity<CurrencyEntity>().Property(x => x.IsDeprecated).IsRequired().HasDefaultValue(false);
-        modelBuilder.Entity<CurrencyEntity>().HasData(GetCurrencySeedData(true));
     }
 
     private static void Owner_OnModelCreating(ModelBuilder modelBuilder)

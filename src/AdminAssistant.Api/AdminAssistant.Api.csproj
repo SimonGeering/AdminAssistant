@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <RootNamespace>AdminAssistant.Api</RootNamespace>
+        <AssemblyName>AdminAssistant.Api</AssemblyName>
+        <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
+        <DocumentationFile>AdminAssistant.Api.docs.xml</DocumentationFile>
+        <NoWarn>$(NoWarn);</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="AdminAssistant.Api.docs.xml" />
+        <None Include="..\.editorconfig" Link=".editorconfig" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="FluentValidation.AspNetCore" />
+        <PackageReference Include="MicroElements.Swashbuckle.FluentValidation" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Swashbuckle.AspNetCore" />
+        <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
+        <PackageReference Include="SonarAnalyzer.CSharp">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\AdminAssistant.Application\AdminAssistant.Application.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
+        <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
+        <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Ardalis.GuardClauses">
+        <HintPath>..\..\..\..\..\..\.nuget\packages\ardalis.guardclauses\5.0.0\lib\net8.0\Ardalis.GuardClauses.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
