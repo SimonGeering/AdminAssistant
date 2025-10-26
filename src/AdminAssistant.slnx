@@ -1,4 +1,8 @@
-﻿<Solution>
+<Solution>
+    <Folder Name="/aspire-output/">
+        <File Path="aspire-output\docker-compose.yaml" />
+        <File Path="aspire-output\.env" />
+    </Folder>
   <Folder Name="/DevOps/">
     <File Path="..\DevOps\ContinuousIntegration.yml" />
     <File Path="..\DevOps\ManualFullBuild.yml" />
@@ -14,19 +18,20 @@
     <File Path="Directory.Packages.props" />
     <File Path="global.json" />
   </Folder>
-  <Project Path="AdminAssistant.Api\AdminAssistant.Api.csproj" Type="Classic C#" />
+  <Project Path="AdminAssistant.Api\AdminAssistant.Api.csproj" Type="C#" />
   <Project Path="AdminAssistant.Application\AdminAssistant.Application.csproj" />
-  <Project Path="AdminAssistant.Aspire.AppHost\AdminAssistant.Aspire.AppHost.csproj" Type="Classic C#" />
+  <Project Path="AdminAssistant.Aspire.AppHost\AdminAssistant.Aspire.AppHost.csproj" Type="C#" />
+  <Project Path="AdminAssistant.Aspire.DatabaseMigrationService\AdminAssistant.Aspire.DatabaseMigrationService.csproj" />
   <Project Path="AdminAssistant.Aspire.ServiceDefaults\AdminAssistant.Aspire.ServiceDefaults.csproj" />
-  <Project Path="AdminAssistant.AvaloniaApp\AdminAssistant.AvaloniaApp.csproj" Type="Classic C#" />
+  <Project Path="AdminAssistant.AvaloniaApp\AdminAssistant.AvaloniaApp.csproj" Type="C#" />
   <Project Path="AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj" />
   <Project Path="AdminAssistant.Infrastructure.ClientSide\AdminAssistant.Infrastructure.ClientSide.csproj" />
   <Project Path="AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
-  <Project Path="AdminAssistant.IntegrationTests\AdminAssistant.IntegrationTests.csproj" Type="Classic C#" />
+  <Project Path="AdminAssistant.IntegrationTests\AdminAssistant.IntegrationTests.csproj" Type="C#" />
   <Project Path="AdminAssistant.Retro\AdminAssistant.Retro.csproj" />
   <Project Path="AdminAssistant.Test\AdminAssistant.Test.csproj" />
   <Project Path="AdminAssistant.UI\AdminAssistant.UI.csproj" />
-  <Project Path="AdminAssistant.Web\AdminAssistant.Web.csproj" Type="Classic C#" />
+  <Project Path="AdminAssistant.Web\AdminAssistant.Web.csproj" Type="C#" />
   <Project Path="SimonGeering.Framework.Test\SimonGeering.Framework.Test.csproj" />
   <Project Path="SimonGeering.Framework\SimonGeering.Framework.csproj" />
 </Solution>

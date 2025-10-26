@@ -373,3 +373,4 @@ MigrationBackup/
 /src/.idea/.idea.AdminAssistant/.idea/avalonia.xml
 /src/.idea/.idea.AdminAssistant/.idea/dataSources.xml
 /src/docker-compose-artifacts/docker-compose.yaml
+/src/aspire-output/docker-compose.yaml
