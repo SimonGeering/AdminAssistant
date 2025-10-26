@@ -1,4 +1,3 @@
-using AdminAssistant.Shared;
 using AdminAssistant.Infrastructure.EntityFramework.Model;
 using AdminAssistant.Infrastructure.EntityFramework.Model.Accounts;
 using AdminAssistant.Infrastructure.EntityFramework.Model.Budget;

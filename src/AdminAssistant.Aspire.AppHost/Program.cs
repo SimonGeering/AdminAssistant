@@ -3,19 +3,24 @@
 
 // https://learn.microsoft.com/en-gb/dotnet/aspire/
 using AdminAssistant;
+using Aspire.Hosting.Docker.Resources.ComposeNodes;
 
 var builder = DistributedApplication.CreateBuilder(args);
-
-builder.AddDockerComposeEnvironment("admin-assistant");
+builder.AddDockerComposeEnvironment("AdminAssistantEnvironment")
+    .WithProperties(env =>
+    {
+        env.DefaultNetworkName = "AdminAssistant-Network";
+        env.BuildContainerImages = true;
+    });
 
 // IAM Server ...
 var keycloak = builder.AddKeycloak(Constants.IAMServerName, 8080)
-    .WithDataVolume("keycloak-data")
+    .WithDataVolume($"{Constants.IAMServerName}-Data")
     .WithLifetime(ContainerLifetime.Persistent);
 
 // Database Server ...
 var postgres = builder.AddPostgres(Constants.DatabaseServerName)
-    .WithDataVolume("postgresql-data", isReadOnly: false)
+    .WithDataVolume($"{Constants.DatabaseServerName}-Data", isReadOnly: false)
     .WithLifetime(ContainerLifetime.Persistent);
 
 var pgAdmin = postgres.WithPgAdmin(containerName: Constants.DatabaseServerAdminDashboardName)
@@ -28,12 +33,16 @@ var applicationDatabase = postgres.AddDatabase(Constants.ApplicationDatabaseName
 var scheduledJobDatabase = postgres.AddDatabase(Constants.ScheduledJobDatabaseName)
     .WithParentRelationship(postgres);
 
+var migrations = builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationService>(Constants.DatabaseMigrationWorkerService)
+    .WithReference(applicationDatabase)
+    .WaitFor(applicationDatabase);
+
 // Data Cache ...
 var cache = builder.AddRedis(Constants.CacheName)
-    .WithDataVolume("redis-data", isReadOnly: false)
+    .WithDataVolume($"{Constants.CacheName}-Data", isReadOnly: false)
     .WithLifetime(ContainerLifetime.Persistent);
 
-var redisInsight = cache.WithRedisInsight(containerName: Constants.CacheAdminDashboardName)
+cache.WithRedisInsight(containerName: Constants.CacheAdminDashboardName)
     .WithLifetime(ContainerLifetime.Persistent);
 
 // Message Buss ...
@@ -41,29 +50,21 @@ var msgBusAdminUsername = builder.AddParameter("msgBusAdminUsername", secret: tr
 var msgBusAdminPassword = builder.AddParameter("msgBusAdminPassword", secret: true);
 
 var msgBus = builder.AddRabbitMQ(Constants.MessageBusName, msgBusAdminUsername, msgBusAdminPassword)
-    .WithDataVolume("rabbitmq-data", isReadOnly: false)
+    .WithDataVolume($"{Constants.MessageBusName}-Data", isReadOnly: false)
     .WithLifetime(ContainerLifetime.Persistent);
 
-var msgBusAdmin = msgBus.WithManagementPlugin()
+msgBus.WithManagementPlugin()
+    .WithContainerName(Constants.MessageBusAdminDashboardName)
     .WithLifetime(ContainerLifetime.Persistent);
-
-#pragma warning disable S125
-/*
-      // var databaseMigrationWorkerService = builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationWorkerService>(Constants.DatabaseMigrationWorkerService)
-   //     .WithReference(applicationDatabase)
-   //     .WaitFor(postgres)
-   //     .WithParentRelationship(postgres);
-*/
-#pragma warning restore S125
 
 // Web API ...
 var api = builder.AddProject<Projects.AdminAssistant_Api>(Constants.Api)
     .WithExternalHttpEndpoints()
     .WithHttpHealthCheck("/health")
-    .WithReference(applicationDatabase).WaitFor(applicationDatabase)
     .WithReference(msgBus).WaitFor(msgBus)
-    .WithUrl("/api/docs/index.html");
-//OpenAPI JSON = /openapi/v1.json
+    .WithReference(migrations).WaitForCompletion(migrations)
+    .WithReference(applicationDatabase).WaitFor(applicationDatabase)
+    .WithUrl("/api/docs/index.html"); //OpenAPI JSON = /openapi/v1.json
 
 // Main App ...
 builder.AddProject<Projects.AdminAssistant_Web>(Constants.WebAppName)
@@ -87,5 +88,3 @@ builder.AddProject<Projects.AdminAssistant_Retro>(Constants.RetroConsole)
     .ExcludeFromManifest(); // Not a web app
 
 await builder.Build().RunAsync();
-
-

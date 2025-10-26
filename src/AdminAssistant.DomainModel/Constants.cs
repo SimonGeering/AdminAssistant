@@ -7,17 +7,19 @@ namespace AdminAssistant;
 public static class Constants
 {
     public const string WebAppName = "AdminAssistant-Web";
-    public const string ServerAppName = "AdminAssistantServer";
 
-    public const string IAMServerName = "AdminAssistantIAMServer";
-    public const string DatabaseServerName = "AdminAssistantDatabaseServer";
-    public const string DatabaseServerAdminDashboardName = "AdminAssistantDatabaseServerAdminDashboad";
+    public const string IAMServerName = "AdminAssistant-IAMServer";
+
+    public const string DatabaseServerName = "AdminAssistant-DatabaseServer";
+    public const string DatabaseServerAdminDashboardName = "AdminAssistant-DatabaseServer-AdminDashboad";
     public const string ApplicationDatabaseName = "AdminAssistant";
     public const string ScheduledJobDatabaseName = "AdminAssistantScheduledJobs";
 
     public const string MessageBusName = "AdminAssistant-MessageBus";
+    public const string MessageBusAdminDashboardName = "AdminAssistant-MessageBus-AdminDashboad";
+
     public const string CacheName = "AdminAssistant-Cache";
-    public const string CacheAdminDashboardName = "AdminAssistant-CacheAdminDashboad";
+    public const string CacheAdminDashboardName = "AdminAssistant-Cache-AdminDashboad";
 
     public const string AvaloniaAppName = "AdminAssistant-Avalonia";
     public const string RetroConsole = "AdminAssistant-RetroConsole";
