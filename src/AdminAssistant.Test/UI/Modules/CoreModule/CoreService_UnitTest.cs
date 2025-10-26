@@ -1,7 +1,8 @@
 #pragma warning disable CA1707 // Identifiers should not contain underscores
 using AdminAssistant.Modules.CoreModule;
 using AdminAssistant.Modules.CoreModule.UI;
-using AdminAssistant.UI.Shared.WebAPIClient.v1;
+using AdminAssistant.WebAPI.v1.CoreModule;
+using AdminAssistant.WebAPIClient.v1.CoreModule;
 
 namespace AdminAssistant.Test.UI.Modules.CoreModule;
 
@@ -12,15 +13,15 @@ public sealed class CoreService_GetCurrencyListAsync
     public async Task ReturnAListOfCurrency_IncludingADefault()
     {
         // Arrange
-        ICollection<CurrencyResponseDto> currencyList = new List<CurrencyResponseDto>()
+        IEnumerable<CurrencyResponseDto> currencyList = new List<CurrencyResponseDto>()
             {
                 new CurrencyResponseDto { CurrencyID = 1, Symbol = "GBP", DecimalFormat = "2.2-2" },
                 new CurrencyResponseDto { CurrencyID = 2, Symbol = "EUR", DecimalFormat = "2.2-2" },
                 new CurrencyResponseDto { CurrencyID = 3, Symbol = "USD", DecimalFormat = "2.2-2" },
             };
 
-        var mockWebAPIClient = new Mock<IAdminAssistantWebAPIClient>();
-        mockWebAPIClient.Setup(x => x.GetCurrencyAsync())
+        var mockWebAPIClient = new Mock<ICurrencyApiClient>();
+        mockWebAPIClient.Setup(x => x.GetCurrenciesAsync())
             .Returns(Task.FromResult(currencyList));
 
         var services = new ServiceCollection();

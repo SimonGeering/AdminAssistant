@@ -1,3 +1,5 @@
+using AdminAssistant.WebAPIClient.v1.AccountsModule;
+
 namespace AdminAssistant.Modules.AccountsModule.UI;
 
 public interface IAccountsService
@@ -9,15 +11,16 @@ public interface IAccountsService
 }
 internal sealed class AccountsService(
     IPdfFileProvider pdfFileProvider,
-    IAdminAssistantWebAPIClient adminAssistantWebApiClient,
+    IBankAccountTypeApiClient bankAccountTypeApiClient,
+    IBankAccountApiClient bankAccountApiClient,
     ILoggingProvider log)
-    : ServiceBase(adminAssistantWebApiClient, log), IAccountsService
+    : ServiceBase(log), IAccountsService
 {
     public async Task<List<BankAccountType>> LoadBankAccountTypesLookupDataAsync()
     {
         Log.Start();
 
-        var response = await AdminAssistantWebAPIClient.GetBankAccountTypeAsync().ConfigureAwait(false);
+        var response = await bankAccountTypeApiClient.GetBankAccountTypesAsync().ConfigureAwait(false);
 
         var result = new List<BankAccountType>(response.ToBankAccountTypeList());
         result.Insert(0, new BankAccountType() { BankAccountTypeID = BankAccountTypeId.Default, Description = string.Empty });
@@ -31,7 +34,7 @@ internal sealed class AccountsService(
 
         var request = model.ToBankAccountCreateRequestDto();
 
-        var response = await AdminAssistantWebAPIClient.PostBankAccountAsync(request).ConfigureAwait(false);
+        var response = await bankAccountApiClient.CreateBankAccountAsync(request).ConfigureAwait(false);
 
         var result = response.ToBankAccount();
         return Log.Finish(result);
@@ -43,7 +46,7 @@ internal sealed class AccountsService(
 
         var request = model.ToBankAccountUpdateRequestDto();
 
-        var response = await AdminAssistantWebAPIClient.PutBankAccountAsync(request).ConfigureAwait(false);
+        var response = await bankAccountApiClient.UpdateBankAccountAsync(request).ConfigureAwait(false);
 
         var result = response.ToBankAccount();
         return Log.Finish(result);

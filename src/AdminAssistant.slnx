@@ -1,8 +1,8 @@
 <Solution>
-    <Folder Name="/aspire-output/">
-        <File Path="aspire-output\docker-compose.yaml" />
-        <File Path="aspire-output\.env" />
-    </Folder>
+  <Folder Name="/aspire-output/">
+    <File Path="aspire-output\docker-compose.yaml" />
+    <File Path="aspire-output\.env" />
+  </Folder>
   <Folder Name="/DevOps/">
     <File Path="..\DevOps\ContinuousIntegration.yml" />
     <File Path="..\DevOps\ManualFullBuild.yml" />
@@ -18,6 +18,8 @@
     <File Path="Directory.Packages.props" />
     <File Path="global.json" />
   </Folder>
+  <Project Path="AdminAssistant.Api.Client\AdminAssistant.Api.Client.csproj" Type="Classic C#" />
+  <Project Path="AdminAssistant.Api.Contracts\AdminAssistant.Api.Contracts.csproj" Type="Classic C#" />
   <Project Path="AdminAssistant.Api\AdminAssistant.Api.csproj" Type="C#" />
   <Project Path="AdminAssistant.Application\AdminAssistant.Application.csproj" />
   <Project Path="AdminAssistant.Aspire.AppHost\AdminAssistant.Aspire.AppHost.csproj" Type="C#" />

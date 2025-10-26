@@ -1,9 +1,6 @@
 #pragma warning disable IDE0090 // Use 'new(...)'
 using AdminAssistant.Infrastructure.Providers;
 using AdminAssistant.Retro.Modules.AccountsModule;
-using AdminAssistant.Shared;
-using Ardalis.GuardClauses;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -12,15 +9,10 @@ using SimonGeering.Framework.Primitives;
 using var host = new HostBuilder()
     .ConfigureServices((hostContext, services) =>
     {
-        var configSettings = hostContext.Configuration.GetSection(nameof(ConfigurationSettings)).Get<ConfigurationSettings>();
-        Guard.Against.Null(configSettings, nameof(configSettings), "Failed to load configuration settings");
-
-        services.AddAdminAssistantWebAPIClient(configSettings);
-
         services.AddValidatorsFromAssemblyContaining<IPersistable>();
-
         services.AddAdminAssistantClientSideProviders();
         services.AddAdminAssistantClientSideDomainModel();
+        services.AddAdminAssistantApiClient();
         services.AddAdminAssistantUI();
         services.AddAdminAssistantRetroUIElements();
     })
