@@ -6,20 +6,21 @@ using SimonGeering.Framework.Primitives;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
-builder.AddRedisOutputCache(Constants.CacheName);
-
-// Add MudBlazor services
-builder.Services.AddMudServices();
 
 // Add services to the container.
+builder.AddRedisOutputCache(Constants.CacheName);
+builder.Services.AddMudServices();
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
-
+    .AddInteractiveServerComponents()
+    .AddCircuitOptions(options =>
+    {
+        if (builder.Environment.IsDevelopment())
+            options.DetailedErrors = true;
+    });
 builder.Services.AddAdminAssistantClientSideProviders();
 builder.Services.AddAdminAssistantClientSideDomainModel();
 builder.Services.AddAdminAssistantUI();
 builder.Services.AddAdminAssistantWebAPIClient(new Uri($"https+http://{Constants.Api}"));
-
 builder.Services.AddHttpClient<WeatherApiClient>(client =>
     {
         // This URL uses "https+http://" to indicate HTTPS is preferred over HTTP.
@@ -44,14 +45,6 @@ app.UseAntiforgery();
 app.UseOutputCache();
 
 app.MapStaticAssets();
-
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents()
-    .AddCircuitOptions(options =>
-    {
-        if (builder.Environment.IsDevelopment())
-            options.DetailedErrors = true;
-    });
 
 app.MapRazorComponents<AdminAssistant.Web.Shared.App>()
     .AddInteractiveServerRenderMode();

@@ -4,7 +4,6 @@
         <RootNamespace>AdminAssistant.Web</RootNamespace>
         <AssemblyName>AdminAssistant.Web</AssemblyName>
         <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
-
         <DocumentationFile>AdminAssistant.Web.docs.xml</DocumentationFile>
         <NoWarn>$(NoWarn);</NoWarn>
     </PropertyGroup>
