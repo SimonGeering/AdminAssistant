@@ -5,6 +5,8 @@ using AdminAssistant.Modules.AccountsModule.Infrastructure.DAL;
 using AdminAssistant.Modules.ContactsModule.Infrastructure.DAL;
 using AdminAssistant.Modules.CoreModule.Infrastructure.DAL;
 using AdminAssistant.Modules.DocumentsModule.Infrastructure.DAL;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("AdminAssistant.Test")]
@@ -13,7 +15,16 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjectionExtensions
 {
-    public static void AddAdminAssistantServerSideInfra(this IServiceCollection services)
+    public static void AddAdminAssistantServerSideInfra(this IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionString = configuration.GetConnectionString(Constants.ApplicationDatabaseName)
+                               ?? throw new InvalidOperationException($"Connection string '{Constants.ApplicationDatabaseName}' not found.");
+
+        services.AddDbContext<IApplicationDbContext, ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+        services.AddAdminAssistantServerSideInfra();
+    }
+
+    internal static void AddAdminAssistantServerSideInfra(this IServiceCollection services)
     {
         AddAccountsDAL(services);
         AddContactsDAL(services);

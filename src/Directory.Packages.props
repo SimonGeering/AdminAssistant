@@ -6,11 +6,11 @@
     <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="9.3.1" />
     <PackageVersion Include="Aspire.Hosting.Docker" Version="9.5.0-preview.1.25474.7" />
     <PackageVersion Include="Aspire.Hosting.Keycloak" Version="9.2.1-preview.1.25222.1" />
-    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="9.5.1" />
-    <PackageVersion Include="Aspire.Hosting.Redis" Version="9.5.1" />
+    <PackageVersion Include="Aspire.Hosting.Kubernetes" Version="9.5.2-preview.1.25522.3" />
+    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="9.5.2" />
+    <PackageVersion Include="Aspire.Hosting.Redis" Version="9.5.2" />
     <PackageVersion Include="Aspire.Hosting.Yarp" Version="9.5.0-preview.1.25474.7" />
-    <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.1" />
-    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.2" />
     <PackageVersion Include="FluentValidation" Version="12.0.0" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.10" />
@@ -19,14 +19,14 @@
     <PackageVersion Include="Microsoft.Extensions.Http" Version="9.0.10" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.15.0.120848" />
     <!--AdminAssistant.Aspire-->
-    <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.5.1" />
-    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="9.5.1" />
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="9.5.2" />
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="9.5.2" />
     <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
-    <PackageVersion Include="Aspire.Dashboard.Sdk.linux-x64" Version="9.5.1" />
+    <PackageVersion Include="Aspire.Dashboard.Sdk.linux-x64" Version="9.5.2" />
     <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
-    <PackageVersion Include="Aspire.Hosting.Orchestration.linux-x64" Version="9.5.1" />
+    <PackageVersion Include="Aspire.Hosting.Orchestration.linux-x64" Version="9.5.2" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="9.10.0" />
-    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.5.1" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="9.5.2" />
     <PackageVersion Include="Npgsql.OpenTelemetry" Version="9.0.4" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.0.0-beta.8" />
     <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.13.1" />
@@ -38,12 +38,23 @@
     <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.13.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.6.0-beta.3" />
     <!--AdminAssistant.Application-->
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageVersion Include="Ardalis.Result" Version="10.1.0" />
     <PackageVersion Include="Ardalis.Result.FluentValidation" Version="10.1.0" />
     <PackageVersion Include="Mediator.SourceGenerator" Version="3.0.1" />
     <PackageVersion Include="Mediator.Abstractions" Version="3.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <!--AdminAssistant.WebApp-->
+    <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="9.5.2" />
+    <!--AdminAssistant.Api-->
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="9.0.10" />
+    <!--AdminAssistant.AvaloniaApp-->
+    <PackageVersion Include="Avalonia" Version="11.2.7" />
+    <PackageVersion Include="Avalonia.Desktop" Version="11.2.7" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.2.7" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.2.7" />
+    <PackageVersion Include="Avalonia.Diagnostics" Version="11.2.7" />
     <!--AdminAssistant.Blazor-->
     <!--
         <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="7.0.0-rc2.7" />
@@ -98,6 +109,8 @@
     <PackageVersion Include="xunit" Version="2.9.3" />
     <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
     <PackageVersion Include="Xunit.SkippableFact" Version="1.5.23" />
+    <!--AdminAssistant.IntegrationTests-->
+    <PackageVersion Include="Aspire.Hosting.Testing" Version="9.5.2" />
     <!--AdminAssistant.UI-->
     <!--No project specific packages-->
     <!--AdminAssistant.WPF-->

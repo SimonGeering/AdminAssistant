@@ -40,34 +40,45 @@
         ],
         "cSpell.words": [
             "Admin",
+            "analyzers",
             "Apps",
             "Ardalis",
+            "Avalonia",
             "blazor",
             "Bootswatch",
             "cleanUp",
+            "contentfiles",
             "CQRS",
+            "dbml",
             "Emoji",
             "finalizer",
             "geering",
-            "incase",
             "HSTS",
+            "incase",
             "markdownlint",
             "MediatR",
             "Newtonsoft",
+            "Npgsql",
             "nuget",
             "OIDC",
             "Persistable",
+            "PGADMIN",
             "pwsh",
+            "rabbitmq",
             "Respawn",
-            "setvariable",
+            "runsettings",
             "Setup",
+            "setvariable",
+            "simongeering",
+            "slnx",
+            "SonarAnalyzer",
             "Swashbuckle",
             "Syncfusion",
             "sysdiagrams",
             "titlebar",
             "vsts",
-            "Xunit",
-            "webassembly"
+            "webassembly",
+            "Xunit"
         ],
         "todo-tree.filtering.excludeGlobs": [
             "**/vendor/**",
@@ -166,9 +177,11 @@
             "vscode-icons-team.vscode-icons", // vscode-icons
             "ms-azuretools.vscode-docker", // Docker Extension
             "systemticks.c4-dsl-extension", // C4 DSL Extension (for C4 model diagrams)
-            "ms-ossdata.vscode-postgresql" // PostgreSQL Extension
+            "ms-ossdata.vscode-postgresql", // PostgreSQL Extension
+            "redhat.vscode-xml" // XML Language Support and formatter
         ],
         "unwantedRecommendations": [
+            "ms-azuretools.vscode-docker",
             "ms-vscode.azurecli",
             "spmeesseman.vscode-taskexplorer",
             "hbenl.vscode-test-explorer",
