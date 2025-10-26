@@ -1,3 +1,5 @@
+using AdminAssistant.WebAPIClient.v1.DocumentsModule;
+
 namespace AdminAssistant.Modules.DocumentsModule.UI;
 
 public interface IDocumentsService
@@ -5,15 +7,15 @@ public interface IDocumentsService
     Task<List<Document>> GetDocumentListAsync();
 }
 internal sealed class DocumentsService(
-    IAdminAssistantWebAPIClient adminAssistantWebApiClient,
+    IDocumentApiClient documentApiClient,
     ILoggingProvider log)
-    : ServiceBase(adminAssistantWebApiClient, log), IDocumentsService
+    : ServiceBase(log), IDocumentsService
 {
     public async Task<List<Document>> GetDocumentListAsync()
     {
         Log.Start();
 
-        var response = await AdminAssistantWebAPIClient.GetDocumentAsync().ConfigureAwait(false);
+        var response = await documentApiClient.GetDocumentsAsync().ConfigureAwait(false);
         var result = new List<Document>(response.ToDocumentEnumeration());
 
         return Log.Finish(result);

@@ -20,7 +20,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddAdminAssistantClientSideProviders();
 builder.Services.AddAdminAssistantClientSideDomainModel();
 builder.Services.AddAdminAssistantUI();
-builder.Services.AddAdminAssistantWebAPIClient(new Uri($"https+http://{Constants.Api}"));
+builder.Services.AddAdminAssistantApiClient();
 builder.Services.AddHttpClient<WeatherApiClient>(client =>
     {
         // This URL uses "https+http://" to indicate HTTPS is preferred over HTTP.

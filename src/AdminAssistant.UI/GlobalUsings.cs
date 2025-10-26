@@ -1,6 +1,5 @@
 global using AdminAssistant.Infrastructure.Providers;
 global using AdminAssistant.Primitives.UI;
-global using AdminAssistant.UI.Shared.WebAPIClient.v1;
 global using CommunityToolkit.Mvvm.Input;
 global using CommunityToolkit.Mvvm.Messaging;
 global using CommunityToolkit.Mvvm.Messaging.Messages;
