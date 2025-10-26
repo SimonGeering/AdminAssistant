@@ -1,7 +1,11 @@
-using Microsoft.Extensions.Logging;
+using System.Diagnostics.CodeAnalysis;
 
-namespace AdminAssistant.IntegrationTests.Tests;
+namespace AdminAssistant.IntegrationTests;
 
+[SuppressMessage("Major Code Smell", "S125:Sections of code should not be commented out")]
+[SuppressMessage("Major Code Smell", "S1144:Unused private types or members should be removed")]
+// ReSharper disable once UnusedType.Global
+#pragma warning disable S1118
 public class IntegrationTest1
 {
     private static readonly TimeSpan DefaultTimeout = TimeSpan.FromSeconds(30);
@@ -46,3 +50,4 @@ public class IntegrationTest1
     //     Assert.Equal(HttpStatusCode.OK, response.StatusCode);
     // }
 }
+#pragma warning restore S1118

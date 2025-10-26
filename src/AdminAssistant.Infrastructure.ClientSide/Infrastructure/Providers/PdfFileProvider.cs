@@ -52,15 +52,7 @@ public static class PdfSharpExtensions
     {
         if (cObject is COperator cOperator)
         {
-            if (cOperator.OpCode?.Name == OpCodeName.Tj.ToString() ||
-                cOperator.OpCode?.Name == OpCodeName.TJ.ToString())
-            {
-                foreach (var cOperand in cOperator.Operands)
-                {
-                    foreach (var txt in ExtractText(cOperand))
-                        yield return txt;
-                }
-            }
+            foreach (var p in ExtractOperator(cOperator)) yield return p;
         }
         else if (cObject is CSequence cSequence)
         {
@@ -73,6 +65,19 @@ public static class PdfSharpExtensions
         else if (cObject is CString cString)
         {
             yield return cString.Value;
+        }
+    }
+
+    private static IEnumerable<string> ExtractOperator(COperator cOperator)
+    {
+        if (cOperator.OpCode?.Name == OpCodeName.Tj.ToString() ||
+            cOperator.OpCode?.Name == OpCodeName.TJ.ToString())
+        {
+            foreach (var cOperand in cOperator.Operands)
+            {
+                foreach (var txt in ExtractText(cOperand))
+                    yield return txt;
+            }
         }
     }
 }
