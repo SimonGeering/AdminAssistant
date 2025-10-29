@@ -1,5 +1,7 @@
+@using AdminAssistant.Modules.BillingModule.UI;
 @page "/Billing"
-@inherits AdminAssistantModuleComponentBase<AdminAssistant.Modules.BillingModule.UI.IBillingViewModel>
+@page "/demo/Billing"
+@inherits AdminAssistantModuleComponentBase<IBillingViewModel, BillingDesignerViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>

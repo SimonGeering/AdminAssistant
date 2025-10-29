@@ -6,6 +6,7 @@ namespace AdminAssistant.Primitives.UI;
 
 public interface IViewModelBase : INotifyPropertyChanged
 {
+    bool IsDesignerDemo { get; }
     Task OnInitializedAsync();
     bool IsBusy { get; }
     event EventHandler<bool> IsBusyChanged;
@@ -14,6 +15,8 @@ public interface IViewModelBase : INotifyPropertyChanged
 }
 internal abstract class ViewModelBase : ObservableObject, IViewModelBase
 {
+    public bool IsDesignerDemo { get; } = false;
+
     [Obsolete("Replaced with OnLoadedAsync")]
     public virtual async Task OnInitializedAsync() => await OnLoadedAsync().ConfigureAwait(true);
 
@@ -44,4 +47,12 @@ internal abstract class ViewModelBase : ObservableObject, IViewModelBase
         Log = log;
         Loaded = new AsyncRelayCommand(execute: OnLoadedAsync);
     }
+}
+public abstract class DesignerViewModelBase : ObservableObject, IViewModelBase
+{
+    public bool IsDesignerDemo { get; } = true;
+    public Task OnInitializedAsync() => Task.CompletedTask;
+    public bool IsBusy { get; }
+    public event EventHandler<bool>? IsBusyChanged;
+    public IAsyncRelayCommand Loaded { get; }
 }

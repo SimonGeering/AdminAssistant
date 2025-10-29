@@ -1,6 +1,8 @@
-@inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.UI.IBankAccountTransactionListViewModel>
 @using System.Globalization
 @using AdminAssistant.Modules.AccountsModule;
+@using AdminAssistant.Modules.AccountsModule.UI;
+
+@inherits AdminAssistantComponentBase<IBankAccountTransactionListViewModel, BankAccountTransactionListDesignerViewModel>
 
 <MudTable Items="@_transactions" FixedHeader="true" FixedFooter="true" Bordered="true" Dense="true" HorizontalScrollbar="true">
     <ToolBarContent>

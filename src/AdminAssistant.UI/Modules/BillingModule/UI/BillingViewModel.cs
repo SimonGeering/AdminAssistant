@@ -8,3 +8,11 @@ internal sealed class BillingViewModel(ILoggingProvider loggingProvider)
     public string HeaderText => "Billing";
     public string SubHeaderText => string.Empty;
 }
+[EditorBrowsable(EditorBrowsableState.Never)]
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+public sealed class BillingDesignerViewModel
+    : DesignerViewModelBase, IBillingViewModel
+{
+    public string HeaderText => "Billing (Design Time)";
+    public string SubHeaderText => string.Empty;
+}

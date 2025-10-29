@@ -1,6 +1,9 @@
+@using AdminAssistant.Modules.DashboardModule.UI;
 @page "/"
+@page "/demo/"
 @page "/dashboard"
-@inherits AdminAssistantModuleComponentBase<AdminAssistant.Modules.DashboardModule.UI.IDashboardViewModel>
+@page "/demo/dashboard"
+@inherits AdminAssistantModuleComponentBase<IDashboardViewModel, DashboardDesignerViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>

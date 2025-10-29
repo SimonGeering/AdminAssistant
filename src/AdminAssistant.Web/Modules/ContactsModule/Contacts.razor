@@ -1,5 +1,7 @@
+@using AdminAssistant.Modules.ContactsModule.UI;
 @page "/contacts"
-@inherits AdminAssistantModuleComponentBase<AdminAssistant.Modules.ContactsModule.UI.IContactsViewModel>
+@page "/demo/contacts"
+@inherits AdminAssistantModuleComponentBase<IContactsViewModel, ContactsDesignerViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>

@@ -1,5 +1,7 @@
+@using AdminAssistant.Modules.AssetRegisterModule.UI;
 @page "/assetregister"
-@inherits AdminAssistantModuleComponentBase<AdminAssistant.Modules.AssetRegisterModule.UI.IAssetRegisterViewModel>
+@page "/demo/assetregister"
+@inherits AdminAssistantModuleComponentBase<IAssetRegisterViewModel, AssetRegisterDesignerViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>

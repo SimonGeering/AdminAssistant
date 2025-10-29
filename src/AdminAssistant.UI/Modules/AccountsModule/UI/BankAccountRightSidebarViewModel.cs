@@ -29,3 +29,14 @@ internal sealed class BankAccountRightSidebarViewModel : ViewModelBase, IBankAcc
         Log.Finish();
     }
 }
+[EditorBrowsable(EditorBrowsableState.Never)]
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+public sealed class BankAccountRightSidebarDesignerViewModel
+    : DesignerViewModelBase, IBankAccountRightSidebarViewModel
+{
+    public IRelayCommand AddBankAccount { get; } = new RelayCommand(() => { });
+
+    public void Dispose() { }
+
+    public Task InitializeAsync() => Task.CompletedTask;
+}

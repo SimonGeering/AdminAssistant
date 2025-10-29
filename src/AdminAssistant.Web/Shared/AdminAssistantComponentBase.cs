@@ -1,21 +1,30 @@
-using AdminAssistant.Primitives.UI;
 using Microsoft.AspNetCore.Components;
 
 namespace AdminAssistant.Blazor.Client.Shared;
 
-public abstract class AdminAssistantComponentBase<TViewModel> : ComponentBase
-    where TViewModel : IViewModelBase
+public abstract class AdminAssistantComponentBase<TRuntimeViewModel, TDesignViewModel> : ComponentBase
+    where TRuntimeViewModel : class, IViewModelBase
+    where TDesignViewModel : class, TRuntimeViewModel
 {
-#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
-    [Inject]
-    protected TViewModel vm { get; set; }
-#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    [Inject] protected NavigationManager Nav { get; set; } = null!;
+    [Inject] protected IServiceProvider Services { get; set; } = null!;
+
+    // ReSharper disable once InconsistentNaming
+    protected TRuntimeViewModel vm { get; private set; } = null!;
+
+    protected bool IsDesignerDemo { get; private set; } = false;
 
     protected override void OnInitialized()
     {
-        vm.PropertyChanged += (o, e) => StateHasChanged();
+        IsDesignerDemo = Nav.Uri.Contains("/demo/", StringComparison.OrdinalIgnoreCase);
+
+        vm = IsDesignerDemo
+            ? Services.GetRequiredService<TDesignViewModel>()
+            : Services.GetRequiredService<TRuntimeViewModel>();
+
+        vm.PropertyChanged += (_, _) => StateHasChanged();
         base.OnInitialized();
     }
-
     protected override Task OnInitializedAsync() => vm.OnInitializedAsync();
 }
+

@@ -1,5 +1,7 @@
+@using AdminAssistant.Modules.CalendarModule.UI;
 @page "/calendar"
-@inherits AdminAssistantModuleComponentBase<AdminAssistant.Modules.CalendarModule.UI.ICalendarViewModel>
+@page "/demo/calendar"
+@inherits AdminAssistantModuleComponentBase<ICalendarViewModel, CalendarDesignerViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>

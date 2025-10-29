@@ -1,6 +1,5 @@
 @using System.Diagnostics.CodeAnalysis
 @inherits AdminAssistantLayoutComponentBase<AdminAssistant.Shared.UI.IMainWindowViewModel>
-@inject NavigationManager NavigationManager
 
 <MudThemeProvider @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
 <MudPopoverProvider />
@@ -25,7 +24,9 @@
         <MudNavMenu Dense="@_isDense">
             @foreach (var item in this.vm.Modules)
             {
-                <MudNavLink Href="@item.Route" Match="NavLinkMatch.All" Icon="@item.Icon">@item.Label</MudNavLink>
+                var href = vm.IsDesignerDemo ? $"/demo/{item.Route}" : item.Route;
+                var label = vm.IsDesignerDemo ? $"{item.Label} (Demo)" : item.Label;
+                <MudNavLink Href="@href" Match="NavLinkMatch.All" Icon="@item.Icon">@label</MudNavLink>
             }
         </MudNavMenu>
     </MudDrawer>

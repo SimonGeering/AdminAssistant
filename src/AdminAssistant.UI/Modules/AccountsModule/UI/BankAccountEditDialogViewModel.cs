@@ -350,8 +350,46 @@ internal sealed class BankAccountEditDialogViewModel : ViewModelBase, IBankAccou
     private static class ValidationCssClass
     {
         public const string Error = "e-error";
-        public const string Warning = "e-error";
-        public const string Info = "e-error";
-        public const string None = "e-error";
+        public const string Warning = "e-warning";
+        public const string Info = "e-info";
+        public const string None = "e-none";
     }
+}
+[ExcludeFromCodeCoverage]
+public sealed class BankAccountEditDialogDesignerViewModel
+    : DesignerViewModelBase, IBankAccountEditDialogViewModel
+{
+    public int BankAccountId { get; set; }
+    public int BankAccountTypeId { get; set; }
+    public int CurrencyId { get; set; }
+    public string AccountName { get; set; } = "My Bank Account";
+    public bool IsBudgeted { get; set; } = true;
+    public int OpeningBalance { get; set; } = 100000;
+    public int CurrentBalance { get; } = 125000;
+    public DateTime OpenedOn { get; set; } = DateTime.Today.AddYears(-1);
+
+    public string HeaderText { get; set; } = IBankAccountEditDialogViewModel.EditBankAccountHeader;
+    public bool ShowDialog { get; set; } = true;
+
+    public BindingList<BankAccountType> BankAccountTypes { get; } = new()
+    {
+    };
+
+    public BindingList<Currency> Currencies { get; } = new()
+    {
+    };
+
+    public IAsyncRelayCommand Save { get; } = new AsyncRelayCommand(() => Task.CompletedTask);
+    public IAsyncRelayCommand Cancel { get; } = new AsyncRelayCommand(() => Task.CompletedTask);
+
+    public void OnAccountNameChanged(string accountName) { }
+    public string AccountNameValidationMessage { get; } = string.Empty;
+    public string AccountNameValidationClass { get; } = string.Empty;
+
+    public void OnBankAccountTypeChanged() { }
+    public void OnCurrencyChanged() { }
+
+    public Task OnLoadedAsync() => Task.CompletedTask;
+
+    public void Receive(EditBankAccountMessage message) { }
 }

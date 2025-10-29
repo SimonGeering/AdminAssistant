@@ -1,4 +1,5 @@
-﻿@inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.AdminUI.IBankListViewModel>
+﻿@using AdminAssistant.Modules.AccountsModule.AdminUI;
+@inherits AdminAssistantComponentBase<IBankListViewModel, BankListDesignerViewModel>
 
 <MudStack>
     <MudText Typo="Typo.subtitle1">Bank Selection List</MudText>
