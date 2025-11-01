@@ -28,9 +28,15 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
         <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
-        <PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" />
-        <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
         <PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" />
+<!--        <PackageReference Include="Aspire.Hosting.Orchestration.win-x64" />-->
+<!--        <PackageReference Include="Aspire.Hosting.Orchestration.osx-arm64" />-->
+<!--        <PackageReference Include="Aspire.Hosting.Orchestration.osx-x64" />-->
+        <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
+        <PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" />
+<!--        <PackageReference Include="Aspire.Dashboard.Sdk.win-x64" />-->
+<!--        <PackageReference Include="Aspire.Dashboard.Sdk.osx-arm64" />-->
+<!--        <PackageReference Include="Aspire.Dashboard.Sdk.osx-x64" />-->
     </ItemGroup>
 
     <ItemGroup>
