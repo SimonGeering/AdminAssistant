@@ -6,12 +6,12 @@ using AdminAssistant;
 using Aspire.Hosting.Docker.Resources.ComposeNodes;
 
 var builder = DistributedApplication.CreateBuilder(args);
-builder.AddDockerComposeEnvironment("AdminAssistantEnvironment")
-    .WithProperties(env =>
-    {
-        env.DefaultNetworkName = "AdminAssistant-Network";
-        env.BuildContainerImages = true;
-    });
+// builder.AddDockerComposeEnvironment("AdminAssistantEnvironment")
+//     .WithProperties(env =>
+//     {
+//         env.DefaultNetworkName = "AdminAssistant-Network";
+//         env.BuildContainerImages = true;
+//     });
 
 // IAM Server ...
 var keycloak = builder.AddKeycloak(Constants.IAMServerName, 8080)

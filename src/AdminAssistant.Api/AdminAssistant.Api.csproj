@@ -15,8 +15,8 @@
 
     <ItemGroup>
         <PackageReference Include="FluentValidation.AspNetCore" />
-        <PackageReference Include="MicroElements.Swashbuckle.FluentValidation" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+<!--        <PackageReference Include="MicroElements.Swashbuckle.FluentValidation" />-->
+<!--        <PackageReference Include="Microsoft.AspNetCore.OpenApi" />-->
         <PackageReference Include="Swashbuckle.AspNetCore" />
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
         <PackageReference Include="SonarAnalyzer.CSharp">
