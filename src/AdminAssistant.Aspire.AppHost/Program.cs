@@ -10,7 +10,6 @@ builder.AddDockerComposeEnvironment("AdminAssistantEnvironment")
     .WithProperties(env =>
     {
         env.DefaultNetworkName = "AdminAssistant-Network";
-        env.BuildContainerImages = true;
     });
 
 // IAM Server ...
