@@ -13,10 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Ardalis.GuardClauses" />
-    <PackageReference Include="Microsoft.Extensions.Http.Polly" />
     <PackageReference Include="PDFsharp" />
-    <PackageReference Include="Polly.Extensions.Http" />
-    <PackageReference Include="Polly" />
   </ItemGroup>
 
   <ItemGroup>
