@@ -15,7 +15,6 @@
 
     <ItemGroup>
         <PackageReference Include="FluentValidation.AspNetCore" />
-        <PackageReference Include="MicroElements.Swashbuckle.FluentValidation" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
         <PackageReference Include="Swashbuckle.AspNetCore" />
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" />
@@ -33,6 +32,21 @@
         <ProjectReference Include="..\AdminAssistant.Infrastructure\AdminAssistant.Infrastructure.csproj" />
     </ItemGroup>
 
+    <PropertyGroup>
+        <!-- Force Roslyn to fall back to netstandard2.0 assets -->
+        <AssetTargetFallback>netstandard2.0</AssetTargetFallback>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Explicitly reference the netstandard2.0 build of Microsoft.OpenApi and Swashbuckle.AspNetCore.Annotations -->
+        <Reference Include="Microsoft.OpenApi">
+            <HintPath>$(NuGetPackageRoot)microsoft.openapi/2.3.0/lib/netstandard2.0/Microsoft.OpenApi.dll</HintPath>
+        </Reference>
+        <Reference Include="Swashbuckle.AspNetCore.Annotations">
+            <HintPath>$(NuGetPackageRoot)swashbuckle.aspnetcore.annotations/10.0.0/lib/netstandard2.0/Swashbuckle.AspNetCore.Annotations.dll</HintPath>
+        </Reference>
+    </ItemGroup>    
+    
     <ItemGroup>
       <Reference Include="Ardalis.GuardClauses">
         <HintPath>..\..\..\..\..\..\.nuget\packages\ardalis.guardclauses\5.0.0\lib\net8.0\Ardalis.GuardClauses.dll</HintPath>

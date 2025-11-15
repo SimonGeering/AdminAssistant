@@ -1,5 +1,7 @@
+@using AdminAssistant.Modules.BudgetModule.UI;
 @page "/budget"
-@inherits AdminAssistantModuleComponentBase<AdminAssistant.Modules.BudgetModule.UI.IBudgetViewModel>
+@page "/demo/budget"
+@inherits AdminAssistantModuleComponentBase<IBudgetViewModel, BudgetDesignerViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>

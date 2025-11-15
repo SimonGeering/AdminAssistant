@@ -8,3 +8,9 @@ internal sealed class AdminViewModel(ILoggingProvider loggingProvider)
     public string HeaderText => "Admin";
     public string SubHeaderText => string.Empty;
 }
+public sealed class AdminDesignerViewModel
+    : DesignerViewModelBase, IAdminViewModel
+{
+    public string HeaderText => "Admin (Design Time)";
+    public string SubHeaderText => string.Empty;
+}

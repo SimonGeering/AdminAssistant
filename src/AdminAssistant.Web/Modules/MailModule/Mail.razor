@@ -1,5 +1,7 @@
+@using AdminAssistant.Modules.MailModule.UI;
 @page "/mail"
-@inherits AdminAssistantModuleComponentBase<AdminAssistant.Modules.MailModule.UI.IMailViewModel>
+@page "/demo/mail"
+@inherits AdminAssistantModuleComponentBase<IMailViewModel, MailDesignerViewModel>
 <PageTitle>@vm.HeaderText</PageTitle>
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
 <MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>

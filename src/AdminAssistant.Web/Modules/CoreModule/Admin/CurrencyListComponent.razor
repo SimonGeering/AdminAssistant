@@ -1,4 +1,5 @@
-@inherits AdminAssistantComponentBase<AdminAssistant.Modules.CoreModule.AdminUI.ICurrencyListViewModel>
+@using AdminAssistant.Modules.CoreModule.AdminUI;
+@inherits AdminAssistantComponentBase<ICurrencyListViewModel, CurrencyListDesignerViewModel>
 
 <MudStack>
     <MudText Typo="Typo.subtitle1">Currency Selection List</MudText>

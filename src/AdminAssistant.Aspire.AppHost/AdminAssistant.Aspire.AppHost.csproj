@@ -1,12 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
-    <Sdk Name="Aspire.AppHost.Sdk" Version="9.5.1" />
-
+<Project Sdk="Aspire.AppHost.Sdk/13.0.0">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
         <DocumentationFile>AdminAssistant.Aspire.AppHost.docs.xml</DocumentationFile>
         <NoWarn>$(NoWarn);</NoWarn>
-        <SkipAddAspireDefaultReferences>true</SkipAddAspireDefaultReferences>
     </PropertyGroup>
 
     <ItemGroup>
@@ -15,7 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Hosting.AppHost" />
         <PackageReference Include="Aspire.Hosting.Docker" />
         <PackageReference Include="Aspire.Hosting.Keycloak" />
         <PackageReference Include="Aspire.Hosting.Kubernetes" />
@@ -27,10 +23,6 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
         </PackageReference>
-        <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
-        <PackageReference Include="Aspire.Dashboard.Sdk.linux-x64" />
-        <!-- Direct referece linux packages - workaround for https://github.com/dotnet/aspire/issues/5486-->
-        <PackageReference Include="Aspire.Hosting.Orchestration.linux-x64" />
     </ItemGroup>
 
     <ItemGroup>

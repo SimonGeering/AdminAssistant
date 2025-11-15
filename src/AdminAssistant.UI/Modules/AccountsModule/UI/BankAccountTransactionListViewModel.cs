@@ -11,3 +11,10 @@ internal sealed class BankAccountTransactionListViewModel(ILoggingProvider log)
     public BankAccount? SelectedBankAccount { get; }
     public BindingList<BankAccountTransaction> Transactions { get; } = [];
 }
+[EditorBrowsable(EditorBrowsableState.Never)]
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+public sealed class BankAccountTransactionListDesignerViewModel
+    : DesignerViewModelBase, IBankAccountTransactionListViewModel
+{
+    public BindingList<BankAccountTransaction> Transactions { get; } = new BindingList<BankAccountTransaction>();
+}

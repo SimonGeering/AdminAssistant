@@ -1,5 +1,7 @@
+@using AdminAssistant.Modules.TasksModule.UI;
 @page "/tasks"
-@inherits AdminAssistantModuleComponentBase<AdminAssistant.Modules.TasksModule.UI.ITasksViewModel>
+@page "/demo/tasks"
+@inherits AdminAssistantModuleComponentBase<ITasksViewModel, TasksDesignerViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>

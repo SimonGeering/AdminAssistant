@@ -1,5 +1,7 @@
+@using AdminAssistant.Modules.AccountsModule.UI;
 @page "/accounts/bulk-upload"
-@inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.UI.IBankAccountStatementImportViewModel>
+@page "/demo/accounts/bulk-upload"
+@inherits AdminAssistantComponentBase<IBankAccountStatementImportViewModel, BankAccountStatementImportDesignerViewModel>
 
 <PageTitle>@vm.PageTitle</PageTitle>
 

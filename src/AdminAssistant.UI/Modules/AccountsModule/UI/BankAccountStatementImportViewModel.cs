@@ -31,7 +31,7 @@ internal sealed class BankAccountStatementImportViewModel : ViewModelBase, IBank
     // https://pdfobject.com/static/
     public string EmbeddedFileContentSrc { get; private set; } = string.Empty;
 
-    public async Task ImportStatementAsync (string contentType, string fileName, long fileSize, byte[] fileContent)
+    public async Task ImportStatementAsync(string contentType, string fileName, long fileSize, byte[] fileContent)
     {
         FileName = fileName;
         FileSize = fileSize;
@@ -40,5 +40,23 @@ internal sealed class BankAccountStatementImportViewModel : ViewModelBase, IBank
         await _accountsService.ParseBankAccountStatementAsync(fileContent);
 
         // TODO: Display the result in a grid.
+    }
+}
+[EditorBrowsable(EditorBrowsableState.Never)]
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+public sealed class BankAccountStatementImportDesignerViewModel
+    : DesignerViewModelBase, IBankAccountStatementImportViewModel
+{
+    public string PageTitle { get; } = "Accounts - Bank Account Statement Import (Designer)";
+    public string HeaderText { get; } = "Accounts (Designer)";
+    public string SubHeaderText { get; } = "Bank Account Statement Import (Designer)";
+    public string FileName { get; } = "SampleStatement.pdf";
+    public long FileSize { get; } = 256000;
+    public string EmbeddedFileContentSrc { get; } = $"data:application/pdf;base64,JVBERi0xLjQKJcfs..."; // Truncated for brevity
+
+    public Task ImportStatementAsync(string contentType, string fileName, long fileSize, byte[] fileContent)
+    {
+        // No-op for designer
+        return Task.CompletedTask;
     }
 }

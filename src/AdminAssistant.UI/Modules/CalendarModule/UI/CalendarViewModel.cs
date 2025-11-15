@@ -8,3 +8,10 @@ internal sealed class CalendarViewModel(ILoggingProvider loggingProvider)
     public string HeaderText => "Calendar";
     public string SubHeaderText => string.Empty;
 }
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+public sealed class CalendarDesignerViewModel
+    : DesignerViewModelBase, ICalendarViewModel
+{
+    public string HeaderText => "Calendar (Designer)";
+    public string SubHeaderText => string.Empty;
+}

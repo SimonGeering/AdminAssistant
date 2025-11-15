@@ -19,3 +19,14 @@ internal sealed class BankListViewModel : ViewModelBase, IBankListViewModel
             new Bank() { BankID = new(3), BankName = new("Santander UK Plc") }
         ];
 }
+[EditorBrowsable(EditorBrowsableState.Never)]
+[System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
+public sealed class BankListDesignerViewModel
+    : DesignerViewModelBase, IBankListViewModel
+{
+    public IEnumerable<Bank> Banks => [
+            new Bank() { BankID = new(1), BankName = new("Barclays Bank plc") },
+            new Bank() { BankID = new(2), BankName = new("HSBC Bank (UK) Limited") },
+            new Bank() { BankID = new(3), BankName = new("Santander UK Plc") }
+        ];
+}

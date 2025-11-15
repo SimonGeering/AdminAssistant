@@ -36,11 +36,6 @@ public interface IApplicationDbContext : IDisposable
 
     // TODO: Soft Delete https://medium.com/@unhandlederror/deleting-it-softly-with-ef-core-5f191db5cf72
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
-
-    // Migrations etc ...
-    string ConnectionString { get; }
-    void EnsureDatabaseIsCreated();
-    void Migrate();
 }
 
 // dotnet ef migrations add InitialCreate --startup-project ..\AdminAssistant.Accounts.Test\AdminAssistant.Accounts.Test.csproj
@@ -70,11 +65,6 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
     // Documents ...
     public DbSet<DocumentEntity> Documents { get; set; } = null!;
-
-    // Migrations etc ...
-    public string ConnectionString => Database.GetDbConnection().ConnectionString;
-    public void EnsureDatabaseIsCreated() => Database.EnsureCreated();
-    public void Migrate() => Database.Migrate();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

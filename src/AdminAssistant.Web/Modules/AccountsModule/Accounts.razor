@@ -1,5 +1,7 @@
+@using AdminAssistant.Modules.AccountsModule.UI;
 @page "/accounts"
-@inherits AdminAssistantComponentBase<AdminAssistant.Modules.AccountsModule.UI.IAccountsViewModel>
+@page "/demo/accounts"
+@inherits AdminAssistantComponentBase<IAccountsViewModel, AccountsDesignerViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
 
