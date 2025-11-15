@@ -15,7 +15,7 @@ public abstract class AdminAssistantComponentBase<TRuntimeViewModel, TDesignView
     // ReSharper disable once InconsistentNaming
     protected TRuntimeViewModel vm { get; private set; } = null!;
 
-    protected bool IsDesignerDemo { get; private set; } = false;
+    protected bool IsDesignerDemo { get; private set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -45,13 +45,9 @@ public abstract class AdminAssistantComponentBase<TRuntimeViewModel, TDesignView
         {
             vm.PropertyChanged -= vmOnPropertyChanged;
         }
-
         _disposed = true;
     }
 
-    ~AdminAssistantComponentBase()
-    {
-        Dispose(false);
-    }
+    ~AdminAssistantComponentBase() => Dispose(false);
 }
 
