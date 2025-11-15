@@ -8,12 +8,19 @@ namespace AdminAssistant.WebAPI.v1.CoreModule;
 [ApiExplorerSettings(GroupName = "Core Module")]
 public sealed class CurrencyController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
+    /// <summary>
+    /// Update an existing Currency.
+    /// </summary>
+    /// <param name="currencyUpdateRequest">The Currency for which updates are to be persisted.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The updated <see cref="CurrencyResponseDto"/>.</returns>
     [HttpPut]
-    [SwaggerOperation("Update an existing Currency.", OperationId = "PutCurrency")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated CurrencyResponseDto", type: typeof(CurrencyResponseDto))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the CurrencyID of the given currencyUpdateRequest does not exist.")]
-    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given currencyUpdateRequest is invalid.")]
-    public async Task<ActionResult<CurrencyResponseDto>> CurrencyPut([FromBody, SwaggerParameter("The Currency for which updates are to be persisted.", Required = true)] CurrencyUpdateRequestDto currencyUpdateRequest, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(CurrencyResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+    public async Task<ActionResult<CurrencyResponseDto>> CurrencyPut(
+        [FromBody] CurrencyUpdateRequestDto currencyUpdateRequest,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -36,11 +43,18 @@ public sealed class CurrencyController(IMediator mediator, ILoggingProvider log)
         return log.Finish(Ok(response));
     }
 
+    /// <summary>
+    /// Creates a new Currency.
+    /// </summary>
+    /// <param name="currencyCreateRequest">The details of the Currency to be created.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The created <see cref="CurrencyResponseDto"/> with its newly assigned ID.</returns>
     [HttpPost]
-    [SwaggerOperation("Creates a new Currency.", OperationId = "PostCurrency")]
-    [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created currency with its assigned newly ID.", type: typeof(CurrencyResponseDto))]
-    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given currencyCreateRequest is invalid.")]
-    public async Task<ActionResult<CurrencyResponseDto>> CurrencyPost([FromBody, SwaggerParameter("The details of the Currency to be created.", Required = true)] CurrencyCreateRequestDto currencyCreateRequest, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(CurrencyResponseDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+    public async Task<ActionResult<CurrencyResponseDto>> CurrencyPost(
+        [FromBody] CurrencyCreateRequestDto currencyCreateRequest,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -57,11 +71,18 @@ public sealed class CurrencyController(IMediator mediator, ILoggingProvider log)
         return log.Finish(CreatedAtRoute(nameof(CurrencyGetById), new { currencyID = response.CurrencyID }, response));
     }
 
+    /// <summary>
+    /// Gets the Currency with the given ID.
+    /// </summary>
+    /// <param name="currencyID">The ID of the Currency to be returned.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The requested <see cref="CurrencyResponseDto"/>.</returns>
     [HttpGet("{currencyID}", Name = nameof(CurrencyGetById))]
-    [SwaggerOperation("Gets the Currency with the given ID.", OperationId = "GetCurrencyById")]
-    [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the Currency requested.", type: typeof(CurrencyResponseDto))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given CurrencyID does not exist.")]
-    public async Task<ActionResult<CurrencyResponseDto>> CurrencyGetById([SwaggerParameter("The ID of the Currency to be returned.", Required = true)] int currencyID, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(CurrencyResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<CurrencyResponseDto>> CurrencyGetById(
+        int currencyID,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -74,9 +95,13 @@ public sealed class CurrencyController(IMediator mediator, ILoggingProvider log)
         return log.Finish(Ok(response));
     }
 
+    /// <summary>
+    /// Lists all currencies supported by the API wherever a CurrencyID can be provided.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of <see cref="CurrencyResponseDto"/>.</returns>
     [HttpGet]
-    [SwaggerOperation("Lists all currencies supported by the API wherever a CurrencyID can be provided.", OperationId = "GetCurrency")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of CurrencyResponseDto", type: typeof(IEnumerable<CurrencyResponseDto>))]
+    [ProducesResponseType(typeof(IEnumerable<CurrencyResponseDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<CurrencyResponseDto>>> GetCurrency(CancellationToken cancellationToken)
     {
         log.Start();

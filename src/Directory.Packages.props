@@ -26,13 +26,13 @@
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="10.0.0" />
     <PackageVersion Include="Npgsql.OpenTelemetry" Version="10.0.0-rc.1" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.0.0-beta.8" />
-    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.13.1" />
-    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.13.1" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.13.0" />
+    <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.14.0" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.14.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.14.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.6.0-beta.3" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.13.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.13.0" />
-    <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.13.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.14.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.14.0" />
+    <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.14.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.6.0-beta.3" />
     <!--AdminAssistant.Application-->
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
@@ -45,7 +45,8 @@
     <!--AdminAssistant.WebApp-->
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.0.0" />
     <!--AdminAssistant.Api-->
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.OpenApi" Version="2.3.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.0.1" />
     <!--AdminAssistant.AvaloniaApp-->
     <PackageVersion Include="Avalonia" Version="11.3.8" />
     <PackageVersion Include="Avalonia.Desktop" Version="11.3.8" />
@@ -55,15 +56,11 @@
     <!--<PackageVersion Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />-->
     <!--AdminAssistant.Blazor-->
     <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.1" />
-    <PackageVersion Include="MicroElements.Swashbuckle.FluentValidation" Version="6.1.1" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.10" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="9.0.10" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.10" />
     <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="9.0.10" />
     <PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.0.0" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.0.0" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Newtonsoft" Version="9.0.6" />
     <PackageVersion Include="Microsoft.AspNetCore.JsonPatch" Version="9.0.10" />
     <PackageVersion Include="Microsoft.Extensions.Caching.Abstractions" Version="9.0.10" />
     <PackageVersion Include="System.Net.Http.Json" Version="9.0.10" />
@@ -82,7 +79,7 @@
     <PackageVersion Include="Polly" Version="8.6.4" />
     <PackageVersion Include="PDFsharp" Version="6.2.2" />
     <!--AdminAssistant.Infra.WebApiClient-->
-    <PackageVersion Include="NSwag.MSBuild" Version="14.0.0-preview010" />
+    <!--None.-->
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="ReactiveUI" Version="22.2.1" />
     <PackageVersion Include="Terminal.Gui" Version="1.19.0" />

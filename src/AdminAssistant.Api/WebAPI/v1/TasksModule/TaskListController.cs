@@ -7,9 +7,13 @@ namespace AdminAssistant.WebAPI.v1.TasksModule;
 [ApiExplorerSettings(GroupName = "Tasks Module")]
 public sealed class TaskListController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
+    /// <summary>
+    /// Lists all task lists.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of <see cref="TaskListResponseDto"/>.</returns>
     [HttpGet]
-    [SwaggerOperation("Lists all task lists.", OperationId = "GetTaskList")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of TaskListResponseDto", type: typeof(IEnumerable<TaskListResponseDto>))]
+    [ProducesResponseType(typeof(IEnumerable<TaskListResponseDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<TaskListResponseDto>>> GetTaskLists(CancellationToken cancellationToken)
     {
         log.Start();
@@ -20,4 +24,3 @@ public sealed class TaskListController(IMediator mediator, ILoggingProvider log)
         return log.Finish(Ok(response));
     }
 }
-

@@ -8,12 +8,19 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule;
 [ApiExplorerSettings(GroupName = "Accounts Module")]
 public sealed class BankAccountController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
+    /// <summary>
+    /// Update an existing BankAccount.
+    /// </summary>
+    /// <param name="bankAccountUpdateRequest">The BankAccount for which updates are to be persisted.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The updated <see cref="BankAccountResponseDto"/>.</returns>
     [HttpPut]
-    [SwaggerOperation("Update an existing BankAccount.", OperationId = "PutBankAccount")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated BankAccountResponseDto", type: typeof(BankAccountResponseDto))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the BankAccountID of the given bankAccountUpdateRequest does not exist.")]
-    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountUpdateRequest is invalid.")]
-    public async Task<ActionResult<BankAccountResponseDto>> BankAccountPut([FromBody, SwaggerParameter("The BankAccount for which updates are to be persisted.", Required = true)] BankAccountUpdateRequestDto bankAccountUpdateRequest, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+    public async Task<ActionResult<BankAccountResponseDto>> BankAccountPut(
+        [FromBody] BankAccountUpdateRequestDto bankAccountUpdateRequest,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -36,11 +43,18 @@ public sealed class BankAccountController(IMediator mediator, ILoggingProvider l
         return log.Finish(Ok(response));
     }
 
+    /// <summary>
+    /// Creates a new BankAccount.
+    /// </summary>
+    /// <param name="bankAccountCreateRequest">The details of the BankAccount to be created.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The created <see cref="BankAccountResponseDto"/> with its newly assigned ID.</returns>
     [HttpPost]
-    [SwaggerOperation("Creates a new BankAccount.", OperationId = "PostBankAccount")]
-    [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created bank account with its assigned newly ID.", type: typeof(BankAccountResponseDto))]
-    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankAccountCreateRequest is invalid.")]
-    public async Task<ActionResult<BankAccountResponseDto>> BankAccountPost([FromBody, SwaggerParameter("The details of the BankAccount to be created.", Required = true)] BankAccountCreateRequestDto bankAccountCreateRequest, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+    public async Task<ActionResult<BankAccountResponseDto>> BankAccountPost(
+        [FromBody] BankAccountCreateRequestDto bankAccountCreateRequest,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -57,12 +71,18 @@ public sealed class BankAccountController(IMediator mediator, ILoggingProvider l
         return log.Finish(CreatedAtRoute(nameof(BankAccountGetById), new { bankAccountID = response.BankAccountID }, response));
     }
 
+    /// <summary>
+    /// Gets the <see cref="BankAccountResponseDto"/> with the given ID.
+    /// </summary>
+    /// <param name="bankAccountID">The ID of the BankAccount to be returned.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The requested <see cref="BankAccountResponseDto"/>.</returns>
     [HttpGet("{bankAccountID}")]
-    [SwaggerOperation("Gets the BankAccountResponseDto with the given ID.", OperationId = "GetBankAccountById")]
-    [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the BankAccount requested.", type: typeof(BankAccountResponseDto))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
+    [ProducesResponseType(typeof(BankAccountResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<BankAccountResponseDto>> BankAccountGetById(
-        [SwaggerParameter("The ID of the BankAccount to be returned.", Required = true)] int bankAccountID, CancellationToken cancellationToken)
+        int bankAccountID,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -75,12 +95,18 @@ public sealed class BankAccountController(IMediator mediator, ILoggingProvider l
         return log.Finish(Ok(response));
     }
 
+    /// <summary>
+    /// Get the transactions since the last bank account statement for the BankAccount with the given ID.
+    /// </summary>
+    /// <param name="bankAccountID">The ID of the BankAccount.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of <see cref="BankAccountTransactionResponseDto"/>.</returns>
     [HttpGet("{bankAccountID}/transactions")]
-    [SwaggerOperation("Get the transactions since the last bank account statement for the BankAccount with the given ID.", OperationId = "GetBankAccountTransactionByBankAccountID")]
-    [SwaggerResponse(StatusCodes.Status200OK, "OK - returns a list of BankAccountTransactionResponseDto.", type: typeof(IEnumerable<BankAccountTransactionResponseDto>))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankAccountID does not exist.")]
+    [ProducesResponseType(typeof(IEnumerable<BankAccountTransactionResponseDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<IEnumerable<BankAccountTransactionResponseDto>>> BankAccountTransactionsGetByBankAccountID(
-        [SwaggerParameter("The ID of the BankAccount.", Required = true)] int bankAccountID, CancellationToken cancellationToken)
+        int bankAccountID,
+        CancellationToken cancellationToken)
     {
         log.Start();
 

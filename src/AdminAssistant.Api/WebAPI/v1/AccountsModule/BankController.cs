@@ -9,13 +9,19 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule;
 [ApiExplorerSettings(GroupName = "Accounts Module")]
 public sealed class BankController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
+    /// <summary>
+    /// Update an existing Bank.
+    /// </summary>
+    /// <param name="bankUpdateRequest">The Bank for which updates are to be persisted.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The updated <see cref="BankResponseDto"/>.</returns>
     [HttpPut]
-    [SwaggerOperation("Update an existing Bank.", OperationId = "PutBank")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated BankResponseDto", type: typeof(BankResponseDto))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the BankID of the given bankUpdateRequest does not exist.")]
-    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankUpdateRequest is invalid.")]
+    [ProducesResponseType(typeof(BankResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<ActionResult<BankResponseDto>> BankPut(
-        [FromBody, SwaggerParameter("The Bank for which updates are to be persisted.", Required = true)] BankUpdateRequestDto bankUpdateRequest, CancellationToken cancellationToken)
+        [FromBody] BankUpdateRequestDto bankUpdateRequest,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -38,12 +44,18 @@ public sealed class BankController(IMediator mediator, ILoggingProvider log) : C
         return log.Finish(Ok(response));
     }
 
+    /// <summary>
+    /// Creates a new Bank.
+    /// </summary>
+    /// <param name="bankCreateRequest">The details of the Bank to be created.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The created <see cref="BankResponseDto"/> with its newly assigned ID.</returns>
     [HttpPost]
-    [SwaggerOperation("Creates a new Bank.", OperationId = "PostBank")]
-    [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created bank with its assigned newly ID.", type: typeof(BankResponseDto))]
-    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given bankCreateRequest is invalid.")]
+    [ProducesResponseType(typeof(BankResponseDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
     public async Task<ActionResult<BankResponseDto>> BankPost(
-        [FromBody, SwaggerParameter("The details of the Bank to be created.", Required = true)] BankCreateRequestDto bankCreateRequest, CancellationToken cancellationToken)
+        [FromBody] BankCreateRequestDto bankCreateRequest,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -60,12 +72,18 @@ public sealed class BankController(IMediator mediator, ILoggingProvider log) : C
         return log.Finish(CreatedAtRoute(nameof(BankGetById), new { bankID = response.BankID }, response));
     }
 
+    /// <summary>
+    /// Gets the Bank with the given ID.
+    /// </summary>
+    /// <param name="bankID">The ID of the Bank to be returned.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The requested <see cref="BankResponseDto"/>.</returns>
     [HttpGet("{bankID}", Name = nameof(BankGetById))]
-    [SwaggerOperation("Gets the Bank with the given ID.", OperationId = "GetBankById")]
-    [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the Bank requested.", type: typeof(BankResponseDto))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given BankID does not exist.")]
+    [ProducesResponseType(typeof(BankResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<BankResponseDto>> BankGetById(
-        [SwaggerParameter("The ID of the Bank to be returned.", Required = true)] int bankID, CancellationToken cancellationToken)
+        int bankID,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -78,9 +96,13 @@ public sealed class BankController(IMediator mediator, ILoggingProvider log) : C
         return log.Finish(Ok(response));
     }
 
+    /// <summary>
+    /// Lists all banks.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of <see cref="BankResponseDto"/>.</returns>
     [HttpGet]
-    [SwaggerOperation("Lists all banks.", OperationId = "GetBank")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankResponseDto", type: typeof(IEnumerable<BankResponseDto>))]
+    [ProducesResponseType(typeof(IEnumerable<BankResponseDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<BankResponseDto>>> BankGet(CancellationToken cancellationToken)
     {
         log.Start();

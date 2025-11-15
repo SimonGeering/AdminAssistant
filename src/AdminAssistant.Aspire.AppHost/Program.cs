@@ -3,7 +3,6 @@
 
 // https://learn.microsoft.com/en-gb/dotnet/aspire/
 using AdminAssistant;
-using Aspire.Hosting.Docker.Resources.ComposeNodes;
 
 var builder = DistributedApplication.CreateBuilder(args);
 builder.AddDockerComposeEnvironment("AdminAssistantEnvironment")

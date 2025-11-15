@@ -7,9 +7,13 @@ namespace AdminAssistant.WebAPI.v1.BudgetModule;
 [ApiExplorerSettings(GroupName = "Budget Module")]
 public sealed class BudgetController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
+    /// <summary>
+    /// Lists all budgets.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of <see cref="BudgetResponseDto"/>.</returns>
     [HttpGet]
-    [SwaggerOperation("Lists all budgets.", OperationId = "GetBudget")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BudgetResponseDto", type: typeof(IEnumerable<BudgetResponseDto>))]
+    [ProducesResponseType(typeof(IEnumerable<BudgetResponseDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<BudgetResponseDto>>> GetBudgets(CancellationToken cancellationToken)
     {
         log.Start();

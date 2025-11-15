@@ -1,16 +1,54 @@
 namespace AdminAssistant.WebAPI.v1.AccountsModule;
 
-[SwaggerSchema(Required = new[] { "BankAccountID", "BankAccountTypeID", "CurrencyID", "AccountName", "IsBudgeted", "OpeningBalance", "OpenedOn" })]
+/// <summary>
+/// Request DTO for updating an existing bank account.
+/// </summary>
 public sealed record BankAccountUpdateRequestDto
 {
-    [SwaggerSchema("The BankAccount identifier.")]
+    /// <summary>
+    /// The BankAccount identifier. Required.
+    /// </summary>
+    [Required]
     public int BankAccountID { get; init; }
-    [SwaggerSchema("The BankAccountType for this BankAccount.")]
+
+    /// <summary>
+    /// The BankAccountType for this BankAccount. Required.
+    /// </summary>
+    [Required]
     public int BankAccountTypeID { get; init; }
+
+    /// <summary>
+    /// The identifier of the currency associated with this account. Required.
+    /// </summary>
+    [Required]
     public int CurrencyID { get; init; }
+
+    /// <summary>
+    /// The name of the account. Required.
+    /// </summary>
+    [Required]
     public string AccountName { get; init; } = string.Empty;
+
+    /// <summary>
+    /// Indicates whether the account is budgeted. Required.
+    /// </summary>
+    [Required]
     public bool IsBudgeted { get; init; }
+
+    /// <summary>
+    /// The opening balance of the account. Required.
+    /// </summary>
+    [Required]
     public int OpeningBalance { get; init; }
+
+    /// <summary>
+    /// The current balance of the account.
+    /// </summary>
     public int CurrentBalance { get; init; }
+
+    /// <summary>
+    /// The date the account was opened. Required.
+    /// </summary>
+    [Required]
     public DateTime OpenedOn { get; init; }
 }

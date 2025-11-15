@@ -7,9 +7,13 @@ namespace AdminAssistant.WebAPI.v1.AssetRegisterModule;
 [ApiExplorerSettings(GroupName = "Asset Register Module")]
 public sealed class AssetController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
+    /// <summary>
+    /// Lists all assets.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of <see cref="AssetResponseDto"/>.</returns>
     [HttpGet]
-    [SwaggerOperation("Lists all assets", OperationId = "GetAsset")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of AssetResponseDto", type: typeof(IEnumerable<AssetResponseDto>))]
+    [ProducesResponseType(typeof(IEnumerable<AssetResponseDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<AssetResponseDto>>> GetAssets(CancellationToken cancellationToken)
     {
         log.Start();

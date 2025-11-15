@@ -7,9 +7,13 @@ namespace AdminAssistant.WebAPI.v1.AccountsModule;
 [ApiExplorerSettings(GroupName = "Accounts Module")]
 public sealed class BankAccountTypeController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
+    /// <summary>
+    /// Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of <see cref="BankAccountTypeResponseDto"/>.</returns>
     [HttpGet]
-    [SwaggerOperation("Lists all bank account types supported by the API wherever a BankAccountTypeID can be provided.", OperationId = "GetBankAccountType")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of BankAccountTypeResponseDto", type: typeof(IEnumerable<BankAccountTypeResponseDto>))]
+    [ProducesResponseType(typeof(IEnumerable<BankAccountTypeResponseDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<BankAccountTypeResponseDto>>> BankAccountTypeGet(CancellationToken cancellationToken)
     {
         log.Start();

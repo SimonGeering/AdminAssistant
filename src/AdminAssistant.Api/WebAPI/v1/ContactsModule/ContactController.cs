@@ -8,12 +8,19 @@ namespace AdminAssistant.WebAPI.v1.ContactsModule;
 [ApiExplorerSettings(GroupName = "Contacts Module")]
 public sealed class ContactController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
+    /// <summary>
+    /// Update an existing Contact.
+    /// </summary>
+    /// <param name="ContactUpdateRequest">The Contact for which updates are to be persisted.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The updated <see cref="ContactResponseDto"/>.</returns>
     [HttpPut]
-    [SwaggerOperation("Update an existing Contact.", OperationId = "PutContact")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns the updated ContactResponseDto", type: typeof(ContactResponseDto))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the ContactID of the given ContactUpdateRequest does not exist.")]
-    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given ContactUpdateRequest is invalid.")]
-    public async Task<ActionResult<ContactResponseDto>> ContactPut([FromBody, SwaggerParameter("The Contact for which updates are to be persisted.", Required = true)] ContactUpdateRequestDto ContactUpdateRequest, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(ContactResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+    public async Task<ActionResult<ContactResponseDto>> ContactPut(
+        [FromBody] ContactUpdateRequestDto ContactUpdateRequest,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -36,11 +43,18 @@ public sealed class ContactController(IMediator mediator, ILoggingProvider log) 
         return log.Finish(Ok(response));
     }
 
+    /// <summary>
+    /// Creates a new Contact.
+    /// </summary>
+    /// <param name="ContactCreateRequest">The details of the Contact to be created.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The created <see cref="ContactResponseDto"/> with its newly assigned ID.</returns>
     [HttpPost]
-    [SwaggerOperation("Creates a new Contact.", OperationId = "PostContact")]
-    [SwaggerResponse(StatusCodes.Status201Created, "Created - returns the created Contact with its assigned newly ID.", type: typeof(ContactResponseDto))]
-    [SwaggerResponse(StatusCodes.Status422UnprocessableEntity, "UnprocessableEntity - When the given ContactCreateRequest is invalid.")]
-    public async Task<ActionResult<ContactResponseDto>> ContactPost([FromBody, SwaggerParameter("The details of the Contact to be created.", Required = true)] ContactCreateRequestDto ContactCreateRequest, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(ContactResponseDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]
+    public async Task<ActionResult<ContactResponseDto>> ContactPost(
+        [FromBody] ContactCreateRequestDto ContactCreateRequest,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -57,11 +71,18 @@ public sealed class ContactController(IMediator mediator, ILoggingProvider log) 
         return log.Finish(CreatedAtRoute(nameof(ContactGetById), new { response.ContactID }, response));
     }
 
+    /// <summary>
+    /// Gets the Contact with the given ID.
+    /// </summary>
+    /// <param name="contactId">The ID of the Contact to be returned.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>The requested <see cref="ContactResponseDto"/>.</returns>
     [HttpGet("{contactID}", Name = nameof(ContactGetById))]
-    [SwaggerOperation("Gets the Contact with the given ID.", OperationId = "GetContactById")]
-    [SwaggerResponse(StatusCodes.Status200OK, "OK - returns the Contact requested.", type: typeof(ContactResponseDto))]
-    [SwaggerResponse(StatusCodes.Status404NotFound, "NotFound - When the given ContactID does not exist.")]
-    public async Task<ActionResult<ContactResponseDto>> ContactGetById([SwaggerParameter("The ID of the Contact to be returned.", Required = true)] int contactId, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(ContactResponseDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<ContactResponseDto>> ContactGetById(
+        int contactId,
+        CancellationToken cancellationToken)
     {
         log.Start();
 
@@ -74,9 +95,13 @@ public sealed class ContactController(IMediator mediator, ILoggingProvider log) 
         return log.Finish(Ok(response));
     }
 
+    /// <summary>
+    /// Lists all contacts.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of <see cref="ContactResponseDto"/>.</returns>
     [HttpGet]
-    [SwaggerOperation("Lists all contacts", OperationId = "GetContact")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of ContactResponseDto", type: typeof(IEnumerable<ContactResponseDto>))]
+    [ProducesResponseType(typeof(IEnumerable<ContactResponseDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<ContactResponseDto>>> GetContact(CancellationToken cancellationToken)
     {
         log.Start();

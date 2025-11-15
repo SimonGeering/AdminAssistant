@@ -1,7 +1,6 @@
 using Ardalis.GuardClauses;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi;
 
@@ -25,32 +24,55 @@ builder.Services.AddControllers(opts =>
 builder.Services.AddResponseCompression(opts
     => opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(new[] { "application/octet-stream" }));
 
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
 builder.Services.AddFluentValidationAutoValidation()
     .AddFluentValidationClientsideAdapters()
     .AddValidatorsFromAssemblyContaining<SimonGeering.Framework.Primitives.IPersistable>();
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
-    // https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters - examples for getting swagger to do what you want
-
-    // Skip documenting any controller without a Group name from the ApiExplorerSettings attribute ...
-    c.DocInclusionPredicate((_, api) => string.IsNullOrWhiteSpace(api.GroupName) == false);
+    // Group by ApiExplorerSettings.GroupName
+    c.DocInclusionPredicate((_, api) => !string.IsNullOrWhiteSpace(api.GroupName));
     c.TagActionsBy(api =>
     {
-        // Group by Group name from the ApiExplorerSettings attribute ...
-        Guard.Against.Null(api.GroupName, nameof(api.GroupName)); // Should be covered by DocInclusionPredicate.
-        return new string[] { api.GroupName };
+        Guard.Against.Null(api.GroupName, nameof(api.GroupName));
+        return new[] { api.GroupName };
     });
-    c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
 
-    // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
-    c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
+    c.SwaggerDoc(WebAPIVersion, new OpenApiInfo
+    {
+        Title = WebAPITitle,
+        Version = WebAPIVersion
+    });
+
+    // Include XML comments for controllers/DTOs
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+    {
+        c.IncludeXmlComments(xmlPath);
+    }
 });
-builder.Services.AddFluentValidationRulesToSwagger(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
+
+// builder.Services.AddSwaggerGen(c =>
+// {
+//     // See https://github.com/domaindrivendev/Swashbuckle.AspNetCore for an overview of options available here.
+//     // https://github.com/mattfrear/Swashbuckle.AspNetCore.Filters - examples for getting swagger to do what you want
+//
+//     // Skip documenting any controller without a Group name from the ApiExplorerSettings attribute ...
+//     c.DocInclusionPredicate((_, api) => string.IsNullOrWhiteSpace(api.GroupName) == false);
+//     c.TagActionsBy(api =>
+//     {
+//         // Group by Group name from the ApiExplorerSettings attribute ...
+//         Guard.Against.Null(api.GroupName, nameof(api.GroupName)); // Should be covered by DocInclusionPredicate.
+//         return new string[] { api.GroupName };
+//     });
+//     c.SwaggerDoc(WebAPIVersion, new OpenApiInfo { Title = WebAPITitle, Version = WebAPIVersion }); // Add OpenAPI/Swagger middleware
+//
+//     // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
+//     c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
+// });
 builder.Services.AddAdminAssistantServerSideProviders();
 builder.Services.AddAdminAssistantServerSideDomainModel();
 builder.Services.AddAdminAssistantApplication();
@@ -63,14 +85,21 @@ app.UseExceptionHandler();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi(); // /openapi/v1.json
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", WebAPITitle);
-        c.RoutePrefix = "api/docs";
+        c.RoutePrefix = "api/docs"; // UI at /api/docs
         c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
     });
+
+    // app.UseSwagger();
+    // app.UseSwaggerUI(c =>
+    // {
+    //     c.SwaggerEndpoint("/swagger/v1/swagger.json", WebAPITitle);
+    //     c.RoutePrefix = "api/docs";
+    //     c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
+    // });
 }
 else
 {

@@ -7,9 +7,13 @@ namespace AdminAssistant.WebAPI.v1.CalendarModule;
 [ApiExplorerSettings(GroupName = "Calendar Module")]
 public sealed class ReminderController(IMediator mediator, ILoggingProvider log) : ControllerBase
 {
+    /// <summary>
+    /// Lists all reminders.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
+    /// <returns>A list of <see cref="ReminderResponseDto"/>.</returns>
     [HttpGet]
-    [SwaggerOperation("Lists all reminders.", OperationId = "GetReminder")]
-    [SwaggerResponse(StatusCodes.Status200OK, "Ok - returns a list of ReminderResponseDto", type: typeof(IEnumerable<ReminderResponseDto>))]
+    [ProducesResponseType(typeof(IEnumerable<ReminderResponseDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<ReminderResponseDto>>> GetReminders(CancellationToken cancellationToken)
     {
         log.Start();
