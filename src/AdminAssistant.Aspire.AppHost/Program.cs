@@ -50,11 +50,15 @@ var msgBusAdminPassword = builder.AddParameter("msgBusAdminPassword", secret: tr
 
 var msgBus = builder.AddRabbitMQ(Constants.MessageBusName, msgBusAdminUsername, msgBusAdminPassword)
     .WithDataVolume($"{Constants.MessageBusName}-Data", isReadOnly: false)
-    .WithLifetime(ContainerLifetime.Persistent);
+    .WithLifetime(ContainerLifetime.Persistent)
+    .WithChildRelationship(msgBusAdminUsername)
+    .WithChildRelationship(msgBusAdminPassword);
 
 msgBus.WithManagementPlugin()
     .WithContainerName(Constants.MessageBusAdminDashboardName)
     .WithLifetime(ContainerLifetime.Persistent);
+
+
 
 // Web API ...
 var api = builder.AddProject<Projects.AdminAssistant_Api>(Constants.Api)
