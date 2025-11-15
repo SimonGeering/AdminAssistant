@@ -12,6 +12,6 @@ internal sealed class ReportsViewModel(ILoggingProvider loggingProvider)
 [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
 public sealed class ReportsDesignerViewModel : DesignerViewModelBase, IReportsViewModel
 {
-    public string HeaderText => "Reports (Design Time)";
+    public string HeaderText => "Reports (Demo Data)";
     public string SubHeaderText => string.Empty;
 }

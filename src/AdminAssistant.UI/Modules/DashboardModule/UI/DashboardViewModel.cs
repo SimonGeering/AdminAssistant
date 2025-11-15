@@ -13,6 +13,6 @@ internal sealed class DashboardViewModel(ILoggingProvider loggingProvider)
 public sealed class DashboardDesignerViewModel
     : DesignerViewModelBase, IDashboardViewModel
 {
-    public string HeaderText => "Dashboard (Design Time)";
+    public string HeaderText => "Dashboard (Demo Data)";
     public string SubHeaderText => string.Empty;
 }

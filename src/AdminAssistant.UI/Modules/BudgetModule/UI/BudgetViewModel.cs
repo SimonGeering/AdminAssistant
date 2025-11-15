@@ -13,6 +13,6 @@ internal sealed class BudgetViewModel(ILoggingProvider loggingProvider)
 public sealed class BudgetDesignerViewModel
     : DesignerViewModelBase, IBudgetViewModel
 {
-    public string HeaderText => "Budget (Design Time)";
+    public string HeaderText => "Budget (Demo Data)";
     public string SubHeaderText => string.Empty;
 }

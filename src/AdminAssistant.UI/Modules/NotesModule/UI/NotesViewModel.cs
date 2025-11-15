@@ -13,6 +13,6 @@ internal sealed class NotesViewModel(ILoggingProvider loggingProvider)
 public sealed class NotesDesignerViewModel
     : DesignerViewModelBase, INotesViewModel
 {
-    public string HeaderText => "Notes (Design Time)";
+    public string HeaderText => "Notes (Demo Data)";
     public string SubHeaderText => string.Empty;
 }

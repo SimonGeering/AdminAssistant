@@ -13,6 +13,6 @@ internal sealed class DocumentsViewModel(ILoggingProvider loggingProvider)
 public sealed class DocumentsDesignerViewModel
     : DesignerViewModelBase, IDocumentsViewModel
 {
-    public string HeaderText => "Documents (Design Time)";
+    public string HeaderText => "Documents (Demo Data)";
     public string SubHeaderText => string.Empty;
 }
