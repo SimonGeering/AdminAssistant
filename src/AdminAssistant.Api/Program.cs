@@ -1,7 +1,6 @@
 using Ardalis.GuardClauses;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi;
 
@@ -50,7 +49,6 @@ builder.Services.AddSwaggerGen(c =>
     // Include documentation from Annotations (Swashbuckle.AspNetCore.Annotations)...
     c.EnableAnnotations(); // https://github.com/domaindrivendev/Swashbuckle.AspNetCore#install-and-enable-annotations
 });
-builder.Services.AddFluentValidationRulesToSwagger(); // Adds fluent validation rules to swagger schema See: https://github.com/micro-elements/MicroElements.Swashbuckle.FluentValidation
 builder.Services.AddAdminAssistantServerSideProviders();
 builder.Services.AddAdminAssistantServerSideDomainModel();
 builder.Services.AddAdminAssistantApplication();
