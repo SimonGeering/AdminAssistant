@@ -180,6 +180,7 @@
             "redhat.vscode-xml" // XML Language Support and formatter
         ],
         "unwantedRecommendations": [
+            "ms-python.python",
             "visualstudioexptteam.intellicode-api-usage-examples", // Depricated - IntelliCode API Usage Examples
             "visualstudioexptteam.vscodeintellicode", // Depricated - IntelliCode
             "visualstudioexptteam.vscodeintellicode-completions", // Depricated - IntelliCode Completions
