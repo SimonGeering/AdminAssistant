@@ -18,7 +18,11 @@
                     <MudText Typo="Typo.h6">@widget.Title</MudText>
                 </MudCardHeader>
                 <MudCardContent>
-                    @* <DynamicComponent Type="@widget.ComponentType" Parameters="@widget.Parameters" /> *@
+                    @if (vm.IsDesignerDemo == false)
+                    {
+                        var componentType = Services.GetRequiredKeyedService<System.Type>(widget.Key);
+                        <DynamicComponent Type="@componentType" Parameters="@widget.Parameters"/>
+                    }
                 </MudCardContent>
             </MudCard>
         </MudItem>
