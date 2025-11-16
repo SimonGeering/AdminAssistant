@@ -20,6 +20,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddAdminAssistantClientSideProviders();
 builder.Services.AddAdminAssistantClientSideDomainModel();
 builder.Services.AddAdminAssistantUI();
+builder.Services.AddAdminAssistantDynamicWebComponents();
 builder.Services.AddAdminAssistantApiClient();
 
 var app = builder.Build();

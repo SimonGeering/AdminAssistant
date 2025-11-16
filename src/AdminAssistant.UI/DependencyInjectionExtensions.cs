@@ -5,6 +5,7 @@ using AdminAssistant.Modules.ReportsModule.UI;
 using AdminAssistant.Modules.TasksModule.UI;
 using AdminAssistant.Shared.UI;
 using AdminAssistant.Modules.AccountsModule.UI;
+using AdminAssistant.Modules.AccountsModule.DashboardWidgetsUI;
 using AdminAssistant.Modules.AccountsModule.AdminUI;
 using AdminAssistant.Modules.AdminModule.AdminUI;
 using AdminAssistant.Modules.AssetRegisterModule.UI;
@@ -19,7 +20,7 @@ using AdminAssistant.Modules.MailModule.UI;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
-public static class DependencyInjectionExtensions
+public static partial class DependencyInjectionExtensions
 {
     public static void AddAdminAssistantUI(this IServiceCollection services, FontAwesomeVersion fontAwesomeVersion = FontAwesomeVersion.V4o7o0)
     {
@@ -27,6 +28,8 @@ public static class DependencyInjectionExtensions
         services.AddSingleton<IMessenger, StrongReferenceMessenger>();
 
         // Add Accounts UI ...
+        services.AddSingleton<IWidgetProvider, AccountsDashboardWidgetProvider>();
+
         services.AddSingleton<IAccountsViewModel, AccountsViewModel>();
         services.AddSingleton<AccountsDesignerViewModel>();
 

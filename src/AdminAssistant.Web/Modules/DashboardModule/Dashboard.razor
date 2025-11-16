@@ -9,6 +9,22 @@
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
 <MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
 
+<MudGrid Spacing="3">
+    @foreach (var widget in vm.Widgets.Where(w => w.IsEnabled))
+    {
+        <MudItem xs="12" sm="6" md="4">
+            <MudCard Class="pa-4">
+                <MudCardHeader>
+                    <MudText Typo="Typo.h6">@widget.Title</MudText>
+                </MudCardHeader>
+                <MudCardContent>
+                    @* <DynamicComponent Type="@widget.ComponentType" Parameters="@widget.Parameters" /> *@
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    }
+</MudGrid>
+
 @code {
 
 }
