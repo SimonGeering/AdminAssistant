@@ -1,6 +1,6 @@
 namespace AdminAssistant.Modules.DashboardModule.UI;
 
-public interface IDashboardWidget
+public interface IDashboardWidgetViewModelBase : IViewModelBase
 {
     /// <summary>
     /// Stable identifier for the widget (used for persistence, toggling, registry).
@@ -13,9 +13,12 @@ public interface IDashboardWidget
     string Title { get; set; }
 
     bool IsEnabled { get; set; }
+}
 
-    /// <summary>
-    /// Arbitrary parameters passed to the component.
-    /// </summary>
-    Dictionary<string, object> Parameters { get; set; }
+internal abstract class DashboardWidgetViewModelBase(ILoggingProvider log)
+    : ViewModelBase(log), IDashboardWidgetViewModelBase
+{
+    public string Key { get; init; } = string.Empty;
+    public string Title { get; set; } = string.Empty;
+    public bool IsEnabled { get; set; }
 }

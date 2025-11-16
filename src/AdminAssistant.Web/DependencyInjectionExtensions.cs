@@ -8,7 +8,7 @@ public static partial class DependencyInjectionExtensions
     public static IServiceCollection AddAdminAssistantDynamicWebComponents(this IServiceCollection services)
     {
         // Add Accounts Components ...
-        services.AddKeyedTransient<Type>(AccountsSummaryDashboardWidgetViewModel.AccountsSummaryDashboardWidgetKey, (provider, o) => typeof(AccountsSummaryDashboardWidget));
+        services.AddKeyedTransient<Type>(IAccountsSummaryDashboardWidgetViewModel.AccountsSummaryDashboardWidgetKey, (provider, o) => typeof(AccountsSummaryDashboardWidget));
 
         // Add Admin Components ...
 

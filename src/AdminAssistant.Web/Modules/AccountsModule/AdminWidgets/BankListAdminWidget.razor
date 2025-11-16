@@ -1,5 +1,7 @@
 ﻿@using AdminAssistant.Modules.AccountsModule.AdminUI;
-@inherits AdminAssistantComponentBase<IBankListViewModel, BankListDesignerViewModel>
+@using AdminAssistant.Blazor.Client.Modules.AdminModule;
+
+@inherits AdminWidgetComponentBase<IBankListViewModel, BankListDesignerViewModel>
 
 <MudStack>
     <MudText Typo="Typo.subtitle1">Bank Selection List</MudText>

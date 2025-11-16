@@ -1,25 +1,27 @@
+using AdminAssistant.Modules.AccountsModule.DashboardWidgetsUI;
+
 namespace AdminAssistant.Modules.DashboardModule.UI;
 
 public interface IDashboardViewModel : IModuleViewModelBase
 {
-    IReadOnlyCollection<IDashboardWidget> Widgets { get; }
+    IReadOnlyCollection<DashboardLayoutItemViewModel> LayoutItems { get; }
 }
 
-internal sealed class DashboardViewModel
-    : ViewModelBase, IDashboardViewModel
+internal sealed class DashboardViewModel(ILoggingProvider loggingProvider)
+    : ViewModelBase(loggingProvider), IDashboardViewModel
 {
     public string HeaderText => "Dashboard";
     public string SubHeaderText => string.Empty;
-    public IReadOnlyCollection<IDashboardWidget> Widgets { get; } = Array.Empty<IDashboardWidget>();
 
-    public DashboardViewModel(
-        ILoggingProvider loggingProvider,
-        IEnumerable<IWidgetProvider> providers)
-        : base(loggingProvider)
+    public IReadOnlyCollection<DashboardLayoutItemViewModel> LayoutItems { get; } = new List<DashboardLayoutItemViewModel>
     {
-        // Initialize the Widgets collection using the provided widget providers
-        Widgets = providers.SelectMany(p => p.GetWidgets()).ToArray();
-    }
+        new DashboardLayoutItemViewModel()
+        {
+            Key = IAccountsSummaryDashboardWidgetViewModel.AccountsSummaryDashboardWidgetKey,
+            Title = "Mock Accounts Summary",
+            IsEnabled = true,
+        }
+    };
 }
 [EditorBrowsable(EditorBrowsableState.Never)]
 [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
@@ -29,21 +31,13 @@ public sealed class DashboardDesignerViewModel
     public string HeaderText => "Dashboard (Demo Data)";
     public string SubHeaderText => string.Empty;
 
-    public IReadOnlyCollection<IDashboardWidget> Widgets { get; } = new List<IDashboardWidget>
+    public IReadOnlyCollection<DashboardLayoutItemViewModel> LayoutItems { get; } = new List<DashboardLayoutItemViewModel>
     {
-        new DashboardWidgetViewModel
+        new DashboardLayoutItemViewModel()
         {
-            Key = "Demo.Accounts",
+            Key = IAccountsSummaryDashboardWidgetViewModel.AccountsSummaryDashboardWidgetKey,
             Title = "Mock Accounts Summary",
             IsEnabled = true,
-            Parameters = new Dictionary<string, object>()
-        },
-        new DashboardWidgetViewModel
-        {
-            Key = "Demo.Tasks",
-            Title = "Mock Task List",
-            IsEnabled = true,
-            Parameters = new Dictionary<string, object>()
         }
     };
 }

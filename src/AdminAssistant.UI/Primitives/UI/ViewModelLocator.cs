@@ -3,7 +3,7 @@ using AdminAssistant.Modules.ReportsModule.UI;
 using AdminAssistant.Modules.TasksModule.UI;
 using AdminAssistant.Shared.UI;
 using AdminAssistant.Modules.AccountsModule.UI;
-using AdminAssistant.Modules.AdminModule.AdminUI;
+using AdminAssistant.Modules.AdminModule.UI;
 using AdminAssistant.Modules.AssetRegisterModule.UI;
 using AdminAssistant.Modules.BillingModule.UI;
 using AdminAssistant.Modules.BudgetModule.UI;
