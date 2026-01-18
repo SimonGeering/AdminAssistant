@@ -51,11 +51,11 @@
     <!--AdminAssistant.Aspire.ServiceDefaults-->
     <!--No project specific packages-->
     <!--AdminAssistant.AvaloniaApp-->
-    <PackageVersion Include="Avalonia" Version="11.3.8" />
-    <PackageVersion Include="Avalonia.Desktop" Version="11.3.8" />
-    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.3.8" />
-    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.3.8" />
-    <PackageVersion Include="Avalonia.Diagnostics" Version="11.3.8" />
+    <PackageVersion Include="Avalonia" Version="11.3.11" />
+    <PackageVersion Include="Avalonia.Desktop" Version="11.3.11" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.3.11" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.3.11" />
+    <PackageVersion Include="Avalonia.Diagnostics" Version="11.3.11" />
     <!--<PackageVersion Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />-->
     <!--AdminAssistant.DomainModel-->
     <!--No project specific packages-->
