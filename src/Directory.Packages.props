@@ -88,8 +88,8 @@
     <!--AdminAssistant.Web-->
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.1.0" />
     <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.1" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.0.1" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.0.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.1.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.1.0" />
     <PackageVersion Include="MudBlazor" Version="8.15.0" />
   </ItemGroup>
 </Project>
