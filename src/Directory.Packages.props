@@ -21,7 +21,7 @@
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.2" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.2" />
     <PackageVersion Include="Refit.HttpClientFactory" Version="8.0.0" />
-    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.15.0.120848" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.18.0.131500" />
     <!--AdminAssistant.Api-->
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
     <!--AdminAssistant.Api.Client-->
@@ -63,7 +63,7 @@
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.2" />
     <!--AdminAssistant.Infrastructure.ClientSide-->
-    <PackageVersion Include="PDFsharp" Version="6.2.2" />
+    <PackageVersion Include="PDFsharp" Version="6.2.4" />
     <!--AdminAssistant.IntegrationTests-->
     <PackageVersion Include="Aspire.Hosting.Testing" Version="13.1.0" />
     <!--AdminAssistant.Retro-->
