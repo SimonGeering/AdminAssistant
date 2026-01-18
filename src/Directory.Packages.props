@@ -20,7 +20,7 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.2" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.2" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.2" />
-    <PackageVersion Include="Refit.HttpClientFactory" Version="8.0.0" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="9.0.2" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.18.0.131500" />
     <!--AdminAssistant.Api-->
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
