@@ -21,7 +21,7 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.9" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.9" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.9" />
-    <PackageVersion Include="Refit.HttpClientFactory" Version="9.0.2" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="11.0.1" />
     <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.27.0.140913" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="10.0.9" />
     <!--AdminAssistant.Api-->
@@ -31,9 +31,9 @@
     <!--AdminAssistant.Api.Contracts-->
     <!--No project specific packages-->
     <!--AdminAssistant.Application-->
-    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-    <PackageVersion Include="Mediator.SourceGenerator" Version="3.0.1" />
-    <PackageVersion Include="Mediator.Abstractions" Version="3.0.1" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageVersion Include="Mediator.SourceGenerator" Version="3.0.2" />
+    <PackageVersion Include="Mediator.Abstractions" Version="3.0.2" />
     <!--AdminAssistant.Aspire.AppHost-->
     <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="13.4.3" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.7.0" />
@@ -53,11 +53,10 @@
     <!--AdminAssistant.Aspire.ServiceDefaults-->
     <!--No project specific packages-->
     <!--AdminAssistant.AvaloniaApp-->
-    <PackageVersion Include="Avalonia" Version="11.3.11" />
-    <PackageVersion Include="Avalonia.Desktop" Version="11.3.11" />
-    <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.3.11" />
-    <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.3.11" />
-    <PackageVersion Include="Avalonia.Diagnostics" Version="11.3.11" />
+    <PackageVersion Include="Avalonia" Version="12.0.4" />
+    <PackageVersion Include="Avalonia.Desktop" Version="12.0.4" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="12.0.4" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="12.0.4" />
     <!--<PackageVersion Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />-->
     <!--AdminAssistant.DomainModel-->
     <!--No project specific packages-->
@@ -71,14 +70,14 @@
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="Terminal.Gui" Version="1.19.0" />
     <!--AdminAssistant.Test-->
-    <PackageVersion Include="coverlet.collector" Version="6.0.4" />
+    <PackageVersion Include="coverlet.collector" Version="10.0.1" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="10.0.9" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.9" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.9" />
     <PackageVersion Include="Moq" Version="4.20.72" />
-    <PackageVersion Include="MockQueryable.Moq" Version="10.0.1" />
+    <PackageVersion Include="MockQueryable.Moq" Version="10.0.8" />
     <PackageVersion Include="NetArchTest.Rules" Version="1.3.2" />
     <PackageVersion Include="ObjectCloner.Extensions" Version="2.0.1" />
     <PackageVersion Include="Respawn" Version="7.0.0" />
@@ -90,8 +89,8 @@
     <!--AdminAssistant.Web-->
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.4.3" />
     <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.1" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.1.0" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.1.0" />
-    <PackageVersion Include="MudBlazor" Version="8.15.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.2.1" />
+    <PackageVersion Include="MudBlazor" Version="9.5.0" />
   </ItemGroup>
 </Project>
