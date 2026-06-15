@@ -13,6 +13,6 @@ internal sealed class BillingViewModel(ILoggingProvider loggingProvider)
 public sealed class BillingDesignerViewModel
     : DesignerViewModelBase, IBillingViewModel
 {
-    public string HeaderText => "Billing (Design Time)";
+    public string HeaderText => "Billing (Demo Data)";
     public string SubHeaderText => string.Empty;
 }

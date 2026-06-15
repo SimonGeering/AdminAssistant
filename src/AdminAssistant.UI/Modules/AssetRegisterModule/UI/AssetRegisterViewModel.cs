@@ -13,6 +13,6 @@ internal sealed class AssetRegisterViewModel(ILoggingProvider loggingProvider)
 public sealed class AssetRegisterDesignerViewModel
     : DesignerViewModelBase, IAssetRegisterViewModel
 {
-    public string HeaderText => "Asset Register (Design Time)";
+    public string HeaderText => "Asset Register (Demo Data)";
     public string SubHeaderText => string.Empty;
 }

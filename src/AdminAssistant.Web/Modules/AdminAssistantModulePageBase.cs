@@ -2,9 +2,9 @@ using AdminAssistant.Blazor.Client.Shared;
 
 namespace AdminAssistant.Blazor.Client.Modules;
 
-public abstract class AdminAssistantModuleComponentBase<TRuntimeViewModel, TDesignerViewModel>
+public abstract class AdminAssistantModulePageBase<TRuntimeViewModel, TDesignerViewModel>
     : AdminAssistantComponentBase<TRuntimeViewModel, TDesignerViewModel>
-    where TRuntimeViewModel : class, IViewModelBase
+    where TRuntimeViewModel : class, IModuleViewModelBase
     where TDesignerViewModel : class, TRuntimeViewModel
 {
 }

@@ -24,8 +24,8 @@
         <MudNavMenu Dense="@_isDense">
             @foreach (var item in this.vm.Modules)
             {
-                var href = vm.IsDesignerDemo ? $"/demo/{item.Route}" : item.Route;
-                var label = vm.IsDesignerDemo ? $"{item.Label} (Demo)" : item.Label;
+                var href = IsDesignerDemo ? $"/demo{item.Route}" : item.Route;
+                var label = IsDesignerDemo ? $"{item.Label} (Demo)" : item.Label;
                 <MudNavLink Href="@href" Match="NavLinkMatch.All" Icon="@item.Icon">@label</MudNavLink>
             }
         </MudNavMenu>

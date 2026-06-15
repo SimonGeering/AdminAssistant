@@ -1,5 +1,7 @@
 @using AdminAssistant.Modules.CoreModule.AdminUI;
-@inherits AdminAssistantComponentBase<ICurrencyListViewModel, CurrencyListDesignerViewModel>
+@using AdminAssistant.Blazor.Client.Modules.AdminModule;
+
+@inherits AdminWidgetComponentBase<ICurrencyListViewModel, CurrencyListDesignerViewModel>
 
 <MudStack>
     <MudText Typo="Typo.subtitle1">Currency Selection List</MudText>
@@ -26,8 +28,3 @@
         </FooterContent>
     </MudTable>
 </MudStack>
-
-
-@code {
-
-}

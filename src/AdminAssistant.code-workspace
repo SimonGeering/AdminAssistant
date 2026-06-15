@@ -1,10 +1,11 @@
 {
     "folders": [
-        {
-            "path": "../"
-        }
+        { "path": "../DevOps" },
+        { "path": "../models" },
+        { "path": "." }   // this is src/
     ],
     "settings": {
+        "dotnet.defaultSolution": "AdminAssistant.slnx",
         "omnisharp.loggingLevel": "warning",
         "omnisharp.enableEditorConfigSupport": true,
         "omnisharp.enableRoslynAnalyzers": true,
@@ -41,12 +42,14 @@
         "cSpell.words": [
             "Admin",
             "analyzers",
+            "Antiforgery",
             "Apps",
             "Ardalis",
             "Avalonia",
             "blazor",
             "Bootswatch",
             "cleanUp",
+            "Color",
             "contentfiles",
             "CQRS",
             "dbml",
@@ -149,16 +152,13 @@
             "MD025": {
                 "front_matter_title": ""
             }
-        },
-        "dotnet.defaultSolution": "src/AdminAssistant.sln"
+        }
     },
     "extensions": {
         "recommendations": [
             "ms-dotnettools.csdevkit", // .NET Dev Kit
             "ms-dotnettools.csharp", // C# for Visual Studio Code
             "ms-dotnettools.vscodeintellicode-csharp", // IntelliCode for C#
-            "visualstudioexptteam.vscodeintellicode", // IntelliCode (General AI-assisted IntelliSense)
-            "visualstudioexptteam.vscodeintellicode-completions", // IntelliCode Completions (AI-assisted completions)
             "ms-dotnettools.blazorwasm-companion", // Blazor WebAssembly Debugging Extension
             "ms-mssql.mssql", // SQL Server (mssql)
             "streetsidesoftware.code-spell-checker", // Code Spell Checker
@@ -181,6 +181,10 @@
             "redhat.vscode-xml" // XML Language Support and formatter
         ],
         "unwantedRecommendations": [
+            "ms-python.python",
+            "visualstudioexptteam.intellicode-api-usage-examples", // Depricated - IntelliCode API Usage Examples
+            "visualstudioexptteam.vscodeintellicode", // Depricated - IntelliCode
+            "visualstudioexptteam.vscodeintellicode-completions", // Depricated - IntelliCode Completions
             "ms-azuretools.vscode-docker",
             "ms-vscode.azurecli",
             "spmeesseman.vscode-taskexplorer",

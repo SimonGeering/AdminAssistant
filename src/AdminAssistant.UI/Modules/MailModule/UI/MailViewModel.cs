@@ -13,6 +13,6 @@ internal sealed class MailViewModel(ILoggingProvider loggingProvider)
 public sealed class MailDesignerViewModel
     : DesignerViewModelBase, IMailViewModel
 {
-    public string HeaderText => "Mail (Design Time)";
+    public string HeaderText => "Mail (Demo Data)";
     public string SubHeaderText => string.Empty;
 }

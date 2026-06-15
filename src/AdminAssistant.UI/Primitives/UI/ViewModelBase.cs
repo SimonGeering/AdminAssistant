@@ -54,5 +54,5 @@ public abstract class DesignerViewModelBase : ObservableObject, IViewModelBase
     public Task OnInitializedAsync() => Task.CompletedTask;
     public bool IsBusy { get; }
     public event EventHandler<bool>? IsBusyChanged;
-    public IAsyncRelayCommand Loaded { get; }
+    public IAsyncRelayCommand Loaded { get; } = null!;
 }

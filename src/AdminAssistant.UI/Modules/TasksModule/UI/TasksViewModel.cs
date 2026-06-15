@@ -11,6 +11,6 @@ internal sealed class TasksViewModel(ILoggingProvider loggingProvider)
 public sealed class TasksDesignerViewModel
     : DesignerViewModelBase, ITasksViewModel
 {
-    public string HeaderText => "Tasks (Designer)";
+    public string HeaderText => "Tasks (Demo Data)";
     public string SubHeaderText => "This is a designer view model for Tasks.";
 }

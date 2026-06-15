@@ -1,7 +1,7 @@
-@using AdminAssistant.Modules.AdminModule.AdminUI
+@using AdminAssistant.Modules.AdminModule.UI
 @page "/admin"
 @page "/demo/admin"
-@inherits AdminAssistantModuleComponentBase<IAdminViewModel, AdminDesignerViewModel>
+@inherits AdminAssistantModulePageBase<IAdminViewModel, AdminDesignerViewModel>
 
 <PageTitle>@vm.HeaderText</PageTitle>
 <MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>

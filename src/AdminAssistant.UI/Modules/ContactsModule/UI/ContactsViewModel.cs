@@ -13,6 +13,6 @@ internal sealed class ContactsViewModel(ILoggingProvider loggingProvider)
 public sealed class ContactsDesignerViewModel
     : DesignerViewModelBase, IContactsViewModel
 {
-    public string HeaderText => "Contacts (Design Time)";
+    public string HeaderText => "Contacts (Demo Data)";
     public string SubHeaderText => string.Empty;
 }

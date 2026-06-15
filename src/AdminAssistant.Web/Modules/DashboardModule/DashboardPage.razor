@@ -1,0 +1,28 @@
+@using AdminAssistant.Modules.DashboardModule.UI;
+@page "/"
+@page "/demo/"
+@page "/dashboard"
+@page "/demo/dashboard"
+@inherits AdminAssistantModulePageBase<IDashboardViewModel, DashboardDesignerViewModel>
+
+<PageTitle>@vm.HeaderText</PageTitle>
+<MudText class="mb-2" Typo="Typo.h6">@vm.HeaderText</MudText>
+<MudText class="mb-2" Typo="Typo.subtitle1">@vm.SubHeaderText</MudText>
+
+<MudGrid Spacing="3">
+    @foreach (var widget in vm.LayoutItems.Where(w => w.IsEnabled))
+    {
+        var componentType = Services.GetRequiredKeyedService<System.Type>(widget.Key);
+
+        <MudItem xs="12" sm="6" md="4">
+            <MudCard Class="pa-4">
+                <MudCardHeader>
+                    <MudText Typo="Typo.h6">@widget.Title</MudText>
+                </MudCardHeader>
+                <MudCardContent>
+                    <DynamicComponent Type="@componentType" />
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    }
+</MudGrid>

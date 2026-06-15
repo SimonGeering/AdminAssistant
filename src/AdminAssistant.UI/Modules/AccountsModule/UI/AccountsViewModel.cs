@@ -18,7 +18,7 @@ internal sealed class AccountsViewModel(ILoggingProvider log)
 public sealed class AccountsDesignerViewModel
     : DesignerViewModelBase, IAccountsViewModel
 {
-    public string HeaderText { get; } = "Accounts";
+    public string HeaderText { get; } = "Accounts (Demo Data)";
     public string SubHeaderText { get; } = string.Empty;
     public BankAccount? SelectedBankAccount { get; }
 }

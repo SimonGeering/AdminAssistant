@@ -12,6 +12,6 @@ internal sealed class CalendarViewModel(ILoggingProvider loggingProvider)
 public sealed class CalendarDesignerViewModel
     : DesignerViewModelBase, ICalendarViewModel
 {
-    public string HeaderText => "Calendar (Designer)";
+    public string HeaderText => "Calendar (Demo Data)";
     public string SubHeaderText => string.Empty;
 }
