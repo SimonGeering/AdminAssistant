@@ -1,4 +1,4 @@
-<Project Sdk="Aspire.AppHost.Sdk/13.1.0">
+<Project Sdk="Aspire.AppHost.Sdk/13.4.6">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
@@ -12,7 +12,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Aspire.Hosting.AppHost" />
         <PackageReference Include="Aspire.Hosting.Docker" />
         <PackageReference Include="Aspire.Hosting.Keycloak" />
         <PackageReference Include="Aspire.Hosting.Kubernetes" />
