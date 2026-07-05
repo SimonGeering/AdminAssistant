@@ -2,8 +2,7 @@
   <ItemGroup>
     <!-- Workaround for https://github.com/microsoft/aspire/issues/18153 -->
     <PackageVersion Include="MessagePack" Version="2.6.100" />
-
-      <!--Shared / Common-->
+    <!--Shared / Common-->
     <PackageVersion Include="Ardalis.Result" Version="10.1.0" />
     <PackageVersion Include="Ardalis.Result.FluentValidation" Version="10.1.0" />
     <PackageVersion Include="Ardalis.Extensions" Version="0.9.4" />
@@ -68,14 +67,14 @@
     <!--AdminAssistant.Infrastructure.ClientSide-->
     <PackageVersion Include="PDFsharp" Version="6.2.4" />
     <!--AdminAssistant.IntegrationTests-->
-    <PackageVersion Include="Aspire.Hosting.Testing" Version="13.4.3" />
+    <PackageVersion Include="Aspire.Hosting.Testing" Version="13.4.6" />
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="Terminal.Gui" Version="1.19.0" />
     <!--AdminAssistant.Test-->
     <PackageVersion Include="coverlet.collector" Version="10.0.1" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="10.0.9" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.7.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.9" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.9" />
     <PackageVersion Include="Moq" Version="4.20.72" />
