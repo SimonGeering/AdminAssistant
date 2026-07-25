@@ -39,6 +39,10 @@
             ".vscode",
             "**/AdminAssistant.code-workspace"
         ],
+        "cSpell.ignoreWords": [
+            "Allman",
+            "extern"
+        ],
         "cSpell.words": [
             "Admin",
             "analyzers",
@@ -58,6 +62,7 @@
             "geering",
             "HSTS",
             "incase",
+            "IntelliCode",
             "markdownlint",
             "MediatR",
             "Newtonsoft",
@@ -82,19 +87,6 @@
             "vsts",
             "webassembly",
             "Xunit"
-        ],
-        "todo-tree.filtering.excludeGlobs": [
-            "**/vendor/**",
-            "**/node_modules/**",
-            "**/dist/**",
-            "**/bower_components/**",
-            "**/build/**",
-            "**/.vscode/**",
-            "**/.github/**",
-            "**/_output/**",
-            "**/*.min.*",
-            "**/*.map",
-            "**/docs/js/*mermaid*"
         ],
         "sonarlint.connectedMode.project": {
             "connectionId": "simongeering",
@@ -163,14 +155,11 @@
             "streetsidesoftware.code-spell-checker", // Code Spell Checker
             "ryanluker.vscode-coverage-gutters", // Coverage Gutters
             "editorconfig.editorconfig", // EditorConfig for VS Code
-            "rexebin.f12-open-file", // F12 Open File
             "donjayamanne.githistory", // Git History
             "eamodio.gitlens", // GitLens — Git supercharged
             "yzhang.markdown-all-in-one", // Markdown All in One
             "davidanson.vscode-markdownlint", // MarkdownLint
             "christian-kohler.path-intellisense", // Path Intellisense
-            "wayou.vscode-todo-highlight", // TODO Highlight
-            "gruntfuggly.todo-tree", // Todo Tree
             "shardulm94.trailing-spaces", // Trailing Spaces
             "pflannery.vscode-versionlens", // Version Lens
             "vscode-icons-team.vscode-icons", // vscode-icons
