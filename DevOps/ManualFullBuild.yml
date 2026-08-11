@@ -1,7 +1,7 @@
 name: $(BuildID)
 
-pr: none # Disable PR builds for security - require manual approval.
-trigger: none # Disable CI Builds for security - require manual approval.
+pr: none # Disable PR builds
+trigger: none # Disable CI Builds
 
 resources:
 - repo: self
