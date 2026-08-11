@@ -1,17 +1,7 @@
 name: $(BuildID)
 
-trigger: # CI Builds
-  batch: true
-  branches:
-    include:
-    - dev
-    - main
-  paths:
-    exclude:
-    - ./DevOps
-    - ./docs
-
 pr: none # Disable PR builds for security - require manual approval.
+trigger: none # Disable CI Builds for security - require manual approval.
 
 resources:
 - repo: self
@@ -33,9 +23,10 @@ stages:
     #
     # Secret usage detection ...
     - powershell: |
-        $hits = Get-ChildItem -Recurse -File | Select-String -Pattern "PAT"
+        $patterns = @("ghp_","github_pat_","gho_","azdops_")
+        $hits = Get-ChildItem -Recurse -File | Select-String -Pattern $patterns
         if ($hits) {
-            Write-Host "PAT detected — pipeline must not use long-lived secrets"
+            Write-Host "Long-lived token detected — pipeline must not use secrets"
             exit 1
         }
       displayName: "Check for PAT usage"
