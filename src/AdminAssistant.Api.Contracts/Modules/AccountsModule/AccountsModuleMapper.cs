@@ -1,3 +1,4 @@
+using System.Globalization;
 using AdminAssistant.Modules.AccountsModule;
 using AdminAssistant.Modules.CoreModule;
 
@@ -105,7 +106,7 @@ public static class AccountsModuleMapper
             Balance = x.Balance,
             Description = x.Description,
             Notes = x.Notes,
-            TransactionDate = x.TransactionDate.ToString(Constants.DateFormat)
+            TransactionDate = x.TransactionDate.ToString(Constants.DateFormat, CultureInfo.InvariantCulture)
         });
 
     public static IEnumerable<BankAccountInfoResponseDto> ToBankAccountInfoResponseDtoEnumeration(this IEnumerable<BankAccountInfo> source)

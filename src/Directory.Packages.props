@@ -2,30 +2,29 @@
   <ItemGroup>
     <!-- Workaround for https://github.com/microsoft/aspire/issues/18153 -->
     <PackageVersion Include="MessagePack" Version="2.6.100" />
-
-      <!--Shared / Common-->
+    <!--Shared / Common-->
     <PackageVersion Include="Ardalis.Result" Version="10.1.0" />
     <PackageVersion Include="Ardalis.Result.FluentValidation" Version="10.1.0" />
     <PackageVersion Include="Ardalis.Extensions" Version="0.9.4" />
     <PackageVersion Include="Ardalis.GuardClauses" Version="5.0.0" />
     <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="9.3.1" />
-    <PackageVersion Include="Aspire.Hosting.AppHost" Version="13.4.3" />
-    <PackageVersion Include="Aspire.Hosting.Docker" Version="13.4.3" />
-    <PackageVersion Include="Aspire.Hosting.Keycloak" Version="13.1.0-preview.1.25616.3" />
-    <PackageVersion Include="Aspire.Hosting.Kubernetes" Version="13.1.0-preview.1.25616.3" />
-    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="13.4.3" />
-    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.4.3" />
-    <PackageVersion Include="Aspire.Hosting.Yarp" Version="13.4.3" />
-    <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="13.4.3" />
+    <PackageVersion Include="Aspire.Hosting.Docker" Version="13.4.6" />
+    <PackageVersion Include="Aspire.Hosting.Keycloak" Version="13.4.6-preview.1.26319.6" />
+    <PackageVersion Include="Aspire.Hosting.Kubernetes" Version="13.4.6-preview.1.26319.6" />
+    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="13.4.6" />
+    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.4.6" />
+    <PackageVersion Include="Aspire.Hosting.Yarp" Version="13.4.6" />
+    <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="13.4.6" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.9" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.9" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.9" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.9" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.9" />
-    <PackageVersion Include="Refit.HttpClientFactory" Version="11.0.1" />
-    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.27.0.140913" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="13.1.0" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.28.0.143324" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="10.0.9" />
     <!--AdminAssistant.Api-->
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
@@ -38,28 +37,28 @@
     <PackageVersion Include="Mediator.SourceGenerator" Version="3.0.2" />
     <PackageVersion Include="Mediator.Abstractions" Version="3.0.2" />
     <!--AdminAssistant.Aspire.AppHost-->
-    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="13.4.3" />
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="13.4.6" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.7.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="10.7.0" />
     <PackageVersion Include="Npgsql.OpenTelemetry" Version="10.0.3" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" Version="1.0.0-beta.8" />
     <PackageVersion Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.16.0" />
     <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.16.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.15.2" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.16.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.6.0-beta.3" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.15.1" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.16.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.Runtime" Version="1.15.1" />
     <PackageVersion Include="OpenTelemetry.Exporter.Console" Version="1.16.0" />
-    <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.15.2" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.16.0" />
     <!--AdminAssistant.Aspire.DatabaseMigrationService-->
     <!--No project specific packages-->
     <!--AdminAssistant.Aspire.ServiceDefaults-->
     <!--No project specific packages-->
     <!--AdminAssistant.AvaloniaApp-->
-    <PackageVersion Include="Avalonia" Version="12.0.4" />
-    <PackageVersion Include="Avalonia.Desktop" Version="12.0.4" />
-    <PackageVersion Include="Avalonia.Themes.Fluent" Version="12.0.4" />
-    <PackageVersion Include="Avalonia.Fonts.Inter" Version="12.0.4" />
+    <PackageVersion Include="Avalonia" Version="12.0.5" />
+    <PackageVersion Include="Avalonia.Desktop" Version="12.0.5" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="12.0.5" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="12.0.5" />
     <!--<PackageVersion Include="MahApps.Metro.IconPacks.FontAwesome" Version="4.11.0" />-->
     <!--AdminAssistant.DomainModel-->
     <!--No project specific packages-->
@@ -69,14 +68,14 @@
     <!--AdminAssistant.Infrastructure.ClientSide-->
     <PackageVersion Include="PDFsharp" Version="6.2.4" />
     <!--AdminAssistant.IntegrationTests-->
-    <PackageVersion Include="Aspire.Hosting.Testing" Version="13.4.3" />
+    <PackageVersion Include="Aspire.Hosting.Testing" Version="13.4.6" />
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="Terminal.Gui" Version="1.19.0" />
     <!--AdminAssistant.Test-->
     <PackageVersion Include="coverlet.collector" Version="10.0.1" />
     <PackageVersion Include="Shouldly" Version="4.3.0" />
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="10.0.9" />
-    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.7.0" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.0.9" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.9" />
     <PackageVersion Include="Moq" Version="4.20.72" />
@@ -90,10 +89,9 @@
     <!--AdminAssistant.UI-->
     <!--No project specific packages-->
     <!--AdminAssistant.Web-->
-    <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.4.3" />
-    <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.1" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.1" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.2.1" />
-    <PackageVersion Include="MudBlazor" Version="9.5.0" />
+    <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.4.6" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.2.3" />
+    <PackageVersion Include="MudBlazor" Version="9.6.0" />
   </ItemGroup>
 </Project>

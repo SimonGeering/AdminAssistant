@@ -39,6 +39,10 @@
             ".vscode",
             "**/AdminAssistant.code-workspace"
         ],
+        "cSpell.ignoreWords": [
+            "Allman",
+            "extern"
+        ],
         "cSpell.words": [
             "Admin",
             "analyzers",
@@ -58,6 +62,7 @@
             "geering",
             "HSTS",
             "incase",
+            "IntelliCode",
             "markdownlint",
             "MediatR",
             "Newtonsoft",
@@ -82,19 +87,6 @@
             "vsts",
             "webassembly",
             "Xunit"
-        ],
-        "todo-tree.filtering.excludeGlobs": [
-            "**/vendor/**",
-            "**/node_modules/**",
-            "**/dist/**",
-            "**/bower_components/**",
-            "**/build/**",
-            "**/.vscode/**",
-            "**/.github/**",
-            "**/_output/**",
-            "**/*.min.*",
-            "**/*.map",
-            "**/docs/js/*mermaid*"
         ],
         "sonarlint.connectedMode.project": {
             "connectionId": "simongeering",
@@ -158,30 +150,28 @@
         "recommendations": [
             "ms-dotnettools.csdevkit", // .NET Dev Kit
             "ms-dotnettools.csharp", // C# for Visual Studio Code
-            "ms-dotnettools.vscodeintellicode-csharp", // IntelliCode for C#
             "ms-dotnettools.blazorwasm-companion", // Blazor WebAssembly Debugging Extension
             "ms-mssql.mssql", // SQL Server (mssql)
             "streetsidesoftware.code-spell-checker", // Code Spell Checker
             "ryanluker.vscode-coverage-gutters", // Coverage Gutters
             "editorconfig.editorconfig", // EditorConfig for VS Code
-            "rexebin.f12-open-file", // F12 Open File
             "donjayamanne.githistory", // Git History
             "eamodio.gitlens", // GitLens — Git supercharged
             "yzhang.markdown-all-in-one", // Markdown All in One
             "davidanson.vscode-markdownlint", // MarkdownLint
             "christian-kohler.path-intellisense", // Path Intellisense
-            "wayou.vscode-todo-highlight", // TODO Highlight
-            "gruntfuggly.todo-tree", // Todo Tree
             "shardulm94.trailing-spaces", // Trailing Spaces
             "pflannery.vscode-versionlens", // Version Lens
             "vscode-icons-team.vscode-icons", // vscode-icons
             "ms-azuretools.vscode-docker", // Docker Extension
-            "systemticks.c4-dsl-extension", // C4 DSL Extension (for C4 model diagrams)
+            "likec4.likec4-vscode", // C4 DSL Extension (for C4 model diagrams)
             "ms-ossdata.vscode-postgresql", // PostgreSQL Extension
             "redhat.vscode-xml" // XML Language Support and formatter
         ],
         "unwantedRecommendations": [
+            "systemticks.c4-dsl-extension",
             "ms-python.python",
+            "ms-dotnettools.vscodeintellicode-csharp",
             "visualstudioexptteam.intellicode-api-usage-examples", // Depricated - IntelliCode API Usage Examples
             "visualstudioexptteam.vscodeintellicode", // Depricated - IntelliCode
             "visualstudioexptteam.vscodeintellicode-completions", // Depricated - IntelliCode Completions

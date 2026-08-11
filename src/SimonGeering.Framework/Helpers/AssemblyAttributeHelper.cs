@@ -27,29 +27,31 @@ public class AssemblyAttributeHelper : IAssemblyAttributeHelper
 {
     public TAttribute GetCustomAssemblyAttribute<TAttribute>(Assembly assembly)
         where TAttribute : Attribute
-        => GetAttribute<TAttribute>(assembly);
+        => GetAttribute<TAttribute>(assembly)
+        ?? throw new InvalidOperationException($"Assembly does not contain attribute {typeof(TAttribute).Name}");
 
     public TProperty GetCustomAssemblyAttributeProperty<TProperty, TAttribute>(Func<TAttribute, TProperty> propertyHelper, Assembly assembly)
         where TAttribute : Attribute
-        => GetAttributeProperty(assembly, propertyHelper);
+        => GetAttributeProperty(assembly, propertyHelper)
+        ?? throw new InvalidOperationException($"Assembly does not contain attribute {typeof(TAttribute).Name}");
 
     public string GetCompany(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyCompanyAttribute a) => a.Company);
+        => GetAttributeProperty(assembly, (AssemblyCompanyAttribute a) => a.Company) ?? string.Empty;
 
     public string GetCopyright(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyCopyrightAttribute a) => a.Copyright);
+        => GetAttributeProperty(assembly, (AssemblyCopyrightAttribute a) => a.Copyright) ?? string.Empty;
 
     public string GetConfiguration(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyConfigurationAttribute a) => a.Configuration);
+        => GetAttributeProperty(assembly, (AssemblyConfigurationAttribute a) => a.Configuration) ?? string.Empty;
 
     public string GetCulture(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyCultureAttribute a) => a.Culture);
+        => GetAttributeProperty(assembly, (AssemblyCultureAttribute a) => a.Culture) ?? string.Empty;
 
     public string GetDescription(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyDescriptionAttribute a) => a.Description);
+        => GetAttributeProperty(assembly, (AssemblyDescriptionAttribute a) => a.Description) ?? string.Empty;
 
     public string GetFileVersion(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyFileVersionAttribute a) => a.Version);
+        => GetAttributeProperty(assembly, (AssemblyFileVersionAttribute a) => a.Version) ?? string.Empty;
 
     public string GetFullName(Assembly assembly)
     {
@@ -64,28 +66,30 @@ public class AssemblyAttributeHelper : IAssemblyAttributeHelper
     }
 
     public string GetProduct(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyProductAttribute a) => a.Product);
+        => GetAttributeProperty(assembly, (AssemblyProductAttribute a) => a.Product) ?? string.Empty;
 
     public string GetTitle(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyTitleAttribute a) => a.Title);
+        => GetAttributeProperty(assembly, (AssemblyTitleAttribute a) => a.Title) ?? string.Empty;
 
     public string GetTrademark(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyTrademarkAttribute a) => a.Trademark);
+        => GetAttributeProperty(assembly, (AssemblyTrademarkAttribute a) => a.Trademark) ?? string.Empty;
 
     public string GetVersion(Assembly assembly)
-        => GetAttributeProperty(assembly, (AssemblyVersionAttribute a) => a.Version);
+        => GetAttributeProperty<string, AssemblyVersionAttribute>(assembly, a => a.Version) ?? string.Empty;
 
-    private static TAttribute GetAttribute<TAttribute>(Assembly assembly)
+    private static TAttribute? GetAttribute<TAttribute>(Assembly assembly)
         where TAttribute : Attribute
     {
         ArgumentNullException.ThrowIfNull(assembly);
-        return (TAttribute)assembly.GetCustomAttributes(typeof(TAttribute), true).FirstOrDefault();
+        return assembly.GetCustomAttributes(typeof(TAttribute), true)
+                   .Cast<TAttribute>()
+                   .FirstOrDefault();
     }
 
-    private static TProperty GetAttributeProperty<TProperty, TAttribute>(Assembly assembly, Func<TAttribute, TProperty> propertyHelper)
+    private static TProperty? GetAttributeProperty<TProperty, TAttribute>(Assembly assembly, Func<TAttribute, TProperty> propertyHelper)
         where TAttribute : Attribute
     {
         var attribute = GetAttribute<TAttribute>(assembly);
-        return attribute == null ? default(TProperty) : propertyHelper.Invoke(attribute);
+        return attribute is null ? default : propertyHelper(attribute);
     }
 }
