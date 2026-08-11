@@ -11,7 +11,7 @@ trigger: # CI Builds
     - ./DevOps
     - ./docs
 
-pr: none # Disable PR builds
+pr: none # Disable PR builds for security - require manual approval.
 
 resources:
 - repo: self
@@ -25,6 +25,21 @@ stages:
       vmImage: 'windows-latest' # Need windows to get code coverage report - https://github.com/actions/virtual-environments/tree/master/images/win
       #name: Self-Hosted
     steps:
+    #
+    # Remove Azure DevOps access token ...
+    - powershell: |
+        Remove-Item Env:SYSTEM_ACCESSTOKEN -ErrorAction SilentlyContinue
+      displayName: "Remove Azure DevOps access token"
+    #
+    # Secret usage detection ...
+    - powershell: |
+        $hits = Get-ChildItem -Recurse -File | Select-String -Pattern "PAT"
+        if ($hits) {
+            Write-Host "PAT detected — pipeline must not use long-lived secrets"
+            exit 1
+        }
+      displayName: "Check for PAT usage"
+    #
     # Set-up build environment ...
     - task: UseDotNet@2
       displayName: 'Ensure CI uses correct sdk Version'
@@ -32,6 +47,15 @@ stages:
         packageType: 'sdk'
         version: '10.0.100'
         includePreviewVersions: false
+    #
+    # Clear NuGet cache ...
+    - powershell: |
+        $nuget = Join-Path $HOME ".nuget/packages"
+        if (Test-Path $nuget) {
+            Remove-Item -Recurse -Force $nuget
+        }
+      displayName: "Clear NuGet cache"
+    #
     # Restore dependencies ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet restore'
@@ -40,6 +64,8 @@ stages:
         projects: 'src/AdminAssistant.slnx'
         feedsToUse: 'config'
         nugetConfigPath: 'DevOps/NuGet.config'
+        arguments: '--locked-mode'
+    #
     # Sonar Cloud Prepare ...
 #    - task: SonarCloudPrepare@1
 #      inputs:
@@ -48,6 +74,7 @@ stages:
 #        scannerMode: 'MSBuild'
 #        projectKey: 'SimonGeering_AdminAssistant'
 #        projectName: 'AdminAssistant'
+    #
     # Build ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet build'
@@ -55,6 +82,7 @@ stages:
         command: 'build'
         projects: 'src/AdminAssistant.slnx'
         arguments: '--configuration Release --no-restore'
+    #
     # Run Unit Tests ...
     - task: DotNetCoreCLI@2
       displayName: 'dotnet test'
@@ -64,6 +92,16 @@ stages:
         arguments: '--configuration Release --no-build --collect "Code coverage" --settings "$(Build.SourcesDirectory)\src\AdminAssistant.Test\.runsettings" --filter "Category=Unit"'
         publishTestResults: true
         testRunTitle: 'Unit Tests'
+    #
+    # Dependency provenance report ...
+    - task: DotNetCoreCLI@2
+      displayName: "dotnet list package"
+      inputs:
+        command: 'custom'
+        custom: 'list'
+        arguments: 'package --include-transitive'
+        projects: 'src/AdminAssistant.slnx'
+    #
     # Sonar Cloud Analyze and Publish ...
 #    - task: SonarCloudAnalyze@1
 #    - task: SonarCloudPublish@1
