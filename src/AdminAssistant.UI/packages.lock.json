@@ -136,32 +136,32 @@
       },
       "ReactiveUI.Disposables": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "+4SXyR40eHcCoAeLZWWMM4SE6uxxJgJSStMrRkbFVIFd3n8Pqzd/wCkVDt2q6Z9VC4TTF2HRDa3M6BY73iyS2g=="
+        "resolved": "8.2.0",
+        "contentHash": "vpNi3q3oyIyQYLHcUfnmYeV4dBlrCoWFgaFuJXvI+yaKOq/sFcN+cZiuUzV+8Pl6cVnOYPoWPIx2WNzVI/WzcQ=="
       },
       "ReactiveUI.Primitives": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "LHJCaF4dmmLCyl7pyBYTx3BuV17uwQj5oqR3yCIN+M0abd5536eH+KW4Fu9Bc+rFe4x6LD5YioKO27ytPUXy5A==",
+        "resolved": "8.2.0",
+        "contentHash": "Hlog9ANgfh7tcHX0XXhojZPBXStCgqF7XCzcH+niN8eRLi+RE8CAUEf2ufrgLOOwQMTCKlUTy8wU2fvP5YjMqA==",
         "dependencies": {
-          "ReactiveUI.Disposables": "6.0.0",
-          "ReactiveUI.Primitives.Core": "6.0.0"
+          "ReactiveUI.Disposables": "8.2.0",
+          "ReactiveUI.Primitives.Core": "8.2.0"
         }
       },
       "ReactiveUI.Primitives.Core": {
         "type": "Transitive",
-        "resolved": "6.0.0",
-        "contentHash": "Ffky9BPfRbWJYeUWVLjno07/GcvFFnkXZ+NnrXmAkNnmGfKmSDGYvz2xvmaoUECucT7UBSUr7WO2+X/4fRpPDw==",
+        "resolved": "8.2.0",
+        "contentHash": "PNBtwHrBFoR8IE8aMMQMZZSH/pH4l8gFqs2fwRERObBlapQf82vT833BYlW28oT1aJKm7sXamEWgf7TR25DPiQ==",
         "dependencies": {
-          "ReactiveUI.Disposables": "6.0.0"
+          "ReactiveUI.Disposables": "8.2.0"
         }
       },
       "Refit": {
         "type": "Transitive",
-        "resolved": "13.1.0",
-        "contentHash": "Hd0zEcLAm/7Hk8xRRaXftxbLzvQ04La6IZBFYG2g/dC9e6jQBYEVBEr8OA/iSbLYQFEhTJ3XyjpFSz1MFHpYEg==",
+        "resolved": "16.3.0",
+        "contentHash": "tQS8KnCqSrQPFIjYNglhU1heHSo0NOR82fLSqa4btzrtsvNs3JR8/VETFil2wFB+vncJ/vUpULhR4T0YxfZzTQ==",
         "dependencies": {
-          "ReactiveUI.Primitives": "6.0.0"
+          "ReactiveUI.Primitives": "8.2.0"
         }
       },
       "Swashbuckle.AspNetCore.Swagger": {
@@ -189,7 +189,7 @@
         "type": "Project",
         "dependencies": {
           "AdminAssistant.Api.Contracts": "[1.0.0, )",
-          "Refit.HttpClientFactory": "[13.1.0, )"
+          "Refit.HttpClientFactory": "[16.3.0, )"
         }
       },
       "adminassistant.api.contracts": {
@@ -265,13 +265,13 @@
       },
       "Refit.HttpClientFactory": {
         "type": "CentralTransitive",
-        "requested": "[13.1.0, )",
-        "resolved": "13.1.0",
-        "contentHash": "hlAGIM0fXyZ2Vcv/WkkL2j24vi3JI3HAXyxjx0FrLzCbJIAps2RQvfOtE9NwtYGEf5/fa6qQld6k4e0YAHhQTg==",
+        "requested": "[16.3.0, )",
+        "resolved": "16.3.0",
+        "contentHash": "K43qHN+iXSm3rgShKsZfPre/8BvJqI9Xh/tO9ehoX0gE7IZXvzZ+y+ypsjmBdjYPKTwJpX0irAvc/XKtPmLucQ==",
         "dependencies": {
-          "Microsoft.Extensions.Http": "10.0.9",
-          "ReactiveUI.Primitives": "6.0.0",
-          "Refit": "13.1.0"
+          "Microsoft.Extensions.Http": "10.0.12",
+          "ReactiveUI.Primitives": "8.2.0",
+          "Refit": "16.3.0"
         }
       },
       "Swashbuckle.AspNetCore.Annotations": {
