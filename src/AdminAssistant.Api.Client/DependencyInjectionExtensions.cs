@@ -36,6 +36,7 @@ public static partial class DependencyInjectionExtensions
         return services;
     }
 
+    #pragma warning disable S3242 // SonarCloud: return type is intentionally IServiceCollection for DI chaining.
     private static IServiceCollection AddRefitClientWithBaseUri<TClient>(this IServiceCollection services, Uri baseUri)
         where TClient : class
     {

@@ -1,6 +1,5 @@
 using Ardalis.GuardClauses;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi;
 
@@ -26,10 +25,7 @@ builder.Services.AddResponseCompression(opts
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
-builder.Services.AddFluentValidationAutoValidation()
-    .AddFluentValidationClientsideAdapters()
-    .AddValidatorsFromAssemblyContaining<SimonGeering.Framework.Primitives.IPersistable>();
+builder.Services.AddValidatorsFromAssemblyContaining<SimonGeering.Framework.Primitives.IPersistable>();
 
 builder.Services.AddSwaggerGen(c =>
 {
