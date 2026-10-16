@@ -24,7 +24,7 @@
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.13" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.13" />
     <PackageVersion Include="Refit.HttpClientFactory" Version="13.1.0" />
-    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.28.0.143324" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.35.0.4138" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="10.0.13" />
     <!--AdminAssistant.Api-->
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.13" />
@@ -66,7 +66,7 @@
     <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.13" />
     <!--AdminAssistant.Infrastructure.ClientSide-->
-    <PackageVersion Include="PDFsharp" Version="6.2.4" />
+    <PackageVersion Include="PDFsharp" Version="6.5.0" />
     <!--AdminAssistant.IntegrationTests-->
     <PackageVersion Include="Aspire.Hosting.Testing" Version="13.6.1" />
     <!--AdminAssistant.Retro-->
@@ -90,8 +90,8 @@
     <!--No project specific packages-->
     <!--AdminAssistant.Web-->
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.6.1" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.2.3" />
-    <PackageVersion Include="MudBlazor" Version="9.6.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.3.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.3.0" />
+    <PackageVersion Include="MudBlazor" Version="9.11.0" />
   </ItemGroup>
 </Project>
