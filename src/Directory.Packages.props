@@ -8,13 +8,13 @@
     <PackageVersion Include="Ardalis.Extensions" Version="0.9.4" />
     <PackageVersion Include="Ardalis.GuardClauses" Version="5.0.0" />
     <PackageVersion Include="Ardalis.Specification.EntityFrameworkCore" Version="9.3.1" />
-    <PackageVersion Include="Aspire.Hosting.Docker" Version="13.4.6" />
-    <PackageVersion Include="Aspire.Hosting.Keycloak" Version="13.4.6-preview.1.26319.6" />
-    <PackageVersion Include="Aspire.Hosting.Kubernetes" Version="13.4.6-preview.1.26319.6" />
-    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="13.4.6" />
-    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.4.6" />
-    <PackageVersion Include="Aspire.Hosting.Yarp" Version="13.4.6" />
-    <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="13.4.6" />
+    <PackageVersion Include="Aspire.Hosting.Docker" Version="13.6.1" />
+    <PackageVersion Include="Aspire.Hosting.Keycloak" Version="13.6.1-preview.1.26506.6" />
+    <PackageVersion Include="Aspire.Hosting.Kubernetes" Version="13.6.1-preview.1.26506.6" />
+    <PackageVersion Include="Aspire.Hosting.RabbitMQ" Version="13.6.1" />
+    <PackageVersion Include="Aspire.Hosting.Redis" Version="13.6.1" />
+    <PackageVersion Include="Aspire.Hosting.Yarp" Version="13.6.1" />
+    <PackageVersion Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="13.6.1" />
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.13" />
@@ -37,7 +37,7 @@
     <PackageVersion Include="Mediator.SourceGenerator" Version="3.0.2" />
     <PackageVersion Include="Mediator.Abstractions" Version="3.0.2" />
     <!--AdminAssistant.Aspire.AppHost-->
-    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="13.4.6" />
+    <PackageVersion Include="Aspire.Hosting.PostgreSQL" Version="13.6.1" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.11.0" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="10.11.0" />
     <PackageVersion Include="Npgsql.OpenTelemetry" Version="10.0.3" />
@@ -68,7 +68,7 @@
     <!--AdminAssistant.Infrastructure.ClientSide-->
     <PackageVersion Include="PDFsharp" Version="6.2.4" />
     <!--AdminAssistant.IntegrationTests-->
-    <PackageVersion Include="Aspire.Hosting.Testing" Version="13.4.6" />
+    <PackageVersion Include="Aspire.Hosting.Testing" Version="13.6.1" />
     <!--AdminAssistant.Retro-->
     <PackageVersion Include="Terminal.Gui" Version="1.19.0" />
     <!--AdminAssistant.Test-->
@@ -89,7 +89,7 @@
     <!--AdminAssistant.UI-->
     <!--No project specific packages-->
     <!--AdminAssistant.Web-->
-    <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.4.6" />
+    <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.6.1" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.2.3" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.2.3" />
     <PackageVersion Include="MudBlazor" Version="9.6.0" />
