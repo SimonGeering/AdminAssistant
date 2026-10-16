@@ -10,15 +10,15 @@
       },
       "coverlet.collector": {
         "type": "Direct",
-        "requested": "[10.0.1, )",
-        "resolved": "10.0.1",
-        "contentHash": "27jXSV/0DbVqF5jDrAxuQFZ9oaz6gmG03p8ttxAFk+X0M4woFYj7MoWDLCna5EGLb0CE6OE7X6ZH3Wt5smTtaA=="
+        "requested": "[10.1.0, )",
+        "resolved": "10.1.0",
+        "contentHash": "SlYCIHnBYxINSUpR75SiM5JEmnx11pqT+Ac/C/fUqTTA0dLPl9eYzmFXKKuxmQhL3ZdTQl4PBD3YdAxAauaKLQ=="
       },
       "FluentValidation": {
         "type": "Direct",
-        "requested": "[12.1.1, )",
-        "resolved": "12.1.1",
-        "contentHash": "EPpkIe1yh1a0OXyC100oOA8WMbZvqUu5plwhvYcb7oSELfyUZzfxV48BLhvs3kKo4NwG7MGLNgy1RJiYtT8Dpw=="
+        "requested": "[12.2.0, )",
+        "resolved": "12.2.0",
+        "contentHash": "DR3lFbdnKucaaj1/8zMNOACMz/64igzox1yVZSFVsLxYB5mxAB+wFP1WZ8fjwrZnbU1KA1DoMzHKYKxUfuZ4wQ=="
       },
       "Microsoft.AspNetCore.TestHost": {
         "type": "Direct",
@@ -112,21 +112,21 @@
       },
       "MockQueryable.Moq": {
         "type": "Direct",
-        "requested": "[10.0.8, )",
-        "resolved": "10.0.8",
-        "contentHash": "gkLu+M7E20PuNTnyxU3zxBD+OfA/e5Q9dacshSjA7+nO4ls6JQeDw2SLFYv6G/RQib6uWgVrYzPa5bQfyEvdWg==",
+        "requested": "[10.0.12, )",
+        "resolved": "10.0.12",
+        "contentHash": "5d6gJm+AmL3XsjNo2HpaNzpbke72p6a9nZGD/aW49Qw2U9wzOJKSMV829MLXb5bdyCM68Eam6wGQrs0zmCgMQw==",
         "dependencies": {
-          "MockQueryable.EntityFrameworkCore": "10.0.8",
+          "MockQueryable.EntityFrameworkCore": "10.0.12",
           "Moq": "4.20.72"
         }
       },
       "Moq": {
         "type": "Direct",
-        "requested": "[4.20.72, )",
-        "resolved": "4.20.72",
-        "contentHash": "EA55cjyNn8eTNWrgrdZJH5QLFp2L43oxl1tlkoYUKIE9pRwL784OWiTXeCV5ApS+AMYEAlt7Fo03A2XfouvHmQ==",
+        "requested": "[4.21.0, )",
+        "resolved": "4.21.0",
+        "contentHash": "HUjrhhzEJ/AfbSBCnR8lPkpveVGpV/dNuOlnpfqBNTME93izly1CRV4N5zBySqz4m2yCRlHLPy/PnPzYokbwIg==",
         "dependencies": {
-          "Castle.Core": "5.1.1"
+          "Castle.Core": "5.2.1"
         }
       },
       "NetArchTest.Rules": {
@@ -182,15 +182,15 @@
       },
       "xunit.runner.visualstudio": {
         "type": "Direct",
-        "requested": "[3.1.5, )",
-        "resolved": "3.1.5",
-        "contentHash": "tKi7dSTwP4m5m9eXPM2Ime4Kn7xNf4x4zT9sdLO/G4hZVnQCRiMTWoSZqI/pYTVeI27oPPqHBKYI/DjJ9GsYgA=="
+        "requested": "[4.0.1, )",
+        "resolved": "4.0.1",
+        "contentHash": "8CoAaZkniVekR1ycJyxn+hOz+6ZQCDPcoIsIs6ujd4WyFcBMlxGNU15Qb8Uxd4iO4UmOuETb0M6vzBbwX/mfLA=="
       },
       "Xunit.SkippableFact": {
         "type": "Direct",
-        "requested": "[1.5.61, )",
-        "resolved": "1.5.61",
-        "contentHash": "ZoahExHGire3U1b9RLUQJuoofMKwJKd6U60cqaomh0llL8ns1evvl8ivXLP1Bw3nPUR0ELfSVZ0giKnMoqPCfQ==",
+        "requested": "[1.5.85, )",
+        "resolved": "1.5.85",
+        "contentHash": "zI3QsePulfENNjZC+POQYtqt/9HkUfe6qq+waSJ1xGVMU9v8LyWbr695IRAgg+UYDkPUgGnBjyULIVQ9Qdpgsg==",
         "dependencies": {
           "Validation": "2.6.68",
           "xunit.extensibility.execution": "2.4.0"
@@ -203,8 +203,8 @@
       },
       "Castle.Core": {
         "type": "Transitive",
-        "resolved": "5.1.1",
-        "contentHash": "rpYtIczkzGpf+EkZgDr9CClTdemhsrwA/W5hMoPjLkRFnXzH44zDLoovXeKtmxb1ykXK9aJVODSpiJml8CTw2g==",
+        "resolved": "5.2.1",
+        "contentHash": "wHARzQA695jwwKreOzNsq54KiGqKP38tv8hi8e2FXDEC/sA6BtrX90tVPDkOfVu13PbEzr00TCV8coikl+D1Iw==",
         "dependencies": {
           "System.Diagnostics.EventLog": "6.0.0"
         }
@@ -634,17 +634,16 @@
       },
       "MockQueryable.Core": {
         "type": "Transitive",
-        "resolved": "10.0.8",
-        "contentHash": "PozXIrpclppq3Ye5PcFHQLee8G26szMzd40FCcK+OoTSObHUieDCHdGqQwhE8YzWhXp7GPl7vv9DKkIPJuqWLg=="
+        "resolved": "10.0.12",
+        "contentHash": "YABII3NELFR1jzW22pqjbCG4DBQVbmHr/iYVAqlcTO3GBRdjqnyavhrcGbJMAANPeg8EZFUd7FoggBFqgCKVqg=="
       },
       "MockQueryable.EntityFrameworkCore": {
         "type": "Transitive",
-        "resolved": "10.0.8",
-        "contentHash": "9F7GPrrZAOR7XeNq7RnbDXk2kLk4uL/auD7z8SS58pI5iobgUh43zhn9QQ1AX0+bc3zWQawxNylN/Xt2jkET3Q==",
+        "resolved": "10.0.12",
+        "contentHash": "IMulQMbhuPqoxl+L0kfseswqlUzSCP5Vv7w2rtTzyckj1UpPqV8/CTZCHHTj4GG5ysDcpYl0o3qImnfkKAKWsA==",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "10.0.8",
-          "Microsoft.EntityFrameworkCore.Relational": "10.0.8",
-          "MockQueryable.Core": "10.0.8"
+          "Microsoft.EntityFrameworkCore": "10.0.12",
+          "MockQueryable.Core": "10.0.12"
         }
       },
       "Mono.Cecil": {
@@ -855,7 +854,7 @@
           "AdminAssistant.Aspire.ServiceDefaults": "[1.0.0, )",
           "AdminAssistant.DomainModel": "[1.0.0, )",
           "AdminAssistant.Infrastructure": "[1.0.0, )",
-          "FluentValidation.DependencyInjectionExtensions": "[12.1.1, )",
+          "FluentValidation.DependencyInjectionExtensions": "[12.2.0, )",
           "Microsoft.AspNetCore.OpenApi": "[10.0.13, )",
           "Swashbuckle.AspNetCore": "[10.2.3, )",
           "Swashbuckle.AspNetCore.Annotations": "[10.2.3, )"
@@ -907,7 +906,7 @@
           "Ardalis.Extensions": "[0.9.4, )",
           "Ardalis.GuardClauses": "[5.0.0, )",
           "Ardalis.Result": "[10.1.0, )",
-          "FluentValidation": "[12.1.1, )",
+          "FluentValidation": "[12.2.0, )",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "[10.0.13, )",
           "SimonGeering.Framework": "[1.0.0, )"
         }
@@ -1021,11 +1020,11 @@
       },
       "FluentValidation.DependencyInjectionExtensions": {
         "type": "CentralTransitive",
-        "requested": "[12.1.1, )",
-        "resolved": "12.1.1",
-        "contentHash": "D0VXh4dtjjX2aQizuaa0g6R8X3U1JaVqJPfGCvLwZX9t/O2h7tkpbitbadQMfwcgSPdDbI2vDxuwRMv/Uf9dHA==",
+        "requested": "[12.2.0, )",
+        "resolved": "12.2.0",
+        "contentHash": "QpKXgiO9E6wXCh19X2Musn8MZM0xt7KQt/QrD6GDBn3MCUfy8a+rkhCzrYJNCfoxTsTRQ7bpKP8T3geTnJNNeQ==",
         "dependencies": {
-          "FluentValidation": "12.1.1",
+          "FluentValidation": "12.2.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "2.1.0"
         }
       },
