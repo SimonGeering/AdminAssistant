@@ -16,6 +16,7 @@ public interface IMainWindowViewModel : IViewModelBase
     void OnSelectedModeChanged(ModeSelectionItem selectedMode);
     void OnSelectedModuleChanged(ModuleSelectionItem selectedModule);
 }
+#pragma warning disable CA1812 // Instantiated via DI
 internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
 {
     private const string SelectedModuleStyle = "active";
@@ -109,3 +110,4 @@ internal sealed class MainWindowViewModel : ViewModelBase, IMainWindowViewModel
 
     public string FooterText { get; }
 }
+#pragma warning restore CA1812

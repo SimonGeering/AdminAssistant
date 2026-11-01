@@ -1,0 +1,11 @@
+
+views {
+  view index {
+
+    include adminAssistant
+    include user
+    include admin
+
+    include adminAssistant.*
+  }
+}
