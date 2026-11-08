@@ -1,7 +1,7 @@
 {
-  "name": "admin-assistant",
+  "name": "admin-assistant-likec4",
   "version": "1.0.0",
-  "description": "Admin Assistant Likec4 model",
+  "description": "LikeC4 Architecture Models for Admin Assistant project",
   "homepage": "https://github.com/SimonGeering/AdminAssistant#readme",
   "bugs": {
     "url": "https://github.com/SimonGeering/AdminAssistant/issues"
@@ -12,12 +12,14 @@
   },
   "license": "MIT",
   "author": "Simon Geering",
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
     "dev": "likec4 dev",
     "build": "likec4 build",
-    "test": "vitest run"
+    "test": "likec4 test"
   },
-  "dependencies": {
-    "likec4": "1.59.2"
+  "devDependencies": {
+    "likec4": "^1.60.0"
   }
 }

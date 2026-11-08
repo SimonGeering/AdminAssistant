@@ -11,6 +11,8 @@ using AdminAssistant.WebAPIClient.v1.MailModule;
 using AdminAssistant.WebAPIClient.v1.TasksModule;
 using AdminAssistant.WebAPIClient.v1.WeatherModule;
 
+// ReSharper disable once CheckNamespace
+#pragma warning disable IDE0130 // Namespace deliberate to ease extension discovery
 namespace Microsoft.Extensions.DependencyInjection;
 
 public static partial class DependencyInjectionExtensions
@@ -36,11 +38,12 @@ public static partial class DependencyInjectionExtensions
         return services;
     }
 
+    #pragma warning disable S3241 // SonarCloud: return type is intentionally IServiceCollection for DI chaining.
     #pragma warning disable S3242 // SonarCloud: return type is intentionally IServiceCollection for DI chaining.
     private static IServiceCollection AddRefitClientWithBaseUri<TClient>(this IServiceCollection services, Uri baseUri)
         where TClient : class
     {
-        services.AddRefitClient<TClient>().ConfigureHttpClient(c => c.BaseAddress = baseUri);
+        services.AddRefitGeneratedClient<TClient>().ConfigureHttpClient(c => c.BaseAddress = baseUri);
         return services;
     }
 }
