@@ -375,3 +375,6 @@ MigrationBackup/
 /src/docker-compose-artifacts/docker-compose.yaml
 /src/aspire-output/docker-compose.yaml
 /src/.idea/.idea.AdminAssistant/.idea/db-forest-config.xml
+
+# likec4
+models/likec4/dist/
