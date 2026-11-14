@@ -365,7 +365,6 @@ MigrationBackup/
 # Code Coverage
 **/lcov.info
 /src/.cr/personal
-/src/global.json
 /ux
 /src/AdminAssistant.Blazor.Client/wwwroot/appsettings.json
 *.env
@@ -375,3 +374,7 @@ MigrationBackup/
 /src/docker-compose-artifacts/docker-compose.yaml
 /src/aspire-output/docker-compose.yaml
 /src/.idea/.idea.AdminAssistant/.idea/db-forest-config.xml
+
+# likec4
+models/likec4/dist/
+DevOps/check.ps1

@@ -6,19 +6,19 @@
   <Folder Name="/DevOps/">
     <File Path="..\DevOps\ContinuousIntegration.yml" />
     <File Path="..\DevOps\ManualFullBuild.yml" />
-    <File Path="..\DevOps\NuGet.config" />
     <File Path="..\DevOps\PullRequest.yml" />
   </Folder>
   <Folder Name="/Solution Items/">
     <File Path="..\.gitignore" />
     <File Path=".editorconfig" />
+    <File Path="NuGet.config" />
     <File Path="..\docs\cli.md" />
     <File Path="..\docs\database.dbml" />
     <File Path="Directory.Build.props" />
     <File Path="Directory.Packages.props" />
   </Folder>
-  <Project Path="AdminAssistant.Api.Client\AdminAssistant.Api.Client.csproj" Type="C#" />
-  <Project Path="AdminAssistant.Api.Contracts\AdminAssistant.Api.Contracts.csproj" Type="C#" />
+  <Project Path="AdminAssistant.Api.Client\AdminAssistant.Api.Client.csproj" />
+  <Project Path="AdminAssistant.Api.Contracts\AdminAssistant.Api.Contracts.csproj" />
   <Project Path="AdminAssistant.Api\AdminAssistant.Api.csproj" />
   <Project Path="AdminAssistant.Application\AdminAssistant.Application.csproj" />
   <Project Path="AdminAssistant.Aspire.AppHost\AdminAssistant.Aspire.AppHost.csproj" />

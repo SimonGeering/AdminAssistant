@@ -1,0 +1,34 @@
+specification {
+  element actor {
+    style {
+      shape person
+    }
+  }
+  element enterprise {
+    style {
+      shape rectangle
+    }
+  }
+
+  element group {
+    style {
+      shape rectangle
+    }
+  }
+
+  element softwareSystem {
+    style {
+      shape rectangle
+    }
+  }
+  element container {
+    style {
+      shape rectangle
+    }
+  }
+  element component {
+    style {
+      shape component
+    }
+  }
+}

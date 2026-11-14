@@ -1,9 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 using AdminAssistant.Retro.Modules.AccountsModule;
 
+// ReSharper disable once CheckNamespace
+#pragma warning disable IDE0130 // Namespace deliberate to ease extension discovery
 namespace Microsoft.Extensions.DependencyInjection;
 
-public static class DependencyInjectionExtensions
+internal static class DependencyInjectionExtensions
 {
     public static IServiceCollection AddAdminAssistantRetroUIElements(this IServiceCollection services)
     {

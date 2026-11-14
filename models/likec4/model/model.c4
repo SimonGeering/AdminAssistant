@@ -1,0 +1,182 @@
+model {
+
+  user = actor  {
+    title 'User'
+    summary 'A user of the system.'
+    -> webApp "Uses" { technology "HTTPS" }
+    -> nativeApp "Uses"
+    -> tuiApp "Uses"
+  }
+  admin = actor  {
+    title 'Administrator'
+    summary 'An administrator of the system.'
+    -> webApp "Uses" { technology "HTTPS" }
+    -> nativeApp "Uses"
+    -> tuiApp "Uses"
+    -> redisInsight "Uses" { technology "HTTPS" }
+    -> pgadmin "Uses" { technology "HTTPS" }
+    -> messageBusAdminDashboard "Uses" { technology "HTTPS" }
+  }
+
+  // # See https://c4model.com/
+  // # Ref https://github.com/structurizr/dsl/blob/master/docs/language-reference.md
+
+  adminAssistant = enterprise "Admin Assistant" {
+
+    webApp = softwareSystem {
+      title "AdminAssistant.Web"
+      summary "Modular Web App UI"
+      technology "Blazor Server on .Net 10"
+      style {
+        shape browser
+      }
+
+      group AccountsModule {
+        AccountsScreen = container "Accounts Screen"
+      }
+
+      -> keyCloak "IAM" { technology "HTTPS" }
+      -> api "Uses" { technology "HTTPS" }
+    }
+
+    api = softwareSystem {
+      title "AdminAssistant.Api"
+      summary "Modular REST API"
+      technology "ASP.Net Web API on .Net 10"
+
+      group AccountsModule {
+        BankAccountController = container "Bank Account Controller" {
+          PutBankAccount = component "Put BankAccount" "Update an existing BankAccount." "Endpoint" ""
+          PostBankAccount = component "Post BankAccount" "Creates a new BankAccount." "Endpoint" ""
+        }
+        BankAccountInfoController = container "Bank Account Info Controller"
+        BankAccountTypeController = container "Bank Account Type Controller"
+      }
+
+      group CoreModule {
+
+      }
+      -> postgres.applicationDatabase "Uses" { technology "Npgsql" }
+      -> cache "Uses" { technology "Redis" }
+      -> messageBus "Uses" { technology "AMQP" }
+      -> keyCloak "OAUTH" { technology "HTTPS" }
+    }
+
+    keyCloak = softwareSystem {
+      title "Keycloak"
+      summary "Identity and Access Management Server"
+      technology "Keycloak on Wildfly"
+    }
+
+    postgres = softwareSystem {
+      title "PostgreSQL"
+      summary "Database Server"
+      technology "PostgreSQL"
+      style {
+        shape storage
+      }
+
+      applicationDatabase = container {
+        title "Admin Assistant Database"
+        summary "Main Application Database for Admin Assistant"
+        technology "PostgreSQL Database"
+        style {
+          shape storage
+        }
+      }
+
+      scheduledJobDatabase = container {
+        title "Scheduled Job Database"
+        summary "Hangfire Job Scheduler Management Database"
+        technology "PostgreSQL Database"
+        style {
+          shape storage
+        }
+      }
+    }
+
+    jobScheduler = softwareSystem {
+      title "AdminAssistant.JobScheduler"
+      summary "Job Scheduler"
+      technology "Hangfire on .Net 10"
+      -> postgres.scheduledJobDatabase "Uses" { technology "Npgsql" }
+      -> api "Uses" { technology "HTTPS" }
+      -> keyCloak "OAUTH" { technology "HTTPS" }
+    }
+
+    pgadmin = softwareSystem {
+      title "pgAdmin"
+      summary "Database Admin Dashboard"
+      technology "pgAdmin"
+      style {
+        shape browser
+      }
+      -> postgres.scheduledJobDatabase "Uses" { technology "Npgsql" }
+      -> postgres.applicationDatabase "Uses" { technology "Npgsql" }
+    }
+
+    cache = softwareSystem {
+      title "Redis"
+      summary "Data Cache"
+      technology "Redis"
+      style {
+        shape storage
+      }
+    }
+
+    redisInsight = softwareSystem {
+      title "Redis Insight"
+      summary "Redis Admin Dashboard"
+      technology "Redis Insight"
+      style {
+        shape browser
+      }
+      -> cache "Uses" { technology "Redis" }
+    }
+
+    migrations = softwareSystem {
+      title "Database Migrations"
+      summary "Database Migration Service"
+      technology "ASP.Net Worker Service on .Net 10"
+      -> postgres.applicationDatabase "Uses" { technology "Npgsql" }
+    }
+
+    messageBus = softwareSystem {
+      title "RabbitMQ"
+      summary "Message Bus"
+      technology "RabbitMQ"
+      style {
+        shape queue
+      }
+    }
+
+    messageBusAdminDashboard = softwareSystem {
+      title "RabbitMQ Admin Dashboard"
+      summary "RabbitMQ Admin Dashboard"
+      technology "RabbitMQ Management Plugin"
+      style {
+        shape browser
+      }
+      -> messageBus "Uses" { technology "AMQP" }
+    }
+
+    nativeApp = softwareSystem {
+      title "AdminAssistant.AvaloniaApp"
+      summary "Modular Desktop App UI"
+      technology "Avalonia on .Net 10"
+      style {
+        shape mobile
+      }
+      -> keyCloak "IAM" { technology "HTTPS" }
+      -> api "Uses" { technology "HTTPS" }
+    }
+
+    tuiApp = softwareSystem {
+      title "AdminAssistant.Tui"
+      summary "Modular Terminal UI"
+      technology "Terminal UI on .Net 10"
+      -> keyCloak "IAM" { technology "HTTPS" }
+      -> api "Uses" { technology "HTTPS" }
+    }
+  }
+}
