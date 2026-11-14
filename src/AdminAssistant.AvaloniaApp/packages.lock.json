@@ -487,7 +487,7 @@
       },
       "OpenTelemetry.Exporter.Console": {
         "type": "CentralTransitive",
-        "requested": "[1.20.1, )",
+        "requested": "[1.21.0, )",
         "resolved": "1.21.0",
         "contentHash": "J8XbCU0TP+ULX9s+MGRe/iIvy5FZAi1J2YB3LyyxcYqH+nzDuUWEsTbzbL/jwqr3V/2njv564wK2NM1tn7OrfA==",
         "dependencies": {
@@ -496,7 +496,7 @@
       },
       "OpenTelemetry.Exporter.OpenTelemetryProtocol": {
         "type": "CentralTransitive",
-        "requested": "[1.20.1, )",
+        "requested": "[1.21.0, )",
         "resolved": "1.21.0",
         "contentHash": "Xo/3lqiZhv+an00t5N9Jxt3U2vIOcY6/bu0wo5LiQrrRIwd/8dv9FdlIVB3k3ypiyG1VkbCXhWH1tiC48HQS4w==",
         "dependencies": {
@@ -505,7 +505,7 @@
       },
       "OpenTelemetry.Extensions.Hosting": {
         "type": "CentralTransitive",
-        "requested": "[1.20.1, )",
+        "requested": "[1.21.0, )",
         "resolved": "1.21.0",
         "contentHash": "+cOZFDBLktHT8V/aUb2SXQVFNP5JrcX/F24TgHcbD2kd4SFcKlBMChYeU/K+Tg3nuL+4HAS7dcR7Y2+tcSnFbQ==",
         "dependencies": {
@@ -514,7 +514,7 @@
       },
       "OpenTelemetry.Instrumentation.AspNetCore": {
         "type": "CentralTransitive",
-        "requested": "[1.20.1, )",
+        "requested": "[1.21.0, )",
         "resolved": "1.21.0",
         "contentHash": "mHX+dOb0uGLGuVJxoKdYTsndz8pNg+Uxe7YqTp6IY3No9tmoLCiUjXf/fI82IrTRnF1PraVzU+VWymzLR1CmFw==",
         "dependencies": {
@@ -541,7 +541,7 @@
       },
       "OpenTelemetry.Instrumentation.Http": {
         "type": "CentralTransitive",
-        "requested": "[1.20.1, )",
+        "requested": "[1.21.0, )",
         "resolved": "1.21.0",
         "contentHash": "sThY0J9yMUZ4yWX5/JWpRlFN0LedPpA2ZTj35Z2unkxXLcCiXxDmmlL8UkqFDR6I16E+o/bTFC1HPylr/CbJ8A==",
         "dependencies": {
@@ -551,7 +551,7 @@
       },
       "OpenTelemetry.Instrumentation.Runtime": {
         "type": "CentralTransitive",
-        "requested": "[1.20.1, )",
+        "requested": "[1.21.0, )",
         "resolved": "1.21.0",
         "contentHash": "CpkfBbVIHR6Jn8QrGwt7RtOEDyKOHL2rs9HL+5ckzvlsvQiJ5lHD/qvB7NqJuFZIvXnACSYB7AD0ycXITPQFPg==",
         "dependencies": {
@@ -560,7 +560,7 @@
       },
       "OpenTelemetry.Instrumentation.SqlClient": {
         "type": "CentralTransitive",
-        "requested": "[1.20.1, )",
+        "requested": "[1.21.0, )",
         "resolved": "1.21.0",
         "contentHash": "NTKS35ivMLpqWPOJlHZaNkc6y9BSw2xQ6yg4WppVgFPQmEZ2S1+GUtGzexj+usDAyiLPIXyClLEW1Bas5r2vyQ==",
         "dependencies": {

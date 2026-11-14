@@ -90,8 +90,8 @@
     <!--No project specific packages-->
     <!--AdminAssistant.Web-->
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.6.5" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.3.1" />
-    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="10.3.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="11.0.1" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="11.0.1" />
     <PackageVersion Include="MudBlazor" Version="9.12.0" />
   </ItemGroup>
 </Project>
