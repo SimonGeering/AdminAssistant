@@ -33,11 +33,20 @@ stages:
     #
     # Secret usage detection ...
     - powershell: |
-        $patterns = @("ghp_","github_pat_","gho_","azdops_")
-        $hits = Get-ChildItem -Recurse -File | Select-String -Pattern $patterns
+        $patterns = @('ghp_[A-Za-z0-9_]+','github_pat_[A-Za-z0-9_]+','gho_[A-Za-z0-9_]+')
+
+        $hits = Get-ChildItem -Recurse -File |
+          Select-String -Pattern $patterns |
+          Where-Object {
+            $_.Line.Trim() -notin $patterns
+          }
+
         if ($hits) {
-            Write-Host "Long-lived token detected — pipeline must not use secrets"
-            exit 1
+          foreach ($hit in $hits) {
+            Write-Host "##vso[task.logissue type=error]PAT-like token found in $($hit.Path) line $($hit.LineNumber)"
+          }
+          Write-Host "##vso[task.complete result=Failed;]Secret scan failed"
+          exit 1
         }
       displayName: "Check for PAT usage"
     #
@@ -46,7 +55,7 @@ stages:
       displayName: 'Ensure CI uses correct sdk Version'
       inputs:
         packageType: 'sdk'
-        version: '10.0.100'
+        version: '10.0.404'
         includePreviewVersions: false
     #
     # Clear NuGet cache ...

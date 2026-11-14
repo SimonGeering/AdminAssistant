@@ -365,7 +365,6 @@ MigrationBackup/
 # Code Coverage
 **/lcov.info
 /src/.cr/personal
-/src/global.json
 /ux
 /src/AdminAssistant.Blazor.Client/wwwroot/appsettings.json
 *.env
@@ -378,3 +377,4 @@ MigrationBackup/
 
 # likec4
 models/likec4/dist/
+DevOps/check.ps1
