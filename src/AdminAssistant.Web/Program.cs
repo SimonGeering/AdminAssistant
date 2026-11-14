@@ -7,6 +7,9 @@ using SimonGeering.Framework.Primitives;
 var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 
+// Here for now until this gets fixed - https://github.com/microsoft/aspire/pull/21222/changes ...
+builder.Services.AddOutputCache();
+
 // Add services to the container.
 builder.AddRedisOutputCache(Constants.CacheName);
 builder.Services.AddMudServices();
