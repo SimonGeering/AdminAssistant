@@ -8,8 +8,7 @@
         "resolved": "0.9.4",
         "contentHash": "5JDKpMiEsxbz9N1yynsMFc2rBXDQ5iHLockW8lxahqlj9B5gxbENTAXBY2Jswp4vcGG+cNQxv81KrUqd4mXQSA==",
         "dependencies": {
-          "Ardalis.GuardClauses": "3.2.0",
-          "System.Text.Json": "5.0.2"
+          "Ardalis.GuardClauses": "3.2.0"
         }
       },
       "Ardalis.GuardClauses": {
@@ -32,9 +31,9 @@
       },
       "Microsoft.Extensions.DependencyInjection.Abstractions": {
         "type": "Direct",
-        "requested": "[10.0.14, )",
-        "resolved": "10.0.14",
-        "contentHash": "QtpQzuSZVyTPCuHW058yCs9Nj0394uUkNyFHS813nOmK9UgUdBdaprJ5PPsBgsQIpxADTsTkbaMMonykem6qdw=="
+        "requested": "[11.0.0, )",
+        "resolved": "11.0.0",
+        "contentHash": "a2c4Kp55miXT6G+DSb75pczXQJHgNMzPyZEyMxrrKxuQrgvctcDWJWD9fVe/uGbQdu4Z0c3B7AVKp1DXmD64nQ=="
       },
       "SonarAnalyzer.CSharp": {
         "type": "Direct",
@@ -42,16 +41,8 @@
         "resolved": "10.35.0.4138",
         "contentHash": "T5o/tuyPw9pHRkyWxW07TkSri4I4pLpqwH922JuhphDjHAM7BUHaGE67h/w+65evHsIar8mYB2Ey6OmOLj9QDw=="
       },
-      "System.Text.Json": {
-        "type": "Transitive",
-        "resolved": "5.0.2",
-        "contentHash": "I47dVIGiV6SfAyppphxqupertT/5oZkYLDCX6vC3HpOI4ZLjyoKAreUoem2ie6G0RbRuFrlqz/PcTQjfb2DOfQ=="
-      },
       "simongeering.framework": {
-        "type": "Project",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "[10.0.14, )"
-        }
+        "type": "Project"
       }
     }
   }
