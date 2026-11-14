@@ -24,7 +24,7 @@
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="11.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="11.0.0" />
     <PackageVersion Include="Refit.HttpClientFactory" Version="16.4.0" />
-    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.35.0.4138" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.36.0.15337" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Analyzers" Version="11.0.0" />
     <!--AdminAssistant.Api-->
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="11.0.0" />
@@ -92,6 +92,6 @@
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="13.6.5" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="11.0.1" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="11.0.1" />
-    <PackageVersion Include="MudBlazor" Version="9.12.0" />
+    <PackageVersion Include="MudBlazor" Version="9.13.0" />
   </ItemGroup>
 </Project>
