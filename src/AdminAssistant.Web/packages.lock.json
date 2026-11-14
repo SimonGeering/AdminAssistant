@@ -473,7 +473,7 @@
       },
       "Swashbuckle.AspNetCore.Annotations": {
         "type": "CentralTransitive",
-        "requested": "[10.3.1, )",
+        "requested": "[11.0.1, )",
         "resolved": "11.0.1",
         "contentHash": "d6fEK4DnRM68dtnd3IeU1ux0ED0rX8yWQj7LVpV/y9j4TKUtORawW2Ds8k6kL8BbKA51xQKlNOjlJuQnvY2RZQ==",
         "dependencies": {

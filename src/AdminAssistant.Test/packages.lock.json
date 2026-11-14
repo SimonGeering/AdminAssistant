@@ -100,11 +100,11 @@
       },
       "MockQueryable.Moq": {
         "type": "Direct",
-        "requested": "[10.0.13, )",
-        "resolved": "10.0.13",
-        "contentHash": "q6Q8zjQRXZmzKRIehCi/o9iqbrIPr8J4qeQPifLG3rst/JRW6ZsrelfxHlReSSMqR+9tBQxOluveqo5Cxl0yxg==",
+        "requested": "[11.0.0, )",
+        "resolved": "11.0.0",
+        "contentHash": "sUa7jgKZrseB/0yy0Ua8//69FGiIyn10rg0dJZrOa6GF3Mv1gi8bagM35UWRUKVEOZimLfchNjVoX+tKJpTFuw==",
         "dependencies": {
-          "MockQueryable.EntityFrameworkCore": "10.0.13",
+          "MockQueryable.EntityFrameworkCore": "11.0.0",
           "Moq": "4.21.0"
         }
       },
@@ -517,16 +517,16 @@
       },
       "MockQueryable.Core": {
         "type": "Transitive",
-        "resolved": "10.0.13",
-        "contentHash": "+EgIsLrbGmDaFkniqTYOq1j+7UwUz/K/iEKe4Y3mYMfx6pXvP8fBubywskBu6Lq6WN5kKr4ICz5hQuOqZmzoIQ=="
+        "resolved": "11.0.0",
+        "contentHash": "TWX6b5ifcq0CzX+4KqFHbVTvF9KE5Rk1MYV1nZVVLQnXCrS9UDAwD3OHGdGRw7/bfOvkKoURBeQy43+YfgMKqg=="
       },
       "MockQueryable.EntityFrameworkCore": {
         "type": "Transitive",
-        "resolved": "10.0.13",
-        "contentHash": "oh3k0wquAIuIId6upPn0J0eFmXe1K2MH8Dalhjadr7VgTQvtwUYPfqEE7wMFUyiXg/+JxAwjz9T9+lREp12HOQ==",
+        "resolved": "11.0.0",
+        "contentHash": "xSCNL+hH5yDIHMfqmi3UMNFyG2tVCFj0TtIBibx+OYDw4d5RIRZeoKFELxYeTTujOLWoHXgsrI4UNe7BmE7wMA==",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": "10.0.13",
-          "MockQueryable.Core": "10.0.13"
+          "Microsoft.EntityFrameworkCore": "11.0.0",
+          "MockQueryable.Core": "11.0.0"
         }
       },
       "Mono.Cecil": {
@@ -1083,7 +1083,7 @@
       },
       "Swashbuckle.AspNetCore": {
         "type": "CentralTransitive",
-        "requested": "[10.3.1, )",
+        "requested": "[11.0.1, )",
         "resolved": "11.0.1",
         "contentHash": "udw95V+yj51HjaSs0+OiLYO9KrSylm2ebPH/7N41e8qQ+k/mCtXwiWaMbAW3kOPfE4yhe5sFOd1hNV+M8fXiqA==",
         "dependencies": {
@@ -1095,7 +1095,7 @@
       },
       "Swashbuckle.AspNetCore.Annotations": {
         "type": "CentralTransitive",
-        "requested": "[10.3.1, )",
+        "requested": "[11.0.1, )",
         "resolved": "11.0.1",
         "contentHash": "d6fEK4DnRM68dtnd3IeU1ux0ED0rX8yWQj7LVpV/y9j4TKUtORawW2Ds8k6kL8BbKA51xQKlNOjlJuQnvY2RZQ==",
         "dependencies": {
