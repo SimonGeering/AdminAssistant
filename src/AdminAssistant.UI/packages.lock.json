@@ -1,7 +1,7 @@
 {
   "version": 2,
   "dependencies": {
-    "net10.0": {
+    "net11.0": {
       "Ardalis.GuardClauses": {
         "type": "Direct",
         "requested": "[5.0.0, )",
@@ -132,7 +132,10 @@
       "Microsoft.OpenApi": {
         "type": "Transitive",
         "resolved": "2.7.5",
-        "contentHash": "0FA67RSnRM4tcBKqiqVu/HPdZ9+QOKbmeRjxRUGTCjPU4C0bmUhd97Dso7Yild5P7nOV6GxJ2xrK0Kv/O9xp0w=="
+        "contentHash": "0FA67RSnRM4tcBKqiqVu/HPdZ9+QOKbmeRjxRUGTCjPU4C0bmUhd97Dso7Yild5P7nOV6GxJ2xrK0Kv/O9xp0w==",
+        "dependencies": {
+          "System.Text.Json": "8.0.5"
+        }
       },
       "ReactiveUI.Disposables": {
         "type": "Transitive",
@@ -185,6 +188,11 @@
         "resolved": "8.0.1",
         "contentHash": "CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA=="
       },
+      "System.Text.Json": {
+        "type": "Transitive",
+        "resolved": "8.0.5",
+        "contentHash": "0f1B50Ss7rqxXiaBJyzUu9bWFOO2/zSlifZ/UNMdiIpDYe4cY4LQQicP4nirK1OS31I43rn062UIJ1Q9bpmHpg=="
+      },
       "adminassistant.api.client": {
         "type": "Project",
         "dependencies": {
@@ -229,7 +237,8 @@
         "resolved": "0.9.4",
         "contentHash": "5JDKpMiEsxbz9N1yynsMFc2rBXDQ5iHLockW8lxahqlj9B5gxbENTAXBY2Jswp4vcGG+cNQxv81KrUqd4mXQSA==",
         "dependencies": {
-          "Ardalis.GuardClauses": "3.2.0"
+          "Ardalis.GuardClauses": "3.2.0",
+          "System.Text.Json": "5.0.2"
         }
       },
       "Ardalis.Result": {
@@ -269,7 +278,7 @@
         "resolved": "16.4.0",
         "contentHash": "nt42wtkvf27XYpu3rBrHrW+Awd2p9UVqU1vDFBfgVbwb9R2z1hvihbs9LP63EnDXZhuFsMyn79r6V+5pG2vTWQ==",
         "dependencies": {
-          "Microsoft.Extensions.Http": "10.0.13",
+          "Microsoft.Extensions.Http": "11.0.0-rc.2.26504.105",
           "ReactiveUI.Primitives": "9.0.0",
           "Refit": "16.4.0"
         }
