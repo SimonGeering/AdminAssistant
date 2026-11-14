@@ -15,7 +15,6 @@
         <PackageReference Include="Ardalis.GuardClauses" />
         <PackageReference Include="Ardalis.Result" />
         <PackageReference Include="FluentValidation" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
         <PackageReference Include="SonarAnalyzer.CSharp">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>

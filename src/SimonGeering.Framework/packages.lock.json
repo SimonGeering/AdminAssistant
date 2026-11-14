@@ -2,12 +2,6 @@
   "version": 2,
   "dependencies": {
     "net11.0": {
-      "Microsoft.Extensions.DependencyInjection.Abstractions": {
-        "type": "Direct",
-        "requested": "[11.0.0, )",
-        "resolved": "11.0.0",
-        "contentHash": "a2c4Kp55miXT6G+DSb75pczXQJHgNMzPyZEyMxrrKxuQrgvctcDWJWD9fVe/uGbQdu4Z0c3B7AVKp1DXmD64nQ=="
-      },
       "SonarAnalyzer.CSharp": {
         "type": "Direct",
         "requested": "[10.36.0.15337, )",
