@@ -62,7 +62,7 @@ stages:
         command: 'restore'
         projects: 'src/AdminAssistant.slnx'
         feedsToUse: 'config'
-        nugetConfigPath: 'DevOps/NuGet.config'
+        nugetConfigPath: 'src/nuget.config'
         arguments: '--locked-mode'
     #
     # Sonar Cloud Prepare ...
