@@ -11,6 +11,7 @@
   <Folder Name="/Solution Items/">
     <File Path="..\.gitignore" />
     <File Path=".editorconfig" />
+    <File Path="global.json" />
     <File Path="NuGet.config" />
     <File Path="..\docs\cli.md" />
     <File Path="..\docs\database.dbml" />
