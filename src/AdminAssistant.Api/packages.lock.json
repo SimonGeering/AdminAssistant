@@ -92,10 +92,10 @@
       },
       "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": {
         "type": "Transitive",
-        "resolved": "10.0.14",
-        "contentHash": "2xE9FhV4PmKYFzu4aj3yMPbhJmWu9iwx0QfyDl7vrOKVx49B3GZ82JEHnC1lX1TjVtuZzVZF99ytMb2r6oApng==",
+        "resolved": "11.0.0-rc.3.26522.148",
+        "contentHash": "oENGuuaDbHXrr65fSIOXysg/50yZUDibsOXiUcQQQRZy3OFI+2sAaWvvAEEezZc09XVy1vlldTrshBNzosoNiw==",
         "dependencies": {
-          "Microsoft.EntityFrameworkCore.Relational": "10.0.14"
+          "Microsoft.EntityFrameworkCore.Relational": "11.0.0-rc.3.26522.148"
         }
       },
       "Microsoft.Extensions.Http.Diagnostics": {
@@ -273,7 +273,7 @@
           "Ardalis.GuardClauses": "[5.0.0, )",
           "Ardalis.Result": "[10.1.0, )",
           "Ardalis.Specification.EntityFrameworkCore": "[9.3.1, )",
-          "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL": "[13.6.5, )",
+          "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL": "[17.0.0-preview.1.26567.5, )",
           "Mediator.Abstractions": "[3.0.2, )",
           "Microsoft.EntityFrameworkCore.Relational": "[11.0.0-rc.3.26522.148, )",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "[11.0.0-rc.3, )",
@@ -334,15 +334,15 @@
       },
       "Aspire.Npgsql.EntityFrameworkCore.PostgreSQL": {
         "type": "CentralTransitive",
-        "requested": "[13.6.5, )",
-        "resolved": "13.6.5",
-        "contentHash": "CPXZtc7CaWhEtuXm0+oBWCPF+jKG4dSk1YAWjDqpisW1PmYyjrVmGyf7yv1I0RXCFq2w+6IRgJPhjNmT+FTFFw==",
+        "requested": "[17.0.0-preview.1.26567.5, )",
+        "resolved": "17.0.0-preview.1.26567.5",
+        "contentHash": "Mq4q7EgI+V63fn7XiQ+NJXnr3S4MaZ1OGRJA2widkRGK084yniYUtX/53oytYDVOqzrEr4rzxuyla9aTSMVUaA==",
         "dependencies": {
-          "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": "10.0.14",
+          "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore": "11.0.0-rc.3.26522.148",
           "Npgsql.DependencyInjection": "10.0.3",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.3",
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "11.0.0-rc.3",
           "Npgsql.OpenTelemetry": "10.0.3",
-          "OpenTelemetry.Extensions.Hosting": "1.17.0"
+          "OpenTelemetry.Extensions.Hosting": "1.18.0"
         }
       },
       "FluentValidation": {
