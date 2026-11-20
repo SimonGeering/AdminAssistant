@@ -334,8 +334,8 @@
       },
       "Npgsql": {
         "type": "Transitive",
-        "resolved": "10.0.3",
-        "contentHash": "7nb5YzXuvWWJxB0J8DiyL3we+X4FOctZrt0fIBnucOIaIevFEEwGQVZKtiu9olXdlNAK1eNgqSral6r/jlhI4w=="
+        "resolved": "11.0.0",
+        "contentHash": "ozQ8GJcEAiW6XSKz2RUpdJDvM4l380BdHx/MRB7QJHL2cTH/0js7f/cisCaYMrZvVUj4/HIW80UjXxI+ikQQzQ=="
       },
       "OpenTelemetry": {
         "type": "Transitive",
@@ -426,7 +426,7 @@
         "dependencies": {
           "Microsoft.Extensions.Http.Resilience": "[11.0.0, )",
           "Microsoft.Extensions.ServiceDiscovery": "[11.0.0, )",
-          "Npgsql.OpenTelemetry": "[10.0.3, )",
+          "Npgsql.OpenTelemetry": "[11.0.0, )",
           "OpenTelemetry.Exporter.Console": "[1.21.0, )",
           "OpenTelemetry.Exporter.OpenTelemetryProtocol": "[1.21.0, )",
           "OpenTelemetry.Extensions.Hosting": "[1.21.0, )",
@@ -477,12 +477,12 @@
       },
       "Npgsql.OpenTelemetry": {
         "type": "CentralTransitive",
-        "requested": "[10.0.3, )",
-        "resolved": "10.0.3",
-        "contentHash": "ShsdG/FHxJ2VuWM6tebJL/mCWkcxymmvtENN59c85EsJdT4TStWwwtgZoBu/9UvC0qi1jpFZ6bOfl9ijiWD+vA==",
+        "requested": "[11.0.0, )",
+        "resolved": "11.0.0",
+        "contentHash": "xbT0d/23D+HlJY0rICf8m83mf8G3ye/xD8rs28YHWlPgac+36C9pVHnEhWt2Wqixzdwaz/n6pJhioa2vgSgQag==",
         "dependencies": {
-          "Npgsql": "10.0.3",
-          "OpenTelemetry.API": "1.15.3"
+          "Npgsql": "11.0.0",
+          "OpenTelemetry.API": "1.20.1"
         }
       },
       "OpenTelemetry.Exporter.Console": {
