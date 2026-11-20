@@ -3,14 +3,10 @@
 
 // https://learn.microsoft.com/en-gb/dotnet/aspire/
 using AdminAssistant;
-using Aspire.Hosting.Docker.Resources.ComposeNodes;
 
 var builder = DistributedApplication.CreateBuilder(args);
 builder.AddDockerComposeEnvironment("AdminAssistantEnvironment")
-    .WithProperties(env =>
-    {
-        env.DefaultNetworkName = "AdminAssistant-Network";
-    });
+    .WithProperties(env => env.DefaultNetworkName = "AdminAssistant-Network");
 
 // IAM Server ...
 var keycloak = builder.AddKeycloak(Constants.IAMServerName, 8080)
@@ -32,7 +28,8 @@ var applicationDatabase = postgres.AddDatabase(Constants.ApplicationDatabaseName
 var scheduledJobDatabase = postgres.AddDatabase(Constants.ScheduledJobDatabaseName)
     .WithParentRelationship(postgres);
 
-var migrations = builder.AddProject<Projects.AdminAssistant_Aspire_DatabaseMigrationService>(Constants.DatabaseMigrationWorkerService)
+var migrations = builder.AddDotnetProject(Constants.DatabaseMigrationWorkerService,
+        "../AdminAssistant.Aspire.DatabaseMigrationService/AdminAssistant.Aspire.DatabaseMigrationService.csproj")
     .WithReference(applicationDatabase)
     .WaitFor(applicationDatabase);
 
@@ -58,10 +55,8 @@ msgBus.WithManagementPlugin()
     .WithContainerName(Constants.MessageBusAdminDashboardName)
     .WithLifetime(ContainerLifetime.Persistent);
 
-
-
 // Web API ...
-var api = builder.AddProject<Projects.AdminAssistant_Api>(Constants.Api)
+var api = builder.AddDotnetProject(Constants.Api,"../AdminAssistant.Api/AdminAssistant.Api.csproj")
     .WithExternalHttpEndpoints()
     .WithHttpHealthCheck("/health")
     .WithReference(msgBus).WaitFor(msgBus)
@@ -70,24 +65,24 @@ var api = builder.AddProject<Projects.AdminAssistant_Api>(Constants.Api)
     .WithUrl("/api/docs/index.html"); //OpenAPI JSON = /openapi/v1.json
 
 // Main App ...
-builder.AddProject<Projects.AdminAssistant_Web>(Constants.WebAppName)
+builder.AddDotnetProject(Constants.WebAppName,"../AdminAssistant.Web/AdminAssistant.Web.csproj")
     .WithExternalHttpEndpoints()
     .WithHttpHealthCheck("/health")
     .WithReference(api).WaitFor(api)
     .WithReference(cache).WaitFor(cache);
 
 // Avalonia App ...
-builder.AddProject<Projects.AdminAssistant_AvaloniaApp>(Constants.AvaloniaAppName)
+builder.AddDotnetProject(Constants.AvaloniaAppName,"../AdminAssistant.AvaloniaApp/AdminAssistant.AvaloniaApp.csproj")
     .WithReference(api).WaitFor(api)
     .WithReference(cache).WaitFor(cache)
     .WithExplicitStart()
     .ExcludeFromManifest(); // Not a web app
 
 // Retro console UI ... :-)
-builder.AddProject<Projects.AdminAssistant_Retro>(Constants.RetroConsole)
+builder.AddDotnetProject(Constants.RetroConsole,"../AdminAssistant.Retro/AdminAssistant.Retro.csproj")
     .WithReference(api).WaitFor(api)
     .WithReference(cache).WaitFor(cache)
     .WithExplicitStart()
     .ExcludeFromManifest(); // Not a web app
 
-await builder.Build().RunAsync();
+await builder.Build().RunAsync().ConfigureAwait(false);

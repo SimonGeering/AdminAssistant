@@ -1,4 +1,4 @@
-<Project Sdk="Aspire.AppHost.Sdk/17.0.0">
+<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <UserSecretsId>1825de71-4325-43b0-8546-5a1e00ac421d</UserSecretsId>
@@ -12,7 +12,9 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" />
         <PackageReference Include="Aspire.Hosting.Docker" />
+        <PackageReference Include="Aspire.Hosting.Dotnet" />
         <PackageReference Include="Aspire.Hosting.Keycloak" />
         <PackageReference Include="Aspire.Hosting.Kubernetes" />
         <PackageReference Include="Aspire.Hosting.PostgreSQL" />
@@ -26,14 +28,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\AdminAssistant.Api\AdminAssistant.Api.csproj" />
-        <ProjectReference Include="..\AdminAssistant.Aspire.DatabaseMigrationService\AdminAssistant.Aspire.DatabaseMigrationService.csproj" />
-        <ProjectReference Include="..\AdminAssistant.AvaloniaApp\AdminAssistant.AvaloniaApp.csproj" />
         <ProjectReference Include="..\AdminAssistant.DomainModel\AdminAssistant.DomainModel.csproj">
             <IsAspireProjectResource>false</IsAspireProjectResource>
         </ProjectReference>
-        <ProjectReference Include="..\AdminAssistant.Retro\AdminAssistant.Retro.csproj" />
-        <ProjectReference Include="..\AdminAssistant.Web\AdminAssistant.Web.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,6 +1,8 @@
 <Project>
   <ItemGroup>
     <!-- Workaround for https://github.com/microsoft/aspire/issues/18153 -->
+    <PackageVersion Include="Aspire.Hosting.AppHost" Version="17.0.0" />
+    <PackageVersion Include="Aspire.Hosting.Dotnet" Version="17.0.0" />
     <PackageVersion Include="MessagePack" Version="2.6.100" />
     <!--Shared / Common-->
     <PackageVersion Include="Ardalis.Result" Version="10.1.0" />
