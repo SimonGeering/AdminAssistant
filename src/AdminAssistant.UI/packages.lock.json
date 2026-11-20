@@ -26,9 +26,9 @@
       },
       "SonarAnalyzer.CSharp": {
         "type": "Direct",
-        "requested": "[10.36.0.15337, )",
-        "resolved": "10.36.0.15337",
-        "contentHash": "jGLAZUjheSURfe0T/dJYGUrMOrLt1fxaInpChq75YJvrywsxFoUKK/EM6PSfTjkt4pbaq2ywIQjgQzhrmmj5Ow=="
+        "requested": "[10.37.0.15768, )",
+        "resolved": "10.37.0.15768",
+        "contentHash": "73Qo5UF1HSCwUGqiZ9XOKXWNRAe3WN8dfsj3pWIi5oIuenY1Uo9WuMinGibs3up9zcJ5CFk5Ex/Ei/S17mcBvg=="
       },
       "Microsoft.Extensions.Configuration": {
         "type": "Transitive",
@@ -72,11 +72,6 @@
         "type": "Transitive",
         "resolved": "3.11.0",
         "contentHash": "kvQz+mL/fnDw2VaE8zMyQhbMv7FmOYUydIhCVNKxQdrLu9XiMT/07DHwJ5YkRO2uzcxTFvMAKFKKywxoyLKHcA=="
-      },
-      "PdfSharp": {
-        "type": "Transitive",
-        "resolved": "1.3.0",
-        "contentHash": "67ThB/gD+XiL6UAmp+JqdQpH0fUmC+ArXVrXnSW6w5EUeYNgk0imWtKo40li9NN7QZXnsGYoEoB+LKCXCP0QUQ=="
       },
       "ReactiveUI.Disposables": {
         "type": "Transitive",
@@ -152,7 +147,6 @@
         "type": "Project",
         "dependencies": {
           "Ardalis.GuardClauses": "[5.0.0, )",
-          "PDFsharp": "(, )",
           "QuestPDF": "[2026.9.2, )"
         }
       },
