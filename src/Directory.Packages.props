@@ -91,6 +91,6 @@
     <PackageVersion Include="Aspire.StackExchange.Redis.OutputCaching" Version="17.0.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore" Version="11.0.1" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="11.0.1" />
-    <PackageVersion Include="MudBlazor" Version="9.13.0" />
+    <PackageVersion Include="MudBlazor" Version="9.14.0" />
   </ItemGroup>
 </Project>
